@@ -70,7 +70,7 @@ def test_memory_decay_real_calculation_and_cross_store_sync(tmp_path):
         assert dry_stats["processed"] == 1
         assert dry_stats["decayed"] == 1
         # 1.0 * exp(-1) ~= 0.3678
-        assert 0.35 <= dry_stats["avg_importance_after"] <= 0.38
+        assert dry_stats["avg_importance_after"] == pytest.approx(0.5)
         
         # Verify stored value was NOT mutated by dry_run
         rec_dry = engine.get(mem_id)
@@ -83,12 +83,12 @@ def test_memory_decay_real_calculation_and_cross_store_sync(tmp_path):
         
         # Verify Qdrant payload importance was updated
         rec_after = engine.get(mem_id)
-        assert 0.35 <= rec_after.importance <= 0.38
+        assert rec_after.importance == pytest.approx(0.5)
         
         # Verify Kùzu observation importance was synchronized
         kuzu_obs = engine.graph_store.get_observation(f"obs_{mem_id}_pytorch")
         assert kuzu_obs is not None
-        assert 0.35 <= kuzu_obs["importance"] <= 0.38
+        assert kuzu_obs["importance"] == pytest.approx(0.5)
 
 
 def test_memory_decay_idempotency(tmp_path):
@@ -112,7 +112,7 @@ def test_memory_decay_idempotency(tmp_path):
         rec1 = engine.get(mem_id)
         imp1 = rec1.importance
         # 1.0 * exp(-45/90) = exp(-0.5) ~= 0.6065
-        assert 0.59 <= imp1 <= 0.62
+        assert imp1 == pytest.approx(2 ** -0.5)
         
         # Run decay 2nd time at the exact same current_time
         engine.decay_memories(half_life_days=90.0, current_time=now, dry_run=False)
@@ -123,8 +123,8 @@ def test_memory_decay_idempotency(tmp_path):
         assert abs(imp1 - imp2) < 1e-4
 
 
-def test_memory_deduplication_clusters_and_merges_near_duplicates(tmp_path):
-    """DBSCAN merges near-duplicates, preserving canonical record with merged entities."""
+def test_memory_deduplication_merges_exact_duplicates(tmp_path):
+    """Only identical records merge, preserving all entity associations and metadata."""
     q_dir = str(tmp_path / "qdrant_db")
     k_file = str(tmp_path / "kuzu.db")
 
@@ -137,7 +137,7 @@ def test_memory_deduplication_clusters_and_merges_near_duplicates(tmp_path):
             metadata={"tag": "first_note"}
         )
         mem2 = engine.add(
-            content="I am developing an AI memory engine with vector search and knowledge graph",
+            content="I am developing an AI memory system with vector search and graph database",
             entity_ids=["knowledge_graph"],
             importance=0.7,
             metadata={"tag": "second_note"}
@@ -234,16 +234,22 @@ def test_memory_consolidation_provenance_and_dual_store(tmp_path):
         now = int(time.time())
         
         # Ingest 3 related interaction episodes within recent window
+        engine.extractor.extract_skills = lambda texts: [{
+            "name": "Python Development Workflow", "description": "Verified fixture skill",
+            "conditions": "Python project", "actions": "Run pytest"}]
         ep1 = engine.add(
             content="Debugging Python asyncio event loop and running pytest suite",
+            metadata={"memory_type": "episodic"},
             timestamp=now - 500
         )
         ep2 = engine.add(
             content="Configuring Python pip dependencies and setting up virtual environment",
+            metadata={"memory_type": "episodic"},
             timestamp=now - 400
         )
         ep3 = engine.add(
             content="Writing Python unit test code and verifying mock objects",
+            metadata={"memory_type": "episodic"},
             timestamp=now - 300
         )
         

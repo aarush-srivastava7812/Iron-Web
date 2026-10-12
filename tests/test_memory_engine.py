@@ -191,7 +191,7 @@ def test_engine_device_status_and_telemetry(tmp_path):
         assert status_initial.gpu_enabled_requested is True
         assert status_initial.safety_buffer_mb == 1024.0   # 1.0 GB reserved safety buffer
         assert status_initial.vram_budget_mb <= 5120.0     # 5.0 GB maximum budget
-        assert status_initial.embedder_provider in ["CUDAExecutionProvider", "CPUExecutionProvider"]
+        assert status_initial.embedder_provider == "Uninitialized"
         # Reranker should be Uninitialized initially to preserve memory / VRAM
         assert status_initial.reranker_provider == "Uninitialized"
         assert status_initial.execution_mode in ["GPU (CUDA)", "CPU Fallback"]

@@ -5,6 +5,32 @@ Provides formal typing, validation, and marking for real (NIM) vs mock extractio
 from abc import ABC, abstractmethod
 from typing import List, Dict, Any, Optional
 from pydantic import BaseModel, Field, field_validator
+import hashlib
+import unicodedata
+
+
+def canonicalize_entities(raw):
+    """Derive cross-document identities from normalized type/name, remapping edges."""
+    if not isinstance(raw, dict):
+        raise ValueError("Extraction must be a JSON object.")
+    result = dict(raw)
+    entities, mapping = [], {}
+    for entity in raw.get("entities", []):
+        if not isinstance(entity, dict) or not entity.get("name"):
+            raise ValueError("Extracted entities require a name.")
+        key = unicodedata.normalize("NFKC", entity.get("type", "Concept") + ":" + entity["name"]).casefold()
+        key = " ".join(key.split())
+        eid = "ent_" + hashlib.sha256(key.encode()).hexdigest()[:24]
+        mapping[entity.get("id", entity["name"])] = eid
+        entities.append(dict(entity, id=eid))
+    relations = []
+    for relation in raw.get("relations", []):
+        source, target = relation.get("from", relation.get("from_id")), relation.get("to", relation.get("to_id"))
+        if source not in mapping or target not in mapping:
+            raise ValueError("Extraction relation references an unknown entity.")
+        relations.append(dict(relation, **{"from": mapping[source], "to": mapping[target]}))
+    result.update(entities=entities, relations=relations)
+    return result
 
 
 class ExtractedEntity(BaseModel):
@@ -37,7 +63,9 @@ class ExtractedTemporal(BaseModel):
     @field_validator("valid_until")
     @classmethod
     def check_bounds(cls, v: int, info) -> int:
-        return v if v >= 0 else 2**31 - 1
+        if v < info.data.get("valid_from", 0):
+            raise ValueError("Validity start cannot exceed expiration.")
+        return v
 
 
 class ExtractionResult(BaseModel):
@@ -86,10 +114,6 @@ def validate_extraction(raw: Dict[str, Any], extractor_name: str = "extractor", 
             seen_ids.add(eid)
             entities.append(ExtractedEntity(id=eid, name=name, type=etype, description=desc))
 
-    # Fallback entity if none extracted
-    if not entities:
-        entities.append(ExtractedEntity(id="ent_memory", name="General Memory", type="Concept", description="Default entity"))
-        seen_ids.add("ent_memory")
 
     # Validate relations (ensure endpoints exist in extracted entities)
     relations: List[ExtractedRelation] = []
@@ -98,7 +122,6 @@ def validate_extraction(raw: Dict[str, Any], extractor_name: str = "extractor", 
         to_id = str(r.get("to") or r.get("to_id") or "").strip().lower().replace(" ", "_")
         rtype = str(r.get("type") or "RELATED_TO").strip()
         conf = float(r.get("confidence", 0.7))
-        conf = max(0.0, min(1.0, conf))
 
         if from_id in seen_ids and to_id in seen_ids and from_id != to_id:
             relations.append(ExtractedRelation(from_id=from_id, to_id=to_id, type=rtype, confidence=conf))
@@ -106,14 +129,11 @@ def validate_extraction(raw: Dict[str, Any], extractor_name: str = "extractor", 
     # Validate temporal
     vf = int(raw_temporal.get("valid_from", 0)) if raw_temporal.get("valid_from") is not None else 0
     vu = int(raw_temporal.get("valid_until", 2**31 - 1)) if raw_temporal.get("valid_until") is not None else 2**31 - 1
-    if vf < 0:
-        vf = 0
-    if vu <= vf:
-        vu = 2**31 - 1
+    if vu < vf:
+        raise ValueError("Extraction contains an invalid validity interval.")
 
     # Validate importance
     imp = float(raw_importance) if raw_importance is not None else 0.5
-    imp = max(0.0, min(1.0, imp))
 
     return ExtractionResult(
         entities=entities,

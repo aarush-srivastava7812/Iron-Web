@@ -296,7 +296,7 @@ class KuzuGraphStore:
         relation_type: str,
         confidence: float = 1.0,
         valid_from: int = 0,
-        valid_until: int = 2**31 - 1,
+        valid_until: int = 2**63 - 1,
         metadata: Optional[Dict[str, Any]] = None,
         timestamp: Optional[int] = None
     ) -> bool:
@@ -406,7 +406,7 @@ class KuzuGraphStore:
         content: str,
         embedding: Optional[List[float]] = None,
         valid_from: int = 0,
-        valid_until: int = 2**31 - 1,
+        valid_until: int = 2**63 - 1,
         importance: float = 1.0,
         source: str = "user",
         timestamp: Optional[int] = None,
@@ -775,81 +775,52 @@ class KuzuGraphStore:
     
     # === Contradiction/Supersession ===
     
-    def _resolve_obs_id(self, target_id: str) -> str:
-        """Resolve exact observation identifiers without a table-wide substring scan."""
-        res = self.conn.execute("MATCH (o:Observation {id: $id}) RETURN o.id", {"id": target_id})
-        if res.has_next():
+    @staticmethod
+    def observation_memory_id(observation):
+        owner = observation.get("source_memory_id")
+        if owner:
+            return owner
+        oid, eid = observation["id"], observation.get("entity_id", "")
+        suffix = "_" + eid
+        if oid.startswith("obs_") and eid and oid.endswith(suffix):
+            return oid[4:-len(suffix)]
+        return oid[4:] if oid.startswith("obs_") else oid
+
+    def _resolve_obs_id(self, target_id):
+        if self.get_observation(target_id):
             return target_id
-        res2 = self.conn.execute("MATCH (o:Observation {id: $id}) RETURN o.id", {"id": f"obs_{target_id}"})
-        if res2.has_next():
-            return f"obs_{target_id}"
-        return target_id
+        observations = self.get_memory_observations(target_id)
+        if not observations:
+            raise ValueError(f"Unknown observation or memory: {target_id}")
+        return sorted(o["id"] for o in observations)[0]
 
-    def get_relationship_conflicts_batch(
-        self, observation_ids: List[str], use_batched_resolution: bool = True
-    ) -> Dict[str, List[Dict[str, Any]]]:
-        """Fetch conflicts in constant queries, with a legacy resolver fallback."""
-        if not use_batched_resolution:
-            return self._get_relationship_conflicts_legacy(observation_ids)
-
-        original_ids = list(dict.fromkeys(obs_id for obs_id in observation_ids if obs_id))
-        candidates = list(dict.fromkeys(
-            original_ids + [f"obs_{obs_id}" for obs_id in original_ids if not obs_id.startswith("obs_")]
-        ))
-        try:
-            result = self.conn.execute(
-                "MATCH (o:Observation) WHERE o.id IN $ids RETURN o.id", {"ids": candidates}
-            )
-            available = set()
-            while result.has_next():
-                available.add(str(result.get_next()[0]))
-            resolved_by_original = {
-                obs_id: obs_id if obs_id in available else f"obs_{obs_id}"
-                for obs_id in original_ids
-                if obs_id in available or f"obs_{obs_id}" in available
-            }
-        except Exception:
-            return self._get_relationship_conflicts_legacy(observation_ids)
-
-        output: Dict[str, List[Dict[str, Any]]] = {obs_id: [] for obs_id in original_ids}
-        resolved_to_original = {resolved: original for original, resolved in resolved_by_original.items()}
-        resolved = list(resolved_to_original)
+    def get_relationship_conflicts_batch(self, observation_ids, use_batched_resolution=True):
+        """Resolve every observation for each owner, retaining edge direction and time."""
+        original_ids = list(dict.fromkeys(observation_ids))
+        output = {mid: [] for mid in original_ids}
+        result = self.conn.execute("MATCH (o:Observation) RETURN o.id, o.entity_id, o.source_memory_id")
+        owners, aliases = {}, {}
+        while result.has_next():
+            oid, eid, source = result.get_next()
+            owner = self.observation_memory_id(dict(id=oid, entity_id=eid, source_memory_id=source))
+            owners[oid] = owner
+            aliases[oid] = [mid for mid in original_ids if mid == oid or mid == owner]
+        resolved = [oid for oid, ids in aliases.items() if ids]
         if not resolved:
             return output
-        for relationship_type in ("CONTRADICTS", "SUPERSEDES"):
+        for kind, time_field, extra in (("CONTRADICTS", "detected_at", "AND r.resolved = false"),
+                                       ("SUPERSEDES", "superseded_at", "")):
             result = self.conn.execute(f"""
-                MATCH (o:Observation)-[r:{relationship_type}]-(other:Observation)
-                WHERE o.id IN $ids
-                RETURN o.id, other.id, r.confidence
+                MATCH (old:Observation)-[r:{kind}]->(new:Observation)
+                WHERE (old.id IN $ids OR new.id IN $ids) {extra}
+                RETURN old.id, new.id, r.confidence, r.{time_field}
             """, {"ids": resolved})
             while result.has_next():
-                row = result.get_next()
-                output[resolved_to_original[row[0]]].append({
-                    "relationship_type": relationship_type, "id": row[1], "confidence": row[2],
-                })
-        return output
-
-    def _get_relationship_conflicts_legacy(self, observation_ids: List[str]) -> Dict[str, List[Dict[str, Any]]]:
-        """Original resolver retained for A/B rollback and exceptional fallback."""
-        resolved = [self._resolve_obs_id(obs_id) for obs_id in observation_ids]
-        resolved = [obs_id for obs_id in resolved if obs_id.startswith("obs_")]
-        output: Dict[str, List[Dict[str, Any]]] = {obs_id: [] for obs_id in resolved}
-        if not resolved:
-            return output
-        # Kuzu 0.11.3 has no Cypher type(r), so keep the relationship type
-        # explicit while still issuing a constant two queries, not 2*N scans.
-        for relationship_type in ("CONTRADICTS", "SUPERSEDES"):
-            result = self.conn.execute(f"""
-                MATCH (o:Observation)-[r:{relationship_type}]-(other:Observation)
-                WHERE o.id IN $ids
-                RETURN o.id, other.id, r.confidence
-            """, {"ids": resolved})
-            while result.has_next():
-                row = result.get_next()
-                output.setdefault(row[0], []).append({
-                    "relationship_type": relationship_type, "id": row[1],
-                    "confidence": row[2],
-                })
+                old, new, confidence, effective_at = result.get_next()
+                for oid, other, direction in ((old, new, "outgoing"), (new, old, "incoming")):
+                    for mid in aliases.get(oid, []):
+                        output[mid].append(dict(relationship_type=kind, id=other, memory_id=owners.get(other, other),
+                            confidence=confidence, effective_at=effective_at, direction=direction, from_id=old, to_id=new))
         return output
 
     def add_contradiction(
@@ -895,6 +866,8 @@ class KuzuGraphStore:
         if superseded_at is None:
             superseded_at = int(time.time())
         
+        old_obs_id = self._resolve_obs_id(old_obs_id)
+        new_obs_id = self._resolve_obs_id(new_obs_id)
         self.conn.execute("""
             MATCH (old:Observation {id: $old}), (new:Observation {id: $new})
             MERGE (old)-[s:SUPERSEDES {confidence: $conf, superseded_at: $ts, reason: $reason}]->(new)
@@ -942,6 +915,8 @@ class KuzuGraphStore:
                 "confidence": row[3],
                 "reason": row[4],
                 "superseded_at": row[5],
+                "from_id": real_id if row[6] == "SUPERSEDED_BY" else row[0],
+                "to_id": row[0] if row[6] == "SUPERSEDED_BY" else real_id,
                 "direction": row[6]
             })
         return supers

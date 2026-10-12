@@ -1,12 +1,14 @@
 """
 Maintenance operations: decay, deduplication, consolidation.
-Production-ready background jobs for memory health, idempotency, and cross-store consistency.
+Explicit maintenance with verified rollback and source provenance.
 """
 from typing import List, Dict, Any, Optional, Tuple, Set
 import numpy as np
 import time
 import uuid
-from sklearn.cluster import DBSCAN
+import hashlib
+import json
+from memory.storage import coordinated_write
 
 from memory.embeddings.embedder import Embedder
 from memory.vector_store.qdrant_store import QdrantVectorStore
@@ -29,6 +31,8 @@ class MemoryDecay:
     ):
         self.vector_store = vector_store
         self.graph_store = graph_store
+        if half_life_days <= 0 or not 0 <= min_importance <= 1:
+            raise ValueError("Invalid decay settings.")
         self.half_life_days = half_life_days
         self.min_importance = min_importance
     
@@ -48,7 +52,7 @@ class MemoryDecay:
         age_seconds = current_time - timestamp
         age_days = max(0.0, age_seconds / 86400.0)
         
-        decay_factor = float(np.exp(-age_days / self.half_life_days))
+        decay_factor = float(2 ** (-age_days / self.half_life_days))
         decayed = initial_importance * decay_factor
         return float(max(decayed, self.min_importance))
     
@@ -64,6 +68,8 @@ class MemoryDecay:
         Returns:
             Real telemetry statistics about processed, decayed, and skipped memories.
         """
+        if batch_size < 1:
+            raise ValueError("Batch size must be positive.")
         now = int(time.time()) if current_time is None else current_time
         stats = {
             "processed": 0,
@@ -121,52 +127,19 @@ class MemoryDecay:
                 stats["decayed"] += 1
                 if not dry_run:
                     try:
-                        # Update Qdrant
-                        updated_payload = dict(payload)
-                        updated_payload["importance"] = new_importance
-                        updated_payload["initial_importance"] = initial_importance
-                        updated_payload["last_decay_time"] = now
-                        
-                        self.vector_store.upsert_memory(
-                            memory_id=mem_id,
-                            text=payload.get("text", ""),
-                            embedding=np.array(record.vector, dtype=np.float32) if record.vector is not None else None,
-                            entity_ids=payload.get("entity_ids", []),
-                            valid_from=payload.get("valid_from", 0),
-                            valid_until=payload.get("valid_until", 2**31 - 1),
-                            importance=new_importance,
-                            metadata={k: v for k, v in updated_payload.items() if k not in {
-                                "text", "memory_id", "entity_ids", "valid_from", "valid_until", "importance", "timestamp"
-                            }},
-                            timestamp=ts
-                        )
-                        
-                        # Update corresponding observations in Kùzu
-                        entity_ids = payload.get("entity_ids", [])
-                        if entity_ids:
-                            for eid in entity_ids:
-                                obs_id = f"obs_{mem_id}_{eid}"
-                                self.graph_store.upsert_observation(
-                                    obs_id=obs_id,
-                                    entity_id=eid,
-                                    content=payload.get("text", ""),
-                                    valid_from=payload.get("valid_from", 0),
-                                    valid_until=payload.get("valid_until", 2**31 - 1),
-                                    importance=new_importance,
-                                    timestamp=ts
-                                )
-                        else:
-                            self.graph_store.upsert_observation(
-                                obs_id=f"obs_{mem_id}",
-                                entity_id=mem_id,
-                                content=payload.get("text", ""),
-                                valid_from=payload.get("valid_from", 0),
-                                valid_until=payload.get("valid_until", 2**31 - 1),
-                                importance=new_importance,
-                                timestamp=ts
-                            )
-                    except Exception:
+                        with coordinated_write(self.vector_store, self.graph_store, [mem_id]):
+                            metadata = {k: v for k, v in payload.items() if k not in {
+                                "memory_id", "text", "entity_ids", "valid_from", "valid_until", "importance", "timestamp"}}
+                            metadata["initial_importance"] = initial_importance
+                            self.vector_store.upsert_memory(mem_id, payload["text"], np.array(record.vector),
+                                payload.get("entity_ids", []), payload.get("valid_from", 0), payload.get("valid_until", 2**63-1),
+                                new_importance, metadata=metadata, timestamp=ts)
+                            for observation in self.graph_store.get_memory_observations(mem_id):
+                                self.graph_store.conn.execute("MATCH (o:Observation {id: $id}) SET o.importance = $value",
+                                    {"id": observation["id"], "value": new_importance})
+                    except Exception as error:
                         stats["errors"] += 1
+                        stats.setdefault("error_details", []).append({"memory_id": mem_id, "error": str(error)})
             else:
                 stats["unchanged"] += 1
                 
@@ -195,6 +168,8 @@ class MemoryDeduplication:
         self.graph_store = graph_store
         self.embedder = embedder
         self.eps = eps
+        if min_samples < 2:
+            raise ValueError("Deduplication requires at least two records.")
         self.min_samples = min_samples
     
     def find_duplicates(
@@ -203,85 +178,27 @@ class MemoryDeduplication:
         embeddings: np.ndarray,
         payloads: Optional[List[Dict[str, Any]]] = None
     ) -> List[List[str]]:
-        """
-        Find duplicate candidate clusters using DBSCAN with safeguards.
-        
-        Safeguards:
-        1. Temporal disjointness: Memories with non-overlapping validity bounds are distinct facts.
-        2. Graph contradictions: Contradictory statements must NOT be merged into a single fact.
-        """
-        if len(memory_ids) < 2 or len(embeddings) < 2:
-            return []
-            
-        clustering = DBSCAN(
-            eps=self.eps,
-            min_samples=self.min_samples,
-            metric="cosine"
-        ).fit(embeddings)
-        
-        labels = clustering.labels_
-        raw_clusters: Dict[int, List[int]] = {}
-        for idx, label in enumerate(labels):
-            if label >= 0:
-                if label not in raw_clusters:
-                    raw_clusters[label] = []
-                raw_clusters[label].append(idx)
-                
-        valid_clusters: List[List[str]] = []
-        payload_map = payloads or [{}] * len(memory_ids)
-        
-        for cluster_indices in raw_clusters.values():
-            if len(cluster_indices) < 2:
-                continue
-                
-            # Filter cluster members against safeguards
-            safe_members = []
-            for i in cluster_indices:
-                p_i = payload_map[i]
-                vf_i = p_i.get("valid_from", 0)
-                vu_i = p_i.get("valid_until", 2**31 - 1)
-                
-                is_safe = True
-                for existing_idx in safe_members:
-                    p_e = payload_map[existing_idx]
-                    vf_e = p_e.get("valid_from", 0)
-                    vu_e = p_e.get("valid_until", 2**31 - 1)
-                    
-                    # Safeguard 1: Temporal disjointness check
-                    if vu_i < vf_e or vu_e < vf_i:
-                        # Non-overlapping validity intervals represent distinct historical facts
-                        is_safe = False
-                        break
-                        
-                    # Safeguard 2: Explicit contradiction check in graph
-                    m_i_id = memory_ids[i]
-                    m_e_id = memory_ids[existing_idx]
-                    try:
-                        p_i_eids = payload_map[i].get("entity_ids", [])
-                        p_e_eids = payload_map[existing_idx].get("entity_ids", [])
-                        obs_i_candidates = [m_i_id, f"obs_{m_i_id}"] + [f"obs_{m_i_id}_{eid}" for eid in p_i_eids]
-                        obs_e_candidates = set([m_e_id, f"obs_{m_e_id}"] + [f"obs_{m_e_id}_{eid}" for eid in p_e_eids])
-                        
-                        has_contra = False
-                        for oid_i in obs_i_candidates:
-                            contra = self.graph_store.get_contradictions(oid_i)
-                            if any(c.get("id") in obs_e_candidates or m_e_id in str(c.get("id", "")) for c in contra):
-                                has_contra = True
-                                break
-                        if has_contra:
-                            is_safe = False
-                            break
-                    except Exception:
-                        pass
-                        
-                if is_safe:
-                    safe_members.append(i)
-                    
-            if len(safe_members) > 1:
-                valid_clusters.append([memory_ids[idx] for idx in safe_members])
-                
-        return valid_clusters
-    
+        """Group identical text, validity and type; similarity never establishes equivalence."""
+        if payloads is None or len(payloads) != len(memory_ids):
+            raise ValueError("One payload is required per memory ID.")
+        groups = {}
+        for mid, payload in zip(memory_ids, payloads):
+            key = (" ".join(payload.get("text", "").split()), payload.get("valid_from", 0),
+                   payload.get("valid_until", 2**63-1), payload.get("memory_type", "semantic"))
+            if key[0]:
+                groups.setdefault(key, []).append(mid)
+        clusters = []
+        for members in groups.values():
+            safe = []
+            for mid in members:
+                conflicts = self.graph_store.get_relationship_conflicts_batch([mid]).get(mid, [])
+                linked = {c.get("memory_id", c.get("id")) for c in conflicts}
+                if not linked.intersection(members):
+                    safe.append(mid)
+            if len(safe) >= self.min_samples:
+                clusters.append(safe)
+        return clusters
+
     def merge_duplicates(
         self,
         duplicate_clusters: List[List[str]],
@@ -309,7 +226,10 @@ class MemoryDeduplication:
                     
             if len(memories) < 2:
                 continue
-                
+            eligible = self.find_duplicates(cluster, None, [m["payload"] for m in memories])
+            if not eligible or set(eligible[0]) != set(cluster):
+                continue
+
             # Select canonical: highest importance, then latest timestamp
             canonical = max(
                 memories,
@@ -317,40 +237,44 @@ class MemoryDeduplication:
             )
             canonical_id = canonical["payload"]["memory_id"]
             
-            # Merge entity IDs and metadata
-            merged_entity_ids = set()
-            merged_meta = {}
-            for m in memories:
-                merged_entity_ids.update(m["payload"].get("entity_ids", []))
-                for k, v in m["payload"].items():
-                    if k not in {"text", "memory_id", "entity_ids", "valid_from", "valid_until", "importance", "timestamp"}:
-                        merged_meta[k] = v
-                        
-            merged_meta["merged_from"] = [m["payload"]["memory_id"] for m in memories if m["payload"]["memory_id"] != canonical_id]
-            merged_meta["merged_at"] = int(time.time())
-            
+            merged_entity_ids = sorted({eid for m in memories for eid in m["payload"].get("entity_ids", [])})
+            merged_meta = {k: v for k, v in canonical["payload"].items() if k not in {
+                "text", "memory_id", "entity_ids", "valid_from", "valid_until", "importance", "timestamp"}}
+            merged_meta["merged_from"] = sorted(set(merged_meta.get("merged_from", [])) | (set(cluster) - {canonical_id}))
+            merged_meta["merged_records"] = [{"payload": m["payload"],
+                "observations": self.graph_store.get_memory_observations(m["payload"]["memory_id"])}
+                for m in memories if m is not canonical]
             if not dry_run:
-                # 1. Update canonical memory in Qdrant
-                self.vector_store.upsert_memory(
-                    memory_id=canonical_id,
-                    text=canonical["payload"]["text"],
-                    embedding=np.array(canonical["vector"], dtype=np.float32) if canonical.get("vector") is not None else None,
-                    entity_ids=list(merged_entity_ids),
-                    valid_from=canonical["payload"].get("valid_from", 0),
-                    valid_until=canonical["payload"].get("valid_until", 2**31 - 1),
-                    importance=canonical["payload"].get("importance", 1.0),
-                    metadata=merged_meta,
-                    timestamp=canonical["payload"].get("timestamp", int(time.time()))
-                )
+                with coordinated_write(self.vector_store, self.graph_store, cluster):
+                    # 1. Update canonical memory in Qdrant
+                    self.vector_store.upsert_memory(
+                        memory_id=canonical_id,
+                        text=canonical["payload"]["text"],
+                        embedding=np.array(canonical["vector"], dtype=np.float32) if canonical.get("vector") is not None else None,
+                        entity_ids=list(merged_entity_ids),
+                        valid_from=canonical["payload"].get("valid_from", 0),
+                        valid_until=canonical["payload"].get("valid_until", 2**63 - 1),
+                        importance=canonical["payload"].get("importance", 1.0),
+                        metadata=merged_meta,
+                        timestamp=canonical["payload"].get("timestamp", int(time.time()))
+                    )
                 
-                # 2. Remove duplicate memories across Qdrant and Kùzu
-                for m in memories:
-                    dup_id = m["payload"]["memory_id"]
-                    if dup_id != canonical_id:
-                        self.vector_store.delete_memory(dup_id)
-                        self.graph_store.delete_memory(dup_id, clean_orphaned_entities=False)
-                        stats["memories_merged"] += 1
+                    for eid in merged_entity_ids or [canonical_id]:
+                        self.graph_store.upsert_observation(
+                            obs_id=f"obs_{canonical_id}_{eid}" if eid != canonical_id else f"obs_{canonical_id}",
+                            entity_id=eid, content=canonical["payload"]["text"], embedding=canonical["vector"],
+                            valid_from=canonical["payload"].get("valid_from", 0), valid_until=canonical["payload"].get("valid_until", 2**63-1),
+                            importance=canonical["payload"].get("importance", 1), source=canonical["payload"].get("source", "user"),
+                            timestamp=canonical["payload"].get("timestamp", 0), source_memory_id=canonical_id)
+                    # 2. Remove duplicate memories across Qdrant and Kùzu
+                    for m in memories:
+                        dup_id = m["payload"]["memory_id"]
+                        if dup_id != canonical_id:
+                            self.vector_store.delete_memory(dup_id)
+                            self.graph_store.delete_memory(dup_id, clean_orphaned_entities=False)
+
                         
+            stats["memories_merged"] += len(memories) - 1
             stats["canonical_memories"] += 1
             
         return stats
@@ -361,6 +285,8 @@ class MemoryDeduplication:
         dry_run: bool = False
     ) -> Dict[str, Any]:
         """Run full deduplication pipeline scanning vector store."""
+        if limit < 1:
+            raise ValueError("Scan limit must be positive.")
         records = []
         offset = None
         while len(records) < limit:
@@ -452,7 +378,7 @@ class MemoryConsolidation:
         for r in records:
             p = r.payload or {}
             ts = p.get("timestamp", 0)
-            if start_time <= ts <= end_time:
+            if p.get("memory_type") == "episodic" and start_time <= ts <= end_time:
                 window_episodes.append({
                     "id": p.get("memory_id"),
                     "text": p.get("text", ""),
@@ -463,6 +389,8 @@ class MemoryConsolidation:
         if len(window_episodes) < self.min_episodes:
             return stats
             
+        if dry_run:
+            return stats
         texts = [ep["text"] for ep in window_episodes if ep["text"]]
         skills = self.extract_skill_patterns(texts)
         stats["skills_extracted"] = len(skills)
@@ -476,79 +404,59 @@ class MemoryConsolidation:
                     "window_end": end_time,
                     "episode_count": len(window_episodes)
                 }
-                self.store_skill(skill, dry_run=False)
-                stats["patterns_stored"] += 1
+                skill_id = self._skill_id(skill)
+                if self.vector_store.get_memory(skill_id) is None:
+                    self.store_skill(skill, dry_run=False)
+                    stats["patterns_stored"] += 1
                 
         return stats
     
     def extract_skill_patterns(self, episode_texts: List[str]) -> List[Dict[str, Any]]:
-        """Extract skills using extractor or heuristic keyword analysis."""
-        if self.extractor and hasattr(self.extractor, "extract_skills"):
-            try:
-                res = self.extractor.extract_skills(episode_texts)
-                if res:
-                    return res
-            except Exception:
-                pass
-                
-        # Heuristic procedural pattern extraction fallback
-        skills = []
-        combined_text = " ".join(episode_texts).lower()
-        
-        # Detect recurring technology/workflow patterns
-        patterns = [
-            ("python_development", "Python Development Workflow", ["python", "pip", "pytest", "code"]),
-            ("java_dsa", "Java DSA & Algorithms Practice", ["java", "dsa", "algorithm", "data structure"]),
-            ("data_pipeline", "Data Pipeline Engineering", ["pipeline", "etl", "data", "processing"]),
-            ("web_development", "Web Application Development", ["web", "api", "frontend", "backend"])
-        ]
-        
-        for skill_key, skill_name, triggers in patterns:
-            matched_count = sum(1 for trig in triggers if trig in combined_text)
-            if matched_count >= 2:
-                skills.append({
-                    "name": skill_name,
-                    "description": f"Consolidated workflow pattern for {skill_name} from {len(episode_texts)} episodes.",
-                    "conditions": f"Active work involving {triggers[0]}",
-                    "actions": f"Apply standard {skill_name} best practices."
-                })
-                
-        if not skills and episode_texts:
-            skills.append({
-                "name": "General Workflow Pattern",
-                "description": f"Synthesized procedural memory from {len(episode_texts)} recorded interaction episodes.",
-                "conditions": "Standard operational context",
-                "actions": "Reference episodic history for consistent actions."
-            })
-            
+        """Accept explicit extraction; never manufacture generic skills."""
+        if not self.extractor or not hasattr(self.extractor, "extract_skills"):
+            return []
+        skills = self.extractor.extract_skills(episode_texts)
+        if not isinstance(skills, list) or any(not isinstance(skill, dict) or any(
+            not isinstance(skill.get(k), str) or not skill[k].strip()
+            for k in ("name", "description", "conditions", "actions")) for skill in skills):
+            raise ValueError("Skill extraction returned invalid data.")
         return skills
-    
+
+    @staticmethod
+    def _skill_id(skill):
+        identity = dict(skill)
+        identity["provenance"] = {"source_memory_ids": sorted(skill.get("provenance", {}).get("source_memory_ids", []))}
+        return "skill_" + hashlib.sha256(json.dumps(identity, sort_keys=True).encode()).hexdigest()[:24]
+
     def store_skill(self, skill: Dict[str, Any], dry_run: bool = False) -> str:
         """Store extracted skill as procedural memory with provenance."""
-        skill_id = f"skill_{uuid.uuid4().hex[:8]}"
-        text = f"Procedural Skill: {skill['name']}. {skill['description']}"
+        skill_id = self._skill_id(skill)
+        text = f"Procedural Skill: {skill['name']}. {skill['description']}. Conditions: {skill['conditions']}. Actions: {skill['actions']}"
         embedding = self.embedder.embed_single(text)
         
         if not dry_run:
-            self.vector_store.upsert_memory(
-                memory_id=skill_id,
-                text=text,
-                embedding=embedding,
-                entity_ids=[],
-                importance=0.9,
-                memory_type="procedural",
-                metadata={"skill_data": skill, "provenance": skill.get("provenance", {})}
-            )
+            with coordinated_write(self.vector_store, self.graph_store, [skill_id]):
+                self.vector_store.upsert_memory(
+                    memory_id=skill_id,
+                    text=text,
+                    embedding=embedding,
+                    entity_ids=[skill_id],
+                    importance=0.9,
+                    memory_type="procedural",
+                    metadata={"skill_data": skill, "provenance": skill.get("provenance", {})}
+                )
             
-            # Upsert into Kùzu as Entity of type Skill
-            self.graph_store.upsert_entity(
-                entity_id=skill_id,
-                name=skill["name"],
-                entity_type="Skill",
-                description=skill["description"],
-                importance=0.9
-            )
+                # Upsert into Kùzu as Entity of type Skill
+                self.graph_store.upsert_entity(
+                    entity_id=skill_id,
+                    name=skill["name"],
+                    entity_type="Skill",
+                    description=skill["description"],
+                    importance=0.9
+                )
             
+                self.graph_store.upsert_observation(obs_id=f"obs_{skill_id}", entity_id=skill_id,
+                    content=text, embedding=embedding.tolist(), importance=0.9, source="consolidation", source_memory_id=skill_id)
         return skill_id
 
 
@@ -572,7 +480,9 @@ class MaintenanceScheduler:
         tasks: Optional[List[str]] = None
     ) -> Dict[str, Any]:
         """Run requested maintenance tasks."""
-        tasks = tasks or ["decay", "dedup", "consolidate"]
+        tasks = ["decay", "dedup", "consolidate"] if tasks is None else tasks
+        if set(tasks) - {"decay", "dedup", "consolidate"}:
+            raise ValueError("Unknown maintenance task.")
         results = {}
         
         if "decay" in tasks:
@@ -585,7 +495,7 @@ class MaintenanceScheduler:
             current_time = int(time.time())
             window_start = current_time - (self.consolidation.window_days * 86400)
             results["consolidate"] = self.consolidation.consolidate_window(
-                window_start, current_time + 300, dry_run=dry_run
+                window_start, current_time, dry_run=dry_run
             )
         
         return results

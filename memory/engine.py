@@ -38,7 +38,7 @@ from memory.storage import coordinated_write
 from memory.graph.kuzu_store import KuzuGraphStore
 from memory.retrieval.vector import VectorRetriever
 from memory.retrieval.hybrid import HybridRetriever, RetrievalConfig
-from memory.ingestion.mock_nim_extractor import MockNIMExtractor
+from memory.ingestion.extractor import validate_extraction, canonicalize_entities
 from memory.maintenance.maintenance import (
     MemoryDecay,
     MemoryDeduplication,
@@ -154,30 +154,15 @@ class MemoryEngine:
     
     @property
     def extractor(self) -> Any:
-        """Access extractor (disk-cached NIMExtractor if API key present, else MockNIMExtractor)."""
-        if self._extractor is None:
-            api_key = os.getenv("NVIDIA_API_KEY")
-            if api_key:
-                try:
-                    from memory.ingestion.nim_extractor import NIMExtractor
-                    from memory.ingestion.cached_nim_extractor import CachedNIMExtractor
-                    nim_conf = self.config_data.get("nim", {})
-                    self._extractor = CachedNIMExtractor(
-                        cache_dir=nim_conf.get("cache_dir"),
-                        api_key=api_key,
-                        model=nim_conf.get("extractor_model", "meta/llama-3.1-70b-instruct"),
-                    )
-                    print(f"Extractor: real NIM ({self._extractor.delegate.model}, disk-cached)")
-                except Exception as e:
-                    print(f"WARNING: NIM extractor init failed ({e}); falling back to MockNIMExtractor. "
-                          "Mock extraction must never be used in benchmark runs.")
-                    self._extractor = MockNIMExtractor()
-            else:
-                print("WARNING: NVIDIA_API_KEY not set; falling back to MockNIMExtractor. "
-                      "Mock extraction must never be used in benchmark runs.")
-                self._extractor = MockNIMExtractor()
+        """Use only an explicitly selected extractor; failures never fabricate data."""
+        if self._extractor is None and self.config_data.get("extraction_policy", "none") == "nim":
+            from memory.ingestion.cached_nim_extractor import CachedNIMExtractor
+            conf = self.config_data.get("nim", {})
+            self._extractor = CachedNIMExtractor(cache_dir=conf.get("cache_dir"),
+                api_key=os.getenv("NVIDIA_API_KEY"), base_url=conf.get("base_url"),
+                model=conf.get("extractor_model", "meta/llama-3.1-70b-instruct"))
         return self._extractor
-    
+
     def _init_vector_store(self) -> QdrantVectorStore:
         """Initialize Qdrant with local storage and shared embedder."""
         q_conf = self.config_data.get("qdrant", {})
@@ -186,7 +171,7 @@ class MemoryEngine:
         return QdrantVectorStore(
             path=self.qdrant_path,
             collection_name=col_name,
-            embedder=self.embedder,
+            embedder=self._embedder,
             dimension=dim
         )
     
@@ -205,9 +190,10 @@ class MemoryEngine:
         entity_ids: Optional[List[str]] = None,
         timestamp: Optional[int] = None,
         valid_from: int = 0,
-        valid_until: int = 2**31 - 1,
+        valid_until: int = 2**63 - 1,
         importance: float = 1.0,
-        memory_id: Optional[str] = None
+        memory_id: Optional[str] = None,
+        extraction: Optional[Dict[str, Any]] = None
     ) -> str:
         """
         Ingest a memory across both Qdrant and Kùzu stores with compensating rollback.
@@ -248,27 +234,22 @@ class MemoryEngine:
                     "description": ""
                 })
         else:
-            try:
-                extraction = self.extractor.extract_entities_and_relations(content)
-                resolved_entities = extraction.get("entities", [])
-                resolved_relations = extraction.get("relations", [])
-                extracted_temporal = extraction.get("temporal", {})
-                if valid_from == 0 and "valid_from" in extracted_temporal:
-                    valid_from = extracted_temporal["valid_from"]
-                if valid_until == 2**31 - 1 and "valid_until" in extracted_temporal:
-                    valid_until = extracted_temporal["valid_until"]
-                if importance == 1.0 and "importance" in extraction:
-                    importance = float(extraction["importance"])
-            except Exception:
-                # If extraction fails, attach a fallback concept entity
-                fallback_id = f"ent_{mem_id}"
-                resolved_entities = [{
-                    "id": fallback_id,
-                    "name": "GeneralMemory",
-                    "type": "Concept",
-                    "description": "Auto-extracted fallback entity"
-                }]
-        
+            selected = self.extractor if extraction is None else None
+            raw = extraction if extraction is not None else (
+                selected.extract_entities_and_relations(content) if selected is not None else None)
+            meta["extraction_status"] = "disabled" if raw is None else "completed"
+            if raw is not None:
+                meta["extraction_is_mock"] = bool(getattr(selected, "is_mock", raw.get("is_mock", False)))
+                raw = canonicalize_entities(raw)
+                result = validate_extraction(raw, is_mock=meta["extraction_is_mock"]).to_dict()
+                resolved_entities, resolved_relations = result["entities"], result["relations"]
+                if valid_from == 0:
+                    valid_from = result["temporal"]["valid_from"]
+                if valid_until == 2**63 - 1:
+                    valid_until = result["temporal"]["valid_until"]
+                if importance == 1.0:
+                    importance = result["importance"]
+
         assigned_entity_ids = [e["id"] for e in resolved_entities]
         
         with coordinated_write(self.vector_store, self.graph_store, [mem_id]):
@@ -377,7 +358,7 @@ class MemoryEngine:
                 item_ts = ts if ts is not None else item.get("timestamp")
                 item_eids = item.get("entity_ids")
                 item_vf = item.get("valid_from", 0)
-                item_vu = item.get("valid_until", 2**31 - 1)
+                item_vu = item.get("valid_until", 2**63 - 1)
                 item_imp = float(item.get("importance", 1.0))
                 item_mem_id = item.get("memory_id")
                 
@@ -412,7 +393,7 @@ class MemoryEngine:
                 }},
                 entity_ids=payload.get("entity_ids", []),
                 valid_from=payload.get("valid_from", 0),
-                valid_until=payload.get("valid_until", 2**31 - 1),
+                valid_until=payload.get("valid_until", 2**63 - 1),
                 importance=payload.get("importance", 1.0),
                 timestamp=payload.get("timestamp", 0),
                 vector_stored=True,
@@ -428,7 +409,7 @@ class MemoryEngine:
                 metadata={"source": obs.get("source", "graph")},
                 entity_ids=[obs.get("entity_id", "")],
                 valid_from=obs.get("valid_from", 0),
-                valid_until=obs.get("valid_until", 2**31 - 1),
+                valid_until=obs.get("valid_until", 2**63 - 1),
                 importance=obs.get("importance", 1.0),
                 timestamp=obs.get("created_at", 0),
                 vector_stored=False,
@@ -667,7 +648,7 @@ class MemoryEngine:
         new_text = content if content is not None else old_payload.get("text", "")
         new_importance = importance if importance is not None else old_payload.get("importance", 1.0)
         new_valid_from = valid_from if valid_from is not None else old_payload.get("valid_from", 0)
-        new_valid_until = valid_until if valid_until is not None else old_payload.get("valid_until", 2**31 - 1)
+        new_valid_until = valid_until if valid_until is not None else old_payload.get("valid_until", 2**63 - 1)
         
         new_meta = {k: v for k, v in old_payload.items() if k not in {
             "text", "memory_id", "entity_ids", "valid_from", "valid_until", "importance", "timestamp"

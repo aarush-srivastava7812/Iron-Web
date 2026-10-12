@@ -10,7 +10,7 @@ from openai import OpenAI
 from tenacity import retry, stop_after_attempt, wait_exponential
 
 
-from memory.ingestion.extractor import BaseExtractor, validate_extraction
+from memory.ingestion.extractor import BaseExtractor, validate_extraction, canonicalize_entities
 
 
 class NIMExtractor(BaseExtractor):
@@ -112,7 +112,7 @@ class NIMExtractor(BaseExtractor):
             "relations": [
                 {{"from": "ent_1", "to": "ent_2", "type": "USES", "confidence": 0.9}}
             ],
-            "temporal": {{"valid_from": 0, "valid_until": 2147483647}},
+            "temporal": {{"valid_from": 0, "valid_until": 9223372036854775807}},
             "importance": 0.8
         }}
         """
@@ -141,138 +141,12 @@ class NIMExtractor(BaseExtractor):
             except json.JSONDecodeError:
                 pass
         
-        # Truncated-JSON salvage: long documents can exhaust max_tokens mid-object.
-        # Parse the balanced {...} objects inside "entities"/"relations" arrays
-        # even when the outer JSON object never closed.
-        salvaged = self._salvage_truncated(content)
-        if salvaged is not None:
-            return salvaged
-        
-        # Last resort: return empty structure
-        return {
-            "entities": [],
-            "relations": [],
-            "temporal": {"valid_from": 0, "valid_until": 2**31 - 1},
-            "importance": 0.5
-        }
-    
-    def _salvage_truncated(self, content: str) -> Optional[Dict[str, Any]]:
-        """Salvage entities/relations from a truncated JSON response."""
-        entities = self._parse_array_objects(content, "entities")
-        relations = self._parse_array_objects(content, "relations")
-        if not entities and not relations:
-            return None
-        temporal = {"valid_from": 0, "valid_until": 2**31 - 1}
-        m = re.search(r'"valid_from"\s*:\s*(-?\d+)', content)
-        if m:
-            temporal["valid_from"] = int(m.group(1))
-        m = re.search(r'"valid_until"\s*:\s*(-?\d+)', content)
-        if m:
-            temporal["valid_until"] = int(m.group(1))
-        importance = 0.5
-        m = re.search(r'"importance"\s*:\s*([0-9.]+)', content)
-        if m:
-            try:
-                importance = float(m.group(1))
-            except ValueError:
-                pass
-        return {
-            "entities": entities,
-            "relations": relations,
-            "temporal": temporal,
-            "importance": importance
-        }
-    
-    def _parse_array_objects(self, content: str, key: str) -> List[Dict[str, Any]]:
-        """Parse balanced {...} objects inside a possibly-unterminated JSON array."""
-        m = re.search(rf'"{key}"\s*:\s*\[', content)
-        if not m:
-            return []
-        objs: List[Dict[str, Any]] = []
-        i = m.end()
-        n = len(content)
-        while i < n:
-            brace = content.find('{', i)
-            if brace == -1:
-                break
-            depth = 0
-            in_str = False
-            esc = False
-            j = brace
-            complete = False
-            while j < n:
-                ch = content[j]
-                if in_str:
-                    if esc:
-                        esc = False
-                    elif ch == '\\':
-                        esc = True
-                    elif ch == '"':
-                        in_str = False
-                else:
-                    if ch == '"':
-                        in_str = True
-                    elif ch == '{':
-                        depth += 1
-                    elif ch == '}':
-                        depth -= 1
-                        if depth == 0:
-                            complete = True
-                            break
-                j += 1
-            if not complete:
-                break  # truncated object - stop salvaging
-            try:
-                objs.append(json.loads(content[brace:j + 1]))
-            except json.JSONDecodeError:
-                pass
-            i = j + 1
-        return objs
-    
+        raise ValueError("Extraction response did not contain a complete JSON object.")
+
     def _normalize_extraction(self, raw: Dict[str, Any]) -> Dict[str, Any]:
         """Normalize and validate extraction output."""
-        entities = raw.get("entities", [])
-        relations = raw.get("relations", [])
-        
-        # Ensure entity IDs are prefixed
-        entity_map = {}
-        for i, ent in enumerate(entities):
-            # Skip relation-like objects the model may have placed in the
-            # entities array ({"from": ..., "to": ..., "type": ...}).
-            if "from" in ent or "to" in ent:
-                continue
-            eid = ent.get("id") or f"ent_{i}"
-            entity_map[eid] = {
-                "id": eid,
-                "name": ent.get("name", ""),
-                "type": ent.get("type", "Concept"),
-                "description": ent.get("description", "")
-            }
-        
-        # Fix relation references
-        normalized_relations = []
-        for rel in relations:
-            from_id = rel.get("from")
-            to_id = rel.get("to")
-            if from_id in entity_map and to_id in entity_map:
-                normalized_relations.append({
-                    "from": from_id,
-                    "to": to_id,
-                    "type": rel.get("type", "RELATED_TO"),
-                    "confidence": rel.get("confidence", 0.5)
-                })
-        
-        temporal = raw.get("temporal", {})
-        valid_from = temporal.get("valid_from", 0)
-        valid_until = temporal.get("valid_until", 2**31 - 1)
-        
-        return {
-            "entities": list(entity_map.values()),
-            "relations": normalized_relations,
-            "temporal": {"valid_from": valid_from, "valid_until": valid_until},
-            "importance": raw.get("importance", 0.5)
-        }
-    
+        return canonicalize_entities(raw)
+
     @retry(
         wait=wait_exponential(multiplier=1, min=2, max=30),
         stop=stop_after_attempt(3)
@@ -392,10 +266,10 @@ class NIMExtractor(BaseExtractor):
         prompt = f"""
         Analyze these episodic memories and extract reusable skills/patterns:
         
-        {chr(10).join([f'- {t}' for t in episode_texts[:20]])}
+        {chr(10).join([f'- {t}' for t in episode_texts])}
         
-        Output JSON array of skills:
-        [{{"name": "...", "description": "...", "conditions": "...", "actions": "..."}}]
+        Output a JSON object with a skills array:
+        {{"skills": [{{"name": "...", "description": "...", "conditions": "...", "actions": "..."}}]}}
         """
         
         response = self.client.chat.completions.create(
