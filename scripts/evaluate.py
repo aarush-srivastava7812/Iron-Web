@@ -50,6 +50,7 @@ def main():
         e.example_id
         for e in examples
         if (set(e.ground_truth_ids) | set(e.metadata.get("corpus_ids", []))) - ids
+        or e.metadata.get("unmapped_evidence")
     ]
     if options.inspect:
         print(

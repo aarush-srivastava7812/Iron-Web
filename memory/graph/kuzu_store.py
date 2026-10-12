@@ -669,6 +669,38 @@ class KuzuGraphStore:
             ids.append(result.get_next()[0])
         return [self.get_observation(oid) for oid in ids]
 
+    def get_memory_relations(self, memory_id):
+        """Read attributed relationships without inferring ownership from entity names."""
+        import json
+
+        result = self.conn.execute("""
+            MATCH (a:Entity)-[r:RELATES]->(b:Entity)
+            RETURN a.id, b.id, r.relation_type, r.confidence, r.valid_from, r.valid_until, r.metadata
+        """)
+        relations = []
+        while result.has_next():
+            source, target, kind, confidence, start, end, raw = result.get_next()
+            try:
+                metadata = json.loads(raw or "{}")
+            except ValueError:
+                continue
+            if (
+                isinstance(metadata, dict)
+                and metadata.get("source_memory_id") == memory_id
+            ):
+                relations.append(
+                    dict(
+                        from_id=source,
+                        to_id=target,
+                        relation_type=kind,
+                        confidence=confidence,
+                        valid_from=start,
+                        valid_until=end,
+                        metadata=metadata,
+                    )
+                )
+        return relations
+
     def delete_memory(
         self, memory_id: str, clean_orphaned_entities: bool = False
     ) -> bool:

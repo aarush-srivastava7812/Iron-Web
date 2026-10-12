@@ -147,3 +147,14 @@ def test_episodes_and_separate_users_survive_deduplication(engine):
             "fact", memory_id=f"user_{i}", entity_ids=[], metadata={"user_id": str(i)}
         )
     assert engine.deduplicate_memories()["merged"] == 0
+
+
+def test_duplicate_text_with_different_relationships_is_retained(engine):
+    for mid in ("one", "two"):
+        engine.add("same fact", memory_id=mid, entity_ids=["topic", "other"])
+    engine.graph_store.upsert_relation(
+        "topic", "other", "USES", metadata={"source_memory_id": "one"}
+    )
+    assert engine.deduplicate_memories()["merged"] == 0
+    assert engine.get("one") and engine.get("two")
+    assert engine.graph_store.get_edge_counts()["RELATES"] == 1

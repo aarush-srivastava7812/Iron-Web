@@ -211,7 +211,20 @@ class MemoryDeduplication:
         for mid, payload in zip(memory_ids, payloads):
             if payload.get("memory_type", "semantic") != "semantic":
                 continue
+            relationship_signature = tuple(
+                sorted(
+                    (
+                        r["from_id"],
+                        r["to_id"],
+                        r["relation_type"],
+                        r["valid_from"],
+                        r["valid_until"],
+                    )
+                    for r in self.graph_store.get_memory_relations(mid)
+                )
+            )
             key = (
+                relationship_signature,
                 " ".join(payload.get("text", "").split()),
                 payload.get("valid_from", 0),
                 payload.get("valid_until", 2**63 - 1),
@@ -227,7 +240,7 @@ class MemoryDeduplication:
                 if payload.get("memory_type") in {"episodic", "procedural"}
                 else None,
             )
-            if key[0]:
+            if key[1]:
                 groups.setdefault(key, []).append(mid)
         clusters = []
         for members in groups.values():
@@ -307,6 +320,9 @@ class MemoryDeduplication:
                 {
                     "payload": m["payload"],
                     "observations": self.graph_store.get_memory_observations(
+                        m["payload"]["memory_id"]
+                    ),
+                    "relations": self.graph_store.get_memory_relations(
                         m["payload"]["memory_id"]
                     ),
                 }

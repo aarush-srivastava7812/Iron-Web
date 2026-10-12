@@ -40,6 +40,8 @@ def validate_slice(payload):
     ):
         raise ValueError("Slice is empty or contains duplicate identifiers.")
     for example in examples:
+        if example.get("metadata", {}).get("unmapped_evidence"):
+            raise ValueError("Slice contains unmapped evidence annotations.")
         needed = set(example["ground_truth_ids"]) | set(
             example.get("metadata", {}).get("corpus_ids", [])
         )
