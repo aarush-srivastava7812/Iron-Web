@@ -9,13 +9,21 @@ import numpy as np
 from qdrant_client import QdrantClient
 from qdrant_client.models import (
     Distance, VectorParams, PointStruct, Filter, FieldCondition,
-    MatchValue, SearchRequest, PayloadSchemaType, QuantizationConfig,
     ScalarQuantization, ScalarQuantizationConfig, ScalarType
 )
 from memory.embeddings.embedder import Embedder
 
 # Namespace for generating deterministic UUIDs from memory IDs
 MEMORY_NAMESPACE = uuid.UUID('12345678-1234-5678-1234-567812345678')
+RESERVED_FIELDS = {"memory_id", "text", "entity_ids", "valid_from", "valid_until", "importance", "timestamp"}
+
+
+def validate_metadata(metadata):
+    if metadata is not None and not isinstance(metadata, dict):
+        raise ValueError("Metadata must be a dictionary.")
+    conflicts = RESERVED_FIELDS.intersection(metadata or {})
+    if conflicts:
+        raise ValueError(f"Metadata cannot overwrite record fields: {sorted(conflicts)}")
 
 
 class QdrantVectorStore:
@@ -58,13 +66,16 @@ class QdrantVectorStore:
         
         # Initialize Qdrant client (embedded mode)
         self.client = QdrantClient(path=path)
-        self.embedder = embedder or Embedder()
+        self._embedder = embedder
         
         # Create collection if not exists
         self._create_collection(quantization, hnsw_m, hnsw_ef_construct)
         
-        # Create payload indexes for filtering
-        self._create_payload_indexes()
+    @property
+    def embedder(self):
+        if self._embedder is None:
+            self._embedder = Embedder()
+        return self._embedder
     
     def _create_collection(self, quantization: bool, hnsw_m: int, hnsw_ef_construct: int):
         """Create Qdrant collection with optimized settings."""
@@ -99,29 +110,6 @@ class QdrantVectorStore:
             print(f"Created collection: {self.collection_name}")
         else:
             print(f"Collection exists: {self.collection_name}")
-    
-    def _create_payload_indexes(self):
-        """Create payload indexes for common filter fields."""
-        indexes = [
-            ("memory_id", PayloadSchemaType.KEYWORD),
-            ("entity_ids", PayloadSchemaType.KEYWORD),
-            ("valid_from", PayloadSchemaType.INTEGER),
-            ("valid_until", PayloadSchemaType.INTEGER),
-            ("importance", PayloadSchemaType.FLOAT),
-            ("memory_type", PayloadSchemaType.KEYWORD),
-            ("timestamp", PayloadSchemaType.INTEGER),
-        ]
-        
-        for field_name, field_type in indexes:
-            try:
-                self.client.create_payload_index(
-                    collection_name=self.collection_name,
-                    field_name=field_name,
-                    field_schema=field_type
-                )
-            except Exception:
-                # Index may already exist
-                pass
     
     def _memory_id_to_uuid(self, memory_id: str) -> str:
         """Convert a memory ID to a deterministic UUID for Qdrant."""
@@ -159,11 +147,23 @@ class QdrantVectorStore:
             memory_id
         """
         import time
+        validate_metadata(metadata)
+        if not isinstance(memory_id, str) or not memory_id.strip():
+            raise ValueError("Memory ID must be a nonempty string.")
+        if not isinstance(text, str) or not text.strip():
+            raise ValueError("Memory content must be a nonempty string.")
+        if valid_from > valid_until:
+            raise ValueError("Validity start cannot exceed expiration.")
+        if not np.isfinite(importance) or not 0 <= importance <= 1:
+            raise ValueError("Importance must be between zero and one.")
         if timestamp is None:
             timestamp = int(time.time())
         
         if embedding is None:
             embedding = self.embedder.embed_single(text)
+        embedding = np.asarray(embedding, dtype=np.float32)
+        if embedding.shape != (self.dimension,) or not np.isfinite(embedding).all():
+            raise ValueError(f"Embedding must contain {self.dimension} finite numbers.")
         
         payload = {
             "memory_id": memory_id,
@@ -244,33 +244,42 @@ class QdrantVectorStore:
     
     def delete_memory(self, memory_id: str) -> bool:
         """Delete a memory by ID."""
-        try:
-            self.client.delete(
-                collection_name=self.collection_name,
-                points_selector=[self._memory_id_to_uuid(memory_id)]
-            )
-            return True
-        except Exception:
-            return False
+        exists = self.get_memory(memory_id) is not None
+        self.client.delete(collection_name=self.collection_name,
+                           points_selector=[self._memory_id_to_uuid(memory_id)])
+        return exists
+
+    def restore_memory(self, memory_id, snapshot):
+        """Restore an exact payload/vector snapshot, then verify the payload."""
+        if snapshot is None:
+            self.client.delete(collection_name=self.collection_name,
+                               points_selector=[self._memory_id_to_uuid(memory_id)])
+        else:
+            self.client.upsert(collection_name=self.collection_name, points=[
+                PointStruct(id=snapshot["id"], vector=snapshot["vector"], payload=snapshot["payload"])
+            ])
+        restored = self.get_memory(memory_id)
+        if snapshot is None:
+            if restored is not None:
+                raise RuntimeError("Vector rollback did not remove the new record.")
+        elif restored is None or restored["payload"] != snapshot["payload"] or not np.allclose(restored["vector"], snapshot["vector"]):
+            raise RuntimeError("Vector rollback verification failed.")
     
     def get_memory(self, memory_id: str) -> Optional[Dict[str, Any]]:
         """Get a memory by ID."""
-        try:
-            points = self.client.retrieve(
-                collection_name=self.collection_name,
-                ids=[self._memory_id_to_uuid(memory_id)],
-                with_payload=True,
-                with_vectors=True
-            )
-            if points:
-                p = points[0]
-                return {
-                    "id": p.id,
-                    "vector": p.vector,
-                    "payload": p.payload
-                }
-        except Exception:
-            pass
+        points = self.client.retrieve(
+            collection_name=self.collection_name,
+            ids=[self._memory_id_to_uuid(memory_id)],
+            with_payload=True,
+            with_vectors=True
+        )
+        if points:
+            p = points[0]
+            return {
+                "id": p.id,
+                "vector": p.vector,
+                "payload": p.payload
+            }
         return None
     
     def count(self) -> int:

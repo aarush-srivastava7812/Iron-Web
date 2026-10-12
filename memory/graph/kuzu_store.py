@@ -3,6 +3,7 @@ Kuzu graph store for structural memory (entities, relations, observations).
 Embedded mode - zero network overhead.
 """
 import os
+from threading import RLock
 from typing import List, Dict, Any, Optional, Tuple
 import kuzu
 
@@ -23,11 +24,12 @@ class KuzuGraphStore:
         self.db_path = db_path
         # Create directory if needed
         import os
-        os.makedirs(os.path.dirname(db_path), exist_ok=True)
+        os.makedirs(os.path.dirname(os.path.abspath(db_path)), exist_ok=True)
         
         # Initialize database
         self.db = kuzu.Database(db_path)
         self.conn = kuzu.Connection(self.db)
+        self.write_lock = RLock()
         self._entity_name_index: Optional[List[Tuple[str, str]]] = None
         
         # Create schema
@@ -417,7 +419,11 @@ class KuzuGraphStore:
             timestamp = int(time.time())
         
         emb_str = json.dumps(embedding) if embedding else "[]"
-        src_mem = source_memory_id or ""
+        previous = self.get_observation(obs_id)
+        src_mem = source_memory_id or (previous or {}).get("source_memory_id", "")
+        if not src_mem and obs_id.startswith("obs_"):
+            suffix = "_" + entity_id
+            src_mem = obs_id[4:-len(suffix)] if obs_id.endswith(suffix) else obs_id[4:]
         
         # Check if exists
         result = self.conn.execute(
@@ -575,6 +581,21 @@ class KuzuGraphStore:
         )
         return True
 
+    def get_memory_observations(self, memory_id: str) -> List[Dict[str, Any]]:
+        """Find exact ownership, including the original observation naming scheme."""
+        result = self.conn.execute("""
+            MATCH (o:Observation)
+            WHERE o.source_memory_id = $mid OR
+                ((o.source_memory_id IS NULL OR o.source_memory_id = '') AND
+                 (o.id = $mid OR o.id = 'obs_' + $mid OR
+                  o.id = 'obs_' + $mid + '_' + o.entity_id))
+            RETURN o.id
+        """, {"mid": memory_id})
+        ids = []
+        while result.has_next():
+            ids.append(result.get_next()[0])
+        return [self.get_observation(oid) for oid in ids]
+
     def delete_memory(self, memory_id: str, clean_orphaned_entities: bool = False) -> bool:
         """
         Delete all observations and graph components associated with a memory ID.
@@ -586,19 +607,9 @@ class KuzuGraphStore:
         Returns:
             True if one or more observations were deleted, False if none found
         """
-        result = self.conn.execute("MATCH (o:Observation) RETURN o.id, o.entity_id")
-        matched_obs_ids = []
-        referenced_entity_ids = set()
-        prefix = f"obs_{memory_id}_"
-        
-        while result.has_next():
-            row = result.get_next()
-            oid = row[0]
-            eid = row[1]
-            if oid == memory_id or (isinstance(oid, str) and oid.startswith(prefix)):
-                matched_obs_ids.append(oid)
-                if eid:
-                    referenced_entity_ids.add(eid)
+        observations = self.get_memory_observations(memory_id)
+        matched_obs_ids = [obs["id"] for obs in observations]
+        referenced_entity_ids = {obs["entity_id"] for obs in observations if obs["entity_id"]}
                     
         if not matched_obs_ids:
             return False

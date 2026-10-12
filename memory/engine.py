@@ -33,7 +33,8 @@ from memory.device import (
 )
 from memory.embeddings.embedder import Embedder, get_embedder
 from memory.ranking.reranker import Reranker, get_reranker
-from memory.vector_store.qdrant_store import QdrantVectorStore
+from memory.vector_store.qdrant_store import QdrantVectorStore, validate_metadata
+from memory.storage import coordinated_write
 from memory.graph.kuzu_store import KuzuGraphStore
 from memory.retrieval.vector import VectorRetriever
 from memory.retrieval.hybrid import HybridRetriever, RetrievalConfig
@@ -229,6 +230,7 @@ class MemoryEngine:
             
         ts = int(time.time()) if timestamp is None else timestamp
         mem_id = memory_id or f"mem_{uuid.uuid4().hex[:12]}"
+        validate_metadata(metadata)
         meta = metadata.copy() if metadata else {}
         
         # 1. Compute embedding
@@ -269,21 +271,21 @@ class MemoryEngine:
         
         assigned_entity_ids = [e["id"] for e in resolved_entities]
         
-        # 3. Store in Qdrant (Vector Store)
-        self.vector_store.upsert_memory(
-            memory_id=mem_id,
-            text=content,
-            embedding=embedding,
-            entity_ids=assigned_entity_ids,
-            valid_from=valid_from,
-            valid_until=valid_until,
-            importance=importance,
-            metadata=meta,
-            timestamp=ts
-        )
+        with coordinated_write(self.vector_store, self.graph_store, [mem_id]):
+            self.graph_store.delete_memory(mem_id)
+            # 3. Store in Qdrant (Vector Store)
+            self.vector_store.upsert_memory(
+                memory_id=mem_id,
+                text=content,
+                embedding=embedding,
+                entity_ids=assigned_entity_ids,
+                valid_from=valid_from,
+                valid_until=valid_until,
+                importance=importance,
+                metadata=meta,
+                timestamp=ts
+            )
         
-        # 4. Store in Kùzu (Graph Store) with Compensating Rollback
-        try:
             # 4a. Upsert Entities
             for entity in resolved_entities:
                 self.graph_store.upsert_entity(
@@ -294,7 +296,7 @@ class MemoryEngine:
                     importance=importance,
                     timestamp=ts
                 )
-            
+        
             # 4b. Upsert Relations
             for rel in resolved_relations:
                 self.graph_store.upsert_relation(
@@ -306,7 +308,7 @@ class MemoryEngine:
                     valid_until=valid_until,
                     timestamp=ts
                 )
-            
+        
             # 4c. Upsert Observations (linked to entities)
             if resolved_entities:
                 for entity in resolved_entities:
@@ -337,19 +339,7 @@ class MemoryEngine:
                     timestamp=ts,
                     source_memory_id=mem_id
                 )
-        except Exception as e:
-            # COMPENSATING ROLLBACK: Remove vector point and any partial graph observations
-            self.vector_store.delete_memory(mem_id)
-            try:
-                self.graph_store.delete_memory(mem_id, clean_orphaned_entities=False)
-            except Exception:
-                pass
-            raise EngineStorageError(
-                f"Failed writing memory to graph store ({e}). Compensating rollback performed on Qdrant.",
-                memory_id=mem_id,
-                rolled_back=True
-            ) from e
-            
+
         return mem_id
     
     def add_batch(
@@ -366,6 +356,10 @@ class MemoryEngine:
         if not contents:
             return []
             
+        if metadatas is not None and len(metadatas) != len(contents):
+            raise ValueError("Batch content and metadata lengths differ.")
+        if timestamps is not None and len(timestamps) != len(contents):
+            raise ValueError("Batch content and timestamp lengths differ.")
         if metadatas is None:
             metadatas = [None] * len(contents)
         if timestamps is None:
@@ -422,7 +416,7 @@ class MemoryEngine:
                 importance=payload.get("importance", 1.0),
                 timestamp=payload.get("timestamp", 0),
                 vector_stored=True,
-                graph_stored=True
+                graph_stored=bool(self.graph_store.get_memory_observations(memory_id))
             )
             
         # If missing from Qdrant, check if observation exists in Kùzu
@@ -438,7 +432,7 @@ class MemoryEngine:
                 importance=obs.get("importance", 1.0),
                 timestamp=obs.get("created_at", 0),
                 vector_stored=False,
-                graph_stored=True
+                graph_stored=bool(self.graph_store.get_memory_observations(memory_id))
             )
             
         return None
@@ -678,6 +672,7 @@ class MemoryEngine:
         new_meta = {k: v for k, v in old_payload.items() if k not in {
             "text", "memory_id", "entity_ids", "valid_from", "valid_until", "importance", "timestamp"
         }}
+        validate_metadata(metadata)
         if metadata:
             new_meta.update(metadata)
             
@@ -687,21 +682,20 @@ class MemoryEngine:
         else:
             new_embedding = old_vector
             
-        # 1. Update Qdrant
-        self.vector_store.upsert_memory(
-            memory_id=memory_id,
-            text=new_text,
-            embedding=new_embedding,
-            entity_ids=old_payload.get("entity_ids", []),
-            valid_from=new_valid_from,
-            valid_until=new_valid_until,
-            importance=new_importance,
-            metadata=new_meta,
-            timestamp=old_payload.get("timestamp", int(time.time()))
-        )
+        with coordinated_write(self.vector_store, self.graph_store, [memory_id]):
+            # 1. Update Qdrant
+            self.vector_store.upsert_memory(
+                memory_id=memory_id,
+                text=new_text,
+                embedding=new_embedding,
+                entity_ids=old_payload.get("entity_ids", []),
+                valid_from=new_valid_from,
+                valid_until=new_valid_until,
+                importance=new_importance,
+                metadata=new_meta,
+                timestamp=old_payload.get("timestamp", int(time.time()))
+            )
         
-        # 2. Update Kùzu observations
-        try:
             entity_ids = old_payload.get("entity_ids", [])
             if entity_ids:
                 for eid in entity_ids:
@@ -714,7 +708,9 @@ class MemoryEngine:
                         valid_from=new_valid_from,
                         valid_until=new_valid_until,
                         importance=new_importance,
-                        timestamp=int(time.time())
+                        source=new_meta.get("source", "user"),
+                        source_memory_id=memory_id,
+                        timestamp=old_payload.get("timestamp", int(time.time()))
                     )
             else:
                 self.graph_store.upsert_observation(
@@ -725,28 +721,11 @@ class MemoryEngine:
                     valid_from=new_valid_from,
                     valid_until=new_valid_until,
                     importance=new_importance,
-                    timestamp=int(time.time())
+                    source=new_meta.get("source", "user"),
+                        source_memory_id=memory_id,
+                        timestamp=old_payload.get("timestamp", int(time.time()))
                 )
-        except Exception as e:
-            # COMPENSATING ROLLBACK: Restore original Qdrant point
-            if old_vector is not None:
-                self.vector_store.upsert_memory(
-                    memory_id=memory_id,
-                    text=old_payload.get("text", ""),
-                    embedding=old_vector,
-                    entity_ids=old_payload.get("entity_ids", []),
-                    valid_from=old_payload.get("valid_from", 0),
-                    valid_until=old_payload.get("valid_until", 2**31 - 1),
-                    importance=old_payload.get("importance", 1.0),
-                    metadata=new_meta,
-                    timestamp=old_payload.get("timestamp", int(time.time()))
-                )
-            raise EngineStorageError(
-                f"Failed updating graph observations ({e}). Reverted Qdrant point to original state.",
-                memory_id=memory_id,
-                rolled_back=True
-            ) from e
-            
+
         return True
     
     def delete(self, memory_id: str, clean_orphaned_entities: bool = False) -> bool:
@@ -757,11 +736,12 @@ class MemoryEngine:
         If clean_orphaned_entities=True, entities with zero remaining observations
         are pruned safely.
         """
-        qdrant_deleted = self.vector_store.delete_memory(memory_id)
-        kuzu_deleted = self.graph_store.delete_memory(
-            memory_id=memory_id,
-            clean_orphaned_entities=clean_orphaned_entities
-        )
+        with coordinated_write(self.vector_store, self.graph_store, [memory_id]):
+            qdrant_deleted = self.vector_store.delete_memory(memory_id)
+            kuzu_deleted = self.graph_store.delete_memory(
+                memory_id=memory_id,
+                clean_orphaned_entities=clean_orphaned_entities
+            )
         return bool(qdrant_deleted or kuzu_deleted)
     
     # =========================================================================
