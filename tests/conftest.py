@@ -25,6 +25,13 @@ class FixtureReranker:
     accelerated = False
     _providers = ["CPUExecutionProvider"]
 
+    def rerank(self, query, candidates, top_k=None):
+        embedder = FixtureEmbedder()
+        query_vector = embedder.embed_single(query)
+        for candidate in candidates:
+            candidate["rerank_score"] = float(np.dot(query_vector, embedder.embed_single(candidate["text"])))
+        return sorted(candidates, key=lambda c: c["rerank_score"], reverse=True)[:top_k]
+
 
 @pytest.fixture(autouse=True)
 def offline_models(monkeypatch, request):

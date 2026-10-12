@@ -7,7 +7,6 @@ from typing import List, Dict, Any, Optional
 import numpy as np
 
 from memory.device import configure_tensorrt_cache, ensure_cuda_dlls_loaded
-ensure_cuda_dlls_loaded()
 from fastembed.rerank.cross_encoder import TextCrossEncoder
 
 # Global config flag
@@ -54,6 +53,9 @@ class Reranker:
         if self.use_gpu and self.prefer_tensorrt and self.tensorrt_cache_path:
             self.tensorrt_cache_path = configure_tensorrt_cache(self.tensorrt_cache_path)
         
+        if self.use_gpu:
+            ensure_cuda_dlls_loaded()
+
         # Configure providers
         self._providers = self._get_providers()
         

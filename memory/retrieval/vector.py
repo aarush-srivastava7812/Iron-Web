@@ -62,7 +62,9 @@ class VectorRetriever:
         
         # Build temporal filter if enabled
         filter_condition = None
-        if self.use_temporal_filter and query_time is not None:
+        if temporal_mode != "auto":
+            import time
+            query_time = int(time.time()) if query_time is None else query_time
             filter_condition = create_temporal_filter(query_time, temporal_mode)
         
         # Search
@@ -97,7 +99,9 @@ class VectorRetriever:
             k = self.default_top_k
         
         filter_condition = None
-        if self.use_temporal_filter and query_time is not None:
+        if temporal_mode != "auto":
+            import time
+            query_time = int(time.time()) if query_time is None else query_time
             filter_condition = create_temporal_filter(query_time, temporal_mode)
         
         results = self.vector_store.search(

@@ -38,6 +38,7 @@ from memory.storage import coordinated_write
 from memory.graph.kuzu_store import KuzuGraphStore
 from memory.retrieval.vector import VectorRetriever
 from memory.retrieval.hybrid import HybridRetriever, RetrievalConfig
+from memory.ranking.scorer import ScoringWeights
 from memory.ingestion.extractor import validate_extraction, canonicalize_entities
 from memory.maintenance.maintenance import (
     MemoryDecay,
@@ -106,22 +107,19 @@ class MemoryEngine:
         self._hybrid_retriever: Optional[HybridRetriever] = None
     
     def _load_config(self, config_input: Optional[Union[Dict[str, Any], str]]) -> Dict[str, Any]:
-        """Load YAML configuration from file or dict."""
-        if isinstance(config_input, dict):
-            return config_input
-        if isinstance(config_input, str) and os.path.isfile(config_input):
-            with open(config_input, "r", encoding="utf-8") as f:
-                return yaml.safe_load(f) or {}
-        # Default fallback to root config.yaml if exists
-        default_yaml = os.path.join(os.getcwd(), "config.yaml")
-        if os.path.isfile(default_yaml):
-            try:
-                with open(default_yaml, "r", encoding="utf-8") as f:
-                    return yaml.safe_load(f) or {}
-            except Exception:
-                pass
-        return {}
-    
+        from pathlib import Path
+        from memory.config import EngineSettings
+        if config_input is None:
+            path = Path(__file__).resolve().parents[1] / "config.yaml"
+            raw = yaml.safe_load(path.read_text(encoding="utf-8")) if path.exists() else {}
+        elif isinstance(config_input, dict):
+            raw = config_input
+        elif isinstance(config_input, str):
+            raw = yaml.safe_load(Path(config_input).read_text(encoding="utf-8"))
+        else:
+            raise ValueError("Configuration must be a dictionary or YAML file path.")
+        return EngineSettings.model_validate(raw or {}).model_dump()
+
     @property
     def embedder(self) -> Embedder:
         """Lazy access to shared Embedder instance."""
@@ -133,7 +131,8 @@ class MemoryEngine:
                 model_name=model_name,
                 use_gpu=self.use_gpu,
                 quantize=quantize,
-                batch_size=SAFE_EMBED_BATCH_SIZE
+                batch_size=emb_conf["batch_size"],
+                cache_dir=emb_conf.get("cache_dir")
             )
         return self._embedder
     
@@ -146,7 +145,8 @@ class MemoryEngine:
             self._reranker = get_reranker(
                 model_name=model_name,
                 use_gpu=self.use_gpu,
-                batch_size=SAFE_RERANK_BATCH_SIZE,
+                batch_size=rerank_conf["batch_size"],
+                cache_dir=rerank_conf.get("cache_dir"),
                 prefer_tensorrt=rerank_conf.get("prefer_tensorrt", False),
                 tensorrt_cache_path=rerank_conf.get("tensorrt_cache_path"),
             )
@@ -211,7 +211,7 @@ class MemoryEngine:
         Returns:
             memory_id of the ingested memory.
         """
-        if not content or not content.strip():
+        if not isinstance(content, str) or not content.strip():
             raise ValueError("Memory content cannot be empty.")
             
         ts = int(time.time()) if timestamp is None else timestamp
@@ -250,6 +250,8 @@ class MemoryEngine:
                 if importance == 1.0:
                     importance = result["importance"]
 
+        if valid_from > valid_until or not np.isfinite(importance) or not 0 <= importance <= 1:
+            raise ValueError("Invalid validity or importance.")
         assigned_entity_ids = [e["id"] for e in resolved_entities]
         
         with coordinated_write(self.vector_store, self.graph_store, [mem_id]):
@@ -436,195 +438,45 @@ class MemoryEngine:
             query_time: Reference timestamp for temporal evaluation
             retrieval_mode: "hybrid" (Vector + Graph + Rerank) or "vector" (pure vector)
         """
-        if not query or not query.strip():
+        if not isinstance(query, str):
+            raise ValueError("Query must be a string.")
+        if not isinstance(k, int) or isinstance(k, bool) or not 1 <= k <= 100:
+            raise ValueError("Result count must be between 1 and 100.")
+        if temporal_mode not in {"auto", "now", "historical"}:
+            raise ValueError("Unknown temporal mode.")
+        modes = {"no_memory", "none", "vector", "graph", "hybrid", "hybrid_no_rerank", "hybrid_no_graph", "hybrid_no_temporal"}
+        if retrieval_mode not in modes:
+            raise ValueError(f"Unknown retrieval mode: {retrieval_mode}")
+        if not query.strip() or retrieval_mode in {"no_memory", "none"}:
             return []
-            
         q_time = int(time.time()) if query_time is None else query_time
-        
-        mode = retrieval_mode.lower()
-        if mode in ("no_memory", "none"):
-            # Baseline A: No external memory (returns empty context)
-            return []
+        if retrieval_mode == "vector":
+            hits = VectorRetriever(self.embedder, self.vector_store).retrieve(query, k, q_time, temporal_mode)
+        else:
+            settings = self.config_data.get("retrieval", {})
+            use_rerank = retrieval_mode not in {"graph", "hybrid_no_rerank"} and settings.get("reranker_enabled", False)
+            ret_conf = RetrievalConfig(final_top_k=k, use_vector=retrieval_mode != "graph",
+                use_graph_expansion=retrieval_mode != "hybrid_no_graph", use_reranker=use_rerank,
+                use_temporal_filter=retrieval_mode != "hybrid_no_temporal", default_query_time=q_time,
+                vector_candidates=settings.get("vector_candidates", 100), graph_hops=settings.get("graph_hops", 2),
+                graph_max_nodes=settings.get("graph_max_nodes", 50),
+                use_entity_lookup_cache=settings.get("entity_lookup_cache", True),
+                weights=ScoringWeights(**settings.get("weights", {})))
+            hits = HybridRetriever(self.embedder if retrieval_mode != "graph" else self._embedder, self.vector_store, self.graph_store,
+                self.reranker if use_rerank else None, ret_conf).retrieve(query, k, q_time, temporal_mode)
+        return [self._search_result(hit, retrieval_mode) for hit in hits]
 
-        if mode == "vector":
-            if self._vector_retriever is None:
-                self._vector_retriever = VectorRetriever(
-                    embedder=self.embedder,
-                    vector_store=self.vector_store,
-                    use_temporal_filter=(temporal_mode != "auto"),
-                    default_top_k=k
-                )
-            hits = self._vector_retriever.retrieve(
-                query=query,
-                k=k,
-                query_time=q_time,
-                temporal_mode=temporal_mode
-            )
-            results = []
-            for hit in hits:
-                payload = hit.get("payload", {})
-                results.append(MemorySearchResult(
-                    memory_id=hit.get("memory_id", ""),
-                    content=hit.get("text", payload.get("text", "")),
-                    score=float(hit.get("score", 0.0)),
-                    metadata={k: v for k, v in payload.items() if k not in {"text", "memory_id", "entity_ids"}},
-                    entity_ids=payload.get("entity_ids", []),
-                    retrieval_method="vector",
-                    timestamp=payload.get("timestamp"),
-                    valid_from=payload.get("valid_from"),
-                    valid_until=payload.get("valid_until"),
-                    importance=payload.get("importance"),
-                    is_superseded=bool(hit.get("superseded", False)),
-                    retrieval_trace=hit.get("retrieval_trace", {
-                        "memory_id": hit.get("memory_id"),
-                        "retrieval_method": "vector",
-                        "score": float(hit.get("score", 0.0))
-                    })
-                ))
-            return results
+    @staticmethod
+    def _search_result(hit, mode):
+        payload = hit.get("payload", {})
+        return MemorySearchResult(memory_id=hit["memory_id"], content=hit.get("text", payload.get("text", "")),
+            score=float(hit.get("final_score", hit.get("score", 0))),
+            metadata={key: value for key, value in payload.items() if key not in {"text", "memory_id", "entity_ids"}},
+            entity_ids=payload.get("entity_ids", []), retrieval_method=hit.get("retrieval_method", mode),
+            timestamp=payload.get("timestamp"), valid_from=payload.get("valid_from"), valid_until=payload.get("valid_until"),
+            importance=payload.get("importance"), is_superseded=bool(hit.get("superseded", False)),
+            retrieval_trace=hit.get("retrieval_trace", {}))
 
-        if mode == "mem0":
-            from memory.retrieval.competitors import Mem0Retriever
-            retriever = Mem0Retriever(self.embedder, self.vector_store, self.graph_store)
-            hits = retriever.retrieve(query=query, k=k, query_time=q_time)
-            results = []
-            for hit in hits:
-                payload = hit.get("payload", {})
-                results.append(MemorySearchResult(
-                    memory_id=hit.get("memory_id", ""),
-                    content=hit.get("text", payload.get("text", "")),
-                    score=float(hit.get("score", 0.0)),
-                    metadata={k: v for k, v in payload.items() if k not in {"text", "memory_id", "entity_ids"}},
-                    entity_ids=payload.get("entity_ids", []),
-                    retrieval_method="mem0",
-                    timestamp=payload.get("timestamp"),
-                    valid_from=payload.get("valid_from"),
-                    valid_until=payload.get("valid_until"),
-                    importance=payload.get("importance"),
-                    is_superseded=False,
-                    retrieval_trace={"memory_id": hit.get("memory_id"), "retrieval_method": "mem0", "score": float(hit.get("score", 0.0))}
-                ))
-            return results
-
-        if mode == "zep":
-            from memory.retrieval.competitors import ZepRetriever
-            retriever = ZepRetriever(self.embedder, self.vector_store)
-            hits = retriever.retrieve(query=query, k=k, query_time=q_time)
-            results = []
-            for hit in hits:
-                payload = hit.get("payload", {})
-                results.append(MemorySearchResult(
-                    memory_id=hit.get("memory_id", ""),
-                    content=hit.get("text", payload.get("text", "")),
-                    score=float(hit.get("score", 0.0)),
-                    metadata={k: v for k, v in payload.items() if k not in {"text", "memory_id", "entity_ids"}},
-                    entity_ids=payload.get("entity_ids", []),
-                    retrieval_method="zep",
-                    timestamp=payload.get("timestamp"),
-                    valid_from=payload.get("valid_from"),
-                    valid_until=payload.get("valid_until"),
-                    importance=payload.get("importance"),
-                    is_superseded=False,
-                    retrieval_trace={"memory_id": hit.get("memory_id"), "retrieval_method": "zep", "score": float(hit.get("score", 0.0))}
-                ))
-            return results
-
-        if mode in ("mempalace", "temporal_mempalace"):
-            from memory.retrieval.competitors import MemPalaceRetriever
-            retriever = MemPalaceRetriever(self.embedder, self.vector_store)
-            hits = retriever.retrieve(query=query, k=k, query_time=q_time)
-            results = []
-            for hit in hits:
-                payload = hit.get("payload", {})
-                results.append(MemorySearchResult(
-                    memory_id=hit.get("memory_id", ""),
-                    content=hit.get("text", payload.get("text", "")),
-                    score=float(hit.get("score", 0.0)),
-                    metadata={k: v for k, v in payload.items() if k not in {"text", "memory_id", "entity_ids"}},
-                    entity_ids=payload.get("entity_ids", []),
-                    retrieval_method="mempalace",
-                    timestamp=payload.get("timestamp"),
-                    valid_from=payload.get("valid_from"),
-                    valid_until=payload.get("valid_until"),
-                    importance=payload.get("importance"),
-                    is_superseded=False,
-                    retrieval_trace={"memory_id": hit.get("memory_id"), "retrieval_method": "mempalace", "score": float(hit.get("score", 0.0))}
-                ))
-            return results
-
-        # Determine ablation config
-        use_vector = True
-        use_graph = True
-        use_rerank = True
-        use_temporal = (temporal_mode != "auto")
-
-        # Data-driven reranker gate: if the ablation matrix shows the
-        # cross-encoder adds no recall over cheap pre-ranking for this
-        # deployment, retrieval.reranker_enabled=false kills it everywhere.
-        reranker_gate = self.config_data.get("retrieval", {}).get("reranker_enabled", True)
-        use_rerank = use_rerank and reranker_gate
-
-        if mode == "graph":
-            # Baseline C: Graph-only
-            use_vector = False
-            use_graph = True
-            use_rerank = False
-            use_temporal = False
-        elif mode == "hybrid_no_rerank":
-            # Variant D: Vector + Graph fusion without reranking
-            use_rerank = False
-        elif mode == "hybrid_no_graph":
-            # Vector + Reranking without graph expansion
-            use_graph = False
-        elif mode == "hybrid_no_temporal":
-            # Hybrid without temporal filtering
-            use_temporal = False
-
-        retrieval_settings = self.config_data.get("retrieval", {})
-        ret_conf = RetrievalConfig(
-            final_top_k=k,
-            use_vector=use_vector,
-            use_temporal_filter=use_temporal,
-            default_query_time=q_time,
-            use_graph_expansion=use_graph,
-            use_reranker=use_rerank,
-            use_contrastive=False,
-            use_entity_lookup_cache=retrieval_settings.get("entity_lookup_cache", True),
-            use_batched_conflict_resolution=retrieval_settings.get("batched_conflict_resolution", True),
-        )
-        retriever = HybridRetriever(
-            embedder=self.embedder,
-            vector_store=self.vector_store,
-            graph_store=self.graph_store,
-            reranker=self.reranker,
-            config=ret_conf
-        )
-
-        hits = retriever.retrieve(
-            query=query,
-            k=k,
-            query_time=q_time,
-            temporal_mode=temporal_mode
-        )
-        results = []
-        for hit in hits:
-            payload = hit.get("payload", {})
-            results.append(MemorySearchResult(
-                memory_id=hit.get("memory_id", ""),
-                content=hit.get("text", payload.get("text", "")),
-                score=float(hit.get("final_score", hit.get("score", 0.0))),
-                metadata={k: v for k, v in payload.items() if k not in {"text", "memory_id", "entity_ids"}},
-                entity_ids=payload.get("entity_ids", []),
-                retrieval_method=hit.get("retrieval_method", mode),
-                timestamp=payload.get("timestamp"),
-                valid_from=payload.get("valid_from"),
-                valid_until=payload.get("valid_until"),
-                importance=payload.get("importance"),
-                is_superseded=bool(hit.get("superseded", False)),
-                retrieval_trace=hit.get("retrieval_trace", {})
-            ))
-        return results
-    
     def update(
         self,
         memory_id: str,

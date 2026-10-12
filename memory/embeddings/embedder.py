@@ -7,7 +7,6 @@ from typing import List, Optional
 import numpy as np
 
 from memory.device import ensure_cuda_dlls_loaded
-ensure_cuda_dlls_loaded()
 from fastembed import TextEmbedding
 
 # Global config flag
@@ -30,7 +29,8 @@ class Embedder:
         model_name: str = DEFAULT_MODEL,
         use_gpu: Optional[bool] = None,
         quantize: bool = True,  # INT8 quantization for speed/memory
-        cache_dir: Optional[str] = None
+        cache_dir: Optional[str] = None,
+        batch_size: int = 32
     ):
         """
         Initialize embedder.
@@ -44,10 +44,14 @@ class Embedder:
         self.model_name = model_name
         self.quantize = quantize
         self.cache_dir = cache_dir
+        self.batch_size = batch_size
         
         # Resolve GPU flag: explicit arg > env var > default false
         self.use_gpu = use_gpu if use_gpu is not None else USE_GPU
         
+        if self.use_gpu:
+            ensure_cuda_dlls_loaded()
+
         # Configure ONNX Runtime providers
         self._providers = self._get_providers()
         
@@ -116,7 +120,7 @@ class Embedder:
             return np.empty((0, self.dimension), dtype=np.float32)
         
         # FastEmbed returns generator, convert to list then array
-        embeddings = list(self._model.embed(texts))
+        embeddings = list(self._model.embed(texts, batch_size=self.batch_size))
         return np.array(embeddings, dtype=np.float32)
     
     def embed_single(self, text: str) -> np.ndarray:
@@ -158,5 +162,6 @@ def get_embedder(
         model_name=model_name,
         use_gpu=use_gpu,
         quantize=quantize,
-        cache_dir=cache_dir
+        cache_dir=cache_dir,
+        batch_size=batch_size
     )

@@ -478,21 +478,26 @@ class KuzuGraphStore:
         self,
         entity_id: str,
         valid_at: Optional[int] = None,
-        limit: int = 50
+        limit: int = 50,
+        temporal_mode: str = "now"
     ) -> List[Dict[str, Any]]:
         """Get observations for an entity."""
         import time
         if valid_at is None:
             valid_at = int(time.time())
         
-        result = self.conn.execute("""
-            MATCH (o:Observation)-[:ABOUT]->(e:Entity {id: $eid})
-            WHERE o.valid_from <= $time AND o.valid_until >= $time
+        if temporal_mode not in {"now", "historical", "auto"} or limit < 1:
+            raise ValueError("Invalid observation query.")
+        predicate = {"now": "WHERE o.valid_from <= $time AND o.valid_until >= $time",
+                     "historical": "WHERE o.valid_until < $time", "auto": ""}[temporal_mode]
+        result = self.conn.execute(f"""
+            MATCH (o:Observation)-[:ABOUT]->(e:Entity {{id: $eid}})
+            {predicate}
             RETURN o.id, o.entity_id, o.content, o.embedding, o.valid_from,
                    o.valid_until, o.importance, o.source, o.created_at, o.source_memory_id
             ORDER BY o.importance DESC
             LIMIT $limit
-        """, {"eid": entity_id, "time": valid_at, "limit": limit})
+        """, {"eid": entity_id, "limit": limit, **({"time": valid_at} if predicate else {})})
         
         obs = []
         while result.has_next():
@@ -635,144 +640,51 @@ class KuzuGraphStore:
     
     # === Graph Expansion (1-2 hop) ===
     
-    def expand_graph(
-        self,
-        seed_entity_ids: List[str],
-        hops: int = 2,
-        relation_types: Optional[List[str]] = None,
-        valid_at: Optional[int] = None,
-        include_relations: bool = True,
-    ) -> Tuple[List[Dict], List[Dict]]:
-        """
-        Expand graph from seed entities (1-2 hop traversal).
-        
-        Returns:
-            (entities, relations)
-        """
+    def expand_graph(self, seed_entity_ids, hops=2, relation_types=None, valid_at=None,
+                     include_relations=True, max_nodes=50, temporal_mode="now"):
+        """Bounded breadth-first expansion includes seeds and every depth up to two."""
         import time
-        if valid_at is None:
-            valid_at = int(time.time())
-        
+        if hops not in (1, 2) or max_nodes < 1 or temporal_mode not in {"now", "historical", "auto"}:
+            raise ValueError("Invalid graph expansion settings.")
         if not seed_entity_ids:
             return [], []
-        
-        # Fetch only the graph material the caller consumes.  The former
-        # implementation first ran a third traversal and discarded every row.
-        entities = self._get_expanded_entities(seed_entity_ids, hops, relation_types, valid_at)
-        relations = (
-            self._get_expanded_relations(seed_entity_ids, hops, relation_types, valid_at)
-            if include_relations else []
-        )
-        
-        return entities, relations
-    
-    def _get_expanded_entities(
-        self,
-        seed_ids: List[str],
-        hops: int,
-        relation_types: Optional[List[str]],
-        valid_at: int
-    ) -> List[Dict]:
-        """Get expanded entities."""
-        seed_list = ", ".join([f"'{eid}'" for eid in seed_ids])
-        rel_filter = ""
-        if relation_types:
-            rel_list = ", ".join([f"'{rt}'" for rt in relation_types])
-            rel_filter = f"AND r.relation_type IN [{rel_list}]"
-        
-        if hops == 1:
-            query = (
-                "MATCH (e:Entity)-[r:RELATES]-(n:Entity) "
-                f"WHERE e.id IN [{seed_list}] "
-                "AND r.valid_from <= $time AND r.valid_until >= $time "
-                f"{rel_filter} "
-                "RETURN DISTINCT n.*"
-            )
-        else:
-            # Build NOT IN equivalent using <> for each seed ID
-            not_in_filter = ""
-            if seed_ids:
-                not_in_filter = " AND " + " AND ".join([f"n.id <> '{eid}'" for eid in seed_ids])
-            query = (
-                "MATCH (e:Entity)-[r1:RELATES]-(mid:Entity)-[r2:RELATES]-(n:Entity) "
-                f"WHERE e.id IN [{seed_list}] "
-                "AND r1.valid_from <= $time AND r1.valid_until >= $time "
-                "AND r2.valid_from <= $time AND r2.valid_until >= $time "
-                f"{rel_filter} "
-                f"{not_in_filter} "
-                "RETURN DISTINCT n.*"
-            )
-        
-        result = self.conn.execute(query, {"time": valid_at})
-        entities = []
-        while result.has_next():
-            row = result.get_next()
-            entities.append({
-                "id": row[0],
-                "name": row[1],
-                "entity_type": row[2],
-                "description": row[3],
-                "importance": row[4],
-                "created_at": row[5],
-                "updated_at": row[6]
-            })
-        return entities
-    
-    def _get_expanded_relations(
-        self,
-        seed_ids: List[str],
-        hops: int,
-        relation_types: Optional[List[str]],
-        valid_at: int
-    ) -> List[Dict]:
-        """Get expanded relations."""
-        seed_list = ", ".join([f"'{eid}'" for eid in seed_ids])
-        rel_filter = ""
-        if relation_types:
-            rel_list = ", ".join([f"'{rt}'" for rt in relation_types])
-            rel_filter = f"AND r.relation_type IN [{rel_list}]"
-        
-        if hops == 1:
-            query = (
-                "MATCH (e:Entity)-[r:RELATES]-(n:Entity) "
-                f"WHERE e.id IN [{seed_list}] "
-                "AND r.valid_from <= $time AND r.valid_until >= $time "
-                f"{rel_filter} "
-                "RETURN DISTINCT r.*, e.id as from_id, n.id as to_id"
-            )
-        else:
-            # Build NOT IN equivalent using <> for each seed ID
-            not_in_filter = ""
-            if seed_ids:
-                not_in_filter = " AND " + " AND ".join([f"n.id <> '{eid}'" for eid in seed_ids])
-            query = (
-                "MATCH (e:Entity)-[r1:RELATES]-(mid:Entity)-[r2:RELATES]-(n:Entity) "
-                f"WHERE e.id IN [{seed_list}] "
-                "AND r1.valid_from <= $time AND r1.valid_until >= $time "
-                "AND r2.valid_from <= $time AND r2.valid_until >= $time "
-                f"{rel_filter} "
-                f"{not_in_filter} "
-                "RETURN DISTINCT r2.*, mid.id as from_id, n.id as to_id"
-            )
-        
-        result = self.conn.execute(query, {"time": valid_at})
-        relations = []
-        while result.has_next():
-            row = result.get_next()
-            # Kuzu returns list: [relation_type, confidence, valid_from, valid_until, created_at, updated_at, metadata, from_id, to_id]
-            relations.append({
-                "relation_type": row[0],
-                "confidence": row[1],
-                "valid_from": row[2],
-                "valid_until": row[3],
-                "created_at": row[4],
-                "updated_at": row[5],
-                "metadata": row[6],
-                "from_id": row[7],
-                "to_id": row[8]
-            })
-        return relations
-    
+        now = int(time.time()) if valid_at is None else valid_at
+        entities = {}
+        for eid in sorted(set(seed_entity_ids))[:max_nodes]:
+            entity = self.get_entity(eid)
+            if entity:
+                entities[eid] = entity
+        frontier, relations = list(entities), {}
+        predicate = {"now": "AND r.valid_from <= $time AND r.valid_until >= $time",
+                     "historical": "AND r.valid_until < $time", "auto": ""}[temporal_mode]
+        types = "AND r.relation_type IN $types" if relation_types else ""
+        for _ in range(hops):
+            if not frontier:
+                break
+            result = self.conn.execute(f"""
+                MATCH (e:Entity)-[r:RELATES]-(n:Entity)
+                WHERE e.id IN $ids {predicate} {types}
+                RETURN n.id, n.name, n.entity_type, n.description, n.importance, n.created_at, n.updated_at,
+                       e.id, r.relation_type, r.confidence, r.valid_from, r.valid_until, r.created_at, r.updated_at, r.metadata
+                ORDER BY n.id LIMIT $limit
+            """, {"ids": frontier, "limit": max_nodes*4, **({"time": now} if predicate else {}),
+                  **({"types": relation_types} if relation_types else {})})
+            next_frontier = []
+            while result.has_next():
+                row = result.get_next()
+                eid = row[0]
+                if eid not in entities:
+                    if len(entities) >= max_nodes:
+                        continue
+                    entities[eid] = dict(zip(("id", "name", "entity_type", "description", "importance", "created_at", "updated_at"), row[:7]))
+                    next_frontier.append(eid)
+                if include_relations:
+                    key = (row[7], eid, row[8])
+                    relations[key] = dict(from_id=row[7], to_id=eid, relation_type=row[8], confidence=row[9],
+                        valid_from=row[10], valid_until=row[11], created_at=row[12], updated_at=row[13], metadata=row[14])
+            frontier = next_frontier
+        return list(entities.values()), list(relations.values())
+
     # === Contradiction/Supersession ===
     
     @staticmethod

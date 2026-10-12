@@ -188,3 +188,63 @@ def test_failed_deduplication_restores_cluster(engine, monkeypatch):
     with pytest.raises(EngineStorageError):
         engine.deduplicate_memories()
     assert engine.get("one") and engine.get("two")
+
+
+def test_graph_returns_owner_once_with_metadata(engine):
+    engine.add("fact about topic", memory_id="fact", entity_ids=["topic", "other"], metadata={"note": "provenance"})
+    results = engine.search("topic", retrieval_mode="graph", k=10)
+    assert [r.memory_id for r in results] == ["fact"]
+    assert results[0].metadata["note"] == "provenance"
+
+
+def test_hybrid_returns_more_than_fifteen_results(engine):
+    for i in range(20):
+        engine.add(f"topic fact {i}", memory_id=f"fact_{i}", entity_ids=["topic"])
+    results = engine.search("topic previously", k=20)
+    assert len(results) == 20
+    assert len({r.memory_id for r in results}) == 20
+
+
+def test_historical_graph_candidates_stay_historical(engine):
+    engine.add("old fact about topic", memory_id="old", entity_ids=["topic"], valid_until=100)
+    engine.add("current fact about topic", memory_id="new", entity_ids=["topic"], valid_from=100)
+    for mode in ("graph", "hybrid"):
+        results = engine.search("topic", temporal_mode="historical", query_time=200, retrieval_mode=mode)
+        assert [r.memory_id for r in results] == ["old"]
+
+
+def test_supersession_direction_and_effective_time(engine):
+    engine.add("old topic", memory_id="old", entity_ids=["topic"])
+    engine.add("new topic", memory_id="new", entity_ids=["topic"])
+    engine.graph_store.add_supersession("old", "new", .9, superseded_at=200)
+    before = {r.memory_id: r for r in engine.search("topic", query_time=100)}
+    after = {r.memory_id: r for r in engine.search("topic", query_time=300)}
+    assert not before["old"].is_superseded
+    assert after["old"].is_superseded and not after["new"].is_superseded
+
+
+def test_cpu_reranking_keeps_complete_candidate_pool(engine):
+    for i in range(20):
+        engine.add(f"topic {i}", memory_id=f"fact_{i}", entity_ids=["topic"])
+    engine.config_data["retrieval"]["reranker_enabled"] = True
+    results = engine.search("topic", k=20)
+    assert len(results) == 20
+    assert all(r.retrieval_trace["rerank_score"] is not None for r in results)
+
+
+def test_graph_expansion_handles_quotes_and_one_hop(engine):
+    engine.add("seed fact", entity_ids=["seed'quoted"])
+    engine.add("middle fact", entity_ids=["middle"])
+    engine.add("end fact", entity_ids=["end"])
+    engine.graph_store.upsert_relation("seed'quoted", "middle", "RELATED_TO")
+    engine.graph_store.upsert_relation("middle", "end", "RELATED_TO")
+    nodes, _ = engine.graph_store.expand_graph(["seed'quoted"], hops=2)
+    assert {n["id"] for n in nodes} == {"seed'quoted", "middle", "end"}
+
+
+def test_invalid_settings_fail_explicitly():
+    from memory.config import EngineSettings
+    with pytest.raises(ValueError):
+        EngineSettings.model_validate({"imaginary_setting": True})
+    with pytest.raises(ValueError):
+        EngineSettings.model_validate({"retrieval": {"graph_hops": 3}})

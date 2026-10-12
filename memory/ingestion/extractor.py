@@ -58,7 +58,7 @@ class ExtractedRelation(BaseModel):
 class ExtractedTemporal(BaseModel):
     """Validity interval timestamps (bitemporal event/validity bounds)."""
     valid_from: int = 0
-    valid_until: int = 2**31 - 1
+    valid_until: int = 2**63 - 1
 
     @field_validator("valid_until")
     @classmethod
@@ -128,7 +128,7 @@ def validate_extraction(raw: Dict[str, Any], extractor_name: str = "extractor", 
 
     # Validate temporal
     vf = int(raw_temporal.get("valid_from", 0)) if raw_temporal.get("valid_from") is not None else 0
-    vu = int(raw_temporal.get("valid_until", 2**31 - 1)) if raw_temporal.get("valid_until") is not None else 2**31 - 1
+    vu = int(raw_temporal.get("valid_until", 2**63 - 1)) if raw_temporal.get("valid_until") is not None else 2**63 - 1
     if vu < vf:
         raise ValueError("Extraction contains an invalid validity interval.")
 

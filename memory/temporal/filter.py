@@ -22,14 +22,16 @@ def filter_by_time(
     Returns:
         Filtered candidates
     """
-    if mode == "all":
+    if mode not in {"now", "historical", "auto", "all"}:
+        raise ValueError("Unknown temporal mode.")
+    if mode in {"all", "auto"}:
         return candidates
     
     filtered = []
     for cand in candidates:
         payload = cand.get("payload", {})
         valid_from = payload.get("valid_from", 0)
-        valid_until = payload.get("valid_until", 2**31 - 1)
+        valid_until = payload.get("valid_until", 2**63 - 1)
         
         if mode == "now":
             if valid_from <= query_time <= valid_until:
@@ -61,7 +63,7 @@ def get_temporal_weight(
     if age_days < 0:
         age_days = 0
     
-    return float(__import__('math').exp(-age_days / half_life_days))
+    return float(2 ** (-age_days / half_life_days))
 
 
 def get_historical_relevance(
@@ -77,7 +79,7 @@ def get_historical_relevance(
     - Memory entity matches query entities
     """
     payload = candidate.get("payload", {})
-    valid_until = payload.get("valid_until", 2**31 - 1)
+    valid_until = payload.get("valid_until", 2**63 - 1)
     entity_ids = payload.get("entity_ids", [])
     
     is_historical = valid_until < query_time

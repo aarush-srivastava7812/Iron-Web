@@ -25,7 +25,7 @@ class MemoryRecord(BaseModel):
     metadata: Dict[str, Any] = Field(default_factory=dict)
     entity_ids: List[str] = Field(default_factory=list)
     valid_from: int = 0
-    valid_until: int = 2**31 - 1
+    valid_until: int = 2**63 - 1
     importance: float = 1.0
     timestamp: int = 0
     created_at: Optional[int] = None

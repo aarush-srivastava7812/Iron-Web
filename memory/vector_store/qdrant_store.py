@@ -122,7 +122,7 @@ class QdrantVectorStore:
         embedding: Optional[np.ndarray] = None,
         entity_ids: Optional[List[str]] = None,
         valid_from: int = 0,
-        valid_until: int = 2**31 - 1,  # Max int32 = "forever"
+        valid_until: int = 2**63 - 1,  # Max int32 = "forever"
         importance: float = 1.0,
         memory_type: str = "semantic",
         metadata: Optional[Dict[str, Any]] = None,
@@ -328,6 +328,8 @@ def create_temporal_filter(
     Returns:
         Qdrant Filter
     """
+    if mode not in {"now", "historical", "auto"}:
+        raise ValueError("Unknown temporal mode.")
     if mode == "now":
         return Filter(
             must=[
