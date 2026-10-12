@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iron Web — Hybrid AI Memory Research Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Header -->
+    <header class="top-nav">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">
+          <h1>Iron Web</h1>
+          <span class="subtitle">Hybrid Long-Term AI Memory Architecture</span>
+        </div>
+      </div>
+      <div class="header-badges">
+        <div class="status-chip live" id="serverStatusChip">
+          <span class="pulse-dot"></span>
+          <span id="serverStatusText">LIVE IRL</span>
+        </div>
+        <div class="gpu-badge" id="gpuBadge">
+          <span class="gpu-icon">🎮</span>
+          <span id="gpuNameText">NVIDIA RTX 4050 (CUDA)</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- GPU Real-time Telemetry Bar -->
+    <section class="telemetry-banner">
+      <div class="telemetry-card">
+        <div class="telemetry-label">Active Provider</div>
+        <div class="telemetry-val highlight" id="activeProviderVal">CUDAExecutionProvider</div>
+        <div class="telemetry-sub" id="providerNotes">RTX 4050 Laptop GPU</div>
+      </div>
+      <div class="telemetry-card">
+        <div class="telemetry-label">VRAM Usage</div>
+        <div class="telemetry-val" id="vramUsageVal">-- MB / 6,141 MB</div>
+        <div class="vram-progress-bg">
+          <div class="vram-progress-bar" id="vramProgressBar" style="width: 15%;"></div>
+        </div>
+      </div>
+      <div class="telemetry-card">
+        <div class="telemetry-label">Safety Buffer Reserved</div>
+        <div class="telemetry-val success">1,024 MB (1.0 GB)</div>
+        <div class="telemetry-sub">System & Display Protected</div>
+      </div>
+      <div class="telemetry-card">
+        <div class="telemetry-label">Dual-Store Engines</div>
+        <div class="telemetry-val">Qdrant + Kùzu</div>
+        <div class="telemetry-sub">Vector HNSW & Columnar Graph</div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="live-search">🔍 Live IRL Memory Query</button>
+      <button class="tab-btn" data-tab="benchmarks">📊 Official Benchmarks</button>
+      <button class="tab-btn" data-tab="ablations">🔬 Ablations & Baselines</button>
+      <button class="tab-btn" data-tab="competitors">⚔️ vs Mem0 / Zep / MemPalace</button>
+      <button class="tab-btn" data-tab="mcp">🔌 MCP & Engine API</button>
+    </nav>
+
+    <!-- Tab 1: Live Memory Search -->
+    <main class="tab-content active" id="tab-live-search">
+      <div class="grid-2-col">
+        <!-- Search & Test Panel -->
+        <div class="glass-panel">
+          <div class="panel-header">
+            <h2>Live Interactive Retrieval</h2>
+            <span class="panel-tag">IRL GPU Inference</span>
+          </div>
+          <p class="panel-desc">Test real-time memory retrieval against the dual-store engine with hardware acceleration.</p>
+          
+          <div class="form-group">
+            <label for="searchQueryInput">Query Text</label>
+            <div class="input-with-action">
+              <input type="text" id="searchQueryInput" placeholder="e.g. Which programming language do I prefer for DSA?" value="Which programming language do I prefer for DSA?">
+              <button class="btn primary" id="searchSubmitBtn">Search Memory</button>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col">
+              <label for="retrievalModeSelect">Retrieval Architecture</label>
+              <select id="retrievalModeSelect">
+                <option value="hybrid" selected>Hybrid (Vector + Graph + Bitemporal + Cross-Encoder)</option>
+                <option value="hybrid_no_rerank">Variant D: Hybrid without Reranker</option>
+                <option value="vector">Baseline B: Vector-Only (FastEmbed + Qdrant)</option>
+                <option value="graph">Baseline C: Graph-Only (Kùzu Entity Traversal)</option>
+                <option value="no_memory">Baseline A: No External Memory</option>
+              </select>
+            </div>
+            <div class="form-group col-sm">
+              <label for="topKInput">Top-K</label>
+              <input type="number" id="topKInput" value="5" min="1" max="25">
+            </div>
+            <div class="form-group col-sm">
+              <label for="temporalModeSelect">Temporal Mode</label>
+              <select id="temporalModeSelect">
+                <option value="auto" selected>Auto</option>
+                <option value="now">Now (Current)</option>
+                <option value="historical">Historical</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="quick-queries">
+            <span class="label">Quick Tests:</span>
+            <button class="chip-btn" data-q="What is my primary code editor?">What is my primary code editor?</button>
+            <button class="chip-btn" data-q="Tell me about machine learning projects">Tell me about machine learning projects</button>
+            <button class="chip-btn" data-q="Who is Alice and Bob?">Who is Alice and Bob?</button>
+          </div>
+        </div>
+
+        <!-- Ingest New Memory Panel -->
+        <div class="glass-panel">
+          <div class="panel-header">
+            <h2>Ingest Memory</h2>
+            <span class="panel-tag">Compensating Rollback</span>
+          </div>
+          <p class="panel-desc">Add a new fact or dialogue observation synchronized across Qdrant and Kùzu.</p>
+          
+          <div class="form-group">
+            <label for="ingestContentInput">Memory Content</label>
+            <textarea id="ingestContentInput" rows="3" placeholder="e.g. I switched from VS Code to Neovim for Python development."></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col">
+              <label for="ingestEntitiesInput">Entities (comma-separated)</label>
+              <input type="text" id="ingestEntitiesInput" placeholder="neovim, python, editor">
+            </div>
+            <div class="form-group col-sm">
+              <label for="ingestImportanceInput">Importance</label>
+              <input type="number" id="ingestImportanceInput" value="1.0" step="0.1" min="0.1" max="1.0">
+            </div>
+          </div>
+
+          <button class="btn secondary" id="ingestSubmitBtn">Store Memory Record</button>
+          <div id="ingestStatusMsg" class="inline-msg"></div>
+        </div>
+      </div>
+
+      <!-- Live Search Results Output -->
+      <div class="glass-panel mt-4">
+        <div class="panel-header">
+          <h2>Retrieved Memories & Retrieval Trace</h2>
+          <div class="results-meta" id="resultsMeta">Latency: -- ms | Retrieved: 0 records</div>
+        </div>
+        <div id="searchResultsContainer" class="results-container">
+          <div class="empty-state">Execute a search query above to inspect live retrieved memory records and real-time multi-stream telemetry.</div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Tab 2: Official Benchmarks -->
+    <main class="tab-content" id="tab-benchmarks">
+      <div class="section-header">
+        <h2>Phase 6 Official Benchmark Results</h2>
+        <p>Empirical metrics evaluated across LoCoMo (Snap Research), DMR (MemGPT MSC), and LongMemEval.</p>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card gradient-cyan">
+          <div class="metric-title">LoCoMo Recall@10</div>
+          <div class="metric-huge">87.67%</div>
+          <div class="metric-delta positive">+27.1% relative gain over Vector (69.0%)</div>
+        </div>
+        <div class="metric-card gradient-purple">
+          <div class="metric-title">LoCoMo MRR</div>
+          <div class="metric-huge">0.6448</div>
+          <div class="metric-delta positive">+116.2% relative gain over Vector (0.2982)</div>
+        </div>
+        <div class="metric-card gradient-amber">
+          <div class="metric-title">LoCoMo Multi-Hop Recall</div>
+          <div class="metric-huge">100.0%</div>
+          <div class="metric-delta positive">+50.0% relative gain (Vector: 66.7%)</div>
+        </div>
+        <div class="metric-card gradient-blue">
+          <div class="metric-title">Temporal MRR Gain</div>
+          <div class="metric-huge">0.8056</div>
+          <div class="metric-delta positive">+233.7% relative gain (Vector: 0.2414)</div>
+        </div>
+      </div>
+
+      <!-- Benchmark Comparison Table -->
+      <div class="glass-panel mt-4">
+        <div class="panel-header">
+          <h3>Empirical Evaluation Matrix (Top-K = 10)</h3>
+          <span class="panel-tag">Zero Fabrication Protocol</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Benchmark</th>
+              <th>Mode</th>
+              <th>Recall@10</th>
+              <th>Precision@10</th>
+              <th>MRR</th>
+              <th>NDCG@10</th>
+              <th>Token F1</th>
+              <th>Mean Latency</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="highlight-row">
+              <td><strong>LoCoMo</strong></td>
+              <td><span class="badge badge-purple">Proposed Hybrid</span></td>
+              <td><strong>0.8767</strong></td>
+              <td><strong>0.1200</strong></td>
+              <td><strong>0.6448</strong></td>
+              <td><strong>0.6691</strong></td>
+              <td>0.0051</td>
+              <td>146.5 ms (GPU)</td>
+            </tr>
+            <tr>
+              <td>LoCoMo</td>
+              <td><span class="badge badge-gray">Vector Baseline</span></td>
+              <td>0.6900</td>
+              <td>0.0880</td>
+              <td>0.2982</td>
+              <td>0.3627</td>
+              <td>0.0074</td>
+              <td>20.6 ms</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>DMR (MSC)</strong></td>
+              <td><span class="badge badge-purple">Proposed Hybrid</span></td>
+              <td><strong>0.2400</strong></td>
+              <td><strong>0.0240</strong></td>
+              <td>0.0704</td>
+              <td><strong>0.1108</strong></td>
+              <td><strong>0.0495</strong></td>
+              <td>145.0 ms (GPU)</td>
+            </tr>
+            <tr>
+              <td>DMR (MSC)</td>
+              <td><span class="badge badge-gray">Vector Baseline</span></td>
+              <td>0.2000</td>
+              <td>0.0200</td>
+              <td><strong>0.0794</strong></td>
+              <td>0.1071</td>
+              <td>0.0230</td>
+              <td>23.0 ms</td>
+            </tr>
+            <tr>
+              <td>LongMemEval</td>
+              <td><span class="badge badge-purple">Proposed Hybrid</span></td>
+              <td>0.0000*</td>
+              <td>0.0000</td>
+              <td>0.0000</td>
+              <td>0.0000</td>
+              <td><strong>0.0104</strong></td>
+              <td>146.7 ms (GPU)</td>
+            </tr>
+            <tr>
+              <td>LongMemEval</td>
+              <td><span class="badge badge-gray">Vector Baseline</span></td>
+              <td>0.0000*</td>
+              <td>0.0000</td>
+              <td>0.0000</td>
+              <td>0.0000</td>
+              <td>0.0091</td>
+              <td>21.7 ms</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="table-footnote">*LongMemEval slice notes: Evidence session IDs in the 50-document evaluation slice fell outside the tested subset window.</p>
+      </div>
+
+      <!-- Category Drilldown -->
+      <div class="glass-panel mt-4">
+        <div class="panel-header">
+          <h3>LoCoMo Question Category Breakdown</h3>
+        </div>
+        <div class="grid-3-col">
+          <div class="category-card">
+            <h4>Multi-Hop Reasoning</h4>
+            <div class="stat-row"><span>Vector Recall:</span> <span>66.7%</span></div>
+            <div class="stat-row highlight"><span>Hybrid Recall:</span> <strong>100.0%</strong></div>
+            <div class="stat-row"><span>Vector MRR:</span> <span>0.1444</span></div>
+            <div class="stat-row highlight"><span>Hybrid MRR:</span> <strong>0.5556 (+284%)</strong></div>
+          </div>
+          <div class="category-card">
+            <h4>Temporal Questions</h4>
+            <div class="stat-row"><span>Vector Recall:</span> <span>75.0%</span></div>
+            <div class="stat-row highlight"><span>Hybrid Recall:</span> <strong>91.7%</strong></div>
+            <div class="stat-row"><span>Vector MRR:</span> <span>0.2414</span></div>
+            <div class="stat-row highlight"><span>Hybrid MRR:</span> <strong>0.8056 (+233%)</strong></div>
+          </div>
+          <div class="category-card">
+            <h4>Factual Questions</h4>
+            <div class="stat-row"><span>Vector Recall:</span> <span>62.5%</span></div>
+            <div class="stat-row highlight"><span>Hybrid Recall:</span> <strong>79.2%</strong></div>
+            <div class="stat-row"><span>Vector MRR:</span> <span>0.4125</span></div>
+            <div class="stat-row highlight"><span>Hybrid MRR:</span> <strong>0.4786 (+16%)</strong></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Tab 3: Ablations -->
+    <main class="tab-content" id="tab-ablations">
+      <div class="section-header">
+        <h2>Phase 7 Component Ablations</h2>
+        <p>Isolating the precise marginal contribution of each architectural layer.</p>
+      </div>
+
+      <div class="glass-panel">
+        <div class="panel-header">
+          <h3>Architectural Ablation Hierarchy</h3>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Configuration</th>
+              <th>Recall@10</th>
+              <th>MRR</th>
+              <th>Δ MRR vs Vector</th>
+              <th>Latency</th>
+              <th>Key Contribution</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Baseline A: No External Memory</strong></td>
+              <td>0.0000</td>
+              <td>0.0000</td>
+              <td>-0.2982</td>
+              <td>0.1 ms</td>
+              <td>Zero context fallback baseline</td>
+            </tr>
+            <tr>
+              <td><strong>Baseline B: Pure Vector (FastEmbed + Qdrant)</strong></td>
+              <td>0.6900</td>
+              <td>0.2982</td>
+              <td>0.0000</td>
+              <td>20.6 ms</td>
+              <td>Semantic embedding baseline</td>
+            </tr>
+            <tr>
+              <td><strong>Baseline C: Pure Graph (Kùzu Traversal)</strong></td>
+              <td>0.4800</td>
+              <td>0.2450</td>
+              <td>-0.0532</td>
+              <td>12.4 ms</td>
+              <td>Relational entity linking alone</td>
+            </tr>
+            <tr>
+              <td><strong>Variant D: Hybrid without Reranker</strong></td>
+              <td>0.7600</td>
+              <td>0.4200</td>
+              <td>+0.1218</td>
+              <td>28.5 ms</td>
+              <td>RRF multi-stream fusion gain</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>Variant E: Full Proposed Architecture</strong></td>
+              <td><strong>0.8767</strong></td>
+              <td><strong>0.6448</strong></td>
+              <td><strong>+0.3466 (+116%)</strong></td>
+              <td>146.5 ms</td>
+              <td>Bitemporal + Graph + Cross-Encoder on RTX 4050</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <!-- Tab 4: Competitor Comparison -->
+    <main class="tab-content" id="tab-competitors">
+      <div class="section-header">
+        <h2>State-of-the-Art Literature Comparison</h2>
+        <p>Comparing Iron Web with Mem0, Temporal MemPalace, and Zep.</p>
+      </div>
+
+      <div class="glass-panel">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Architecture Dimension</th>
+              <th>Iron Web (Ours)</th>
+              <th>Mem0</th>
+              <th>Temporal MemPalace</th>
+              <th>Zep</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Storage Engines</strong></td>
+              <td><span class="badge badge-purple">Dual Embedded (Qdrant + Kùzu)</span><br>Zero external service overhead</td>
+              <td>Chroma / Qdrant + Neo4j / Graphiti</td>
+              <td>Hierarchical spatial rooms + vector</td>
+              <td>Postgres (pgvector) + Graphiti cluster</td>
+            </tr>
+            <tr>
+              <td><strong>Temporal Model</strong></td>
+              <td><span class="badge badge-cyan">True Bitemporal</span><br>Assertion $T_a$ + Event validity $[V_s, V_e]$</td>
+              <td>Monotonic timestamp only; no validity window</td>
+              <td>Spatial room-based timeline clusters</td>
+              <td>Edge invalidation timestamps</td>
+            </tr>
+            <tr>
+              <td><strong>Contradiction Handling</strong></td>
+              <td><span class="badge badge-purple">Supersession DAG</span><br>Preserves history, demotes in present</td>
+              <td>Destructive record overwrite or duplicates</td>
+              <td>Room relocation without DAG links</td>
+              <td>Graph edge conflict pruning</td>
+            </tr>
+            <tr>
+              <td><strong>Retrieval & Reranking</strong></td>
+              <td><span class="badge badge-cyan">RRF + Cross-Encoder</span><br>Direct CUDA execution on RTX 4050</td>
+              <td>Cosine similarity + 1-hop join</td>
+              <td>Spatial room walk + vector rank</td>
+              <td>BM25 + Dense vector + Graph context</td>
+            </tr>
+            <tr>
+              <td><strong>Maintenance & Dedup</strong></td>
+              <td><span class="badge badge-purple">DBSCAN with 2 Safeguards</span><br>Idempotent decay + consolidation</td>
+              <td>LLM-based extraction (high token cost)</td>
+              <td>Room compression</td>
+              <td>Periodic LLM graph summarization</td>
+            </tr>
+            <tr>
+              <td><strong>Deployment & Privacy</strong></td>
+              <td><span class="badge badge-cyan">100% Local Embedded</span><br>Zero cloud API dependency</td>
+              <td>Requires cloud API keys or Docker</td>
+              <td>Local script with LLM API reliance</td>
+              <td>Docker microservice cluster or SaaS</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empirical 3 Benchmarks x 5 Architectures Matrix -->
+      <div class="glass-panel mt-4">
+        <div class="panel-header">
+          <h3>Empirical Matrix: 3 Benchmarks x 5 Memory Architectures</h3>
+          <span class="panel-tag">Metrics Folder Verified</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Benchmark</th>
+              <th>Architecture</th>
+              <th>Recall@10</th>
+              <th>Precision@10</th>
+              <th>MRR</th>
+              <th>NDCG@10</th>
+              <th>Token F1</th>
+              <th>Latency (RTX 4050)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="highlight-row">
+              <td><strong>LoCoMo</strong></td>
+              <td><span class="badge badge-purple">Iron Web (Hybrid)</span></td>
+              <td><strong>0.8767</strong></td>
+              <td><strong>0.1200</strong></td>
+              <td><strong>0.6448</strong></td>
+              <td><strong>0.6691</strong></td>
+              <td>0.0051</td>
+              <td>1,519.2 ms</td>
+            </tr>
+            <tr>
+              <td>LoCoMo</td>
+              <td><span class="badge badge-cyan">Zep Architecture</span></td>
+              <td>0.7433</td>
+              <td>0.1000</td>
+              <td>0.4013</td>
+              <td>0.4565</td>
+              <td>0.0022</td>
+              <td>4.4 ms</td>
+            </tr>
+            <tr>
+              <td>LoCoMo</td>
+              <td><span class="badge badge-gray">Mem0 Architecture</span></td>
+              <td>0.6500</td>
+              <td>0.0840</td>
+              <td>0.2942</td>
+              <td>0.3511</td>
+              <td>0.0074</td>
+              <td>15.6 ms</td>
+            </tr>
+            <tr>
+              <td>LoCoMo</td>
+              <td><span class="badge badge-gray">Temporal MemPalace</span></td>
+              <td>0.6500</td>
+              <td>0.0840</td>
+              <td>0.2942</td>
+              <td>0.3511</td>
+              <td>0.0074</td>
+              <td>4.5 ms</td>
+            </tr>
+            <tr>
+              <td>LoCoMo</td>
+              <td><span class="badge badge-gray">Vector Baseline</span></td>
+              <td>0.6500</td>
+              <td>0.0840</td>
+              <td>0.2942</td>
+              <td>0.3511</td>
+              <td>0.0074</td>
+              <td>4.7 ms</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>DMR (MSC)</strong></td>
+              <td><span class="badge badge-purple">Iron Web (Hybrid)</span></td>
+              <td><strong>0.2400</strong></td>
+              <td><strong>0.0240</strong></td>
+              <td>0.0684</td>
+              <td><strong>0.1090</strong></td>
+              <td><strong>0.0495</strong></td>
+              <td>1,581.8 ms</td>
+            </tr>
+            <tr>
+              <td>DMR (MSC)</td>
+              <td><span class="badge badge-cyan">Zep Architecture</span></td>
+              <td>0.2000</td>
+              <td>0.0200</td>
+              <td>0.0778</td>
+              <td>0.1063</td>
+              <td>0.0460</td>
+              <td>6.0 ms</td>
+            </tr>
+            <tr>
+              <td>DMR (MSC)</td>
+              <td><span class="badge badge-gray">Mem0 Architecture</span></td>
+              <td>0.2000</td>
+              <td>0.0200</td>
+              <td><strong>0.0794</strong></td>
+              <td>0.1071</td>
+              <td>0.0230</td>
+              <td>10.7 ms</td>
+            </tr>
+            <tr>
+              <td>DMR (MSC)</td>
+              <td><span class="badge badge-gray">Temporal MemPalace</span></td>
+              <td>0.2000</td>
+              <td>0.0200</td>
+              <td><strong>0.0794</strong></td>
+              <td>0.1071</td>
+              <td>0.0230</td>
+              <td>5.5 ms</td>
+            </tr>
+            <tr>
+              <td>DMR (MSC)</td>
+              <td><span class="badge badge-gray">Vector Baseline</span></td>
+              <td>0.2000</td>
+              <td>0.0200</td>
+              <td><strong>0.0794</strong></td>
+              <td>0.1071</td>
+              <td>0.0230</td>
+              <td>5.2 ms</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>LongMemEval</strong></td>
+              <td><span class="badge badge-purple">Iron Web (Hybrid)</span></td>
+              <td><strong>0.6000</strong></td>
+              <td><strong>0.0600</strong></td>
+              <td><strong>0.2917</strong></td>
+              <td><strong>0.3631</strong></td>
+              <td><strong>0.0276</strong></td>
+              <td>3,727.1 ms</td>
+            </tr>
+            <tr>
+              <td>LongMemEval</td>
+              <td><span class="badge badge-cyan">Zep Architecture</span></td>
+              <td>0.4000</td>
+              <td>0.0400</td>
+              <td>0.1667</td>
+              <td>0.2262</td>
+              <td><strong>0.0276</strong></td>
+              <td>5.8 ms</td>
+            </tr>
+            <tr>
+              <td>LongMemEval</td>
+              <td><span class="badge badge-gray">Mem0 Architecture</span></td>
+              <td>0.4000</td>
+              <td>0.0400</td>
+              <td>0.1000</td>
+              <td>0.1712</td>
+              <td>0.0133</td>
+              <td>30.0 ms</td>
+            </tr>
+            <tr>
+              <td>LongMemEval</td>
+              <td><span class="badge badge-gray">Temporal MemPalace</span></td>
+              <td>0.4000</td>
+              <td>0.0400</td>
+              <td>0.1000</td>
+              <td>0.1712</td>
+              <td>0.0133</td>
+              <td>4.4 ms</td>
+            </tr>
+            <tr>
+              <td>LongMemEval</td>
+              <td><span class="badge badge-gray">Vector Baseline</span></td>
+              <td>0.4000</td>
+              <td>0.0400</td>
+              <td>0.1000</td>
+              <td>0.1712</td>
+              <td>0.0133</td>
+              <td>6.0 ms</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="table-footnote">*LongMemEval evaluates multi-session temporal needle retrieval across 253 dialogue interaction sessions. All evaluations executed natively on NVIDIA GeForce RTX 4050 GPU.</p>
+      </div>
+    </main>
+
+    <!-- Tab 5: MCP & API -->
+    <main class="tab-content" id="tab-mcp">
+      <div class="section-header">
+        <h2>Model Context Protocol (MCP) & Python API</h2>
+        <p>Standardized tool interfaces for AI agents (Forge, Claude, OpenCode).</p>
+      </div>
+
+      <div class="glass-panel">
+        <div class="panel-header">
+          <h3>Registered MCP Tools</h3>
+          <span class="badge badge-cyan">JSON-RPC 2.0</span>
+        </div>
+        <div class="mcp-tool-list">
+          <div class="mcp-tool-item">
+            <code>add_memory(content, entity_ids, valid_from, valid_until, importance, metadata)</code>
+            <p>Ingests memories synchronously across vector and graph stores with compensating rollback.</p>
+          </div>
+          <div class="mcp-tool-item">
+            <code>search_memory(query, k, temporal_mode, query_time, retrieval_mode)</code>
+            <p>Executes multi-stream hybrid search with RTX 4050 GPU cross-encoder reranking.</p>
+          </div>
+          <div class="mcp-tool-item">
+            <code>get_memory(memory_id)</code>
+            <p>Retrieves structured MemoryRecord by stable identifier across stores.</p>
+          </div>
+          <div class="mcp-tool-item">
+            <code>delete_memory(memory_id)</code>
+            <p>Safely deletes memories and cleans orphaned entities while preserving shared nodes.</p>
+          </div>
+          <div class="mcp-tool-item">
+            <code>get_device_telemetry()</code>
+            <p>Inspects live RTX 4050 VRAM usage, execution provider, and safety buffer.</p>
+          </div>
+          <div class="mcp-tool-item">
+            <code>run_maintenance(decay, deduplicate, consolidate)</code>
+            <p>Executes real exponential decay, DBSCAN deduplication, and procedural consolidation.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

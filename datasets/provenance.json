@@ -1,0 +1,25 @@
+[
+  {
+    "benchmark": "dmr",
+    "source_url": "https://huggingface.co/datasets/MemGPT/MSC-Self-Instruct",
+    "revision": "5138f416f8fa76b75b2e080da87e8a8e346e1500",
+    "download_date": "2026-09-14",
+    "data_file": "datasets/dmr/msc_self_instruct.jsonl",
+    "file_hashes": {"msc_self_instruct.jsonl": "d3dbea36848b41dc46c0f1548d0ebf74eeaf6390d6f3fe9318e8480dc984495e", "dmr.json": "6cf67d1d7fe644fef2bcd9481f8bd8d0a06ff52506f72f70e2c99d2aa8f3b9d1", "corpus.json": "13f1a5e9c115a7cb21247ad3693ff250b4a076fe4af0f60eb69c8dccad3cbd34"}
+  },
+  {
+    "benchmark": "locomo",
+    "source_url": "https://github.com/snap-research/locomo",
+    "commit_hash": "3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376",
+    "data_file": "datasets/locomo/data/locomo10.json",
+    "file_hashes": {"locomo10.json": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4"}
+  },
+  {
+    "benchmark": "longmemeval",
+    "source_url": "https://huggingface.co/datasets/xiaowu0162/longmemeval-cleaned",
+    "repo_url": "https://github.com/xiaowu0162/LongMemEval",
+    "commit_hash": "9e0b455f4ef0e2ab8f2e582289761153549043fc",
+    "data_file": "datasets/longmemeval/data/longmemeval_s_cleaned.json",
+    "file_hashes": {"longmemeval_s_cleaned.json": "d6f21ea9d60a0d56f34a05b609c79c88a451d2ae03597821ea3d5a9678c3a442"}
+  }
+]
