@@ -12,6 +12,8 @@ import os
 import time
 import uuid
 import yaml
+from threading import RLock
+from functools import wraps
 from typing import List, Dict, Any, Optional, Union
 
 import numpy as np
@@ -48,6 +50,16 @@ from memory.maintenance.maintenance import (
 )
 
 
+def serialized(method):
+    @wraps(method)
+    def call(self, *args, **kwargs):
+        with self._operation_lock:
+            if self._closed and method.__name__ != "close":
+                raise RuntimeError("Memory engine is closed.")
+            return method(self, *args, **kwargs)
+    return call
+
+
 class MemoryEngine:
     """
     Unified public interface for the Hybrid Long-Term AI Memory Engine.
@@ -74,6 +86,8 @@ class MemoryEngine:
         qdrant_path: Optional[str] = None,
         kuzu_path: Optional[str] = None,
     ):
+        self._operation_lock = RLock()
+        self._closed = False
         # 1. Load and resolve configuration
         self.config_data = self._load_config(config)
         
@@ -183,6 +197,7 @@ class MemoryEngine:
     # Public CRUD Operations
     # =========================================================================
     
+    @serialized
     def add(
         self,
         content: str,
@@ -211,8 +226,10 @@ class MemoryEngine:
         Returns:
             memory_id of the ingested memory.
         """
-        if not isinstance(content, str) or not content.strip():
-            raise ValueError("Memory content cannot be empty.")
+        from memory.validation import MemoryInput
+        checked = MemoryInput(content=content, metadata=metadata, entity_ids=entity_ids, timestamp=timestamp,
+            valid_from=valid_from, valid_until=valid_until, importance=importance, memory_id=memory_id)
+        entity_ids = checked.entity_ids
             
         ts = int(time.time()) if timestamp is None else timestamp
         mem_id = memory_id or f"mem_{uuid.uuid4().hex[:12]}"
@@ -225,7 +242,7 @@ class MemoryEngine:
         # 2. Extract entities and relations
         resolved_entities = []
         resolved_relations = []
-        if entity_ids:
+        if entity_ids is not None:
             for eid in entity_ids:
                 resolved_entities.append({
                     "id": eid,
@@ -325,6 +342,7 @@ class MemoryEngine:
 
         return mem_id
     
+    @serialized
     def add_batch(
         self,
         contents: Union[List[str], List[Dict[str, Any]]],
@@ -380,6 +398,7 @@ class MemoryEngine:
             
         return memory_ids
     
+    @serialized
     def get(self, memory_id: str) -> Optional[MemoryRecord]:
         """
         Retrieve a memory by stable ID across stores.
@@ -420,6 +439,7 @@ class MemoryEngine:
             
         return None
     
+    @serialized
     def search(
         self,
         query: str,
@@ -438,6 +458,8 @@ class MemoryEngine:
             query_time: Reference timestamp for temporal evaluation
             retrieval_mode: "hybrid" (Vector + Graph + Rerank) or "vector" (pure vector)
         """
+        if query_time is not None and (not isinstance(query_time, int) or isinstance(query_time, bool)):
+            raise ValueError("Reference timestamp must be an integer.")
         if not isinstance(query, str):
             raise ValueError("Query must be a string.")
         if not isinstance(k, int) or isinstance(k, bool) or not 1 <= k <= 100:
@@ -477,6 +499,7 @@ class MemoryEngine:
             importance=payload.get("importance"), is_superseded=bool(hit.get("superseded", False)),
             retrieval_trace=hit.get("retrieval_trace", {}))
 
+    @serialized
     def update(
         self,
         memory_id: str,
@@ -489,6 +512,8 @@ class MemoryEngine:
         """
         Update an existing memory across both stores with rollback support.
         """
+        if content is not None and (not isinstance(content, str) or not content.strip()):
+            raise ValueError("Memory content must be nonempty text.")
         old_point = self.vector_store.get_memory(memory_id)
         if old_point is None:
             return False
@@ -509,6 +534,9 @@ class MemoryEngine:
         if metadata:
             new_meta.update(metadata)
             
+        from memory.validation import MemoryInput
+        MemoryInput(content=new_text, metadata=new_meta, importance=new_importance,
+                    valid_from=new_valid_from, valid_until=new_valid_until, memory_id=memory_id)
         # Re-embed if content changed
         if content is not None and content != old_payload.get("text", ""):
             new_embedding = self.embedder.embed_single(new_text)
@@ -561,6 +589,7 @@ class MemoryEngine:
 
         return True
     
+    @serialized
     def delete(self, memory_id: str, clean_orphaned_entities: bool = False) -> bool:
         """
         Delete a memory across Qdrant and Kùzu.
@@ -581,6 +610,7 @@ class MemoryEngine:
     # Maintenance and Reliability Operations (Phase 4)
     # =========================================================================
 
+    @serialized
     def decay_memories(
         self,
         half_life_days: float = 90.0,
@@ -606,6 +636,7 @@ class MemoryEngine:
             dry_run=dry_run
         )
 
+    @serialized
     def deduplicate_memories(
         self,
         eps: float = 0.15,
@@ -614,7 +645,7 @@ class MemoryEngine:
         dry_run: bool = False
     ) -> Dict[str, Any]:
         """
-        Identify and merge semantically duplicate memories using DBSCAN clustering.
+        Merge identical text, memory type and validity intervals; retain distinct similar facts.
         Safeguards:
         - Prevents merging temporally disjoint facts.
         - Prevents merging contradictory facts.
@@ -623,7 +654,7 @@ class MemoryEngine:
         dedup_op = MemoryDeduplication(
             vector_store=self.vector_store,
             graph_store=self.graph_store,
-            embedder=self.embedder,
+            embedder=self._embedder,
             eps=eps,
             min_samples=min_samples
         )
@@ -632,6 +663,7 @@ class MemoryEngine:
             dry_run=dry_run
         )
 
+    @serialized
     def consolidate_memories(
         self,
         window_days: int = 30,
@@ -645,7 +677,7 @@ class MemoryEngine:
         Maintains source traceability (provenance) pointing to constituent memory IDs.
         """
         now = int(time.time())
-        end = end_time if end_time is not None else (now + 300)
+        end = end_time if end_time is not None else now
         start = start_time if start_time is not None else (now - window_days * 86400)
         
         consolidation_op = MemoryConsolidation(
@@ -662,6 +694,7 @@ class MemoryEngine:
             dry_run=dry_run
         )
 
+    @serialized
     def run_maintenance(
         self,
         tasks: Optional[List[str]] = None,
@@ -688,17 +721,21 @@ class MemoryEngine:
             reranker=self._reranker
         )
     
+    @serialized
     def close(self):
-        """Close vector and graph database connections cleanly."""
-        try:
-            self.vector_store.close()
-        except Exception:
-            pass
-        try:
-            self.graph_store.close()
-        except Exception:
-            pass
-            
+        """Close both stores, reporting any failure, and allow repeated close calls."""
+        if self._closed:
+            return
+        errors = []
+        for store in (self.vector_store, self.graph_store):
+            try:
+                store.close()
+            except Exception as error:
+                errors.append(error)
+        self._closed = True
+        if errors:
+            raise ExceptionGroup("Memory store close failed", errors)
+
     def __enter__(self):
         return self
         

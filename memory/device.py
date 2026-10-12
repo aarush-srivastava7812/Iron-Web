@@ -69,9 +69,6 @@ def configure_tensorrt_cache(cache_path: str) -> str:
     os.environ["ORT_TENSORRT_TIMING_CACHE_ENABLE"] = "1"
     return resolved
 
-# Execute on import
-ensure_cuda_dlls_loaded()
-
 # Hard limits for RTX 4050 6GB Profile
 TOTAL_VRAM_MB: float = 6141.0
 RESERVED_BUFFER_MB: float = 1024.0       # 1.0 GB safety buffer
@@ -147,16 +144,15 @@ def inspect_device_status(
     # Determine execution mode and status explanation
     if emb_prov.startswith("CUDA") or rerank_prov.startswith("CUDA"):
         mode = "GPU (CUDA)"
-        notes = "Neural models running on local NVIDIA RTX 4050 via CUDAExecutionProvider."
+        notes = "An initialized model uses CUDAExecutionProvider."
     elif emb_prov.startswith("Dml") or rerank_prov.startswith("Dml"):
-        mode = "GPU (DirectML - RTX 4050)"
-        notes = "Neural models hardware-accelerated on local NVIDIA RTX 4050 Laptop GPU via DmlExecutionProvider."
+        mode = "GPU (DirectML)"
+        notes = "An initialized model uses DmlExecutionProvider."
     elif use_gpu_requested and not gpu_provider_available:
         mode = "CPU Fallback"
         notes = (
-            "GPU requested (RTX 4050 detected), but no GPU provider available. "
-            "Models automatically fell back to CPUExecutionProvider. "
-            "Zero local VRAM consumed by models; 1.0GB system buffer safely preserved."
+            "GPU execution was requested, but no CUDA or DirectML provider is available. "
+            "Provider selection uses CPU where necessary."
         )
     elif not use_gpu_requested:
         mode = "CPU Execution"
