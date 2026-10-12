@@ -1,0 +1,187 @@
+[
+  {
+    "source": "report/apply_adapter_cleanup.py",
+    "target": "archive/2026-10-12/maintenance-scripts/apply_adapter_cleanup.py",
+    "sha256": "722d685336acc76e548e10284f0bd45b044e0eb797c5765e7701b2c8af73821c"
+  },
+  {
+    "source": "report/apply_config_cleanup.py",
+    "target": "archive/2026-10-12/maintenance-scripts/apply_config_cleanup.py",
+    "sha256": "e10601916892195c4d1927f413f9886541c23efcd29583e7c36e5327cb987211"
+  },
+  {
+    "source": "report/apply_configuration_and_identity.py",
+    "target": "archive/2026-10-12/maintenance-scripts/apply_configuration_and_identity.py",
+    "sha256": "a28ffdc107869353e0315d9e4d362b30e25b730a25a41958317912d394ac3a87"
+  },
+  {
+    "source": "report/apply_consistency_followup.py",
+    "target": "archive/2026-10-12/maintenance-scripts/apply_consistency_followup.py",
+    "sha256": "d6c5736fd5d15fc72d80554579b9124ba55130999ddb1e9a0ec6ab513db5cc20"
+  },
+  {
+    "source": "report/apply_engine_validation.py",
+    "target": "archive/2026-10-12/maintenance-scripts/apply_engine_validation.py",
+    "sha256": "80cd3a6cdce81bc07f88c646e1d596774ed473da4b23ecf00bf54eac4a9e7376"
+  },
+  {
+    "source": "report/apply_final_source_cleanup.py",
+    "target": "archive/2026-10-12/maintenance-scripts/apply_final_source_cleanup.py",
+    "sha256": "57cf335397344f968709939ac539d96fcd4cd09771fa2c2be23f9563c0147f9c"
+  },
+  {
+    "source": "report/apply_graph_cleanup.py",
+    "target": "archive/2026-10-12/maintenance-scripts/apply_graph_cleanup.py",
+    "sha256": "33c503351ecafa7fc0b184baab30085b178a2eba761f39395262fbee366b1378"
+  },
+  {
+    "source": "report/apply_ingestion_cleanup.py",
+    "target": "archive/2026-10-12/maintenance-scripts/apply_ingestion_cleanup.py",
+    "sha256": "0857c3ec8dff92724792664e4761dc504f3d4dfe3378295552194a62848da3e5"
+  },
+  {
+    "source": "report/apply_lazy_engine.py",
+    "target": "archive/2026-10-12/maintenance-scripts/apply_lazy_engine.py",
+    "sha256": "b603c6047d4a6c49595bee061ff3a1eee547104529d7e3433a57258c4328b2e1"
+  },
+  {
+    "source": "report/apply_maintenance_cleanup.py",
+    "target": "archive/2026-10-12/maintenance-scripts/apply_maintenance_cleanup.py",
+    "sha256": "714a5479339e2b23353aa0ce787531913bd1890c58d2db9790403e007982323f"
+  },
+  {
+    "source": "report/apply_metrics_cleanup.py",
+    "target": "archive/2026-10-12/maintenance-scripts/apply_metrics_cleanup.py",
+    "sha256": "22b9e47ceeb78d77881040b55a7bf8a00b5d59b8fd1253c5aa248f876b7e4856"
+  },
+  {
+    "source": "report/apply_package_cleanup.py",
+    "target": "archive/2026-10-12/maintenance-scripts/apply_package_cleanup.py",
+    "sha256": "56886602529fb7810485dfaae726609253328e6311b0d49587655a018b74274d"
+  },
+  {
+    "source": "report/apply_relation_cleanup.py",
+    "target": "archive/2026-10-12/maintenance-scripts/apply_relation_cleanup.py",
+    "sha256": "b0474f270212f1beafe706c4d1196ad65956060ad71301c29662eecbe1ca3e6a"
+  },
+  {
+    "source": "report/apply_retrieval_cleanup.py",
+    "target": "archive/2026-10-12/maintenance-scripts/apply_retrieval_cleanup.py",
+    "sha256": "8aea9c662f96d5b89b3e6ed196259be21dcc85be0d6ca5189967449a8bd32c0b"
+  },
+  {
+    "source": "report/apply_scope_cleanup.py",
+    "target": "archive/2026-10-12/maintenance-scripts/apply_scope_cleanup.py",
+    "sha256": "f4f639a1333cce1fcfd14c31eb6182b15ecfe22345638002e4b69d1f2410378b"
+  },
+  {
+    "source": "report/apply_storage_cleanup.py",
+    "target": "archive/2026-10-12/maintenance-scripts/apply_storage_cleanup.py",
+    "sha256": "5390e6fd8bbaa385a62bdef453610c4b779504cbd7e5862aad486fb071798cc5"
+  },
+  {
+    "source": "report/apply_store_and_extraction_cleanup.py",
+    "target": "archive/2026-10-12/maintenance-scripts/apply_store_and_extraction_cleanup.py",
+    "sha256": "51a322c787861c65c0b5403efe201ab42d77c2b032dedf8fd8cf6538bceab490"
+  },
+  {
+    "source": "report/clean_model_interfaces.py",
+    "target": "archive/2026-10-12/maintenance-scripts/clean_model_interfaces.py",
+    "sha256": "09da97775512f81fbb73aaeeb7bffcd38d4dfba90d8187e3f956eba578798b64"
+  },
+  {
+    "source": "report/fix_relationship_parameters.py",
+    "target": "archive/2026-10-12/maintenance-scripts/fix_relationship_parameters.py",
+    "sha256": "53f50fe765bda3517cb48d3732a28a3d235d5573b95b956e60cc74f61eb7d7fa"
+  },
+  {
+    "source": "report/replace_requirements_and_acquisition.py",
+    "target": "archive/2026-10-12/maintenance-scripts/replace_requirements_and_acquisition.py",
+    "sha256": "07c6eaf56781d4d314a68d3b4eecc12a4bb81869500857d146d4a6964af85321"
+  },
+  {
+    "source": "report/update_dataset_notes.py",
+    "target": "archive/2026-10-12/maintenance-scripts/update_dataset_notes.py",
+    "sha256": "4e6383f6959210ca55f74c552bcdfae13dd7169f92ed89f05c404e2cce5c02c6"
+  },
+  {
+    "source": "report/write_benchmark_runner.py",
+    "target": "archive/2026-10-12/maintenance-scripts/write_benchmark_runner.py",
+    "sha256": "9c4889728e769ffdfdffd293ce7ea385ccc54f4965dbb4de3655e30ae540335b"
+  },
+  {
+    "source": "report/write_cached_extractor.py",
+    "target": "archive/2026-10-12/maintenance-scripts/write_cached_extractor.py",
+    "sha256": "559bdc8fae4d25f96585b5b195cbbaf4c7af086062279714bbd98e8de11c960e"
+  },
+  {
+    "source": "report/write_research_retrievers.py",
+    "target": "archive/2026-10-12/maintenance-scripts/write_research_retrievers.py",
+    "sha256": "825b9b5b83bd886229fe8957869a399521adfbdeab7b604394e4e7cd8ef06231"
+  },
+  {
+    "source": "report/write_retrieval_modules.py",
+    "target": "archive/2026-10-12/maintenance-scripts/write_retrieval_modules.py",
+    "sha256": "02f75ec9e24644447108b8d83e993651ddce0f0b6980b1284ac0a5925c31790f"
+  },
+  {
+    "source": "report/write_server_cleanup.py",
+    "target": "archive/2026-10-12/maintenance-scripts/write_server_cleanup.py",
+    "sha256": "35c78bdf853f9a2790a7006112952e7e517b23e79b0306fe9cee7ba95c80d837"
+  },
+  {
+    "source": "report/archive_remaining_scripts.ps1",
+    "target": "archive/2026-10-12/maintenance-scripts/archive_remaining_scripts.ps1",
+    "sha256": "b0f544a69c6584b7177b906b979f2b2f5f5a639d144cf37dd05eb0bfb7839ad0"
+  },
+  {
+    "source": "report/archive_state.ps1",
+    "target": "archive/2026-10-12/maintenance-scripts/archive_state.ps1",
+    "sha256": "25ef32ca5c8d3ad3c65a1294b2811740d2a8fa5817e8515c448db7ab061c32e0"
+  },
+  {
+    "source": "report/cleanup_disposable_state.ps1",
+    "target": "archive/2026-10-12/maintenance-scripts/cleanup_disposable_state.ps1",
+    "sha256": "be289a604762daf913e7a164e018162075fb6cf0578c189e7b9781a26e351a80"
+  },
+  {
+    "source": "report/cleanup_file_review.py",
+    "target": "archive/2026-10-12/review-evidence/cleanup_file_review.py",
+    "sha256": "dd5f4d8736958d2d15d47f98e499db3ffb55c2572591ddc601685644fffe1b85"
+  },
+  {
+    "source": "report/cleanup_probes.py",
+    "target": "archive/2026-10-12/review-evidence/cleanup_probes.py",
+    "sha256": "8c75bbcc349c402452cb623af9c2e651908121fe7559b4504b9ad7455096bcd5"
+  },
+  {
+    "source": "report/cleanup_review.py",
+    "target": "archive/2026-10-12/review-evidence/cleanup_review.py",
+    "sha256": "7c0dc81326904dd644a66d7dfc5affc515263ffb3729dc6664c6f35e5ba7481e"
+  },
+  {
+    "source": "report/spec_inspection.py",
+    "target": "archive/2026-10-12/review-evidence/spec_inspection.py",
+    "sha256": "f417843e353b96fb60f6c9b3805c5373ac0e038f83cff3c616527a3ddac4c13d"
+  },
+  {
+    "source": "scripts/archive_sources.ps1",
+    "target": "archive/2026-10-12/maintenance-scripts/archive_sources.ps1",
+    "sha256": "de346729e055e295e2b5eef3bc32b7ca0b0a9301fb066291581611d656c6600b"
+  },
+  {
+    "source": "report/dashboard_verification.json",
+    "target": "report/verification/dashboard_verification.json",
+    "sha256": "4be73383861267c293c996d198b0db4acb16b54abc9a47f7094685ac963d4613"
+  },
+  {
+    "source": "report/dashboard_verification.png",
+    "target": "report/verification/dashboard_verification.png",
+    "sha256": "a72c4136ee138188e52848b32b679b3ee98c392f5925256ebdd8b7d9f926dfb8"
+  },
+  {
+    "source": "report/disposable_cleanup.json",
+    "target": "report/verification/disposable_cleanup.json",
+    "sha256": "2cd2c1c64743ccd5de8eb862031301b75650335f8a3108c2415eec13607836fb"
+  }
+]

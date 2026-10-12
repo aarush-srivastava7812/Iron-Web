@@ -1,0 +1,8 @@
+-m ruff check memory server.py tests research scripts datasets/acquire_datasets.py --select F
+All checks passed!
+
+-m ruff format --check memory server.py tests research scripts datasets/acquire_datasets.py
+72 files already formatted
+
+-m pip check
+No broken requirements found.

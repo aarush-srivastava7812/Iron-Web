@@ -1,0 +1,8 @@
+{
+  "fixture_only": true,
+  "desktop_and_mobile": true,
+  "literal_text_safe": true,
+  "save_and_search": true,
+  "no_fabricated_results": true,
+  "browser_errors": []
+}

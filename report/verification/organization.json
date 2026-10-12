@@ -1,0 +1,22 @@
+[
+  {
+    "source": "report/ui_preview.py",
+    "target": "report\\verification\\scripts\\ui_preview.py",
+    "sha256": "13f629cca570a4a95adcb3f1700a2409feba0c69963cff0edb67fbacb074c3aa"
+  },
+  {
+    "source": "report/verify_dashboard.py",
+    "target": "report\\verification\\scripts\\verify_dashboard.py",
+    "sha256": "8240c69e26d5e0a215c3521782814e7ca3643d5e57ac73d264b41d31561b30ea"
+  },
+  {
+    "source": "report/generate_cleanup_report.py",
+    "target": "report\\verification\\scripts\\generate_cleanup_report.py",
+    "sha256": "b4de2402de1817e34880093a653b016b2b0760c0a549deaf64d3d9b323d49426"
+  },
+  {
+    "source": "report/organize_verification.ps1",
+    "target": "archive\\2026-10-12\\maintenance-scripts\\organize_verification.ps1",
+    "sha256": "9f1148fd9809d2e316997554b00c92d9b17346d24720139b00228c62b9ea6360"
+  }
+]

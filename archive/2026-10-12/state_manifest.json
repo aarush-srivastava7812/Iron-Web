@@ -1,0 +1,339 @@
+{
+  "moves": [
+    {
+      "source": "datasets/letta",
+      "target": "archive/2026-10-12/external-checkouts/letta",
+      "files": 1368,
+      "bytes": 178118895,
+      "sha256": "4785bd8ba32d0e7074234ff4030a56c1098635f442f0e80fe239763bb84b4af1"
+    },
+    {
+      "source": "metrics",
+      "target": "archive/2026-10-12/run-records/metrics",
+      "files": 121,
+      "bytes": 9941044,
+      "sha256": "a30b3571ea94d0cc95342b4d88979d8cbc9b222b3a3c4c6c8bf630aa4b03ac46"
+    },
+    {
+      "source": "results",
+      "target": "archive/2026-10-12/run-records/results",
+      "files": 72,
+      "bytes": 173822,
+      "sha256": "e21cdd91f05cbf9a03588ace36dda194f7077009dfac169e1171ef03e95c5376"
+    },
+    {
+      "source": "screenshots",
+      "target": "archive/2026-10-12/run-records/screenshots",
+      "files": 7,
+      "bytes": 2530133,
+      "sha256": "b1416f2cdcf3da618f7a2b9eb7bf3008f62aabdeaaadec80bdc7c8c5ad5c6d24"
+    },
+    {
+      "source": "data/results",
+      "target": "archive/2026-10-12/run-records/data-results",
+      "files": 31,
+      "bytes": 506004,
+      "sha256": "5e46b8fffbf6f6ca285c1b18e34287b99bf5ad4f7792a0070bb32d30d00a903b"
+    },
+    {
+      "source": "data/ablation_matrix_frozen",
+      "target": "archive/2026-10-12/data/ablation_matrix_frozen",
+      "files": 5,
+      "bytes": 4198121,
+      "sha256": "f4546217b4d0bb0fbd4e34680f7eb9db76fba7ce17d0156342e4195e07c73369"
+    },
+    {
+      "source": "data/ablation_run",
+      "target": "archive/2026-10-12/data/ablation_run",
+      "files": 25,
+      "bytes": 47883075,
+      "sha256": "c32308c86fa6498a55c2a59ce8fab9b328eca54432541d8634f71625914e09bd"
+    },
+    {
+      "source": "data/benchmark_run",
+      "target": "archive/2026-10-12/data/benchmark_run",
+      "files": 24,
+      "bytes": 78024652,
+      "sha256": "f5d851a25e848d0a4ed55e66d9a4fe4ab1fd905e1f42ff4ca5716c792ce915a1"
+    },
+    {
+      "source": "data/benchmark_runs_competitors",
+      "target": "archive/2026-10-12/data/benchmark_runs_competitors",
+      "files": 63,
+      "bytes": 2529578469,
+      "sha256": "181230c3468d0e584078e79836eea854607d8092b6e4fc8994c32df8311ab76d"
+    },
+    {
+      "source": "data/gpu_probe_qdrant",
+      "target": "archive/2026-10-12/data/gpu_probe_qdrant",
+      "files": 3,
+      "bytes": 12962,
+      "sha256": "8e89532e2c4695f15596f6dd9858a3e05d776a02d10cb67228d7a13a90a6a331"
+    },
+    {
+      "source": "data/qdrant_gate4_probe",
+      "target": "archive/2026-10-12/data/qdrant_gate4_probe",
+      "files": 3,
+      "bytes": 12952,
+      "sha256": "cbb0d5cebc3012d78ad36d330d8d7ef46dbd5df3afe38530bf096c757d143d7b"
+    },
+    {
+      "source": "data/kuzu/locomo",
+      "target": "archive/2026-10-12/data/kuzu/locomo",
+      "files": 1,
+      "bytes": 14397440,
+      "sha256": "33924b7c09c31508685e921ad901a29840366675f384871c0d4c6c8a8978482f"
+    },
+    {
+      "source": "data/kuzu/locomo_dryrun",
+      "target": "archive/2026-10-12/data/kuzu/locomo_dryrun",
+      "files": 1,
+      "bytes": 9961472,
+      "sha256": "dd113303040b83e7234165f97c3dc61ee622631d44ebcb464b3836b55270e1b9"
+    },
+    {
+      "source": "data/kuzu/longmemeval_dryrun",
+      "target": "archive/2026-10-12/data/kuzu/longmemeval_dryrun",
+      "files": 1,
+      "bytes": 8716288,
+      "sha256": "0eeed9dd85ef0600d4e043c882389cce15809cbc360fd6b8a311eb649cdcb52d"
+    },
+    {
+      "source": "data/kuzu/test_fresh.db",
+      "target": "archive/2026-10-12/data/kuzu/test_fresh.db",
+      "files": 1,
+      "bytes": 20480,
+      "sha256": "390c0bcabb87affa109b9b1239a6c714ea6460b2c0d7402a483754b09d9d5a2b"
+    },
+    {
+      "source": "data/kuzu/test_fresh2.db",
+      "target": "archive/2026-10-12/data/kuzu/test_fresh2.db",
+      "files": 1,
+      "bytes": 20480,
+      "sha256": "6d9ff72f4235e02c77e23187cd6ed5f4d9c9bfba730a674aa6f113a6a0567bfb"
+    },
+    {
+      "source": "data/official_upstream/hybrid_dbs",
+      "target": "archive/2026-10-12/data/official_upstream/hybrid_dbs",
+      "files": 16,
+      "bytes": 362382527,
+      "sha256": "04654a87d97c24661c824c8b92d045c13573671307094c369ff05831e96f0813"
+    },
+    {
+      "source": "data/official_upstream/mem0_dbs",
+      "target": "archive/2026-10-12/data/official_upstream/mem0_dbs",
+      "files": 12,
+      "bytes": 80561620,
+      "sha256": "efd11eb190ef421fee2c3c463b5db1482f24ebd817bfa3279ae250dc1fb29409"
+    },
+    {
+      "source": "data/official_upstream/mempalace",
+      "target": "archive/2026-10-12/data/official_upstream/mempalace",
+      "files": 41,
+      "bytes": 624333901,
+      "sha256": "b001576dba85a2ec4d7fb274988f6127e43fab96c2080ed2ed75736bfb830c8d"
+    },
+    {
+      "source": "data/official_upstream/mempalace_inputs",
+      "target": "archive/2026-10-12/data/official_upstream/mempalace_inputs",
+      "files": 4393,
+      "bytes": 40456223,
+      "sha256": "a7c89f4732c8e8e67ab3c630c978bd81c738b2aef334fc6b8d2a38a754f23a76"
+    },
+    {
+      "source": "data/official_upstream/zep_dbs",
+      "target": "archive/2026-10-12/data/official_upstream/zep_dbs",
+      "files": 3,
+      "bytes": 31791,
+      "sha256": "e3973d99607778a01ecc603f47e34f668a59d96f43163949f7898854d3c47a7c"
+    },
+    {
+      "source": "datasets/locomo/generative_agents",
+      "target": "archive/2026-10-12/external-checkouts/locomo/generative_agents",
+      "files": 9,
+      "bytes": 152993,
+      "sha256": "7fba85b0a56b5c85acb2c75040b451602b6cc85adbc85daa9a6621f5959c76ba"
+    },
+    {
+      "source": "datasets/locomo/prompt_examples",
+      "target": "archive/2026-10-12/external-checkouts/locomo/prompt_examples",
+      "files": 12,
+      "bytes": 64560,
+      "sha256": "1c8e87da98b208a6ce61cfa9a6f34143c4124346f0032ce659929d0ef5e0160b"
+    },
+    {
+      "source": "datasets/locomo/scripts",
+      "target": "archive/2026-10-12/external-checkouts/locomo/scripts",
+      "files": 9,
+      "bytes": 3925,
+      "sha256": "5fb729779ceb8fbafcce91adf89cc2918fcf6c93c21a1a0a529a60cd8ebcbd4b"
+    },
+    {
+      "source": "datasets/locomo/static",
+      "target": "archive/2026-10-12/external-checkouts/locomo/static",
+      "files": 35,
+      "bytes": 8202537,
+      "sha256": "14b562976642f17ced00d783f006dababf7ea8dd3b1f5b68279cfef0860cd13c"
+    },
+    {
+      "source": "datasets/locomo/.git",
+      "target": "archive/2026-10-12/external-checkouts/locomo/.git",
+      "files": 28,
+      "bytes": 7891803,
+      "sha256": "37d574d53de1ac3340964794fdc625faa13a765352ee895d4fdf1d94ff7637e4"
+    },
+    {
+      "source": "datasets/locomo/index.html",
+      "target": "archive/2026-10-12/external-checkouts/locomo/index.html",
+      "files": 1,
+      "bytes": 18668,
+      "sha256": "003065989858b6ed69b784f21608fff60a50b1fa8dcb9d441816a13126b8c75f"
+    },
+    {
+      "source": "datasets/locomo/hf_icon.png",
+      "target": "archive/2026-10-12/external-checkouts/locomo/hf_icon.png",
+      "files": 1,
+      "bytes": 11028,
+      "sha256": "e25b0f583e013661d934625233403897e3b5289759dd9e2af0c533e163ab259f"
+    },
+    {
+      "source": "datasets/locomo/requirements.txt",
+      "target": "archive/2026-10-12/external-checkouts/locomo/requirements.txt",
+      "files": 1,
+      "bytes": 7941,
+      "sha256": "abee5234bed229e2beab6a6c67ce830500864f5f0d47dad351518f90e90f1192"
+    },
+    {
+      "source": "datasets/longmemeval/assets",
+      "target": "archive/2026-10-12/external-checkouts/longmemeval/assets",
+      "files": 1,
+      "bytes": 980622,
+      "sha256": "2cd7061aba40f6654c84c4de84f227cce6600dad145cadd16b2c8143423f155e"
+    },
+    {
+      "source": "datasets/longmemeval/.git",
+      "target": "archive/2026-10-12/external-checkouts/longmemeval/.git",
+      "files": 28,
+      "bytes": 2007239,
+      "sha256": "77b6f4e7414976212ef74b8d34987d9087c7ac87213ec0dd42ce0bb0395b21de"
+    },
+    {
+      "source": "datasets/longmemeval/requirements-full.txt",
+      "target": "archive/2026-10-12/external-checkouts/longmemeval/requirements-full.txt",
+      "files": 1,
+      "bytes": 476,
+      "sha256": "d36a838fc5242a56fa49a3d45574644a07bcf5fb38d09822506717d4a797d3ee"
+    },
+    {
+      "source": "datasets/longmemeval/requirements-lite.txt",
+      "target": "archive/2026-10-12/external-checkouts/longmemeval/requirements-lite.txt",
+      "files": 1,
+      "bytes": 79,
+      "sha256": "90407398078c316599dfa0074273cebabeac698a3e2c48563f52baee0708d37a"
+    },
+    {
+      "source": "datasets/longmemeval/src/generation",
+      "target": "archive/2026-10-12/external-checkouts/longmemeval/src/generation",
+      "files": 2,
+      "bytes": 24916,
+      "sha256": "9ffd084b9f19c47e674ca1e82add5e883f2ac5d2b67586b6b6b5205bf7b2e12a"
+    },
+    {
+      "source": "datasets/longmemeval/src/index_expansion",
+      "target": "archive/2026-10-12/external-checkouts/longmemeval/src/index_expansion",
+      "files": 7,
+      "bytes": 66161,
+      "sha256": "042a38ecc624997aad04f0c3b977e4facf6bae06f916f852389730de9b88f23e"
+    },
+    {
+      "source": "datasets/longmemeval/src/retrieval",
+      "target": "archive/2026-10-12/external-checkouts/longmemeval/src/retrieval",
+      "files": 4,
+      "bytes": 29070,
+      "sha256": "ba510202e4746f8c9e4febc32a354b61180193ad4c13556bbb3fa6aa8c59285b"
+    }
+  ],
+  "preserved": [
+    {
+      "path": "datasets/locomo/LICENSE.txt",
+      "unchanged": true,
+      "files": 1
+    },
+    {
+      "path": "data/extraction_cache",
+      "unchanged": true,
+      "files": 46
+    },
+    {
+      "path": "datasets/locomo/task_eval",
+      "unchanged": true,
+      "files": 23
+    },
+    {
+      "path": "datasets/longmemeval/src/utils",
+      "unchanged": true,
+      "files": 2
+    },
+    {
+      "path": "data/benchmarks",
+      "unchanged": true,
+      "files": 6
+    },
+    {
+      "path": "researchpapers",
+      "unchanged": true,
+      "files": 5
+    },
+    {
+      "path": "data/kuzu/memory.db",
+      "unchanged": true,
+      "files": 1
+    },
+    {
+      "path": "datasets/dmr/msc_self_instruct.jsonl",
+      "unchanged": true,
+      "files": 1
+    },
+    {
+      "path": "data/official_upstream/slices",
+      "unchanged": true,
+      "files": 7
+    },
+    {
+      "path": "data/qdrant",
+      "unchanged": true,
+      "files": 3
+    },
+    {
+      "path": "datasets/longmemeval/LICENSE",
+      "unchanged": true,
+      "files": 1
+    },
+    {
+      "path": "data/cache",
+      "unchanged": true,
+      "files": 3
+    },
+    {
+      "path": "data/tensorrt_cache",
+      "unchanged": true,
+      "files": 3
+    },
+    {
+      "path": "datasets/longmemeval/src/evaluation",
+      "unchanged": true,
+      "files": 3
+    },
+    {
+      "path": "datasets/longmemeval/data",
+      "unchanged": true,
+      "files": 2
+    },
+    {
+      "path": "datasets/locomo/data",
+      "unchanged": true,
+      "files": 4
+    }
+  ],
+  "credentials_unchanged": true
+}

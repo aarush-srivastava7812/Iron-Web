@@ -1,0 +1,287 @@
+[
+  {
+    "path": "server.py",
+    "lines": 193,
+    "sha256": "da8f57f1fd792bb17f5d35ba60fa1de0531d74466013175160ce462d1e6c0390"
+  },
+  {
+    "path": "memory\\__init__.py",
+    "lines": 36,
+    "sha256": "e364b7add12ad8dfe16cea0c8c42781e4236c75124eb3460f01e5e8f3ea18f15"
+  },
+  {
+    "path": "memory\\config.py",
+    "lines": 59,
+    "sha256": "111fcd44c377299372dd17e2182818cf4d4c588a5ee86de3b414b87a737b7da7"
+  },
+  {
+    "path": "memory\\contradiction\\detector.py",
+    "lines": 352,
+    "sha256": "4f55a6baa3d3b9b3c181f00a51cac7ddf8d60d38f7f0e5cfbd2e889a4bfd79b1"
+  },
+  {
+    "path": "memory\\device.py",
+    "lines": 202,
+    "sha256": "5070c0e8b7a726b15bbceec6117e82a5c00060000228491f7d024551993ba104"
+  },
+  {
+    "path": "memory\\embeddings\\embedder.py",
+    "lines": 166,
+    "sha256": "c5f2e8db533157920e47a3611f6c59cf5cad31fc3664beeedd58e61b92b78765"
+  },
+  {
+    "path": "memory\\engine.py",
+    "lines": 1005,
+    "sha256": "87c1b4f199fef71f4847c9de7ad339043dd172054e8525f5e169c81b8d537291"
+  },
+  {
+    "path": "memory\\evaluation\\harness\\__init__.py",
+    "lines": 39,
+    "sha256": "f42ee98f652300b75cb8931d1dbfa3759ae589014fd5bf0052a2a0e628634181"
+  },
+  {
+    "path": "memory\\evaluation\\harness\\base.py",
+    "lines": 198,
+    "sha256": "c3a92ef8d98d7317853a9481fe0236f73e019f59c8c7f24c91367f0e969ba0ca"
+  },
+  {
+    "path": "memory\\evaluation\\harness\\dates.py",
+    "lines": 34,
+    "sha256": "1fa9bf212d3dbdf990bc796f5fa16725522f19abef27f249d6bd1558aeafcdd2"
+  },
+  {
+    "path": "memory\\evaluation\\harness\\dmr_adapter.py",
+    "lines": 91,
+    "sha256": "733c841d90d2d591ae49898353aa2ebf0d31faa5e7f6192c8d2bee74f3f970f6"
+  },
+  {
+    "path": "memory\\evaluation\\harness\\evaluator.py",
+    "lines": 351,
+    "sha256": "b3025df68572a862c0ae358d8306c31e7cdf1a6115599da12e48f444f7f5af89"
+  },
+  {
+    "path": "memory\\evaluation\\harness\\locomo_adapter.py",
+    "lines": 224,
+    "sha256": "b7a290cc01c2d884f37fd315df2d5e0bd90e655b0d591150c4a2f03b3c77c2dc"
+  },
+  {
+    "path": "memory\\evaluation\\harness\\longmemeval_adapter.py",
+    "lines": 202,
+    "sha256": "1518279c3ac163879d9a2fde81066690320c39ad8c4113d0f7ce38c1c56c670e"
+  },
+  {
+    "path": "memory\\evaluation\\harness\\persistence.py",
+    "lines": 51,
+    "sha256": "968453911c112e1706d6fec057c5eab29c85f39ffc56d1873de041089e162b00"
+  },
+  {
+    "path": "memory\\evaluation\\harness\\runner.py",
+    "lines": 240,
+    "sha256": "f036f5ca16360c0f4835048aedb183b48afe3e5ba204c97b72016fbfda1d6fe7"
+  },
+  {
+    "path": "memory\\evaluation\\metrics.py",
+    "lines": 117,
+    "sha256": "5e6a9605713925e8cd160e67bd81dfe21435903a1d30cf20d6b70e6a2b39e950"
+  },
+  {
+    "path": "memory\\evaluation\\official_corpora.py",
+    "lines": 44,
+    "sha256": "962731b98fa0932476a805897424b09c3dc20b9dafd9d4b181651a88a194f5b7"
+  },
+  {
+    "path": "memory\\evaluation\\retrieval_metrics.py",
+    "lines": 60,
+    "sha256": "7975e4011590de4109d25f7ccc04452c0d087f6cb557d5076d95b684eab207b4"
+  },
+  {
+    "path": "memory\\evaluation\\slices.py",
+    "lines": 118,
+    "sha256": "ae468a768cda9dcc70cc87cb1e97365ce3d3b1dd05203a9c892e543258422ec0"
+  },
+  {
+    "path": "memory\\graph\\__init__.py",
+    "lines": 5,
+    "sha256": "8a46e906c9ed7abf11b44c048b1424c94ba4db87fb0b070042347936c7f0f760"
+  },
+  {
+    "path": "memory\\graph\\kuzu_store.py",
+    "lines": 1096,
+    "sha256": "0ed557d7720e35b437b97744a78a2a7434b599c42656847f0ea1dea470be40ff"
+  },
+  {
+    "path": "memory\\ingestion\\__init__.py",
+    "lines": 28,
+    "sha256": "c9d03635ef987607912ac217c61f30278ae1e4f7b9336b1fc61f6f50eb07fe66"
+  },
+  {
+    "path": "memory\\ingestion\\cached_nim_extractor.py",
+    "lines": 104,
+    "sha256": "d55aa6c34ff5bd9776ffc1f6dab510f0dc3b9ed49b12a5c823c245edf83eaf22"
+  },
+  {
+    "path": "memory\\ingestion\\extractor.py",
+    "lines": 224,
+    "sha256": "4c258275fd91cb4bfd7caf5f0047cac93e46b09fc9a1610f83f811061381aa98"
+  },
+  {
+    "path": "memory\\ingestion\\nim_extractor.py",
+    "lines": 271,
+    "sha256": "ef20b81112f39a503fe1e0bcd8b55b7d881a5b97a85d12de2869a962f661e006"
+  },
+  {
+    "path": "memory\\ingestion\\pipeline.py",
+    "lines": 86,
+    "sha256": "472badd1fc78ef95569f49a2e01416d7bf4d8496938dbca3878bfbc1d42ff79d"
+  },
+  {
+    "path": "memory\\maintenance\\maintenance.py",
+    "lines": 645,
+    "sha256": "b56a6382e6d6fb88fb29489aafabc891053ea51318115f606c91f1fb13e6dc6c"
+  },
+  {
+    "path": "memory\\models.py",
+    "lines": 75,
+    "sha256": "d36ea797f5af4422a7087194714aaa7dbda152f34b3ff7924b60d34f3856fb66"
+  },
+  {
+    "path": "memory\\ranking\\reranker.py",
+    "lines": 203,
+    "sha256": "f9d76638b0b52cbaa2c17c70e6d007a20c44269668d2a180614833dd60ed6018"
+  },
+  {
+    "path": "memory\\ranking\\scorer.py",
+    "lines": 97,
+    "sha256": "89499d0862ba733c0163178f5e70bea0b753c9b686e8c0f7613f5fc43bbae77c"
+  },
+  {
+    "path": "memory\\retrieval\\hybrid.py",
+    "lines": 257,
+    "sha256": "12c7c13521452ed8f63e9a783e21694497396697398440f8adef82e9974cef10"
+  },
+  {
+    "path": "memory\\retrieval\\vector.py",
+    "lines": 138,
+    "sha256": "92677635e94255430bbdcd7bfed9d936ccf36f2b4e176fc0b476649dd563676c"
+  },
+  {
+    "path": "memory\\schema.py",
+    "lines": 21,
+    "sha256": "9f4ec9613b91268d62634961dff6450907ff7ccf0b243b38cbbff11897b1b859"
+  },
+  {
+    "path": "memory\\storage.py",
+    "lines": 43,
+    "sha256": "2c0cc4870c22db4e94f7d2eaa55752d93e69d7d0f501d5d4a7f5c0a10ab095a4"
+  },
+  {
+    "path": "memory\\temporal\\filter.py",
+    "lines": 139,
+    "sha256": "4f7338b73b0e0b37865937525080ce16d45f2536e67dcd4b3d90454e72ce351a"
+  },
+  {
+    "path": "memory\\tool_adapter.py",
+    "lines": 100,
+    "sha256": "5949959f36aedf6b986f151de72f25885c68748ae691e906492635c648fc65e0"
+  },
+  {
+    "path": "memory\\validation.py",
+    "lines": 51,
+    "sha256": "b88304ddf347e5bacac21706cac1a179ae7d642e90522e9708aedb56f2b8101e"
+  },
+  {
+    "path": "memory\\vector_store\\qdrant_store.py",
+    "lines": 349,
+    "sha256": "0388e4ad3e0febbab085388511cb0850ba87ba5421c6d231a17376c8d3ed97b0"
+  },
+  {
+    "path": "scripts\\build_dmr_benchmark.py",
+    "lines": 88,
+    "sha256": "f89cf5e88b50466e8a5cfa657740d4accd9cde57c24abcd75d64d5ac2ed665f1"
+  },
+  {
+    "path": "scripts\\diagnose.py",
+    "lines": 103,
+    "sha256": "0f347b8645c64945899f6cbca677d7048ff332a7bd0a7cdeabb58ed45ed01bdb"
+  },
+  {
+    "path": "scripts\\evaluate.py",
+    "lines": 99,
+    "sha256": "8085be71c098b04a997e4ac5871076a3353310696f79e2a6adf8782c26a9e7d4"
+  },
+  {
+    "path": "scripts\\export_slice.py",
+    "lines": 30,
+    "sha256": "9dd4ec670bd248299c394e1cd78656b4fc71e552479c734023d6c564462473be"
+  },
+  {
+    "path": "datasets\\acquire_datasets.py",
+    "lines": 86,
+    "sha256": "9a119fc09568b1deef76401dfb2d4b41522ccbd3a1dd121f3cb3b3dd1a77946f"
+  },
+  {
+    "path": "research\\__init__.py",
+    "lines": 1,
+    "sha256": "2d779b133d99b0b2b6fab2a3ca7939676b885cf721bbe2e1407dd8c7d510c108"
+  },
+  {
+    "path": "research\\engine.py",
+    "lines": 58,
+    "sha256": "0bfd0ad1c16f88a594312266531c39656c698e40c4387f0f1f8e48711326f959"
+  },
+  {
+    "path": "research\\retrievers\\__init__.py",
+    "lines": 1,
+    "sha256": "2d779b133d99b0b2b6fab2a3ca7939676b885cf721bbe2e1407dd8c7d510c108"
+  },
+  {
+    "path": "research\\retrievers\\contrastive.py",
+    "lines": 224,
+    "sha256": "0beb03964c489657b6f6b2a8db079fb02fe349f327b1b90f791384ce467a56de"
+  },
+  {
+    "path": "research\\retrievers\\fusion.py",
+    "lines": 19,
+    "sha256": "7df4e61180594887cb851a58d8b03cf14053b35921c620f46c26b1ba108dcd27"
+  },
+  {
+    "path": "research\\retrievers\\inspired.py",
+    "lines": 98,
+    "sha256": "5f01366b0b4a1b7a480bd010ba9612c14897fdc1bd0b3c756f879901af9821d3"
+  },
+  {
+    "path": "research\\upstream\\__init__.py",
+    "lines": 1,
+    "sha256": "2d779b133d99b0b2b6fab2a3ca7939676b885cf721bbe2e1407dd8c7d510c108"
+  },
+  {
+    "path": "research\\upstream\\backend.py",
+    "lines": 78,
+    "sha256": "28ad836a47c3cc580c7c879aa317fcba6c0230a943220e301a63010f9b330332"
+  },
+  {
+    "path": "research\\upstream\\compare.py",
+    "lines": 92,
+    "sha256": "e17e53441c5265c66d087a1ab9bff75f5c7847913f4c2c1ca0783b3c5884d79f"
+  },
+  {
+    "path": "research\\upstream\\packages.py",
+    "lines": 222,
+    "sha256": "2ca5c0c0b41ee90a633f3452395669c8be35da9e590ed2e34782e49825d1325c"
+  },
+  {
+    "path": "web\\app.js",
+    "lines": 68,
+    "sha256": "5216b7b20e0b1af5a31b633d146138dc100770fa46f43268ffcac85fe93f13e6"
+  },
+  {
+    "path": "web\\index.html",
+    "lines": 23,
+    "sha256": "dbb270ddfba8cf4954ef551a6f861c874d53d3fd67d779f7079c6a6ca67a48f0"
+  },
+  {
+    "path": "web\\style.css",
+    "lines": 9,
+    "sha256": "b7e93df61f4d33ba0ccda3658320bdc07dc2c7d48f5c11f63b203c4a172eab97"
+  }
+]
