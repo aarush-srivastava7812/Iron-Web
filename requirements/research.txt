@@ -1,0 +1,4 @@
+# Optional SDK versions recorded by the original upstream research profile.
+mem0ai==2.2.1
+zep-cloud==3.30.0
+mempalace==3.10.0

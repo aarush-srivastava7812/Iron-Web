@@ -1,5 +1,7 @@
 # Iron Web — Prioritized Cleanup Plan
 
+**Historical review:** This document describes the pre-cleanup baseline, Git commit `724c551`. See [current implementation](../docs/specification.md) and [applied cleanup report](cleanup_implementation_report.md) for the updated behavior.
+
 **Date:** 12 October 2026  
 **Status:** Proposed plan; application code and existing research records have not been changed.
 

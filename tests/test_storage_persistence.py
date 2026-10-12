@@ -7,10 +7,9 @@ Tests verify:
 4. Kuzu memory deletion and orphaned entity cleanup.
 5. Shared identifier alignment across Qdrant and Kuzu.
 """
-import numpy as np
-import pytest
 
-from memory.embeddings.embedder import Embedder
+import numpy as np
+
 from memory.vector_store.qdrant_store import QdrantVectorStore
 from memory.graph.kuzu_store import KuzuGraphStore
 from memory.contradiction.detector import ContradictionDetector
@@ -27,7 +26,6 @@ def test_qdrant_write_close_reopen(tmp_path):
         collection_name="test_memories",
         dimension=dim,
         distance="Cosine",
-        quantization=False,
     )
     vec1 = np.array([0.1, 0.2, 0.3, 0.4], dtype=np.float32)
     vec2 = np.array([0.9, 0.8, 0.7, 0.6], dtype=np.float32)
@@ -59,7 +57,6 @@ def test_qdrant_write_close_reopen(tmp_path):
         collection_name="test_memories",
         dimension=dim,
         distance="Cosine",
-        quantization=False,
     )
     assert store2.count() == 2
 
@@ -255,7 +252,6 @@ def test_shared_identifier_alignment(tmp_path):
         collection_name="shared_test",
         dimension=4,
         distance="Cosine",
-        quantization=False,
     )
     kuzu = KuzuGraphStore(db_path=kuzu_path)
 

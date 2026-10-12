@@ -1,4 +1,5 @@
 """In-process Python tool adapter. This module does not provide an MCP transport."""
+
 from memory.engine import MemoryEngine
 from memory.models import EngineStorageError
 
@@ -9,22 +10,75 @@ class MemoryToolAdapter:
 
     def get_tool_definitions(self):
         definitions = [
-            ("add_memory", "Save a memory.", {"content": {"type": "string"}, "metadata": {"type": "object"}}, ["content"]),
-            ("search_memory", "Search saved memories.", {"query": {"type": "string"}, "k": {"type": "integer", "minimum": 1, "maximum": 100}}, ["query"]),
-            ("get_memory", "Read a saved memory by ID.", {"memory_id": {"type": "string"}}, ["memory_id"]),
-            ("delete_memory", "Delete a saved memory by ID.", {"memory_id": {"type": "string"}}, ["memory_id"]),
-            ("get_device_telemetry", "Read observed execution providers and device memory.", {}, []),
-            ("run_maintenance", "Run the listed maintenance tasks; an empty list runs none.",
-             {"tasks": {"type": "array", "items": {"type": "string", "enum": ["decay", "dedup", "consolidate"]}},
-              "dry_run": {"type": "boolean", "default": True}}, []),
+            (
+                "add_memory",
+                "Save a memory.",
+                {"content": {"type": "string"}, "metadata": {"type": "object"}},
+                ["content"],
+            ),
+            (
+                "search_memory",
+                "Search saved memories.",
+                {
+                    "query": {"type": "string"},
+                    "k": {"type": "integer", "minimum": 1, "maximum": 100},
+                },
+                ["query"],
+            ),
+            (
+                "get_memory",
+                "Read a saved memory by ID.",
+                {"memory_id": {"type": "string"}},
+                ["memory_id"],
+            ),
+            (
+                "delete_memory",
+                "Delete a saved memory by ID.",
+                {"memory_id": {"type": "string"}},
+                ["memory_id"],
+            ),
+            (
+                "get_device_telemetry",
+                "Read observed execution providers and device memory.",
+                {},
+                [],
+            ),
+            (
+                "run_maintenance",
+                "Run the listed maintenance tasks; an empty list runs none.",
+                {
+                    "tasks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": ["decay", "dedup", "consolidate"],
+                        },
+                    },
+                    "dry_run": {"type": "boolean", "default": True},
+                },
+                [],
+            ),
         ]
-        return [dict(name=name, description=description, inputSchema=dict(type="object", properties=properties, required=required))
-                for name, description, properties, required in definitions]
+        return [
+            dict(
+                name=name,
+                description=description,
+                inputSchema=dict(
+                    type="object", properties=properties, required=required
+                ),
+            )
+            for name, description, properties, required in definitions
+        ]
 
     def call_tool(self, name, arguments):
-        methods = {"add_memory": self.engine.add, "search_memory": self.engine.search, "get_memory": self.engine.get,
-                   "delete_memory": self.engine.delete, "get_device_telemetry": self.engine.get_device_status,
-                   "run_maintenance": self.engine.run_maintenance}
+        methods = {
+            "add_memory": self.engine.add,
+            "search_memory": self.engine.search,
+            "get_memory": self.engine.get,
+            "delete_memory": self.engine.delete,
+            "get_device_telemetry": self.engine.get_device_status,
+            "run_maintenance": self.engine.run_maintenance,
+        }
         if name not in methods or not isinstance(arguments, dict):
             return dict(success=False, error="Unknown tool or invalid argument object.")
         arguments = dict(arguments)
@@ -35,7 +89,10 @@ class MemoryToolAdapter:
             if hasattr(result, "model_dump"):
                 result = result.model_dump()
             elif isinstance(result, list):
-                result = [value.model_dump() if hasattr(value, "model_dump") else value for value in result]
+                result = [
+                    value.model_dump() if hasattr(value, "model_dump") else value
+                    for value in result
+                ]
             return dict(success=True, result=result)
         except EngineStorageError as error:
             return dict(success=False, error=str(error), rolled_back=error.rolled_back)

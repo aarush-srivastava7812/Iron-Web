@@ -31,5 +31,5 @@ retrieval:
     theta_contradiction: 0.5
 nim:
   base_url: https://integrate.api.nvidia.com/v1
-  extractor_model: meta/llama-3.1-70b-instruct
+  extractor_model: meta/llama-3.2-11b-vision-instruct
   cache_dir: ./data/extraction_cache

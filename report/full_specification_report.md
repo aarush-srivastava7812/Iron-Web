@@ -1,5 +1,7 @@
 # Iron Web — Software Specification Report
 
+**Historical review:** This document describes the pre-cleanup baseline, Git commit `724c551`. See [current implementation](../docs/specification.md) and [applied cleanup report](cleanup_implementation_report.md) for the updated behavior.
+
 **Review date:** 12 October 2026  
 **Workspace:** `D:\Opencode_\reserchpaper`  
 **Specification basis:** source code and local artifacts present at review time  

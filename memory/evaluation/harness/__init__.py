@@ -5,6 +5,7 @@ Provides unified, decoupled evaluation adapters and orchestrators for:
 - LoCoMo
 - DMR (Multi-Session Chat)
 """
+
 from memory.evaluation.harness.base import (
     BenchmarkAdapter,
     BenchmarkDocument,

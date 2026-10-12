@@ -29,3 +29,9 @@ report/*_dispositions.json
 report/*_validation.json
 report/spec_verification.json
 logs/
+archive/**/external-checkouts/
+archive/**/run-records/
+archive/**/data/
+report/*_temp/
+report/schema_probe.db*
+report/runtime_verification.json

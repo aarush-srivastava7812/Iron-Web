@@ -29,7 +29,7 @@ $("searchForm").addEventListener("submit", async event => {
     $("searchStatus").textContent = `${data.count} results · ${data.latency_ms.toFixed(1)} ms`;
     for (const result of data.results) {
       const card = node("article", ""); card.className = "result-card";
-      card.append(node("h3", result.memory_id), node("p", result.content), node("small", `Score ${result.score.toFixed(4)} · ${result.retrieval_method}`));
+      card.append(node("h3", result.memory_id), node("p", result.content), node("small", `Score ${result.score === null ? "Unavailable" : result.score.toFixed(4)} · ${result.retrieval_method}`));
       const details = node("details", ""); details.append(node("summary", "Saved details"), node("pre", JSON.stringify({metadata: result.metadata, trace: result.retrieval_trace}, null, 2)));
       card.append(details); $("results").append(card);
     }

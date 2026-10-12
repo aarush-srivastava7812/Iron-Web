@@ -3,13 +3,13 @@ LongMemEval benchmark adapter.
 Parses official LongMemEval cleaned release preserving question types,
 dates, evidence sessions, and conversational haystacks.
 """
+
 from __future__ import annotations
 
 import json
-import os
 from memory.evaluation.harness.dates import parse_timestamp
 from pathlib import Path
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Optional
 
 from memory.evaluation.harness.base import (
     BenchmarkAdapter,
@@ -41,12 +41,27 @@ class LongMemEvalAdapter(BenchmarkAdapter):
         root = Path(__file__).resolve().parents[3]
         candidates = [
             (root / "datasets/longmemeval/data/longmemeval_s_cleaned.json"),
-            (Path(__file__).resolve().parents[3] / "data/benchmarks/longmemeval/corpus.json"),
+            (
+                Path(__file__).resolve().parents[3]
+                / "data/benchmarks/longmemeval/corpus.json"
+            ),
         ]
         for c in candidates:
             if c.exists():
                 return c
         raise FileNotFoundError("Could not locate LongMemEval dataset files.")
+
+    def _read_data(self):
+        if not hasattr(self, "_data"):
+            self._data = json.loads(self.resolved_path.read_text(encoding="utf-8"))
+            if not isinstance(self._data, list):
+                raise ValueError("Benchmark source must be a records array.")
+        return self._data
+
+    @property
+    def _official_format(self):
+        records = self._read_data()
+        return bool(records and "haystack_sessions" in records[0])
 
     def _parse_date_to_timestamp(self, date_str: str) -> int:
         return parse_timestamp(date_str)
@@ -58,21 +73,23 @@ class LongMemEvalAdapter(BenchmarkAdapter):
         """
         docs_by_id: Dict[str, BenchmarkDocument] = {}
 
-        if self.resolved_path.name.endswith(".json") and "s_cleaned" in self.resolved_path.name:
-            records = json.loads(self.resolved_path.read_text(encoding="utf-8"))
+        if self._official_format:
+            records = self._read_data()
             self._loaded_question_ids = []
             for item in records:
                 sessions = item.get("haystack_sessions", [])
                 dates = item.get("haystack_dates", [])
                 session_ids = item.get("haystack_session_ids", [])
-                
+
                 if not (len(session_ids) == len(dates) == len(sessions)):
-                    raise ValueError("LongMemEval session IDs, dates and dialogues have different lengths.")
+                    raise ValueError(
+                        "LongMemEval session IDs, dates and dialogues have different lengths."
+                    )
                 for s_id, s_date, turns in zip(session_ids, dates, sessions):
                     doc_id = f"longmemeval:{s_id}"
                     if doc_id in docs_by_id:
                         continue
-                    
+
                     # Format session dialogue turns
                     text_lines = []
                     for turn in turns:
@@ -81,7 +98,7 @@ class LongMemEvalAdapter(BenchmarkAdapter):
                         if content:
                             text_lines.append(f"{speaker}: {content}")
                     text = "\n".join(text_lines)
-                    
+
                     ts = self._parse_date_to_timestamp(s_date)
                     doc = BenchmarkDocument(
                         doc_id=doc_id,
@@ -91,8 +108,8 @@ class LongMemEvalAdapter(BenchmarkAdapter):
                         metadata={
                             "benchmark": "longmemeval",
                             "session_id": s_id,
-                            "date": s_date
-                        }
+                            "date": s_date,
+                        },
                     )
                     docs_by_id[doc_id] = doc
 
@@ -101,7 +118,7 @@ class LongMemEvalAdapter(BenchmarkAdapter):
                     break
         else:
             # Fallback to materialized corpus.json
-            corpus_data = json.loads(self.resolved_path.read_text(encoding="utf-8"))
+            corpus_data = self._read_data()
             for entry in corpus_data:
                 meta = entry.get("metadata", {})
                 doc = BenchmarkDocument(
@@ -111,7 +128,7 @@ class LongMemEvalAdapter(BenchmarkAdapter):
                     timestamp=self._parse_date_to_timestamp(meta.get("date", "")),
                     valid_from=meta.get("valid_from", 0),
                     valid_until=meta.get("valid_until", 2**63 - 1),
-                    metadata=meta
+                    metadata=meta,
                 )
                 docs_by_id[doc.doc_id] = doc
                 if limit and len(docs_by_id) >= limit:
@@ -126,9 +143,9 @@ class LongMemEvalAdapter(BenchmarkAdapter):
         Prioritizes questions whose session histories were loaded into documents.
         """
         examples: List[BenchmarkExample] = []
-        
-        if self.resolved_path.name.endswith(".json") and "s_cleaned" in self.resolved_path.name:
-            records = json.loads(self.resolved_path.read_text(encoding="utf-8"))
+
+        if self._official_format:
+            records = self._read_data()
             records_by_qid = {item["question_id"]: item for item in records}
             ordered_items = []
             if hasattr(self, "_loaded_question_ids") and self._loaded_question_ids:
@@ -143,15 +160,24 @@ class LongMemEvalAdapter(BenchmarkAdapter):
                 ex = BenchmarkExample(
                     example_id=item["question_id"],
                     query=item["question"],
-                    ground_truth_ids=[f"longmemeval:{s_id}" for s_id in item.get("answer_session_ids", [])],
+                    ground_truth_ids=[
+                        f"longmemeval:{s_id}"
+                        for s_id in item.get("answer_session_ids", [])
+                    ],
                     gold_answer=str(item.get("answer", "")),
                     category=item.get("question_type", "temporal_qa"),
                     target_date=item.get("question_date"),
-                    query_time=self._parse_date_to_timestamp(item.get("question_date", "")),
+                    query_time=self._parse_date_to_timestamp(
+                        item.get("question_date", "")
+                    ),
                     metadata={
+                        "corpus_ids": [
+                            f"longmemeval:{sid}"
+                            for sid in item.get("haystack_session_ids", [])
+                        ],
                         "raw_answer_session_ids": item.get("answer_session_ids", []),
-                        "question_type": item.get("question_type")
-                    }
+                        "question_type": item.get("question_type"),
+                    },
                 )
                 examples.append(ex)
                 if limit and len(examples) >= limit:
@@ -167,7 +193,7 @@ class LongMemEvalAdapter(BenchmarkAdapter):
                         query=q["text"],
                         ground_truth_ids=q.get("ground_truth_ids", []),
                         gold_answer=q.get("answer", ""),
-                        category="general"
+                        category="general",
                     )
                     examples.append(ex)
                     if limit and len(examples) >= limit:

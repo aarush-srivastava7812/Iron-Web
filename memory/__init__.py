@@ -1,63 +1,36 @@
-"""
-Hybrid Long-Term AI Memory System
+"""Local vector/graph memory API. Optional models and clients are imported on demand."""
 
-A production-ready hybrid memory architecture combining:
-- Episodic memory (LangGraph checkpointer)
-- Semantic memory (Qdrant + FastEmbed)
-- Procedural memory (Kuzu graph)
-- Hybrid retrieval (Vector + Graph + Reranker)
-- Contrastive retrieval
-- Temporal filtering
-- Contradiction detection
-- Maintenance (decay, dedup, consolidation)
-"""
-from memory.embeddings.embedder import Embedder, get_embedder
-from memory.vector_store.qdrant_store import QdrantVectorStore
-from memory.graph import KuzuGraphStore, create_graph_store, RelationType, GraphStore
-from memory.retrieval.hybrid import HybridRetriever, RetrievalConfig
-from memory.retrieval.contrastive import ContrastiveRetriever
-from memory.ranking.reranker import Reranker, get_reranker
-from memory.ranking.scorer import ScoringWeights, RetrievalConfig
-from memory.temporal.filter import TemporalFilter
-from memory.contradiction.detector import ContradictionDetector
-from memory.maintenance.maintenance import MaintenanceManager
-from memory.ingestion.pipeline import IngestionPipeline
-from memory.ingestion.nim_extractor import NIMExtractor
-from memory.models import (
-    MemoryRecord,
-    MemorySearchResult,
-    MemoryMetadata,
-    SearchFilter,
-    DeviceStatus,
-    EngineStorageError,
-)
-from memory.engine import MemoryEngine
+from importlib import import_module
 
-__version__ = "1.0.0"
-__all__ = [
-    "MemoryEngine",
-    "MemoryRecord",
-    "MemorySearchResult",
-    "MemoryMetadata",
-    "SearchFilter",
-    "DeviceStatus",
-    "EngineStorageError",
-    "Embedder",
-    "get_embedder",
-    "QdrantVectorStore",
-    "KuzuGraphStore",
-    "create_graph_store",
-    "RelationType",
-    "GraphStore",
-    "HybridRetriever",
-    "RetrievalConfig",
-    "ContrastiveRetriever",
-    "Reranker",
-    "get_reranker",
-    "ScoringWeights",
-    "TemporalFilter",
-    "ContradictionDetector",
-    "MaintenanceManager",
-    "IngestionPipeline",
-    "NIMExtractor",
-]
+_EXPORTS = {
+    "MemoryEngine": ("memory.engine", "MemoryEngine"),
+    "MemoryRecord": ("memory.models", "MemoryRecord"),
+    "MemorySearchResult": ("memory.models", "MemorySearchResult"),
+    "DeviceStatus": ("memory.models", "DeviceStatus"),
+    "EngineStorageError": ("memory.models", "EngineStorageError"),
+    "MemoryToolAdapter": ("memory.tool_adapter", "MemoryToolAdapter"),
+    "QdrantVectorStore": ("memory.vector_store.qdrant_store", "QdrantVectorStore"),
+    "KuzuGraphStore": ("memory.graph.kuzu_store", "KuzuGraphStore"),
+    "Embedder": ("memory.embeddings.embedder", "Embedder"),
+    "get_embedder": ("memory.embeddings.embedder", "get_embedder"),
+    "Reranker": ("memory.ranking.reranker", "Reranker"),
+    "get_reranker": ("memory.ranking.reranker", "get_reranker"),
+    "HybridRetriever": ("memory.retrieval.hybrid", "HybridRetriever"),
+    "RetrievalConfig": ("memory.ranking.scorer", "RetrievalConfig"),
+    "ScoringWeights": ("memory.ranking.scorer", "ScoringWeights"),
+    "IngestionPipeline": ("memory.ingestion.pipeline", "IngestionPipeline"),
+    "NIMExtractor": ("memory.ingestion.nim_extractor", "NIMExtractor"),
+    "TemporalFilter": ("memory.temporal.filter", "TemporalFilter"),
+    "ContradictionDetector": ("memory.contradiction.detector", "ContradictionDetector"),
+    "MaintenanceScheduler": ("memory.maintenance.maintenance", "MaintenanceScheduler"),
+}
+__all__ = list(_EXPORTS)
+
+
+def __getattr__(name):
+    if name not in _EXPORTS:
+        raise AttributeError(name)
+    module, attribute = _EXPORTS[name]
+    value = getattr(import_module(module), attribute)
+    globals()[name] = value
+    return value

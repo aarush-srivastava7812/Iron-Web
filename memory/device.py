@@ -1,16 +1,9 @@
-"""
-Hardware and GPU management for Iron Web / Hybrid Memory.
-Optimized for NVIDIA GeForce RTX 4050 Laptop GPU (6GB VRAM profile).
-Enforces:
-- 1.0 GB mandatory safety buffer reserved for Windows / display / applications
-- <= 5.0 GB operational ceiling
-- Safe CPU fallback when CUDA is unavailable or initialization fails
-- Observable runtime provider reporting and real-time VRAM telemetry
-"""
+"""Observed device status and optional Windows runtime preparation. VRAM values are telemetry; profile targets are not allocation limits."""
+
 import os
 import site
 import subprocess
-from typing import Tuple, Optional, List, Dict, Any
+from typing import Tuple, Optional, List, Any
 
 from memory.models import DeviceStatus
 
@@ -18,6 +11,7 @@ from memory.models import DeviceStatus
 # directory remains in Windows' DLL search path. Retain these handles for the
 # process lifetime rather than letting them be garbage-collected immediately.
 _CUDA_DLL_DIRECTORY_HANDLES = []
+
 
 # Automatically register NVIDIA cuDNN, cuBLAS, and CUDA DLL directories
 def ensure_cuda_dlls_loaded() -> bool:
@@ -32,7 +26,9 @@ def ensure_cuda_dlls_loaded() -> bool:
             tensorrt_bin = os.path.join(site_pkg, "tensorrt_libs")
             if os.path.exists(tensorrt_bin):
                 try:
-                    _CUDA_DLL_DIRECTORY_HANDLES.append(os.add_dll_directory(tensorrt_bin))
+                    _CUDA_DLL_DIRECTORY_HANDLES.append(
+                        os.add_dll_directory(tensorrt_bin)
+                    )
                     registered = True
                 except Exception:
                     pass
@@ -42,16 +38,27 @@ def ensure_cuda_dlls_loaded() -> bool:
             if os.path.exists(nvidia_dir):
                 # CUDAExecutionProvider also loads cudart64_12.dll. Keep every
                 # pip-installed NVIDIA runtime directory on the DLL search path.
-                for sub in ["cuda_runtime", "cudnn", "cublas", "cufft", "cuda_nvrtc", "nvjitlink"]:
+                for sub in [
+                    "cuda_runtime",
+                    "cudnn",
+                    "cublas",
+                    "cufft",
+                    "cuda_nvrtc",
+                    "nvjitlink",
+                ]:
                     bin_dir = os.path.join(nvidia_dir, sub, "bin")
                     if os.path.exists(bin_dir):
                         try:
-                            _CUDA_DLL_DIRECTORY_HANDLES.append(os.add_dll_directory(bin_dir))
+                            _CUDA_DLL_DIRECTORY_HANDLES.append(
+                                os.add_dll_directory(bin_dir)
+                            )
                             registered = True
                         except Exception:
                             pass
                         if bin_dir not in os.environ.get("PATH", ""):
-                            os.environ["PATH"] = bin_dir + ";" + os.environ.get("PATH", "")
+                            os.environ["PATH"] = (
+                                bin_dir + ";" + os.environ.get("PATH", "")
+                            )
         return registered
     except Exception:
         return False
@@ -69,9 +76,10 @@ def configure_tensorrt_cache(cache_path: str) -> str:
     os.environ["ORT_TENSORRT_TIMING_CACHE_ENABLE"] = "1"
     return resolved
 
-# Hard limits for RTX 4050 6GB Profile
+
+# Informational target for the original 6 GB hardware profile; not an enforced allocator limit.
 TOTAL_VRAM_MB: float = 6141.0
-RESERVED_BUFFER_MB: float = 1024.0       # 1.0 GB safety buffer
+RESERVED_BUFFER_MB: float = 1024.0  # 1.0 GB safety buffer
 MAX_OPERATIONAL_VRAM_MB: float = 5117.0  # ~5.0 GB maximum budget
 SAFE_EMBED_BATCH_SIZE: int = 32
 SAFE_RERANK_BATCH_SIZE: int = 16
@@ -80,17 +88,21 @@ SAFE_RERANK_BATCH_SIZE: int = 16
 def query_vram_telemetry() -> Tuple[Optional[float], Optional[float], Optional[float]]:
     """
     Query real-time GPU VRAM from NVIDIA SMI without modifying device state.
-    
+
     Returns:
         (total_mb, used_mb, free_mb) or (None, None, None) if unavailable.
     """
     try:
         res = subprocess.run(
-            ["nvidia-smi", "--query-gpu=memory.total,memory.used,memory.free", "--format=csv,noheader,nounits"],
+            [
+                "nvidia-smi",
+                "--query-gpu=memory.total,memory.used,memory.free",
+                "--format=csv,noheader,nounits",
+            ],
             capture_output=True,
             text=True,
             check=True,
-            timeout=2.0
+            timeout=2.0,
         )
         line = res.stdout.strip().split("\n")[0]
         parts = [float(x.strip()) for x in line.split(",")]
@@ -105,6 +117,7 @@ def get_available_onnx_providers() -> List[str]:
     """Retrieve available ONNX Runtime execution providers."""
     try:
         import onnxruntime as ort
+
         return ort.get_available_providers()
     except ImportError:
         return []
@@ -113,15 +126,17 @@ def get_available_onnx_providers() -> List[str]:
 def inspect_device_status(
     use_gpu_requested: bool = True,
     embedder: Optional[Any] = None,
-    reranker: Optional[Any] = None
+    reranker: Optional[Any] = None,
 ) -> DeviceStatus:
     """
     Produce an observable DeviceStatus report.
     Inspects real providers on embedder/reranker instances and hardware telemetry.
     """
     providers = get_available_onnx_providers()
-    gpu_provider_available = "CUDAExecutionProvider" in providers or "DmlExecutionProvider" in providers
-    
+    gpu_provider_available = (
+        "CUDAExecutionProvider" in providers or "DmlExecutionProvider" in providers
+    )
+
     def active_component_provider(component: Any) -> str:
         """Read the provider selected by the live ONNX session, not its request."""
         fastembed_wrapper = getattr(component, "_model", None)
@@ -136,13 +151,23 @@ def inspect_device_status(
         return requested[0] if requested else "CPUExecutionProvider"
 
     # Check the actual providers on initialized instances.
-    emb_prov = active_component_provider(embedder) if embedder is not None else "Uninitialized"
-    rerank_prov = active_component_provider(reranker) if reranker is not None else "Uninitialized"
-    
+    emb_prov = (
+        active_component_provider(embedder) if embedder is not None else "Uninitialized"
+    )
+    rerank_prov = (
+        active_component_provider(reranker) if reranker is not None else "Uninitialized"
+    )
+
     total_mb, used_mb, free_mb = query_vram_telemetry()
-    
+
     # Determine execution mode and status explanation
-    if emb_prov.startswith("CUDA") or rerank_prov.startswith("CUDA"):
+    if embedder is None and reranker is None:
+        mode = "Uninitialized"
+        notes = "No neural model has been initialized."
+    elif emb_prov.startswith("Tensorrt") or rerank_prov.startswith("Tensorrt"):
+        mode = "GPU (TensorRT)"
+        notes = "An initialized model uses TensorrtExecutionProvider."
+    elif emb_prov.startswith("CUDA") or rerank_prov.startswith("CUDA"):
         mode = "GPU (CUDA)"
         notes = "An initialized model uses CUDAExecutionProvider."
     elif emb_prov.startswith("Dml") or rerank_prov.startswith("Dml"):
@@ -160,10 +185,10 @@ def inspect_device_status(
     else:
         mode = "CPU Fallback"
         notes = "Execution running on CPUExecutionProvider."
-    
+
     return DeviceStatus(
         gpu_enabled_requested=use_gpu_requested,
-        cuda_available=gpu_provider_available,
+        cuda_available="CUDAExecutionProvider" in providers,
         active_providers=providers,
         embedder_provider=emb_prov,
         reranker_provider=rerank_prov,
@@ -173,5 +198,5 @@ def inspect_device_status(
         vram_budget_mb=MAX_OPERATIONAL_VRAM_MB,
         safety_buffer_mb=RESERVED_BUFFER_MB,
         execution_mode=mode,
-        status_notes=notes
+        status_notes=notes,
     )

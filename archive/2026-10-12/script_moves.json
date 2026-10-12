@@ -1,0 +1,32 @@
+[
+  {
+    "source": "scripts/run_ablation_matrix_frozen.py",
+    "target": "archive/2026-10-12/legacy-code/scripts/run_ablation_matrix_frozen.py",
+    "sha256": "7b38cd04884eaae4611e156561a8f645ca5187249910d3aa16c724beae55fca1"
+  },
+  {
+    "source": "scripts/export_official_20percent_slice.py",
+    "target": "archive/2026-10-12/legacy-code/scripts/export_official_20percent_slice.py",
+    "sha256": "446b6bc833abba497a1cc3c99c17b21e74ab38f1c124058bfbd6421fe8a8ae12"
+  },
+  {
+    "source": "scripts/freeze_official_slices.py",
+    "target": "archive/2026-10-12/legacy-code/scripts/freeze_official_slices.py",
+    "sha256": "fd377c42e1a334d11563ebc7bb0a334fffbad3b519faa57c8830c55da99cfde2"
+  },
+  {
+    "source": "scripts/official_upstream_preflight.py",
+    "target": "archive/2026-10-12/legacy-code/scripts/official_upstream_preflight.py",
+    "sha256": "cf347310dfb9e121ace30b70a513713343ff6002935e66557a6b46b834e6d487"
+  },
+  {
+    "source": "scripts/run_official_upstream_benchmarks.py",
+    "target": "archive/2026-10-12/legacy-code/scripts/run_official_upstream_benchmarks.py",
+    "sha256": "e30942ace4c853083d164b982c9b164fdd4f268bb218c29f0a18ed6abfa8ef79"
+  },
+  {
+    "source": "scripts/run_mempalace_gpu.py",
+    "target": "archive/2026-10-12/legacy-code/scripts/run_mempalace_gpu.py",
+    "sha256": "f98a43ff8a5697789bbe072aea699388de836ff083aa53446084375b075a7c40"
+  }
+]

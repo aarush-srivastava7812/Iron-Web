@@ -1,4 +1,5 @@
 """Validated, effective application settings. Credentials come from the environment."""
+
 from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 from memory.ranking.scorer import ScoringWeights
@@ -43,7 +44,7 @@ class RetrievalSettings(Settings):
 
 class NIMSettings(Settings):
     base_url: str = "https://integrate.api.nvidia.com/v1"
-    extractor_model: str = "meta/llama-3.1-70b-instruct"
+    extractor_model: str = "meta/llama-3.2-11b-vision-instruct"
     cache_dir: str = "./data/extraction_cache"
 
 

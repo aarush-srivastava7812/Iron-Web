@@ -2,11 +2,12 @@
 DMR (Dialogue Memory Retrieval / Multi-Session Chat) benchmark adapter.
 Parses multi-session conversation dialogues and QA pairs.
 """
+
 from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import List, Dict, Any, Optional
+from typing import List, Optional
 
 from memory.evaluation.harness.base import (
     BenchmarkAdapter,
@@ -60,7 +61,7 @@ class DMRAdapter(BenchmarkAdapter):
                 text=entry["text"],
                 session_id=meta.get("session_index", ""),
                 timestamp=meta.get("timestamp"),
-                metadata=meta
+                metadata=meta,
             )
             documents.append(doc)
             if limit and len(documents) >= limit:
@@ -82,7 +83,7 @@ class DMRAdapter(BenchmarkAdapter):
                 ground_truth_ids=q.get("ground_truth_ids", []),
                 gold_answer=q.get("answer", ""),
                 category="msc_dialogue",
-                metadata={"benchmark": "dmr"}
+                metadata={"benchmark": "dmr"},
             )
             examples.append(ex)
             if limit and len(examples) >= limit:

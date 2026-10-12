@@ -2,6 +2,7 @@
 NVIDIA NIM extractor for entity/relation extraction from text.
 OpenAI-compatible client for NIM endpoints.
 """
+
 from typing import List, Dict, Any, Optional
 import os
 import json
@@ -10,7 +11,11 @@ from openai import OpenAI
 from tenacity import retry, stop_after_attempt, wait_exponential
 
 
-from memory.ingestion.extractor import BaseExtractor, validate_extraction, canonicalize_entities
+from memory.ingestion.extractor import (
+    BaseExtractor,
+    validate_extraction,
+    canonicalize_entities,
+)
 
 
 class NIMExtractor(BaseExtractor):
@@ -19,17 +24,17 @@ class NIMExtractor(BaseExtractor):
     Extracts entities, relations, temporal validity, and contradiction detection.
     Real inference model: is_mock=False.
     """
-    
+
     def __init__(
         self,
         api_key: Optional[str] = None,
         base_url: Optional[str] = None,
         model: str = "meta/llama-3.1-70b-instruct",
-        timeout: float = 60.0
+        timeout: float = 60.0,
     ):
         """
         Initialize NIM extractor.
-        
+
         Args:
             api_key: NVIDIA API key (or from NVIDIA_API_KEY env var)
             base_url: NIM endpoint URL
@@ -37,34 +42,31 @@ class NIMExtractor(BaseExtractor):
             timeout: Request timeout
         """
         self.api_key = api_key or os.getenv("NVIDIA_API_KEY")
-        self.base_url = base_url or os.getenv("NVIDIA_NIM_URL", "https://integrate.api.nvidia.com/v1")
+        self.base_url = base_url or os.getenv(
+            "NVIDIA_NIM_URL", "https://integrate.api.nvidia.com/v1"
+        )
         self.model = model
-        
+
         if not self.api_key:
             raise ValueError("NVIDIA_API_KEY required for NIM extractor")
-        
+
         self.client = OpenAI(
-            api_key=self.api_key,
-            base_url=self.base_url,
-            timeout=timeout
+            api_key=self.api_key, base_url=self.base_url, timeout=timeout
         )
 
     @property
     def is_mock(self) -> bool:
         return False
-    
+
     @retry(
-        wait=wait_exponential(multiplier=1, min=2, max=30),
-        stop=stop_after_attempt(3)
+        wait=wait_exponential(multiplier=1, min=2, max=30), stop=stop_after_attempt(3)
     )
     def extract_entities_and_relations(
-        self,
-        text: str,
-        context: Optional[str] = None
+        self, text: str, context: Optional[str] = None
     ) -> Dict[str, Any]:
         """
         Extract entities, relations, and temporal info from text.
-        
+
         Returns:
             {
                 "entities": [{"id", "name", "type", "description"}],
@@ -74,7 +76,7 @@ class NIMExtractor(BaseExtractor):
             }
         """
         prompt = self._build_extraction_prompt(text, context)
-        
+
         # Use response_format only for models that support it; many NIM models
         # are reasoning models that don't support structured outputs.
         # We'll try without first, then parse JSON from the response.
@@ -82,17 +84,19 @@ class NIMExtractor(BaseExtractor):
             model=self.model,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.0,
-            max_tokens=4096
+            max_tokens=4096,
         )
-        
+
         content = response.choices[0].message.content
         result = self._parse_json_from_response(content)
         normalized = self._normalize_extraction(result)
-        return validate_extraction(normalized, extractor_name=f"nim:{self.model}", is_mock=False).to_dict()
-    
+        return validate_extraction(
+            normalized, extractor_name=f"nim:{self.model}", is_mock=False
+        ).to_dict()
+
     def _build_extraction_prompt(self, text: str, context: Optional[str]) -> str:
         ctx = f"\nContext: {context}" if context else ""
-        
+
         return f"""
         Extract structured information from the following text.{ctx}
         
@@ -116,7 +120,7 @@ class NIMExtractor(BaseExtractor):
             "importance": 0.8
         }}
         """
-    
+
     def _parse_json_from_response(self, content: str) -> Dict[str, Any]:
         """Extract and parse JSON from model response, handling thinking process text."""
         # Try direct parse first
@@ -124,23 +128,25 @@ class NIMExtractor(BaseExtractor):
             return json.loads(content)
         except json.JSONDecodeError:
             pass
-        
+
         # Try to find JSON object in markdown code blocks
-        json_block_match = re.search(r'```(?:json)?\s*(\{.*?\})\s*```', content, re.DOTALL)
+        json_block_match = re.search(
+            r"```(?:json)?\s*(\{.*?\})\s*```", content, re.DOTALL
+        )
         if json_block_match:
             try:
                 return json.loads(json_block_match.group(1))
             except json.JSONDecodeError:
                 pass
-        
+
         # Try to find JSON object directly in the text (largest {...} block)
-        json_match = re.search(r'(\{.*\})', content, re.DOTALL)
+        json_match = re.search(r"(\{.*\})", content, re.DOTALL)
         if json_match:
             try:
                 return json.loads(json_match.group(1))
             except json.JSONDecodeError:
                 pass
-        
+
         raise ValueError("Extraction response did not contain a complete JSON object.")
 
     def _normalize_extraction(self, raw: Dict[str, Any]) -> Dict[str, Any]:
@@ -148,15 +154,10 @@ class NIMExtractor(BaseExtractor):
         return canonicalize_entities(raw)
 
     @retry(
-        wait=wait_exponential(multiplier=1, min=2, max=30),
-        stop=stop_after_attempt(3)
+        wait=wait_exponential(multiplier=1, min=2, max=30), stop=stop_after_attempt(3)
     )
     def judge_answer_quality(
-        self,
-        query: str,
-        context: str,
-        answer: str,
-        ground_truth: str = ""
+        self, query: str, context: str, answer: str, ground_truth: str = ""
     ) -> Dict[str, float]:
         """
         LLM-as-judge for answer quality evaluation.
@@ -182,26 +183,21 @@ class NIMExtractor(BaseExtractor):
         Output JSON only:
         {{"faithfulness": 0.0, "relevance": 0.0, "completeness": 0.0}}
         """
-        
+
         response = self.client.chat.completions.create(
             model=self.model,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.0,
             response_format={"type": "json_object"},
-            max_tokens=512
+            max_tokens=512,
         )
-        
+
         return json.loads(response.choices[0].message.content)
-    
+
     @retry(
-        wait=wait_exponential(multiplier=1, min=2, max=30),
-        stop=stop_after_attempt(3)
+        wait=wait_exponential(multiplier=1, min=2, max=30), stop=stop_after_attempt(3)
     )
-    def detect_contradiction(
-        self,
-        text1: str,
-        text2: str
-    ) -> Dict[str, Any]:
+    def detect_contradiction(self, text1: str, text2: str) -> Dict[str, Any]:
         """Detect contradiction between two texts."""
         prompt = f"""
         Determine if these two statements contradict each other.
@@ -212,26 +208,21 @@ class NIMExtractor(BaseExtractor):
         Output JSON only:
         {{"is_contradiction": true/false, "confidence": 0.0-1.0, "reasoning": "..."}}
         """
-        
+
         response = self.client.chat.completions.create(
             model=self.model,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.0,
             response_format={"type": "json_object"},
-            max_tokens=512
+            max_tokens=512,
         )
-        
+
         return json.loads(response.choices[0].message.content)
-    
+
     @retry(
-        wait=wait_exponential(multiplier=1, min=2, max=30),
-        stop=stop_after_attempt(3)
+        wait=wait_exponential(multiplier=1, min=2, max=30), stop=stop_after_attempt(3)
     )
-    def detect_supersession(
-        self,
-        old_text: str,
-        new_text: str
-    ) -> Dict[str, Any]:
+    def detect_supersession(self, old_text: str, new_text: str) -> Dict[str, Any]:
         """Detect if new text supersedes old text."""
         prompt = f"""
         Determine if the NEW statement supersedes/replaces the OLD statement 
@@ -243,25 +234,21 @@ class NIMExtractor(BaseExtractor):
         Output JSON only:
         {{"is_supersession": true/false, "confidence": 0.0-1.0, "reasoning": "..."}}
         """
-        
+
         response = self.client.chat.completions.create(
             model=self.model,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.0,
             response_format={"type": "json_object"},
-            max_tokens=512
+            max_tokens=512,
         )
-        
+
         return json.loads(response.choices[0].message.content)
-    
+
     @retry(
-        wait=wait_exponential(multiplier=1, min=2, max=30),
-        stop=stop_after_attempt(3)
+        wait=wait_exponential(multiplier=1, min=2, max=30), stop=stop_after_attempt(3)
     )
-    def extract_skills(
-        self,
-        episode_texts: List[str]
-    ) -> List[Dict[str, Any]]:
+    def extract_skills(self, episode_texts: List[str]) -> List[Dict[str, Any]]:
         """Extract skill patterns from episodic memories."""
         prompt = f"""
         Analyze these episodic memories and extract reusable skills/patterns:
@@ -271,14 +258,14 @@ class NIMExtractor(BaseExtractor):
         Output a JSON object with a skills array:
         {{"skills": [{{"name": "...", "description": "...", "conditions": "...", "actions": "..."}}]}}
         """
-        
+
         response = self.client.chat.completions.create(
             model=self.model,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.3,
             response_format={"type": "json_object"},
-            max_tokens=2048
+            max_tokens=2048,
         )
-        
+
         result = json.loads(response.choices[0].message.content)
         return result.get("skills", [])

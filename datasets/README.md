@@ -1,58 +1,34 @@
-# Official Benchmark Datasets
+# Benchmark inputs and provenance
 
-This directory contains third-party benchmark datasets acquired from their
-official sources. These datasets are **not vendored** in this repository —
-they are downloaded/cloned at build time.
+The original input files are local, excluded from Git, and recorded in `provenance.json`. Their declared SHA-256 hashes and source repository revisions were checked during the cleanup and matched the existing files.
 
-## Datasets
+| Input | Retained path | Source |
+|---|---|---|
+| LoCoMo | `locomo/data/locomo10.json` | Snap Research LoCoMo, revision `3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376` |
+| LongMemEval S-cleaned | `longmemeval/data/longmemeval_s_cleaned.json` | LongMemEval cleaned release; source repository revision `9e0b455f4ef0e2ab8f2e582289761153549043fc` |
+| MSC-Self-Instruct | `dmr/msc_self_instruct.jsonl` | `MemGPT/MSC-Self-Instruct`, revision `5138f416f8fa76b75b2e080da87e8a8e346e1500` |
 
-### LoCoMo
-- **Source**: https://github.com/snap-research/locomo
-- **Paper**: Maharana et al. 2024, "LoCoMo: Long-form Conversation Memory"
-- **File**: `data/locomo10.json` (10 annotated conversations with official QA pairs)
-- **License**: See source repository
+The project's `dmr` adapter reads the existing derived MSC corpus/query files under `data/benchmarks/dmr`. This is a project conversion, not an implementation of an official answer-scoring protocol. Raw input and conversion hashes remain recorded.
 
-### LongMemEval
-- **Source**: https://github.com/xiaowu0162/LongMemEval
-- **Paper**: Wu et al. 2024, "LongMemEval: Long-term Memory Evaluation"
-- **Files**: Multiple QA formats in `data/` directory
-  - `longmemeval_q_qa.json` - Question-Answering format
-  - `longmemeval_q_mc.json` - Multiple Choice format
-  - `longmemeval_q_hc.json` - Hard Core format
-- **License**: See source repository
+LoCoMo evaluator reference code under `locomo/task_eval`, LongMemEval evaluator/helper reference code under `longmemeval/src/evaluation` and `src/utils`, and their licenses remain available. Unrelated checkout code and the unused Letta application were moved to recoverable local archives.
 
-### DMR (Multi-Session Chat / MSC)
-- **Source**: Hugging Face dataset `letta/dmr` (linked from https://github.com/letta-ai/letta)
-- **Paper**: Packer et al. 2023, "MemGPT: Towards LLMs as Operating Systems"
-- **Format**: JSONL splits (train/validation/test)
-- **License**: See Hugging Face dataset page
+## Acquisition and conversion
 
-## Acquisition
+Acquisition downloads a declared file to a new destination, checks its content hash, and writes an adjacent provenance receipt. It does not update or reset existing repositories.
 
-Run the acquisition script:
-
-```bash
-python acquire_datasets.py
+```powershell
+python datasets/acquire_datasets.py locomo datasets/downloads/new-version/locomo10.json
+python datasets/acquire_datasets.py longmemeval datasets/downloads/new-version/longmemeval_s_cleaned.json
+python scripts/build_dmr_benchmark.py data/benchmarks/msc-new-version
 ```
 
-Or acquire individual benchmarks:
+Existing destinations are rejected. Download URLs and expected hashes come from the existing provenance record. A changed upstream file is rejected if it differs from the declared hash. No acquisition or hosted model request was made during the cleanup.
 
-```bash
-python acquire_datasets.py --benchmark locomo
-python acquire_datasets.py --benchmark longmemeval
-python acquire_datasets.py --benchmark dmr
+## Selection and evaluation
+
+```powershell
+python scripts/evaluate.py locomo --inspect
+python scripts/export_slice.py locomo data/benchmark_slices/v2/locomo
 ```
 
-## Provenance Tracking
-
-After acquisition, `provenance.json` is generated with:
-- Repository URLs and commit hashes
-- File hashes (SHA256) for data integrity verification
-- Paper citations
-
-This ensures reproducibility and traceability of the exact dataset versions used.
-
-## Usage in Evaluation
-
-The evaluation harness loads datasets directly from this directory.
-**It fails loudly if datasets are missing** — no synthetic fallbacks.
+The exporter selects a declared fraction of questions and retains complete histories. It writes a new version and manifest. Historical files in `data/official_upstream/slices` are preserved and must not be overwritten. The local evaluator records exact input fingerprints and coverage; missing evidence does not produce a perfect score.

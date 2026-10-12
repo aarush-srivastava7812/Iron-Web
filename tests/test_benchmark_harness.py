@@ -8,15 +8,13 @@ Tests verify:
 5. BenchmarkEvaluator: 4-stage execution (ingest, retrieve, generate, score).
 6. BenchmarkRunner: resumability, per-example JSONL streaming, and metadata logging.
 """
-import os
+
 import json
-import time
 from pathlib import Path
 import pytest
 
 from memory.engine import MemoryEngine
 from memory.evaluation.harness import (
-    BenchmarkAdapter,
     BenchmarkDocument,
     BenchmarkExample,
     EvaluationResult,
@@ -35,7 +33,9 @@ from memory.evaluation.harness import (
 def test_metrics_calculations():
     """Verify EM, F1, and IR metrics on known cases."""
     # Exact Match & Normalization
-    assert compute_exact_match("Business Administration", "business administration") == 1.0
+    assert (
+        compute_exact_match("Business Administration", "business administration") == 1.0
+    )
     assert compute_exact_match("The Taylor Swift!", "Taylor Swift") == 1.0
     assert compute_exact_match("Python", "Java") == 0.0
 
@@ -50,7 +50,7 @@ def test_metrics_calculations():
     # IR Metrics (Recall, Precision, MRR, NDCG)
     retrieved = ["doc_A", "doc_B", "doc_C", "doc_D"]
     relevant = ["doc_B", "doc_X"]
-    
+
     metrics = compute_retrieval_metrics(retrieved, relevant, k_values=[1, 2, 4])
     # doc_B is at rank 2
     assert metrics["mrr"] == 0.5  # 1/2
@@ -60,11 +60,12 @@ def test_metrics_calculations():
     assert metrics["recall@4"] == 0.5
 
 
+@pytest.mark.dataset
 def test_longmemeval_adapter_loading():
     """Verify LongMemEval adapter loads real dataset preserving categories and evidence."""
     adapter = LongMemEvalAdapter()
     assert adapter.benchmark_name == "longmemeval"
-    
+
     docs = adapter.load_documents(limit=5)
     assert len(docs) == 5
     first_doc = docs[0]
@@ -82,6 +83,7 @@ def test_longmemeval_adapter_loading():
     assert len(first_ex.ground_truth_ids) > 0
 
 
+@pytest.mark.dataset
 def test_locomo_adapter_loading():
     """Verify LoCoMo adapter loads real dataset preserving session structure and QA categories."""
     adapter = LoCoMoAdapter()
@@ -96,10 +98,17 @@ def test_locomo_adapter_loading():
     examples = adapter.load_examples(limit=5)
     assert len(examples) == 5
     first_ex = examples[0]
-    assert first_ex.category in ["factual", "temporal", "multi_hop_reasoning", "preference", "general"]
+    assert first_ex.category in [
+        "factual",
+        "temporal",
+        "multi_hop_reasoning",
+        "preference",
+        "general",
+    ]
     assert first_ex.gold_answer is not None
 
 
+@pytest.mark.dataset
 def test_dmr_adapter_loading():
     """Verify DMR adapter loads multi-session conversation dialogues and QA pairs."""
     adapter = DMRAdapter()
@@ -121,7 +130,9 @@ def test_benchmark_evaluator_stages(tmp_path):
     k_file = str(tmp_path / "kuzu.db")
 
     with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=False) as engine:
-        adapter = LongMemEvalAdapter()
+        from tests.test_evaluation_regressions import FixtureAdapter
+
+        adapter = FixtureAdapter()
         evaluator = BenchmarkEvaluator(engine=engine, adapter=adapter, k=3)
 
         # 1. Ingestion Stage
@@ -130,14 +141,14 @@ def test_benchmark_evaluator_stages(tmp_path):
                 doc_id="longmemeval:sess_01",
                 text="Speaker 1: I graduated from Harvard with a degree in Computer Science.\nSpeaker 2: That is great!",
                 session_id="sess_01",
-                timestamp=1700000000
+                timestamp=1700000000,
             ),
             BenchmarkDocument(
                 doc_id="longmemeval:sess_02",
                 text="Speaker 1: I bought a blue electric bike for commuting to work.\nSpeaker 2: Sounds eco-friendly.",
                 session_id="sess_02",
-                timestamp=1700100000
-            )
+                timestamp=1700100000,
+            ),
         ]
         ingest_res = evaluator.ingest_documents(docs)
         assert ingest_res["num_documents"] == 2
@@ -149,7 +160,7 @@ def test_benchmark_evaluator_stages(tmp_path):
             query="What degree did I graduate with?",
             ground_truth_ids=["longmemeval:sess_01"],
             gold_answer="Computer Science",
-            category="attribute_retrieval"
+            category="attribute_retrieval",
         )
 
         res = evaluator.evaluate_example(example, run_id="test_run_01")
@@ -162,6 +173,7 @@ def test_benchmark_evaluator_stages(tmp_path):
         assert res.answer_metrics["substring_match"] == 1.0
 
 
+@pytest.mark.dataset
 def test_benchmark_runner_and_resumability(tmp_path):
     """Verify BenchmarkRunner persists per-example outputs and supports resuming."""
     q_dir = str(tmp_path / "qdrant_db")
@@ -170,12 +182,17 @@ def test_benchmark_runner_and_resumability(tmp_path):
 
     with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=False) as engine:
         runner = BenchmarkRunner(output_dir=results_dir, run_id="smoke_test_run")
-        
+
         # Run small smoke test on DMR
         class CoveredDMRAdapter(DMRAdapter):
             def load_documents(self, limit=None):
-                selected = {mid for e in self.load_examples(limit=2) for mid in e.ground_truth_ids}
+                selected = {
+                    mid
+                    for e in self.load_examples(limit=2)
+                    for mid in e.ground_truth_ids
+                }
                 return [d for d in super().load_documents() if d.doc_id in selected]
+
         adapter = CoveredDMRAdapter()
         summary = runner.run_benchmark(
             benchmark_name="dmr",
@@ -186,7 +203,7 @@ def test_benchmark_runner_and_resumability(tmp_path):
             retrieval_mode="vector",
             k=3,
             resume=True,
-            is_smoke_test=True
+            is_smoke_test=True,
         )
 
         assert summary["benchmark"] == "dmr"
@@ -210,7 +227,7 @@ def test_benchmark_runner_and_resumability(tmp_path):
             retrieval_mode="vector",
             k=3,
             resume=True,
-            is_smoke_test=True
+            is_smoke_test=True,
         )
         lines2 = Path(summary2["run_file"]).read_text(encoding="utf-8").splitlines()
         # Number of lines must still be 2 (no duplicates appended)

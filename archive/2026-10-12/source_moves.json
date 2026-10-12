@@ -1,0 +1,202 @@
+[
+  {
+    "source": "memory/retrieval/competitors.py",
+    "target": "research/retrievers/inspired.py",
+    "sha256": "45aa2a3038bf4e283201206f598c009e941402ea082e35f76328057c29db5403"
+  },
+  {
+    "source": "memory/retrieval/contrastive.py",
+    "target": "research/retrievers/contrastive.py",
+    "sha256": "6c58eadbf5d24ec4d59c2b49ed4ba65267ce442ab907c1dbc55223c7dfcf0ec8"
+  },
+  {
+    "source": "memory/ingestion/mock_nim_extractor.py",
+    "target": "tests/fixtures/extractor.py",
+    "sha256": "956d88667a3bfbc9dd5d1f37af39a2206a4c8465b7603cce3d4fa0f69a0ffb5a"
+  },
+  {
+    "source": "memory/mcp_server.py",
+    "target": "archive/2026-10-12/legacy-code/memory/mcp_server.py",
+    "sha256": "22c765d7816d971024f17410ab6a578c5d1f8708760e29d37f71952942dc1e43"
+  },
+  {
+    "source": "memory/evaluation/ablations.py",
+    "target": "archive/2026-10-12/legacy-code/memory/evaluation/ablations.py",
+    "sha256": "14e061038c1e9e31bd1350b5808c3363dda2a97e22d3e482bf0ba95c3cbf1fea"
+  },
+  {
+    "source": "memory/evaluation/ablation_runner.py",
+    "target": "archive/2026-10-12/legacy-code/memory/evaluation/ablation_runner.py",
+    "sha256": "3fb95380bfc529bb94362b982f12c1bec53259a53b2620ce35ca8695e181d753"
+  },
+  {
+    "source": "memory/evaluation/baselines.py",
+    "target": "archive/2026-10-12/legacy-code/memory/evaluation/baselines.py",
+    "sha256": "a3e9f907d4642189629588d8b5da2bbf8fe4ca60c8d66084e62a179127fb9191"
+  },
+  {
+    "source": "memory/evaluation/baselines_comparison.py",
+    "target": "archive/2026-10-12/legacy-code/memory/evaluation/baselines_comparison.py",
+    "sha256": "853011f846a8a90a63da8178f46c0008ee7d1070a65b2cef62c1a551c1c64fa3"
+  },
+  {
+    "source": "memory/evaluation/contrastive_sweep.py",
+    "target": "archive/2026-10-12/legacy-code/memory/evaluation/contrastive_sweep.py",
+    "sha256": "eaca035c75b1ed391474258321f2d6559e58d2f8ec511f23c5091e2d731ab5bc"
+  },
+  {
+    "source": "memory/evaluation/report_generator.py",
+    "target": "archive/2026-10-12/legacy-code/memory/evaluation/report_generator.py",
+    "sha256": "76938941c3dc76a49f4f9fc01cae5e7bd099dfceef021954858e5074953d0481"
+  },
+  {
+    "source": "memory/evaluation/scenarios.py",
+    "target": "archive/2026-10-12/legacy-code/memory/evaluation/scenarios.py",
+    "sha256": "26a30cf6da43e68fcc8c595a23f64c88c2711beb6c024919e7e8d4e792375fdc"
+  },
+  {
+    "source": "scripts/run_ablations_phase7.py",
+    "target": "archive/2026-10-12/legacy-code/scripts/run_ablations_phase7.py",
+    "sha256": "a43d15515d1a94761d899df56f498fa15f5fb8d6d23cbfb59344a9f8f51fdbaf"
+  },
+  {
+    "source": "scripts/run_benchmarks_phase6.py",
+    "target": "archive/2026-10-12/legacy-code/scripts/run_benchmarks_phase6.py",
+    "sha256": "21af65548c0ad52acc3f694384edc9b8cb03bfcde0227dc915f60f9223f8dd83"
+  },
+  {
+    "source": "scripts/run_competitor_benchmarks.py",
+    "target": "archive/2026-10-12/legacy-code/scripts/run_competitor_benchmarks.py",
+    "sha256": "4f65e4920a8a436a8be5a23533d557d2bb110163e25036131d0290754eb2eb52"
+  },
+  {
+    "source": "scripts/populate_kuzu_longmemeval.py",
+    "target": "archive/2026-10-12/legacy-code/scripts/populate_kuzu_longmemeval.py",
+    "sha256": "8270bacf7985417c873e401abdd38547638efdb0536b053fc4860558d482b6c9"
+  },
+  {
+    "source": "scripts/test_gpu_paths.py",
+    "target": "archive/2026-10-12/legacy-code/scripts/test_gpu_paths.py",
+    "sha256": "6d7f5101f2bb2741977a6d48199b8be0f5a32b57160d7ef56f5e835a86930aaf"
+  },
+  {
+    "source": "scripts/test_imports.py",
+    "target": "archive/2026-10-12/legacy-code/scripts/test_imports.py",
+    "sha256": "70a154193f32c183b814c7da25ba1c889fd84af7483240079a7610941d01aaea"
+  },
+  {
+    "source": "scripts/verify_gate2_nim.py",
+    "target": "archive/2026-10-12/legacy-code/scripts/verify_gate2_nim.py",
+    "sha256": "7296cd53b37c410cdd1a286c901c62669fe87f1601432e89ca9490632a38afbe"
+  },
+  {
+    "source": "scripts/profile_hybrid_latency.py",
+    "target": "archive/2026-10-12/legacy-code/scripts/profile_hybrid_latency.py",
+    "sha256": "b322a34dec5baf9963da5e1ac9e0532293abe8fe6eda3b275bdcb034ce233c0a"
+  },
+  {
+    "source": "scripts/audit_retrieval_modes.py",
+    "target": "archive/2026-10-12/legacy-code/scripts/audit_retrieval_modes.py",
+    "sha256": "79b5fe90da17b3777ae5d7e2dcc90132a1e6bc524163c1b8d06e055a398ac79c"
+  },
+  {
+    "source": "scripts/capture_screenshots.py",
+    "target": "archive/2026-10-12/legacy-code/scripts/capture_screenshots.py",
+    "sha256": "1db5facc6ce4440d748f682132f88cdd14234335af35c3bb97f5dd0af5874dde"
+  },
+  {
+    "source": "architecture_plan.md",
+    "target": "archive/2026-10-12/design-history/architecture_plan.md",
+    "sha256": "e7cee0c89999031571771eaf3f3893ce3e64957be4e936d9d9d2fa17479c3caf"
+  },
+  {
+    "source": "roadmap.txt",
+    "target": "archive/2026-10-12/design-history/roadmap.txt",
+    "sha256": "1d7b29f834580f5be8ea666c240de92849b316d1ac61175680a02a5cda7e61c3"
+  },
+  {
+    "source": "hybrid_long_term_ai_memory_full_project_plan.txt",
+    "target": "archive/2026-10-12/design-history/hybrid_long_term_ai_memory_full_project_plan.txt",
+    "sha256": "d86ff21e856712d13b2609843f67b145fe8553ea0cb0c27a58497d232ad5c8d4"
+  },
+  {
+    "source": "UPDATES_REQUIRED.md",
+    "target": "archive/2026-10-12/design-history/UPDATES_REQUIRED.md",
+    "sha256": "534384b2692966d33a93e12a84c219918bdf6b30c73616a6ecd5cd2587744c79"
+  },
+  {
+    "source": "docs/implementation_audit.md",
+    "target": "archive/2026-10-12/design-history/docs/implementation_audit.md",
+    "sha256": "f017e4a4da34a86a378f61c48d446e8e8197333e73784918bd681e3c263ab133"
+  },
+  {
+    "source": "docs/index.md",
+    "target": "archive/2026-10-12/design-history/docs/index.md",
+    "sha256": "2eb64cebb452b4cbcdbb00e1505031b880125daae02389a7dac3601c13e4154b"
+  },
+  {
+    "source": "docs/phase1_baseline_a.md",
+    "target": "archive/2026-10-12/design-history/docs/phase1_baseline_a.md",
+    "sha256": "b425d5e4b4ea459235a844f68c9d8efeaec2e64e668dec5a2bee37978bfee516"
+  },
+  {
+    "source": "docs/phase10_contrastive_sweep_weight_tuning.md",
+    "target": "archive/2026-10-12/design-history/docs/phase10_contrastive_sweep_weight_tuning.md",
+    "sha256": "143ffc13e79f657dabff49ee253439f2b3f22a54d0d901c63c67a5859367e9e7"
+  },
+  {
+    "source": "docs/phase11_writeup.md",
+    "target": "archive/2026-10-12/design-history/docs/phase11_writeup.md",
+    "sha256": "01c8fd47443f48ce6171fd03a06917dff55dde4345a6c9cca13d6c2e6727ed90"
+  },
+  {
+    "source": "docs/phase2_graph_representation.md",
+    "target": "archive/2026-10-12/design-history/docs/phase2_graph_representation.md",
+    "sha256": "69beca964f7870ed1c8a7d071b420d8b685aefb8782ab6e25fa87570eee53f39"
+  },
+  {
+    "source": "docs/phase3_hybrid_retrieval.md",
+    "target": "archive/2026-10-12/design-history/docs/phase3_hybrid_retrieval.md",
+    "sha256": "206e50d47e04b5430e0f935d6385804cba8cda0bc221b21d13981e84945cb439"
+  },
+  {
+    "source": "docs/phase4_contrastive_retrieval.md",
+    "target": "archive/2026-10-12/design-history/docs/phase4_contrastive_retrieval.md",
+    "sha256": "f17a5ebfb6d2363a6623c2ae2e14701912fa01360d69be5a055e989c9d2027b5"
+  },
+  {
+    "source": "docs/phase5_temporal_fields.md",
+    "target": "archive/2026-10-12/design-history/docs/phase5_temporal_fields.md",
+    "sha256": "acd8ab4feca836da3228065e646588d358f34c70d70156c1269f883edc7a595d"
+  },
+  {
+    "source": "docs/phase6_contradiction_supersession.md",
+    "target": "archive/2026-10-12/design-history/docs/phase6_contradiction_supersession.md",
+    "sha256": "684341e8338cb25fe8a66dc86c21b1630994f6e009fd96a52dcbd56671082a93"
+  },
+  {
+    "source": "docs/phase7_maintenance.md",
+    "target": "archive/2026-10-12/design-history/docs/phase7_maintenance.md",
+    "sha256": "f1df242a0eb25dc9ee59b43bd381ccea9dd36015a91ff4e11de62db3d1d10951"
+  },
+  {
+    "source": "docs/phase8_evaluation_harness.md",
+    "target": "archive/2026-10-12/design-history/docs/phase8_evaluation_harness.md",
+    "sha256": "ab989bd8a707ff7425e254ccf0b3f0430aaf7b89ac66717e066270845fe14356"
+  },
+  {
+    "source": "docs/phase9_ablation_study.md",
+    "target": "archive/2026-10-12/design-history/docs/phase9_ablation_study.md",
+    "sha256": "1eb96ab137db4c09f141519fe2c2cfe3e5d6546f8f2e9363d03811c780f36d86"
+  },
+  {
+    "source": "report/hybrid_memory_report.md",
+    "target": "archive/2026-10-12/reports/hybrid_memory_report.md",
+    "sha256": "c1ff00b88d89312bfb0b824b6ae0d8aeecad9e8e3e098e63ced214ef08fc1ad3"
+  },
+  {
+    "source": "report/hybrid_memory_report.tex",
+    "target": "archive/2026-10-12/reports/hybrid_memory_report.tex",
+    "sha256": "5dd85062e2c942a636660208f4fc95e98640048b062ff7da7c4bc38f333685d0"
+  }
+]

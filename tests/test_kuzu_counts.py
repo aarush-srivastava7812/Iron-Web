@@ -36,7 +36,9 @@ def test_entity_index_invalidates_and_batched_conflicts_keep_original_ids(tmp_pa
         store.add_contradiction("obs_mem_a", "obs_mem_b")
 
         batched = store.get_relationship_conflicts_batch(["mem_a"])
-        legacy = store.get_relationship_conflicts_batch(["mem_a"], use_batched_resolution=False)
+        legacy = store.get_relationship_conflicts_batch(
+            ["mem_a"], use_batched_resolution=False
+        )
         assert batched["mem_a"][0]["relationship_type"] == "CONTRADICTS"
         # The legacy path remains available for rollback.
         assert isinstance(legacy, dict)

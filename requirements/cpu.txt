@@ -1,0 +1,3 @@
+-r storage.txt
+fastembed==0.8.0
+onnxruntime==1.19.2

@@ -1,0 +1,68 @@
+# Hybrid Memory Architecture — requirements.txt
+# Reflects architecture_plan.md v4: Qdrant local mode, Kuzu graph store,
+# FastEmbed (embeddings + ONNX reranker), NVIDIA NIM extractor.
+# No Ollama, no LangGraph/LangSmith (orchestration is plain Python — see §7),
+# no PyTorch/sentence-transformers (reranker runs on FastEmbed's ONNX cross-encoder).
+#
+# Versions below are recent-stable as of this writing — run
+# `pip list --outdated` after install and re-pin with `pip freeze`
+# for your actual reproducible lockfile; don't treat these as final.
+
+# Vector store — Qdrant, local embedded mode (no server/Docker)
+qdrant-client==1.18.0
+
+# Embeddings + reranking — FastEmbed GPU (ONNX Runtime, no PyTorch)
+# fastembed.rerank.cross_encoder.TextCrossEncoder covers BAAI/bge-reranker-base
+fastembed-gpu==0.8.0
+
+# GPU acceleration for the RTX 4050. This supplies CUDAExecutionProvider.
+onnxruntime-gpu==1.19.2
+# Native CUDA 12 / cuDNN 9 DLLs loaded by memory.device on Windows.
+nvidia-cuda-runtime-cu12==12.9.79
+nvidia-cudnn-cu12==9.27.0.42
+nvidia-cufft-cu12==11.4.1.4
+# TensorRT 10.2 runtime for the optional TensorRT-first reranker path.
+--extra-index-url https://pypi.nvidia.com
+tensorrt-cu12-libs==10.2.0.post1
+tensorrt-cu12-bindings==10.2.0.post1
+
+# Graph store — Kuzu, embedded (Cypher, vector + full-text search built in)
+kuzu==0.11.3
+
+# Neo4j Graph Store (client-server, optional alternative)
+neo4j==5.23.0
+
+# Extraction — NVIDIA NIM client (OpenAI-compatible endpoint)
+openai==1.60.0
+python-dotenv==1.0.1        # loads NVIDIA_API_KEY from .env
+
+# Core / shared dependencies
+pydantic==2.13.5
+httpx==0.28.1
+numpy==1.26.4
+pyyaml==6.0.1
+tenacity==8.5.0              # retry/backoff around NIM API calls
+typing-extensions>=4.14.1,<5
+scikit-learn==1.5.0          # for DBSCAN/HDBSCAN clustering in maintenance
+
+# Qdrant client's own dependencies (explicit pin for reproducibility)
+grpcio==1.62.1
+protobuf==5.27.3
+portalocker==3.1.0
+urllib3==2.2.2
+
+# FastEmbed's own dependencies
+huggingface-hub==0.24.7
+# Do not install the CPU-only runtime alongside onnxruntime-gpu.
+# onnxruntime==1.19.2
+tokenizers==0.20.3
+loguru==0.7.2
+mmh3==5.0.0
+tqdm==4.67.1
+
+# Development & testing
+pytest==8.3.2
+pytest-asyncio==0.23.3
+pytest-cov==5.0.0
+ruff==0.6.2
+mypy==1.11.2

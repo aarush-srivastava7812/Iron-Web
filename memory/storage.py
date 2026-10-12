@@ -3,6 +3,7 @@
 Graph changes use a database transaction. Vector changes use exact snapshots
 and compensation. This is process-level consistency, not crash atomicity.
 """
+
 from contextlib import contextmanager
 from memory.models import EngineStorageError
 
@@ -30,8 +31,11 @@ def coordinated_write(vector_store, graph_store, memory_ids):
                     failures.append(str(rollback_error))
             raise EngineStorageError(
                 f"Coordinated write failed: {error}. "
-                + ("Original state restored." if not failures and graph_rolled_back
-                   else f"Rollback incomplete: {failures}"),
+                + (
+                    "Original state restored."
+                    if not failures and graph_rolled_back
+                    else f"Rollback incomplete: {failures}"
+                ),
                 memory_id=next(iter(snapshots), ""),
                 rolled_back=graph_rolled_back and not failures,
             ) from error

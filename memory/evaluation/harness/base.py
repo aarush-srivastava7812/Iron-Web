@@ -1,20 +1,20 @@
 """
 Base classes, data models, and metrics for the benchmark harness.
 """
+
 from __future__ import annotations
 
 import re
 import string
-import time
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field, asdict
-from typing import List, Dict, Any, Optional, Set, Sequence
-import numpy as np
+from typing import List, Dict, Any, Optional
 
 
 @dataclass
 class BenchmarkDocument:
     """A document or conversation session to be ingested into the memory engine."""
+
     doc_id: str
     text: str
     session_id: Optional[str] = None
@@ -27,6 +27,7 @@ class BenchmarkDocument:
 @dataclass
 class BenchmarkExample:
     """A benchmark evaluation question or query."""
+
     example_id: str
     query: str
     ground_truth_ids: List[str] = field(default_factory=list)
@@ -40,6 +41,7 @@ class BenchmarkExample:
 @dataclass
 class EvaluationResult:
     """Individual example result record with full telemetry."""
+
     run_id: str
     benchmark_name: str
     example_id: str
@@ -65,11 +67,12 @@ class EvaluationResult:
 # Answer Quality Scoring (Exact Match, Token F1, Normalization)
 # =============================================================================
 
+
 def normalize_answer(s: str) -> str:
     """Normalize text for consistent evaluation (lowercase, punctuation, whitespace)."""
     if not isinstance(s, str):
         s = str(s)
-    
+
     def remove_articles(text: str) -> str:
         return re.sub(r"\b(a|an|the)\b", " ", text)
 
@@ -88,24 +91,30 @@ def normalize_answer(s: str) -> str:
 
 def compute_exact_match(prediction: str, ground_truth: str) -> float:
     """Compute Exact Match (EM) between prediction and ground truth string."""
-    return 1.0 if normalize_answer(prediction) == normalize_answer(ground_truth) else 0.0
+    return (
+        1.0 if normalize_answer(prediction) == normalize_answer(ground_truth) else 0.0
+    )
 
 
 def compute_token_f1(prediction: str, ground_truth: str) -> float:
     """Compute token-level F1 score between prediction and ground truth string."""
     pred_tokens = normalize_answer(prediction).split()
     gold_tokens = normalize_answer(ground_truth).split()
-    
+
     if not pred_tokens or not gold_tokens:
         return 1.0 if pred_tokens == gold_tokens else 0.0
-        
+
     common = set(pred_tokens) & set(gold_tokens)
     if not common:
         return 0.0
-        
-    precision = sum(min(pred_tokens.count(w), gold_tokens.count(w)) for w in common) / len(pred_tokens)
-    recall = sum(min(pred_tokens.count(w), gold_tokens.count(w)) for w in common) / len(gold_tokens)
-    
+
+    precision = sum(
+        min(pred_tokens.count(w), gold_tokens.count(w)) for w in common
+    ) / len(pred_tokens)
+    recall = sum(min(pred_tokens.count(w), gold_tokens.count(w)) for w in common) / len(
+        gold_tokens
+    )
+
     if precision + recall == 0:
         return 0.0
     return float(2 * (precision * recall) / (precision + recall))
@@ -124,12 +133,19 @@ def compute_substring_match(prediction: str, ground_truth: str) -> float:
 # Retrieval Metrics
 # =============================================================================
 
-from memory.evaluation.retrieval_metrics import recall_at_k, precision_at_k, mean_reciprocal_rank, ndcg_at_k, compute_retrieval_metrics
+from memory.evaluation.retrieval_metrics import (
+    recall_at_k,
+    precision_at_k,
+    mean_reciprocal_rank,
+    ndcg_at_k,
+    compute_retrieval_metrics,
+)
 
 
 # =============================================================================
 # Benchmark Adapter Abstract Base Class
 # =============================================================================
+
 
 class BenchmarkAdapter(ABC):
     """
@@ -161,5 +177,22 @@ class BenchmarkAdapter(ABC):
         return {
             "exact_match": compute_exact_match(prediction, gold_answer),
             "token_f1": compute_token_f1(prediction, gold_answer),
-            "substring_match": compute_substring_match(prediction, gold_answer)
+            "substring_match": compute_substring_match(prediction, gold_answer),
         }
+
+
+__all__ = [
+    "BenchmarkAdapter",
+    "BenchmarkDocument",
+    "BenchmarkExample",
+    "EvaluationResult",
+    "normalize_answer",
+    "compute_exact_match",
+    "compute_token_f1",
+    "compute_substring_match",
+    "compute_retrieval_metrics",
+    "recall_at_k",
+    "precision_at_k",
+    "mean_reciprocal_rank",
+    "ndcg_at_k",
+]

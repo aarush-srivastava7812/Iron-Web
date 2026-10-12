@@ -1,5 +1,7 @@
 # Iron Web — File-by-File Cleanup Decisions
 
+**Historical review:** This document describes the pre-cleanup baseline, Git commit `724c551`. See [current implementation](../docs/specification.md) and [applied cleanup report](cleanup_implementation_report.md) for the updated behavior.
+
 Review date: 12 October 2026
 
 [Prioritized plan and plain-language explanations](D:/Opencode_/reserchpaper/report/cleanup_plan.md)
