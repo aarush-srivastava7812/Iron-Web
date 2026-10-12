@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import json
 import os
-from datetime import datetime
+from memory.evaluation.harness.dates import parse_timestamp
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 
@@ -33,11 +33,15 @@ class LongMemEvalAdapter(BenchmarkAdapter):
         return "longmemeval"
 
     def _resolve_path(self, path: Optional[str]) -> Path:
-        if path and Path(path).exists():
-            return Path(path)
+        if path is not None:
+            explicit = Path(path).resolve()
+            if not explicit.exists():
+                raise FileNotFoundError(explicit)
+            return explicit
+        root = Path(__file__).resolve().parents[3]
         candidates = [
-            Path("datasets/longmemeval/data/longmemeval_s_cleaned.json"),
-            Path("data/benchmarks/longmemeval/corpus.json"),
+            (root / "datasets/longmemeval/data/longmemeval_s_cleaned.json"),
+            (Path(__file__).resolve().parents[3] / "data/benchmarks/longmemeval/corpus.json"),
         ]
         for c in candidates:
             if c.exists():
@@ -45,23 +49,7 @@ class LongMemEvalAdapter(BenchmarkAdapter):
         raise FileNotFoundError("Could not locate LongMemEval dataset files.")
 
     def _parse_date_to_timestamp(self, date_str: str) -> int:
-        """Parse ISO or human date string to Unix timestamp."""
-        if not date_str:
-            return 0
-        formats = [
-            "%Y-%m-%d",
-            "%Y-%m-%d %H:%M:%S",
-            "%Y/%m/%d",
-            "%d %B %Y",
-            "%B %d, %Y"
-        ]
-        for fmt in formats:
-            try:
-                dt = datetime.strptime(date_str.strip(), fmt)
-                return int(dt.timestamp())
-            except Exception:
-                continue
-        return 0
+        return parse_timestamp(date_str)
 
     def load_documents(self, limit: Optional[int] = None) -> List[BenchmarkDocument]:
         """
@@ -78,6 +66,8 @@ class LongMemEvalAdapter(BenchmarkAdapter):
                 dates = item.get("haystack_dates", [])
                 session_ids = item.get("haystack_session_ids", [])
                 
+                if not (len(session_ids) == len(dates) == len(sessions)):
+                    raise ValueError("LongMemEval session IDs, dates and dialogues have different lengths.")
                 for s_id, s_date, turns in zip(session_ids, dates, sessions):
                     doc_id = f"longmemeval:{s_id}"
                     if doc_id in docs_by_id:
@@ -120,7 +110,7 @@ class LongMemEvalAdapter(BenchmarkAdapter):
                     session_id=meta.get("session_id", entry["id"]),
                     timestamp=self._parse_date_to_timestamp(meta.get("date", "")),
                     valid_from=meta.get("valid_from", 0),
-                    valid_until=meta.get("valid_until", 2**31 - 1),
+                    valid_until=meta.get("valid_until", 2**63 - 1),
                     metadata=meta
                 )
                 docs_by_id[doc.doc_id] = doc
@@ -168,7 +158,7 @@ class LongMemEvalAdapter(BenchmarkAdapter):
                     break
         else:
             # Fallback to data/benchmarks/longmemeval/longmemeval.json
-            query_path = Path("data/benchmarks/longmemeval/longmemeval.json")
+            query_path = self.resolved_path.parent / "longmemeval.json"
             if query_path.exists():
                 data = json.loads(query_path.read_text(encoding="utf-8"))
                 for q in data.get("queries", []):

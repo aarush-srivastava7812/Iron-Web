@@ -20,7 +20,7 @@ class BenchmarkDocument:
     session_id: Optional[str] = None
     timestamp: Optional[int] = None
     valid_from: int = 0
-    valid_until: int = 2**31 - 1
+    valid_until: int = 2**63 - 1
     metadata: Dict[str, Any] = field(default_factory=dict)
 
 
@@ -117,78 +117,14 @@ def compute_substring_match(prediction: str, ground_truth: str) -> float:
     norm_pred = normalize_answer(prediction)
     if not norm_gold or not norm_pred:
         return 0.0
-    return 1.0 if norm_gold in norm_pred or norm_pred in norm_gold else 0.0
+    return 1.0 if norm_gold in norm_pred else 0.0
 
 
 # =============================================================================
 # Retrieval Metrics
 # =============================================================================
 
-def recall_at_k(retrieved: Sequence[str], relevant: Sequence[str], k: int) -> float:
-    """Recall@K: fraction of ground truth IDs present in top K retrieved items."""
-    if not relevant:
-        return 1.0
-    top_k = retrieved[:k]
-    # Check both exact match and prefix/suffix match (e.g. session IDs)
-    hits = 0
-    for rel in relevant:
-        if any(ret == rel or ret.endswith(f":{rel}") or rel.endswith(f":{ret}") for ret in top_k):
-            hits += 1
-    return hits / len(relevant)
-
-
-def precision_at_k(retrieved: Sequence[str], relevant: Sequence[str], k: int) -> float:
-    """Precision@K: fraction of top K retrieved items that are relevant."""
-    if k <= 0:
-        return 0.0
-    top_k = retrieved[:k]
-    hits = 0
-    for ret in top_k:
-        if any(ret == rel or ret.endswith(f":{rel}") or rel.endswith(f":{ret}") for rel in relevant):
-            hits += 1
-    return hits / k
-
-
-def mean_reciprocal_rank(retrieved: Sequence[str], relevant: Sequence[str]) -> float:
-    """MRR: reciprocal rank of first relevant item in retrieved list."""
-    if not relevant:
-        return 0.0
-    for idx, ret in enumerate(retrieved, start=1):
-        if any(ret == rel or ret.endswith(f":{rel}") or rel.endswith(f":{ret}") for rel in relevant):
-            return 1.0 / idx
-    return 0.0
-
-
-def ndcg_at_k(retrieved: Sequence[str], relevant: Sequence[str], k: int) -> float:
-    """Normalized Discounted Cumulative Gain at K."""
-    if not relevant:
-        return 1.0
-    top_k = retrieved[:k]
-    dcg = 0.0
-    for idx, ret in enumerate(top_k, start=1):
-        if any(ret == rel or ret.endswith(f":{rel}") or rel.endswith(f":{ret}") for rel in relevant):
-            dcg += 1.0 / np.log2(idx + 1)
-            
-    ideal_hits = min(len(relevant), k)
-    idcg = sum(1.0 / np.log2(i + 1) for i in range(1, ideal_hits + 1))
-    return float(dcg / idcg) if idcg > 0 else 0.0
-
-
-def compute_retrieval_metrics(
-    retrieved: Sequence[str],
-    relevant: Sequence[str],
-    k_values: Optional[List[int]] = None
-) -> Dict[str, float]:
-    """Compute complete suite of standard IR metrics."""
-    k_vals = k_values or [1, 3, 5, 10]
-    metrics = {
-        "mrr": mean_reciprocal_rank(retrieved, relevant)
-    }
-    for k in k_vals:
-        metrics[f"recall@{k}"] = recall_at_k(retrieved, relevant, k)
-        metrics[f"precision@{k}"] = precision_at_k(retrieved, relevant, k)
-        metrics[f"ndcg@{k}"] = ndcg_at_k(retrieved, relevant, k)
-    return metrics
+from memory.evaluation.retrieval_metrics import recall_at_k, precision_at_k, mean_reciprocal_rank, ndcg_at_k, compute_retrieval_metrics
 
 
 # =============================================================================

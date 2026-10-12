@@ -30,11 +30,15 @@ class DMRAdapter(BenchmarkAdapter):
         return "dmr"
 
     def _resolve_path(self, path: Optional[str]) -> Path:
-        if path and Path(path).exists():
-            return Path(path)
+        if path is not None:
+            explicit = Path(path).resolve()
+            if not explicit.is_dir():
+                raise FileNotFoundError(explicit)
+            return explicit
+        root = Path(__file__).resolve().parents[3]
         candidates = [
-            Path("data/benchmarks/dmr"),
-            Path("datasets/dmr"),
+            root / "data/benchmarks/dmr",
+            root / "datasets/dmr",
         ]
         for c in candidates:
             if c.exists():
@@ -45,10 +49,7 @@ class DMRAdapter(BenchmarkAdapter):
         """Load conversation session documents."""
         corpus_path = self.resolved_path / "corpus.json"
         if not corpus_path.exists():
-            # Try data/benchmarks/dmr/corpus.json
-            corpus_path = Path("data/benchmarks/dmr/corpus.json")
-            if not corpus_path.exists():
-                raise FileNotFoundError(f"DMR corpus not found at {corpus_path}")
+            raise FileNotFoundError(corpus_path)
 
         documents: List[BenchmarkDocument] = []
         data = json.loads(corpus_path.read_text(encoding="utf-8"))
@@ -58,7 +59,7 @@ class DMRAdapter(BenchmarkAdapter):
                 doc_id=entry["id"],
                 text=entry["text"],
                 session_id=meta.get("session_index", ""),
-                timestamp=meta.get("timestamp", 0),
+                timestamp=meta.get("timestamp"),
                 metadata=meta
             )
             documents.append(doc)
@@ -70,9 +71,7 @@ class DMRAdapter(BenchmarkAdapter):
         """Load DMR question-answering examples with gold answers and ground-truth IDs."""
         dmr_path = self.resolved_path / "dmr.json"
         if not dmr_path.exists():
-            dmr_path = Path("data/benchmarks/dmr/dmr.json")
-            if not dmr_path.exists():
-                raise FileNotFoundError(f"DMR queries file not found at {dmr_path}")
+            raise FileNotFoundError(dmr_path)
 
         examples: List[BenchmarkExample] = []
         data = json.loads(dmr_path.read_text(encoding="utf-8"))

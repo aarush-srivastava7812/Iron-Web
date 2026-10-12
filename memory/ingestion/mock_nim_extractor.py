@@ -92,7 +92,7 @@ class MockNIMExtractor(BaseExtractor):
         raw_result = {
             "entities": entities,
             "relations": relations,
-            "temporal": {"valid_from": 0, "valid_until": 2**31 - 1},
+            "temporal": {"valid_from": 0, "valid_until": 2**63 - 1},
             "importance": 0.8
         }
         return validate_extraction(raw_result, extractor_name="mock_nim_extractor", is_mock=True).to_dict()

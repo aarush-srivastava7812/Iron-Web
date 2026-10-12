@@ -172,8 +172,14 @@ def test_benchmark_runner_and_resumability(tmp_path):
         runner = BenchmarkRunner(output_dir=results_dir, run_id="smoke_test_run")
         
         # Run small smoke test on DMR
+        class CoveredDMRAdapter(DMRAdapter):
+            def load_documents(self, limit=None):
+                selected = {mid for e in self.load_examples(limit=2) for mid in e.ground_truth_ids}
+                return [d for d in super().load_documents() if d.doc_id in selected]
+        adapter = CoveredDMRAdapter()
         summary = runner.run_benchmark(
             benchmark_name="dmr",
+            adapter=adapter,
             engine=engine,
             max_documents=4,
             max_examples=2,
@@ -197,6 +203,7 @@ def test_benchmark_runner_and_resumability(tmp_path):
         # Test Resumability: running again with resume=True should not re-run existing examples
         summary2 = runner.run_benchmark(
             benchmark_name="dmr",
+            adapter=adapter,
             engine=engine,
             max_documents=4,
             max_examples=2,

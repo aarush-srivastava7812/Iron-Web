@@ -6,7 +6,7 @@ preserving QA categories, session boundaries, and evidence references.
 from __future__ import annotations
 
 import json
-from datetime import datetime
+from memory.evaluation.harness.dates import parse_timestamp
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 
@@ -17,10 +17,11 @@ from memory.evaluation.harness.base import (
 )
 
 CATEGORY_NAMES = {
-    1: "factual",
+    1: "multi_hop_reasoning",
     2: "temporal",
-    3: "multi_hop_reasoning",
-    4: "preference"
+    3: "factual",
+    4: "open_domain",
+    5: "adversarial"
 }
 
 
@@ -39,11 +40,15 @@ class LoCoMoAdapter(BenchmarkAdapter):
         return "locomo"
 
     def _resolve_path(self, path: Optional[str]) -> Path:
-        if path and Path(path).exists():
-            return Path(path)
+        if path is not None:
+            explicit = Path(path).resolve()
+            if not explicit.exists():
+                raise FileNotFoundError(explicit)
+            return explicit
+        root = Path(__file__).resolve().parents[3]
         candidates = [
-            Path("datasets/locomo/data/locomo10.json"),
-            Path("data/benchmarks/locomo/corpus.json"),
+            (root / "datasets/locomo/data/locomo10.json"),
+            (Path(__file__).resolve().parents[3] / "data/benchmarks/locomo/corpus.json"),
         ]
         for c in candidates:
             if c.exists():
@@ -51,22 +56,7 @@ class LoCoMoAdapter(BenchmarkAdapter):
         raise FileNotFoundError("Could not locate LoCoMo dataset files.")
 
     def _parse_date_to_timestamp(self, date_str: str) -> int:
-        if not date_str:
-            return 0
-        formats = [
-            "%Y-%m-%d %H:%M:%S",
-            "%Y-%m-%d",
-            "%d %B %Y",
-            "%B %d, %Y",
-            "%Y/%m/%d"
-        ]
-        for fmt in formats:
-            try:
-                dt = datetime.strptime(date_str.strip(), fmt)
-                return int(dt.timestamp())
-            except Exception:
-                continue
-        return 0
+        return parse_timestamp(date_str)
 
     def load_documents(self, limit: Optional[int] = None) -> List[BenchmarkDocument]:
         """
@@ -125,7 +115,7 @@ class LoCoMoAdapter(BenchmarkAdapter):
                     session_id=entry["id"],
                     timestamp=meta.get("valid_from", 0),
                     valid_from=meta.get("valid_from", 0),
-                    valid_until=meta.get("valid_until", 2**31 - 1),
+                    valid_until=meta.get("valid_until", 2**63 - 1),
                     metadata=meta
                 )
                 documents.append(doc)
@@ -162,7 +152,7 @@ class LoCoMoAdapter(BenchmarkAdapter):
                     ex = BenchmarkExample(
                         example_id=ex_id,
                         query=qa_item["question"],
-                        ground_truth_ids=evidence_sessions,
+                        ground_truth_ids=sorted(set(evidence_sessions)),
                         gold_answer=str(qa_item.get("answer", "")),
                         category=category_name,
                         metadata={
@@ -178,7 +168,7 @@ class LoCoMoAdapter(BenchmarkAdapter):
                     break
         else:
             # Fallback to data/benchmarks/locomo/locomo.json
-            query_path = Path("data/benchmarks/locomo/locomo.json")
+            query_path = self.resolved_path.parent / "locomo.json"
             if query_path.exists():
                 data = json.loads(query_path.read_text(encoding="utf-8"))
                 for q in data.get("queries", []):

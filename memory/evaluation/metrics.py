@@ -6,69 +6,7 @@ import math
 import numpy as np
 
 
-def recall_at_k(retrieved: List[str], relevant: List[str], k: int) -> float:
-    """Recall@K: fraction of relevant items in top-K."""
-    if not relevant:
-        return 1.0
-    retrieved_k = retrieved[:k]
-    hits = len(set(retrieved_k) & set(relevant))
-    return hits / len(relevant)
-
-
-def precision_at_k(retrieved: List[str], relevant: List[str], k: int) -> float:
-    """Precision@K: fraction of retrieved items that are relevant."""
-    if k == 0:
-        return 0.0
-    retrieved_k = retrieved[:k]
-    hits = len(set(retrieved_k) & set(relevant))
-    return hits / k
-
-
-def mrr(retrieved: List[str], relevant: List[str]) -> float:
-    """Mean Reciprocal Rank: 1/rank of first relevant item."""
-    relevant_set = set(relevant)
-    for i, item in enumerate(retrieved, 1):
-        if item in relevant_set:
-            return 1.0 / i
-    return 0.0
-
-
-def ndcg_at_k(retrieved: List[str], relevant: List[str], k: int) -> float:
-    """NDCG@K: Normalized Discounted Cumulative Gain."""
-    if not relevant:
-        return 1.0
-    
-    retrieved_k = retrieved[:k]
-    relevant_set = set(relevant)
-    
-    # DCG
-    dcg = 0.0
-    for i, item in enumerate(retrieved_k, 1):
-        if item in relevant_set:
-            dcg += 1.0 / math.log2(i + 1)
-    
-    # IDCG (ideal)
-    ideal_relevant = min(len(relevant), k)
-    idcg = sum(1.0 / math.log2(i + 1) for i in range(1, ideal_relevant + 1))
-    
-    return dcg / idcg if idcg > 0 else 0.0
-
-
-def average_precision(retrieved: List[str], relevant: List[str]) -> float:
-    """Average Precision (AP) for single query."""
-    if not relevant:
-        return 1.0
-    
-    relevant_set = set(relevant)
-    hits = 0
-    ap = 0.0
-    
-    for i, item in enumerate(retrieved, 1):
-        if item in relevant_set:
-            hits += 1
-            ap += hits / i
-    
-    return ap / len(relevant)
+from memory.evaluation.retrieval_metrics import recall_at_k, precision_at_k, mrr, ndcg_at_k, average_precision
 
 
 def map_score(results: List[Dict], relevant_map: Dict[str, List[str]]) -> float:
@@ -76,7 +14,7 @@ def map_score(results: List[Dict], relevant_map: Dict[str, List[str]]) -> float:
     aps = []
     for r in results:
         scenario_id = r.get("query_id", r.get("scenario_id", ""))
-        relevant = relevant_map.get(scenario_id, [])
+        relevant = r.get("ground_truth_ids", relevant_map.get(scenario_id, []))
         ap = average_precision(r["retrieved_ids"], relevant)
         aps.append(ap)
     return np.mean(aps) if aps else 0.0
