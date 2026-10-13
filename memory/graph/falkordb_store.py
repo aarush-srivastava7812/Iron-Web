@@ -71,6 +71,8 @@ class FalkorDBGraphStore:
         self.socket_timeout = socket_timeout
         self._entity_name_index = None
         self._index_revision = None
+        self._conflict_cache = None
+        self._conflict_revision = None
         self._staging = None
         self._backup = None
         self._published = False
@@ -85,6 +87,8 @@ class FalkorDBGraphStore:
     def invalidate_entity_name_index(self) -> None:
         """Discard the in-process entity lookup index after graph mutation."""
         self._entity_name_index = None
+        self._conflict_cache = None
+        self._conflict_revision = None
 
     @synchronized
     def get_entity_name_index(self):
@@ -235,6 +239,30 @@ class FalkorDBGraphStore:
                 "updated_at": row[6],
             }
         return None
+
+    @synchronized
+    def get_entities(self, entity_ids):
+        """Read seeds in bounded batches, preserving first occurrence order."""
+        ids = list(dict.fromkeys(entity_ids))
+        fields = (
+            "id",
+            "name",
+            "entity_type",
+            "description",
+            "importance",
+            "created_at",
+            "updated_at",
+        )
+        entities = {}
+        for start in range(0, len(ids), 100):
+            result = self.conn.execute(
+                "MATCH (e:Entity) WHERE e.id IN $ids RETURN "
+                + ", ".join("e." + field for field in fields),
+                {"ids": ids[start : start + 100]},
+            )
+            for row in result.rows:
+                entities[row[0]] = dict(zip(fields, row))
+        return [entities[eid] for eid in ids if eid in entities]
 
     @synchronized
     def find_entities_by_name(self, name: str, limit: int = 10) -> List[Dict[str, Any]]:
@@ -809,11 +837,12 @@ class FalkorDBGraphStore:
         if not seed_entity_ids:
             return [], []
         now = int(time.time()) if valid_at is None else valid_at
-        entities = {}
-        for eid in list(dict.fromkeys(seed_entity_ids))[:max_nodes]:
-            entity = self.get_entity(eid)
-            if entity:
-                entities[eid] = entity
+        entities = {
+            entity["id"]: entity
+            for entity in self.get_entities(
+                list(dict.fromkeys(seed_entity_ids))[:max_nodes]
+            )
+        }
         frontier, relations = list(entities), {}
         predicate = {
             "now": "AND r.valid_from <= $time AND r.valid_until >= $time",
@@ -903,54 +932,58 @@ class FalkorDBGraphStore:
         self, observation_ids, use_batched_resolution=True
     ):
         """Resolve every observation for each owner, retaining edge direction and time."""
+        from copy import deepcopy
+
         original_ids = list(dict.fromkeys(observation_ids))
-        output = {mid: [] for mid in original_ids}
-        result = self.conn.execute(
-            "MATCH (o:Observation) RETURN o.id, o.entity_id, o.source_memory_id"
-        )
-        owners, aliases = {}, {}
-        while result.has_next():
-            oid, eid, source = result.get_next()
-            owner = self.observation_memory_id(
-                dict(id=oid, entity_id=eid, source_memory_id=source)
-            )
-            owners[oid] = owner
-            aliases[oid] = [mid for mid in original_ids if mid == oid or mid == owner]
-        resolved = [oid for oid, ids in aliases.items() if ids]
-        if not resolved:
-            return output
-        for kind, time_field, extra in (
-            ("CONTRADICTS", "detected_at", "AND r.resolved = false"),
-            ("SUPERSEDES", "superseded_at", ""),
-        ):
+        if not original_ids:
+            return {}
+        revision = (self.graph.name, self.redis.get(self.revision_key))
+        if self._conflict_cache is None or revision != self._conflict_revision:
             result = self.conn.execute(
-                f"""
-                MATCH (old:Observation)-[r:{kind}]->(new:Observation)
-                WHERE (old.id IN $ids OR new.id IN $ids) {extra}
-                RETURN old.id, new.id, r.confidence, r.{time_field}
-            """,
-                {"ids": resolved},
+                "MATCH (o:Observation) RETURN o.id, o.entity_id, o.source_memory_id"
             )
-            while result.has_next():
-                old, new, confidence, effective_at = result.get_next()
-                for oid, other, direction in (
-                    (old, new, "outgoing"),
-                    (new, old, "incoming"),
-                ):
-                    for mid in aliases.get(oid, []):
-                        output[mid].append(
-                            dict(
-                                relationship_type=kind,
-                                id=other,
-                                memory_id=owners.get(other, other),
-                                confidence=confidence,
-                                effective_at=effective_at,
-                                direction=direction,
-                                from_id=old,
-                                to_id=new,
-                            )
+            owners = {
+                oid: self.observation_memory_id(
+                    dict(id=oid, entity_id=eid, source_memory_id=source)
+                )
+                for oid, eid, source in result.rows
+            }
+            index = {}
+            edge_count = 0
+            for kind, time_field, extra in (
+                ("CONTRADICTS", "detected_at", "WHERE r.resolved = false"),
+                ("SUPERSEDES", "superseded_at", ""),
+            ):
+                result = self.conn.execute(
+                    f"MATCH (old:Observation)-[r:{kind}]->(new:Observation) {extra} "
+                    f"RETURN old.id, new.id, r.confidence, r.{time_field}"
+                )
+                edge_count += len(result.rows)
+                for old, new, confidence, effective_at in result.rows:
+                    for oid, other, direction in (
+                        (old, new, "outgoing"),
+                        (new, old, "incoming"),
+                    ):
+                        item = dict(
+                            relationship_type=kind,
+                            id=other,
+                            memory_id=owners.get(other, other),
+                            confidence=confidence,
+                            effective_at=effective_at,
+                            direction=direction,
+                            from_id=old,
+                            to_id=new,
                         )
-        return output
+                        for alias in dict.fromkeys((oid, owners.get(oid, oid))):
+                            index.setdefault(alias, []).append(item)
+            # Bound retained cache size; larger graphs use the same uncached result.
+            if len(owners) <= 50000 and edge_count <= 100000:
+                self._conflict_cache = index
+                self._conflict_revision = revision
+        else:
+            index = self._conflict_cache
+        # Callers attach ranking metadata; never expose mutable cache entries.
+        return {mid: deepcopy(index.get(mid, [])) for mid in original_ids}
 
     @synchronized
     def add_contradiction(
