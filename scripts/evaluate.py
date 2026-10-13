@@ -80,7 +80,12 @@ def main():
                 "retrieval": {"reranker_enabled": options.rerank},
             },
             qdrant_path=str(directory / "vectors"),
-            kuzu_path=str(directory / "graph.db"),
+            graph_name="evaluation_"
+            + options.run_id
+            + "_"
+            + options.benchmark
+            + "_"
+            + mode,
             use_gpu=options.gpu,
         ) as engine:
             summary = runner.run_benchmark(

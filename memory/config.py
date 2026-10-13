@@ -16,7 +16,12 @@ class VectorSettings(Settings):
 
 
 class GraphSettings(Settings):
-    path: str = "./data/kuzu/memory.db"
+    host: str = "127.0.0.1"
+    port: int = Field(default=6379, ge=1, le=65535)
+    graph_name: str = Field(default="iron_web", pattern=r"^[A-Za-z0-9_.:-]{1,128}$")
+    tls: bool = False
+    socket_timeout: float = Field(default=10.0, gt=0)
+    query_timeout_ms: int = Field(default=10000, ge=1)
 
 
 class EmbeddingSettings(Settings):
@@ -52,7 +57,7 @@ class EngineSettings(Settings):
     USE_GPU: bool = False
     extraction_policy: Literal["none", "nim"] = "none"
     qdrant: VectorSettings = Field(default_factory=VectorSettings)
-    kuzu: GraphSettings = Field(default_factory=GraphSettings)
+    falkordb: GraphSettings = Field(default_factory=GraphSettings)
     embeddings: EmbeddingSettings = Field(default_factory=EmbeddingSettings)
     reranker: RerankerSettings = Field(default_factory=RerankerSettings)
     retrieval: RetrievalSettings = Field(default_factory=RetrievalSettings)

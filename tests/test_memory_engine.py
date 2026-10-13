@@ -2,7 +2,7 @@
 Unit and integration tests for MemoryEngine (Phase 2).
 Verifies:
 1. Unified CRUD operations (add, get, search, update, delete).
-2. Consistent cross-store memory IDs between Qdrant and Kuzu.
+2. Consistent cross-store memory IDs between Qdrant and FalkorDB.
 3. Partial write failure and compensating rollback on add.
 4. Partial write failure and compensating rollback on update.
 5. Preservation of shared graph entities across memory deletions.
@@ -10,6 +10,8 @@ Verifies:
 7. Device status, VRAM telemetry, and CPU fallback reporting.
 8. Safe batch ingestion.
 """
+
+from tests.fixtures.graph import graph_name_for
 
 import pytest
 
@@ -20,9 +22,11 @@ from memory.models import EngineStorageError, MemoryRecord, MemorySearchResult
 def test_engine_add_get_and_search(tmp_path):
     """Verify add, get, and search in both vector and hybrid retrieval modes."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=True) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=True
+    ) as engine:
         mem_id = engine.add(
             content="I use Java for Data Structures and Algorithms",
             metadata={"session_id": "sess_101", "source": "chat"},
@@ -67,10 +71,12 @@ def test_engine_add_get_and_search(tmp_path):
 def test_engine_update_and_reopen_persistence(tmp_path):
     """Verify memory updates and disk persistence across engine close and reopen."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
     # Session 1: Ingest memory
-    engine1 = MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=True)
+    engine1 = MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=True
+    )
     mem_id = engine1.add(
         content="Initial belief: Python is fast enough for low-level systems programming",
         entity_ids=["python", "systems"],
@@ -79,7 +85,9 @@ def test_engine_update_and_reopen_persistence(tmp_path):
     engine1.close()
 
     # Session 2: Reopen from disk, verify, update
-    engine2 = MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=True)
+    engine2 = MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=True
+    )
     loaded = engine2.get(mem_id)
     assert loaded is not None
     assert "Initial belief" in loaded.content
@@ -98,7 +106,9 @@ def test_engine_update_and_reopen_persistence(tmp_path):
     engine2.close()
 
     # Session 3: Reopen again to confirm update persisted to disk
-    engine3 = MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=True)
+    engine3 = MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=True
+    )
     rec_persisted = engine3.get(mem_id)
     assert rec_persisted is not None
     assert "Rust is preferred" in rec_persisted.content
@@ -109,9 +119,11 @@ def test_engine_update_and_reopen_persistence(tmp_path):
 def test_engine_shared_entity_preservation_on_delete(tmp_path):
     """Deleting one memory must not destroy shared graph entities still referenced by other memories."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=True) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=True
+    ) as engine:
         # Both memories share entity 'python'
         mem_A = engine.add("I write data pipelines in Python", entity_ids=["python"])
         mem_B = engine.add("I write ML models in Python", entity_ids=["python"])
@@ -139,12 +151,14 @@ def test_engine_shared_entity_preservation_on_delete(tmp_path):
 def test_engine_compensating_rollback_on_add_failure(tmp_path, monkeypatch):
     """If graph store write fails halfway during add(), vector store write must be rolled back."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=True) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=True
+    ) as engine:
         # Simulate catastrophic graph store crash during observation write
         def broken_upsert_observation(*args, **kwargs):
-            raise RuntimeError("Simulated Kuzu disk I/O failure")
+            raise RuntimeError("Simulated FalkorDB disk I/O failure")
 
         monkeypatch.setattr(
             engine.graph_store, "upsert_observation", broken_upsert_observation
@@ -165,14 +179,16 @@ def test_engine_compensating_rollback_on_add_failure(tmp_path, monkeypatch):
 def test_engine_compensating_rollback_on_update_failure(tmp_path, monkeypatch):
     """If graph observation update fails during update(), Qdrant point must be restored to original state."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=True) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=True
+    ) as engine:
         mem_id = engine.add("Original stable memory content", entity_ids=["test_topic"])
 
         # Simulate failure during graph observation update
         def broken_upsert_observation(*args, **kwargs):
-            raise RuntimeError("Simulated Kuzu connection timeout")
+            raise RuntimeError("Simulated FalkorDB connection timeout")
 
         monkeypatch.setattr(
             engine.graph_store, "upsert_observation", broken_upsert_observation
@@ -191,9 +207,11 @@ def test_engine_compensating_rollback_on_update_failure(tmp_path, monkeypatch):
 def test_engine_device_status_and_telemetry(tmp_path):
     """Engine must report transparent hardware, provider, and VRAM telemetry."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=True) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=True
+    ) as engine:
         status_initial = engine.get_device_status()
 
         assert status_initial.gpu_enabled_requested is True
@@ -219,9 +237,11 @@ def test_engine_device_status_and_telemetry(tmp_path):
 def test_engine_batch_ingest(tmp_path):
     """Engine must support safe batch ingestion of multiple texts."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=True) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=True
+    ) as engine:
         texts = [
             "Episode 1: Started learning Python basics",
             "Episode 2: Built a web scraper with Beautiful Soup",

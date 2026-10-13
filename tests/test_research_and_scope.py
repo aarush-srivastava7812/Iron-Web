@@ -1,3 +1,4 @@
+from tests.fixtures.graph import graph_name_for
 import json
 import subprocess
 import sys
@@ -14,7 +15,7 @@ def test_public_import_does_not_load_optional_clients():
         [
             sys.executable,
             "-c",
-            "import sys; from memory import MemoryEngine; print(any(n in sys.modules for n in ['fastembed','openai','kuzu','qdrant_client']))",
+            "import sys; from memory import MemoryEngine; print(any(n in sys.modules for n in ['fastembed','openai','falkordb','qdrant_client']))",
         ],
         text=True,
     )
@@ -25,7 +26,7 @@ def test_scoped_retrieval_excludes_other_conversations(tmp_path):
     with MemoryEngine(
         config={},
         qdrant_path=str(tmp_path / "vectors"),
-        kuzu_path=str(tmp_path / "graph.db"),
+        graph_name=graph_name_for(str(tmp_path / "graph.db")),
     ) as engine:
         engine.add("topic fact one", memory_id="one", entity_ids=["topic"])
         engine.add("topic fact other", memory_id="other", entity_ids=["topic"])
@@ -42,7 +43,7 @@ def test_research_mechanisms_have_explicit_names(tmp_path):
     with ResearchEngine(
         config={},
         qdrant_path=str(tmp_path / "vectors"),
-        kuzu_path=str(tmp_path / "graph.db"),
+        graph_name=graph_name_for(str(tmp_path / "graph.db")),
     ) as engine:
         engine.add("Python topic", memory_id="one", entity_ids=["python"])
         for mode in ("entity_neighborhood", "dense_lexical_fusion", "temporal_room"):

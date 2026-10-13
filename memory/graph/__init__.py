@@ -1,5 +1,5 @@
 """Embedded graph storage."""
 
-from memory.graph.kuzu_store import KuzuGraphStore, RelationType
+from memory.graph.falkordb_store import FalkorDBGraphStore, RelationType
 
-__all__ = ["KuzuGraphStore", "RelationType"]
+__all__ = ["FalkorDBGraphStore", "RelationType"]

@@ -10,7 +10,7 @@ _EXPORTS = {
     "EngineStorageError": ("memory.models", "EngineStorageError"),
     "MemoryToolAdapter": ("memory.tool_adapter", "MemoryToolAdapter"),
     "QdrantVectorStore": ("memory.vector_store.qdrant_store", "QdrantVectorStore"),
-    "KuzuGraphStore": ("memory.graph.kuzu_store", "KuzuGraphStore"),
+    "FalkorDBGraphStore": ("memory.graph.falkordb_store", "FalkorDBGraphStore"),
     "Embedder": ("memory.embeddings.embedder", "Embedder"),
     "get_embedder": ("memory.embeddings.embedder", "get_embedder"),
     "Reranker": ("memory.ranking.reranker", "Reranker"),

@@ -1,0 +1,2 @@
+# Only the read-only legacy import utility requires Kùzu.
+kuzu==0.11.3

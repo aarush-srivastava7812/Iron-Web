@@ -1,3 +1,4 @@
+from tests.fixtures.graph import graph_name_for
 import json
 import threading
 from urllib.request import Request, urlopen
@@ -13,7 +14,7 @@ def api(tmp_path, monkeypatch):
     engine = MemoryEngine(
         config={},
         qdrant_path=str(tmp_path / "vectors"),
-        kuzu_path=str(tmp_path / "graph.db"),
+        graph_name=graph_name_for(str(tmp_path / "graph.db")),
     )
     monkeypatch.setattr(server, "get_engine", lambda: engine)
     http = server.ThreadingHTTPServer(("127.0.0.1", 0), server.IronWebHandler)

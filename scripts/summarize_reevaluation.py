@@ -144,7 +144,14 @@ def summarize(report):
             / job["benchmark"]
         )
         config["qdrant"]["path"] = str(store / "vectors")
-        config["kuzu"]["path"] = str(store / "graph.db")
+        config["falkordb"]["graph_name"] = (
+            "reevaluation_"
+            + Path(job["slice_directory"]).parents[2].name
+            + "_p"
+            + str(job["percent"])
+            + "_"
+            + job["benchmark"]
+        )
         expected_inputs = dict(
             protocol="local_retrieval_v2",
             source=source_fingerprint(),

@@ -2,16 +2,18 @@
 Automated tests for Phase 1: Storage foundation stabilization.
 Tests verify:
 1. Qdrant local persistence across close and reopen.
-2. Kuzu local persistence across close and reopen.
-3. Kuzu observation lookup and deletion with referential integrity.
-4. Kuzu memory deletion and orphaned entity cleanup.
-5. Shared identifier alignment across Qdrant and Kuzu.
+2. FalkorDB local persistence across close and reopen.
+3. FalkorDB observation lookup and deletion with referential integrity.
+4. FalkorDB memory deletion and orphaned entity cleanup.
+5. Shared identifier alignment across Qdrant and FalkorDB.
 """
+
+from tests.fixtures.graph import graph_name_for
 
 import numpy as np
 
 from memory.vector_store.qdrant_store import QdrantVectorStore
-from memory.graph.kuzu_store import KuzuGraphStore
+from memory.graph.falkordb_store import FalkorDBGraphStore
 from memory.contradiction.detector import ContradictionDetector
 
 
@@ -81,12 +83,12 @@ def test_qdrant_write_close_reopen(tmp_path):
     store2.close()
 
 
-def test_kuzu_write_close_reopen(tmp_path):
-    """Kuzu local storage must persist entities, relations, and observations across reopen."""
-    kuzu_path = str(tmp_path / "kuzu.db")
+def test_falkordb_write_close_reopen(tmp_path):
+    """FalkorDB local storage must persist entities, relations, and observations across reopen."""
+    graph_identity = str(tmp_path / "graph")
 
     # 1. Write entities, relations, observations
-    store1 = KuzuGraphStore(db_path=kuzu_path)
+    store1 = FalkorDBGraphStore(graph_name=graph_name_for(graph_identity))
     store1.upsert_entity(
         entity_id="java",
         name="Java",
@@ -130,7 +132,7 @@ def test_kuzu_write_close_reopen(tmp_path):
     store1.close()
 
     # 2. Reopen store from same database file
-    store2 = KuzuGraphStore(db_path=kuzu_path)
+    store2 = FalkorDBGraphStore(graph_name=graph_name_for(graph_identity))
     counts2 = store2.get_node_counts()
     assert counts2["Entity"] == 2
     assert counts2["Observation"] == 1
@@ -162,10 +164,10 @@ def test_kuzu_write_close_reopen(tmp_path):
     store2.close()
 
 
-def test_kuzu_referential_integrity_and_deletion(tmp_path):
+def test_falkordb_referential_integrity_and_deletion(tmp_path):
     """Test deletion semantics: observation deletion and referential-integrity-guarded entity deletion."""
-    kuzu_path = str(tmp_path / "integrity.db")
-    store = KuzuGraphStore(db_path=kuzu_path)
+    graph_identity = str(tmp_path / "integrity.db")
+    store = FalkorDBGraphStore(graph_name=graph_name_for(graph_identity))
 
     store.upsert_entity(entity_id="python", name="Python", entity_type="Technology")
     store.upsert_observation(
@@ -199,10 +201,10 @@ def test_kuzu_referential_integrity_and_deletion(tmp_path):
     store.close()
 
 
-def test_kuzu_delete_memory(tmp_path):
+def test_falkordb_delete_memory(tmp_path):
     """Test delete_memory cleans up all related observations for that memory."""
-    kuzu_path = str(tmp_path / "memory_del.db")
-    store = KuzuGraphStore(db_path=kuzu_path)
+    graph_identity = str(tmp_path / "memory_del.db")
+    store = FalkorDBGraphStore(graph_name=graph_name_for(graph_identity))
 
     store.upsert_entity(entity_id="e1", name="Entity 1", entity_type="Concept")
     store.upsert_entity(entity_id="e2", name="Entity 2", entity_type="Concept")
@@ -243,9 +245,9 @@ def test_kuzu_delete_memory(tmp_path):
 
 
 def test_shared_identifier_alignment(tmp_path):
-    """Verify consistent shared memory_id usage across Qdrant, Kuzu, and ContradictionDetector."""
+    """Verify consistent shared memory_id usage across Qdrant, FalkorDB, and ContradictionDetector."""
     qdrant_dir = str(tmp_path / "shared_qdrant")
-    kuzu_path = str(tmp_path / "shared_kuzu.db")
+    graph_identity = str(tmp_path / "shared_graph")
 
     qdrant = QdrantVectorStore(
         path=qdrant_dir,
@@ -253,7 +255,7 @@ def test_shared_identifier_alignment(tmp_path):
         dimension=4,
         distance="Cosine",
     )
-    kuzu = KuzuGraphStore(db_path=kuzu_path)
+    graph = FalkorDBGraphStore(graph_name=graph_name_for(graph_identity))
 
     memory_id = "mem_shared_123"
     entity_id = "lang_java"
@@ -266,10 +268,10 @@ def test_shared_identifier_alignment(tmp_path):
         entity_ids=[entity_id],
     )
 
-    # Write to Kuzu with aligned entity and observation
+    # Write to FalkorDB with aligned entity and observation
     obs_id = f"obs_{memory_id}_{entity_id}"
-    kuzu.upsert_entity(entity_id=entity_id, name="Java", entity_type="Technology")
-    kuzu.upsert_observation(
+    graph.upsert_entity(entity_id=entity_id, name="Java", entity_type="Technology")
+    graph.upsert_observation(
         obs_id=obs_id,
         entity_id=entity_id,
         content="I use Java for DSA",
@@ -281,16 +283,16 @@ def test_shared_identifier_alignment(tmp_path):
     assert q_mem is not None
     assert q_mem["payload"]["memory_id"] == memory_id
 
-    # Verify Kuzu has observation by obs_id
-    k_obs = kuzu.get_observation(obs_id)
+    # Verify FalkorDB has observation by obs_id
+    k_obs = graph.get_observation(obs_id)
     assert k_obs is not None
     assert k_obs["id"] == obs_id
     assert k_obs["entity_id"] == entity_id
 
-    # Verify ContradictionDetector can resolve the observation through Kuzu
+    # Verify ContradictionDetector can resolve the observation through FalkorDB
     detector = ContradictionDetector(
         embedder=None,  # Not needed for _get_observation test
-        graph_store=kuzu,
+        graph_store=graph,
     )
     resolved_obs = detector._get_observation(obs_id)
     assert resolved_obs is not None
@@ -299,4 +301,4 @@ def test_shared_identifier_alignment(tmp_path):
     assert resolved_obs["content"] == "I use Java for DSA"
 
     qdrant.close()
-    kuzu.close()
+    graph.close()

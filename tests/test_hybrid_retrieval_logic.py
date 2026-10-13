@@ -9,6 +9,8 @@ Verifies:
 6. Multi-stream RRF fusion and transparent retrieval traces.
 """
 
+from tests.fixtures.graph import graph_name_for
+
 import time
 
 from memory.engine import MemoryEngine
@@ -77,9 +79,11 @@ def test_extractor_validation_and_mock_marking():
 def test_query_understanding_and_entity_linking(tmp_path):
     """HybridRetriever must extract and link entities mentioned in the query from the graph store."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=True) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=True
+    ) as engine:
         # Ingest memories with known entity IDs
         engine.add(
             "Python is used for backend web services", entity_ids=["python", "backend"]
@@ -114,9 +118,11 @@ def test_query_understanding_and_entity_linking(tmp_path):
 def test_bounded_graph_expansion(tmp_path):
     """Graph traversal must be bounded in hops and candidate node count."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=True) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=True
+    ) as engine:
         engine.add("Alpha relates to Beta", entity_ids=["alpha", "beta"])
         engine.add("Beta relates to Gamma", entity_ids=["beta", "gamma"])
         engine.add("Gamma relates to Delta", entity_ids=["gamma", "delta"])
@@ -143,9 +149,11 @@ def test_temporal_point_in_time_and_changed_preferences(tmp_path):
     and the current fact when queried at current time.
     """
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=True) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=True
+    ) as engine:
         t_2020 = 1577836800  # Jan 1, 2020
         t_2022 = 1640995200  # Jan 1, 2022
         t_2024 = 1704067200  # Jan 1, 2024
@@ -210,9 +218,11 @@ def test_contradiction_supersession_graph_chain_and_ranking(tmp_path):
     the superseded memory must be demoted in 'now' mode and flagged with is_superseded=True.
     """
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=True) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=True
+    ) as engine:
         t_now = int(time.time())
         t_past = t_now - 100000
 
@@ -255,9 +265,11 @@ def test_contradiction_supersession_graph_chain_and_ranking(tmp_path):
 def test_retrieval_trace_inspection(tmp_path):
     """Returned SearchResults must contain transparent retrieval_trace telemetry."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=True) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=True
+    ) as engine:
         mem_id = engine.add(
             "PostgreSQL is used as our primary relational database",
             entity_ids=["postgresql", "database"],

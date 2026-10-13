@@ -16,20 +16,20 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from memory.vector_store.qdrant_store import QdrantVectorStore
-    from memory.graph import KuzuGraphStore
+    from memory.graph import FalkorDBGraphStore
 
 
 class MemoryDecay:
     """
     Importance decay over time.
     Calculates age-based exponential decay and synchronizes importance across
-    Qdrant points and Kùzu graph observations.
+    Qdrant points and FalkorDB graph observations.
     """
 
     def __init__(
         self,
         vector_store: QdrantVectorStore,
-        graph_store: KuzuGraphStore,
+        graph_store: FalkorDBGraphStore,
         half_life_days: float = 90.0,
         min_importance: float = 0.1,
     ):
@@ -67,7 +67,7 @@ class MemoryDecay:
         dry_run: bool = False,
     ) -> Dict[str, Any]:
         """
-        Apply decay to all stored memories in Qdrant and Kùzu.
+        Apply decay to all stored memories in Qdrant and FalkorDB.
 
         Returns:
             Real telemetry statistics about processed, decayed, and skipped memories.
@@ -187,7 +187,7 @@ class MemoryDeduplication:
     def __init__(
         self,
         vector_store: QdrantVectorStore,
-        graph_store: KuzuGraphStore,
+        graph_store: FalkorDBGraphStore,
         embedder: Embedder,
         min_samples: int = 2,
     ):
@@ -365,7 +365,7 @@ class MemoryDeduplication:
                             timestamp=canonical["payload"].get("timestamp", 0),
                             source_memory_id=canonical_id,
                         )
-                    # 2. Remove duplicate memories across Qdrant and Kùzu
+                    # 2. Remove duplicate memories across Qdrant and FalkorDB
                     for m in memories:
                         dup_id = m["payload"]["memory_id"]
                         if dup_id != canonical_id:
@@ -441,7 +441,7 @@ class MemoryConsolidation:
     def __init__(
         self,
         vector_store: QdrantVectorStore,
-        graph_store: KuzuGraphStore,
+        graph_store: FalkorDBGraphStore,
         extractor: Optional[Any],
         embedder: Embedder,
         window_days: int = 30,
@@ -580,7 +580,7 @@ class MemoryConsolidation:
                     },
                 )
 
-                # Upsert into Kùzu as Entity of type Skill
+                # Upsert into FalkorDB as Entity of type Skill
                 self.graph_store.upsert_entity(
                     entity_id=skill_id,
                     name=skill["name"],
@@ -607,7 +607,7 @@ class MaintenanceScheduler:
     def __init__(
         self,
         vector_store: QdrantVectorStore,
-        graph_store: KuzuGraphStore,
+        graph_store: FalkorDBGraphStore,
         embedder: Embedder,
         extractor: Optional[Any] = None,
     ):

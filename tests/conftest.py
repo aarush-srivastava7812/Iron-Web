@@ -4,6 +4,44 @@ import hashlib
 import re
 import numpy as np
 import pytest
+from tests.fixtures.graph import graph_name_for
+
+
+@pytest.fixture(autouse=True)
+def isolated_graphs(monkeypatch, tmp_path):
+    """Use real named FalkorDB graphs; remove only graphs owned by this test."""
+    from memory.graph import FalkorDBGraphStore
+
+    original = FalkorDBGraphStore.__init__
+    stores = []
+
+    def init(store, *args, **kwargs):
+        original(store, *args, **kwargs)
+        if not store.graph_name.startswith("test_"):
+            store.close()
+            raise ValueError("Tests must use an isolated test_ graph.")
+        stores.append(store)
+
+    monkeypatch.setattr(FalkorDBGraphStore, "__init__", init)
+    yield
+    # Connection close leaves the persistent graph intact. A separate client
+    # performs owned test cleanup, never FLUSHDB or removal of application data.
+    from falkordb import FalkorDB
+    import os
+
+    client = FalkorDB(
+        host=os.getenv("FALKORDB_HOST", "127.0.0.1"),
+        port=int(os.getenv("FALKORDB_PORT", "6379")),
+    )
+    for name in {store.graph_name for store in stores}:
+        if client.connection.exists(name):
+            client.select_graph(name).delete()
+        client.connection.delete(
+            "{" + name + "}:revision",
+            "{" + name + "}:lock",
+            "{" + name + "}:publication",
+        )
+    client.close()
 
 
 class FixtureEmbedder:
@@ -58,6 +96,12 @@ def offline_models(monkeypatch, request):
     original_init = engine_module.MemoryEngine.__init__
 
     def init(self, *args, **kwargs):
+        kwargs.setdefault(
+            "graph_name",
+            graph_name_for(
+                request.node.nodeid + str(request.getfixturevalue("tmp_path"))
+            ),
+        )
         if not request.node.get_closest_marker("real_extraction_policy"):
             kwargs.setdefault("extractor", MockNIMExtractor())
         original_init(self, *args, **kwargs)

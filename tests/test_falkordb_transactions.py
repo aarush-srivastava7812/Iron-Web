@@ -1,0 +1,115 @@
+"""Real FalkorDB integration checks for publication, rollback and shared clients."""
+
+from concurrent.futures import ThreadPoolExecutor
+import pytest
+from memory.engine import MemoryEngine
+from memory.graph import FalkorDBGraphStore
+from memory.models import EngineStorageError
+from tests.fixtures.graph import graph_name_for
+
+
+def test_multiline_quoted_text_is_preserved(tmp_path):
+    text = 'first\n second\t"quoted"\\literal\r end'
+    with FalkorDBGraphStore(graph_name_for(tmp_path)) as graph:
+        graph.upsert_entity("quoted'", 'a "name"', "Concept", description=text)
+        graph.upsert_observation("observation", "quoted'", text)
+        assert graph.get_entity("quoted'")["description"] == text
+        assert graph.get_observation("observation")["content"] == text
+        assert graph.get_node_counts()["Entity"] == 1
+
+
+def test_live_graph_does_not_expose_staging_writes(tmp_path):
+    with FalkorDBGraphStore(graph_name_for(tmp_path)) as graph:
+        graph.upsert_entity("one", "original", "Concept")
+        with graph.write_lock:
+            graph.begin()
+            graph.upsert_entity("one", "changed", "Concept")
+            live = graph.db.select_graph(graph.graph_name)
+            assert live.query("MATCH(n:Entity) RETURN n.name").result_set == [
+                ["original"]
+            ]
+            graph.commit()
+            assert live.query("MATCH(n:Entity) RETURN n.name").result_set == [
+                ["changed"]
+            ]
+            graph.finish()
+
+
+def test_lost_publication_response_restores_both_stores(tmp_path, monkeypatch):
+    with MemoryEngine(
+        config={},
+        qdrant_path=str(tmp_path / "vectors"),
+        graph_name=graph_name_for(tmp_path),
+    ) as engine:
+        engine.add("original", memory_id="one", entity_ids=["topic"])
+        original = engine.graph_store.redis.eval
+        failed = False
+
+        def lost_response(script, *args):
+            nonlocal failed
+            result = original(script, *args)
+            if not failed and "Staging graph is missing" in script:
+                failed = True
+                raise ConnectionError("Injected lost publication response")
+            return result
+
+        monkeypatch.setattr(engine.graph_store.redis, "eval", lost_response)
+        with pytest.raises(EngineStorageError) as error:
+            engine.add("replacement", memory_id="one", entity_ids=["different"])
+        assert error.value.rolled_back
+        assert engine.get("one").content == "original"
+        assert (
+            engine.graph_store.get_memory_observations("one")[0]["content"]
+            == "original"
+        )
+        assert engine.graph_store.get_entity("different") is None
+
+
+def test_shared_clients_refresh_entity_lookup_and_keep_unique_ids(tmp_path):
+    name = graph_name_for(tmp_path)
+    with FalkorDBGraphStore(name) as first, FalkorDBGraphStore(name) as second:
+        assert first.get_entity_name_index() == []
+        second.upsert_entity("one", "new name", "Concept")
+        assert first.get_entity_name_index() == [("one", "new name")]
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            list(
+                pool.map(
+                    lambda graph: graph.upsert_entity("shared", "same", "Concept"),
+                    [first, second],
+                )
+            )
+        assert first.get_node_counts()["Entity"] == 2
+
+
+def test_graph_lease_loss_rejects_publication(tmp_path):
+    with FalkorDBGraphStore(graph_name_for(tmp_path)) as graph:
+        with graph.write_lock:
+            graph.begin()
+            graph.upsert_entity("one", "unpublished", "Concept")
+            graph.write_lock.failed = ConnectionError("injected renewal failure")
+            with pytest.raises(RuntimeError, match="lease was lost"):
+                graph.commit()
+            graph.rollback()
+            graph.write_lock.failed = None
+        assert graph.get_node_counts()["Entity"] == 0
+
+
+def test_native_identifier_constraints_reject_duplicate_nodes(tmp_path):
+    from redis.exceptions import ResponseError
+
+    with FalkorDBGraphStore(graph_name_for(tmp_path)) as graph:
+        graph.upsert_entity("one", "original", "Concept")
+        with pytest.raises(ResponseError):
+            graph.execute("CREATE (:Entity {id:'one',name:'duplicate'})")
+        with pytest.raises(ResponseError):
+            graph.execute("CREATE (:Observation {content:'missing ID'})")
+        assert graph.get_node_counts() == {"Entity": 1, "Observation": 0}
+
+
+def test_capped_results_are_rejected_instead_of_silently_accepted(tmp_path):
+    with FalkorDBGraphStore(graph_name_for(tmp_path)) as graph:
+        graph.upsert_entity("one", "first", "Concept")
+        graph.upsert_entity("two", "second", "Concept")
+        graph.result_limit = 1
+        with pytest.raises(RuntimeError, match="complete results cannot be verified"):
+            graph.get_entity_name_index()

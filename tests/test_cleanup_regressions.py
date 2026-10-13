@@ -1,5 +1,7 @@
 """Correctness cases reproduced before changing the implementation."""
 
+from tests.fixtures.graph import graph_name_for
+
 import pytest
 from memory.engine import MemoryEngine
 from memory.models import EngineStorageError
@@ -10,7 +12,7 @@ from memory.evaluation.harness.base import ndcg_at_k, recall_at_k
 def engine(tmp_path):
     with MemoryEngine(
         qdrant_path=str(tmp_path / "qdrant"),
-        kuzu_path=str(tmp_path / "graph.db"),
+        graph_name=graph_name_for(str(tmp_path / "graph.db")),
         use_gpu=False,
     ) as instance:
         yield instance

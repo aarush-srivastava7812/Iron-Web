@@ -229,7 +229,7 @@ def preflight(report, use_gpu):
     for name in (
         "fastembed",
         "qdrant-client",
-        "kuzu",
+        "falkordb",
         "numpy",
         "nvidia-cublas-cu12",
         "nvidia-cudnn-cu12",
@@ -319,7 +319,12 @@ def run_matrix(options):
                         embedder=embedder,
                         reranker=reranker if enabled else None,
                         qdrant_path=str(store / "vectors"),
-                        kuzu_path=str(store / "graph.db"),
+                        graph_name="reevaluation_"
+                        + options.run_id
+                        + "_p"
+                        + str(job["percent"])
+                        + "_"
+                        + job["benchmark"],
                         use_gpu=not options.cpu,
                     ) as engine:
                         # Models are exercised by preflight; record query latency

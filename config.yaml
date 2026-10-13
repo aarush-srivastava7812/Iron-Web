@@ -5,8 +5,13 @@ qdrant:
   path: ./data/qdrant
   collection_name: semantic_memory
   vector_size: 384
-kuzu:
-  path: ./data/kuzu/memory.db
+falkordb:
+  host: 127.0.0.1
+  port: 6379
+  graph_name: iron_web
+  tls: false
+  socket_timeout: 10
+  query_timeout_ms: 10000
 embeddings:
   model: BAAI/bge-small-en-v1.5
   batch_size: 32

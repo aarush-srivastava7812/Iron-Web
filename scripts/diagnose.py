@@ -29,7 +29,7 @@ def main():
     packages = {}
     for name in (
         "qdrant-client",
-        "kuzu",
+        "falkordb",
         "numpy",
         "pydantic",
         "PyYAML",

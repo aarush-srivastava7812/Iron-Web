@@ -8,7 +8,7 @@ from conftest import FixtureEmbedder, FixtureReranker
 from memory.engine import MemoryEngine
 import server
 with MemoryEngine(config={}, qdrant_path=str(root/"report/ui_preview_temp/vectors"),
-                  kuzu_path=str(root/"report/ui_preview_temp/graph.db"),
+                  graph_name="ui_preview",
                   embedder=FixtureEmbedder(), reranker=FixtureReranker()) as engine:
     engine.add("<script>window.unexpected = true</script> A Python memory.", memory_id="ui_fixture", entity_ids=["python"])
     server._ENGINE = engine

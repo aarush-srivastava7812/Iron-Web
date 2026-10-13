@@ -2,7 +2,7 @@
 Unified Memory Engine for Iron Web / Hybrid Long-Term AI Memory Architecture.
 High-level public facade coordinating:
 - Semantic Vector Store (Qdrant)
-- Structural Graph Store (Kùzu)
+- Structural Graph Store (FalkorDB)
 - Neural Embeddings & Reranking (FastEmbed / ONNX Runtime)
 - Ingestion, Retrieval, Updates, and Deletions
 - Cross-Store Consistency with Compensating Rollbacks
@@ -36,7 +36,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from memory.vector_store.qdrant_store import QdrantVectorStore
-    from memory.graph.kuzu_store import KuzuGraphStore
+    from memory.graph.falkordb_store import FalkorDBGraphStore
 from memory.storage import coordinated_write
 from memory.retrieval.vector import VectorRetriever
 from memory.retrieval.hybrid import HybridRetriever, RetrievalConfig
@@ -65,7 +65,7 @@ class MemoryEngine:
     """
     Unified public interface for the Hybrid Long-Term AI Memory Engine.
 
-    Coordinates Qdrant and Kùzu stores behind a consistent, typed API:
+    Coordinates Qdrant and FalkorDB stores behind a consistent, typed API:
     - add: Ingest memory with coordinated cross-store writes.
     - add_batch: Batch ingestion with safe batch sizes.
     - get: Retrieve complete memory record by stable identifier.
@@ -92,13 +92,13 @@ class MemoryEngine:
         self,
         config: Optional[Union[Dict[str, Any], str]] = None,
         vector_store: Optional[QdrantVectorStore] = None,
-        graph_store: Optional[KuzuGraphStore] = None,
+        graph_store: Optional[FalkorDBGraphStore] = None,
         embedder: Optional[Embedder] = None,
         reranker: Optional[Reranker] = None,
         extractor: Optional[Any] = None,
         use_gpu: Optional[bool] = None,
         qdrant_path: Optional[str] = None,
-        kuzu_path: Optional[str] = None,
+        graph_name: Optional[str] = None,
     ):
         self._operation_lock = RLock()
         self._closed = False
@@ -128,14 +128,31 @@ class MemoryEngine:
         self.qdrant_path = qdrant_path or self.config_data.get("qdrant", {}).get(
             "path", "./data/qdrant"
         )
-        self.kuzu_path = kuzu_path or self.config_data.get("kuzu", {}).get(
-            "path", "./data/kuzu/memory.db"
-        )
-        if not self.kuzu_path.endswith(".db"):
-            self.kuzu_path = os.path.join(self.kuzu_path, "memory.db")
+        graph_config = self.config_data["falkordb"]
+        for key, variable in (
+            ("host", "FALKORDB_HOST"),
+            ("port", "FALKORDB_PORT"),
+            ("graph_name", "FALKORDB_GRAPH_NAME"),
+            ("tls", "FALKORDB_TLS"),
+        ):
+            if variable in os.environ:
+                value = os.environ[variable]
+                if key == "port":
+                    value = int(value)
+                if key == "tls":
+                    if value.lower() not in {"true", "false"}:
+                        raise ValueError("FALKORDB_TLS must be true or false.")
+                    value = value.lower() == "true"
+                graph_config[key] = value
+        if graph_name is not None:
+            graph_config["graph_name"] = graph_name
+        from memory.config import GraphSettings
 
+        self.config_data["falkordb"] = GraphSettings.model_validate(
+            graph_config
+        ).model_dump()
+        self.graph_name = self.config_data["falkordb"]["graph_name"]
         self.config_data["qdrant"]["path"] = self.qdrant_path
-        self.config_data["kuzu"]["path"] = self.kuzu_path
         # 3. Storage stores (injected or instantiated)
         self._owns_vector_store = vector_store is None
         self._owns_graph_store = graph_store is None
@@ -182,7 +199,6 @@ class MemoryEngine:
         )
         for section, keys in (
             ("qdrant", ("path",)),
-            ("kuzu", ("path",)),
             ("embeddings", ("cache_dir",)),
             ("reranker", ("cache_dir", "tensorrt_cache_path")),
             ("nim", ("cache_dir",)),
@@ -259,11 +275,13 @@ class MemoryEngine:
             dimension=dim,
         )
 
-    def _init_graph_store(self) -> KuzuGraphStore:
-        """Initialize Kùzu local graph store."""
-        from memory.graph.kuzu_store import KuzuGraphStore
+    def _init_graph_store(self) -> FalkorDBGraphStore:
+        """Initialize FalkorDB local graph store."""
+        from memory.graph.falkordb_store import FalkorDBGraphStore
 
-        return KuzuGraphStore(db_path=self.kuzu_path)
+        conf = self.config_data["falkordb"].copy()
+        conf["ssl"] = conf.pop("tls")
+        return FalkorDBGraphStore(**conf)
 
     # =========================================================================
     # Public CRUD Operations
@@ -284,7 +302,7 @@ class MemoryEngine:
         enrich_graph=None,
     ) -> str:
         """
-        Ingest a memory across both Qdrant and Kùzu stores with compensating rollback.
+        Ingest a memory across both Qdrant and FalkorDB stores with compensating rollback.
 
         Args:
             content: Raw text content
@@ -839,7 +857,7 @@ class MemoryEngine:
     @serialized
     def delete(self, memory_id: str, clean_orphaned_entities: bool = False) -> bool:
         """
-        Delete a memory across Qdrant and Kùzu.
+        Delete a memory across Qdrant and FalkorDB.
 
         Preserves shared graph entities by default (clean_orphaned_entities=False).
         If clean_orphaned_entities=True, entities with zero remaining observations
@@ -848,10 +866,10 @@ class MemoryEngine:
         self._validate_id(memory_id)
         with coordinated_write(self.vector_store, self.graph_store, [memory_id]):
             qdrant_deleted = self.vector_store.delete_memory(memory_id)
-            kuzu_deleted = self.graph_store.delete_memory(
+            graph_deleted = self.graph_store.delete_memory(
                 memory_id=memory_id, clean_orphaned_entities=clean_orphaned_entities
             )
-        return bool(qdrant_deleted or kuzu_deleted)
+        return bool(qdrant_deleted or graph_deleted)
 
     # =========================================================================
     # Maintenance and Reliability Operations (Phase 4)
@@ -868,7 +886,7 @@ class MemoryEngine:
     ) -> Dict[str, Any]:
         """
         Apply age-based exponential decay across all stored memories.
-        Synchronizes importance between Qdrant vector points and Kùzu graph observations.
+        Synchronizes importance between Qdrant vector points and FalkorDB graph observations.
         Idempotent: computes decay relative to initial importance and creation timestamp.
         """
         decay_op = MemoryDecay(

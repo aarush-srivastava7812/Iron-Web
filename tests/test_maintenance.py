@@ -4,7 +4,7 @@ Automated Test Suite for Phase 4: Maintenance and Reliability.
 Tests verify:
 1. MemoryDecay:
    - Age-based exponential decay logic with real calculations (no dummy stats).
-   - Cross-store importance synchronization (Qdrant payload + Kuzu observation).
+   - Cross-store importance synchronization (Qdrant payload + FalkorDB observation).
    - Idempotency across repeated decay executions (preserving initial_importance).
    - dry_run non-mutating mode.
 2. MemoryDeduplication:
@@ -16,7 +16,7 @@ Tests verify:
 3. MemoryConsolidation:
    - Procedural skill synthesis from episodic memory windows.
    - Source traceability (provenance metadata with source_memory_ids).
-   - Dual-store recording (Qdrant procedural memory + Kuzu Skill entity).
+   - Dual-store recording (Qdrant procedural memory + FalkorDB Skill entity).
 4. MemoryEngine Facade Integration:
    - engine.decay_memories()
    - engine.deduplicate_memories()
@@ -26,6 +26,8 @@ Tests verify:
    - Storage volume growth tracking and retrieval latency measurement across batch ingests.
 """
 
+from tests.fixtures.graph import graph_name_for
+
 import time
 import numpy as np
 import pytest
@@ -34,11 +36,13 @@ from memory.engine import MemoryEngine
 
 
 def test_memory_decay_real_calculation_and_cross_store_sync(tmp_path):
-    """Verify decay calculates real exponential decay and updates both Qdrant and Kùzu."""
+    """Verify decay calculates real exponential decay and updates both Qdrant and FalkorDB."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=False) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=False
+    ) as engine:
         # Create an old memory: 90 days ago (1 half-life = 90 days)
         now = int(time.time())
         ninety_days_ago = now - (90 * 86400)
@@ -80,18 +84,20 @@ def test_memory_decay_real_calculation_and_cross_store_sync(tmp_path):
         rec_after = engine.get(mem_id)
         assert rec_after.importance == pytest.approx(0.5)
 
-        # Verify Kùzu observation importance was synchronized
-        kuzu_obs = engine.graph_store.get_observation(f"obs_{mem_id}_pytorch")
-        assert kuzu_obs is not None
-        assert kuzu_obs["importance"] == pytest.approx(0.5)
+        # Verify FalkorDB observation importance was synchronized
+        graph_obs = engine.graph_store.get_observation(f"obs_{mem_id}_pytorch")
+        assert graph_obs is not None
+        assert graph_obs["importance"] == pytest.approx(0.5)
 
 
 def test_memory_decay_idempotency(tmp_path):
     """Running decay multiple times at the same current_time must NOT compound decay."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=False) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=False
+    ) as engine:
         now = int(time.time())
         forty_five_days_ago = now - (45 * 86400)
 
@@ -121,9 +127,11 @@ def test_memory_decay_idempotency(tmp_path):
 def test_memory_deduplication_merges_exact_duplicates(tmp_path):
     """Only identical records merge, preserving all entity associations and metadata."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=False) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=False
+    ) as engine:
         # Ingest two almost identical memories with different entity tags
         mem1 = engine.add(
             content="I am developing an AI memory system with vector search and graph database",
@@ -153,7 +161,7 @@ def test_memory_deduplication_merges_exact_duplicates(tmp_path):
         assert "knowledge_graph" in canonical.entity_ids  # Entity IDs merged!
         assert canonical.metadata.get("merged_from") == [mem2]
 
-        # Duplicate (mem2) must be purged across both Qdrant and Kùzu
+        # Duplicate (mem2) must be purged across both Qdrant and FalkorDB
         assert engine.get(mem2) is None
         assert engine.vector_store.get_memory(mem2) is None
 
@@ -161,9 +169,11 @@ def test_memory_deduplication_merges_exact_duplicates(tmp_path):
 def test_memory_deduplication_safeguards_disjoint_temporal_periods(tmp_path):
     """Safeguard 1: Memories with disjoint validity periods represent distinct historical facts and must NOT be merged."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=False) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=False
+    ) as engine:
         # High semantic similarity, but strictly disjoint temporal intervals
         # Fact 1: valid in 2020 (1577836800 to 1609459200)
         mem_2020 = engine.add(
@@ -191,9 +201,11 @@ def test_memory_deduplication_safeguards_disjoint_temporal_periods(tmp_path):
 def test_memory_deduplication_safeguards_contradictory_facts(tmp_path):
     """Safeguard 2: Contradictory statements must NOT be merged into a single fact."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=False) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=False
+    ) as engine:
         # Ingest two conflicting statements
         mem_coffee = engine.add(
             content="I strictly drink coffee every morning", importance=0.9
@@ -221,9 +233,11 @@ def test_memory_deduplication_safeguards_contradictory_facts(tmp_path):
 def test_memory_consolidation_provenance_and_dual_store(tmp_path):
     """Verify episodic consolidation extracts skills and records source provenance."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=False) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=False
+    ) as engine:
         now = int(time.time())
 
         # Ingest 3 related interaction episodes within recent window
@@ -277,7 +291,7 @@ def test_memory_consolidation_provenance_and_dual_store(tmp_path):
         assert ep2 in provenance["source_memory_ids"]
         assert ep3 in provenance["source_memory_ids"]
 
-        # Verify the Skill entity was also registered in Kùzu graph store
+        # Verify the Skill entity was also registered in FalkorDB graph store
         skill_entities = engine.graph_store.find_entities_by_name(
             "Python Development Workflow"
         )
@@ -288,9 +302,11 @@ def test_memory_consolidation_provenance_and_dual_store(tmp_path):
 def test_maintenance_scheduler_run_all(tmp_path):
     """Verify run_maintenance executes all requested jobs."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=False) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=False
+    ) as engine:
         now = int(time.time())
         engine.add("Session note 1 on software architecture", timestamp=now - 100)
         engine.add("Session note 2 on software architecture", timestamp=now - 50)
@@ -307,9 +323,11 @@ def test_maintenance_scheduler_run_all(tmp_path):
 def test_storage_growth_and_latency_measurement(tmp_path):
     """Measure storage growth and retrieval latency as memory volume increases."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=False) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=False
+    ) as engine:
         # Ingest bulk batch of memories
         start_count = engine.vector_store.count()
         assert start_count == 0

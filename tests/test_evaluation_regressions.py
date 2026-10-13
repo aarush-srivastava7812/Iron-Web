@@ -1,5 +1,7 @@
 """Evaluation bookkeeping checks use declared fixture data, not model-quality claims."""
 
+from tests.fixtures.graph import graph_name_for
+
 import pytest
 import json
 from memory.engine import MemoryEngine
@@ -70,7 +72,7 @@ def setup_run(tmp_path):
     engine = MemoryEngine(
         config={},
         qdrant_path=str(tmp_path / "vectors"),
-        kuzu_path=str(tmp_path / "graph.db"),
+        graph_name=graph_name_for(str(tmp_path / "graph.db")),
     )
     runner = BenchmarkRunner(str(tmp_path / "results"), "fixture_run")
     yield engine, runner

@@ -1,9 +1,10 @@
+from tests.fixtures.graph import graph_name_for
 import pytest
 from concurrent.futures import ThreadPoolExecutor
 from memory.engine import MemoryEngine
 from memory.models import EngineStorageError
 from memory.ingestion.pipeline import IngestionPipeline
-from memory.graph import KuzuGraphStore
+from memory.graph import FalkorDBGraphStore
 
 
 @pytest.fixture
@@ -11,7 +12,7 @@ def engine(tmp_path):
     with MemoryEngine(
         config={},
         qdrant_path=str(tmp_path / "vectors"),
-        kuzu_path=str(tmp_path / "graph.db"),
+        graph_name=graph_name_for(str(tmp_path / "graph.db")),
     ) as instance:
         yield instance
 
@@ -108,18 +109,12 @@ def test_metadata_is_not_a_live_reference(engine):
     assert engine.get("one").metadata["nested"]["value"] == "original"
 
 
-def test_legacy_observation_schema_is_migrated(tmp_path):
-    import kuzu
-
-    path = str(tmp_path / "legacy.db")
-    database = kuzu.Database(path)
-    connection = kuzu.Connection(database)
-    connection.execute(
-        "CREATE NODE TABLE Observation(id STRING, entity_id STRING, content STRING, embedding STRING, valid_from INT64, valid_until INT64, importance DOUBLE, source STRING, created_at INT64, PRIMARY KEY(id))"
-    )
-    connection.close()
-    database.close()
-    with KuzuGraphStore(path) as graph:
+def test_legacy_observation_ownership_is_preserved(tmp_path):
+    with FalkorDBGraphStore(graph_name_for(tmp_path / "legacy")) as graph:
+        graph.execute(
+            "CREATE (:Observation {id:'obs_one_topic', entity_id:'topic', content:'fact', embedding:'[]', valid_from:0, valid_until:9223372036854775807, importance:1.0, source:'user', created_at:0})"
+        )
+        assert graph.get_memory_observations("one")[0]["id"] == "obs_one_topic"
         graph.upsert_observation(
             "obs_one_topic", "topic", "fact", source_memory_id="one"
         )

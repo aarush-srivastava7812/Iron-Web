@@ -9,6 +9,8 @@ Tests verify:
 6. BenchmarkRunner: resumability, per-example JSONL streaming, and metadata logging.
 """
 
+from tests.fixtures.graph import graph_name_for
+
 import json
 from pathlib import Path
 import pytest
@@ -127,9 +129,11 @@ def test_dmr_adapter_loading():
 def test_benchmark_evaluator_stages(tmp_path):
     """Verify separation of Ingestion, Retrieval, Generation, and Scoring stages."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=False) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=False
+    ) as engine:
         from tests.test_evaluation_regressions import FixtureAdapter
 
         adapter = FixtureAdapter()
@@ -177,10 +181,12 @@ def test_benchmark_evaluator_stages(tmp_path):
 def test_benchmark_runner_and_resumability(tmp_path):
     """Verify BenchmarkRunner persists per-example outputs and supports resuming."""
     q_dir = str(tmp_path / "qdrant_db")
-    k_file = str(tmp_path / "kuzu.db")
+    graph_identity = str(tmp_path / "graph")
     results_dir = str(tmp_path / "results")
 
-    with MemoryEngine(qdrant_path=q_dir, kuzu_path=k_file, use_gpu=False) as engine:
+    with MemoryEngine(
+        qdrant_path=q_dir, graph_name=graph_name_for(graph_identity), use_gpu=False
+    ) as engine:
         runner = BenchmarkRunner(output_dir=results_dir, run_id="smoke_test_run")
 
         # Run small smoke test on DMR

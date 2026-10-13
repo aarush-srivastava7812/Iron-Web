@@ -6,7 +6,7 @@ Uses LLM-as-judge (via NIM) + embedding similarity for detection.
 from typing import List, Dict, Any, Optional
 import numpy as np
 from memory.embeddings.embedder import Embedder
-from memory.graph import KuzuGraphStore
+from memory.graph import FalkorDBGraphStore
 
 
 class ContradictionDetector:
@@ -20,7 +20,7 @@ class ContradictionDetector:
     def __init__(
         self,
         embedder: Embedder,
-        graph_store: KuzuGraphStore,
+        graph_store: FalkorDBGraphStore,
         extractor=None,  # NIM extractor for LLM judge
         similarity_threshold: float = 0.85,
         contradiction_threshold: float = 0.3,
@@ -159,7 +159,9 @@ class ContradictionDetector:
         all_contradictions = []
 
         # Get all observations
-        result = self.graph_store.execute("MATCH (o:Observation) RETURN o.*")
+        result = self.graph_store.execute(
+            "MATCH (o:Observation) RETURN o.id, o.entity_id, o.content, o.embedding, o.valid_from, o.valid_until, o.importance, o.source, o.created_at, o.source_memory_id"
+        )
         columns = result.get_column_names()
         observations = []
         while result.has_next():
@@ -236,7 +238,9 @@ class ContradictionDetector:
         all_supersessions = []
 
         # Get all observations
-        result = self.graph_store.execute("MATCH (o:Observation) RETURN o.*")
+        result = self.graph_store.execute(
+            "MATCH (o:Observation) RETURN o.id, o.entity_id, o.content, o.embedding, o.valid_from, o.valid_until, o.importance, o.source, o.created_at, o.source_memory_id"
+        )
         columns = result.get_column_names()
         observations = []
         while result.has_next():
@@ -315,7 +319,7 @@ class SupersessionResolver:
     Resolves supersession chains to find current valid memory.
     """
 
-    def __init__(self, graph_store: KuzuGraphStore):
+    def __init__(self, graph_store: FalkorDBGraphStore):
         self.graph_store = graph_store
 
     def get_current_version(self, obs_id: str, query_time: int) -> Optional[str]:
