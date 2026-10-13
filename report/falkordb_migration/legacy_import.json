@@ -1,0 +1,19 @@
+{
+  "source": "D:\\Opencode_\\reserchpaper\\data\\kuzu\\memory.db",
+  "source_sha256": "18386f5ea1da1be1e3adf24ad03ebdfb1d36a4c68a8975eb70fc9a62313428c1",
+  "source_unchanged": true,
+  "target_graph": "iron_web",
+  "already_imported": false,
+  "graph_content_sha256": "0fe2c0951eb8b49911b45ed382bc5a68177072834b37e5169d68f512dcdb4286",
+  "nodes": {
+    "Entity": 10,
+    "Observation": 42
+  },
+  "edges": {
+    "RELATES": 17,
+    "ABOUT": 42,
+    "CONTRADICTS": 0,
+    "SUPERSEDES": 0
+  },
+  "exact_properties_and_direction_verified": true
+}

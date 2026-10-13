@@ -2,9 +2,10 @@
 
 | Decision | Implemented effect |
 |---|---|
-| Embedded storage | Qdrant and Kùzu operate locally. The application exposes no alternative Neo4j or remote Qdrant backend. |
+| Storage boundary | Qdrant remains embedded; FalkorDB supplies the named graph service. A pinned Compose service provides local persistence. |
 | One ingestion facade | The pipeline and benchmark evaluator use `MemoryEngine`; pre-extracted input does not bypass storage safety. |
-| Coordinated writes | Graph transactions and exact vector snapshots compensate caught failures. This is not a durable transaction spanning both stores. |
+| Coordinated writes | A staging graph is published atomically while a recovery graph and exact vector snapshots compensate caught failures, including a lost publication response. This is not a durable transaction spanning both stores. |
+| Shared graph access | Reentrant thread locks and renewed Redis leases serialize cooperating clients. Native unique/mandatory ID constraints retain identifier integrity, and revision-aware entity caches refresh across clients. |
 | Explicit ownership | Observations and newly extracted relationships carry their source memory ID. Exact legacy matching supports older observations. |
 | Stable identities | Extracted entity IDs use normalized name/type hashes. Document IDs remain intact through ingestion and retrieval. |
 | Explicit extraction | `none` is the default. Hosted extraction requires a selected policy and credentials. Failures produce errors instead of placeholder facts. |
@@ -19,3 +20,4 @@
 | Historical evidence | Earlier designs, scripts and outputs remain recoverable. Current behavior is documented from the implemented code and verification records. |
 
 The earlier design decisions and phase examples are retained under `archive/2026-10-12/design-history/`. The pre-cleanup repository state is Git commit `724c551`.
+The FalkorDB replacement is documented in [the migration decision record](architecture/adr-001-falkordb.md). Earlier benchmark measurements at `6d10601` used Kùzu and do not measure the new backend.

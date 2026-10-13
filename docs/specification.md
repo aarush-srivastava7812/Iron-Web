@@ -2,7 +2,7 @@
 
 ## Application and interfaces
 
-Iron Web stores text memories in two embedded databases. Qdrant stores vectors and record payloads. Kùzu stores entities, observations and relationships. No database server or Docker container is required by the application.
+Iron Web stores vectors and record payloads in embedded Qdrant, and entities, observations and relationships in a named FalkorDB graph. A reachable FalkorDB service is required. The provided Docker Compose service binds to `127.0.0.1:6379`, uses a persistent volume and enables append-only persistence with one-second fsync intervals.
 
 `MemoryEngine` is the main Python facade. Its operations are `add`, `add_batch`, `get`, `search`, `update`, `delete`, maintenance methods, `memory_ids`, `storage_status`, `get_device_status`, and `close`. `MemoryRecord` and `MemorySearchResult` carry contents, identifiers, metadata, validity bounds, timestamps and storage/retrieval information. `MemoryToolAdapter` dispatches in-process Python calls; it has no MCP transport or protocol session.
 
@@ -24,7 +24,9 @@ Automatic entity identities derive from normalized entity type/name hashes, rath
 
 ## Storage consistency
 
-Facade operations sharing a graph store use the same lock. A write opens a native graph transaction and snapshots the affected vector records. Graph failures roll back graph changes and restore exact vector payloads/vectors. Vector compensation is checked by retrieving the restored record. An incomplete rollback is reported as incomplete.
+Cooperating graph clients share a renewed Redis lease, with a reentrant thread lock for each store. A coordinated write snapshots the affected vector records, copies the live graph into staging and applies graph changes there. Publication checks lease ownership and graph revision, then atomically renames the old graph to recovery and staging to the live name. The recovery graph remains available until the coordinated write finishes. Caught failures, including a lost publication response, restore graph state and exact vector payloads/vectors. An incomplete recovery is reported as incomplete. Direct database writes that bypass this protocol are outside its concurrency guarantees.
+
+Entity and observation identifiers use native unique and mandatory constraints. Parameter handling preserves quoted/multiline text. Entity-name caches track the shared graph revision, so changes made through another cooperating store invalidate stale lookups.
 
 Memory deletion uses explicit ownership, with an exact legacy observation-name rule for older records. It removes owned observations and owned entity relationships. Shared entities remain unless orphan cleanup is explicitly selected. Relationship updates retain separate intervals and provenance. Creation, replacement, update and deletion use the same coordinator. Metadata returned by the vector wrapper is copied rather than exposed as a live mutable reference.
 
@@ -58,7 +60,7 @@ Consolidation selects explicitly episodic records in a time window. It requires 
 
 ## Configuration and models
 
-Configuration is validated against effective settings with unknown fields rejected. The default file is resolved from the project, and configured relative paths are anchored to the configuration location. Explicit constructor store paths are recorded as the paths actually used. GPU preference follows explicit argument, then `USE_GPU`, then configuration. The default application profile selects CPU execution.
+Configuration is validated against effective settings with unknown fields rejected. The default file is resolved from the project, and configured relative file paths are anchored to the configuration location. `falkordb` declares host, port, graph name, TLS and timeouts; graph credentials are environment-only. Connection environment overrides are recorded in effective settings, and an explicit constructor graph name takes precedence. The former `kuzu` setting and `kuzu_path` argument are removed. GPU preference follows explicit argument, then `USE_GPU`, then configuration. The default application profile selects CPU execution.
 
 Public package imports do not import the model or database clients. Models initialize when an operation requires them. CUDA DLL preparation is explicit to GPU initialization. Device reporting uses available and live providers and NVIDIA memory telemetry when available. Reported profile targets do not enforce a VRAM allocation ceiling. Uninitialized components are reported as uninitialized; SDK provider information that cannot be inspected is reported as unknown.
 
@@ -75,3 +77,5 @@ Slices are versioned, hash-checked and cannot overwrite existing versions. Selec
 Project-owned research mechanisms are named `entity_neighborhood`, `dense_lexical_fusion` and `temporal_room`. They are not third-party SDK implementations. Optional genuine Mem0, Zep and MemPalace adapters are separate and use the shared local runner with complete-context cohorts. External SDK errors propagate, identifiers are mapped explicitly, and unknown scores/provider state are not invented. These local metrics do not constitute official benchmark scoring or a verified product comparison.
 
 Original datasets, provenance, official evaluator references, research papers, credentials, active stores and genuine extraction caches are preserved. Historical output and unused checkouts are organized in recoverable archives with integrity records.
+
+The optional legacy importer reads Kùzu without modifying its file and verifies an exact FalkorDB graph import. Existing benchmark reports from commit `6d10601` are Kùzu measurements; they are historical records, not FalkorDB evaluation results.

@@ -1,0 +1,21 @@
+{
+  "storage": {
+    "memories": 112,
+    "nodes": {
+      "Entity": 10,
+      "Observation": 42
+    },
+    "edges": {
+      "RELATES": 17,
+      "ABOUT": 42,
+      "CONTRADICTS": 0,
+      "SUPERSEDES": 0
+    }
+  },
+  "vector_records": 112,
+  "records_read": 112,
+  "graph_backed_records": 13,
+  "models_initialized": false,
+  "legacy_source_unchanged": true,
+  "graph_content_sha256": "0fe2c0951eb8b49911b45ed382bc5a68177072834b37e5169d68f512dcdb4286"
+}

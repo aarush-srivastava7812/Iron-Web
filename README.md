@@ -1,20 +1,32 @@
 # Iron Web memory
 
-Local text memory backed by embedded Qdrant and Kùzu. The application saves, updates, deletes and retrieves memories, supports explicit validity intervals, and exposes a local dashboard and an in-process Python tool adapter.
+Text memory backed by embedded Qdrant and a FalkorDB graph service. The application saves, updates, deletes and retrieves memories, supports explicit validity intervals, and exposes a local dashboard and an in-process Python tool adapter.
 
 The supported application is in `memory/`, `server.py`, and `web/`. Optional experiments are in `research/`. Earlier designs, phase scripts, reports and unused source are preserved under `archive/2026-10-12/`; they describe the earlier implementation.
 
 ## Run
 
-Use Python 3.12. For a new CPU environment:
+Use Python 3.12 and Docker Desktop (or an existing FalkorDB service). For a new CPU environment:
 
 ```powershell
 py -3.12 -m venv .venv-cpu
 .\.venv-cpu\Scripts\python.exe -m pip install -r requirements.txt -r requirements/dev.txt
+docker compose up -d --wait falkordb
 .\.venv-cpu\Scripts\python.exe server.py
 ```
 
 Open `http://127.0.0.1:8080/`. Model files may download on the first operation that needs them. Importing the public API, reading device status, and graph-only searches do not initialize neural models.
+
+The default graph service is `127.0.0.1:6379`, graph `iron_web`. Compose stores its data in the persistent `iron_web_falkordb_data` volume and binds the database port to the local computer. Connection settings live under `falkordb` in `config.yaml`; credentials come from `FALKORDB_USERNAME` / `FALKORDB_PASSWORD`. `FALKORDB_HOST`, `FALKORDB_PORT`, `FALKORDB_GRAPH_NAME` and `FALKORDB_TLS` override configuration. Python callers can select an isolated graph with `MemoryEngine(graph_name="my_graph")`.
+
+For an existing Kùzu installation, preserve its file and run the verified importer once:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements/migration.txt
+.\.venv\Scripts\python.exe scripts/migrate_kuzu_to_falkordb.py --source data/kuzu/memory.db --graph-name iron_web
+```
+
+The importer opens the legacy database read-only, compares all nodes/relationships/properties, and refuses to overwrite a different populated target graph. Kùzu is required only by this optional import utility. See [migration details](docs/falkordb_migration.md).
 
 The existing `.venv` launcher was repaired and its installed packages were preserved. The CPU and GPU dependency profiles are intended for separate environments. Hosted extraction additionally uses `requirements/nim.txt`, `extraction_policy: nim`, and the process environment variable `NVIDIA_API_KEY`. The default extraction policy is `none`, which saves text without inventing entities.
 
@@ -28,6 +40,7 @@ The existing `.venv` launcher was repaired and its installed packages were prese
 ```
 
 Ordinary tests use declared offline models and actual temporary databases. Dataset tests require the original local inputs. `diagnose.py --models` initializes real models, and `--nim` makes a hosted extraction request; those checks are selected explicitly.
+The FalkorDB service must be running for integration tests. Tests use isolated named graphs and remove only their own test graphs.
 
 ## Evaluate
 
