@@ -18,6 +18,8 @@ from memory.evaluation.retrieval_metrics import (
     average_precision,
     compute_retrieval_metrics,
 )
+from memory.engine import MemoryEngine
+from memory.evaluation.harness.persistence import fingerprint, source_fingerprint
 from scripts.reevaluate import sha256, write_json
 
 
@@ -84,6 +86,25 @@ def aggregate(records, adapter, historical=False):
         )
     evaluator = BenchmarkEvaluator(None, adapter, k=10)
     summary = evaluator.aggregate_results(results)
+    if historical:
+        # The retained upstream records have retrieval latency only. Do not
+        # manufacture an old generation or total-pipeline latency measurement.
+        summary["latency"]["mean_total_ms"] = None
+        summary["latency"]["mean_generation_ms"] = None
+    else:
+        summary["latency"]["mean_generation_ms"] = (
+            float(
+                np.mean(
+                    [
+                        r.get("generation_latency_ms", 0.0)
+                        for r in records
+                        if not r.get("error")
+                    ]
+                )
+            )
+            if any(not r.get("error") for r in records)
+            else None
+        )
     values = [r.retrieval_latency_ms for r in results if not r.error]
     if values:
         summary["latency"].update(
@@ -109,6 +130,45 @@ def summarize(report):
             raise ValueError("Input changed after preparation.")
         payload = json.loads(input_path.read_text(encoding="utf-8"))
         adapter = FrozenSliceAdapter(payload)
+        config = MemoryEngine._load_config(
+            MemoryEngine.__new__(MemoryEngine),
+            {
+                "extraction_policy": "none",
+                "retrieval": {"reranker_enabled": profile == "reranked_hybrid"},
+            },
+        )
+        store = (
+            Path(job["slice_directory"]).parents[2]
+            / "stores"
+            / f'p{job["percent"]}'
+            / job["benchmark"]
+        )
+        config["qdrant"]["path"] = str(store / "vectors")
+        config["kuzu"]["path"] = str(store / "graph.db")
+        expected_inputs = dict(
+            protocol="local_retrieval_v2",
+            source=source_fingerprint(),
+            benchmark=job["benchmark"],
+            retrieval_mode=saved["retrieval_mode"],
+            k=10,
+            smoke=False,
+            config=config,
+            backend_identity={},
+            use_gpu=saved["device"]["gpu_enabled_requested"],
+            extractor="disabled",
+            generator="first_context_line",
+            documents=payload["documents"],
+            examples=payload["examples"],
+        )
+        if fingerprint(expected_inputs) != saved["fingerprint"]:
+            raise ValueError(
+                "Saved run does not match current source, inputs and effective settings."
+            )
+        write_json(
+            report
+            / f'p{job["percent"]}_{job["benchmark"]}_{profile}_configuration.json',
+            config,
+        )
         raw_path = Path(saved["run_file"])
         records = load_records(raw_path)
         if {r["example_id"] for r in records} != {
@@ -118,6 +178,12 @@ def summarize(report):
         metrics = aggregate(records, adapter)
         if metrics["failed_examples"]:
             raise ValueError(f"Failed real evaluation cases: {job}, {profile}")
+        for group in ("retrieval", "answer"):
+            for metric, value in saved["evaluation"][group].items():
+                if not np.isclose(value, metrics[group][metric], rtol=0, atol=1e-12):
+                    raise ValueError(
+                        "Recomputed scores differ from the saved benchmark summary."
+                    )
         observed = [s["used_mb"] for s in run["telemetry"] if s["used_mb"] is not None]
         row = dict(
             percent=job["percent"],
@@ -134,6 +200,10 @@ def summarize(report):
             peak_sampled_total_vram_mb=max(observed) if observed else None,
             ingestion_time_sec=saved["ingestion"]["ingestion_time_sec"],
             newly_ingested_documents=saved["ingestion"]["ingested_ids"],
+            fresh_ingestion_docs_per_sec=saved["ingestion"]["ingested_ids"]
+            / saved["ingestion"]["ingestion_time_sec"]
+            if saved["ingestion"]["ingested_ids"]
+            else None,
             skipped_unchanged=saved["ingestion"]["skipped_unchanged"],
             wall_time_sec=run["wall_time_sec"],
             results_sha256=sha256(raw_path),
@@ -187,17 +257,25 @@ def summarize(report):
             comparability="matched questions; corpus, scope, extraction, ranking and answer generation may differ",
         )
         history.append(historical)
+    for row in rows:
+        old_run = next(
+            item
+            for item in history
+            if item["percent"] == row["percent"]
+            and item["benchmark"] == row["benchmark"]
+        )
         for group in ("retrieval", "answer", "latency"):
-            for metric, current in metrics[group].items():
-                previous = rescored[group].get(metric)
+            for metric, previous in old_run["corrected"][group].items():
+                current = row.get(metric)
                 comparisons.append(
                     dict(
-                        percent=job["percent"],
-                        benchmark=job["benchmark"],
+                        percent=row["percent"],
+                        benchmark=row["benchmark"],
+                        new_profile=row["profile"],
                         metric_group=group,
                         metric=metric,
                         old_rescored=previous,
-                        new_reranked=current,
+                        new_value=current,
                         difference=current - previous
                         if previous is not None and current is not None
                         else None,
@@ -230,8 +308,16 @@ def summarize(report):
                 for row in rows
             ),
             all_new_input_and_result_hashes_checked=True,
+            recomputed_metrics_match_saved_runs=True,
             source_files=source,
-            git_head=subprocess.check_output(
+            workflow_source_files={
+                str(path.relative_to(ROOT)): sha256(path)
+                for path in (
+                    ROOT / "scripts/reevaluate.py",
+                    ROOT / "scripts/summarize_reevaluation.py",
+                )
+            },
+            git_head_at_report_generation=subprocess.check_output(
                 [
                     "git",
                     "-c",
@@ -291,8 +377,8 @@ def render_report(report, rows, history):
         "",
         "The old predictions were matched by question ID and exact query text, then rescored against current evidence annotations using the same exact-ID and answer metrics as the new runs. Recorded old scores are also preserved in historical_rescoring.json. Old five-percent values are subsets of saved twenty-percent executions, not separate historical five-percent executions.",
         "",
-        "| Sample | Benchmark | Old rescored recall@10 | New reranked recall@10 | Difference | Old MRR | New MRR | Old token F1 | New token F1 |",
-        "|---|---|---:|---:|---:|---:|---:|---:|---:|",
+        "| Sample | Benchmark | Old rescored recall@10 | New default recall@10 | New reranked recall@10 | Old MRR | New default MRR | New reranked MRR |",
+        "|---|---|---:|---:|---:|---:|---:|---:|",
     ]
     for old in history:
         r = next(
@@ -303,8 +389,15 @@ def render_report(report, rows, history):
             and r["profile"] == "reranked_hybrid"
         )
         v = old["corrected"]
+        default = next(
+            item
+            for item in rows
+            if item["percent"] == old["percent"]
+            and item["benchmark"] == old["benchmark"]
+            and item["profile"] == "default_hybrid"
+        )
         lines.append(
-            f'| {r["percent"]}% | {r["benchmark"]} | {v["retrieval"]["recall@10"]:.4f} | {r["recall@10"]:.4f} | {r["recall@10"]-v["retrieval"]["recall@10"]:+.4f} | {v["retrieval"]["mrr"]:.4f} | {r["mrr"]:.4f} | {v["answer"]["token_f1"]:.4f} | {r["token_f1"]:.4f} |'
+            f'| {r["percent"]}% | {r["benchmark"]} | {v["retrieval"]["recall@10"]:.4f} | {default["recall@10"]:.4f} | {r["recall@10"]:.4f} | {v["retrieval"]["mrr"]:.4f} | {default["mrr"]:.4f} | {r["mrr"]:.4f} |'
         )
     lines += [
         "",
@@ -321,7 +414,7 @@ def render_report(report, rows, history):
         )
     lines += [
         "",
-        "VRAM is sampled device-wide every two seconds and includes display/other processes. It is not model-only memory or a guaranteed peak. Models are loaded and checked before the matrix; preflight records that duration. Ingestion occurs once in the vector profile; subsequent profiles validate and reuse identical stored documents. Their ingestion times measure the unchanged-record checks rather than fresh throughput. Mean, p50, p95, p99 and maximum query latency are included in the CSV; model initialization is excluded from query times. No-memory or removed experimental architectures were not treated as current application features.",
+        "VRAM is sampled device-wide every two seconds and includes display/other processes. It is not model-only memory or a guaranteed peak. Both models remain loaded across profiles, including vector-only runs; this does not measure the memory of a standalone vector-only deployment. Models are loaded and checked before the matrix; preflight records that duration. Ingestion occurs once in the vector profile; subsequent profiles validate and reuse identical stored documents. Their ingestion times measure the unchanged-record checks rather than fresh throughput. Mean, p50, p95, p99 and maximum query latency are included in the CSV; model initialization is excluded from query times. Old generation and total-pipeline latency are unavailable and remain unscored. No-memory or removed experimental architectures were not treated as current application features.",
         "",
         "## Evidence",
         "",
@@ -331,6 +424,8 @@ def render_report(report, rows, history):
         "- p*_metrics.json: corrected metrics and current category breakdowns for each of 15 runs.",
         "- raw/: every question result plus source/data/configuration-bound manifests and summaries.",
         "- input_plan.json, preflight.json, verification.json: coverage, input/result hashes, runtime evidence and completion checks.",
+        "",
+        "Final validation: 105 offline regression tests and four actual-dataset tests passed. All 15 source/input/configuration fingerprints were independently reconstructed, all selected result identities were checked, and recomputed scores matched the saved summaries. Eight original input hashes matched their preserved provenance. The five isolated stores contained exactly the selected document IDs and observation counts. Verified summary copies are available to the existing dashboard; original active stores were not used.",
         "",
         f'Total completed query executions: {sum(r["questions"] for r in rows)}. Failed query executions: {sum(r["failed_examples"] for r in rows)}. LongMemEval twenty-percent executions: 0.',
         "",

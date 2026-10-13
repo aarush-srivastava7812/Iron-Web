@@ -1,0 +1,71 @@
+{
+  "total_examples": 99,
+  "successful_examples": 99,
+  "failed_examples": 0,
+  "retrieval_scored_examples": 97,
+  "answer_scored_examples": 99,
+  "retrieval": {
+    "average_precision@10": 0.4037664321169476,
+    "mrr": 0.44397398134511534,
+    "ndcg@1": 0.28865979381443296,
+    "ndcg@10": 0.5102481010391419,
+    "ndcg@3": 0.38724250979050834,
+    "ndcg@5": 0.4268848221068445,
+    "precision@1": 0.28865979381443296,
+    "precision@10": 0.10824742268041239,
+    "precision@3": 0.1924398625429553,
+    "precision@5": 0.14432989690721648,
+    "recall@1": 0.2439862542955326,
+    "recall@10": 0.7884879725085909,
+    "recall@3": 0.4690721649484536,
+    "recall@5": 0.5541237113402062
+  },
+  "answer": {
+    "exact_match": 0.0,
+    "substring_match": 0.0,
+    "token_f1": 0.020964453299417207
+  },
+  "by_category": {
+    "factual": {
+      "count": 13,
+      "recall@k": 0.712121212121212,
+      "mrr": 0.27005772005772005,
+      "exact_match": 0.0,
+      "substring_match": 0.0,
+      "token_f1": 0.026514644775514344
+    },
+    "multi_hop_reasoning": {
+      "count": 32,
+      "recall@k": 0.7390625,
+      "mrr": 0.47734374999999996,
+      "exact_match": 0.0,
+      "substring_match": 0.0,
+      "token_f1": 0.013536985136932115
+    },
+    "open_domain": {
+      "count": 17,
+      "recall@k": 0.8235294117647058,
+      "mrr": 0.5002334267040149,
+      "exact_match": 0.0,
+      "substring_match": 0.0,
+      "token_f1": 0.04409589063568303
+    },
+    "temporal": {
+      "count": 37,
+      "recall@k": 0.8378378378378378,
+      "mrr": 0.440969540969541,
+      "exact_match": 0.0,
+      "substring_match": 0.0,
+      "token_f1": 0.01481018457762644
+    }
+  },
+  "latency": {
+    "mean_retrieval_ms": 18.427698989398777,
+    "mean_total_ms": 18.442162626241853,
+    "mean_generation_ms": 0.0144636368430737,
+    "p50_retrieval_ms": 17.533900012494996,
+    "p95_retrieval_ms": 20.715050000580955,
+    "p99_retrieval_ms": 40.047429985133775,
+    "max_retrieval_ms": 79.22929999767803
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "job": {
+    "benchmark": "dmr",
+    "percent": 20,
+    "questions": 100,
+    "documents": 500,
+    "old_documents": 500,
+    "added_context_documents": 0,
+    "selected_evidence_outside_old_corpus": 0,
+    "slice_directory": "D:\\Opencode_\\reserchpaper\\data\\reevaluation\\reevaluation_20261013\\inputs\\p20\\dmr",
+    "input_sha256": "6687c1e01f4d2ec3c7df28f7cd590146b0a4024abcd31842bb975d32655187a5"
+  },
+  "profile": "default_hybrid",
+  "summary": {
+    "run_id": "reevaluation_20261013_p20_default_hybrid",
+    "benchmark": "dmr",
+    "is_smoke_test": false,
+    "protocol": "local_retrieval_v2",
+    "fingerprint": "3a05c7db460961d6f62bbf2534407bfcf190fb0d52f1fcf7af33e540951fa817",
+    "generator": "first_context_line",
+    "retrieval_mode": "hybrid",
+    "k": 10,
+    "timestamp": 1791875288,
+    "device": {
+      "gpu_enabled_requested": true,
+      "cuda_available": true,
+      "active_providers": [
+        "TensorrtExecutionProvider",
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "embedder_provider": "CUDAExecutionProvider",
+      "reranker_provider": "Uninitialized",
+      "vram_total_mb": 6141.0,
+      "vram_used_mb": 4442.0,
+      "vram_free_mb": 1479.0,
+      "vram_budget_mb": 5117.0,
+      "safety_buffer_mb": 1024.0,
+      "execution_mode": "GPU (CUDA)",
+      "status_notes": "An initialized model uses CUDAExecutionProvider."
+    },
+    "ingestion": {
+      "num_documents": 500,
+      "ingested_ids": 0,
+      "skipped_unchanged": 500,
+      "ingestion_time_sec": 5.390249099989887,
+      "docs_per_sec": 92.76009155141607
+    },
+    "evaluation": {
+      "total_examples": 100,
+      "successful_examples": 100,
+      "failed_examples": 0,
+      "retrieval_scored_examples": 100,
+      "answer_scored_examples": 100,
+      "retrieval": {
+        "mrr": 0.041428571428571426,
+        "ndcg@1": 0.03,
+        "ndcg@10": 0.05256292761124969,
+        "ndcg@3": 0.03,
+        "ndcg@5": 0.0429202967422018,
+        "precision@1": 0.03,
+        "precision@10": 0.009000000000000001,
+        "precision@3": 0.01,
+        "precision@5": 0.012,
+        "recall@1": 0.03,
+        "recall@10": 0.09,
+        "recall@3": 0.03,
+        "recall@5": 0.06
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "substring_match": 0.03,
+        "token_f1": 0.045182253078785005
+      },
+      "by_category": {
+        "msc_dialogue": {
+          "count": 100,
+          "recall@k": 0.09,
+          "mrr": 0.041428571428571426,
+          "exact_match": 0.0,
+          "substring_match": 0.03,
+          "token_f1": 0.045182253078785005
+        }
+      },
+      "latency": {
+        "mean_retrieval_ms": 37.99661299854051,
+        "mean_total_ms": 38.00842099823058
+      }
+    },
+    "coverage": {
+      "selected_examples": 100,
+      "evaluated_examples": 100,
+      "excluded_missing_evidence": [],
+      "examples_without_evidence": 0,
+      "extra_store_records": 0,
+      "documents_without_dates": 500
+    },
+    "resumed_examples": 0,
+    "run_file": "D:\\Opencode_\\reserchpaper\\report\\reevaluation_20261013\\raw\\dmr\\reevaluation_20261013_p20_default_hybrid_hybrid_local.jsonl"
+  },
+  "graph_counts": {
+    "nodes": {
+      "Entity": 0,
+      "Observation": 500
+    },
+    "edges": {
+      "RELATES": 0,
+      "ABOUT": 0,
+      "CONTRADICTS": 0,
+      "SUPERSEDES": 0
+    }
+  },
+  "telemetry": [
+    {
+      "time": 1791875278.1131,
+      "total_mb": 6141.0,
+      "used_mb": 4441.0,
+      "free_mb": 1480.0
+    },
+    {
+      "time": 1791875280.2077699,
+      "total_mb": 6141.0,
+      "used_mb": 4442.0,
+      "free_mb": 1479.0
+    },
+    {
+      "time": 1791875282.3263097,
+      "total_mb": 6141.0,
+      "used_mb": 4445.0,
+      "free_mb": 1476.0
+    },
+    {
+      "time": 1791875284.421921,
+      "total_mb": 6141.0,
+      "used_mb": 4444.0,
+      "free_mb": 1477.0
+    },
+    {
+      "time": 1791875286.5570538,
+      "total_mb": 6141.0,
+      "used_mb": 4442.0,
+      "free_mb": 1479.0
+    }
+  ],
+  "wall_time_sec": 10.352958800009219
+}

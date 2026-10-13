@@ -1,0 +1,87 @@
+{
+  "run_id": "reevaluation_20261013_p5_vector",
+  "benchmark": "dmr",
+  "is_smoke_test": false,
+  "protocol": "local_retrieval_v2",
+  "fingerprint": "d2e6703549f9d9e9c12c1e3efd78ff256c529531e7738f93d6c64340fb417ab1",
+  "generator": "first_context_line",
+  "retrieval_mode": "vector",
+  "k": 10,
+  "timestamp": 1791874768,
+  "device": {
+    "gpu_enabled_requested": true,
+    "cuda_available": true,
+    "active_providers": [
+      "TensorrtExecutionProvider",
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+    ],
+    "embedder_provider": "CUDAExecutionProvider",
+    "reranker_provider": "Uninitialized",
+    "vram_total_mb": 6141.0,
+    "vram_used_mb": 4456.0,
+    "vram_free_mb": 1465.0,
+    "vram_budget_mb": 5117.0,
+    "safety_buffer_mb": 1024.0,
+    "execution_mode": "GPU (CUDA)",
+    "status_notes": "An initialized model uses CUDAExecutionProvider."
+  },
+  "ingestion": {
+    "num_documents": 125,
+    "ingested_ids": 125,
+    "skipped_unchanged": 0,
+    "ingestion_time_sec": 4.720979599980637,
+    "docs_per_sec": 26.477555632842105
+  },
+  "evaluation": {
+    "total_examples": 25,
+    "successful_examples": 25,
+    "failed_examples": 0,
+    "retrieval_scored_examples": 25,
+    "answer_scored_examples": 25,
+    "retrieval": {
+      "mrr": 0.068,
+      "ndcg@1": 0.04,
+      "ndcg@10": 0.08972239977370254,
+      "ndcg@3": 0.06,
+      "ndcg@5": 0.07547411228938167,
+      "precision@1": 0.04,
+      "precision@10": 0.016,
+      "precision@3": 0.026666666666666665,
+      "precision@5": 0.024000000000000004,
+      "recall@1": 0.04,
+      "recall@10": 0.16,
+      "recall@3": 0.08,
+      "recall@5": 0.12
+    },
+    "answer": {
+      "exact_match": 0.0,
+      "substring_match": 0.0,
+      "token_f1": 0.028333333333333332
+    },
+    "by_category": {
+      "msc_dialogue": {
+        "count": 25,
+        "recall@k": 0.16,
+        "mrr": 0.068,
+        "exact_match": 0.0,
+        "substring_match": 0.0,
+        "token_f1": 0.028333333333333332
+      }
+    },
+    "latency": {
+      "mean_retrieval_ms": 8.58731200103648,
+      "mean_total_ms": 8.596015999792144
+    }
+  },
+  "coverage": {
+    "selected_examples": 25,
+    "evaluated_examples": 25,
+    "excluded_missing_evidence": [],
+    "examples_without_evidence": 0,
+    "extra_store_records": 0,
+    "documents_without_dates": 125
+  },
+  "resumed_examples": 0,
+  "run_file": "D:\\Opencode_\\reserchpaper\\report\\reevaluation_20261013\\raw\\dmr\\reevaluation_20261013_p5_vector_vector_local.jsonl"
+}

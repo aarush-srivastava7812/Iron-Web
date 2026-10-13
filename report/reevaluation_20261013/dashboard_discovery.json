@@ -1,0 +1,81 @@
+{
+  "verified_summary_copies": [
+    {
+      "source": "report\\reevaluation_20261013\\raw\\dmr\\reevaluation_20261013_p20_default_hybrid_hybrid_local_summary.json",
+      "destination": "data\\results\\reevaluation_20261013\\dmr\\reevaluation_20261013_p20_default_hybrid_hybrid_local_summary.json",
+      "sha256": "4a41dc85c4e30ea4a8cd1c88b9b907267f603d335a8683a86476d432ab1ab74b"
+    },
+    {
+      "source": "report\\reevaluation_20261013\\raw\\dmr\\reevaluation_20261013_p20_reranked_hybrid_hybrid_local_summary.json",
+      "destination": "data\\results\\reevaluation_20261013\\dmr\\reevaluation_20261013_p20_reranked_hybrid_hybrid_local_summary.json",
+      "sha256": "201a249f0b34f24df90b39406f9fe0b684b8fe5d4e1b0ca0f8cfd6681a7887a7"
+    },
+    {
+      "source": "report\\reevaluation_20261013\\raw\\dmr\\reevaluation_20261013_p20_vector_vector_local_summary.json",
+      "destination": "data\\results\\reevaluation_20261013\\dmr\\reevaluation_20261013_p20_vector_vector_local_summary.json",
+      "sha256": "92386ab5716620ba6e30f1f97deb6122a730c2861007d3ab8ec1c6501e7f2e05"
+    },
+    {
+      "source": "report\\reevaluation_20261013\\raw\\dmr\\reevaluation_20261013_p5_default_hybrid_hybrid_local_summary.json",
+      "destination": "data\\results\\reevaluation_20261013\\dmr\\reevaluation_20261013_p5_default_hybrid_hybrid_local_summary.json",
+      "sha256": "094e3d6bc1303f0caebf22596beade41a00e4cd4c948d2f270381c8a5a92ce15"
+    },
+    {
+      "source": "report\\reevaluation_20261013\\raw\\dmr\\reevaluation_20261013_p5_reranked_hybrid_hybrid_local_summary.json",
+      "destination": "data\\results\\reevaluation_20261013\\dmr\\reevaluation_20261013_p5_reranked_hybrid_hybrid_local_summary.json",
+      "sha256": "fc7c0b7e8dc615e05b77c0d50571a7773591b6c6f36d99261c1c9128029acf94"
+    },
+    {
+      "source": "report\\reevaluation_20261013\\raw\\dmr\\reevaluation_20261013_p5_vector_vector_local_summary.json",
+      "destination": "data\\results\\reevaluation_20261013\\dmr\\reevaluation_20261013_p5_vector_vector_local_summary.json",
+      "sha256": "25519c4a67c2d1f308b2076765c18de72359018291561db6cb7c37457ced2eb1"
+    },
+    {
+      "source": "report\\reevaluation_20261013\\raw\\locomo\\reevaluation_20261013_p20_default_hybrid_hybrid_local_summary.json",
+      "destination": "data\\results\\reevaluation_20261013\\locomo\\reevaluation_20261013_p20_default_hybrid_hybrid_local_summary.json",
+      "sha256": "a7847c373a2bd0579c70f499488183b8f995a16c0e3d23b02950ff215235ca8f"
+    },
+    {
+      "source": "report\\reevaluation_20261013\\raw\\locomo\\reevaluation_20261013_p20_reranked_hybrid_hybrid_local_summary.json",
+      "destination": "data\\results\\reevaluation_20261013\\locomo\\reevaluation_20261013_p20_reranked_hybrid_hybrid_local_summary.json",
+      "sha256": "2006206ef67b1a0eb459326087281e8f6564d896b616742efb105851c7fcd02e"
+    },
+    {
+      "source": "report\\reevaluation_20261013\\raw\\locomo\\reevaluation_20261013_p20_vector_vector_local_summary.json",
+      "destination": "data\\results\\reevaluation_20261013\\locomo\\reevaluation_20261013_p20_vector_vector_local_summary.json",
+      "sha256": "7c857357f46fe3770abbfc5e8150537db37cae701b6335c9d87bb15dae2c1f0b"
+    },
+    {
+      "source": "report\\reevaluation_20261013\\raw\\locomo\\reevaluation_20261013_p5_default_hybrid_hybrid_local_summary.json",
+      "destination": "data\\results\\reevaluation_20261013\\locomo\\reevaluation_20261013_p5_default_hybrid_hybrid_local_summary.json",
+      "sha256": "d728c05094a4a37aeca452379503367737dc018d3891d19231dd5f09f9337c6f"
+    },
+    {
+      "source": "report\\reevaluation_20261013\\raw\\locomo\\reevaluation_20261013_p5_reranked_hybrid_hybrid_local_summary.json",
+      "destination": "data\\results\\reevaluation_20261013\\locomo\\reevaluation_20261013_p5_reranked_hybrid_hybrid_local_summary.json",
+      "sha256": "4c49050c0ff6cef65f74d98046a59a76c10483d293e6c66a1b333b2306932296"
+    },
+    {
+      "source": "report\\reevaluation_20261013\\raw\\locomo\\reevaluation_20261013_p5_vector_vector_local_summary.json",
+      "destination": "data\\results\\reevaluation_20261013\\locomo\\reevaluation_20261013_p5_vector_vector_local_summary.json",
+      "sha256": "fd36210edd477083283d3750aa264be8f4a41fe6db6b3ee1296dbb28dcb236c6"
+    },
+    {
+      "source": "report\\reevaluation_20261013\\raw\\longmemeval\\reevaluation_20261013_p5_default_hybrid_hybrid_local_summary.json",
+      "destination": "data\\results\\reevaluation_20261013\\longmemeval\\reevaluation_20261013_p5_default_hybrid_hybrid_local_summary.json",
+      "sha256": "16a59428436ddc2a8aa426f447c3c2b7b4824db3a687b6f45d41daaa862290e6"
+    },
+    {
+      "source": "report\\reevaluation_20261013\\raw\\longmemeval\\reevaluation_20261013_p5_reranked_hybrid_hybrid_local_summary.json",
+      "destination": "data\\results\\reevaluation_20261013\\longmemeval\\reevaluation_20261013_p5_reranked_hybrid_hybrid_local_summary.json",
+      "sha256": "78d6347a699a866dc8629122322520637e9ec5caf3226a1aa33a998e838c3324"
+    },
+    {
+      "source": "report\\reevaluation_20261013\\raw\\longmemeval\\reevaluation_20261013_p5_vector_vector_local_summary.json",
+      "destination": "data\\results\\reevaluation_20261013\\longmemeval\\reevaluation_20261013_p5_vector_vector_local_summary.json",
+      "sha256": "e99f269d4a7c73f028a4cbe27b80639fce33967ca3e4a8eb1e12577d02d27980"
+    }
+  ],
+  "loaded_reports": 15,
+  "status": "available"
+}

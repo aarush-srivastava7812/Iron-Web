@@ -1,0 +1,398 @@
+[
+  {
+    "percent": 5,
+    "benchmark": "locomo",
+    "questions": 99,
+    "original_run_questions": 397,
+    "original_documents": 54,
+    "historical_path": "D:\\Opencode_\\reserchpaper\\archive\\2026-10-12\\run-records\\metrics\\official_upstream\\locomo\\hybrid_eval_results.jsonl",
+    "historical_sha256": "a68ebed1c7935ed79dcafd2f1ceb75900b314d8b2c5bff5046563db91a8b306a",
+    "original_recorded": {
+      "recall@10": 0.7718855218855218,
+      "precision@10": 0.10404040404040404,
+      "mrr": 0.5638969055635723,
+      "ndcg@10": 0.5945639106547955,
+      "exact_match": 0.0,
+      "token_f1": 0.015312655871167228,
+      "substring_match": 0.010101010101010102,
+      "latency_ms": 237.08970404160678
+    },
+    "corrected": {
+      "total_examples": 99,
+      "successful_examples": 99,
+      "failed_examples": 0,
+      "retrieval_scored_examples": 97,
+      "answer_scored_examples": 99,
+      "retrieval": {
+        "average_precision@10": 0.5297595865379371,
+        "mrr": 0.5755236458844707,
+        "ndcg@1": 0.4639175257731959,
+        "ndcg@10": 0.601509993525257,
+        "ndcg@3": 0.5245822967730687,
+        "ndcg@5": 0.5547074812392278,
+        "precision@1": 0.4639175257731959,
+        "precision@10": 0.10618556701030929,
+        "precision@3": 0.23367697594501716,
+        "precision@5": 0.16288659793814433,
+        "recall@1": 0.41237113402061853,
+        "recall@10": 0.7616838487972508,
+        "recall@3": 0.5742268041237114,
+        "recall@5": 0.6390034364261168
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "substring_match": 0.010101010101010102,
+        "token_f1": 0.015312655871167228
+      },
+      "by_category": {
+        "factual": {
+          "count": 13,
+          "recall@k": 0.787878787878788,
+          "mrr": 0.49166666666666664,
+          "exact_match": 0.0,
+          "substring_match": 0.0,
+          "token_f1": 0.036449265020693594
+        },
+        "multi_hop_reasoning": {
+          "count": 32,
+          "recall@k": 0.6942708333333333,
+          "mrr": 0.4868799603174603,
+          "exact_match": 0.0,
+          "substring_match": 0.0,
+          "token_f1": 0.006868131868131868
+        },
+        "open_domain": {
+          "count": 17,
+          "recall@k": 0.7058823529411765,
+          "mrr": 0.5539215686274509,
+          "exact_match": 0.0,
+          "substring_match": 0.058823529411764705,
+          "token_f1": 0.03424446808973666
+        },
+        "temporal": {
+          "count": 37,
+          "recall@k": 0.8378378378378378,
+          "mrr": 0.687044187044187,
+          "exact_match": 0.0,
+          "substring_match": 0.0,
+          "token_f1": 0.006491251585697181
+        }
+      },
+      "latency": {
+        "mean_retrieval_ms": 237.08970404160678,
+        "mean_total_ms": null,
+        "mean_generation_ms": null,
+        "p50_retrieval_ms": 202.61090001440607,
+        "p95_retrieval_ms": 215.7442900119349,
+        "p99_retrieval_ms": 286.02947201985955,
+        "max_retrieval_ms": 3503.7453999975696
+      }
+    },
+    "changed_evidence_annotations": 11,
+    "comparability": "matched questions; corpus, scope, extraction, ranking and answer generation may differ"
+  },
+  {
+    "percent": 5,
+    "benchmark": "dmr",
+    "questions": 25,
+    "original_run_questions": 100,
+    "original_documents": 500,
+    "historical_path": "D:\\Opencode_\\reserchpaper\\archive\\2026-10-12\\run-records\\metrics\\official_upstream\\dmr\\hybrid_eval_results.jsonl",
+    "historical_sha256": "a672de636bcfe10428c8e1efd91012599153407c1590aaab57688bfc509d8541",
+    "original_recorded": {
+      "recall@10": 0.12,
+      "precision@10": 0.012000000000000002,
+      "mrr": 0.02142857142857143,
+      "ndcg@10": 0.043893728989602386,
+      "exact_match": 0.0,
+      "token_f1": 0.034779474370722784,
+      "substring_match": 0.08,
+      "latency_ms": 305.7288879924454
+    },
+    "corrected": {
+      "total_examples": 25,
+      "successful_examples": 25,
+      "failed_examples": 0,
+      "retrieval_scored_examples": 25,
+      "answer_scored_examples": 25,
+      "retrieval": {
+        "average_precision@10": 0.02142857142857143,
+        "mrr": 0.02142857142857143,
+        "ndcg@1": 0.0,
+        "ndcg@10": 0.043893728989602386,
+        "ndcg@3": 0.0,
+        "ndcg@5": 0.01722706232293572,
+        "precision@1": 0.0,
+        "precision@10": 0.012000000000000002,
+        "precision@3": 0.0,
+        "precision@5": 0.008,
+        "recall@1": 0.0,
+        "recall@10": 0.12,
+        "recall@3": 0.0,
+        "recall@5": 0.04
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "substring_match": 0.08,
+        "token_f1": 0.034779474370722784
+      },
+      "by_category": {
+        "msc_dialogue": {
+          "count": 25,
+          "recall@k": 0.12,
+          "mrr": 0.02142857142857143,
+          "exact_match": 0.0,
+          "substring_match": 0.08,
+          "token_f1": 0.034779474370722784
+        }
+      },
+      "latency": {
+        "mean_retrieval_ms": 305.7288879924454,
+        "mean_total_ms": null,
+        "mean_generation_ms": null,
+        "p50_retrieval_ms": 184.06110000796616,
+        "p95_retrieval_ms": 229.81074000708747,
+        "p99_retrieval_ms": 2478.827495998697,
+        "max_retrieval_ms": 3186.4601999986917
+      }
+    },
+    "changed_evidence_annotations": 0,
+    "comparability": "matched questions; corpus, scope, extraction, ranking and answer generation may differ"
+  },
+  {
+    "percent": 5,
+    "benchmark": "longmemeval",
+    "questions": 25,
+    "original_run_questions": 100,
+    "original_documents": 3839,
+    "historical_path": "D:\\Opencode_\\reserchpaper\\archive\\2026-10-12\\run-records\\metrics\\official_upstream\\longmemeval\\hybrid_eval_results.jsonl",
+    "historical_sha256": "7388f2bc91fc7408a6bf274b2cc1587086e99318f22bdbefe0e23fe334f307aa",
+    "original_recorded": {
+      "recall@10": 0.32,
+      "precision@10": 0.032,
+      "mrr": 0.14355555555555555,
+      "ndcg@10": 0.18479370208535847,
+      "exact_match": 0.0,
+      "token_f1": 0.02126826815521916,
+      "substring_match": 0.16,
+      "latency_ms": 3298.620672004763
+    },
+    "corrected": {
+      "total_examples": 25,
+      "successful_examples": 25,
+      "failed_examples": 0,
+      "retrieval_scored_examples": 25,
+      "answer_scored_examples": 25,
+      "retrieval": {
+        "average_precision@10": 0.14355555555555555,
+        "mrr": 0.14355555555555555,
+        "ndcg@1": 0.08,
+        "ndcg@10": 0.18479370208535847,
+        "ndcg@3": 0.1452371901428583,
+        "ndcg@5": 0.16071130243223997,
+        "precision@1": 0.08,
+        "precision@10": 0.032,
+        "precision@3": 0.06666666666666667,
+        "precision@5": 0.048,
+        "recall@1": 0.08,
+        "recall@10": 0.32,
+        "recall@3": 0.2,
+        "recall@5": 0.24
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "substring_match": 0.16,
+        "token_f1": 0.02126826815521916
+      },
+      "by_category": {
+        "single-session-user": {
+          "count": 25,
+          "recall@k": 0.32,
+          "mrr": 0.14355555555555555,
+          "exact_match": 0.0,
+          "substring_match": 0.16,
+          "token_f1": 0.02126826815521916
+        }
+      },
+      "latency": {
+        "mean_retrieval_ms": 3298.620672004763,
+        "mean_total_ms": null,
+        "mean_generation_ms": null,
+        "p50_retrieval_ms": 3078.9837000193074,
+        "p95_retrieval_ms": 3796.8006200157106,
+        "p99_retrieval_ms": 6739.299372024827,
+        "max_retrieval_ms": 7667.6283000269905
+      }
+    },
+    "changed_evidence_annotations": 0,
+    "comparability": "matched questions; corpus, scope, extraction, ranking and answer generation may differ"
+  },
+  {
+    "percent": 20,
+    "benchmark": "locomo",
+    "questions": 397,
+    "original_run_questions": 397,
+    "original_documents": 54,
+    "historical_path": "D:\\Opencode_\\reserchpaper\\archive\\2026-10-12\\run-records\\metrics\\official_upstream\\locomo\\hybrid_eval_results.jsonl",
+    "historical_sha256": "a68ebed1c7935ed79dcafd2f1ceb75900b314d8b2c5bff5046563db91a8b306a",
+    "original_recorded": {
+      "recall@10": 0.7194374475230899,
+      "precision@10": 0.08740554156171283,
+      "mrr": 0.5504488025268881,
+      "ndcg@10": 0.5669779554173404,
+      "exact_match": 0.0,
+      "token_f1": 0.015550077024144964,
+      "substring_match": 0.010075566750629723,
+      "latency_ms": 213.86939647266763
+    },
+    "corrected": {
+      "total_examples": 397,
+      "successful_examples": 397,
+      "failed_examples": 0,
+      "retrieval_scored_examples": 395,
+      "answer_scored_examples": 328,
+      "retrieval": {
+        "average_precision@10": 0.5218311064228787,
+        "mrr": 0.553235885071328,
+        "ndcg@1": 0.4759493670886076,
+        "ndcg@10": 0.5778424222228358,
+        "ndcg@3": 0.5141022361994559,
+        "ndcg@5": 0.5378841740476559,
+        "precision@1": 0.4759493670886076,
+        "precision@10": 0.08784810126582279,
+        "precision@3": 0.20759493670886076,
+        "precision@5": 0.14126582278481012,
+        "recall@1": 0.44050632911392407,
+        "recall@10": 0.7167932489451476,
+        "recall@3": 0.5479746835443038,
+        "recall@5": 0.6031223628691983
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "substring_match": 0.012195121951219513,
+        "token_f1": 0.01882128225178522
+      },
+      "by_category": {
+        "adversarial": {
+          "count": 71,
+          "recall@k": 0.7464788732394366,
+          "mrr": 0.5746646545942321,
+          "exact_match": 0.0,
+          "substring_match": 0.0,
+          "token_f1": 0.0
+        },
+        "factual": {
+          "count": 21,
+          "recall@k": 0.6008771929824561,
+          "mrr": 0.36359649122807014,
+          "exact_match": 0.0,
+          "substring_match": 0.0,
+          "token_f1": 0.024327499157431133
+        },
+        "multi_hop_reasoning": {
+          "count": 74,
+          "recall@k": 0.6042792792792793,
+          "mrr": 0.4910928785928786,
+          "exact_match": 0.0,
+          "substring_match": 0.0,
+          "token_f1": 0.011232213354509671
+        },
+        "open_domain": {
+          "count": 141,
+          "recall@k": 0.7659574468085106,
+          "mrr": 0.5793481931779804,
+          "exact_match": 0.0,
+          "substring_match": 0.028368794326241134,
+          "token_f1": 0.03187780934247389
+        },
+        "temporal": {
+          "count": 90,
+          "recall@k": 0.7333333333333333,
+          "mrr": 0.5865520282186949,
+          "exact_match": 0.0,
+          "substring_match": 0.0,
+          "token_f1": 0.003739424341744039
+        }
+      },
+      "latency": {
+        "mean_retrieval_ms": 213.86939647266763,
+        "mean_total_ms": null,
+        "mean_generation_ms": null,
+        "p50_retrieval_ms": 204.6320000081323,
+        "p95_retrieval_ms": 220.3470800013747,
+        "p99_retrieval_ms": 226.36733999475842,
+        "max_retrieval_ms": 3503.7453999975696
+      }
+    },
+    "changed_evidence_annotations": 28,
+    "comparability": "matched questions; corpus, scope, extraction, ranking and answer generation may differ"
+  },
+  {
+    "percent": 20,
+    "benchmark": "dmr",
+    "questions": 100,
+    "original_run_questions": 100,
+    "original_documents": 500,
+    "historical_path": "D:\\Opencode_\\reserchpaper\\archive\\2026-10-12\\run-records\\metrics\\official_upstream\\dmr\\hybrid_eval_results.jsonl",
+    "historical_sha256": "a672de636bcfe10428c8e1efd91012599153407c1590aaab57688bfc509d8541",
+    "original_recorded": {
+      "recall@10": 0.12,
+      "precision@10": 0.012000000000000002,
+      "mrr": 0.031563492063492064,
+      "ndcg@10": 0.05236626055222853,
+      "exact_match": 0.0,
+      "token_f1": 0.03129939188726878,
+      "substring_match": 0.02,
+      "latency_ms": 215.33279899857007
+    },
+    "corrected": {
+      "total_examples": 100,
+      "successful_examples": 100,
+      "failed_examples": 0,
+      "retrieval_scored_examples": 100,
+      "answer_scored_examples": 100,
+      "retrieval": {
+        "average_precision@10": 0.031563492063492064,
+        "mrr": 0.031563492063492064,
+        "ndcg@1": 0.0,
+        "ndcg@10": 0.05236626055222853,
+        "ndcg@3": 0.02761859507142915,
+        "ndcg@5": 0.0357938887245085,
+        "precision@1": 0.0,
+        "precision@10": 0.012000000000000002,
+        "precision@3": 0.016666666666666666,
+        "precision@5": 0.013999999999999999,
+        "recall@1": 0.0,
+        "recall@10": 0.12,
+        "recall@3": 0.05,
+        "recall@5": 0.07
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "substring_match": 0.02,
+        "token_f1": 0.03129939188726878
+      },
+      "by_category": {
+        "msc_dialogue": {
+          "count": 100,
+          "recall@k": 0.12,
+          "mrr": 0.031563492063492064,
+          "exact_match": 0.0,
+          "substring_match": 0.02,
+          "token_f1": 0.03129939188726878
+        }
+      },
+      "latency": {
+        "mean_retrieval_ms": 215.33279899857007,
+        "mean_total_ms": null,
+        "mean_generation_ms": null,
+        "p50_retrieval_ms": 185.15349997323938,
+        "p95_retrieval_ms": 199.90057501127012,
+        "p99_retrieval_ms": 267.4752959987532,
+        "max_retrieval_ms": 3186.4601999986917
+      }
+    },
+    "changed_evidence_annotations": 0,
+    "comparability": "matched questions; corpus, scope, extraction, ranking and answer generation may differ"
+  }
+]

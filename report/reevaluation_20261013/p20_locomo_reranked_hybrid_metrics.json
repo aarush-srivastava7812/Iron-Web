@@ -1,0 +1,79 @@
+{
+  "total_examples": 397,
+  "successful_examples": 397,
+  "failed_examples": 0,
+  "retrieval_scored_examples": 395,
+  "answer_scored_examples": 328,
+  "retrieval": {
+    "average_precision@10": 0.6844173196704841,
+    "mrr": 0.7174362065501306,
+    "ndcg@1": 0.6227848101265823,
+    "ndcg@10": 0.74558385579806,
+    "ndcg@3": 0.6827950303587048,
+    "ndcg@5": 0.7063947991536353,
+    "precision@1": 0.6227848101265823,
+    "precision@10": 0.10860759493670888,
+    "precision@3": 0.27763713080168784,
+    "precision@5": 0.18379746835443037,
+    "recall@1": 0.5723628691983121,
+    "recall@10": 0.8961603375527425,
+    "recall@3": 0.7329957805907172,
+    "recall@5": 0.7872151898734177
+  },
+  "answer": {
+    "exact_match": 0.0,
+    "substring_match": 0.012195121951219513,
+    "token_f1": 0.020280446454552747
+  },
+  "by_category": {
+    "adversarial": {
+      "count": 71,
+      "recall@k": 0.9577464788732394,
+      "mrr": 0.7735300693047172,
+      "exact_match": 0.0,
+      "substring_match": 0.0,
+      "token_f1": 0.0
+    },
+    "factual": {
+      "count": 21,
+      "recall@k": 0.6535087719298245,
+      "mrr": 0.40292397660818713,
+      "exact_match": 0.0,
+      "substring_match": 0.0,
+      "token_f1": 0.02416921979363414
+    },
+    "multi_hop_reasoning": {
+      "count": 74,
+      "recall@k": 0.7509009009009009,
+      "mrr": 0.6041934791934792,
+      "exact_match": 0.0,
+      "substring_match": 0.0,
+      "token_f1": 0.013984367714576184
+    },
+    "open_domain": {
+      "count": 141,
+      "recall@k": 0.9361702127659575,
+      "mrr": 0.7248086232128784,
+      "exact_match": 0.0,
+      "substring_match": 0.028368794326241134,
+      "token_f1": 0.03108188796777431
+    },
+    "temporal": {
+      "count": 90,
+      "recall@k": 0.9555555555555556,
+      "mrr": 0.8211419753086419,
+      "exact_match": 0.0,
+      "substring_match": 0.0,
+      "token_f1": 0.008078260078801882
+    }
+  },
+  "latency": {
+    "mean_retrieval_ms": 575.6377450884578,
+    "mean_total_ms": 575.6478551640328,
+    "mean_generation_ms": 0.010110075574987555,
+    "p50_retrieval_ms": 496.6124999918975,
+    "p95_retrieval_ms": 853.4894400043413,
+    "p99_retrieval_ms": 866.7311720002908,
+    "max_retrieval_ms": 887.1587000030559
+  }
+}

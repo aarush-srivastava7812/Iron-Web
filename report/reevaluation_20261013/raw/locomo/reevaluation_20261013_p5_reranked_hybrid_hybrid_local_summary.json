@@ -1,0 +1,111 @@
+{
+  "run_id": "reevaluation_20261013_p5_reranked_hybrid",
+  "benchmark": "locomo",
+  "is_smoke_test": false,
+  "protocol": "local_retrieval_v2",
+  "fingerprint": "886d8e4d41607d086f2df1e7b26d5be11b2e97dcded62ed0703352cc60e96d37",
+  "generator": "first_context_line",
+  "retrieval_mode": "hybrid",
+  "k": 10,
+  "timestamp": 1791874763,
+  "device": {
+    "gpu_enabled_requested": true,
+    "cuda_available": true,
+    "active_providers": [
+      "TensorrtExecutionProvider",
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+    ],
+    "embedder_provider": "CUDAExecutionProvider",
+    "reranker_provider": "CUDAExecutionProvider",
+    "vram_total_mb": 6141.0,
+    "vram_used_mb": 4456.0,
+    "vram_free_mb": 1465.0,
+    "vram_budget_mb": 5117.0,
+    "safety_buffer_mb": 1024.0,
+    "execution_mode": "GPU (CUDA)",
+    "status_notes": "An initialized model uses CUDAExecutionProvider."
+  },
+  "ingestion": {
+    "num_documents": 19,
+    "ingested_ids": 0,
+    "skipped_unchanged": 19,
+    "ingestion_time_sec": 0.0920464999799151,
+    "docs_per_sec": 206.41740863743732
+  },
+  "evaluation": {
+    "total_examples": 99,
+    "successful_examples": 99,
+    "failed_examples": 0,
+    "retrieval_scored_examples": 97,
+    "answer_scored_examples": 99,
+    "retrieval": {
+      "mrr": 0.6383120602192767,
+      "ndcg@1": 0.4948453608247423,
+      "ndcg@10": 0.6807222668104987,
+      "ndcg@3": 0.5889820296187931,
+      "ndcg@5": 0.6087890425135485,
+      "precision@1": 0.4948453608247423,
+      "precision@10": 0.12061855670103094,
+      "precision@3": 0.2611683848797251,
+      "precision@5": 0.17525773195876287,
+      "recall@1": 0.4501718213058419,
+      "recall@10": 0.8829896907216493,
+      "recall@3": 0.6515463917525772,
+      "recall@5": 0.6902061855670102
+    },
+    "answer": {
+      "exact_match": 0.0,
+      "substring_match": 0.010101010101010102,
+      "token_f1": 0.016430700274677298
+    },
+    "by_category": {
+      "factual": {
+        "count": 13,
+        "recall@k": 0.8333333333333335,
+        "mrr": 0.47373737373737373,
+        "exact_match": 0.0,
+        "substring_match": 0.0,
+        "token_f1": 0.033125426057172315
+      },
+      "multi_hop_reasoning": {
+        "count": 32,
+        "recall@k": 0.7963541666666667,
+        "mrr": 0.45693204365079365,
+        "exact_match": 0.0,
+        "substring_match": 0.0,
+        "token_f1": 0.006481481481481482
+      },
+      "open_domain": {
+        "count": 17,
+        "recall@k": 0.9411764705882353,
+        "mrr": 0.7794117647058824,
+        "exact_match": 0.0,
+        "substring_match": 0.058823529411764705,
+        "token_f1": 0.03974138009700803
+      },
+      "temporal": {
+        "count": 37,
+        "recall@k": 0.9459459459459459,
+        "mrr": 0.7792792792792793,
+        "exact_match": 0.0,
+        "substring_match": 0.0,
+        "token_f1": 0.008459403226845087
+      }
+    },
+    "latency": {
+      "mean_retrieval_ms": 484.7724454567387,
+      "mean_total_ms": 484.7852010115266
+    }
+  },
+  "coverage": {
+    "selected_examples": 99,
+    "evaluated_examples": 99,
+    "excluded_missing_evidence": [],
+    "examples_without_evidence": 2,
+    "extra_store_records": 0,
+    "documents_without_dates": 0
+  },
+  "resumed_examples": 0,
+  "run_file": "D:\\Opencode_\\reserchpaper\\report\\reevaluation_20261013\\raw\\locomo\\reevaluation_20261013_p5_reranked_hybrid_hybrid_local.jsonl"
+}

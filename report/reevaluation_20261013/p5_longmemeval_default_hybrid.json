@@ -1,0 +1,152 @@
+{
+  "job": {
+    "benchmark": "longmemeval",
+    "percent": 5,
+    "questions": 25,
+    "documents": 1213,
+    "old_documents": 3839,
+    "added_context_documents": 0,
+    "selected_evidence_outside_old_corpus": 0,
+    "slice_directory": "D:\\Opencode_\\reserchpaper\\data\\reevaluation\\reevaluation_20261013\\inputs\\p5\\longmemeval",
+    "input_sha256": "1194c6eee59acad24f464204110b4efa0cc39f6e2c444d6f9565e5b4ee6fa18e"
+  },
+  "profile": "default_hybrid",
+  "summary": {
+    "run_id": "reevaluation_20261013_p5_default_hybrid",
+    "benchmark": "longmemeval",
+    "is_smoke_test": false,
+    "protocol": "local_retrieval_v2",
+    "fingerprint": "b808aa227a29d2f0efc1d39526dce556309d1c43dd6b4e6f2efd9250d4d49358",
+    "generator": "first_context_line",
+    "retrieval_mode": "hybrid",
+    "k": 10,
+    "timestamp": 1791874930,
+    "device": {
+      "gpu_enabled_requested": true,
+      "cuda_available": true,
+      "active_providers": [
+        "TensorrtExecutionProvider",
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "embedder_provider": "CUDAExecutionProvider",
+      "reranker_provider": "Uninitialized",
+      "vram_total_mb": 6141.0,
+      "vram_used_mb": 4445.0,
+      "vram_free_mb": 1476.0,
+      "vram_budget_mb": 5117.0,
+      "safety_buffer_mb": 1024.0,
+      "execution_mode": "GPU (CUDA)",
+      "status_notes": "An initialized model uses CUDAExecutionProvider."
+    },
+    "ingestion": {
+      "num_documents": 1213,
+      "ingested_ids": 0,
+      "skipped_unchanged": 1213,
+      "ingestion_time_sec": 8.192045000003418,
+      "docs_per_sec": 148.07047568702245
+    },
+    "evaluation": {
+      "total_examples": 25,
+      "successful_examples": 25,
+      "failed_examples": 0,
+      "retrieval_scored_examples": 25,
+      "answer_scored_examples": 25,
+      "retrieval": {
+        "mrr": 0.6847619047619047,
+        "ndcg@1": 0.6,
+        "ndcg@10": 0.7223782370952415,
+        "ndcg@3": 0.6957115704285749,
+        "ndcg@5": 0.6957115704285749,
+        "precision@1": 0.6,
+        "precision@10": 0.084,
+        "precision@3": 0.2533333333333333,
+        "precision@5": 0.15200000000000002,
+        "recall@1": 0.6,
+        "recall@10": 0.84,
+        "recall@3": 0.76,
+        "recall@5": 0.76
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "substring_match": 0.12,
+        "token_f1": 0.008916841369671557
+      },
+      "by_category": {
+        "single-session-user": {
+          "count": 25,
+          "recall@k": 0.84,
+          "mrr": 0.6847619047619047,
+          "exact_match": 0.0,
+          "substring_match": 0.12,
+          "token_f1": 0.008916841369671557
+        }
+      },
+      "latency": {
+        "mean_retrieval_ms": 58.60173600143753,
+        "mean_total_ms": 58.643171997973695
+      }
+    },
+    "coverage": {
+      "selected_examples": 25,
+      "evaluated_examples": 25,
+      "excluded_missing_evidence": [],
+      "examples_without_evidence": 0,
+      "extra_store_records": 0,
+      "documents_without_dates": 0
+    },
+    "resumed_examples": 0,
+    "run_file": "D:\\Opencode_\\reserchpaper\\report\\reevaluation_20261013\\raw\\longmemeval\\reevaluation_20261013_p5_default_hybrid_hybrid_local.jsonl"
+  },
+  "graph_counts": {
+    "nodes": {
+      "Entity": 0,
+      "Observation": 1213
+    },
+    "edges": {
+      "RELATES": 0,
+      "ABOUT": 0,
+      "CONTRADICTS": 0,
+      "SUPERSEDES": 0
+    }
+  },
+  "telemetry": [
+    {
+      "time": 1791874920.4194102,
+      "total_mb": 6141.0,
+      "used_mb": 4443.0,
+      "free_mb": 1478.0
+    },
+    {
+      "time": 1791874922.5358331,
+      "total_mb": 6141.0,
+      "used_mb": 4447.0,
+      "free_mb": 1474.0
+    },
+    {
+      "time": 1791874924.6346197,
+      "total_mb": 6141.0,
+      "used_mb": 4443.0,
+      "free_mb": 1478.0
+    },
+    {
+      "time": 1791874926.7525384,
+      "total_mb": 6141.0,
+      "used_mb": 4444.0,
+      "free_mb": 1477.0
+    },
+    {
+      "time": 1791874928.8497896,
+      "total_mb": 6141.0,
+      "used_mb": 4443.0,
+      "free_mb": 1478.0
+    },
+    {
+      "time": 1791874931.0468798,
+      "total_mb": 6141.0,
+      "used_mb": 4445.0,
+      "free_mb": 1476.0
+    }
+  ],
+  "wall_time_sec": 10.79462619998958
+}

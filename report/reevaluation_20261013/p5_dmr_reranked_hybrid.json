@@ -1,0 +1,296 @@
+{
+  "job": {
+    "benchmark": "dmr",
+    "percent": 5,
+    "questions": 25,
+    "documents": 125,
+    "old_documents": 500,
+    "added_context_documents": 0,
+    "selected_evidence_outside_old_corpus": 0,
+    "slice_directory": "D:\\Opencode_\\reserchpaper\\data\\reevaluation\\reevaluation_20261013\\inputs\\p5\\dmr",
+    "input_sha256": "c15faa03ad5a6c7bc704da31d49b9ebf933a2e6b57148e150c525f2599724076"
+  },
+  "profile": "reranked_hybrid",
+  "summary": {
+    "run_id": "reevaluation_20261013_p5_reranked_hybrid",
+    "benchmark": "dmr",
+    "is_smoke_test": false,
+    "protocol": "local_retrieval_v2",
+    "fingerprint": "dfeabc9daef6d7f79a6d2974e042b5e58317b52ce6103ae4c926f80017d5fda8",
+    "generator": "first_context_line",
+    "retrieval_mode": "hybrid",
+    "k": 10,
+    "timestamp": 1791874832,
+    "device": {
+      "gpu_enabled_requested": true,
+      "cuda_available": true,
+      "active_providers": [
+        "TensorrtExecutionProvider",
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "embedder_provider": "CUDAExecutionProvider",
+      "reranker_provider": "CUDAExecutionProvider",
+      "vram_total_mb": 6141.0,
+      "vram_used_mb": 4449.0,
+      "vram_free_mb": 1472.0,
+      "vram_budget_mb": 5117.0,
+      "safety_buffer_mb": 1024.0,
+      "execution_mode": "GPU (CUDA)",
+      "status_notes": "An initialized model uses CUDAExecutionProvider."
+    },
+    "ingestion": {
+      "num_documents": 125,
+      "ingested_ids": 0,
+      "skipped_unchanged": 125,
+      "ingestion_time_sec": 0.6392086999840103,
+      "docs_per_sec": 195.5542845445108
+    },
+    "evaluation": {
+      "total_examples": 25,
+      "successful_examples": 25,
+      "failed_examples": 0,
+      "retrieval_scored_examples": 25,
+      "answer_scored_examples": 25,
+      "retrieval": {
+        "mrr": 0.05566666666666666,
+        "ndcg@1": 0.0,
+        "ndcg@10": 0.09812079039719529,
+        "ndcg@3": 0.0252371901428583,
+        "ndcg@5": 0.059691314788729744,
+        "precision@1": 0.0,
+        "precision@10": 0.024000000000000004,
+        "precision@3": 0.013333333333333332,
+        "precision@5": 0.024000000000000004,
+        "recall@1": 0.0,
+        "recall@10": 0.24,
+        "recall@3": 0.04,
+        "recall@5": 0.12
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "substring_match": 0.04,
+        "token_f1": 0.048595008336943815
+      },
+      "by_category": {
+        "msc_dialogue": {
+          "count": 25,
+          "recall@k": 0.24,
+          "mrr": 0.05566666666666666,
+          "exact_match": 0.0,
+          "substring_match": 0.04,
+          "token_f1": 0.048595008336943815
+        }
+      },
+      "latency": {
+        "mean_retrieval_ms": 2431.728655999759,
+        "mean_total_ms": 2431.7380760004744
+      }
+    },
+    "coverage": {
+      "selected_examples": 25,
+      "evaluated_examples": 25,
+      "excluded_missing_evidence": [],
+      "examples_without_evidence": 0,
+      "extra_store_records": 0,
+      "documents_without_dates": 125
+    },
+    "resumed_examples": 0,
+    "run_file": "D:\\Opencode_\\reserchpaper\\report\\reevaluation_20261013\\raw\\dmr\\reevaluation_20261013_p5_reranked_hybrid_hybrid_local.jsonl"
+  },
+  "graph_counts": {
+    "nodes": {
+      "Entity": 0,
+      "Observation": 125
+    },
+    "edges": {
+      "RELATES": 0,
+      "ABOUT": 0,
+      "CONTRADICTS": 0,
+      "SUPERSEDES": 0
+    }
+  },
+  "telemetry": [
+    {
+      "time": 1791874770.5159311,
+      "total_mb": 6141.0,
+      "used_mb": 4453.0,
+      "free_mb": 1468.0
+    },
+    {
+      "time": 1791874772.6223059,
+      "total_mb": 6141.0,
+      "used_mb": 4454.0,
+      "free_mb": 1467.0
+    },
+    {
+      "time": 1791874774.7351792,
+      "total_mb": 6141.0,
+      "used_mb": 4453.0,
+      "free_mb": 1468.0
+    },
+    {
+      "time": 1791874776.8805044,
+      "total_mb": 6141.0,
+      "used_mb": 4453.0,
+      "free_mb": 1468.0
+    },
+    {
+      "time": 1791874778.9957252,
+      "total_mb": 6141.0,
+      "used_mb": 4453.0,
+      "free_mb": 1468.0
+    },
+    {
+      "time": 1791874781.1425223,
+      "total_mb": 6141.0,
+      "used_mb": 4453.0,
+      "free_mb": 1468.0
+    },
+    {
+      "time": 1791874783.271322,
+      "total_mb": 6141.0,
+      "used_mb": 4453.0,
+      "free_mb": 1468.0
+    },
+    {
+      "time": 1791874785.3668091,
+      "total_mb": 6141.0,
+      "used_mb": 4453.0,
+      "free_mb": 1468.0
+    },
+    {
+      "time": 1791874787.4799976,
+      "total_mb": 6141.0,
+      "used_mb": 4453.0,
+      "free_mb": 1468.0
+    },
+    {
+      "time": 1791874789.5754998,
+      "total_mb": 6141.0,
+      "used_mb": 4454.0,
+      "free_mb": 1467.0
+    },
+    {
+      "time": 1791874791.6961098,
+      "total_mb": 6141.0,
+      "used_mb": 4453.0,
+      "free_mb": 1468.0
+    },
+    {
+      "time": 1791874793.8108718,
+      "total_mb": 6141.0,
+      "used_mb": 4454.0,
+      "free_mb": 1467.0
+    },
+    {
+      "time": 1791874795.9045088,
+      "total_mb": 6141.0,
+      "used_mb": 4454.0,
+      "free_mb": 1467.0
+    },
+    {
+      "time": 1791874798.0332334,
+      "total_mb": 6141.0,
+      "used_mb": 4454.0,
+      "free_mb": 1467.0
+    },
+    {
+      "time": 1791874800.1508052,
+      "total_mb": 6141.0,
+      "used_mb": 4454.0,
+      "free_mb": 1467.0
+    },
+    {
+      "time": 1791874802.2661397,
+      "total_mb": 6141.0,
+      "used_mb": 4454.0,
+      "free_mb": 1467.0
+    },
+    {
+      "time": 1791874804.380319,
+      "total_mb": 6141.0,
+      "used_mb": 4454.0,
+      "free_mb": 1467.0
+    },
+    {
+      "time": 1791874806.4895737,
+      "total_mb": 6141.0,
+      "used_mb": 4454.0,
+      "free_mb": 1467.0
+    },
+    {
+      "time": 1791874808.5914636,
+      "total_mb": 6141.0,
+      "used_mb": 4454.0,
+      "free_mb": 1467.0
+    },
+    {
+      "time": 1791874810.6873848,
+      "total_mb": 6141.0,
+      "used_mb": 4456.0,
+      "free_mb": 1465.0
+    },
+    {
+      "time": 1791874812.7846854,
+      "total_mb": 6141.0,
+      "used_mb": 4457.0,
+      "free_mb": 1464.0
+    },
+    {
+      "time": 1791874814.8984315,
+      "total_mb": 6141.0,
+      "used_mb": 4454.0,
+      "free_mb": 1467.0
+    },
+    {
+      "time": 1791874816.9987953,
+      "total_mb": 6141.0,
+      "used_mb": 4457.0,
+      "free_mb": 1464.0
+    },
+    {
+      "time": 1791874819.114474,
+      "total_mb": 6141.0,
+      "used_mb": 4454.0,
+      "free_mb": 1467.0
+    },
+    {
+      "time": 1791874821.2337356,
+      "total_mb": 6141.0,
+      "used_mb": 4457.0,
+      "free_mb": 1464.0
+    },
+    {
+      "time": 1791874823.3643422,
+      "total_mb": 6141.0,
+      "used_mb": 4458.0,
+      "free_mb": 1463.0
+    },
+    {
+      "time": 1791874825.490779,
+      "total_mb": 6141.0,
+      "used_mb": 4447.0,
+      "free_mb": 1474.0
+    },
+    {
+      "time": 1791874827.6054418,
+      "total_mb": 6141.0,
+      "used_mb": 4456.0,
+      "free_mb": 1465.0
+    },
+    {
+      "time": 1791874829.724983,
+      "total_mb": 6141.0,
+      "used_mb": 4453.0,
+      "free_mb": 1468.0
+    },
+    {
+      "time": 1791874831.8575416,
+      "total_mb": 6141.0,
+      "used_mb": 4453.0,
+      "free_mb": 1468.0
+    }
+  ],
+  "wall_time_sec": 61.96735869999975
+}

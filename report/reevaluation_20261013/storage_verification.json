@@ -1,0 +1,37 @@
+[
+  {
+    "percent": 5,
+    "benchmark": "locomo",
+    "stored_documents": 19,
+    "observation_count": 19,
+    "no_extra_or_missing_records": true
+  },
+  {
+    "percent": 5,
+    "benchmark": "dmr",
+    "stored_documents": 125,
+    "observation_count": 125,
+    "no_extra_or_missing_records": true
+  },
+  {
+    "percent": 5,
+    "benchmark": "longmemeval",
+    "stored_documents": 1213,
+    "observation_count": 1213,
+    "no_extra_or_missing_records": true
+  },
+  {
+    "percent": 20,
+    "benchmark": "locomo",
+    "stored_documents": 70,
+    "observation_count": 70,
+    "no_extra_or_missing_records": true
+  },
+  {
+    "percent": 20,
+    "benchmark": "dmr",
+    "stored_documents": 500,
+    "observation_count": 500,
+    "no_extra_or_missing_records": true
+  }
+]

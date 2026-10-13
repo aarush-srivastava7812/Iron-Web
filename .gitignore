@@ -35,3 +35,4 @@ archive/**/data/
 report/*_temp/
 report/schema_probe.db*
 report/runtime_verification.json
+report/reevaluation_*/run*.log

@@ -1,0 +1,368 @@
+{
+  "job": {
+    "benchmark": "longmemeval",
+    "percent": 5,
+    "questions": 25,
+    "documents": 1213,
+    "old_documents": 3839,
+    "added_context_documents": 0,
+    "selected_evidence_outside_old_corpus": 0,
+    "slice_directory": "D:\\Opencode_\\reserchpaper\\data\\reevaluation\\reevaluation_20261013\\inputs\\p5\\longmemeval",
+    "input_sha256": "1194c6eee59acad24f464204110b4efa0cc39f6e2c444d6f9565e5b4ee6fa18e"
+  },
+  "profile": "vector",
+  "summary": {
+    "run_id": "reevaluation_20261013_p5_vector",
+    "benchmark": "longmemeval",
+    "is_smoke_test": false,
+    "protocol": "local_retrieval_v2",
+    "fingerprint": "4429c94293c8b01dd657555d779a65a5f7a078ff3ae3cea31b8ce3f0fea4cfc1",
+    "generator": "first_context_line",
+    "retrieval_mode": "vector",
+    "k": 10,
+    "timestamp": 1791874919,
+    "device": {
+      "gpu_enabled_requested": true,
+      "cuda_available": true,
+      "active_providers": [
+        "TensorrtExecutionProvider",
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "embedder_provider": "CUDAExecutionProvider",
+      "reranker_provider": "Uninitialized",
+      "vram_total_mb": 6141.0,
+      "vram_used_mb": 4443.0,
+      "vram_free_mb": 1478.0,
+      "vram_budget_mb": 5117.0,
+      "safety_buffer_mb": 1024.0,
+      "execution_mode": "GPU (CUDA)",
+      "status_notes": "An initialized model uses CUDAExecutionProvider."
+    },
+    "ingestion": {
+      "num_documents": 1213,
+      "ingested_ids": 1213,
+      "skipped_unchanged": 0,
+      "ingestion_time_sec": 85.6040146999876,
+      "docs_per_sec": 14.16989616960308
+    },
+    "evaluation": {
+      "total_examples": 25,
+      "successful_examples": 25,
+      "failed_examples": 0,
+      "retrieval_scored_examples": 25,
+      "answer_scored_examples": 25,
+      "retrieval": {
+        "mrr": 0.6991111111111111,
+        "ndcg@1": 0.6,
+        "ndcg@10": 0.742712360171695,
+        "ndcg@3": 0.7009487605714333,
+        "ndcg@5": 0.7164228728608149,
+        "precision@1": 0.6,
+        "precision@10": 0.08800000000000001,
+        "precision@3": 0.2533333333333333,
+        "precision@5": 0.16,
+        "recall@1": 0.6,
+        "recall@10": 0.88,
+        "recall@3": 0.76,
+        "recall@5": 0.8
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "substring_match": 0.12,
+        "token_f1": 0.008916841369671557
+      },
+      "by_category": {
+        "single-session-user": {
+          "count": 25,
+          "recall@k": 0.88,
+          "mrr": 0.6991111111111111,
+          "exact_match": 0.0,
+          "substring_match": 0.12,
+          "token_f1": 0.008916841369671557
+        }
+      },
+      "latency": {
+        "mean_retrieval_ms": 27.81227999832481,
+        "mean_total_ms": 27.852311998140067
+      }
+    },
+    "coverage": {
+      "selected_examples": 25,
+      "evaluated_examples": 25,
+      "excluded_missing_evidence": [],
+      "examples_without_evidence": 0,
+      "extra_store_records": 0,
+      "documents_without_dates": 0
+    },
+    "resumed_examples": 0,
+    "run_file": "D:\\Opencode_\\reserchpaper\\report\\reevaluation_20261013\\raw\\longmemeval\\reevaluation_20261013_p5_vector_vector_local.jsonl"
+  },
+  "graph_counts": {
+    "nodes": {
+      "Entity": 0,
+      "Observation": 1213
+    },
+    "edges": {
+      "RELATES": 0,
+      "ABOUT": 0,
+      "CONTRADICTS": 0,
+      "SUPERSEDES": 0
+    }
+  },
+  "telemetry": [
+    {
+      "time": 1791874833.1214972,
+      "total_mb": 6141.0,
+      "used_mb": 4444.0,
+      "free_mb": 1477.0
+    },
+    {
+      "time": 1791874835.2444344,
+      "total_mb": 6141.0,
+      "used_mb": 4443.0,
+      "free_mb": 1478.0
+    },
+    {
+      "time": 1791874837.3478415,
+      "total_mb": 6141.0,
+      "used_mb": 4444.0,
+      "free_mb": 1477.0
+    },
+    {
+      "time": 1791874839.4659069,
+      "total_mb": 6141.0,
+      "used_mb": 4443.0,
+      "free_mb": 1478.0
+    },
+    {
+      "time": 1791874841.604309,
+      "total_mb": 6141.0,
+      "used_mb": 4443.0,
+      "free_mb": 1478.0
+    },
+    {
+      "time": 1791874843.7257361,
+      "total_mb": 6141.0,
+      "used_mb": 4447.0,
+      "free_mb": 1474.0
+    },
+    {
+      "time": 1791874845.8446336,
+      "total_mb": 6141.0,
+      "used_mb": 4447.0,
+      "free_mb": 1474.0
+    },
+    {
+      "time": 1791874847.963159,
+      "total_mb": 6141.0,
+      "used_mb": 4446.0,
+      "free_mb": 1475.0
+    },
+    {
+      "time": 1791874850.094,
+      "total_mb": 6141.0,
+      "used_mb": 4446.0,
+      "free_mb": 1475.0
+    },
+    {
+      "time": 1791874852.2087638,
+      "total_mb": 6141.0,
+      "used_mb": 4446.0,
+      "free_mb": 1475.0
+    },
+    {
+      "time": 1791874854.324842,
+      "total_mb": 6141.0,
+      "used_mb": 4446.0,
+      "free_mb": 1475.0
+    },
+    {
+      "time": 1791874856.4595218,
+      "total_mb": 6141.0,
+      "used_mb": 4446.0,
+      "free_mb": 1475.0
+    },
+    {
+      "time": 1791874858.5606792,
+      "total_mb": 6141.0,
+      "used_mb": 4446.0,
+      "free_mb": 1475.0
+    },
+    {
+      "time": 1791874860.6606693,
+      "total_mb": 6141.0,
+      "used_mb": 4445.0,
+      "free_mb": 1476.0
+    },
+    {
+      "time": 1791874862.7643852,
+      "total_mb": 6141.0,
+      "used_mb": 4445.0,
+      "free_mb": 1476.0
+    },
+    {
+      "time": 1791874864.8663666,
+      "total_mb": 6141.0,
+      "used_mb": 4445.0,
+      "free_mb": 1476.0
+    },
+    {
+      "time": 1791874866.978986,
+      "total_mb": 6141.0,
+      "used_mb": 4446.0,
+      "free_mb": 1475.0
+    },
+    {
+      "time": 1791874869.0967588,
+      "total_mb": 6141.0,
+      "used_mb": 4444.0,
+      "free_mb": 1477.0
+    },
+    {
+      "time": 1791874871.1941442,
+      "total_mb": 6141.0,
+      "used_mb": 4443.0,
+      "free_mb": 1478.0
+    },
+    {
+      "time": 1791874873.3119528,
+      "total_mb": 6141.0,
+      "used_mb": 4444.0,
+      "free_mb": 1477.0
+    },
+    {
+      "time": 1791874875.4219263,
+      "total_mb": 6141.0,
+      "used_mb": 4443.0,
+      "free_mb": 1478.0
+    },
+    {
+      "time": 1791874877.5193493,
+      "total_mb": 6141.0,
+      "used_mb": 4445.0,
+      "free_mb": 1476.0
+    },
+    {
+      "time": 1791874879.628857,
+      "total_mb": 6141.0,
+      "used_mb": 4445.0,
+      "free_mb": 1476.0
+    },
+    {
+      "time": 1791874881.7489102,
+      "total_mb": 6141.0,
+      "used_mb": 4445.0,
+      "free_mb": 1476.0
+    },
+    {
+      "time": 1791874883.8441203,
+      "total_mb": 6141.0,
+      "used_mb": 4445.0,
+      "free_mb": 1476.0
+    },
+    {
+      "time": 1791874885.9428942,
+      "total_mb": 6141.0,
+      "used_mb": 4445.0,
+      "free_mb": 1476.0
+    },
+    {
+      "time": 1791874888.0382314,
+      "total_mb": 6141.0,
+      "used_mb": 4445.0,
+      "free_mb": 1476.0
+    },
+    {
+      "time": 1791874890.1366582,
+      "total_mb": 6141.0,
+      "used_mb": 4445.0,
+      "free_mb": 1476.0
+    },
+    {
+      "time": 1791874892.2325668,
+      "total_mb": 6141.0,
+      "used_mb": 4444.0,
+      "free_mb": 1477.0
+    },
+    {
+      "time": 1791874894.3393595,
+      "total_mb": 6141.0,
+      "used_mb": 4444.0,
+      "free_mb": 1477.0
+    },
+    {
+      "time": 1791874896.440991,
+      "total_mb": 6141.0,
+      "used_mb": 4443.0,
+      "free_mb": 1478.0
+    },
+    {
+      "time": 1791874898.5437784,
+      "total_mb": 6141.0,
+      "used_mb": 4446.0,
+      "free_mb": 1475.0
+    },
+    {
+      "time": 1791874900.6446962,
+      "total_mb": 6141.0,
+      "used_mb": 4443.0,
+      "free_mb": 1478.0
+    },
+    {
+      "time": 1791874902.7510695,
+      "total_mb": 6141.0,
+      "used_mb": 4446.0,
+      "free_mb": 1475.0
+    },
+    {
+      "time": 1791874904.862684,
+      "total_mb": 6141.0,
+      "used_mb": 4447.0,
+      "free_mb": 1474.0
+    },
+    {
+      "time": 1791874906.9794135,
+      "total_mb": 6141.0,
+      "used_mb": 4444.0,
+      "free_mb": 1477.0
+    },
+    {
+      "time": 1791874909.1010563,
+      "total_mb": 6141.0,
+      "used_mb": 4444.0,
+      "free_mb": 1477.0
+    },
+    {
+      "time": 1791874911.2341895,
+      "total_mb": 6141.0,
+      "used_mb": 4444.0,
+      "free_mb": 1477.0
+    },
+    {
+      "time": 1791874913.3517866,
+      "total_mb": 6141.0,
+      "used_mb": 4443.0,
+      "free_mb": 1478.0
+    },
+    {
+      "time": 1791874915.4497123,
+      "total_mb": 6141.0,
+      "used_mb": 4444.0,
+      "free_mb": 1477.0
+    },
+    {
+      "time": 1791874917.547476,
+      "total_mb": 6141.0,
+      "used_mb": 4443.0,
+      "free_mb": 1478.0
+    },
+    {
+      "time": 1791874919.6511936,
+      "total_mb": 6141.0,
+      "used_mb": 4443.0,
+      "free_mb": 1478.0
+    }
+  ],
+  "wall_time_sec": 87.44686680001905
+}

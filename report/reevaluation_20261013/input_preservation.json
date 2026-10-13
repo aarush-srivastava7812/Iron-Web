@@ -1,0 +1,42 @@
+[
+  {
+    "path": "datasets\\dmr\\msc_self_instruct.jsonl",
+    "sha256": "d3dbea36848b41dc46c0f1548d0ebf74eeaf6390d6f3fe9318e8480dc984495e",
+    "unchanged": true
+  },
+  {
+    "path": "data\\benchmarks\\dmr\\dmr.json",
+    "sha256": "6cf67d1d7fe644fef2bcd9481f8bd8d0a06ff52506f72f70e2c99d2aa8f3b9d1",
+    "unchanged": true
+  },
+  {
+    "path": "data\\benchmarks\\dmr\\corpus.json",
+    "sha256": "13f1a5e9c115a7cb21247ad3693ff250b4a076fe4af0f60eb69c8dccad3cbd34",
+    "unchanged": true
+  },
+  {
+    "path": "datasets\\locomo\\data\\locomo10.json",
+    "sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+    "unchanged": true
+  },
+  {
+    "path": "datasets\\longmemeval\\data\\longmemeval_s_cleaned.json",
+    "sha256": "d6f21ea9d60a0d56f34a05b609c79c88a451d2ae03597821ea3d5a9678c3a442",
+    "unchanged": true
+  },
+  {
+    "path": "data\\official_upstream\\slices\\locomo_20percent.json",
+    "sha256": "0b5f5d406539e9f8657fa9407a4d813cc0ca78c9bdd0b6074eee90fec0cf42d0",
+    "unchanged": true
+  },
+  {
+    "path": "data\\official_upstream\\slices\\dmr_20percent.json",
+    "sha256": "562d14b67d9921d1f82ab0882e20219ed1b0919d79a8fcf75d0a6f2a5ad59678",
+    "unchanged": true
+  },
+  {
+    "path": "data\\official_upstream\\slices\\longmemeval_20percent.json",
+    "sha256": "343316bc7d56b7453229013732694edebfd5e91a95f1ad6b4764185ee01483b0",
+    "unchanged": true
+  }
+]

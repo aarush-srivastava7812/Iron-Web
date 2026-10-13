@@ -1,0 +1,122 @@
+{
+  "job": {
+    "benchmark": "dmr",
+    "percent": 5,
+    "questions": 25,
+    "documents": 125,
+    "old_documents": 500,
+    "added_context_documents": 0,
+    "selected_evidence_outside_old_corpus": 0,
+    "slice_directory": "D:\\Opencode_\\reserchpaper\\data\\reevaluation\\reevaluation_20261013\\inputs\\p5\\dmr",
+    "input_sha256": "c15faa03ad5a6c7bc704da31d49b9ebf933a2e6b57148e150c525f2599724076"
+  },
+  "profile": "default_hybrid",
+  "summary": {
+    "run_id": "reevaluation_20261013_p5_default_hybrid",
+    "benchmark": "dmr",
+    "is_smoke_test": false,
+    "protocol": "local_retrieval_v2",
+    "fingerprint": "6b8fcc7374f168f1d5e5acdd905b9b5c1ba7a7848f6afe82144ae3627c40c4d7",
+    "generator": "first_context_line",
+    "retrieval_mode": "hybrid",
+    "k": 10,
+    "timestamp": 1791874770,
+    "device": {
+      "gpu_enabled_requested": true,
+      "cuda_available": true,
+      "active_providers": [
+        "TensorrtExecutionProvider",
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "embedder_provider": "CUDAExecutionProvider",
+      "reranker_provider": "Uninitialized",
+      "vram_total_mb": 6141.0,
+      "vram_used_mb": 4454.0,
+      "vram_free_mb": 1467.0,
+      "vram_budget_mb": 5117.0,
+      "safety_buffer_mb": 1024.0,
+      "execution_mode": "GPU (CUDA)",
+      "status_notes": "An initialized model uses CUDAExecutionProvider."
+    },
+    "ingestion": {
+      "num_documents": 125,
+      "ingested_ids": 0,
+      "skipped_unchanged": 125,
+      "ingestion_time_sec": 0.7074876000115182,
+      "docs_per_sec": 176.68154183616073
+    },
+    "evaluation": {
+      "total_examples": 25,
+      "successful_examples": 25,
+      "failed_examples": 0,
+      "retrieval_scored_examples": 25,
+      "answer_scored_examples": 25,
+      "retrieval": {
+        "mrr": 0.068,
+        "ndcg@1": 0.04,
+        "ndcg@10": 0.08972239977370254,
+        "ndcg@3": 0.06,
+        "ndcg@5": 0.07547411228938167,
+        "precision@1": 0.04,
+        "precision@10": 0.016,
+        "precision@3": 0.026666666666666665,
+        "precision@5": 0.024000000000000004,
+        "recall@1": 0.04,
+        "recall@10": 0.16,
+        "recall@3": 0.08,
+        "recall@5": 0.12
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "substring_match": 0.0,
+        "token_f1": 0.028333333333333332
+      },
+      "by_category": {
+        "msc_dialogue": {
+          "count": 25,
+          "recall@k": 0.16,
+          "mrr": 0.068,
+          "exact_match": 0.0,
+          "substring_match": 0.0,
+          "token_f1": 0.028333333333333332
+        }
+      },
+      "latency": {
+        "mean_retrieval_ms": 26.919747999636456,
+        "mean_total_ms": 26.93066400126554
+      }
+    },
+    "coverage": {
+      "selected_examples": 25,
+      "evaluated_examples": 25,
+      "excluded_missing_evidence": [],
+      "examples_without_evidence": 0,
+      "extra_store_records": 0,
+      "documents_without_dates": 125
+    },
+    "resumed_examples": 0,
+    "run_file": "D:\\Opencode_\\reserchpaper\\report\\reevaluation_20261013\\raw\\dmr\\reevaluation_20261013_p5_default_hybrid_hybrid_local.jsonl"
+  },
+  "graph_counts": {
+    "nodes": {
+      "Entity": 0,
+      "Observation": 125
+    },
+    "edges": {
+      "RELATES": 0,
+      "ABOUT": 0,
+      "CONTRADICTS": 0,
+      "SUPERSEDES": 0
+    }
+  },
+  "telemetry": [
+    {
+      "time": 1791874768.7025077,
+      "total_mb": 6141.0,
+      "used_mb": 4455.0,
+      "free_mb": 1466.0
+    }
+  ],
+  "wall_time_sec": 1.783594800013816
+}

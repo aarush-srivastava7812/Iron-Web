@@ -1,0 +1,152 @@
+{
+  "job": {
+    "benchmark": "locomo",
+    "percent": 5,
+    "questions": 99,
+    "documents": 19,
+    "old_documents": 54,
+    "added_context_documents": 0,
+    "selected_evidence_outside_old_corpus": 0,
+    "slice_directory": "D:\\Opencode_\\reserchpaper\\data\\reevaluation\\reevaluation_20261013\\inputs\\p5\\locomo",
+    "input_sha256": "6037a422ee716f5aa4a8c42bdd9ccb070a3fa95ff9a4dd8cb0d51fb0d495afea"
+  },
+  "profile": "default_hybrid",
+  "summary": {
+    "run_id": "reevaluation_20261013_p5_default_hybrid",
+    "benchmark": "locomo",
+    "is_smoke_test": false,
+    "protocol": "local_retrieval_v2",
+    "fingerprint": "bc23ea539a5dd0188617b378fd7da5cc68257cd348e0cb7e2f586d63a1c27fe8",
+    "generator": "first_context_line",
+    "retrieval_mode": "hybrid",
+    "k": 10,
+    "timestamp": 1791874713,
+    "device": {
+      "gpu_enabled_requested": true,
+      "cuda_available": true,
+      "active_providers": [
+        "TensorrtExecutionProvider",
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "embedder_provider": "CUDAExecutionProvider",
+      "reranker_provider": "Uninitialized",
+      "vram_total_mb": 6141.0,
+      "vram_used_mb": 3431.0,
+      "vram_free_mb": 2490.0,
+      "vram_budget_mb": 5117.0,
+      "safety_buffer_mb": 1024.0,
+      "execution_mode": "GPU (CUDA)",
+      "status_notes": "An initialized model uses CUDAExecutionProvider."
+    },
+    "ingestion": {
+      "num_documents": 19,
+      "ingested_ids": 0,
+      "skipped_unchanged": 19,
+      "ingestion_time_sec": 0.10039830001187511,
+      "docs_per_sec": 189.24623223453665
+    },
+    "evaluation": {
+      "total_examples": 99,
+      "successful_examples": 99,
+      "failed_examples": 0,
+      "retrieval_scored_examples": 97,
+      "answer_scored_examples": 99,
+      "retrieval": {
+        "mrr": 0.44397398134511534,
+        "ndcg@1": 0.28865979381443296,
+        "ndcg@10": 0.5102481010391419,
+        "ndcg@3": 0.38724250979050834,
+        "ndcg@5": 0.4268848221068445,
+        "precision@1": 0.28865979381443296,
+        "precision@10": 0.10824742268041239,
+        "precision@3": 0.1924398625429553,
+        "precision@5": 0.14432989690721648,
+        "recall@1": 0.2439862542955326,
+        "recall@10": 0.7884879725085909,
+        "recall@3": 0.4690721649484536,
+        "recall@5": 0.5541237113402062
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "substring_match": 0.0,
+        "token_f1": 0.020964453299417207
+      },
+      "by_category": {
+        "factual": {
+          "count": 13,
+          "recall@k": 0.712121212121212,
+          "mrr": 0.27005772005772005,
+          "exact_match": 0.0,
+          "substring_match": 0.0,
+          "token_f1": 0.026514644775514344
+        },
+        "multi_hop_reasoning": {
+          "count": 32,
+          "recall@k": 0.7390625,
+          "mrr": 0.47734374999999996,
+          "exact_match": 0.0,
+          "substring_match": 0.0,
+          "token_f1": 0.013536985136932115
+        },
+        "open_domain": {
+          "count": 17,
+          "recall@k": 0.8235294117647058,
+          "mrr": 0.5002334267040149,
+          "exact_match": 0.0,
+          "substring_match": 0.0,
+          "token_f1": 0.04409589063568303
+        },
+        "temporal": {
+          "count": 37,
+          "recall@k": 0.8378378378378378,
+          "mrr": 0.440969540969541,
+          "exact_match": 0.0,
+          "substring_match": 0.0,
+          "token_f1": 0.01481018457762644
+        }
+      },
+      "latency": {
+        "mean_retrieval_ms": 18.427698989398777,
+        "mean_total_ms": 18.442162626241853
+      }
+    },
+    "coverage": {
+      "selected_examples": 99,
+      "evaluated_examples": 99,
+      "excluded_missing_evidence": [],
+      "examples_without_evidence": 2,
+      "extra_store_records": 0,
+      "documents_without_dates": 0
+    },
+    "resumed_examples": 0,
+    "run_file": "D:\\Opencode_\\reserchpaper\\report\\reevaluation_20261013\\raw\\locomo\\reevaluation_20261013_p5_default_hybrid_hybrid_local.jsonl"
+  },
+  "graph_counts": {
+    "nodes": {
+      "Entity": 0,
+      "Observation": 19
+    },
+    "edges": {
+      "RELATES": 0,
+      "ABOUT": 0,
+      "CONTRADICTS": 0,
+      "SUPERSEDES": 0
+    }
+  },
+  "telemetry": [
+    {
+      "time": 1791874710.5832915,
+      "total_mb": 6141.0,
+      "used_mb": 3431.0,
+      "free_mb": 2490.0
+    },
+    {
+      "time": 1791874712.6812925,
+      "total_mb": 6141.0,
+      "used_mb": 3431.0,
+      "free_mb": 2490.0
+    }
+  ],
+  "wall_time_sec": 2.997671499993885
+}

@@ -1,0 +1,41 @@
+{
+  "device": {
+    "gpu_enabled_requested": true,
+    "cuda_available": true,
+    "active_providers": [
+      "TensorrtExecutionProvider",
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+    ],
+    "embedder_provider": "CUDAExecutionProvider",
+    "reranker_provider": "CUDAExecutionProvider",
+    "vram_total_mb": 6141.0,
+    "vram_used_mb": 3433.0,
+    "vram_free_mb": 2488.0,
+    "vram_budget_mb": 5117.0,
+    "safety_buffer_mb": 1024.0,
+    "execution_mode": "GPU (CUDA)",
+    "status_notes": "An initialized model uses CUDAExecutionProvider."
+  },
+  "packages": {
+    "fastembed": "0.8.0",
+    "qdrant-client": "1.18.0",
+    "kuzu": "0.11.3",
+    "numpy": "1.26.4",
+    "nvidia-cublas-cu12": "12.9.2.10",
+    "nvidia-cudnn-cu12": "9.27.0.42"
+  },
+  "onnxruntime_version": "1.23.2",
+  "onnxruntime_path": "D:\\Opencode_\\reserchpaper\\data\\evaluation_runtime\\cuda12_ort1232\\onnxruntime\\__init__.py",
+  "model_load_and_check_sec": 4.959918199980166,
+  "checks": {
+    "embedding_shape": [
+      2,
+      384
+    ],
+    "ranked_ids": [
+      "paris",
+      "lima"
+    ]
+  }
+}

@@ -47,6 +47,8 @@ def test_old_predictions_are_rescored_with_current_gold_and_exact_ids():
     assert result["retrieval"]["mrr"] == 0.5
     assert result["answer"]["exact_match"] == 1
     assert result["latency"]["p95_retrieval_ms"] == 12
+    assert result["latency"]["mean_total_ms"] is None
+    assert result["latency"]["mean_generation_ms"] is None
     assert old[0]["relevant_ids"] == ["other:doc"]
 
 

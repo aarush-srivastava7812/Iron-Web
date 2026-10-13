@@ -1,0 +1,47 @@
+{
+  "total_examples": 25,
+  "successful_examples": 25,
+  "failed_examples": 0,
+  "retrieval_scored_examples": 25,
+  "answer_scored_examples": 25,
+  "retrieval": {
+    "average_precision@10": 0.6847619047619047,
+    "mrr": 0.6847619047619047,
+    "ndcg@1": 0.6,
+    "ndcg@10": 0.7223782370952415,
+    "ndcg@3": 0.6957115704285749,
+    "ndcg@5": 0.6957115704285749,
+    "precision@1": 0.6,
+    "precision@10": 0.084,
+    "precision@3": 0.2533333333333333,
+    "precision@5": 0.15200000000000002,
+    "recall@1": 0.6,
+    "recall@10": 0.84,
+    "recall@3": 0.76,
+    "recall@5": 0.76
+  },
+  "answer": {
+    "exact_match": 0.0,
+    "substring_match": 0.12,
+    "token_f1": 0.008916841369671557
+  },
+  "by_category": {
+    "single-session-user": {
+      "count": 25,
+      "recall@k": 0.84,
+      "mrr": 0.6847619047619047,
+      "exact_match": 0.0,
+      "substring_match": 0.12,
+      "token_f1": 0.008916841369671557
+    }
+  },
+  "latency": {
+    "mean_retrieval_ms": 58.60173600143753,
+    "mean_total_ms": 58.643171997973695,
+    "mean_generation_ms": 0.041435996536165476,
+    "p50_retrieval_ms": 55.13639998389408,
+    "p95_retrieval_ms": 63.484579988289624,
+    "p99_retrieval_ms": 112.57133600884104,
+    "max_retrieval_ms": 128.00240001524799
+  }
+}

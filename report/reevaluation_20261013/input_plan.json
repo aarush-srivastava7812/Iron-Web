@@ -1,0 +1,57 @@
+[
+  {
+    "benchmark": "locomo",
+    "percent": 5,
+    "questions": 99,
+    "documents": 19,
+    "old_documents": 54,
+    "added_context_documents": 0,
+    "selected_evidence_outside_old_corpus": 0,
+    "slice_directory": "D:\\Opencode_\\reserchpaper\\data\\reevaluation\\reevaluation_20261013\\inputs\\p5\\locomo",
+    "input_sha256": "6037a422ee716f5aa4a8c42bdd9ccb070a3fa95ff9a4dd8cb0d51fb0d495afea"
+  },
+  {
+    "benchmark": "dmr",
+    "percent": 5,
+    "questions": 25,
+    "documents": 125,
+    "old_documents": 500,
+    "added_context_documents": 0,
+    "selected_evidence_outside_old_corpus": 0,
+    "slice_directory": "D:\\Opencode_\\reserchpaper\\data\\reevaluation\\reevaluation_20261013\\inputs\\p5\\dmr",
+    "input_sha256": "c15faa03ad5a6c7bc704da31d49b9ebf933a2e6b57148e150c525f2599724076"
+  },
+  {
+    "benchmark": "longmemeval",
+    "percent": 5,
+    "questions": 25,
+    "documents": 1213,
+    "old_documents": 3839,
+    "added_context_documents": 0,
+    "selected_evidence_outside_old_corpus": 0,
+    "slice_directory": "D:\\Opencode_\\reserchpaper\\data\\reevaluation\\reevaluation_20261013\\inputs\\p5\\longmemeval",
+    "input_sha256": "1194c6eee59acad24f464204110b4efa0cc39f6e2c444d6f9565e5b4ee6fa18e"
+  },
+  {
+    "benchmark": "locomo",
+    "percent": 20,
+    "questions": 397,
+    "documents": 70,
+    "old_documents": 54,
+    "added_context_documents": 16,
+    "selected_evidence_outside_old_corpus": 37,
+    "slice_directory": "D:\\Opencode_\\reserchpaper\\data\\reevaluation\\reevaluation_20261013\\inputs\\p20\\locomo",
+    "input_sha256": "b5a44df25fbf441a5a55d762ec9b51321a2507ac2018d73c64749617928e7e53"
+  },
+  {
+    "benchmark": "dmr",
+    "percent": 20,
+    "questions": 100,
+    "documents": 500,
+    "old_documents": 500,
+    "added_context_documents": 0,
+    "selected_evidence_outside_old_corpus": 0,
+    "slice_directory": "D:\\Opencode_\\reserchpaper\\data\\reevaluation\\reevaluation_20261013\\inputs\\p20\\dmr",
+    "input_sha256": "6687c1e01f4d2ec3c7df28f7cd590146b0a4024abcd31842bb975d32655187a5"
+  }
+]

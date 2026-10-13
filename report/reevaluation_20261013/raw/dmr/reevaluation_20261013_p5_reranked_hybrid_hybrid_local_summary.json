@@ -1,0 +1,87 @@
+{
+  "run_id": "reevaluation_20261013_p5_reranked_hybrid",
+  "benchmark": "dmr",
+  "is_smoke_test": false,
+  "protocol": "local_retrieval_v2",
+  "fingerprint": "dfeabc9daef6d7f79a6d2974e042b5e58317b52ce6103ae4c926f80017d5fda8",
+  "generator": "first_context_line",
+  "retrieval_mode": "hybrid",
+  "k": 10,
+  "timestamp": 1791874832,
+  "device": {
+    "gpu_enabled_requested": true,
+    "cuda_available": true,
+    "active_providers": [
+      "TensorrtExecutionProvider",
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+    ],
+    "embedder_provider": "CUDAExecutionProvider",
+    "reranker_provider": "CUDAExecutionProvider",
+    "vram_total_mb": 6141.0,
+    "vram_used_mb": 4449.0,
+    "vram_free_mb": 1472.0,
+    "vram_budget_mb": 5117.0,
+    "safety_buffer_mb": 1024.0,
+    "execution_mode": "GPU (CUDA)",
+    "status_notes": "An initialized model uses CUDAExecutionProvider."
+  },
+  "ingestion": {
+    "num_documents": 125,
+    "ingested_ids": 0,
+    "skipped_unchanged": 125,
+    "ingestion_time_sec": 0.6392086999840103,
+    "docs_per_sec": 195.5542845445108
+  },
+  "evaluation": {
+    "total_examples": 25,
+    "successful_examples": 25,
+    "failed_examples": 0,
+    "retrieval_scored_examples": 25,
+    "answer_scored_examples": 25,
+    "retrieval": {
+      "mrr": 0.05566666666666666,
+      "ndcg@1": 0.0,
+      "ndcg@10": 0.09812079039719529,
+      "ndcg@3": 0.0252371901428583,
+      "ndcg@5": 0.059691314788729744,
+      "precision@1": 0.0,
+      "precision@10": 0.024000000000000004,
+      "precision@3": 0.013333333333333332,
+      "precision@5": 0.024000000000000004,
+      "recall@1": 0.0,
+      "recall@10": 0.24,
+      "recall@3": 0.04,
+      "recall@5": 0.12
+    },
+    "answer": {
+      "exact_match": 0.0,
+      "substring_match": 0.04,
+      "token_f1": 0.048595008336943815
+    },
+    "by_category": {
+      "msc_dialogue": {
+        "count": 25,
+        "recall@k": 0.24,
+        "mrr": 0.05566666666666666,
+        "exact_match": 0.0,
+        "substring_match": 0.04,
+        "token_f1": 0.048595008336943815
+      }
+    },
+    "latency": {
+      "mean_retrieval_ms": 2431.728655999759,
+      "mean_total_ms": 2431.7380760004744
+    }
+  },
+  "coverage": {
+    "selected_examples": 25,
+    "evaluated_examples": 25,
+    "excluded_missing_evidence": [],
+    "examples_without_evidence": 0,
+    "extra_store_records": 0,
+    "documents_without_dates": 125
+  },
+  "resumed_examples": 0,
+  "run_file": "D:\\Opencode_\\reserchpaper\\report\\reevaluation_20261013\\raw\\dmr\\reevaluation_20261013_p5_reranked_hybrid_hybrid_local.jsonl"
+}

@@ -1,0 +1,71 @@
+{
+  "total_examples": 99,
+  "successful_examples": 99,
+  "failed_examples": 0,
+  "retrieval_scored_examples": 97,
+  "answer_scored_examples": 99,
+  "retrieval": {
+    "average_precision@10": 0.5957474226804124,
+    "mrr": 0.6383120602192767,
+    "ndcg@1": 0.4948453608247423,
+    "ndcg@10": 0.6807222668104987,
+    "ndcg@3": 0.5889820296187931,
+    "ndcg@5": 0.6087890425135485,
+    "precision@1": 0.4948453608247423,
+    "precision@10": 0.12061855670103094,
+    "precision@3": 0.2611683848797251,
+    "precision@5": 0.17525773195876287,
+    "recall@1": 0.4501718213058419,
+    "recall@10": 0.8829896907216493,
+    "recall@3": 0.6515463917525772,
+    "recall@5": 0.6902061855670102
+  },
+  "answer": {
+    "exact_match": 0.0,
+    "substring_match": 0.010101010101010102,
+    "token_f1": 0.016430700274677298
+  },
+  "by_category": {
+    "factual": {
+      "count": 13,
+      "recall@k": 0.8333333333333335,
+      "mrr": 0.47373737373737373,
+      "exact_match": 0.0,
+      "substring_match": 0.0,
+      "token_f1": 0.033125426057172315
+    },
+    "multi_hop_reasoning": {
+      "count": 32,
+      "recall@k": 0.7963541666666667,
+      "mrr": 0.45693204365079365,
+      "exact_match": 0.0,
+      "substring_match": 0.0,
+      "token_f1": 0.006481481481481482
+    },
+    "open_domain": {
+      "count": 17,
+      "recall@k": 0.9411764705882353,
+      "mrr": 0.7794117647058824,
+      "exact_match": 0.0,
+      "substring_match": 0.058823529411764705,
+      "token_f1": 0.03974138009700803
+    },
+    "temporal": {
+      "count": 37,
+      "recall@k": 0.9459459459459459,
+      "mrr": 0.7792792792792793,
+      "exact_match": 0.0,
+      "substring_match": 0.0,
+      "token_f1": 0.008459403226845087
+    }
+  },
+  "latency": {
+    "mean_retrieval_ms": 484.7724454567387,
+    "mean_total_ms": 484.7852010115266,
+    "mean_generation_ms": 0.01275555478794632,
+    "p50_retrieval_ms": 482.3253999929875,
+    "p95_retrieval_ms": 491.28958000510465,
+    "p99_retrieval_ms": 503.1290259934022,
+    "max_retrieval_ms": 709.871099999873
+  }
+}
