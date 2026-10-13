@@ -175,3 +175,65 @@ def test_conflict_cache_tracks_staging_publication_and_rollback(tmp_path):
             len(graph.get_relationship_conflicts_batch(["replacement"])["replacement"])
             == 1
         )
+
+
+def test_graph_copy_retries_only_explicit_background_fork_collision(
+    tmp_path, monkeypatch
+):
+    from redis.exceptions import ResponseError
+
+    with FalkorDBGraphStore(graph_name_for(tmp_path)) as graph:
+        graph.upsert_entity("one", "original", "Concept")
+        copy = graph.graph.copy
+        calls = []
+
+        def collide_once(destination):
+            calls.append(destination)
+            if len(calls) == 1:
+                raise ResponseError("GRAPH.COPY failed, could not fork")
+            return copy(destination)
+
+        monkeypatch.setattr(graph.graph, "copy", collide_once)
+        with graph.write_lock:
+            graph.begin()
+            assert len(calls) == 2
+            graph.upsert_entity("one", "changed", "Concept")
+            graph.rollback()
+        assert graph.get_entity("one")["name"] == "original"
+
+
+def test_graph_copy_does_not_retry_ambiguous_failure(tmp_path, monkeypatch):
+    with FalkorDBGraphStore(graph_name_for(tmp_path)) as graph:
+        calls = []
+
+        def lost_response(destination):
+            calls.append(destination)
+            raise ConnectionError("ambiguous copy response")
+
+        monkeypatch.setattr(graph.graph, "copy", lost_response)
+        with graph.write_lock:
+            with pytest.raises(ConnectionError):
+                graph.begin()
+        assert len(calls) == 1
+        assert graph._staging is None
+
+
+def test_graph_copy_retry_is_bounded(tmp_path, monkeypatch):
+    from redis.exceptions import ResponseError
+
+    with FalkorDBGraphStore(graph_name_for(tmp_path)) as graph:
+        graph.upsert_entity("one", "original", "Concept")
+        calls = []
+
+        def blocked(destination):
+            calls.append(destination)
+            raise ResponseError("GRAPH.COPY failed, could not fork")
+
+        monkeypatch.setattr(graph.graph, "copy", blocked)
+        graph.socket_timeout = 0.001
+        with graph.write_lock:
+            with pytest.raises(ResponseError):
+                graph.begin()
+        assert graph._staging is None
+        assert graph.get_entity("one")["name"] == "original"
+        assert len(calls) <= 2

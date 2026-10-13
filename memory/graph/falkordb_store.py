@@ -1156,12 +1156,30 @@ class FalkorDBGraphStore:
 
     def begin(self):
         import uuid
+        import time
+        from redis.exceptions import ResponseError
 
         self.write_lock.assert_owned()
         if self._staging is not None:
             raise RuntimeError("Nested graph transactions are unsupported.")
         staging = "{" + self.graph_name + "}:staging:" + uuid.uuid4().hex
-        self.graph.copy(staging)
+        deadline = time.monotonic() + self.socket_timeout
+        while True:
+            self.write_lock.assert_owned()
+            try:
+                self.graph.copy(staging)
+                break
+            except ResponseError as error:
+                # Redis permits one background fork at a time. Persistence can
+                # briefly prevent GRAPH.COPY from starting. Retry only this
+                # explicit pre-copy failure, never an ambiguous lost response.
+                if (
+                    "GRAPH.COPY failed, could not fork" not in str(error)
+                    or self.redis.exists(staging)
+                    or time.monotonic() >= deadline
+                ):
+                    raise
+                time.sleep(0.05)
         self._staging = staging
         self._backup = staging.replace(":staging:", ":rollback:")
         self._base_revision = int(self.redis.get(self.revision_key) or 0)
