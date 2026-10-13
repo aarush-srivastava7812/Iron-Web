@@ -7,6 +7,7 @@ preserving QA categories, session boundaries, and evidence references.
 from __future__ import annotations
 
 import json
+import re
 from memory.evaluation.harness.dates import parse_timestamp
 from pathlib import Path
 from typing import List, Optional
@@ -159,7 +160,15 @@ class LoCoMoAdapter(BenchmarkAdapter):
                         category_num, f"category_{category_num}"
                     )
 
-                    evidence_turns = qa_item.get("evidence", [])
+                    raw_evidence = qa_item.get("evidence", [])
+                    # The release sometimes puts several dialogue references in
+                    # one annotation, for example "D8:6; D9:17".
+                    evidence_turns = [
+                        reference.strip()
+                        for annotation in raw_evidence
+                        for reference in re.split(r"[;,]", annotation)
+                        if reference.strip()
+                    ]
                     # Evidence format e.g. ["D1:3", "D2:12"] -> maps to sessions ["session_1", "session_2"]
                     evidence_to_session = {}
                     for session_key, turns in record.get("conversation", {}).items():
@@ -189,7 +198,7 @@ class LoCoMoAdapter(BenchmarkAdapter):
                         metadata={
                             "sample_id": sample_id,
                             "category_num": category_num,
-                            "raw_evidence": evidence_turns,
+                            "raw_evidence": raw_evidence,
                             "unmapped_evidence": unmapped,
                             "corpus_ids": [
                                 f"locomo:{sample_id}:{key}"

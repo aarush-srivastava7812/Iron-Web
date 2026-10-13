@@ -1,6 +1,7 @@
 """Evaluation bookkeeping checks use declared fixture data, not model-quality claims."""
 
 import pytest
+import json
 from memory.engine import MemoryEngine
 from memory.evaluation.harness.base import (
     BenchmarkAdapter,
@@ -15,6 +16,40 @@ from memory.evaluation.retrieval_metrics import (
     compute_retrieval_metrics,
     average_precision,
 )
+
+
+def test_locomo_compound_evidence_preserves_all_references(tmp_path):
+    from memory.evaluation.harness.locomo_adapter import LoCoMoAdapter
+
+    path = tmp_path / "locomo.json"
+    path.write_text(
+        json.dumps(
+            [
+                {
+                    "sample_id": "sample",
+                    "conversation": {
+                        "session_8": [{"dia_id": "D8:6", "text": "first fact"}],
+                        "session_9": [{"dia_id": "D9:17", "text": "second fact"}],
+                    },
+                    "qa": [
+                        {
+                            "question": "Both facts?",
+                            "evidence": ["D8:6; D9:17", "D99:1"],
+                            "category": 1,
+                        }
+                    ],
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    example = LoCoMoAdapter(str(path)).load_examples()[0]
+    assert example.ground_truth_ids == [
+        "locomo:sample:session_8",
+        "locomo:sample:session_9",
+    ]
+    assert example.metadata["raw_evidence"] == ["D8:6; D9:17", "D99:1"]
+    assert example.metadata["unmapped_evidence"] == ["D99:1"]
 
 
 class FixtureAdapter(BenchmarkAdapter):
