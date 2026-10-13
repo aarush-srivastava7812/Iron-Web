@@ -1,0 +1,13 @@
+{
+  "benchmark": "locomo",
+  "backend": "kuzu",
+  "protocol": "storage_only_no_neural_models",
+  "process_baseline_rss_mb": 117.171875,
+  "process_warm_rss_mb": 211.54296875,
+  "process_rss_increase_mb": 94.37109375,
+  "vector_records": 70,
+  "graph_nodes": {
+    "Entity": 0,
+    "Observation": 70
+  }
+}

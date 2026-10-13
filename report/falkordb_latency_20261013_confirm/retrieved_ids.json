@@ -1,0 +1,1283 @@
+{
+  "kuzu": [
+    {
+      "example_id": "dmr:0000:qa",
+      "retrieved_ids": [
+        "dmr:0010:session:1",
+        "dmr:0008:session:2",
+        "dmr:0022:session:3",
+        "dmr:0008:session:1",
+        "dmr:0016:session:0",
+        "dmr:0008:session:3",
+        "dmr:0012:session:0",
+        "dmr:0012:session:3",
+        "dmr:0016:session:1",
+        "dmr:0010:session:4"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 29.01110000675544
+    },
+    {
+      "example_id": "dmr:0001:qa",
+      "retrieved_ids": [
+        "dmr:0001:session:3",
+        "dmr:0001:session:1",
+        "dmr:0014:session:0",
+        "dmr:0001:session:2",
+        "dmr:0003:session:3",
+        "dmr:0019:session:4",
+        "dmr:0002:session:0",
+        "dmr:0001:session:0",
+        "dmr:0005:session:3",
+        "dmr:0022:session:2"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 29.68090001377277
+    },
+    {
+      "example_id": "dmr:0002:qa",
+      "retrieved_ids": [
+        "dmr:0003:session:3",
+        "dmr:0001:session:3",
+        "dmr:0001:session:2",
+        "dmr:0019:session:1",
+        "dmr:0021:session:0",
+        "dmr:0015:session:1",
+        "dmr:0002:session:0",
+        "dmr:0010:session:0",
+        "dmr:0014:session:1",
+        "dmr:0017:session:2"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 21.97219998924993
+    },
+    {
+      "example_id": "dmr:0003:qa",
+      "retrieved_ids": [
+        "dmr:0003:session:1",
+        "dmr:0003:session:3",
+        "dmr:0016:session:1",
+        "dmr:0019:session:1",
+        "dmr:0016:session:3",
+        "dmr:0016:session:0",
+        "dmr:0003:session:2",
+        "dmr:0007:session:0",
+        "dmr:0005:session:3",
+        "dmr:0015:session:1"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 25.403300009202212
+    },
+    {
+      "example_id": "dmr:0004:qa",
+      "retrieved_ids": [
+        "dmr:0023:session:2",
+        "dmr:0010:session:1",
+        "dmr:0018:session:4",
+        "dmr:0000:session:0",
+        "dmr:0023:session:4",
+        "dmr:0010:session:0",
+        "dmr:0000:session:3",
+        "dmr:0023:session:3",
+        "dmr:0023:session:1",
+        "dmr:0004:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 30.665300000691786
+    },
+    {
+      "example_id": "dmr:0005:qa",
+      "retrieved_ids": [
+        "dmr:0000:session:1",
+        "dmr:0018:session:2",
+        "dmr:0005:session:4",
+        "dmr:0007:session:3",
+        "dmr:0007:session:1",
+        "dmr:0005:session:0",
+        "dmr:0006:session:0",
+        "dmr:0017:session:1",
+        "dmr:0021:session:3",
+        "dmr:0023:session:1"
+      ],
+      "recall@10": 1.0,
+      "latency_ms": 25.115700002061203
+    },
+    {
+      "example_id": "dmr:0006:qa",
+      "retrieved_ids": [
+        "dmr:0006:session:4",
+        "dmr:0002:session:0",
+        "dmr:0006:session:0",
+        "dmr:0002:session:2",
+        "dmr:0006:session:2",
+        "dmr:0002:session:3",
+        "dmr:0008:session:0",
+        "dmr:0024:session:0",
+        "dmr:0015:session:4",
+        "dmr:0013:session:4"
+      ],
+      "recall@10": 1.0,
+      "latency_ms": 24.19300001929514
+    },
+    {
+      "example_id": "dmr:0007:qa",
+      "retrieved_ids": [
+        "dmr:0000:session:1",
+        "dmr:0007:session:3",
+        "dmr:0018:session:2",
+        "dmr:0007:session:1",
+        "dmr:0005:session:4",
+        "dmr:0017:session:1",
+        "dmr:0021:session:3",
+        "dmr:0006:session:0",
+        "dmr:0017:session:0",
+        "dmr:0021:session:2"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 24.4269999966491
+    },
+    {
+      "example_id": "dmr:0008:qa",
+      "retrieved_ids": [
+        "dmr:0008:session:2",
+        "dmr:0008:session:3",
+        "dmr:0008:session:0",
+        "dmr:0010:session:0",
+        "dmr:0010:session:1",
+        "dmr:0008:session:4",
+        "dmr:0010:session:3",
+        "dmr:0010:session:2",
+        "dmr:0014:session:1",
+        "dmr:0004:session:0"
+      ],
+      "recall@10": 1.0,
+      "latency_ms": 22.26990001508966
+    },
+    {
+      "example_id": "dmr:0009:qa",
+      "retrieved_ids": [
+        "dmr:0014:session:0",
+        "dmr:0014:session:1",
+        "dmr:0020:session:1",
+        "dmr:0001:session:3",
+        "dmr:0015:session:1",
+        "dmr:0001:session:1",
+        "dmr:0005:session:0",
+        "dmr:0001:session:0",
+        "dmr:0011:session:0",
+        "dmr:0003:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 25.16059999470599
+    },
+    {
+      "example_id": "dmr:0010:qa",
+      "retrieved_ids": [
+        "dmr:0003:session:3",
+        "dmr:0001:session:3",
+        "dmr:0001:session:2",
+        "dmr:0010:session:0",
+        "dmr:0002:session:0",
+        "dmr:0014:session:0",
+        "dmr:0019:session:0",
+        "dmr:0019:session:1",
+        "dmr:0014:session:1",
+        "dmr:0019:session:2"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 24.78879998670891
+    },
+    {
+      "example_id": "dmr:0011:qa",
+      "retrieved_ids": [
+        "dmr:0011:session:0",
+        "dmr:0010:session:1",
+        "dmr:0013:session:0",
+        "dmr:0024:session:0",
+        "dmr:0024:session:3",
+        "dmr:0012:session:4",
+        "dmr:0017:session:0",
+        "dmr:0008:session:1",
+        "dmr:0010:session:0",
+        "dmr:0014:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 26.3044000021182
+    },
+    {
+      "example_id": "dmr:0012:qa",
+      "retrieved_ids": [
+        "dmr:0010:session:1",
+        "dmr:0012:session:0",
+        "dmr:0012:session:3",
+        "dmr:0022:session:3",
+        "dmr:0002:session:2",
+        "dmr:0022:session:0",
+        "dmr:0016:session:1",
+        "dmr:0008:session:1",
+        "dmr:0010:session:4",
+        "dmr:0005:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 23.147699976107106
+    },
+    {
+      "example_id": "dmr:0013:qa",
+      "retrieved_ids": [
+        "dmr:0014:session:0",
+        "dmr:0003:session:0",
+        "dmr:0002:session:0",
+        "dmr:0013:session:0",
+        "dmr:0014:session:1",
+        "dmr:0011:session:0",
+        "dmr:0010:session:0",
+        "dmr:0001:session:2",
+        "dmr:0001:session:0",
+        "dmr:0019:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 25.701999984448776
+    },
+    {
+      "example_id": "dmr:0014:qa",
+      "retrieved_ids": [
+        "dmr:0014:session:0",
+        "dmr:0002:session:0",
+        "dmr:0013:session:0",
+        "dmr:0014:session:1",
+        "dmr:0018:session:1",
+        "dmr:0001:session:2",
+        "dmr:0003:session:0",
+        "dmr:0012:session:0",
+        "dmr:0020:session:0",
+        "dmr:0011:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 24.570399982621893
+    },
+    {
+      "example_id": "dmr:0015:qa",
+      "retrieved_ids": [
+        "dmr:0014:session:1",
+        "dmr:0015:session:0",
+        "dmr:0002:session:0",
+        "dmr:0002:session:2",
+        "dmr:0014:session:0",
+        "dmr:0008:session:0",
+        "dmr:0009:session:4",
+        "dmr:0011:session:0",
+        "dmr:0005:session:0",
+        "dmr:0024:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 23.742299992591143
+    },
+    {
+      "example_id": "dmr:0016:qa",
+      "retrieved_ids": [
+        "dmr:0010:session:1",
+        "dmr:0008:session:2",
+        "dmr:0012:session:0",
+        "dmr:0022:session:3",
+        "dmr:0016:session:0",
+        "dmr:0016:session:1",
+        "dmr:0008:session:1",
+        "dmr:0012:session:3",
+        "dmr:0023:session:3",
+        "dmr:0008:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 26.846199994906783
+    },
+    {
+      "example_id": "dmr:0017:qa",
+      "retrieved_ids": [
+        "dmr:0000:session:1",
+        "dmr:0005:session:4",
+        "dmr:0007:session:3",
+        "dmr:0018:session:2",
+        "dmr:0007:session:1",
+        "dmr:0006:session:0",
+        "dmr:0017:session:1",
+        "dmr:0023:session:1",
+        "dmr:0007:session:4",
+        "dmr:0013:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 28.217499988386407
+    },
+    {
+      "example_id": "dmr:0018:qa",
+      "retrieved_ids": [
+        "dmr:0018:session:3",
+        "dmr:0008:session:0",
+        "dmr:0014:session:1",
+        "dmr:0018:session:0",
+        "dmr:0018:session:4",
+        "dmr:0002:session:2",
+        "dmr:0002:session:0",
+        "dmr:0014:session:2",
+        "dmr:0014:session:0",
+        "dmr:0018:session:2"
+      ],
+      "recall@10": 1.0,
+      "latency_ms": 26.602700003422797
+    },
+    {
+      "example_id": "dmr:0019:qa",
+      "retrieved_ids": [
+        "dmr:0010:session:0",
+        "dmr:0010:session:1",
+        "dmr:0019:session:0",
+        "dmr:0005:session:0",
+        "dmr:0011:session:0",
+        "dmr:0004:session:0",
+        "dmr:0024:session:0",
+        "dmr:0017:session:0",
+        "dmr:0010:session:2",
+        "dmr:0021:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 31.431699986569583
+    },
+    {
+      "example_id": "dmr:0020:qa",
+      "retrieved_ids": [
+        "dmr:0004:session:0",
+        "dmr:0014:session:0",
+        "dmr:0014:session:1",
+        "dmr:0005:session:0",
+        "dmr:0013:session:0",
+        "dmr:0001:session:2",
+        "dmr:0008:session:0",
+        "dmr:0003:session:0",
+        "dmr:0010:session:0",
+        "dmr:0010:session:1"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 31.80989998509176
+    },
+    {
+      "example_id": "dmr:0021:qa",
+      "retrieved_ids": [
+        "dmr:0010:session:1",
+        "dmr:0012:session:0",
+        "dmr:0021:session:1",
+        "dmr:0008:session:1",
+        "dmr:0008:session:2",
+        "dmr:0022:session:3",
+        "dmr:0010:session:2",
+        "dmr:0021:session:3",
+        "dmr:0016:session:0",
+        "dmr:0016:session:1"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 26.721900008851662
+    },
+    {
+      "example_id": "dmr:0022:qa",
+      "retrieved_ids": [
+        "dmr:0001:session:3",
+        "dmr:0003:session:3",
+        "dmr:0001:session:2",
+        "dmr:0001:session:1",
+        "dmr:0015:session:1",
+        "dmr:0019:session:4",
+        "dmr:0007:session:0",
+        "dmr:0002:session:0",
+        "dmr:0014:session:0",
+        "dmr:0019:session:1"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 27.109699993161485
+    },
+    {
+      "example_id": "dmr:0023:qa",
+      "retrieved_ids": [
+        "dmr:0017:session:0",
+        "dmr:0017:session:3",
+        "dmr:0017:session:2",
+        "dmr:0017:session:1",
+        "dmr:0023:session:0",
+        "dmr:0021:session:4",
+        "dmr:0000:session:0",
+        "dmr:0019:session:3",
+        "dmr:0019:session:4",
+        "dmr:0021:session:2"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 25.079999992158264
+    },
+    {
+      "example_id": "dmr:0024:qa",
+      "retrieved_ids": [
+        "dmr:0015:session:0",
+        "dmr:0002:session:0",
+        "dmr:0005:session:0",
+        "dmr:0022:session:0",
+        "dmr:0001:session:2",
+        "dmr:0005:session:1",
+        "dmr:0024:session:0",
+        "dmr:0006:session:0",
+        "dmr:0019:session:0",
+        "dmr:0003:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 27.687099995091558
+    }
+  ],
+  "falkordb": [
+    {
+      "example_id": "dmr:0000:qa",
+      "retrieved_ids": [
+        "dmr:0010:session:1",
+        "dmr:0008:session:2",
+        "dmr:0022:session:3",
+        "dmr:0008:session:1",
+        "dmr:0016:session:0",
+        "dmr:0008:session:3",
+        "dmr:0012:session:0",
+        "dmr:0012:session:3",
+        "dmr:0016:session:1",
+        "dmr:0010:session:4"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 47.975099994800985
+    },
+    {
+      "example_id": "dmr:0001:qa",
+      "retrieved_ids": [
+        "dmr:0001:session:3",
+        "dmr:0001:session:1",
+        "dmr:0014:session:0",
+        "dmr:0001:session:2",
+        "dmr:0003:session:3",
+        "dmr:0019:session:4",
+        "dmr:0002:session:0",
+        "dmr:0001:session:0",
+        "dmr:0005:session:3",
+        "dmr:0022:session:2"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 32.39799998118542
+    },
+    {
+      "example_id": "dmr:0002:qa",
+      "retrieved_ids": [
+        "dmr:0003:session:3",
+        "dmr:0001:session:3",
+        "dmr:0001:session:2",
+        "dmr:0019:session:1",
+        "dmr:0021:session:0",
+        "dmr:0015:session:1",
+        "dmr:0002:session:0",
+        "dmr:0010:session:0",
+        "dmr:0014:session:1",
+        "dmr:0017:session:2"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 36.61239999928512
+    },
+    {
+      "example_id": "dmr:0003:qa",
+      "retrieved_ids": [
+        "dmr:0003:session:1",
+        "dmr:0003:session:3",
+        "dmr:0016:session:1",
+        "dmr:0019:session:1",
+        "dmr:0016:session:3",
+        "dmr:0016:session:0",
+        "dmr:0003:session:2",
+        "dmr:0007:session:0",
+        "dmr:0005:session:3",
+        "dmr:0015:session:1"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 36.14069998729974
+    },
+    {
+      "example_id": "dmr:0004:qa",
+      "retrieved_ids": [
+        "dmr:0023:session:2",
+        "dmr:0010:session:1",
+        "dmr:0018:session:4",
+        "dmr:0000:session:0",
+        "dmr:0023:session:4",
+        "dmr:0010:session:0",
+        "dmr:0000:session:3",
+        "dmr:0023:session:3",
+        "dmr:0023:session:1",
+        "dmr:0004:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 34.26660000695847
+    },
+    {
+      "example_id": "dmr:0005:qa",
+      "retrieved_ids": [
+        "dmr:0000:session:1",
+        "dmr:0018:session:2",
+        "dmr:0005:session:4",
+        "dmr:0007:session:3",
+        "dmr:0007:session:1",
+        "dmr:0005:session:0",
+        "dmr:0006:session:0",
+        "dmr:0017:session:1",
+        "dmr:0021:session:3",
+        "dmr:0023:session:1"
+      ],
+      "recall@10": 1.0,
+      "latency_ms": 32.954399997834116
+    },
+    {
+      "example_id": "dmr:0006:qa",
+      "retrieved_ids": [
+        "dmr:0006:session:4",
+        "dmr:0002:session:0",
+        "dmr:0006:session:0",
+        "dmr:0002:session:2",
+        "dmr:0006:session:2",
+        "dmr:0002:session:3",
+        "dmr:0008:session:0",
+        "dmr:0024:session:0",
+        "dmr:0015:session:4",
+        "dmr:0013:session:4"
+      ],
+      "recall@10": 1.0,
+      "latency_ms": 38.30970000126399
+    },
+    {
+      "example_id": "dmr:0007:qa",
+      "retrieved_ids": [
+        "dmr:0000:session:1",
+        "dmr:0007:session:3",
+        "dmr:0018:session:2",
+        "dmr:0007:session:1",
+        "dmr:0005:session:4",
+        "dmr:0017:session:1",
+        "dmr:0021:session:3",
+        "dmr:0006:session:0",
+        "dmr:0017:session:0",
+        "dmr:0021:session:2"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 32.48219998204149
+    },
+    {
+      "example_id": "dmr:0008:qa",
+      "retrieved_ids": [
+        "dmr:0008:session:2",
+        "dmr:0008:session:3",
+        "dmr:0008:session:0",
+        "dmr:0010:session:0",
+        "dmr:0010:session:1",
+        "dmr:0008:session:4",
+        "dmr:0010:session:3",
+        "dmr:0010:session:2",
+        "dmr:0014:session:1",
+        "dmr:0004:session:0"
+      ],
+      "recall@10": 1.0,
+      "latency_ms": 34.89599999738857
+    },
+    {
+      "example_id": "dmr:0009:qa",
+      "retrieved_ids": [
+        "dmr:0014:session:0",
+        "dmr:0014:session:1",
+        "dmr:0020:session:1",
+        "dmr:0001:session:3",
+        "dmr:0015:session:1",
+        "dmr:0001:session:1",
+        "dmr:0005:session:0",
+        "dmr:0001:session:0",
+        "dmr:0011:session:0",
+        "dmr:0003:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 36.2916000012774
+    },
+    {
+      "example_id": "dmr:0010:qa",
+      "retrieved_ids": [
+        "dmr:0003:session:3",
+        "dmr:0001:session:3",
+        "dmr:0001:session:2",
+        "dmr:0010:session:0",
+        "dmr:0002:session:0",
+        "dmr:0014:session:0",
+        "dmr:0019:session:0",
+        "dmr:0019:session:1",
+        "dmr:0014:session:1",
+        "dmr:0019:session:2"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 37.47099998872727
+    },
+    {
+      "example_id": "dmr:0011:qa",
+      "retrieved_ids": [
+        "dmr:0011:session:0",
+        "dmr:0010:session:1",
+        "dmr:0013:session:0",
+        "dmr:0024:session:0",
+        "dmr:0024:session:3",
+        "dmr:0012:session:4",
+        "dmr:0017:session:0",
+        "dmr:0008:session:1",
+        "dmr:0010:session:0",
+        "dmr:0014:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 32.9996999935247
+    },
+    {
+      "example_id": "dmr:0012:qa",
+      "retrieved_ids": [
+        "dmr:0010:session:1",
+        "dmr:0012:session:0",
+        "dmr:0012:session:3",
+        "dmr:0022:session:3",
+        "dmr:0002:session:2",
+        "dmr:0022:session:0",
+        "dmr:0016:session:1",
+        "dmr:0008:session:1",
+        "dmr:0010:session:4",
+        "dmr:0005:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 43.372999993152916
+    },
+    {
+      "example_id": "dmr:0013:qa",
+      "retrieved_ids": [
+        "dmr:0014:session:0",
+        "dmr:0003:session:0",
+        "dmr:0002:session:0",
+        "dmr:0013:session:0",
+        "dmr:0014:session:1",
+        "dmr:0011:session:0",
+        "dmr:0010:session:0",
+        "dmr:0001:session:2",
+        "dmr:0001:session:0",
+        "dmr:0019:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 35.35310001461767
+    },
+    {
+      "example_id": "dmr:0014:qa",
+      "retrieved_ids": [
+        "dmr:0014:session:0",
+        "dmr:0002:session:0",
+        "dmr:0013:session:0",
+        "dmr:0014:session:1",
+        "dmr:0018:session:1",
+        "dmr:0001:session:2",
+        "dmr:0003:session:0",
+        "dmr:0012:session:0",
+        "dmr:0020:session:0",
+        "dmr:0011:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 33.98910001851618
+    },
+    {
+      "example_id": "dmr:0015:qa",
+      "retrieved_ids": [
+        "dmr:0014:session:1",
+        "dmr:0015:session:0",
+        "dmr:0002:session:0",
+        "dmr:0002:session:2",
+        "dmr:0014:session:0",
+        "dmr:0008:session:0",
+        "dmr:0009:session:4",
+        "dmr:0011:session:0",
+        "dmr:0005:session:0",
+        "dmr:0024:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 34.323800005950034
+    },
+    {
+      "example_id": "dmr:0016:qa",
+      "retrieved_ids": [
+        "dmr:0010:session:1",
+        "dmr:0008:session:2",
+        "dmr:0012:session:0",
+        "dmr:0022:session:3",
+        "dmr:0016:session:0",
+        "dmr:0016:session:1",
+        "dmr:0008:session:1",
+        "dmr:0012:session:3",
+        "dmr:0023:session:3",
+        "dmr:0008:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 35.29369999887422
+    },
+    {
+      "example_id": "dmr:0017:qa",
+      "retrieved_ids": [
+        "dmr:0000:session:1",
+        "dmr:0005:session:4",
+        "dmr:0007:session:3",
+        "dmr:0018:session:2",
+        "dmr:0007:session:1",
+        "dmr:0006:session:0",
+        "dmr:0017:session:1",
+        "dmr:0023:session:1",
+        "dmr:0007:session:4",
+        "dmr:0013:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 33.766399981686845
+    },
+    {
+      "example_id": "dmr:0018:qa",
+      "retrieved_ids": [
+        "dmr:0018:session:3",
+        "dmr:0008:session:0",
+        "dmr:0014:session:1",
+        "dmr:0018:session:0",
+        "dmr:0018:session:4",
+        "dmr:0002:session:2",
+        "dmr:0002:session:0",
+        "dmr:0014:session:2",
+        "dmr:0014:session:0",
+        "dmr:0018:session:2"
+      ],
+      "recall@10": 1.0,
+      "latency_ms": 34.98330002184957
+    },
+    {
+      "example_id": "dmr:0019:qa",
+      "retrieved_ids": [
+        "dmr:0010:session:0",
+        "dmr:0010:session:1",
+        "dmr:0019:session:0",
+        "dmr:0005:session:0",
+        "dmr:0011:session:0",
+        "dmr:0004:session:0",
+        "dmr:0024:session:0",
+        "dmr:0017:session:0",
+        "dmr:0010:session:2",
+        "dmr:0021:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 32.46529999887571
+    },
+    {
+      "example_id": "dmr:0020:qa",
+      "retrieved_ids": [
+        "dmr:0004:session:0",
+        "dmr:0014:session:0",
+        "dmr:0014:session:1",
+        "dmr:0005:session:0",
+        "dmr:0013:session:0",
+        "dmr:0001:session:2",
+        "dmr:0008:session:0",
+        "dmr:0003:session:0",
+        "dmr:0010:session:0",
+        "dmr:0010:session:1"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 36.814000020967796
+    },
+    {
+      "example_id": "dmr:0021:qa",
+      "retrieved_ids": [
+        "dmr:0010:session:1",
+        "dmr:0012:session:0",
+        "dmr:0021:session:1",
+        "dmr:0008:session:1",
+        "dmr:0008:session:2",
+        "dmr:0022:session:3",
+        "dmr:0010:session:2",
+        "dmr:0021:session:3",
+        "dmr:0016:session:0",
+        "dmr:0016:session:1"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 35.73930001584813
+    },
+    {
+      "example_id": "dmr:0022:qa",
+      "retrieved_ids": [
+        "dmr:0001:session:3",
+        "dmr:0003:session:3",
+        "dmr:0001:session:2",
+        "dmr:0001:session:1",
+        "dmr:0015:session:1",
+        "dmr:0019:session:4",
+        "dmr:0007:session:0",
+        "dmr:0002:session:0",
+        "dmr:0014:session:0",
+        "dmr:0019:session:1"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 34.44170000148006
+    },
+    {
+      "example_id": "dmr:0023:qa",
+      "retrieved_ids": [
+        "dmr:0017:session:0",
+        "dmr:0017:session:3",
+        "dmr:0017:session:2",
+        "dmr:0017:session:1",
+        "dmr:0023:session:0",
+        "dmr:0021:session:4",
+        "dmr:0000:session:0",
+        "dmr:0019:session:3",
+        "dmr:0019:session:4",
+        "dmr:0021:session:2"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 31.91349998814985
+    },
+    {
+      "example_id": "dmr:0024:qa",
+      "retrieved_ids": [
+        "dmr:0015:session:0",
+        "dmr:0002:session:0",
+        "dmr:0005:session:0",
+        "dmr:0022:session:0",
+        "dmr:0001:session:2",
+        "dmr:0005:session:1",
+        "dmr:0024:session:0",
+        "dmr:0006:session:0",
+        "dmr:0019:session:0",
+        "dmr:0003:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 33.36770000169054
+    }
+  ],
+  "falkordb_grouped_lease": [
+    {
+      "example_id": "dmr:0000:qa",
+      "retrieved_ids": [
+        "dmr:0010:session:1",
+        "dmr:0008:session:2",
+        "dmr:0022:session:3",
+        "dmr:0008:session:1",
+        "dmr:0016:session:0",
+        "dmr:0008:session:3",
+        "dmr:0012:session:0",
+        "dmr:0012:session:3",
+        "dmr:0016:session:1",
+        "dmr:0010:session:4"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 33.53939999942668
+    },
+    {
+      "example_id": "dmr:0001:qa",
+      "retrieved_ids": [
+        "dmr:0001:session:3",
+        "dmr:0001:session:1",
+        "dmr:0014:session:0",
+        "dmr:0001:session:2",
+        "dmr:0003:session:3",
+        "dmr:0019:session:4",
+        "dmr:0002:session:0",
+        "dmr:0001:session:0",
+        "dmr:0005:session:3",
+        "dmr:0022:session:2"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 33.56319997692481
+    },
+    {
+      "example_id": "dmr:0002:qa",
+      "retrieved_ids": [
+        "dmr:0003:session:3",
+        "dmr:0001:session:3",
+        "dmr:0001:session:2",
+        "dmr:0019:session:1",
+        "dmr:0021:session:0",
+        "dmr:0015:session:1",
+        "dmr:0002:session:0",
+        "dmr:0010:session:0",
+        "dmr:0014:session:1",
+        "dmr:0017:session:2"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 33.584399992832914
+    },
+    {
+      "example_id": "dmr:0003:qa",
+      "retrieved_ids": [
+        "dmr:0003:session:1",
+        "dmr:0003:session:3",
+        "dmr:0016:session:1",
+        "dmr:0019:session:1",
+        "dmr:0016:session:3",
+        "dmr:0016:session:0",
+        "dmr:0003:session:2",
+        "dmr:0007:session:0",
+        "dmr:0005:session:3",
+        "dmr:0015:session:1"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 47.65779999434017
+    },
+    {
+      "example_id": "dmr:0004:qa",
+      "retrieved_ids": [
+        "dmr:0023:session:2",
+        "dmr:0010:session:1",
+        "dmr:0018:session:4",
+        "dmr:0000:session:0",
+        "dmr:0023:session:4",
+        "dmr:0010:session:0",
+        "dmr:0000:session:3",
+        "dmr:0023:session:3",
+        "dmr:0023:session:1",
+        "dmr:0004:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 37.13500002049841
+    },
+    {
+      "example_id": "dmr:0005:qa",
+      "retrieved_ids": [
+        "dmr:0000:session:1",
+        "dmr:0018:session:2",
+        "dmr:0005:session:4",
+        "dmr:0007:session:3",
+        "dmr:0007:session:1",
+        "dmr:0005:session:0",
+        "dmr:0006:session:0",
+        "dmr:0017:session:1",
+        "dmr:0021:session:3",
+        "dmr:0023:session:1"
+      ],
+      "recall@10": 1.0,
+      "latency_ms": 35.17460002331063
+    },
+    {
+      "example_id": "dmr:0006:qa",
+      "retrieved_ids": [
+        "dmr:0006:session:4",
+        "dmr:0002:session:0",
+        "dmr:0006:session:0",
+        "dmr:0002:session:2",
+        "dmr:0006:session:2",
+        "dmr:0002:session:3",
+        "dmr:0008:session:0",
+        "dmr:0024:session:0",
+        "dmr:0015:session:4",
+        "dmr:0013:session:4"
+      ],
+      "recall@10": 1.0,
+      "latency_ms": 38.7219000258483
+    },
+    {
+      "example_id": "dmr:0007:qa",
+      "retrieved_ids": [
+        "dmr:0000:session:1",
+        "dmr:0007:session:3",
+        "dmr:0018:session:2",
+        "dmr:0007:session:1",
+        "dmr:0005:session:4",
+        "dmr:0017:session:1",
+        "dmr:0021:session:3",
+        "dmr:0006:session:0",
+        "dmr:0017:session:0",
+        "dmr:0021:session:2"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 33.38390000863001
+    },
+    {
+      "example_id": "dmr:0008:qa",
+      "retrieved_ids": [
+        "dmr:0008:session:2",
+        "dmr:0008:session:3",
+        "dmr:0008:session:0",
+        "dmr:0010:session:0",
+        "dmr:0010:session:1",
+        "dmr:0008:session:4",
+        "dmr:0010:session:3",
+        "dmr:0010:session:2",
+        "dmr:0014:session:1",
+        "dmr:0004:session:0"
+      ],
+      "recall@10": 1.0,
+      "latency_ms": 35.394900012761354
+    },
+    {
+      "example_id": "dmr:0009:qa",
+      "retrieved_ids": [
+        "dmr:0014:session:0",
+        "dmr:0014:session:1",
+        "dmr:0020:session:1",
+        "dmr:0001:session:3",
+        "dmr:0015:session:1",
+        "dmr:0001:session:1",
+        "dmr:0005:session:0",
+        "dmr:0001:session:0",
+        "dmr:0011:session:0",
+        "dmr:0003:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 33.09950002585538
+    },
+    {
+      "example_id": "dmr:0010:qa",
+      "retrieved_ids": [
+        "dmr:0003:session:3",
+        "dmr:0001:session:3",
+        "dmr:0001:session:2",
+        "dmr:0010:session:0",
+        "dmr:0002:session:0",
+        "dmr:0014:session:0",
+        "dmr:0019:session:0",
+        "dmr:0019:session:1",
+        "dmr:0014:session:1",
+        "dmr:0019:session:2"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 97.75230000377633
+    },
+    {
+      "example_id": "dmr:0011:qa",
+      "retrieved_ids": [
+        "dmr:0011:session:0",
+        "dmr:0010:session:1",
+        "dmr:0013:session:0",
+        "dmr:0024:session:0",
+        "dmr:0024:session:3",
+        "dmr:0012:session:4",
+        "dmr:0017:session:0",
+        "dmr:0008:session:1",
+        "dmr:0010:session:0",
+        "dmr:0014:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 44.196900009410456
+    },
+    {
+      "example_id": "dmr:0012:qa",
+      "retrieved_ids": [
+        "dmr:0010:session:1",
+        "dmr:0012:session:0",
+        "dmr:0012:session:3",
+        "dmr:0022:session:3",
+        "dmr:0002:session:2",
+        "dmr:0022:session:0",
+        "dmr:0016:session:1",
+        "dmr:0008:session:1",
+        "dmr:0010:session:4",
+        "dmr:0005:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 32.05350000644103
+    },
+    {
+      "example_id": "dmr:0013:qa",
+      "retrieved_ids": [
+        "dmr:0014:session:0",
+        "dmr:0003:session:0",
+        "dmr:0002:session:0",
+        "dmr:0013:session:0",
+        "dmr:0014:session:1",
+        "dmr:0011:session:0",
+        "dmr:0010:session:0",
+        "dmr:0001:session:2",
+        "dmr:0001:session:0",
+        "dmr:0019:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 32.22779999487102
+    },
+    {
+      "example_id": "dmr:0014:qa",
+      "retrieved_ids": [
+        "dmr:0014:session:0",
+        "dmr:0002:session:0",
+        "dmr:0013:session:0",
+        "dmr:0014:session:1",
+        "dmr:0018:session:1",
+        "dmr:0001:session:2",
+        "dmr:0003:session:0",
+        "dmr:0012:session:0",
+        "dmr:0020:session:0",
+        "dmr:0011:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 33.96319999592379
+    },
+    {
+      "example_id": "dmr:0015:qa",
+      "retrieved_ids": [
+        "dmr:0014:session:1",
+        "dmr:0015:session:0",
+        "dmr:0002:session:0",
+        "dmr:0002:session:2",
+        "dmr:0014:session:0",
+        "dmr:0008:session:0",
+        "dmr:0009:session:4",
+        "dmr:0011:session:0",
+        "dmr:0005:session:0",
+        "dmr:0024:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 33.30469998763874
+    },
+    {
+      "example_id": "dmr:0016:qa",
+      "retrieved_ids": [
+        "dmr:0010:session:1",
+        "dmr:0008:session:2",
+        "dmr:0012:session:0",
+        "dmr:0022:session:3",
+        "dmr:0016:session:0",
+        "dmr:0016:session:1",
+        "dmr:0008:session:1",
+        "dmr:0012:session:3",
+        "dmr:0023:session:3",
+        "dmr:0008:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 33.982799999648705
+    },
+    {
+      "example_id": "dmr:0017:qa",
+      "retrieved_ids": [
+        "dmr:0000:session:1",
+        "dmr:0005:session:4",
+        "dmr:0007:session:3",
+        "dmr:0018:session:2",
+        "dmr:0007:session:1",
+        "dmr:0006:session:0",
+        "dmr:0017:session:1",
+        "dmr:0023:session:1",
+        "dmr:0007:session:4",
+        "dmr:0013:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 34.09269999247044
+    },
+    {
+      "example_id": "dmr:0018:qa",
+      "retrieved_ids": [
+        "dmr:0018:session:3",
+        "dmr:0008:session:0",
+        "dmr:0014:session:1",
+        "dmr:0018:session:0",
+        "dmr:0018:session:4",
+        "dmr:0002:session:2",
+        "dmr:0002:session:0",
+        "dmr:0014:session:2",
+        "dmr:0014:session:0",
+        "dmr:0018:session:2"
+      ],
+      "recall@10": 1.0,
+      "latency_ms": 34.72289998899214
+    },
+    {
+      "example_id": "dmr:0019:qa",
+      "retrieved_ids": [
+        "dmr:0010:session:0",
+        "dmr:0010:session:1",
+        "dmr:0019:session:0",
+        "dmr:0005:session:0",
+        "dmr:0011:session:0",
+        "dmr:0004:session:0",
+        "dmr:0024:session:0",
+        "dmr:0017:session:0",
+        "dmr:0010:session:2",
+        "dmr:0021:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 39.27850001491606
+    },
+    {
+      "example_id": "dmr:0020:qa",
+      "retrieved_ids": [
+        "dmr:0004:session:0",
+        "dmr:0014:session:0",
+        "dmr:0014:session:1",
+        "dmr:0005:session:0",
+        "dmr:0013:session:0",
+        "dmr:0001:session:2",
+        "dmr:0008:session:0",
+        "dmr:0003:session:0",
+        "dmr:0010:session:0",
+        "dmr:0010:session:1"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 37.69480000482872
+    },
+    {
+      "example_id": "dmr:0021:qa",
+      "retrieved_ids": [
+        "dmr:0010:session:1",
+        "dmr:0012:session:0",
+        "dmr:0021:session:1",
+        "dmr:0008:session:1",
+        "dmr:0008:session:2",
+        "dmr:0022:session:3",
+        "dmr:0010:session:2",
+        "dmr:0021:session:3",
+        "dmr:0016:session:0",
+        "dmr:0016:session:1"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 33.76270001172088
+    },
+    {
+      "example_id": "dmr:0022:qa",
+      "retrieved_ids": [
+        "dmr:0001:session:3",
+        "dmr:0003:session:3",
+        "dmr:0001:session:2",
+        "dmr:0001:session:1",
+        "dmr:0015:session:1",
+        "dmr:0019:session:4",
+        "dmr:0007:session:0",
+        "dmr:0002:session:0",
+        "dmr:0014:session:0",
+        "dmr:0019:session:1"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 33.304399985354394
+    },
+    {
+      "example_id": "dmr:0023:qa",
+      "retrieved_ids": [
+        "dmr:0017:session:0",
+        "dmr:0017:session:3",
+        "dmr:0017:session:2",
+        "dmr:0017:session:1",
+        "dmr:0023:session:0",
+        "dmr:0021:session:4",
+        "dmr:0000:session:0",
+        "dmr:0019:session:3",
+        "dmr:0019:session:4",
+        "dmr:0021:session:2"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 35.32540000742301
+    },
+    {
+      "example_id": "dmr:0024:qa",
+      "retrieved_ids": [
+        "dmr:0015:session:0",
+        "dmr:0002:session:0",
+        "dmr:0005:session:0",
+        "dmr:0022:session:0",
+        "dmr:0001:session:2",
+        "dmr:0005:session:1",
+        "dmr:0024:session:0",
+        "dmr:0006:session:0",
+        "dmr:0019:session:0",
+        "dmr:0003:session:0"
+      ],
+      "recall@10": 0.0,
+      "latency_ms": 37.18969997134991
+    }
+  ]
+}

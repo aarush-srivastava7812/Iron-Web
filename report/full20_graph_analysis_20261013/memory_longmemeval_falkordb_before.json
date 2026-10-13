@@ -1,0 +1,14 @@
+{
+  "benchmark": "longmemeval",
+  "backend": "falkordb_before",
+  "protocol": "storage_only_no_neural_models",
+  "process_baseline_rss_mb": 117.8203125,
+  "process_warm_rss_mb": 282.62109375,
+  "process_rss_increase_mb": 164.80078125,
+  "vector_records": 4612,
+  "graph_nodes": {
+    "Entity": 0,
+    "Observation": 4612
+  },
+  "server_graph_memory_bytes": 64
+}

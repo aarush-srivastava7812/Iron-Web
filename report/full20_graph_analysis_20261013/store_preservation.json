@@ -1,0 +1,18 @@
+{
+  "removed_owned_benchmark_graphs": [
+    "full20_graph_20261013_ingest_dmr_falkordb_before",
+    "full20_graph_20261013_ingest_dmr_falkordb_after",
+    "full20_graph_20261013_read_dmr",
+    "full20_graph_20261013_ingest_locomo_falkordb_before",
+    "full20_graph_20261013_ingest_locomo_falkordb_after",
+    "full20_graph_20261013_read_locomo",
+    "full20_graph_20261013_ingest_longmemeval_falkordb_before",
+    "full20_graph_20261013_ingest_longmemeval_falkordb_after",
+    "full20_graph_20261013_read_longmemeval"
+  ],
+  "remaining_graphs": [
+    "iron_web"
+  ],
+  "active_graph_nodes": 52,
+  "original_active_kuzu_sha256": "18386f5ea1da1be1e3adf24ad03ebdfb1d36a4c68a8975eb70fc9a62313428c1"
+}

@@ -5,7 +5,7 @@
 | Storage boundary | Qdrant remains embedded; FalkorDB supplies the named graph service. A pinned Compose service provides local persistence. |
 | One ingestion facade | The pipeline and benchmark evaluator use `MemoryEngine`; pre-extracted input does not bypass storage safety. |
 | Coordinated writes | A staging graph is published atomically while a recovery graph and exact vector snapshots compensate caught failures, including a lost publication response. This is not a durable transaction spanning both stores. |
-| Shared graph access | Reentrant thread locks and renewed Redis leases serialize cooperating clients. Native unique/mandatory ID constraints retain identifier integrity, and revision-aware entity caches refresh across clients. |
+| Shared graph access | Reentrant thread locks and renewed Redis leases serialize cooperating clients. Native unique/mandatory ID constraints retain identifier integrity, and revision-aware entity and conflict caches refresh across clients. Seed entities are read in bounded batches. |
 | Explicit ownership | Observations and newly extracted relationships carry their source memory ID. Exact legacy matching supports older observations. |
 | Stable identities | Extracted entity IDs use normalized name/type hashes. Document IDs remain intact through ingestion and retrieval. |
 | Explicit extraction | `none` is the default. Hosted extraction requires a selected policy and credentials. Failures produce errors instead of placeholder facts. |

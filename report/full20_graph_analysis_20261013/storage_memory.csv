@@ -1,0 +1,10 @@
+﻿benchmark,backend,protocol,process_baseline_rss_mb,process_warm_rss_mb,process_rss_increase_mb,vector_records,graph_nodes,server_graph_memory_bytes
+dmr,falkordb_after,storage_only_no_neural_models,114.578125,138.390625,23.8125,500,"{'Entity': 0, 'Observation': 500}",56
+dmr,falkordb_before,storage_only_no_neural_models,117.65625,138.7890625,21.1328125,500,"{'Entity': 0, 'Observation': 500}",56
+dmr,kuzu,storage_only_no_neural_models,117.23046875,223.17578125,105.9453125,500,"{'Entity': 0, 'Observation': 500}",
+locomo,falkordb_after,storage_only_no_neural_models,114.421875,128.09765625,13.67578125,70,"{'Entity': 0, 'Observation': 70}",56
+locomo,falkordb_before,storage_only_no_neural_models,117.13671875,128.24609375,11.109375,70,"{'Entity': 0, 'Observation': 70}",56
+locomo,kuzu,storage_only_no_neural_models,117.171875,211.54296875,94.37109375,70,"{'Entity': 0, 'Observation': 70}",
+longmemeval,falkordb_after,storage_only_no_neural_models,114.6015625,281.8984375,167.296875,4612,"{'Entity': 0, 'Observation': 4612}",64
+longmemeval,falkordb_before,storage_only_no_neural_models,117.8203125,282.62109375,164.80078125,4612,"{'Entity': 0, 'Observation': 4612}",64
+longmemeval,kuzu,storage_only_no_neural_models,117.36328125,358.1953125,240.83203125,4612,"{'Entity': 0, 'Observation': 4612}",

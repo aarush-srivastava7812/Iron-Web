@@ -1,0 +1,13 @@
+{
+  "benchmark": "longmemeval",
+  "backend": "kuzu",
+  "protocol": "storage_only_no_neural_models",
+  "process_baseline_rss_mb": 117.36328125,
+  "process_warm_rss_mb": 358.1953125,
+  "process_rss_increase_mb": 240.83203125,
+  "vector_records": 4612,
+  "graph_nodes": {
+    "Entity": 0,
+    "Observation": 4612
+  }
+}

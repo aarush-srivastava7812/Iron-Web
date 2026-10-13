@@ -1,0 +1,122 @@
+{
+  "structure": {
+    "type": "synthetic_structural_microbenchmark",
+    "nodes": {
+      "Entity": 500,
+      "Observation": 1500
+    },
+    "edges": {
+      "RELATES": 499,
+      "ABOUT": 1500,
+      "CONTRADICTS": 0,
+      "SUPERSEDES": 50
+    },
+    "operations": {
+      "expansion": {
+        "before": {
+          "mean_ms": 73.08428800140973,
+          "p50_ms": 71.63740000396501,
+          "p95_ms": 83.5064900049474,
+          "samples": 50
+        },
+        "after": {
+          "mean_ms": 21.525949997012503,
+          "p50_ms": 20.658749985159375,
+          "p95_ms": 27.22310499666491,
+          "samples": 50
+        },
+        "exact_results_match": true
+      },
+      "conflicts": {
+        "before": {
+          "mean_ms": 55.701010003103875,
+          "p50_ms": 54.37964999873657,
+          "p95_ms": 65.69732000643853,
+          "samples": 50
+        },
+        "after": {
+          "mean_ms": 5.395487999776378,
+          "p50_ms": 5.291249995934777,
+          "p95_ms": 6.594135003979316,
+          "samples": 50
+        },
+        "exact_results_match": true
+      }
+    }
+  },
+  "mixed": {
+    "steps": 100,
+    "documents": 500,
+    "backends": {
+      "kuzu": {
+        "status": "complete",
+        "write": {
+          "mean_ms": 35.16931299964199,
+          "p50_ms": 33.01879999344237,
+          "p95_ms": 47.67196999746373,
+          "samples": 100
+        },
+        "search_after_write": {
+          "mean_ms": 46.30979800102068,
+          "p50_ms": 45.492100005503744,
+          "p95_ms": 65.08476499730023,
+          "samples": 100
+        },
+        "total": {
+          "mean_ms": 81.51193099998636,
+          "p50_ms": 78.92374999937601,
+          "p95_ms": 105.12523999059337,
+          "samples": 100
+        },
+        "ordered_results_match_kuzu": true
+      },
+      "falkordb_before": {
+        "status": "failed",
+        "error_type": "ResponseError",
+        "error": "GRAPH.COPY failed, could not fork",
+        "completed_steps": 3,
+        "expected_steps": 100,
+        "write": {
+          "mean_ms": 292.2005000097367,
+          "p50_ms": 302.44300002232194,
+          "p95_ms": 384.25606000237167,
+          "samples": 3
+        },
+        "search_after_write": {
+          "mean_ms": 70.75016667173865,
+          "p50_ms": 60.11479999870062,
+          "p95_ms": 92.51524999563117,
+          "samples": 3
+        },
+        "total": {
+          "mean_ms": 363.10433333468,
+          "p50_ms": 362.6263000187464,
+          "p95_ms": 440.7311799994204,
+          "samples": 3
+        }
+      },
+      "falkordb_after": {
+        "status": "complete",
+        "write": {
+          "mean_ms": 288.0505959986476,
+          "p50_ms": 247.6767500047572,
+          "p95_ms": 389.22992999141553,
+          "samples": 100
+        },
+        "search_after_write": {
+          "mean_ms": 62.825743001303636,
+          "p50_ms": 56.443199995555915,
+          "p95_ms": 106.66171501070491,
+          "samples": 100
+        },
+        "total": {
+          "mean_ms": 350.93490799947176,
+          "p50_ms": 306.6794499900425,
+          "p95_ms": 481.0278199976891,
+          "samples": 100
+        },
+        "ordered_results_match_kuzu": true
+      }
+    }
+  }
+}

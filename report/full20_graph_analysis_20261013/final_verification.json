@@ -1,0 +1,10 @@
+{
+  "source_fingerprint_matches": true,
+  "canonical_source_hashes": {
+    "dmr": true,
+    "locomo": true,
+    "longmemeval": true
+  },
+  "raw_run_files": 27,
+  "accuracy_csv_rows": 459
+}

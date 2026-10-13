@@ -53,3 +53,9 @@ The FalkorDB service must be running for integration tests. Tests use isolated n
 The runner uses local retrieval metrics and a first-context-line answer generator. It records corpus coverage, source/configuration fingerprints, failures, and resumed results. It does not implement the official upstream answer-scoring protocols. New slices retain complete selected conversation histories and cannot overwrite an existing version.
 
 See [current specification](docs/specification.md), [architecture decisions](docs/architecture.md), [dataset notes](datasets/README.md), [research workflows](research/README.md), and [cleanup implementation report](report/cleanup_implementation_report.md).
+
+## Graph backend performance report
+
+The [full 20% analysis](report/full20_graph_analysis_20261013/report.md) compares Kùzu, the initial FalkorDB migration, and the optimized integration on DMR, LoCoMo and LongMemEval. The [PDF](report/full20_graph_analysis_20261013/report.pdf) and CSV tables include fresh ingestion, retrieval metrics, latency distributions, concurrency and memory scope. Optimized warm hybrid search is faster in these cohorts; full-graph copying makes ingestion and frequent updates expensive. Vector-only and reranked latency are not universally improved.
+
+Optional profiling dependencies are in `requirements/profiling.txt`; legacy comparisons additionally use `requirements/migration.txt`. The full test command is `python scripts/full_graph_analysis.py --run-id NEW_RUN_ID --report report/NEW_REPORT`. Retained inputs and the recorded CUDA runtime are required. Do not reuse a completed run ID for different source/configuration settings.

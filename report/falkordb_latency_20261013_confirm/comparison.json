@@ -1,0 +1,106 @@
+{
+  "cohort": "DMR retained 5%",
+  "questions": 25,
+  "documents": 125,
+  "rounds": 5,
+  "import": {
+    "source": "D:\\Opencode_\\reserchpaper\\data\\reevaluation\\reevaluation_20261013\\stores\\p5\\dmr\\graph.db",
+    "source_sha256": "9788ccb8fe99dfe3126a8fc0eadf6e2b1c2e486ec6ab52dde37e0c09d68bbf0a",
+    "source_unchanged": true,
+    "target_graph": "latency_f67e6bbcddfb",
+    "already_imported": false,
+    "graph_content_sha256": "993ac42ad86bc1397b51078ec8c391f43a8a82da455cdb7fec9b49397e70d446",
+    "nodes": {
+      "Entity": 0,
+      "Observation": 125
+    },
+    "edges": {
+      "RELATES": 0,
+      "ABOUT": 0,
+      "CONTRADICTS": 0,
+      "SUPERSEDES": 0
+    },
+    "exact_properties_and_direction_verified": true
+  },
+  "backends": {
+    "kuzu": {
+      "mean_ms": 26.722459198907018,
+      "p50_ms": 26.136000000406057,
+      "p95_ms": 32.138459995621815,
+      "samples": 125,
+      "recall@10": 0.16,
+      "ordered_results_match_historical": true,
+      "ordered_results_match_kuzu": true
+    },
+    "falkordb": {
+      "mean_ms": 35.880941601935774,
+      "p50_ms": 34.72480000345968,
+      "p95_ms": 42.93370000086725,
+      "samples": 125,
+      "recall@10": 0.16,
+      "ordered_results_match_historical": true,
+      "ordered_results_match_kuzu": true,
+      "commands_per_cohort": {
+        "SET": 25,
+        "GET": 100,
+        "GRAPH.QUERY": 75,
+        "EVALSHA": 25
+      }
+    },
+    "falkordb_grouped_lease": {
+      "mean_ms": 35.659795199055225,
+      "p50_ms": 34.470300015527755,
+      "p95_ms": 41.237260011257604,
+      "samples": 125,
+      "recall@10": 0.16,
+      "ordered_results_match_historical": true,
+      "ordered_results_match_kuzu": true,
+      "commands_per_cohort": {
+        "SET": 25,
+        "GET": 100,
+        "GRAPH.QUERY": 75,
+        "EVALSHA": 25
+      }
+    }
+  },
+  "source_commit": "6d10601",
+  "current_commit": "a0769cae47ab8262184c94b97dc50a61dbaf06e5",
+  "source_unchanged": true,
+  "graph_microbenchmark": {
+    "entity_count": 10,
+    "samples_per_strategy": 50,
+    "individual": {
+      "mean_ms": 32.419494001660496,
+      "p50_ms": 31.968549999874085,
+      "p95_ms": 37.744494996150024,
+      "samples": 50
+    },
+    "batched": {
+      "mean_ms": 6.650751999695785,
+      "p50_ms": 6.437550007831305,
+      "p95_ms": 8.387869992293416,
+      "samples": 50
+    },
+    "exact_entity_properties_match": true,
+    "legacy_import": {
+      "source": "D:\\Opencode_\\reserchpaper\\data\\kuzu\\memory.db",
+      "source_sha256": "18386f5ea1da1be1e3adf24ad03ebdfb1d36a4c68a8975eb70fc9a62313428c1",
+      "source_unchanged": true,
+      "target_graph": "latency_entities_f67e6bbcddfb",
+      "already_imported": false,
+      "graph_content_sha256": "0fe2c0951eb8b49911b45ed382bc5a68177072834b37e5169d68f512dcdb4286",
+      "nodes": {
+        "Entity": 10,
+        "Observation": 42
+      },
+      "edges": {
+        "RELATES": 17,
+        "ABOUT": 42,
+        "CONTRADICTS": 0,
+        "SUPERSEDES": 0
+      },
+      "exact_properties_and_direction_verified": true
+    },
+    "observation_inventory_server_profile": "Results\n    Project\n        Node By Label Scan | (o:Observation)"
+  }
+}

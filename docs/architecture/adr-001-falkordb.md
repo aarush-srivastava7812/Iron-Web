@@ -15,3 +15,7 @@ An optional import utility preserves the old graph file and verifies all source 
 Revisit this design if graph-copy cost becomes material, a shared remote vector service is introduced, or durable operation replay is required.
 
 References: [FalkorDB graph copying](https://docs.falkordb.com/commands/graph.copy), [official Python client](https://github.com/FalkorDB/falkordb-py), [Redis key renaming](https://redis.io/docs/latest/commands/rename/).
+
+Follow-up, 13 October 2026: graph expansion reads seed entities in bounded batches while preserving input order and traversal limits. Conflict ownership/direction/time is cached against the shared graph revision and staging graph identity, with mutation/rollback invalidation and copied caller results. Cache retention is capped at 50,000 observations and 100,000 conflict edges. The application graph lease still serializes cooperating readers and writers.
+
+Bulk ingestion exposed a Redis background-fork collision during automatic AOF rewrite. Graph-copy startup retries only the explicit `GRAPH.COPY failed, could not fork` error, only while its destination is absent and the lease remains owned, and only until the configured socket-timeout deadline. Ambiguous transport failures are not retried. Graph-copy overhead and cross-store crash limits remain.

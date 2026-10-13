@@ -79,3 +79,9 @@ Project-owned research mechanisms are named `entity_neighborhood`, `dense_lexica
 Original datasets, provenance, official evaluator references, research papers, credentials, active stores and genuine extraction caches are preserved. Historical output and unused checkouts are organized in recoverable archives with integrity records.
 
 The optional legacy importer reads Kùzu without modifying its file and verifies an exact FalkorDB graph import. Existing benchmark reports from commit `6d10601` are Kùzu measurements; they are historical records, not FalkorDB evaluation results.
+
+### FalkorDB read optimization and copy startup
+
+Seed entity lookup uses batches of at most 100 IDs and preserves first occurrence order; traversal retains its node and hop bounds. Relationship conflict results retain ownership aliases, edge direction and effective times. A process-local conflict cache is keyed by the graph revision and current live/staging graph identity, invalidated after mutations, publication and rollback, and copied before returning to callers. Retention is limited to 50,000 observations and 100,000 conflict edges. External writes that bypass the application revision/lease protocol do not participate in cache invalidation.
+
+When Redis background persistence temporarily prevents a graph-copy fork, startup retries the explicit pre-copy error for up to `falkordb.socket_timeout` seconds. Retry requires an absent destination and a valid graph lease. Other errors propagate. Reads remain serialized by the shared graph lease; these optimizations do not implement concurrent-reader or cross-store crash-atomic transactions.

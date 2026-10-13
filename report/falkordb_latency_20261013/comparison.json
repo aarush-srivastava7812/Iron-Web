@@ -1,0 +1,67 @@
+{
+  "cohort": "DMR retained 5%",
+  "questions": 25,
+  "documents": 125,
+  "rounds": 5,
+  "import": {
+    "source": "D:\\Opencode_\\reserchpaper\\data\\reevaluation\\reevaluation_20261013\\stores\\p5\\dmr\\graph.db",
+    "source_sha256": "9788ccb8fe99dfe3126a8fc0eadf6e2b1c2e486ec6ab52dde37e0c09d68bbf0a",
+    "source_unchanged": true,
+    "target_graph": "latency_1fd441bfb1d8",
+    "already_imported": false,
+    "graph_content_sha256": "993ac42ad86bc1397b51078ec8c391f43a8a82da455cdb7fec9b49397e70d446",
+    "nodes": {
+      "Entity": 0,
+      "Observation": 125
+    },
+    "edges": {
+      "RELATES": 0,
+      "ABOUT": 0,
+      "CONTRADICTS": 0,
+      "SUPERSEDES": 0
+    },
+    "exact_properties_and_direction_verified": true
+  },
+  "backends": {
+    "kuzu": {
+      "mean_ms": 27.676078401040286,
+      "p50_ms": 27.4158000247553,
+      "p95_ms": 34.98741998919286,
+      "samples": 125,
+      "recall@10": 0.16,
+      "ordered_results_match_historical": true,
+      "ordered_results_match_kuzu": true
+    },
+    "falkordb": {
+      "mean_ms": 34.37416159850545,
+      "p50_ms": 33.76420002314262,
+      "p95_ms": 41.25003998633474,
+      "samples": 125,
+      "recall@10": 0.16,
+      "ordered_results_match_historical": true,
+      "ordered_results_match_kuzu": true,
+      "commands_per_cohort": {
+        "SET": 25,
+        "GET": 100,
+        "EVALSHA": 25
+      }
+    },
+    "falkordb_grouped_lease": {
+      "mean_ms": 34.16800400032662,
+      "p50_ms": 33.385799993993714,
+      "p95_ms": 40.44994000578299,
+      "samples": 125,
+      "recall@10": 0.16,
+      "ordered_results_match_historical": true,
+      "ordered_results_match_kuzu": true,
+      "commands_per_cohort": {
+        "SET": 25,
+        "GET": 100,
+        "EVALSHA": 25
+      }
+    }
+  },
+  "source_commit": "6d10601",
+  "current_commit": "a0769cae47ab8262184c94b97dc50a61dbaf06e5",
+  "source_unchanged": true
+}

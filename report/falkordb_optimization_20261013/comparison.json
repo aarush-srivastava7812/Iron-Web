@@ -1,0 +1,480 @@
+{
+  "run_token": "e3dbcc1a95a8",
+  "legacy_revision": "6d10601",
+  "falkordb_baseline_revision": "a0769ca",
+  "cohorts": {
+    "dmr": {
+      "questions": 100,
+      "documents": 500,
+      "import": {
+        "source": "D:\\Opencode_\\reserchpaper\\data\\reevaluation\\reevaluation_20261013\\stores\\p20\\dmr\\graph.db",
+        "source_sha256": "c3cc91612d12b8d600d4dffc7007bcb167105d499e54239a2cf38f328e6a4ba3",
+        "source_unchanged": true,
+        "target_graph": "optimization_e3dbcc1a95a8_dmr",
+        "already_imported": false,
+        "graph_content_sha256": "5f0f0cb02ad077b93d283b57ac73801fd407bd48ccb3e2a4d5e67eb6bb6fec77",
+        "nodes": {
+          "Entity": 0,
+          "Observation": 500
+        },
+        "edges": {
+          "RELATES": 0,
+          "ABOUT": 0,
+          "CONTRADICTS": 0,
+          "SUPERSEDES": 0
+        },
+        "exact_properties_and_direction_verified": true
+      },
+      "sequential": {
+        "kuzu": {
+          "queries": 300,
+          "retrieval": {
+            "mrr": 0.041428571428571426,
+            "recall@1": 0.03,
+            "precision@1": 0.03,
+            "ndcg@1": 0.03,
+            "recall@3": 0.03,
+            "precision@3": 0.01,
+            "ndcg@3": 0.03,
+            "recall@5": 0.06,
+            "precision@5": 0.012000000000000002,
+            "ndcg@5": 0.04292029674220179,
+            "recall@10": 0.09,
+            "precision@10": 0.009000000000000001,
+            "ndcg@10": 0.05256292761124969
+          },
+          "mean_ms": 32.25685000021864,
+          "p50_ms": 31.853399996180087,
+          "p95_ms": 37.71408997417893,
+          "wall_sec": 9.737572499987436,
+          "requests_per_sec": 30.80849975703771,
+          "ordered_results_match_historical": true,
+          "process_peak_rss_mb": 1317.56640625
+        },
+        "falkordb_before": {
+          "queries": 300,
+          "retrieval": {
+            "mrr": 0.041428571428571426,
+            "recall@1": 0.03,
+            "precision@1": 0.03,
+            "ndcg@1": 0.03,
+            "recall@3": 0.03,
+            "precision@3": 0.01,
+            "ndcg@3": 0.03,
+            "recall@5": 0.06,
+            "precision@5": 0.012000000000000002,
+            "ndcg@5": 0.04292029674220179,
+            "recall@10": 0.09,
+            "precision@10": 0.009000000000000001,
+            "ndcg@10": 0.05256292761124969
+          },
+          "mean_ms": 47.38824933233749,
+          "p50_ms": 46.047449999605305,
+          "p95_ms": 54.793515015626326,
+          "wall_sec": 14.282122099975822,
+          "requests_per_sec": 21.00528184117036,
+          "ordered_results_match_historical": true,
+          "process_peak_rss_mb": 1318.0859375
+        },
+        "falkordb_after": {
+          "queries": 300,
+          "retrieval": {
+            "mrr": 0.041428571428571426,
+            "recall@1": 0.03,
+            "precision@1": 0.03,
+            "ndcg@1": 0.03,
+            "recall@3": 0.03,
+            "precision@3": 0.01,
+            "ndcg@3": 0.03,
+            "recall@5": 0.06,
+            "precision@5": 0.012000000000000002,
+            "ndcg@5": 0.04292029674220179,
+            "recall@10": 0.09,
+            "precision@10": 0.009000000000000001,
+            "ndcg@10": 0.05256292761124969
+          },
+          "mean_ms": 24.04532933277854,
+          "p50_ms": 24.0176499937661,
+          "p95_ms": 30.765554997196887,
+          "wall_sec": 7.28320849998272,
+          "requests_per_sec": 41.19063734076977,
+          "ordered_results_match_historical": true,
+          "process_peak_rss_mb": 1300.515625
+        }
+      },
+      "concurrent": {
+        "1": {
+          "kuzu": {
+            "queries": 100,
+            "retrieval": {
+              "mrr": 0.041428571428571426,
+              "recall@1": 0.03,
+              "precision@1": 0.03,
+              "ndcg@1": 0.03,
+              "recall@3": 0.03,
+              "precision@3": 0.01,
+              "ndcg@3": 0.03,
+              "recall@5": 0.06,
+              "precision@5": 0.012,
+              "ndcg@5": 0.0429202967422018,
+              "recall@10": 0.09,
+              "precision@10": 0.009000000000000001,
+              "ndcg@10": 0.05256292761124969
+            },
+            "mean_ms": 34.582033997867256,
+            "p50_ms": 32.80195000115782,
+            "p95_ms": 40.94411497644614,
+            "wall_sec": 3.481655800016597,
+            "requests_per_sec": 28.721966140226527,
+            "ordered_results_match_historical": true
+          },
+          "falkordb_before": {
+            "queries": 100,
+            "retrieval": {
+              "mrr": 0.041428571428571426,
+              "recall@1": 0.03,
+              "precision@1": 0.03,
+              "ndcg@1": 0.03,
+              "recall@3": 0.03,
+              "precision@3": 0.01,
+              "ndcg@3": 0.03,
+              "recall@5": 0.06,
+              "precision@5": 0.012,
+              "ndcg@5": 0.0429202967422018,
+              "recall@10": 0.09,
+              "precision@10": 0.009000000000000001,
+              "ndcg@10": 0.05256292761124969
+            },
+            "mean_ms": 47.50626600231044,
+            "p50_ms": 46.17000000143889,
+            "p95_ms": 52.33938999735983,
+            "wall_sec": 4.77451360001578,
+            "requests_per_sec": 20.944541869075312,
+            "ordered_results_match_historical": true
+          },
+          "falkordb_after": {
+            "queries": 100,
+            "retrieval": {
+              "mrr": 0.041428571428571426,
+              "recall@1": 0.03,
+              "precision@1": 0.03,
+              "ndcg@1": 0.03,
+              "recall@3": 0.03,
+              "precision@3": 0.01,
+              "ndcg@3": 0.03,
+              "recall@5": 0.06,
+              "precision@5": 0.012,
+              "ndcg@5": 0.0429202967422018,
+              "recall@10": 0.09,
+              "precision@10": 0.009000000000000001,
+              "ndcg@10": 0.05256292761124969
+            },
+            "mean_ms": 24.660024001204874,
+            "p50_ms": 24.920550000388175,
+            "p95_ms": 29.218135004339274,
+            "wall_sec": 2.4919324000074994,
+            "requests_per_sec": 40.12949949994593,
+            "ordered_results_match_historical": true
+          }
+        },
+        "4": {
+          "kuzu": {
+            "queries": 100,
+            "retrieval": {
+              "mrr": 0.041428571428571426,
+              "recall@1": 0.03,
+              "precision@1": 0.03,
+              "ndcg@1": 0.03,
+              "recall@3": 0.03,
+              "precision@3": 0.01,
+              "ndcg@3": 0.03,
+              "recall@5": 0.06,
+              "precision@5": 0.012,
+              "ndcg@5": 0.0429202967422018,
+              "recall@10": 0.09,
+              "precision@10": 0.009000000000000001,
+              "ndcg@10": 0.05256292761124969
+            },
+            "mean_ms": 121.4056720022927,
+            "p50_ms": 125.93850000121165,
+            "p95_ms": 143.79421499179443,
+            "wall_sec": 3.1007604000042193,
+            "requests_per_sec": 32.25015386544021,
+            "ordered_results_match_historical": true
+          },
+          "falkordb_before": {
+            "queries": 100,
+            "retrieval": {
+              "mrr": 0.041428571428571426,
+              "recall@1": 0.03,
+              "precision@1": 0.03,
+              "ndcg@1": 0.03,
+              "recall@3": 0.03,
+              "precision@3": 0.01,
+              "ndcg@3": 0.03,
+              "recall@5": 0.06,
+              "precision@5": 0.012,
+              "ndcg@5": 0.0429202967422018,
+              "recall@10": 0.09,
+              "precision@10": 0.009000000000000001,
+              "ndcg@10": 0.05256292761124969
+            },
+            "mean_ms": 193.58265000075335,
+            "p50_ms": 185.79619999218266,
+            "p95_ms": 240.49579000711674,
+            "wall_sec": 4.915667799999937,
+            "requests_per_sec": 20.343115944491057,
+            "ordered_results_match_historical": true
+          },
+          "falkordb_after": {
+            "queries": 100,
+            "retrieval": {
+              "mrr": 0.041428571428571426,
+              "recall@1": 0.03,
+              "precision@1": 0.03,
+              "ndcg@1": 0.03,
+              "recall@3": 0.03,
+              "precision@3": 0.01,
+              "ndcg@3": 0.03,
+              "recall@5": 0.06,
+              "precision@5": 0.012,
+              "ndcg@5": 0.0429202967422018,
+              "recall@10": 0.09,
+              "precision@10": 0.009000000000000001,
+              "ndcg@10": 0.05256292761124969
+            },
+            "mean_ms": 101.55710400140379,
+            "p50_ms": 101.44045000197366,
+            "p95_ms": 115.24317498406162,
+            "wall_sec": 2.5842957999848295,
+            "requests_per_sec": 38.695260813637134,
+            "ordered_results_match_historical": true
+          }
+        },
+        "8": {
+          "kuzu": {
+            "queries": 100,
+            "retrieval": {
+              "mrr": 0.041428571428571426,
+              "recall@1": 0.03,
+              "precision@1": 0.03,
+              "ndcg@1": 0.03,
+              "recall@3": 0.03,
+              "precision@3": 0.01,
+              "ndcg@3": 0.03,
+              "recall@5": 0.06,
+              "precision@5": 0.012,
+              "ndcg@5": 0.0429202967422018,
+              "recall@10": 0.09,
+              "precision@10": 0.009000000000000001,
+              "ndcg@10": 0.05256292761124969
+            },
+            "mean_ms": 262.26702299929457,
+            "p50_ms": 263.3114499913063,
+            "p95_ms": 318.80434000777313,
+            "wall_sec": 3.398131199995987,
+            "requests_per_sec": 29.42793968641296,
+            "ordered_results_match_historical": true
+          },
+          "falkordb_before": {
+            "queries": 100,
+            "retrieval": {
+              "mrr": 0.041428571428571426,
+              "recall@1": 0.03,
+              "precision@1": 0.03,
+              "ndcg@1": 0.03,
+              "recall@3": 0.03,
+              "precision@3": 0.01,
+              "ndcg@3": 0.03,
+              "recall@5": 0.06,
+              "precision@5": 0.012,
+              "ndcg@5": 0.0429202967422018,
+              "recall@10": 0.09,
+              "precision@10": 0.009000000000000001,
+              "ndcg@10": 0.05256292761124969
+            },
+            "mean_ms": 379.08558999944944,
+            "p50_ms": 380.54045000171755,
+            "p95_ms": 449.26974000554765,
+            "wall_sec": 4.930192100000568,
+            "requests_per_sec": 20.283185314419793,
+            "ordered_results_match_historical": true
+          },
+          "falkordb_after": {
+            "queries": 100,
+            "retrieval": {
+              "mrr": 0.041428571428571426,
+              "recall@1": 0.03,
+              "precision@1": 0.03,
+              "ndcg@1": 0.03,
+              "recall@3": 0.03,
+              "precision@3": 0.01,
+              "ndcg@3": 0.03,
+              "recall@5": 0.06,
+              "precision@5": 0.012,
+              "ndcg@5": 0.0429202967422018,
+              "recall@10": 0.09,
+              "precision@10": 0.009000000000000001,
+              "ndcg@10": 0.05256292761124969
+            },
+            "mean_ms": 178.43996499868808,
+            "p50_ms": 170.33550000633113,
+            "p95_ms": 241.18088500545127,
+            "wall_sec": 2.3180709999869578,
+            "requests_per_sec": 43.13931713073613,
+            "ordered_results_match_historical": true
+          }
+        }
+      },
+      "source_unchanged": true
+    },
+    "locomo": {
+      "questions": 397,
+      "documents": 70,
+      "import": {
+        "source": "D:\\Opencode_\\reserchpaper\\data\\reevaluation\\reevaluation_20261013\\stores\\p20\\locomo\\graph.db",
+        "source_sha256": "470fe8d9ed2034b369e51cc89c3fbd42aadd5520d55f3f55a92dd270db6f75cf",
+        "source_unchanged": true,
+        "target_graph": "optimization_5db7e671342f_locomo",
+        "already_imported": false,
+        "graph_content_sha256": "4de2bab55c7d85d7b133efae3bb10e60363452444ac1816f0fdd2cd0af78a88f",
+        "nodes": {
+          "Entity": 0,
+          "Observation": 70
+        },
+        "edges": {
+          "RELATES": 0,
+          "ABOUT": 0,
+          "CONTRADICTS": 0,
+          "SUPERSEDES": 0
+        },
+        "exact_properties_and_direction_verified": true
+      },
+      "sequential": {
+        "kuzu": {
+          "queries": 1191,
+          "retrieval": {
+            "mrr": 0.47715893108298174,
+            "ndcg@1": 0.3367088607594937,
+            "ndcg@10": 0.536184226720361,
+            "ndcg@3": 0.4272816704829303,
+            "ndcg@5": 0.4769121898145054,
+            "precision@1": 0.3367088607594937,
+            "precision@10": 0.0972151898734177,
+            "precision@3": 0.1949367088607595,
+            "precision@5": 0.14784810126582276,
+            "recall@1": 0.2993670886075949,
+            "recall@10": 0.7854008438818566,
+            "recall@3": 0.49936708860759493,
+            "recall@5": 0.6160337552742616
+          },
+          "mean_ms": 24.487915280697113,
+          "p50_ms": 24.253600015072152,
+          "p95_ms": 31.52869999757968,
+          "wall_sec": 29.436755999951856,
+          "requests_per_sec": 40.45962129801082,
+          "ordered_results_match_historical": true,
+          "process_peak_rss_mb": 1496.515625
+        },
+        "falkordb_before": {
+          "queries": 1191,
+          "retrieval": {
+            "mrr": 0.47715893108298174,
+            "ndcg@1": 0.3367088607594937,
+            "ndcg@10": 0.536184226720361,
+            "ndcg@3": 0.4272816704829303,
+            "ndcg@5": 0.4769121898145054,
+            "precision@1": 0.3367088607594937,
+            "precision@10": 0.0972151898734177,
+            "precision@3": 0.1949367088607595,
+            "precision@5": 0.14784810126582276,
+            "recall@1": 0.2993670886075949,
+            "recall@10": 0.7854008438818566,
+            "recall@3": 0.49936708860759493,
+            "recall@5": 0.6160337552742616
+          },
+          "mean_ms": 31.484996641155817,
+          "p50_ms": 31.110100011574104,
+          "p95_ms": 37.28950000368059,
+          "wall_sec": 37.788577300001634,
+          "requests_per_sec": 31.517460701013174,
+          "ordered_results_match_historical": true,
+          "process_peak_rss_mb": 1498.0703125
+        },
+        "falkordb_after": {
+          "queries": 1191,
+          "retrieval": {
+            "mrr": 0.47715893108298174,
+            "ndcg@1": 0.3367088607594937,
+            "ndcg@10": 0.536184226720361,
+            "ndcg@3": 0.4272816704829303,
+            "ndcg@5": 0.4769121898145054,
+            "precision@1": 0.3367088607594937,
+            "precision@10": 0.0972151898734177,
+            "precision@3": 0.1949367088607595,
+            "precision@5": 0.14784810126582276,
+            "recall@1": 0.2993670886075949,
+            "recall@10": 0.7854008438818566,
+            "recall@3": 0.49936708860759493,
+            "recall@5": 0.6160337552742616
+          },
+          "mean_ms": 18.35683148589762,
+          "p50_ms": 17.779799993149936,
+          "p95_ms": 23.068250011419877,
+          "wall_sec": 22.154063199966913,
+          "requests_per_sec": 53.75988996915829,
+          "ordered_results_match_historical": true,
+          "process_peak_rss_mb": 1443.8671875
+        }
+      },
+      "concurrent": {},
+      "source_unchanged": true
+    }
+  },
+  "ingestion": {
+    "kuzu": {
+      "num_documents": 500,
+      "ingested_ids": 500,
+      "skipped_unchanged": 0,
+      "ingestion_time_sec": 23.090537000010954,
+      "docs_per_sec": 21.653892241646993,
+      "process_peak_rss_mb": 1419.13671875,
+      "node_counts": {
+        "Entity": 0,
+        "Observation": 500
+      }
+    },
+    "falkordb_before": {
+      "status": "failed",
+      "error_type": "ResponseError",
+      "error": "GRAPH.COPY failed, could not fork",
+      "wall_sec": 14.597225600009551,
+      "node_counts": {
+        "Entity": 0,
+        "Observation": 118
+      }
+    },
+    "falkordb_after": {
+      "num_documents": 500,
+      "ingested_ids": 500,
+      "skipped_unchanged": 0,
+      "ingestion_time_sec": 84.07050030000391,
+      "docs_per_sec": 5.947389372202615,
+      "process_peak_rss_mb": 1174.62890625,
+      "node_counts": {
+        "Entity": 0,
+        "Observation": 500
+      }
+    }
+  },
+  "notes": [
+    "RSS includes shared GPU model host memory and all live stores; not isolated per-backend memory.",
+    "End-to-end measurements include application lease and queue waits."
+  ],
+  "resumed_tokens": [
+    "5db7e671342f",
+    "dabf07fcc795"
+  ],
+  "optimization_revision": "8fe090b0b9202aee84967e8aeefe5767fade05fe",
+  "rounds": 3
+}

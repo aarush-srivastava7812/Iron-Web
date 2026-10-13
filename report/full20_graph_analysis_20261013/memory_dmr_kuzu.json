@@ -1,0 +1,13 @@
+{
+  "benchmark": "dmr",
+  "backend": "kuzu",
+  "protocol": "storage_only_no_neural_models",
+  "process_baseline_rss_mb": 117.23046875,
+  "process_warm_rss_mb": 223.17578125,
+  "process_rss_increase_mb": 105.9453125,
+  "vector_records": 500,
+  "graph_nodes": {
+    "Entity": 0,
+    "Observation": 500
+  }
+}
