@@ -1,0 +1,2 @@
+# PDF syntax may be ASCII; treat reports as binary artifacts in Git diffs.
+*.pdf binary
