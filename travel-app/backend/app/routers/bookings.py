@@ -4,11 +4,11 @@ from sqlalchemy.orm import Session
 
 from ..db import get_db
 from ..deps import current_user
-from ..models import Booking, BookingItem, Guide, Stay, TransportRoute, User
+from ..models import Booking, BookingItem, FoodPlace, Guide, Stay, TransportRoute, User
 from ..schemas import BookingIn, BookingOut
 
 router = APIRouter(prefix="/bookings", tags=["bookings"])
-MODELS = {"stay": Stay, "transport": TransportRoute, "guide": Guide}
+MODELS = {"stay": Stay, "food": FoodPlace, "transport": TransportRoute, "guide": Guide}
 
 
 def _price(item, obj) -> int:
@@ -17,6 +17,8 @@ def _price(item, obj) -> int:
         if obj.seats_available < item.quantity:
             raise HTTPException(409, f"Only {obj.seats_available} seats left on route {obj.id}")
         obj.seats_available -= item.quantity
+        return obj.price_inr * item.quantity
+    if item.item_type == "food":
         return obj.price_inr * item.quantity
     if not (item.start_date and item.end_date) or item.end_date < item.start_date:
         raise HTTPException(422, "Valid start_date and end_date required")
@@ -30,7 +32,7 @@ def _price(item, obj) -> int:
 
 @router.post("", response_model=BookingOut, status_code=201)
 def create(body: BookingIn, user: User = Depends(current_user), db: Session = Depends(get_db)):
-    booking, total = Booking(user_id=user.id, total_inr=0), 0
+    booking, total = Booking(user_id=user.id, total_inr=0, status="requested"), 0
     for it in body.items:
         obj = db.get(MODELS[it.item_type], it.item_id, with_for_update=True)
         if not obj:

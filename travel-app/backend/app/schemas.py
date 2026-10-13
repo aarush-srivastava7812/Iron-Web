@@ -39,7 +39,7 @@ class TokenOut(BaseModel):
 
 
 class BookingItemIn(BaseModel):
-    item_type: Literal["stay", "transport", "guide"]
+    item_type: Literal["stay", "food", "transport", "guide"]
     item_id: int
     quantity: int = Field(default=1, ge=1, le=20)
     start_date: dt.date | None = None
@@ -67,3 +67,48 @@ class BookingOut(BaseModel):
     total_inr: int
     created_at: dt.datetime
     items: list[BookingItemOut]
+
+
+class ProfilePatch(BaseModel):
+    budget_range: str | None = Field(default=None, max_length=40)
+    travel_style: str | None = Field(default=None, max_length=80)
+    food_preferences: list[str] | None = Field(default=None, max_length=20)
+    dietary_restrictions: list[str] | None = Field(default=None, max_length=20)
+    accessibility_needs: list[str] | None = Field(default=None, max_length=20)
+    preferred_transport: list[str] | None = Field(default=None, max_length=10)
+    favorite_destinations: list[str] | None = Field(default=None, max_length=30)
+
+
+class ProfileOut(ProfilePatch):
+    model_config = ConfigDict(from_attributes=True)
+    updated_at: dt.datetime
+
+
+class ItineraryIn(BaseModel):
+    title: str = Field(min_length=1, max_length=140)
+    destination_id: int | None = None
+    start_date: dt.date | None = None
+    end_date: dt.date | None = None
+    notes: str = Field(default="", max_length=4000)
+    booking_ids: list[int] = Field(default_factory=list, max_length=100)
+
+
+class ItineraryOut(ItineraryIn):
+    model_config = ConfigDict(from_attributes=True)
+    id: int
+    user_id: str
+    created_at: dt.datetime
+
+
+class ConversationIn(BaseModel):
+    title: str = Field(default="New travel chat", min_length=1, max_length=140)
+
+
+class MessageIn(BaseModel):
+    content: str = Field(min_length=1, max_length=8000)
+
+
+class MemoryIn(BaseModel):
+    category: str = Field(min_length=1, max_length=60)
+    value: dict
+    source_conversation_id: str | None = None

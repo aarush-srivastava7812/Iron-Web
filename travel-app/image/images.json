@@ -1,0 +1,102 @@
+{
+  "destinations": [
+    {
+      "id": "manali",
+      "name": "Himachal Pradesh",
+      "tag": "Mountain escapes",
+      "image": "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1600&q=85",
+      "thumb": "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=400&q=60"
+    },
+    {
+      "id": "goa",
+      "name": "Goa",
+      "tag": "Coastal Reset",
+      "image": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1600&q=85",
+      "thumb": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=400&q=60"
+    },
+    {
+      "id": "kerala",
+      "name": "Kerala Backwaters",
+      "tag": "Slow Travel & Culture",
+      "image": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1600&q=85",
+      "thumb": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=400&q=60"
+    },
+    {
+      "id": "jaipur",
+      "name": "Rajasthan Heritage",
+      "tag": "Palaces & Crafts",
+      "image": "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1600&q=85",
+      "thumb": "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=400&q=60"
+    },
+    {
+      "id": "varanasi",
+      "name": "Varanasi",
+      "tag": "Spiritual & Culture",
+      "image": "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1600&q=85",
+      "thumb": "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=400&q=60"
+    },
+    {
+      "id": "meghalaya",
+      "name": "Meghalaya",
+      "tag": "Cloud Forests",
+      "image": "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1600&q=85",
+      "thumb": "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=400&q=60"
+    },
+    {
+      "id": "udaipur",
+      "name": "Udaipur",
+      "tag": "Lakeside Heritage",
+      "image": "https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1600&q=85",
+      "thumb": "https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=400&q=60"
+    },
+    {
+      "id": "rishikesh",
+      "name": "Rishikesh",
+      "tag": "River & Wellness",
+      "image": "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=1600&q=85",
+      "thumb": "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=400&q=60"
+    },
+    {
+      "id": "kochi",
+      "name": "Kochi",
+      "tag": "Harbor Culture",
+      "image": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1600&q=85",
+      "thumb": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=400&q=60"
+    },
+    {
+      "id": "andaman",
+      "name": "Andaman Islands",
+      "tag": "Island Quiet",
+      "image": "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1600&q=85",
+      "thumb": "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=400&q=60"
+    }
+  ],
+  "stays": [
+    {
+      "name": "Heritage Teak Villa",
+      "type": "Boutique Homestay",
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=85",
+      "thumb": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=60"
+    },
+    {
+      "name": "Alpine Pine Lodge",
+      "type": "Mountain Resort",
+      "image": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=85",
+      "thumb": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=60"
+    }
+  ],
+  "food": [
+    {
+      "name": "Old Town Artisan Cafe",
+      "category": "Cafe & Bakery",
+      "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1600&q=85",
+      "thumb": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=400&q=60"
+    },
+    {
+      "name": "Local Spice Kitchen",
+      "category": "Authentic Regional Dining",
+      "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=85",
+      "thumb": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=400&q=60"
+    }
+  ]
+}

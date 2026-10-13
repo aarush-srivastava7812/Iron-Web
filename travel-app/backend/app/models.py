@@ -27,6 +27,7 @@ class User(Base):
     is_active: Mapped[bool] = mapped_column(default=True)
     created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
     bookings: Mapped[list["Booking"]] = relationship(back_populates="user")
+    profile: Mapped["UserProfile | None"] = relationship(back_populates="user", cascade="all, delete-orphan")
 
 
 class Destination(Base):
@@ -41,6 +42,8 @@ class Destination(Base):
     best_season: Mapped[str | None] = mapped_column(String(80))
     lat: Mapped[float] = mapped_column(Float)
     lng: Mapped[float] = mapped_column(Float)
+    avg_cost_inr: Mapped[int | None] = mapped_column(Integer)
+    climate: Mapped[str | None] = mapped_column(String(120))
 
 
 class _PlaceMixin:
@@ -93,7 +96,7 @@ class Booking(Base):
     __tablename__ = "bookings"
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[str] = mapped_column(ForeignKey("users.id"), index=True)
-    status: Mapped[str] = mapped_column(String(12), default="confirmed")  # confirmed|cancelled
+    status: Mapped[str] = mapped_column(String(12), default="requested")  # requested|cancelled
     total_inr: Mapped[int] = mapped_column(Integer)
     created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
     user: Mapped[User] = relationship(back_populates="bookings")
@@ -112,3 +115,66 @@ class BookingItem(Base):
     start_date: Mapped[dt.date | None] = mapped_column(Date)
     end_date: Mapped[dt.date | None] = mapped_column(Date)
     booking: Mapped[Booking] = relationship(back_populates="items")
+
+
+class UserProfile(Base):
+    __tablename__ = "user_profiles"
+    user_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
+    budget_range: Mapped[str | None] = mapped_column(String(40))
+    travel_style: Mapped[str | None] = mapped_column(String(80))
+    food_preferences: Mapped[list] = mapped_column(JSON, default=list)
+    dietary_restrictions: Mapped[list] = mapped_column(JSON, default=list)
+    accessibility_needs: Mapped[list] = mapped_column(JSON, default=list)
+    preferred_transport: Mapped[list] = mapped_column(JSON, default=list)
+    favorite_destinations: Mapped[list] = mapped_column(JSON, default=list)
+    updated_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now, onupdate=_now)
+    user: Mapped[User] = relationship(back_populates="profile")
+
+
+class Itinerary(Base):
+    __tablename__ = "itineraries"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    title: Mapped[str] = mapped_column(String(140))
+    destination_id: Mapped[int | None] = mapped_column(ForeignKey("destinations.id", ondelete="SET NULL"))
+    start_date: Mapped[dt.date | None] = mapped_column(Date)
+    end_date: Mapped[dt.date | None] = mapped_column(Date)
+    notes: Mapped[str] = mapped_column(Text, default="")
+    booking_ids: Mapped[list] = mapped_column(JSON, default=list)
+    created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
+class AIConversation(Base):
+    __tablename__ = "ai_conversations"
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    user_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    title: Mapped[str] = mapped_column(String(140), default="New travel chat")
+    created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
+    updated_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now, onupdate=_now)
+    messages: Mapped[list["AIMessage"]] = relationship(
+        back_populates="conversation", cascade="all, delete-orphan", order_by="AIMessage.created_at"
+    )
+
+
+class AIMessage(Base):
+    __tablename__ = "ai_messages"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    conversation_id: Mapped[str] = mapped_column(
+        ForeignKey("ai_conversations.id", ondelete="CASCADE"), index=True
+    )
+    role: Mapped[str] = mapped_column(String(12))
+    content: Mapped[str] = mapped_column(Text)
+    created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
+    conversation: Mapped[AIConversation] = relationship(back_populates="messages")
+
+
+class AIMemory(Base):
+    __tablename__ = "ai_memory"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    category: Mapped[str] = mapped_column(String(60))
+    value: Mapped[dict] = mapped_column(JSON)
+    source_conversation_id: Mapped[str | None] = mapped_column(
+        ForeignKey("ai_conversations.id", ondelete="SET NULL")
+    )
+    updated_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now, onupdate=_now)

@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, event
+from sqlalchemy import create_engine, event, inspect
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 from .config import settings
@@ -19,6 +19,16 @@ SessionLocal = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False
 
 class Base(DeclarativeBase):
     pass
+
+
+def create_schema():
+    Base.metadata.create_all(engine)
+    with engine.begin() as connection:
+        columns = {column["name"] for column in inspect(connection).get_columns("destinations")}
+        if "avg_cost_inr" not in columns:
+            connection.exec_driver_sql("ALTER TABLE destinations ADD COLUMN avg_cost_inr INTEGER")
+        if "climate" not in columns:
+            connection.exec_driver_sql("ALTER TABLE destinations ADD COLUMN climate VARCHAR(120)")
 
 
 def get_db():
