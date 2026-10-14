@@ -36,7 +36,7 @@ def homepage():
     built_index = frontend_dist / "index.html"
     if built_index.is_file():
         return FileResponse(built_index)
-    raise HTTPException(503, "Frontend build not found. Run npm run build in travel-app/frontend.")
+    raise HTTPException(503, "Frontend build not found. Run npm run build in frontend.")
 
 
 @app.get("/transitions.js", include_in_schema=False)
@@ -63,4 +63,4 @@ def spa_fallback(spa_path: str):
     built_index = frontend_dist / "index.html"
     if built_index.is_file():
         return FileResponse(built_index)
-    raise HTTPException(503, "Frontend build not found. Run npm run build in travel-app/frontend.")
+    raise HTTPException(503, "Frontend build not found. Run npm run build in frontend.")

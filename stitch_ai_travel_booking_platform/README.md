@@ -7,7 +7,7 @@ Voyara is organized as a React application and a FastAPI service:
 - `image/images.json` — responsive Unsplash catalog for places, stays and food.
 - `transitions/` — airplane, train, journal and compass-loader animation assets.
 
-The main landing page uses the new Stitch travel-booking design, backed by the existing live catalog APIs. Sign-in, saved trips, booking requests, profile preferences, itineraries and the assistant remain part of the same React application.
+This folder is the runnable Voyara application. Its React landing page implements the supplied Stitch travel-booking design and connects to the FastAPI service. The original Stitch exports remain under `stitch_ai_travel_booking_platform/`; sign-in, saved trips, booking requests, profile preferences, itineraries and the assistant are part of the React application here.
 
 The current repository does not contain a provisioned Bolt Database project or Bolt auth credentials. The app therefore uses its existing SQLAlchemy database and bearer-token auth. Personal records are scoped to the authenticated user, and PostgreSQL row-level-security policies are supplied for deployment.
 
@@ -16,7 +16,7 @@ The current repository does not contain a provisioned Bolt Database project or B
 In one PowerShell window, from the repository root:
 
 ```powershell
-cd travel-app\backend
+cd stitch_ai_travel_booking_platform\backend
 python -m pip install -r requirements.txt
 python seed.py
 python -m uvicorn app.main:app --reload
@@ -25,7 +25,7 @@ python -m uvicorn app.main:app --reload
 In a second window:
 
 ```powershell
-cd travel-app\frontend
+cd stitch_ai_travel_booking_platform\frontend
 npm install
 npm run dev
 ```
@@ -55,7 +55,7 @@ The `users` table is queried by the authentication routes to register and sign i
 - A persistent trip request cart and checkout that creates `requested` bookings; it does not take payment or claim that a provider has confirmed.
 - AI conversation sessions and structured preference snapshots in `ai_conversations`, `ai_messages`, and `ai_memory`. The chat route saves messages and explicitly reports `not_configured` until your assistant backend is connected; no generated answer is fabricated.
 - A documented adapter in `backend/memory_adapter.py` for optionally ranking catalogs with your own cross-session preference service. Configure `MEMORY_SERVICE_URL` and optionally `MEMORY_SERVICE_TOKEN` in `backend/.env`.
-- Responsive Unsplash images with 400/800/1200/1600 pixel `srcset` choices and thumbnail fallback; custom airplane/train/journal transitions and compass loaders.
+- Responsive Unsplash images with 400/800/1200/1600 pixel `srcset` choices and thumbnail fallback; reduced-motion-aware page transitions and compass loaders. Original Stitch transition assets are retained under `transitions/`.
 
 The assistant connection point is `POST /api/assistant/conversations/{conversation_id}/messages`. It persists the user's message and returns `connection_status: "not_configured"` until the custom model/memory service is wired in. Conversation and memory CRUD routes are under `/api/assistant`.
 

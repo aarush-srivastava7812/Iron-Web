@@ -2,7 +2,7 @@ import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import {
   ArrowRight, ArrowUpRight, CalendarDays, Check, ChevronDown,
   Compass, Heart, Menu, MessageCircle, Plane, Search, ShieldCheck,
-  ShoppingBag, Sparkles, TrainFront, UserRound, X,
+  ShoppingBag, Sparkles, UserRound, X,
 } from "lucide-react";
 import { Link, NavLink, Navigate, Route, Routes, useLocation, useNavigate, useParams } from "react-router-dom";
 import { api, catalog, emptyProfile, imageFor, money, type CatalogItem, type CatalogKind, type ImageCatalog, type Profile } from "./api";
@@ -22,25 +22,11 @@ function useImages() {
   return images;
 }
 
-function AirplaneTransition() {
-  const location = useLocation();
-  const [active, setActive] = useState("");
-  useEffect(() => {
-    const path = location.pathname;
-    const type = path.includes("trips") || path.includes("itineraries") || path.includes("assistant") ? "journal"
-      : path.includes("transport") ? "train" : "plane";
-    setActive(type);
-    const timer = window.setTimeout(() => setActive(""), 820);
-    return () => window.clearTimeout(timer);
-  }, [location.pathname]);
-  return active ? <div className={`route-wipe route-wipe-${active}`} aria-hidden="true">
-    {active === "train" ? <TrainFront /> : active === "journal" ? <Compass /> : <Plane />}
-  </div> : null;
-}
-
 function Shell({ children }: { children: ReactNode }) {
   const { user, cart, signOut } = useApp();
+  const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  useEffect(() => { window.scrollTo(0, 0); }, [location.pathname]);
   const navItems = [
     ["/destinations", "Explore"],
     ["/stays", "Stays"],
@@ -65,13 +51,12 @@ function Shell({ children }: { children: ReactNode }) {
         <button className="icon-button menu-toggle" aria-label={mobileOpen ? "Close menu" : "Open menu"} onClick={() => setMobileOpen((open) => !open)}>{mobileOpen ? <X /> : <Menu />}</button>
       </div>
     </header>
-    <main className="page-book-perspective">{children}</main>
+    <main key={location.pathname} className="page-book-perspective page-route-transition">{children}</main>
     <footer className="site-footer">
       <div className="footer-brand"><Link to="/" className="brand"><span className="brand-mark"><Compass size={18} /></span> voyara<span className="brand-period">.</span></Link><p>Find a place that feels like yours.</p></div>
       <div className="footer-links"><Link to="/destinations">Explore</Link><Link to="/trips">My trips</Link><Link to="/assistant">AI guide</Link><Link to="/profile">Preferences</Link></div>
       <span className="footer-note">Thoughtfully planned. Yours to discover.</span>
     </footer>
-    <AirplaneTransition />
   </div>;
 }
 
@@ -221,13 +206,10 @@ function BrowsePage({ kind }: { kind: CatalogKind }) {
   const [diet, setDiet] = useState("");
   const [amenity, setAmenity] = useState("");
   const [routeDestination, setRouteDestination] = useState("");
-  const [trainWipe, setTrainWipe] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const { addToCart } = useApp();
   function changeFilter(change: () => void) {
-    setTrainWipe(true);
-    window.setTimeout(() => setTrainWipe(false), 820);
     change();
   }
   useEffect(() => { catalog("destinations").then(setDestinations).catch((reason: Error) => setError(reason.message)); }, []);
@@ -254,7 +236,6 @@ function BrowsePage({ kind }: { kind: CatalogKind }) {
   });
   const title = kind === "destinations" ? "Find your somewhere." : info.title;
   return <div className="browse-page">
-    {trainWipe && <div className="route-wipe route-wipe-train filter-train-wipe" aria-hidden="true"><TrainFront /></div>}
     <PageIntro eyebrow={info.eyebrow} title={title} detail={info.detail} />
     <div className="browse-toolbar">
       <label className="search-field"><Search size={18} /><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder={info.placeholder} /></label>
