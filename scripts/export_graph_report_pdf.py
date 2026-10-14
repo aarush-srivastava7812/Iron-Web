@@ -73,9 +73,12 @@ def main():
         leftMargin=36,
         topMargin=38,
         bottomMargin=38,
-        title="Twenty percent graph storage analysis",
+        title=(report / "report.md")
+        .read_text(encoding="utf-8")
+        .splitlines()[0]
+        .lstrip("# "),
         author="",
-        subject="Measured graph backend ingestion and retrieval comparison",
+        subject="Measured ingestion and retrieval analysis",
     )
     story = []
     lines = (report / "report.md").read_text(encoding="utf-8").splitlines()
@@ -168,7 +171,7 @@ def main():
         canvas.saveState()
         canvas.setFont("Helvetica", 8)
         canvas.setFillColor(colors.HexColor("#505050"))
-        canvas.drawString(36, 22, "Iron Web graph storage analysis")
+        canvas.drawString(36, 22, "Iron Web measurement report")
         canvas.drawRightString(A4[0] - 36, 22, str(document.page))
         canvas.restoreState()
 

@@ -1,0 +1,4802 @@
+[
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 0.008000002708286047,
+      "redis_control": 8.45849997131154,
+      "lease_python": 0.888700014911592,
+      "embedding": 6.0189999639987946,
+      "vector_read": 6.628400005865842,
+      "application_other": 1.2948000221513212
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 0.008000002708286047,
+      "redis_control": 8.45849997131154,
+      "lease_python": 5.004199978429824,
+      "embedding": 6.0189999639987946,
+      "vector_read": 6.628400005865842
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 2.668700006324798,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.459899988025427,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.9152999739162624,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4668999938294291,
+        "error": null
+      }
+    ],
+    "total_ms": 23.297399980947375
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 22.765600006096065,
+      "redis_control": 5.730099917855114,
+      "lease_python": 0.8877001237124205,
+      "embedding": 7.06129998434335,
+      "vector_read": 6.531599967274815,
+      "application_other": 1.0149999870918691
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 22.765600006096065,
+      "redis_control": 5.730099917855114,
+      "lease_python": 26.383900083601475,
+      "embedding": 7.06129998434335,
+      "vector_read": 6.531599967274815
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4886999852024019,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.215199998114258,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8022999865934253,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.268399995751679,
+        "error": null
+      }
+    ],
+    "total_ms": 43.99129998637363
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 43.426399992313236,
+      "redis_control": 5.921700038015842,
+      "lease_python": 0.7312999805435538,
+      "embedding": 5.823299987241626,
+      "vector_read": 6.605300004594028,
+      "application_other": 1.0227999882772565
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 43.426399992313236,
+      "redis_control": 5.921700038015842,
+      "lease_python": 46.82609997689724,
+      "embedding": 5.823299987241626,
+      "vector_read": 6.605300004594028
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.172600022982806,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.130599994212389,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.1575000137090683,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.539000018965453,
+        "error": null
+      }
+    ],
+    "total_ms": 63.53079999098554
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 63.302199996542186,
+      "redis_control": 6.563099916093051,
+      "lease_python": 0.7683002040721476,
+      "embedding": 6.559500005096197,
+      "vector_read": 6.192500004544854,
+      "application_other": 1.0566998971626163
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 63.302199996542186,
+      "redis_control": 6.563099916093051,
+      "lease_python": 67.32610013568774,
+      "embedding": 6.559500005096197,
+      "vector_read": 6.192500004544854
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.3700000126846135,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1696000001393259,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.1575000137090683,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.927000004798174,
+        "error": null
+      }
+    ],
+    "total_ms": 84.44230002351105
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 83.94829998724163,
+      "redis_control": 8.28370003728196,
+      "lease_python": 1.4458998921327293,
+      "embedding": 10.15190000180155,
+      "vector_read": 10.134499985724688,
+      "application_other": 1.7870001029223204
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 83.94829998724163,
+      "redis_control": 8.28370003728196,
+      "lease_python": 89.71719985129312,
+      "embedding": 10.15190000180155,
+      "vector_read": 10.134499985724688
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 2.615500008687377,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.190499973949045,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.7985999584197998,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.7500000540167093,
+        "error": null
+      }
+    ],
+    "total_ms": 115.75130000710487
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 115.13499997090548,
+      "redis_control": 7.820800004992634,
+      "lease_python": 1.898899965453893,
+      "embedding": 11.146500008180737,
+      "vector_read": 7.0955000119283795,
+      "application_other": 1.432000019121915
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 115.13499997090548,
+      "redis_control": 7.820800004992634,
+      "lease_python": 121.01489992346615,
+      "embedding": 11.146500008180737,
+      "vector_read": 7.0955000119283795
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 2.409700013231486,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.5657000476494431,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.299599989783019,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.609099970664829,
+        "error": null
+      }
+    ],
+    "total_ms": 144.52869998058304
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 143.8123999396339,
+      "redis_control": 6.715899973642081,
+      "lease_python": 0.9047002531588078,
+      "embedding": 6.178799958433956,
+      "vector_read": 7.3102000169456005,
+      "application_other": 1.4394998433999717
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 143.8123999396339,
+      "redis_control": 6.715899973642081,
+      "lease_python": 148.3336001401767,
+      "embedding": 6.178799958433956,
+      "vector_read": 7.3102000169456005
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.5743999974802136,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3413000269792974,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.782100007403642,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 2.07880005473271,
+        "error": null
+      }
+    ],
+    "total_ms": 166.36149998521432
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 165.98730004625395,
+      "redis_control": 6.153800059109926,
+      "lease_python": 0.8765000384300947,
+      "embedding": 5.518099991604686,
+      "vector_read": 6.194199959281832,
+      "application_other": 1.0847999365068972
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 165.98730004625395,
+      "redis_control": 6.153800059109926,
+      "lease_python": 169.85050012590364,
+      "embedding": 5.518099991604686,
+      "vector_read": 6.194199959281832
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.5761999529786408,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2569999671541154,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.9307000329717994,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.439899962861091,
+        "error": null
+      }
+    ],
+    "total_ms": 185.81470003118739
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 166.83909995481372,
+      "redis_control": 5.682899965904653,
+      "lease_python": 0.8752000867389143,
+      "embedding": 5.864300008397549,
+      "vector_read": 6.398099998477846,
+      "application_other": 1.3072000001557171
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 166.83909995481372,
+      "redis_control": 5.682899965904653,
+      "lease_python": 170.43320008087903,
+      "embedding": 5.864300008397549,
+      "vector_read": 6.398099998477846
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.3164000120013952,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2076999992132187,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.7795999883674085,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.428399991709739,
+        "error": null
+      }
+    ],
+    "total_ms": 186.9668000144884
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 165.7192000420764,
+      "redis_control": 5.652799969539046,
+      "lease_python": 0.7201998960226774,
+      "embedding": 5.953699990641326,
+      "vector_read": 6.620400003157556,
+      "application_other": 1.0379001032561064
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 165.7192000420764,
+      "redis_control": 5.652799969539046,
+      "lease_python": 169.04059995431453,
+      "embedding": 5.953699990641326,
+      "vector_read": 6.620400003157556
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.1702000047080219,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.219899975694716,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8512000096961856,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4543000143021345,
+        "error": null
+      }
+    ],
+    "total_ms": 185.70420000469312
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 165.54159997031093,
+      "redis_control": 5.929699982516468,
+      "lease_python": 0.8272000122815371,
+      "embedding": 5.896499962545931,
+      "vector_read": 5.478199978824705,
+      "application_other": 1.0037000756710768
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 165.54159997031093,
+      "redis_control": 5.929699982516468,
+      "lease_python": 169.26229995442554,
+      "embedding": 5.896499962545931,
+      "vector_read": 5.478199978824705
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4631000231020153,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1891000322066247,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8658999470062554,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4569999766536057,
+        "error": null
+      }
+    ],
+    "total_ms": 184.67689998215064
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 163.48010004730895,
+      "redis_control": 6.704900006297976,
+      "lease_python": 0.7485998794436455,
+      "embedding": 5.870900000445545,
+      "vector_read": 5.938499991316348,
+      "application_other": 1.1716000735759735
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 163.48010004730895,
+      "redis_control": 6.704900006297976,
+      "lease_python": 167.44739993009716,
+      "embedding": 5.870900000445545,
+      "vector_read": 5.938499991316348
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.2586000375449657,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.4174000243656337,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.091099973767996,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.9891999545507133,
+        "error": null
+      }
+    ],
+    "total_ms": 183.91459999838844
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 152.10960002150387,
+      "redis_control": 6.0279000317677855,
+      "lease_python": 0.8595999097451568,
+      "embedding": 5.837800039444119,
+      "vector_read": 6.607100018300116,
+      "application_other": 1.2024999596178532
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 152.10960002150387,
+      "redis_control": 6.0279000317677855,
+      "lease_python": 155.88029992068186,
+      "embedding": 5.837800039444119,
+      "vector_read": 6.607100018300116
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.485499960836023,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2934999540448189,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8475999822840095,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4539999538101256,
+        "error": null
+      }
+    ],
+    "total_ms": 172.6444999803789
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 143.25259992619976,
+      "redis_control": 5.504799890331924,
+      "lease_python": 0.7314001559279859,
+      "embedding": 5.762699991464615,
+      "vector_read": 5.725700000766665,
+      "application_other": 1.0180000099353492
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 143.25259992619976,
+      "redis_control": 5.504799890331924,
+      "lease_python": 146.7236999887973,
+      "embedding": 5.762699991464615,
+      "vector_read": 5.725700000766665
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4516999945044518,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1260000173933804,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.65789999300614,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.3117000344209373,
+        "error": null
+      }
+    ],
+    "total_ms": 161.9951999746263
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 139.41530004376546,
+      "redis_control": 5.905300029553473,
+      "lease_python": 0.7382998592220247,
+      "embedding": 5.909100000280887,
+      "vector_read": 5.913600034546107,
+      "application_other": 1.0176000650972128
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 139.41530004376546,
+      "redis_control": 5.905300029553473,
+      "lease_python": 142.74189993739128,
+      "embedding": 5.909100000280887,
+      "vector_read": 5.913600034546107
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.227599976118654,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3263000291772187,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.0101999980397522,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.3843000051565468,
+        "error": null
+      }
+    ],
+    "total_ms": 158.89920003246516
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 139.05920006800443,
+      "redis_control": 6.30409992299974,
+      "lease_python": 0.9236001060344279,
+      "embedding": 7.332900015171617,
+      "vector_read": 7.0686000399291515,
+      "application_other": 1.0537998750805855
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 139.05920006800443,
+      "redis_control": 6.30409992299974,
+      "lease_python": 142.9914001491852,
+      "embedding": 7.332900015171617,
+      "vector_read": 7.0686000399291515
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4329000259749591,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.308899954892695,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.00599996605888,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.6030999831855297,
+        "error": null
+      }
+    ],
+    "total_ms": 161.74220002721995
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 141.6560000507161,
+      "redis_control": 6.498500006273389,
+      "lease_python": 0.894600001629442,
+      "embedding": 5.4150999640114605,
+      "vector_read": 6.332300021313131,
+      "application_other": 1.0915999300777912
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 141.6560000507161,
+      "redis_control": 6.498500006273389,
+      "lease_python": 145.73510008631274,
+      "embedding": 5.4150999640114605,
+      "vector_read": 6.332300021313131
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.6636999789625406,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3041000347584486,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.0376999746076763,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.5540000167675316,
+        "error": null
+      }
+    ],
+    "total_ms": 161.88809997402132
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 141.94290002342314,
+      "redis_control": 6.079900020267814,
+      "lease_python": 0.853499979712069,
+      "embedding": 5.930200044531375,
+      "vector_read": 5.757200007792562,
+      "application_other": 1.276999944821
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 141.94290002342314,
+      "redis_control": 6.079900020267814,
+      "lease_python": 145.6844000495039,
+      "embedding": 5.930200044531375,
+      "vector_read": 5.757200007792562
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4752999995835125,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3079000054858625,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.9049000111408532,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4391000149771571,
+        "error": null
+      }
+    ],
+    "total_ms": 161.84070002054796
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 142.71059999009594,
+      "redis_control": 5.57969999499619,
+      "lease_python": 0.7132000755518675,
+      "embedding": 5.925300007220358,
+      "vector_read": 6.142400030512363,
+      "application_other": 1.1431999155320227
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 142.71059999009594,
+      "redis_control": 5.57969999499619,
+      "lease_python": 145.9693000651896,
+      "embedding": 5.925300007220358,
+      "vector_read": 6.142400030512363
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.1639000149443746,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.263099955394864,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8176999874413013,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4054999919608235,
+        "error": null
+      }
+    ],
+    "total_ms": 162.21440001390874
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 141.75409998279065,
+      "redis_control": 5.913899978622794,
+      "lease_python": 0.7545999833382666,
+      "embedding": 6.329700001515448,
+      "vector_read": 7.145199982915074,
+      "application_other": 1.4273000415414572
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 141.75409998279065,
+      "redis_control": 5.913899978622794,
+      "lease_python": 145.23259992711246,
+      "embedding": 6.329700001515448,
+      "vector_read": 7.145199982915074
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.2372999917715788,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1135999811813235,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.097999968100339,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.5116999857127666,
+        "error": null
+      }
+    ],
+    "total_ms": 163.3247999707237
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 142.7757999044843,
+      "redis_control": 7.543399988207966,
+      "lease_python": 1.3012000708840787,
+      "embedding": 5.945500044617802,
+      "vector_read": 6.066500034648925,
+      "application_other": 1.525099971331656
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 142.7757999044843,
+      "redis_control": 7.543399988207966,
+      "lease_python": 147.200699953828,
+      "embedding": 5.945500044617802,
+      "vector_read": 6.066500034648925
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4220000011846423,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8906000186689198,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.563999965786934,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.7321999766863883,
+        "error": null
+      }
+    ],
+    "total_ms": 165.15750001417473
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 146.42229996388778,
+      "redis_control": 6.257299974095076,
+      "lease_python": 0.9011001093313098,
+      "embedding": 5.91449998319149,
+      "vector_read": 5.880400014575571,
+      "application_other": 1.0759999859146774
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 146.42229996388778,
+      "redis_control": 6.257299974095076,
+      "lease_python": 150.1167000969872,
+      "embedding": 5.91449998319149,
+      "vector_read": 5.880400014575571
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4160999562591314,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3670999906025827,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.118100004736334,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4039999805390835,
+        "error": null
+      }
+    ],
+    "total_ms": 166.4516000309959
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 146.9673000392504,
+      "redis_control": 5.548900051508099,
+      "lease_python": 0.7069999701343477,
+      "embedding": 5.555200041271746,
+      "vector_read": 7.633400033228099,
+      "application_other": 1.0530998697504401
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 146.9673000392504,
+      "redis_control": 5.548900051508099,
+      "lease_python": 150.3977000247687,
+      "embedding": 5.555200041271746,
+      "vector_read": 7.633400033228099
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.271700020879507,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1310999980196357,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.7127000028267503,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4751999988220632,
+        "error": null
+      }
+    ],
+    "total_ms": 167.46490000514314
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 144.76840000133961,
+      "redis_control": 6.624100089538842,
+      "lease_python": 0.8040998945944011,
+      "embedding": 5.58860000455752,
+      "vector_read": 5.7277000159956515,
+      "application_other": 1.269600004889071
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 144.76840000133961,
+      "redis_control": 6.624100089538842,
+      "lease_python": 148.84869992965832,
+      "embedding": 5.58860000455752,
+      "vector_read": 5.7277000159956515
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.8017999827861786,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.281099976040423,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.0894999615848064,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.5034000389277935,
+        "error": null
+      }
+    ],
+    "total_ms": 164.7825000109151
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 144.503700081259,
+      "redis_control": 7.333999907132238,
+      "lease_python": 0.8184998878277838,
+      "embedding": 6.138800003100187,
+      "vector_read": 7.1965999668464065,
+      "application_other": 1.3617001241073012
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 144.503700081259,
+      "redis_control": 7.333999907132238,
+      "lease_python": 148.3037999132648,
+      "embedding": 6.138800003100187,
+      "vector_read": 7.1965999668464065
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.2320000096224248,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.720300002489239,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.661400008946657,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.7800999921746552,
+        "error": null
+      }
+    ],
+    "total_ms": 167.35329997027293
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 147.44959998643026,
+      "redis_control": 6.0628000064753,
+      "lease_python": 0.898800091817975,
+      "embedding": 6.011200021021068,
+      "vector_read": 6.232600018847734,
+      "application_other": 1.3005998916924
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 147.44959998643026,
+      "redis_control": 6.0628000064753,
+      "lease_python": 151.10480005387217,
+      "embedding": 6.011200021021068,
+      "vector_read": 6.232600018847734
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.3350999797694385,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.451799995265901,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8761999672278762,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4527000021189451,
+        "error": null
+      }
+    ],
+    "total_ms": 167.95560001628473
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 148.4607998863794,
+      "redis_control": 5.5605999659746885,
+      "lease_python": 0.7682002033106983,
+      "embedding": 6.022300047334284,
+      "vector_read": 6.56039995374158,
+      "application_other": 1.1039999080821872
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 148.4607998863794,
+      "redis_control": 5.5605999659746885,
+      "lease_python": 151.84380003483966,
+      "embedding": 6.022300047334284,
+      "vector_read": 6.56039995374158
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.2397000100463629,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3256000238470733,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.6385000199079514,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.407700008712709,
+        "error": null
+      }
+    ],
+    "total_ms": 168.47629996482283
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 146.9215999240987,
+      "redis_control": 5.914000037591904,
+      "lease_python": 0.738800095859915,
+      "embedding": 6.159600045066327,
+      "vector_read": 5.925600009504706,
+      "application_other": 1.1655998532660306
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 146.9215999240987,
+      "redis_control": 5.914000037591904,
+      "lease_python": 150.50930005963892,
+      "embedding": 6.159600045066327,
+      "vector_read": 5.925600009504706
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.3463000068441033,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1458999942988157,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.9389999797567725,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.5273000462912023,
+        "error": null
+      }
+    ],
+    "total_ms": 166.82519996538758
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 144.46749998023733,
+      "redis_control": 7.103600015398115,
+      "lease_python": 0.8305000956170261,
+      "embedding": 5.965400021523237,
+      "vector_read": 5.878099997062236,
+      "application_other": 1.668499899096787
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 144.46749998023733,
+      "redis_control": 7.103600015398115,
+      "lease_python": 148.4326000791043,
+      "embedding": 5.965400021523237,
+      "vector_read": 5.878099997062236
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4257999719120562,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.0798000041395426,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.9130000146105886,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.7379000200890005,
+        "error": null
+      }
+    ],
+    "total_ms": 165.91360000893474
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 145.8998999441974,
+      "redis_control": 6.246799894142896,
+      "lease_python": 0.8705001673661172,
+      "embedding": 5.9507000260055065,
+      "vector_read": 6.654499971773475,
+      "application_other": 1.068200042936951
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 145.8998999441974,
+      "redis_control": 6.246799894142896,
+      "lease_python": 150.1500000595115,
+      "embedding": 5.9507000260055065,
+      "vector_read": 6.654499971773475
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.977000036276877,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1983999866060913,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.6870999825187027,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4306000084616244,
+        "error": null
+      }
+    ],
+    "total_ms": 166.69060004642233
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 146.19820000370964,
+      "redis_control": 6.112699978984892,
+      "lease_python": 0.74380001751706,
+      "embedding": 6.030599994119257,
+      "vector_read": 5.766099959146231,
+      "application_other": 1.3000000035390258
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 146.19820000370964,
+      "redis_control": 6.112699978984892,
+      "lease_python": 149.87470000050962,
+      "embedding": 6.030599994119257,
+      "vector_read": 5.766099959146231
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.5528000076301396,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3093999586999416,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.894799992442131,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4288999955169857,
+        "error": null
+      }
+    ],
+    "total_ms": 166.1513999570161
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 146.13809995353222,
+      "redis_control": 6.53690000763163,
+      "lease_python": 0.9350001346319914,
+      "embedding": 5.9970999718643725,
+      "vector_read": 5.870499997399747,
+      "application_other": 1.2394999503158033
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 146.13809995353222,
+      "redis_control": 6.53690000763163,
+      "lease_python": 150.4688001004979,
+      "embedding": 5.9970999718643725,
+      "vector_read": 5.870499997399747
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.899499970022589,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3689000043086708,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.7953000497072935,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.538700016681105,
+        "error": null
+      }
+    ],
+    "total_ms": 166.71710001537576
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 143.86250003008172,
+      "redis_control": 6.335799989756197,
+      "lease_python": 0.8193999528884888,
+      "embedding": 6.02119998075068,
+      "vector_read": 6.460800010245293,
+      "application_other": 1.0380000458098948
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 143.86250003008172,
+      "redis_control": 6.335799989756197,
+      "lease_python": 147.48689997941256,
+      "embedding": 6.02119998075068,
+      "vector_read": 6.460800010245293
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.257200026884675,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.5652999863959849,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.985300041269511,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.5758000081405044,
+        "error": null
+      }
+    ],
+    "total_ms": 164.53770000953227
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 144.02800000971183,
+      "redis_control": 6.180199969094247,
+      "lease_python": 0.7933000451885164,
+      "embedding": 7.459199987351894,
+      "vector_read": 5.602400051429868,
+      "application_other": 1.149499963503331
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 144.02800000971183,
+      "redis_control": 6.180199969094247,
+      "lease_python": 147.87720004096627,
+      "embedding": 7.459199987351894,
+      "vector_read": 5.602400051429868
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4811999863013625,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3157000066712499,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8296000198461115,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.6050999984145164,
+        "error": null
+      }
+    ],
+    "total_ms": 165.2126000262797
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 305.7801999966614,
+      "redis_control": 7.091299979947507,
+      "lease_python": 1.0737000848166645,
+      "embedding": 6.100300000980496,
+      "vector_read": 7.738200016319752,
+      "application_other": 1.710199925582856
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 305.7801999966614,
+      "redis_control": 7.091299979947507,
+      "lease_python": 310.61990006128326,
+      "embedding": 6.100300000980496,
+      "vector_read": 7.738200016319752
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 2.0599999697878957,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.5419000410474837,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.813200011383742,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.7463999683968723,
+        "error": null
+      }
+    ],
+    "total_ms": 329.49390000430867
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 145.86080005392432,
+      "redis_control": 6.316600018180907,
+      "lease_python": 0.8185998303815722,
+      "embedding": 5.857100011780858,
+      "vector_read": 6.332300021313131,
+      "application_other": 1.2290001031942666
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 145.86080005392432,
+      "redis_control": 6.316600018180907,
+      "lease_python": 149.53299990156665,
+      "embedding": 5.857100011780858,
+      "vector_read": 6.332300021313131
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.3128999853506684,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1496000224724412,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.3363999789580703,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.5657999902032316,
+        "error": null
+      }
+    ],
+    "total_ms": 166.41440003877506
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 144.94500000728294,
+      "redis_control": 7.457099913153797,
+      "lease_python": 0.9428001940250397,
+      "embedding": 6.417999975383282,
+      "vector_read": 7.330699998419732,
+      "application_other": 1.6510998830199242
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 144.94500000728294,
+      "redis_control": 7.457099913153797,
+      "lease_python": 149.47520015994087,
+      "embedding": 6.417999975383282,
+      "vector_read": 7.330699998419732
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.5318000223487616,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3327000197023153,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.562300011049956,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 2.0910000312142074,
+        "error": null
+      }
+    ],
+    "total_ms": 168.74469997128472
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 147.98070001415908,
+      "redis_control": 6.507699959911406,
+      "lease_python": 0.990699918475002,
+      "embedding": 7.886100036557764,
+      "vector_read": 11.38899999205023,
+      "application_other": 1.6765000764280558
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 147.98070001415908,
+      "redis_control": 6.507699959911406,
+      "lease_python": 152.21509989351034,
+      "embedding": 7.886100036557764,
+      "vector_read": 11.38899999205023
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.5180999762378633,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3168000150471926,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.9727000035345554,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.7612000228837132,
+        "error": null
+      }
+    ],
+    "total_ms": 176.43069999758154
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 156.53370000654832,
+      "redis_control": 6.173600035253912,
+      "lease_python": 0.9397000540047884,
+      "embedding": 6.040200009010732,
+      "vector_read": 8.091699972283095,
+      "application_other": 1.1551999486982822
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 156.53370000654832,
+      "redis_control": 6.173600035253912,
+      "lease_python": 160.4388000559993,
+      "embedding": 6.040200009010732,
+      "vector_read": 8.091699972283095
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.5784000279381871,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3424999779090285,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8894000095315278,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.415700011420995,
+        "error": null
+      }
+    ],
+    "total_ms": 178.93410002579913
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 158.34689990151674,
+      "redis_control": 5.629099963698536,
+      "lease_python": 0.7664000731892884,
+      "embedding": 6.183300050906837,
+      "vector_read": 7.598600001074374,
+      "application_other": 1.585699967108667
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 158.34689990151674,
+      "redis_control": 5.629099963698536,
+      "lease_python": 161.6863999515772,
+      "embedding": 6.183300050906837,
+      "vector_read": 7.598600001074374
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.1240000021643937,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2526999926194549,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8253999878652394,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4794000308029354,
+        "error": null
+      }
+    ],
+    "total_ms": 180.10999995749444
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 159.44980003405362,
+      "redis_control": 7.0739000220783055,
+      "lease_python": 1.0682999272830784,
+      "embedding": 6.044199981261045,
+      "vector_read": 6.425499974284321,
+      "application_other": 1.6438000602647662
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 159.44980003405362,
+      "redis_control": 7.0739000220783055,
+      "lease_python": 164.08419999061152,
+      "embedding": 6.044199981261045,
+      "vector_read": 6.425499974284321
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.8991000251844525,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.7664000042714179,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.7724999925121665,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.7111999914050102,
+        "error": null
+      }
+    ],
+    "total_ms": 181.70549999922514
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 0.010499963536858559,
+      "redis_control": 6.636500067543238,
+      "lease_python": 0.869699870236218,
+      "embedding": 6.207200000062585,
+      "vector_read": 5.7622999884188175,
+      "application_other": 1.08780013397336
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 0.010499963536858559,
+      "redis_control": 6.636500067543238,
+      "lease_python": 4.023099900223315,
+      "embedding": 6.207200000062585,
+      "vector_read": 5.7622999884188175
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4917999505996704,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2626000097952783,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.252000034786761,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.6764000174589455,
+        "error": null
+      }
+    ],
+    "total_ms": 20.574000023771077
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 163.72209996916354,
+      "redis_control": 6.510699982754886,
+      "lease_python": 1.0022999485954642,
+      "embedding": 9.951099986210465,
+      "vector_read": 6.144800048787147,
+      "application_other": 1.2401000712998211
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 163.72209996916354,
+      "redis_control": 6.510699982754886,
+      "lease_python": 167.66219993587583,
+      "embedding": 9.951099986210465,
+      "vector_read": 6.144800048787147
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4356999890878797,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3300999999046326,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.26690003182739,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.5359999961219728,
+        "error": null
+      }
+    ],
+    "total_ms": 188.57110000681132
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 168.07020001579076,
+      "redis_control": 6.866200070362538,
+      "lease_python": 1.0820998577401042,
+      "embedding": 10.302600043360144,
+      "vector_read": 8.538299996871501,
+      "application_other": 1.7738000606186688
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 168.07020001579076,
+      "redis_control": 6.866200070362538,
+      "lease_python": 172.35969996545464,
+      "embedding": 10.302600043360144,
+      "vector_read": 8.538299996871501
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.6191999893635511,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.5479999710805714,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.136100025381893,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.6260999836958945,
+        "error": null
+      }
+    ],
+    "total_ms": 196.63320004474372
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 172.86359996069223,
+      "redis_control": 7.054199988488108,
+      "lease_python": 1.1145001626573503,
+      "embedding": 10.738399985712022,
+      "vector_read": 5.664600001182407,
+      "application_other": 1.3769999495707452
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 172.86359996069223,
+      "redis_control": 7.054199988488108,
+      "lease_python": 178.0093000852503,
+      "embedding": 10.738399985712022,
+      "vector_read": 5.664600001182407
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.5002000145614147,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1928000021725893,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.852200017310679,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 2.572400029748678,
+        "error": null
+      }
+    ],
+    "total_ms": 198.81230004830286
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 170.38709996268153,
+      "redis_control": 6.278600019868463,
+      "lease_python": 0.938700046390295,
+      "embedding": 9.883400052785873,
+      "vector_read": 5.4778000339865685,
+      "application_other": 1.0693999356590211
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 170.38709996268153,
+      "redis_control": 6.278600019868463,
+      "lease_python": 174.44410000462085,
+      "embedding": 9.883400052785873,
+      "vector_read": 5.4778000339865685
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.699300017207861,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3229000032879412,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8562999903224409,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4495999785140157,
+        "error": null
+      }
+    ],
+    "total_ms": 194.03500005137175
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 171.6089000692591,
+      "redis_control": 6.4332999172620475,
+      "lease_python": 1.0460999910719693,
+      "embedding": 9.775299986358732,
+      "vector_read": 6.052799988538027,
+      "application_other": 1.235000032465905
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 171.6089000692591,
+      "redis_control": 6.4332999172620475,
+      "lease_python": 175.73080002330244,
+      "embedding": 9.775299986358732,
+      "vector_read": 6.052799988538027
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.2873000232502818,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2552000116556883,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.1231999853625894,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.818199991248548,
+        "error": null
+      }
+    ],
+    "total_ms": 196.1513999849558
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 174.43930002627894,
+      "redis_control": 6.614499958232045,
+      "lease_python": 0.9331000619567931,
+      "embedding": 10.23200002964586,
+      "vector_read": 7.964099990203977,
+      "application_other": 1.477799960412085
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 174.43930002627894,
+      "redis_control": 6.614499958232045,
+      "lease_python": 178.43110003741458,
+      "embedding": 10.23200002964586,
+      "vector_read": 7.964099990203977
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.597299997229129,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.249499968253076,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.330999996047467,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4973000506870449,
+        "error": null
+      }
+    ],
+    "total_ms": 201.6608000267297
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 179.3318999116309,
+      "redis_control": 6.329000054392964,
+      "lease_python": 0.9658001945354044,
+      "embedding": 10.282700008247048,
+      "vector_read": 7.564900035504252,
+      "application_other": 1.3508998090401292
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 179.3318999116309,
+      "redis_control": 6.329000054392964,
+      "lease_python": 183.57640010071918,
+      "embedding": 10.282700008247048,
+      "vector_read": 7.564900035504252
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.6332000377587974,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2306999997235835,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8486999906599522,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.680399989709258,
+        "error": null
+      }
+    ],
+    "total_ms": 205.8252000133507
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 182.1211000205949,
+      "redis_control": 6.1178000178188086,
+      "lease_python": 0.8245999342761934,
+      "embedding": 9.885000006761402,
+      "vector_read": 5.735599959734827,
+      "application_other": 1.021800038870424
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 182.1211000205949,
+      "redis_control": 6.1178000178188086,
+      "lease_python": 185.95809995895252,
+      "embedding": 9.885000006761402,
+      "vector_read": 5.735599959734827
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.3675999944098294,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.156299957074225,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.9691999768838286,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.6754000098444521,
+        "error": null
+      }
+    ],
+    "total_ms": 205.70589997805655
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 180.88709999574348,
+      "redis_control": 6.434199924115092,
+      "lease_python": 0.8500000694766641,
+      "embedding": 9.991800005082041,
+      "vector_read": 6.4845000160858035,
+      "application_other": 1.3941999641247094
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 180.88709999574348,
+      "redis_control": 6.434199924115092,
+      "lease_python": 184.47390000801533,
+      "embedding": 9.991800005082041,
+      "vector_read": 6.4845000160858035
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4010000159032643,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.4799999771639705,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.2407000069506466,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.3620999525301158,
+        "error": null
+      }
+    ],
+    "total_ms": 206.0417999746278
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 177.42960003670305,
+      "redis_control": 5.825800122693181,
+      "lease_python": 0.7026997627690434,
+      "embedding": 9.472300007473677,
+      "vector_read": 6.28349999897182,
+      "application_other": 0.9885000763460994
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 177.42960003670305,
+      "redis_control": 5.825800122693181,
+      "lease_python": 180.9310998651199,
+      "embedding": 9.472300007473677,
+      "vector_read": 6.28349999897182
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.2316000065766275,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1692999978549778,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8754000193439424,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.5912000089883804,
+        "error": null
+      }
+    ],
+    "total_ms": 200.70240000495687
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 174.68920000828803,
+      "redis_control": 6.596500054001808,
+      "lease_python": 0.8509999606758356,
+      "embedding": 9.865300031378865,
+      "vector_read": 6.099399994127452,
+      "application_other": 1.2055999250151217
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 174.68920000828803,
+      "redis_control": 6.596500054001808,
+      "lease_python": 178.506699972786,
+      "embedding": 9.865300031378865,
+      "vector_read": 6.099399994127452
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4362999936565757,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3538000057451427,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.3111000191420317,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.5605000080540776,
+        "error": null
+      }
+    ],
+    "total_ms": 199.3069999734871
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 175.67610001424327,
+      "redis_control": 5.96210005460307,
+      "lease_python": 0.8356999605894089,
+      "embedding": 10.238799965009093,
+      "vector_read": 5.860700039193034,
+      "application_other": 1.4594999374821782
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 175.67610001424327,
+      "redis_control": 5.96210005460307,
+      "lease_python": 179.49519999092445,
+      "embedding": 10.238799965009093,
+      "vector_read": 5.860700039193034
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.367199991364032,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.119400025345385,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8810000037774444,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.6475999727845192,
+        "error": null
+      }
+    ],
+    "total_ms": 200.03289997112006
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 175.52009999053553,
+      "redis_control": 6.125199899543077,
+      "lease_python": 0.9684002143330872,
+      "embedding": 10.169400018639863,
+      "vector_read": 8.980899991001934,
+      "application_other": 1.5966998762451112
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 175.52009999053553,
+      "redis_control": 6.125199899543077,
+      "lease_python": 179.35790010960773,
+      "embedding": 10.169400018639863,
+      "vector_read": 8.980899991001934
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.539000018965453,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3284999877214432,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.0423000096343458,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.359499990940094,
+        "error": null
+      }
+    ],
+    "total_ms": 203.3606999902986
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 176.13530007656664,
+      "redis_control": 6.0347000835463405,
+      "lease_python": 0.940399884711951,
+      "embedding": 9.838099998887628,
+      "vector_read": 6.454500020481646,
+      "application_other": 1.1019999510608613
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 176.13530007656664,
+      "redis_control": 6.0347000835463405,
+      "lease_python": 179.81070006499067,
+      "embedding": 9.838099998887628,
+      "vector_read": 6.454500020481646
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.2888999772258103,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2858000118285418,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.031699987128377,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.471000025048852,
+        "error": null
+      }
+    ],
+    "total_ms": 200.50500001525506
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 173.97319996962324,
+      "redis_control": 6.433799979276955,
+      "lease_python": 0.7626001024618745,
+      "embedding": 10.305400006473064,
+      "vector_read": 6.243000039830804,
+      "application_other": 1.6990998992696404
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 173.97319996962324,
+      "redis_control": 6.433799979276955,
+      "lease_python": 177.43590008467436,
+      "embedding": 10.305400006473064,
+      "vector_read": 6.243000039830804
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.2144999927841127,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2732999748550355,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.483899996150285,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.511800044681877,
+        "error": null
+      }
+    ],
+    "total_ms": 199.41709999693558
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 175.78250000951812,
+      "redis_control": 5.807499983347952,
+      "lease_python": 0.7319001597352326,
+      "embedding": 10.109900031238794,
+      "vector_read": 6.375099997967482,
+      "application_other": 1.0374998091720045
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 175.78250000951812,
+      "redis_control": 5.807499983347952,
+      "lease_python": 179.1186001501046,
+      "embedding": 10.109900031238794,
+      "vector_read": 6.375099997967482
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.1706000077538192,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1479000095278025,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.0742000197060406,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4610000071115792,
+        "error": null
+      }
+    ],
+    "total_ms": 199.84439999097958
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 174.96340000070632,
+      "redis_control": 6.367600057274103,
+      "lease_python": 0.9901999146677554,
+      "embedding": 10.569999983999878,
+      "vector_read": 7.022000034339726,
+      "application_other": 1.1400000075809658
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 174.96340000070632,
+      "redis_control": 6.367600057274103,
+      "lease_python": 178.72919992078096,
+      "embedding": 10.569999983999878,
+      "vector_read": 7.022000034339726
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.5143000055104494,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.7893000040203333,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8317000358365476,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.2867000186815858,
+        "error": null
+      }
+    ],
+    "total_ms": 201.05319999856874
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 177.763799962122,
+      "redis_control": 6.147900014184415,
+      "lease_python": 0.8123001316562295,
+      "embedding": 9.627800027374178,
+      "vector_read": 6.3239000155590475,
+      "application_other": 1.0930998832918704
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 177.763799962122,
+      "redis_control": 6.147900014184415,
+      "lease_python": 181.29700009012595,
+      "embedding": 9.627800027374178,
+      "vector_read": 6.3239000155590475
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.2661999789997935,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2102000182494521,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.2353999665938318,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4863999676890671,
+        "error": null
+      }
+    ],
+    "total_ms": 201.76880003418773
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 177.17189999530092,
+      "redis_control": 6.155000010039657,
+      "lease_python": 1.0042000212706625,
+      "embedding": 9.92819998646155,
+      "vector_read": 7.86140002310276,
+      "application_other": 1.2759999954141676
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 177.17189999530092,
+      "redis_control": 6.155000010039657,
+      "lease_python": 181.0789000010118,
+      "embedding": 9.92819998646155,
+      "vector_read": 7.86140002310276
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4391000149771571,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.4194000395946205,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8550000386312604,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.512099988758564,
+        "error": null
+      }
+    ],
+    "total_ms": 203.39670003158972
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 178.9748000446707,
+      "redis_control": 7.018999953288585,
+      "lease_python": 0.7552000461146235,
+      "embedding": 10.10170002700761,
+      "vector_read": 6.660100014414638,
+      "application_other": 1.095099956728518
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 178.9748000446707,
+      "redis_control": 7.018999953288585,
+      "lease_python": 182.6730000320822,
+      "embedding": 10.10170002700761,
+      "vector_read": 6.660100014414638
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.228799985256046,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.7387999687343836,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.359099977184087,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.7379000200890005,
+        "error": null
+      }
+    ],
+    "total_ms": 204.60590004222468
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 176.74219998298213,
+      "redis_control": 6.245500058867037,
+      "lease_python": 0.8677000878378749,
+      "embedding": 10.11790003394708,
+      "vector_read": 6.693999981507659,
+      "application_other": 1.2348998570814729
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 176.74219998298213,
+      "redis_control": 6.245500058867037,
+      "lease_python": 180.55440008174628,
+      "embedding": 10.11790003394708,
+      "vector_read": 6.693999981507659
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.6849000239744782,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3685000012628734,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.9566999981179833,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.284700003452599,
+        "error": null
+      }
+    ],
+    "total_ms": 201.90220000222325
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 177.5366000365466,
+      "redis_control": 6.269900011830032,
+      "lease_python": 0.7541000377386808,
+      "embedding": 13.123799988534302,
+      "vector_read": 5.74120000237599,
+      "application_other": 1.0286999167874455
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 177.5366000365466,
+      "redis_control": 6.269900011830032,
+      "lease_python": 181.2094000633806,
+      "embedding": 13.123799988534302,
+      "vector_read": 5.74120000237599
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.264000020455569,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.15870003355667,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.21060001058504,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.6959999920800328,
+        "error": null
+      }
+    ],
+    "total_ms": 204.45429999381304
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 179.03259996091947,
+      "redis_control": 6.0612999950535595,
+      "lease_python": 0.8709001704119146,
+      "embedding": 10.073000041302294,
+      "vector_read": 6.529800011776388,
+      "application_other": 1.3426998630166054
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 179.03259996091947,
+      "redis_control": 6.0612999950535595,
+      "lease_python": 182.89030011510476,
+      "embedding": 10.073000041302294,
+      "vector_read": 6.529800011776388
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.6284000012092292,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.245700055733323,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8512000096961856,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.3886000378988683,
+        "error": null
+      }
+    ],
+    "total_ms": 203.91030004248023
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 179.5730999438092,
+      "redis_control": 6.669700029306114,
+      "lease_python": 1.678299915511161,
+      "embedding": 10.73859998723492,
+      "vector_read": 6.133499962743372,
+      "application_other": 1.940100162755698
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 179.5730999438092,
+      "redis_control": 6.669700029306114,
+      "lease_python": 184.13209985010326,
+      "embedding": 10.73859998723492,
+      "vector_read": 6.133499962743372
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.1879000230692327,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.565899990964681,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.261199988424778,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.7207000055350363,
+        "error": null
+      }
+    ],
+    "total_ms": 206.73330000136048
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 180.6553999776952,
+      "redis_control": 6.3336999155581,
+      "lease_python": 0.7966001285240054,
+      "embedding": 10.502399993129075,
+      "vector_read": 5.431400029920042,
+      "application_other": 1.1034999624826014
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 180.6553999776952,
+      "redis_control": 6.3336999155581,
+      "lease_python": 184.52680006157607,
+      "embedding": 10.502399993129075,
+      "vector_read": 5.431400029920042
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4210999943315983,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1891999747604132,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.087899949401617,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.6801999881863594,
+        "error": null
+      }
+    ],
+    "total_ms": 204.82300000730902
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 180.79460004810244,
+      "redis_control": 6.44349999492988,
+      "lease_python": 1.0501999058760703,
+      "embedding": 10.262299969326705,
+      "vector_read": 6.188400031533092,
+      "application_other": 1.4177000266499817
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 180.79460004810244,
+      "redis_control": 6.44349999492988,
+      "lease_python": 184.88749995594844,
+      "embedding": 10.262299969326705,
+      "vector_read": 6.188400031533092
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.3077000039629638,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.209600013680756,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.2133999736979604,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.764099986758083,
+        "error": null
+      }
+    ],
+    "total_ms": 206.15669997641817
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 179.94079989148304,
+      "redis_control": 6.441300094593316,
+      "lease_python": 0.827200070489198,
+      "embedding": 10.51059999736026,
+      "vector_read": 5.422300018835813,
+      "application_other": 1.7223999020643532
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 179.94079989148304,
+      "redis_control": 6.441300094593316,
+      "lease_python": 183.65219997940585,
+      "embedding": 10.51059999736026,
+      "vector_read": 5.422300018835813
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.3902999926358461,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3769999495707452,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.2110999561846256,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.5201999922282994,
+        "error": null
+      }
+    ],
+    "total_ms": 204.86459997482598
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 179.24179992405698,
+      "redis_control": 6.887500057928264,
+      "lease_python": 1.4925000141374767,
+      "embedding": 10.926599963568151,
+      "vector_read": 6.182500044815242,
+      "application_other": 1.5340999816544354
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 179.24179992405698,
+      "redis_control": 6.887500057928264,
+      "lease_python": 184.0061999973841,
+      "embedding": 10.926599963568151,
+      "vector_read": 6.182500044815242
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.6252999776042998,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.5688000130467117,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.0697000436484814,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.6951999859884381,
+        "error": null
+      }
+    ],
+    "total_ms": 206.26499998616055
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 181.12099991412833,
+      "redis_control": 6.624299974646419,
+      "lease_python": 0.8813001331873238,
+      "embedding": 10.075600002892315,
+      "vector_read": 5.8741000248119235,
+      "application_other": 1.0436999727971852
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 181.12099991412833,
+      "redis_control": 6.624299974646419,
+      "lease_python": 185.09310006629676,
+      "embedding": 10.075600002892315,
+      "vector_read": 5.8741000248119235
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.3646999723277986,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3685000012628734,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.1834999788552523,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.755799981765449,
+        "error": null
+      }
+    ],
+    "total_ms": 205.6200000224635
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 178.66980005055666,
+      "redis_control": 6.6516000078991055,
+      "lease_python": 0.7628000457771122,
+      "embedding": 10.22759999614209,
+      "vector_read": 5.6034000008367,
+      "application_other": 1.4888999285176396
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 178.66980005055666,
+      "redis_control": 6.6516000078991055,
+      "lease_python": 182.3525000945665,
+      "embedding": 10.22759999614209,
+      "vector_read": 5.6034000008367
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.311000029090792,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3283999869599938,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.430900000035763,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.6339000430889428,
+        "error": null
+      }
+    ],
+    "total_ms": 203.4041000297293
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 178.52459993446246,
+      "redis_control": 7.144300092477351,
+      "lease_python": 0.7789000519551337,
+      "embedding": 10.108400019817054,
+      "vector_read": 5.6446000235155225,
+      "application_other": 1.16129987873137
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 178.52459993446246,
+      "redis_control": 7.144300092477351,
+      "lease_python": 182.96529998769984,
+      "embedding": 10.108400019817054,
+      "vector_read": 5.6446000235155225
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.6788000357337296,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.408900017850101,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.092700044158846,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 2.0087999873794615,
+        "error": null
+      }
+    ],
+    "total_ms": 203.3621000009589
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 176.18120001861826,
+      "redis_control": 6.2077000620774925,
+      "lease_python": 0.7634999928995967,
+      "embedding": 10.32080000732094,
+      "vector_read": 6.782599957659841,
+      "application_other": 1.1963999713771045
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 176.18120001861826,
+      "redis_control": 6.2077000620774925,
+      "lease_python": 179.76290005026385,
+      "embedding": 10.32080000732094,
+      "vector_read": 6.782599957659841
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.381700043566525,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.5373000060208142,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8752999603748322,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.465699984692037,
+        "error": null
+      }
+    ],
+    "total_ms": 201.45220000995323
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 177.28279996663332,
+      "redis_control": 6.078499951399863,
+      "lease_python": 0.6729001179337502,
+      "embedding": 9.785800008103251,
+      "vector_read": 5.617699993308634,
+      "application_other": 1.06669997330755
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 177.28279996663332,
+      "redis_control": 6.078499951399863,
+      "lease_python": 181.06450006598607,
+      "embedding": 9.785800008103251,
+      "vector_read": 5.617699993308634
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.2617000029422343,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2214999878779054,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.7659000004641712,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.8715999904088676,
+        "error": null
+      }
+    ],
+    "total_ms": 200.50440001068637
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 175.14810001011938,
+      "redis_control": 6.149100023321807,
+      "lease_python": 0.804700015578419,
+      "embedding": 9.998900000937283,
+      "vector_read": 6.746700033545494,
+      "application_other": 1.5180999180302024
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 175.14810001011938,
+      "redis_control": 6.149100023321807,
+      "lease_python": 178.81090001901612,
+      "embedding": 9.998900000937283,
+      "vector_read": 6.746700033545494
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.373999984934926,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1600999860092998,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.1518999710679054,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.512400049250573,
+        "error": null
+      }
+    ],
+    "total_ms": 200.36560000153258
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 175.43549998663366,
+      "redis_control": 5.965499964077026,
+      "lease_python": 0.9104001219384372,
+      "embedding": 10.54149999981746,
+      "vector_read": 5.345000012312084,
+      "application_other": 1.5021999133750796
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 175.43549998663366,
+      "redis_control": 5.965499964077026,
+      "lease_python": 179.02450007386506,
+      "embedding": 10.54149999981746,
+      "vector_read": 5.345000012312084
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.298599992878735,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2322000111453235,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.0853999885730445,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4036999782547355,
+        "error": null
+      }
+    ],
+    "total_ms": 199.70009999815375
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 172.6619999972172,
+      "redis_control": 6.162400008179247,
+      "lease_python": 0.8232999825850129,
+      "embedding": 11.797400016803294,
+      "vector_read": 6.705000007059425,
+      "application_other": 1.2054999824613333
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 172.6619999972172,
+      "redis_control": 6.162400008179247,
+      "lease_python": 176.57469998812303,
+      "embedding": 11.797400016803294,
+      "vector_read": 6.705000007059425
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4634999679401517,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1791999568231404,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.9151000306010246,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.6564999823458493,
+        "error": null
+      }
+    ],
+    "total_ms": 199.35559999430552
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 174.87190006067976,
+      "redis_control": 5.94709999859333,
+      "lease_python": 0.778599816840142,
+      "embedding": 9.874599985778332,
+      "vector_read": 6.165899976622313,
+      "application_other": 1.0388001683168113
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 174.87190006067976,
+      "redis_control": 5.94709999859333,
+      "lease_python": 178.4577998914756,
+      "embedding": 9.874599985778332,
+      "vector_read": 6.165899976622313
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4473000192083418,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1384000536054373,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.0195000106468797,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.3874000287614763,
+        "error": null
+      }
+    ],
+    "total_ms": 198.6769000068307
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 173.99900004966184,
+      "redis_control": 6.500099960248917,
+      "lease_python": 0.7534999749623239,
+      "embedding": 10.195600043516606,
+      "vector_read": 6.591899960767478,
+      "application_other": 1.1499000247567892
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 173.99900004966184,
+      "redis_control": 6.500099960248917,
+      "lease_python": 177.92099999496713,
+      "embedding": 10.195600043516606,
+      "vector_read": 6.591899960767478
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.2443999876268208,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.0959000210277736,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.259400032926351,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.9512000144459307,
+        "error": null
+      }
+    ],
+    "total_ms": 199.19000001391396
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 174.35639997711405,
+      "redis_control": 5.855800001882017,
+      "lease_python": 0.7995000923983753,
+      "embedding": 10.328100004699081,
+      "vector_read": 5.508299975190312,
+      "application_other": 1.294399960897863
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 174.35639997711405,
+      "redis_control": 5.855800001882017,
+      "lease_python": 177.73400008445606,
+      "embedding": 10.328100004699081,
+      "vector_read": 5.508299975190312
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.2555000139400363,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.214299991261214,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.087900007609278,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.3469000114127994,
+        "error": null
+      }
+    ],
+    "total_ms": 198.1425000121817
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 172.89779998827726,
+      "redis_control": 6.304999929852784,
+      "lease_python": 0.803799950517714,
+      "embedding": 10.545200027991086,
+      "vector_read": 6.86580000910908,
+      "application_other": 1.280600088648498
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 172.89779998827726,
+      "redis_control": 6.304999929852784,
+      "lease_python": 176.52389989234507,
+      "embedding": 10.545200027991086,
+      "vector_read": 6.86580000910908
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4109999756328762,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3024000218138099,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.2051000269129872,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4391000149771571,
+        "error": null
+      }
+    ],
+    "total_ms": 198.69819999439642
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 175.47580000245944,
+      "redis_control": 5.975099978968501,
+      "lease_python": 0.8124999585561454,
+      "embedding": 10.072499979287386,
+      "vector_read": 5.916499998420477,
+      "application_other": 1.1196000850759447
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 175.47580000245944,
+      "redis_control": 5.975099978968501,
+      "lease_python": 179.51959994388744,
+      "embedding": 10.072499979287386,
+      "vector_read": 5.916499998420477
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.2682999949902296,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.0917999898083508,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.6704000299796462,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.9927999819628894,
+        "error": null
+      }
+    ],
+    "total_ms": 199.3720000027679
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 174.1873999708332,
+      "redis_control": 5.98300009733066,
+      "lease_python": 0.9042999590747058,
+      "embedding": 10.214400012046099,
+      "vector_read": 5.978100001811981,
+      "application_other": 1.409499964211136
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 174.1873999708332,
+      "redis_control": 5.98300009733066,
+      "lease_python": 178.14490001183003,
+      "embedding": 10.214400012046099,
+      "vector_read": 5.978100001811981
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.5264999819919467,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.144799985922873,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8048999481834471,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.5581999905407429,
+        "error": null
+      }
+    ],
+    "total_ms": 198.6767000053078
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 174.41570007940754,
+      "redis_control": 6.014400045387447,
+      "lease_python": 0.8857998182065785,
+      "embedding": 10.103999986313283,
+      "vector_read": 6.058799976017326,
+      "application_other": 1.2202000943943858
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 174.41570007940754,
+      "redis_control": 6.014400045387447,
+      "lease_python": 178.21539990836754,
+      "embedding": 10.103999986313283,
+      "vector_read": 6.058799976017326
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.3696000096388161,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2832999927923083,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8366999574936926,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.572699984535575,
+        "error": null
+      }
+    ],
+    "total_ms": 198.69889999972656
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 171.99120001168922,
+      "redis_control": 6.944600085262209,
+      "lease_python": 0.9050999069586396,
+      "embedding": 11.170500016305596,
+      "vector_read": 6.226600031368434,
+      "application_other": 1.3036999735049903
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 171.99120001168922,
+      "redis_control": 6.944600085262209,
+      "lease_python": 176.4226999366656,
+      "embedding": 11.170500016305596,
+      "vector_read": 6.226600031368434
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.7516000079922378,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2313000042922795,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.211200015153736,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.8072999664582312,
+        "error": null
+      }
+    ],
+    "total_ms": 198.54170002508909
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 357.4492000043392,
+      "redis_control": 5.947299941908568,
+      "lease_python": 0.8912999765016139,
+      "embedding": 10.099499952048063,
+      "vector_read": 7.13689997792244,
+      "application_other": 1.6602001269347966
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 357.4492000043392,
+      "redis_control": 5.947299941908568,
+      "lease_python": 361.23389995191246,
+      "embedding": 10.099499952048063,
+      "vector_read": 7.13689997792244
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.2605999945662916,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.159600040409714,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.9184999982826412,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.6648000455461442,
+        "error": null
+      }
+    ],
+    "total_ms": 383.1843999796547
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 174.87859999528155,
+      "redis_control": 6.914099969435483,
+      "lease_python": 0.7730999495834112,
+      "embedding": 10.279100039042532,
+      "vector_read": 6.013899983372539,
+      "application_other": 1.3433000422082841
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 174.87859999528155,
+      "redis_control": 6.914099969435483,
+      "lease_python": 179.40899991663173,
+      "embedding": 10.279100039042532,
+      "vector_read": 6.013899983372539
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.2457999982871115,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.526000036392361,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.650799997150898,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 2.540399960707873,
+        "error": null
+      }
+    ],
+    "total_ms": 200.2020999789238
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 176.40139994909987,
+      "redis_control": 6.346000009216368,
+      "lease_python": 0.9860001155175269,
+      "embedding": 10.168800014071167,
+      "vector_read": 5.77079999493435,
+      "application_other": 1.3908999389968812
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 176.40139994909987,
+      "redis_control": 6.346000009216368,
+      "lease_python": 180.34870008705184,
+      "embedding": 10.168800014071167,
+      "vector_read": 5.77079999493435
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.4175999676808715,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.5035999822430313,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.9055999582633376,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.5767000149935484,
+        "error": null
+      }
+    ],
+    "total_ms": 201.06390002183616
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 175.27960002189502,
+      "redis_control": 7.089400081895292,
+      "lease_python": 1.0480000055395067,
+      "embedding": 10.23650000570342,
+      "vector_read": 8.200399985071272,
+      "application_other": 1.4141998835839331
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 175.27960002189502,
+      "redis_control": 7.089400081895292,
+      "lease_python": 179.89570007193834,
+      "embedding": 10.23650000570342,
+      "vector_read": 8.200399985071272
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.868800027295947,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.4704999630339444,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.070799993816763,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.732699980493635,
+        "error": null
+      }
+    ],
+    "total_ms": 203.26809998368844
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 179.354100022465,
+      "redis_control": 6.48189993808046,
+      "lease_python": 0.9832999785430729,
+      "embedding": 9.905299986712635,
+      "vector_read": 7.962299976497889,
+      "application_other": 1.5992000699043274
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 179.354100022465,
+      "redis_control": 6.48189993808046,
+      "lease_python": 183.05739999050274,
+      "embedding": 9.905299986712635,
+      "vector_read": 7.962299976497889
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.3429000391624868,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.4598999987356365,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.328300033695996,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4081000117585063,
+        "error": null
+      }
+    ],
+    "total_ms": 206.28609997220337
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 181.78760004229844,
+      "redis_control": 6.800800038035959,
+      "lease_python": 0.8954998338595033,
+      "embedding": 10.112699994351715,
+      "vector_read": 6.8931999849155545,
+      "application_other": 1.488800102379173
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 181.78760004229844,
+      "redis_control": 6.800800038035959,
+      "lease_python": 185.95989991445094,
+      "embedding": 10.112699994351715,
+      "vector_read": 6.8931999849155545
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.5560999745503068,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1758999899029732,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.3751999833621085,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.7496999935247004,
+        "error": null
+      }
+    ],
+    "total_ms": 207.97859999584034
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 183.69430000893772,
+      "redis_control": 6.703899998683482,
+      "lease_python": 0.9657999034970999,
+      "embedding": 10.177400021348149,
+      "vector_read": 6.2886999803595245,
+      "application_other": 1.5413000946864486
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 183.69430000893772,
+      "redis_control": 6.703899998683482,
+      "lease_python": 187.67049995949492,
+      "embedding": 10.177400021348149,
+      "vector_read": 6.2886999803595245
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.601400028448552,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.9523999653756618,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.7654999974183738,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4413000317290425,
+        "error": null
+      }
+    ],
+    "total_ms": 209.37140000751242
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 0.007500057108700275,
+      "redis_control": 6.112599978223443,
+      "lease_python": 0.8041998953558505,
+      "embedding": 10.364299989305437,
+      "vector_read": 7.117000001017004,
+      "application_other": 1.0185000719502568
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 0.007500057108700275,
+      "redis_control": 6.112599978223443,
+      "lease_python": 4.167899955064058,
+      "embedding": 10.364299989305437,
+      "vector_read": 7.117000001017004
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.921100018080324,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.126200018916279,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.6475999727845192,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4607000048272312,
+        "error": null
+      }
+    ],
+    "total_ms": 25.42409999296069
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 183.23239998426288,
+      "redis_control": 7.736600062344223,
+      "lease_python": 1.1634999536909163,
+      "embedding": 10.141999984625727,
+      "vector_read": 7.29850004427135,
+      "application_other": 1.1871999595314264
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 183.23239998426288,
+      "redis_control": 7.736600062344223,
+      "lease_python": 187.5319000100717,
+      "embedding": 10.141999984625727,
+      "vector_read": 7.29850004427135
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.7255000420846045,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.4185999645851552,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.2111000143922865,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4459999511018395,
+        "error": null
+      }
+    ],
+    "total_ms": 210.76019998872653
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 185.42349996278062,
+      "redis_control": 7.319299911614507,
+      "lease_python": 0.8730001864023507,
+      "embedding": 10.138500016182661,
+      "vector_read": 6.834699946921319,
+      "application_other": 1.8179999897256494
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 185.42349996278062,
+      "redis_control": 7.319299911614507,
+      "lease_python": 190.34170010127127,
+      "embedding": 10.138500016182661,
+      "vector_read": 6.834699946921319
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.3183000264689326,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1295999865978956,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.1689999848604202,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 2.7660999912768602,
+        "error": null
+      }
+    ],
+    "total_ms": 212.4070000136271
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 187.7557000843808,
+      "redis_control": 6.366699992213398,
+      "lease_python": 1.0075999307446182,
+      "embedding": 9.793200006242841,
+      "vector_read": 7.375499990303069,
+      "application_other": 1.3162000104784966
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 187.7557000843808,
+      "redis_control": 6.366699992213398,
+      "lease_python": 192.01430003158748,
+      "embedding": 9.793200006242841,
+      "vector_read": 7.375499990303069
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.8042000010609627,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3168000150471926,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8230999703519046,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4859999646432698,
+        "error": null
+      }
+    ],
+    "total_ms": 213.61490001436323
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 185.62760000349954,
+      "redis_control": 6.405600055586547,
+      "lease_python": 1.004900026600808,
+      "embedding": 10.67650003824383,
+      "vector_read": 8.54279997292906,
+      "application_other": 1.4609998906962574
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 185.62760000349954,
+      "redis_control": 6.405600055586547,
+      "lease_python": 189.5309000974521,
+      "embedding": 10.67650003824383,
+      "vector_read": 8.54279997292906
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.51269999332726,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.6828000079840422,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8539000302553177,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4181999722495675,
+        "error": null
+      }
+    ],
+    "total_ms": 213.71839998755604
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 186.78270000964403,
+      "redis_control": 6.073600088711828,
+      "lease_python": 0.9361999109387398,
+      "embedding": 10.34300000173971,
+      "vector_read": 6.257899978663772,
+      "application_other": 1.2172000133432448
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 186.78270000964403,
+      "redis_control": 6.073600088711828,
+      "lease_python": 190.4291999526322,
+      "embedding": 10.34300000173971,
+      "vector_read": 6.257899978663772
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.3292999938130379,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.5610000118613243,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8255000468343496,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4152000076137483,
+        "error": null
+      }
+    ],
+    "total_ms": 211.61060000304133
+  },
+  {
+    "kind": "concurrent_retrieval",
+    "components_ms": {
+      "local_lock_wait": 185.47359999502078,
+      "redis_control": 6.475600006524473,
+      "lease_python": 1.3250999618321657,
+      "embedding": 9.945600002538413,
+      "vector_read": 7.623800018336624,
+      "application_other": 1.8263000529259443
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 185.47359999502078,
+      "redis_control": 6.475600006524473,
+      "lease_python": 189.844099979382,
+      "embedding": 9.945600002538413,
+      "vector_read": 7.623800018336624
+    },
+    "calls": {
+      "local_lock_wait": 4,
+      "redis_control": 4,
+      "lease_python": 8,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.498199999332428,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.5557999722659588,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8978000152856112,
+        "error": null
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.5841000131331384,
+        "error": null
+      }
+    ],
+    "total_ms": 212.6700000371784
+  }
+]

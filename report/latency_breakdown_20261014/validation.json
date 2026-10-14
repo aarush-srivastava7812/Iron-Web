@@ -1,0 +1,14 @@
+{
+  "script_syntax": "passed",
+  "script_lint": "passed",
+  "nested_timer_accounting": "passed",
+  "raw_aggregate_recalculation": "passed",
+  "quality_metrics_unchanged": 153,
+  "measured_retrieval_requests": 1791,
+  "measured_write_probes": 60,
+  "pdf_pages": 7,
+  "pdf_text_checks": "passed",
+  "pdf_visual_review": "passed",
+  "production_application_edits": "none",
+  "observed_initial_socket_timeouts": 1
+}

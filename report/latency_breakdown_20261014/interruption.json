@@ -1,0 +1,22 @@
+{
+  "dataset": "locomo",
+  "profile": "reranked_hybrid",
+  "successful_partial_samples": 393,
+  "failed_attempts": 1,
+  "error_type": "redis.exceptions.TimeoutError",
+  "error": "Timeout reading from socket",
+  "failing_command": "EVALSHA",
+  "stage": "graph lease release",
+  "configured_socket_timeout_sec": 10,
+  "failed_request_total_ms": null,
+  "cause": "Not established by available diagnostics",
+  "post_failure_ping": true,
+  "post_failure_persistence": {
+    "rdb_bgsave_in_progress": 0,
+    "rdb_last_bgsave_status": "ok",
+    "aof_rewrite_in_progress": 0,
+    "aof_last_bgrewrite_status": "ok",
+    "aof_current_size": 16433619
+  },
+  "handling": "Preserve partial pass; repeat complete unfinished profile without changing application settings"
+}

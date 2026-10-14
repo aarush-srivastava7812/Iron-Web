@@ -1,0 +1,1012 @@
+[
+  {
+    "kind": "cold_cache",
+    "components_ms": {
+      "local_lock_wait": 0.014399993233382702,
+      "redis_control": 12.033800012432039,
+      "lease_python": 0.8271997794508934,
+      "graph_query": 77.82999990740791,
+      "graph_sdk_decode": 79.54949996201321,
+      "graph_client": 0.35510025918483734,
+      "embedding": 6.521600007545203,
+      "vector_read": 75.85520000429824,
+      "application_other": 2.8550000861287117
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 0.014399993233382702,
+      "redis_control": 12.033800012432039,
+      "lease_python": 4.291399789508432,
+      "graph_query": 77.82999990740791,
+      "graph_sdk_decode": 157.37949986942112,
+      "graph_client": 163.5983000160195,
+      "embedding": 6.521600007545203,
+      "vector_read": 75.85520000429824
+    },
+    "calls": {
+      "local_lock_wait": 8,
+      "redis_control": 8,
+      "lease_python": 16,
+      "graph_query": 4,
+      "graph_sdk_decode": 4,
+      "graph_client": 4,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.250100031029433,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1616000556387007,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1793000157922506,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 1.80460000410676,
+        "error": null,
+        "server_execution_ms": 0.373232
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.7080999678000808,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.4041999820619822,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 62.59919999865815,
+        "error": null,
+        "server_execution_ms": 2.056429
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.898899965453893,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 7.005999970715493,
+        "error": null,
+        "server_execution_ms": 5.517919
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.291799999307841,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 6.480299984104931,
+        "error": null,
+        "server_execution_ms": 5.070604
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 2.224800002295524,
+        "error": null
+      }
+    ],
+    "total_ms": 255.84180001169443
+  },
+  {
+    "kind": "cold_cache",
+    "components_ms": {
+      "local_lock_wait": 0.014299934264272451,
+      "redis_control": 10.725299885962158,
+      "lease_python": 0.7996001513674855,
+      "graph_query": 77.19190005445853,
+      "graph_sdk_decode": 6.403799983672798,
+      "graph_client": 0.3502999315969646,
+      "embedding": 6.596599996555597,
+      "vector_read": 71.08209998114035,
+      "application_other": 3.324200108181685
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 0.014299934264272451,
+      "redis_control": 10.725299885962158,
+      "lease_python": 3.317000053357333,
+      "graph_query": 77.19190005445853,
+      "graph_sdk_decode": 83.59570003813133,
+      "graph_client": 89.02939996914938,
+      "embedding": 6.596599996555597,
+      "vector_read": 71.08209998114035
+    },
+    "calls": {
+      "local_lock_wait": 8,
+      "redis_control": 8,
+      "lease_python": 16,
+      "graph_query": 4,
+      "graph_sdk_decode": 4,
+      "graph_client": 4,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.0645999573171139,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.0337000130675733,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1570000206120312,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 1.411000033840537,
+        "error": null,
+        "server_execution_ms": 0.221629
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.177799993660301,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.0899999761022627,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 62.11300002178177,
+        "error": null,
+        "server_execution_ms": 2.114172
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.6949999844655395,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 6.799600028898567,
+        "error": null,
+        "server_execution_ms": 5.320798
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.121399982366711,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 6.917399994563311,
+        "error": null,
+        "server_execution_ms": 5.228038
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.4627999626100063,
+        "error": null
+      }
+    ],
+    "total_ms": 176.48810002719983
+  },
+  {
+    "kind": "cold_cache",
+    "components_ms": {
+      "local_lock_wait": 0.015899946447461843,
+      "redis_control": 11.028399982023984,
+      "lease_python": 0.763599993661046,
+      "graph_query": 81.94579998962581,
+      "graph_sdk_decode": 7.332800014410168,
+      "graph_client": 0.3242000238969922,
+      "embedding": 6.210200022906065,
+      "vector_read": 69.1264999913983,
+      "application_other": 3.9773000171408057
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 0.015899946447461843,
+      "redis_control": 11.028399982023984,
+      "lease_python": 3.416599938645959,
+      "graph_query": 81.94579998962581,
+      "graph_sdk_decode": 89.27860000403598,
+      "graph_client": 95.14250000938773,
+      "embedding": 6.210200022906065,
+      "vector_read": 69.1264999913983
+    },
+    "calls": {
+      "local_lock_wait": 8,
+      "redis_control": 8,
+      "lease_python": 16,
+      "graph_query": 4,
+      "graph_sdk_decode": 4,
+      "graph_client": 4,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.0747999767772853,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1072999914176762,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.0597999789752066,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 1.406499999575317,
+        "error": null,
+        "server_execution_ms": 0.19664
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.82529998710379,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2691000010818243,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 67.26029998390004,
+        "error": null,
+        "server_execution_ms": 2.522356
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8677000189200044,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 7.141600013710558,
+        "error": null,
+        "server_execution_ms": 5.443923
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3222999987192452,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 6.1870000208728015,
+        "error": null,
+        "server_execution_ms": 4.753987
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.5849999617785215,
+        "error": null
+      }
+    ],
+    "total_ms": 180.72469998151064
+  },
+  {
+    "kind": "cold_cache",
+    "components_ms": {
+      "local_lock_wait": 0.014100049156695604,
+      "redis_control": 10.365299938712269,
+      "lease_python": 1.0523998644202948,
+      "graph_query": 148.6620000214316,
+      "graph_sdk_decode": 6.022999936249107,
+      "graph_client": 0.3380000707693398,
+      "embedding": 6.801400042604655,
+      "vector_read": 74.90280002821237,
+      "application_other": 4.1059000650420785
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 0.014100049156695604,
+      "redis_control": 10.365299938712269,
+      "lease_python": 3.495899902191013,
+      "graph_query": 148.6620000214316,
+      "graph_sdk_decode": 154.6849999576807,
+      "graph_client": 160.208799992688,
+      "embedding": 6.801400042604655,
+      "vector_read": 74.90280002821237
+    },
+    "calls": {
+      "local_lock_wait": 8,
+      "redis_control": 8,
+      "lease_python": 16,
+      "graph_query": 4,
+      "graph_sdk_decode": 4,
+      "graph_client": 4,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.2174000148661435,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1852000025101006,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.0976999765262008,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 1.649899990297854,
+        "error": null,
+        "server_execution_ms": 0.201914
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.6422999906353652,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1990999919362366,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 133.88949999352917,
+        "error": null,
+        "server_execution_ms": 2.236018
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.719099993351847,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 6.653300020843744,
+        "error": null,
+        "server_execution_ms": 5.267156
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1493999627418816,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 6.517100031487644,
+        "error": null,
+        "server_execution_ms": 5.021429
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.2350999750196934,
+        "error": null
+      }
+    ],
+    "total_ms": 252.2649000165984
+  },
+  {
+    "kind": "cold_cache",
+    "components_ms": {
+      "local_lock_wait": 0.015700003132224083,
+      "redis_control": 10.801500058732927,
+      "lease_python": 0.6716002826578915,
+      "graph_query": 79.8435999895446,
+      "graph_sdk_decode": 7.087700068950653,
+      "graph_client": 0.3732996992766857,
+      "embedding": 10.649300005752593,
+      "vector_read": 75.07239998085424,
+      "application_other": 4.109999863430858
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 0.015700003132224083,
+      "redis_control": 10.801500058732927,
+      "lease_python": 3.2848002738319337,
+      "graph_query": 79.8435999895446,
+      "graph_sdk_decode": 86.93130005849525,
+      "graph_client": 92.5454999669455,
+      "embedding": 10.649300005752593,
+      "vector_read": 75.07239998085424
+    },
+    "calls": {
+      "local_lock_wait": 8,
+      "redis_control": 8,
+      "lease_python": 16,
+      "graph_query": 4,
+      "graph_sdk_decode": 4,
+      "graph_client": 4,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.0745000327005982,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.0217999806627631,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.0450000409036875,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 1.4521999983116984,
+        "error": null,
+        "server_execution_ms": 0.130194
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.0197000121697783,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2475999537855387,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 65.10950002120808,
+        "error": null,
+        "server_execution_ms": 2.07759
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.818199991248548,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 6.702399987261742,
+        "error": null,
+        "server_execution_ms": 5.184136
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.105800038203597,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 6.624799978453666,
+        "error": null,
+        "server_execution_ms": 5.16107
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.5439999988302588,
+        "error": null
+      }
+    ],
+    "total_ms": 188.62509995233268
+  },
+  {
+    "kind": "cold_cache",
+    "components_ms": {
+      "local_lock_wait": 0.01409999094903469,
+      "redis_control": 11.185899842530489,
+      "lease_python": 0.6819001864641905,
+      "graph_query": 145.29410004615784,
+      "graph_sdk_decode": 7.76049995329231,
+      "graph_client": 0.4534000181593001,
+      "embedding": 10.838500049430877,
+      "vector_read": 74.41129995277151,
+      "application_other": 3.013199951965362
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 0.01409999094903469,
+      "redis_control": 11.185899842530489,
+      "lease_python": 3.1942001078277826,
+      "graph_query": 145.29410004615784,
+      "graph_sdk_decode": 153.05459999945015,
+      "graph_client": 158.89960003551096,
+      "embedding": 10.838500049430877,
+      "vector_read": 74.41129995277151
+    },
+    "calls": {
+      "local_lock_wait": 8,
+      "redis_control": 8,
+      "lease_python": 16,
+      "graph_query": 4,
+      "graph_sdk_decode": 4,
+      "graph_client": 4,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.1351999710313976,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.0853000567294657,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.0378999868407845,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 1.443799992557615,
+        "error": null,
+        "server_execution_ms": 0.116397
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.2837999858893454,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.276399998459965,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 130.86619996465743,
+        "error": null,
+        "server_execution_ms": 2.144801
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.9280000124126673,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 6.631300027947873,
+        "error": null,
+        "server_execution_ms": 4.898188
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.234700030181557,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 6.400999962352216,
+        "error": null,
+        "server_execution_ms": 4.931638
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.387599972076714,
+        "error": null
+      }
+    ],
+    "total_ms": 253.65289999172091
+  },
+  {
+    "kind": "cold_cache",
+    "components_ms": {
+      "local_lock_wait": 0.016099947970360518,
+      "redis_control": 10.70589997107163,
+      "lease_python": 0.7626999286003411,
+      "graph_query": 92.40620007039979,
+      "graph_sdk_decode": 7.141499954741448,
+      "graph_client": 0.3420001594349742,
+      "embedding": 11.159699992276728,
+      "vector_read": 83.46029999665916,
+      "application_other": 3.2638999982737005
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 0.016099947970360518,
+      "redis_control": 10.70589997107163,
+      "lease_python": 3.264299884904176,
+      "graph_query": 92.40620007039979,
+      "graph_sdk_decode": 99.54770002514124,
+      "graph_client": 105.28060008073226,
+      "embedding": 11.159699992276728,
+      "vector_read": 83.46029999665916
+    },
+    "calls": {
+      "local_lock_wait": 8,
+      "redis_control": 8,
+      "lease_python": 16,
+      "graph_query": 4,
+      "graph_sdk_decode": 4,
+      "graph_client": 4,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.1762999929487705,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.0844999924302101,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2324999552220106,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 1.7659000004641712,
+        "error": null,
+        "server_execution_ms": 0.151285
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.815799972973764,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2817999813705683,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 78.05759995244443,
+        "error": null,
+        "server_execution_ms": 3.383656
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.7250999808311462,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 6.098200043197721,
+        "error": null,
+        "server_execution_ms": 4.69935
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.139800006058067,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 6.536700006108731,
+        "error": null,
+        "server_execution_ms": 5.090965
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.331100007519126,
+        "error": null
+      }
+    ],
+    "total_ms": 209.25830001942813
+  },
+  {
+    "kind": "cold_cache",
+    "components_ms": {
+      "local_lock_wait": 0.014000048395246267,
+      "redis_control": 11.558999889530241,
+      "lease_python": 0.9724999545142055,
+      "graph_query": 85.72969998931512,
+      "graph_sdk_decode": 77.67280010739341,
+      "graph_client": 0.3354998189024627,
+      "embedding": 11.217500024940819,
+      "vector_read": 67.96880002366379,
+      "application_other": 3.1750001362524927
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 0.014000048395246267,
+      "redis_control": 11.558999889530241,
+      "lease_python": 3.880599979311228,
+      "graph_query": 85.72969998931512,
+      "graph_sdk_decode": 163.40250009670854,
+      "graph_client": 169.22659997362643,
+      "embedding": 11.217500024940819,
+      "vector_read": 67.96880002366379
+    },
+    "calls": {
+      "local_lock_wait": 8,
+      "redis_control": 8,
+      "lease_python": 16,
+      "graph_query": 4,
+      "graph_sdk_decode": 4,
+      "graph_client": 4,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.0752000380307436,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1066999868489802,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1054000351577997,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 1.439899962861091,
+        "error": null,
+        "server_execution_ms": 0.15874
+      },
+      {
+        "command": "GET",
+        "wall_ms": 2.136099967174232,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.337299996521324,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 70.69600000977516,
+        "error": null,
+        "server_execution_ms": 2.050116
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8176999874413013,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 7.236500037834048,
+        "error": null,
+        "server_execution_ms": 5.686165
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2191999703645706,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 6.406800006516278,
+        "error": null,
+        "server_execution_ms": 4.964348
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.844199956394732,
+        "error": null
+      }
+    ],
+    "total_ms": 258.6447999929078
+  },
+  {
+    "kind": "cold_cache",
+    "components_ms": {
+      "local_lock_wait": 0.0146999373100698,
+      "redis_control": 11.424400086980313,
+      "lease_python": 0.8097001700662076,
+      "graph_query": 75.34390001092106,
+      "graph_sdk_decode": 6.972000002861023,
+      "graph_client": 0.3223999519832432,
+      "embedding": 10.841900017112494,
+      "vector_read": 69.03610000154004,
+      "application_other": 3.1946998205967247
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 0.0146999373100698,
+      "redis_control": 11.424400086980313,
+      "lease_python": 3.279800119344145,
+      "graph_query": 75.34390001092106,
+      "graph_sdk_decode": 82.31590001378208,
+      "graph_client": 88.50359998177737,
+      "embedding": 10.841900017112494,
+      "vector_read": 69.03610000154004
+    },
+    "calls": {
+      "local_lock_wait": 8,
+      "redis_control": 8,
+      "lease_python": 16,
+      "graph_query": 4,
+      "graph_sdk_decode": 4,
+      "graph_client": 4,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.1839999933727086,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.228500041179359,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.4400999643839896,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 1.493200019467622,
+        "error": null,
+        "server_execution_ms": 0.147337
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.9520999630913138,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1724000214599073,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 61.328700045123696,
+        "error": null,
+        "server_execution_ms": 1.987635
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.715600024908781,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 6.12479995470494,
+        "error": null,
+        "server_execution_ms": 4.728248
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.51709996862337,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 6.443399994168431,
+        "error": null,
+        "server_execution_ms": 4.940611
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 1.2928999494761229,
+        "error": null
+      }
+    ],
+    "total_ms": 177.95979999937117
+  },
+  {
+    "kind": "cold_cache",
+    "components_ms": {
+      "local_lock_wait": 0.014300050679594278,
+      "redis_control": 11.730700090993196,
+      "lease_python": 0.9470999357290566,
+      "graph_query": 76.50870003271848,
+      "graph_sdk_decode": 5.776699923444539,
+      "graph_client": 0.32400002237409353,
+      "embedding": 11.299000005237758,
+      "vector_read": 77.07409997237846,
+      "application_other": 3.4482000046409667
+    },
+    "inclusive_ms": {
+      "local_lock_wait": 0.014300050679594278,
+      "redis_control": 11.730700090993196,
+      "lease_python": 4.28619998274371,
+      "graph_query": 76.50870003271848,
+      "graph_sdk_decode": 82.28539995616302,
+      "graph_client": 88.1398000055924,
+      "embedding": 11.299000005237758,
+      "vector_read": 77.07409997237846
+    },
+    "calls": {
+      "local_lock_wait": 8,
+      "redis_control": 8,
+      "lease_python": 16,
+      "graph_query": 4,
+      "graph_sdk_decode": 4,
+      "graph_client": 4,
+      "embedding": 1,
+      "vector_read": 1
+    },
+    "commands": [
+      {
+        "command": "SET",
+        "wall_ms": 1.1102999560534954,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1144999880343676,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.1011000024154782,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 1.8837999668903649,
+        "error": null,
+        "server_execution_ms": 0.12304
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8317000358365476,
+        "error": null
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.3351999805308878,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 61.184999998658895,
+        "error": null,
+        "server_execution_ms": 1.907829
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.8153000273741782,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 6.982300023082644,
+        "error": null,
+        "server_execution_ms": 4.785563
+      },
+      {
+        "command": "GET",
+        "wall_ms": 1.2639000196941197,
+        "error": null
+      },
+      {
+        "command": "GRAPH.QUERY",
+        "wall_ms": 6.50880002649501,
+        "error": null,
+        "server_execution_ms": 4.948356
+      },
+      {
+        "command": "EVALSHA",
+        "wall_ms": 2.2353999665938318,
+        "error": null
+      }
+    ],
+    "total_ms": 187.12280003819615
+  }
+]

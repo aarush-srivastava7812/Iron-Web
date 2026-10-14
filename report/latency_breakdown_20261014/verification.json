@@ -1,0 +1,9 @@
+{
+  "measured_retrieval_requests": 1791,
+  "measured_writes": 60,
+  "quality_metric_rows": 153,
+  "complete_cohorts": 9,
+  "exact_rankings_and_predictions": true,
+  "exclusive_accounting_verified": true,
+  "canonical_sources_preserved": true
+}
