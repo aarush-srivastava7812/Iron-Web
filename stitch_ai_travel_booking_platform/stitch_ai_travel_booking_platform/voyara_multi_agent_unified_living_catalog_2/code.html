@@ -1,0 +1,2295 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Voyara — Multi-Agent Autonomous Expedition Engine &amp; Living Catalog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'sans-serif'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        mono: ['"Space Mono"', 'monospace'],
+      },
+      colors: {
+        forest: { 50:'#f0f7f4', 100:'#dceee5', 200:'#bcded0', 600:'#1e6b57', 700:'#174f40', 800:'#113a2f', 900:'#0b241d' },
+        lime: { 300:'#e5fa8d', 400:'#d7f36a', 500:'#beea38' },
+        sand: { 50:'#fbfbf9', 100:'#f5f6f0', 200:'#eaece2', 300:'#dce0d2' }
+      }
+    }
+  }
+}
+</script>
+<style>
+.perspective-container { perspective: 2600px; }
+.page-spread { transition: opacity 0.3s ease, transform 0.4s ease; }
+.custom-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
+.custom-scroll::-webkit-scrollbar-thumb { background: rgba(23,79,64,0.3); border-radius: 999px; }
+</style>
+</head>
+<body class="bg-[#f7f8f4] text-forest-900 font-sans antialiased selection:bg-lime-400 selection:text-forest-900 min-h-screen flex flex-col">
+
+<!-- TELEMETRY HEADER -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-sand-200">
+  <div class="bg-forest-900 text-[#dceee5] px-4 py-1.5 text-xs flex flex-wrap items-center justify-between gap-3 font-mono">
+    <div class="flex items-center gap-3">
+      <span class="inline-flex items-center gap-1.5 text-lime-400 font-bold uppercase tracking-wider text-[11px]">
+        <span class="w-2 h-2 rounded-full bg-lime-400 animate-ping"></span>
+        Autonomous Swarm v4.2
+      </span>
+      <span class="text-forest-200/60 hidden sm:inline">|</span>
+      <span class="text-forest-100 hidden md:inline">5 Cognitive Agents Engaged</span>
+      <span class="text-forest-200/60 hidden md:inline">|</span>
+      <span class="text-lime-300 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-lime-400"></span> Memory Sync Active</span>
+    </div>
+    <div class="flex items-center gap-4 text-[11px]">
+      <button onclick="switchTab('destinations')" class="text-white hover:text-lime-300 bg-forest-800 px-2 py-0.5 rounded border border-forest-600/30 transition">
+        10 Living Biomes
+      </button>
+      <span class="text-lime-400 font-bold hidden lg:inline">IRCTC &amp; Mountain Gauge OK</span>
+      <button onclick="openModal('swarmModal')" class="text-lime-400 hover:text-white underline font-sans cursor-pointer">
+        View Swarm Matrix ↗
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN NAVIGATION -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+    <a onclick="switchTab('studio')" class="flex items-center gap-2.5 cursor-pointer">
+      <div class="w-9 h-9 rounded-xl bg-forest-700 flex items-center justify-center text-lime-400 font-extrabold text-xl shadow-sm -rotate-3">↗</div>
+      <div>
+        <span class="font-extrabold text-xl tracking-tight text-forest-800 leading-none block">VOYARA</span>
+        <span class="text-[9px] font-bold uppercase tracking-widest text-forest-600 block">Expeditions &amp; Sanctuaries</span>
+      </div>
+    </a>
+
+    <!-- PAGE TABS -->
+    <nav class="hidden md:flex items-center gap-1 bg-sand-100 p-1 rounded-full border border-sand-200" id="navTabs">
+      <button onclick="switchTab('studio')" id="tab-studio" class="px-4 py-1.5 rounded-full text-xs font-bold transition bg-forest-700 text-white shadow-sm">
+        ● Studio &amp; Swarm
+      </button>
+      <button onclick="switchTab('flipbook')" id="tab-flipbook" class="px-4 py-1.5 rounded-full text-xs font-bold transition text-forest-700 hover:text-forest-900">
+        📖 Himalayan Spread
+      </button>
+      <button onclick="switchTab('destinations')" id="tab-destinations" class="px-4 py-1.5 rounded-full text-xs font-bold transition text-forest-700 hover:text-forest-900">
+        Destinations (10)
+      </button>
+      <button onclick="switchTab('stays')" id="tab-stays" class="px-4 py-1.5 rounded-full text-xs font-bold transition text-forest-700 hover:text-forest-900">
+        Eco-Lodges
+      </button>
+      <button onclick="switchTab('rail')" id="tab-rail" class="px-4 py-1.5 rounded-full text-xs font-bold transition text-forest-700 hover:text-forest-900">
+        Scenic Rail
+      </button>
+      <button onclick="switchTab('holidays')" id="tab-holidays" class="px-4 py-1.5 rounded-full text-xs font-bold transition text-forest-700 hover:text-forest-900">
+        Curated Escapes
+      </button>
+    </nav>
+
+    <!-- RIGHT CTA -->
+    <div class="flex items-center gap-3">
+      <button onclick="cycleNextTab()" class="inline-flex items-center gap-1.5 bg-forest-50 hover:bg-forest-100 text-forest-700 border border-forest-200 px-3 py-1.5 rounded-full text-xs font-bold transition">
+        <span class="">Flip Page</span> <span class="font-mono">→</span>
+      </button>
+      <button onclick="openModal('swarmModal')" class="bg-forest-700 hover:bg-forest-800 text-lime-400 px-4 py-2 rounded-full text-xs font-bold transition flex items-center gap-1.5">
+        <span class="">✦</span><span class="">Instruct Swarm</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- STICKY SWARM CONTROLLER & FAST PROMPT BAR -->
+<aside class="sticky top-[89px] z-40 bg-white/95 backdrop-blur-md border-b border-forest-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 py-3 sm:px-6">
+    <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+      <!-- 5 AGENT PILLS -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-1 lg:pb-0 text-xs custom-scroll" id="agentPillsRow">
+        <button onclick="inspectAgent('biometric')" class="flex items-center gap-1.5 bg-emerald-50 border border-emerald-500/50 px-3 py-1.5 rounded-lg shrink-0 text-left transition shadow-xs"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span class="font-bold text-emerald-900">Biometric &amp; AMS:</span><span class="text-[10px] text-emerald-700 font-mono font-bold" id="pill-bio">Capped (Max +350m/day)</span></button>
+        <button onclick="inspectAgent('transit')" class="flex items-center gap-1.5 bg-emerald-50 border border-emerald-500/50 px-3 py-1.5 rounded-lg shrink-0 text-left transition shadow-xs"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span class="font-bold text-emerald-900">Transit:</span><span class="text-[10px] text-emerald-700 font-mono font-bold" id="pill-transit">UNESCO Rail Synchronized (Kalka-Shimla Vistadome)</span></button>
+        <button onclick="inspectAgent('lodging')" class="flex items-center gap-1.5 bg-forest-50 hover:bg-forest-100 border border-forest-200 px-3 py-1.5 rounded-lg shrink-0 text-left transition">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span class="font-bold">Lodging:</span>
+          <span class="text-[10px] text-forest-600 font-mono" id="pill-stay">Passive Solar</span>
+        </button>
+        <button onclick="inspectAgent('naturalist')" class="flex items-center gap-1.5 bg-forest-50 hover:bg-forest-100 border border-forest-200 px-3 py-1.5 rounded-lg shrink-0 text-left transition">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span class="font-bold">Naturalist:</span>
+          <span class="text-[10px] text-forest-600 font-mono" id="pill-guide">Snow Leopard #07</span>
+        </button>
+        <button onclick="inspectAgent('culinary')" class="flex items-center gap-1.5 bg-forest-50 hover:bg-forest-100 border border-forest-200 px-3 py-1.5 rounded-lg shrink-0 text-left transition">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span class="font-bold">Gastronomy:</span>
+          <span class="text-[10px] text-forest-600 font-mono" id="pill-food">Satvik 100% Vegan</span>
+        </button>
+      </div>
+
+      <!-- SYNTHESIZER INPUT -->
+      <form onsubmit="handleSynthesize(event)" class="flex items-center gap-2 grow max-w-xl">
+        <div class="relative w-full">
+          <input id="promptInput" type="text" placeholder="Instruct all 5 agents (e.g. 'Add dark sky astronomy', 'Mandate Satvik meals')..." class="w-full bg-sand-100 hover:bg-sand-50 focus:bg-white pl-4 pr-24 py-2 text-xs rounded-xl border border-sand-300 focus:border-forest-600 focus:outline-none">
+          <button type="submit" class="absolute right-1 top-1 bottom-1 bg-forest-700 hover:bg-forest-800 text-lime-400 px-3 rounded-lg text-xs font-bold transition flex items-center gap-1">
+            <span class="">Synthesize</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- FAST CHIPS -->
+    <div class="flex items-center gap-2 mt-2 pt-2 border-t border-sand-200 text-[11px] overflow-x-auto custom-scroll">
+      <span class="text-forest-600 font-bold shrink-0">Fast Directives:</span>
+      <button onclick="applyFastPrompt('Strict Satvik &amp; Organic Millet meals enforced for all days.')" class="bg-sand-100 hover:bg-sand-200 text-forest-800 px-2.5 py-0.5 rounded-full border border-sand-200 transition shrink-0">+ Satvik / Millet Directives</button>
+      <button onclick="applyFastPrompt('Insert mandatory 24h altitude acclimatization pause below 3,300m.')" class="bg-forest-700 text-lime-400 border border-forest-600 px-2.5 py-0.5 rounded-full transition shrink-0 font-bold shadow-xs flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-lime-400 animate-pulse"></span>✓ AMS Altitude Buffer Active</button>
+      <button onclick="applyFastPrompt('Lock scenic Vistadome mountain rail tickets and zero-emission transit.')" class="bg-forest-700 text-lime-400 border border-forest-600 px-2.5 py-0.5 rounded-full transition shrink-0 font-bold shadow-xs flex items-center gap-1 ring-2 ring-lime-400"><span class="w-1.5 h-1.5 rounded-full bg-lime-400 animate-pulse"></span>✓ IRCTC Heritage Rail Active</button>
+      <button onclick="applyFastPrompt('Audit dwellings for 100% passive solar and zero single-use plastics.')" class="bg-sand-100 hover:bg-sand-200 text-forest-800 px-2.5 py-0.5 rounded-full border border-sand-200 transition shrink-0">
+        + Zero-Plastic Eco-Audit
+      </button>
+      <button onclick="applyFastPrompt('Assign certified senior wildlife tracker and 40x optical Swarovski spotters.')" class="bg-sand-100 hover:bg-sand-200 text-forest-800 px-2.5 py-0.5 rounded-full border border-sand-200 transition shrink-0">
+        + Wildlife Spotter Concierge
+      </button>
+      <button onclick="openModal('swarmModal')" class="bg-forest-700 text-lime-400 hover:bg-forest-800 px-2.5 py-0.5 rounded-full border border-forest-600 transition shrink-0 font-bold">
+        ⚙ Swarm Telemetry Log
+      </button>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT WRAPPER -->
+<main class="grow max-w-7xl mx-auto w-full px-4 sm:px-6 py-6">
+
+  <!-- ================= TAB 1: STUDIO & SWARM (7-DAY SYNTHESIZER) ================= -->
+  <section id="view-studio" class="page-spread block bg-white rounded-3xl border border-sand-200 shadow-xl p-6 sm:p-8">
+    <div class="flex flex-col lg:flex-row items-start justify-between gap-6 pb-6 border-b border-sand-200">
+      <div>
+        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-forest-600 bg-forest-50 px-3 py-1 rounded-full border border-forest-100 mb-2">
+          <span class="">● Screen 01</span>
+          <span class="">Multi-Agent Expedition Studio</span>
+        </div>
+        <h1 id="studioHeading" class="text-3xl sm:text-4xl font-extrabold text-forest-900 tracking-tight font-serif">Collaborative 7-Day Expedition Studio</h1>
+        <p id="studioDesc" class="text-forest-700 text-sm mt-1 max-w-3xl leading-relaxed">High altitude AMS pacing, sub-zero snow leopard tracking, passive solar earth adobe sanctuaries, and sacred monastic millenia.</p>
+      </div>
+
+      <!-- 4 SIMULATION SCENARIO BUTTONS (FULLY INTERACTIVE) -->
+      <div class="bg-sand-50 p-3 rounded-2xl border border-sand-200 flex flex-col gap-1.5 text-xs w-full lg:w-auto">
+        <div class="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-forest-800">
+          <span class="">Select Simulation Profile:</span>
+          <span class="text-emerald-700 font-mono bg-emerald-50 px-1.5 py-0.5 rounded">Live Synthesis</span>
+        </div>
+        <div class="flex flex-wrap gap-1.5" id="profileBtnGroup">
+          <button onclick="setProfile('spiti')" id="btn-spiti" class="profile-btn px-3 py-1.5 rounded-lg font-bold bg-forest-700 text-lime-400 border border-forest-800 shadow-xs transition">
+            01. Winter Spiti Wild
+          </button>
+          <button onclick="setProfile('kerala')" id="btn-kerala" class="profile-btn px-3 py-1.5 rounded-lg font-bold bg-white text-forest-800 hover:bg-sand-100 border border-sand-200 transition">
+            02. Monsoon Kerala
+          </button>
+          <button onclick="setProfile('rajasthan')" id="btn-rajasthan" class="profile-btn px-3 py-1.5 rounded-lg font-bold bg-white text-forest-800 hover:bg-sand-100 border border-sand-200 transition">
+            03. Autumn Rajasthan
+          </button>
+          <button onclick="setProfile('assam')" id="btn-assam" class="profile-btn px-3 py-1.5 rounded-lg font-bold bg-white text-forest-800 hover:bg-sand-100 border border-sand-200 transition">
+            04. Wet Biome Assam
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STUDIO GRID -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-6">
+      
+      <!-- LEFT: SWARM DELIBERATION LEDGER & PRICING -->
+      <div class="lg:col-span-4 flex flex-col gap-4">
+        <div class="bg-forest-50/70 border border-forest-100 rounded-2xl p-4">
+          <div class="flex items-center justify-between pb-3 border-b border-forest-200/60">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span class="font-extrabold text-sm text-forest-900">Autonomous Swarm Room</span>
+            </div>
+            <span id="consensusBadge" class="text-[10px] font-mono uppercase bg-emerald-100 text-emerald-900 font-bold px-2 py-0.5 rounded">Consensus Validated</span>
+          </div>
+
+          <!-- AGENT ROSTER -->
+          <div class="flex flex-col gap-2 mt-3 text-xs" id="swarmAgentRoster">
+    <div onclick="inspectAgent('transit')" class="flex items-center justify-between p-2 bg-emerald-50/40 hover:bg-emerald-50 transition rounded-lg border border-emerald-500/50 cursor-pointer"><div class="flex items-center gap-2"><span class="text-base">🚆</span><div><strong class="block text-forest-800 text-xs">Transit &amp; Heritage Rail</strong><span class="text-[10px] text-forest-600">UNESCO Kalka-Shimla Toy Train &amp; 4WD</span></div></div><span class="text-[10px] text-emerald-900 bg-emerald-100 border border-emerald-500/50 px-2 py-0.5 rounded font-mono font-extrabold">UNESCO VISTADOME RESERVED</span></div>
+  
+    <div onclick="inspectAgent('lodging')" class="flex items-center justify-between p-2 bg-white hover:bg-forest-50/50 transition rounded-lg border border-sand-200 cursor-pointer">
+      <div class="flex items-center gap-2">
+        <span class="text-base">🏡</span>
+        <div>
+          <strong class="block text-forest-800 text-xs">Eco-Sanctuary Lodges</strong>
+          <span class="text-[10px] text-forest-600">Tethys Mud Homestays &amp; Poplar Stays</span>
+        </div>
+      </div>
+      <span class="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-mono font-bold">TABO HELD</span>
+    </div>
+  
+    <div onclick="inspectAgent('naturalist')" class="flex items-center justify-between p-2 bg-white hover:bg-forest-50/50 transition rounded-lg border border-sand-200 cursor-pointer">
+      <div class="flex items-center gap-2">
+        <span class="text-base">🔭</span>
+        <div>
+          <strong class="block text-forest-800 text-xs">Master Naturalist (Kaza)</strong>
+          <span class="text-[10px] text-forest-600">Spiti Ibex &amp; Snow Leopard Trackers</span>
+        </div>
+      </div>
+      <span class="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-mono font-bold">CLEARED</span>
+    </div>
+  
+    <div onclick="inspectAgent('culinary')" class="flex items-center justify-between p-2 bg-white hover:bg-forest-50/50 transition rounded-lg border border-sand-200 cursor-pointer">
+      <div class="flex items-center gap-2">
+        <span class="text-base">🍲</span>
+        <div>
+          <strong class="block text-forest-800 text-xs">Regional Culinary Agent</strong>
+          <span class="text-[10px] text-forest-600">Millet Sourcing / High-Calorie Barley</span>
+        </div>
+      </div>
+      <span class="text-[10px] text-emerald-900 bg-emerald-100 border border-emerald-500/50 px-2 py-0.5 rounded font-mono font-extrabold" data-stitch-orig-opacity="0">VEGAN VERIFIED</span>
+    </div>
+  
+    <div onclick="inspectAgent('biometric')" class="flex items-center justify-between p-2 bg-white hover:bg-forest-50/50 transition rounded-lg border border-emerald-500/50 cursor-pointer"><div class="flex items-center gap-2"><span class="text-base">🫀</span><div><strong class="block text-forest-800 text-xs">Biometric AMS &amp; Safety</strong><span class="text-[10px] text-forest-600">Barometric Pacing &amp; Oximetry</span></div></div><span class="text-[10px] text-emerald-900 bg-emerald-100 border border-emerald-500/50 px-2 py-0.5 rounded font-mono font-extrabold">ENFORCED: +350M CAP</span></div>
+  </div>
+
+          <!-- REAL-TIME DELIBERATION LOG -->
+          <div class="mt-4 p-3.5 bg-forest-900 text-[#dceee5] rounded-xl text-xs flex flex-col gap-2 font-mono shadow-inner border border-forest-800">
+            <div class="flex items-center justify-between text-[11px] text-forest-200/80 pb-1.5 border-b border-forest-800">
+              <span class="text-lime-400 font-bold flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-lime-400 animate-ping"></span> Real-Time Deliberation
+              </span>
+              <span class="text-forest-400 text-[10px]" id="calcLatency">Auto-Resolved in 340ms</span>
+            </div>
+            <div class="space-y-1.5 max-h-48 overflow-y-auto custom-scroll pr-1" id="deliberationFeed"><p class="text-[11px] leading-relaxed text-forest-100 bg-forest-800/80 p-2 rounded-lg border border-emerald-500/50"><span class="text-lime-300 font-bold">[Transit &amp; Heritage Rail Agent]:</span> EXECUTED HERITAGE RAIL SWAP. Displaced 180km of nausea-inducing high-mountain hairpin roads between Kalka and Shimla/Kinnaur. Locked UNESCO Kalka-Shimla Toy Train Vistadome Vista (Coach CZ, glass ceiling) &amp; Himalayan Queen connection. Net carbon footprint reduced by -48kg CO2e. Consensus: 5/5 Swarm Approved in 165ms.</p><p class="text-[11px] leading-relaxed text-forest-100 bg-forest-800/80 p-2 rounded-lg border border-emerald-500/50"><span class="text-lime-300 font-bold">[Biometric &amp; AMS Agent]:</span> ENFORCED ALTITUDE PACING BUFFER. Maximum daily elevation delta restricted to ≤ +350m/day. Scheduled mandatory 36-hr SpO2 baseline check and inserted Tabo/Kalpa acclimatization layovers. Oxygen saturation floor set at ≥ 90%. Consensus: 5/5 Validated in 210ms.</p><p class="text-[11px] leading-relaxed text-forest-100 bg-forest-800/60 p-2 rounded-lg border border-forest-700/80"><span class="text-lime-300 font-bold">[Culinary Agent]:</span> Applied Satvik / Strict Vegan directive across all 7 days. Enforcing zero alliums (onion/garlic), cold-pressed sesame &amp; mustard oils, organic high-altitude millets (Kangni/Foxtail), steamed buckwheat, and plant-based almond-walnut milks. Re-synced with 5/5 agents in 180ms.</p>
+    <p class="text-[11px] leading-relaxed text-forest-100">
+      <span class="text-amber-400 font-bold">[Biometric Agent]:</span> Kalpa (2,960m) to Kaza (3,800m) direct transit poses acute 48% AMS threat for rapid elevation leap.
+    </p>
+  
+    <p class="text-[11px] leading-relaxed text-forest-100">
+      <span class="text-lime-300 font-bold">[Transit Agent]:</span> Detour inserted at Tabo (3,280m) intermediate layover with solar-heated homestay. EV departure at 07:30 AM.
+    </p>
+  
+    <p class="text-[11px] leading-relaxed text-forest-100">
+      <span class="text-emerald-300 font-bold">[Consensus]:</span> Single-day altitude gain capped at +320m. Safety margin restored to 9.8/10 across all travelers.
+    </p>
+  </div>
+            <div class="pt-2 border-t border-forest-800 flex items-center justify-between text-[10px]">
+              <span class="text-forest-400">Consensus: 5/5 Validated</span>
+              <button onclick="openModal('swarmModal')" class="text-lime-400 hover:text-white underline font-sans cursor-pointer">Deep Log →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- INVESTMENT LEDGER -->
+        <div class="bg-forest-900 text-white rounded-2xl p-5 flex flex-col gap-3 shadow-md border border-forest-800">
+          <div class="flex items-center justify-between">
+            <span class="text-xs uppercase font-extrabold text-forest-200 tracking-wider">Expedition Ledger</span>
+            <span class="text-xs bg-forest-800 text-lime-400 px-2 py-0.5 rounded border border-forest-700 font-mono">All-Inclusive</span>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span id="priceDisplay" class="text-3xl font-extrabold text-lime-400 font-serif">₹78,400</span>
+            <span id="priceSubtitle" class="text-xs text-forest-200">per explorer (naturalist fee &amp; forestry cess incl.)</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-2 border-t border-forest-800 text-[11px] text-forest-200" id="checkmarksBox"><span class="flex items-center gap-1.5">✓ 0% Single-Use Plastic</span><span class="flex items-center gap-1.5">✓ IRCTC Heritage Sync</span><span class="flex items-center gap-1.5">✓ Local Guide 100% Direct Pay</span><span class="flex items-center gap-1.5">✓ Certified Eco-Mud Stays</span></div>
+          <div class="flex flex-col sm:flex-row gap-2 mt-2">
+            <button onclick="openModal('bookingModal')" class="grow bg-lime-400 hover:bg-lime-500 text-forest-900 font-extrabold py-2.5 px-3 rounded-xl text-xs transition text-center shadow-sm">
+              Hold Expedition Seat (48h) ↗
+            </button>
+            <button onclick="openModal('dossierModal')" class="bg-forest-800 hover:bg-forest-700 border border-forest-700 text-white font-bold py-2.5 px-3 rounded-xl text-xs transition text-center">
+              Export Dossier 📄
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: 7-DAY SYNCHRONIZED ITINERARY ACCORDION -->
+      <div class="lg:col-span-8 flex flex-col gap-3">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-sand-200 gap-2">
+          <span id="routeTitle" class="font-extrabold text-base text-forest-900">Trans-Himalayan Winter Edition: Shimla to Spiti High Sanctuary</span>
+          <div class="flex items-center gap-2">
+            <span id="terrainBadge" class="text-xs font-mono text-forest-700 bg-sand-100 px-2 py-1 rounded">Terrain: Cold Steppe (3,100m – 4,400m)</span>
+            <button onclick="toggleAllDays()" class="text-xs text-forest-600 hover:text-forest-900 underline font-semibold cursor-pointer">Toggle All</button>
+          </div>
+        </div><div class="bg-emerald-50 border-2 border-emerald-500/70 text-emerald-900 rounded-xl px-4 py-2.5 flex items-center justify-between text-xs shadow-xs"><div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span><span class="font-bold uppercase tracking-wide text-[11px]">✓ RESOLVED BY TRANSIT AGENT: UNESCO HERITAGE RAIL SYNCHRONIZED —</span><span class="">High-altitude road segments replaced with Kalka-Shimla Vistadome mountain rail; -48kg CO2e carbon abatement.</span></div><span class="text-[10px] font-mono font-extrabold bg-emerald-600 text-white px-2.5 py-0.5 rounded shadow-xs">ACTIVE</span></div>
+
+        <div class="space-y-3 mt-1" id="itineraryDaysList">
+      <div class="border-2 border-emerald-500/60 bg-emerald-50/20 rounded-xl transition duration-200 overflow-hidden"><div class="bg-emerald-600 text-white font-mono text-[9px] font-bold uppercase tracking-wider px-3 py-1 flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-lime-300 animate-pulse"></span>✓ RESOLVED BY TRANSIT AGENT: UNESCO HERITAGE RAIL LOCKED (-48KG CO2e)</span><span class="text-emerald-100 font-extrabold">VISTADOME COACH CZ</span></div><div onclick="toggleDay(0)" class="p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 cursor-pointer select-none"><div class="flex items-start gap-3"><span class="w-8 h-8 rounded-lg bg-emerald-700 text-white font-bold flex items-center justify-center text-xs shrink-0 font-mono shadow-xs">01</span><div><div class="flex items-center gap-2"><h3 class="font-extrabold text-sm text-forest-900">Scenic Foothill Ascent &amp; Himalayan Vistadome Rail</h3><span class="text-[9px] font-bold bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded border border-emerald-500/40 uppercase font-mono">🚆 UNESCO Vistadome Express</span></div><p class="text-xs text-forest-700 mt-0.5">96km heritage narrow-gauge rail through 102 historic tunnels and pine viaducts to Solan/Shimla base; zero road motion sickness.</p></div></div><div class="flex items-center gap-3 shrink-0 self-end sm:self-center"><span class="font-mono text-xs font-bold text-forest-800 bg-white px-2 py-0.5 rounded border border-sand-200">Elev: 2,205m</span><span class="text-forest-600 text-sm font-bold">▲</span></div></div><div id="dayContent-0" class="block px-4 pb-4 pt-1 border-t border-sand-200 bg-white"><div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs pt-2"><div class="bg-emerald-50/60 p-2.5 rounded-lg border border-emerald-200"><span class="font-bold text-forest-800 block mb-1">⏰ Window &amp; Transit Mode</span><span class="text-forest-700 font-mono">08:30 – 14:00 (🚆 UNESCO Kalka-Shimla Vistadome Vista, Glass Ceilings)</span></div><div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200"><span class="font-bold text-forest-800 block mb-1">🔭 Lead Naturalist</span><span class="text-forest-700">Dr. Tsering Norbu</span></div><div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200"><span class="font-bold text-forest-800 block mb-1">🍲 Curated Dining</span><span class="text-forest-700">Satvik Kangra Herbal Infusion &amp; spiced roasted walnuts (Zero Allium)</span></div></div><div class="mt-3 text-xs space-y-1 text-forest-800 bg-forest-50/40 p-3 rounded-lg border border-forest-100"><p class=""><strong>Morning:</strong> Board historic UNESCO Vistadome coach CZ at Kalka station; ascend 1,500m across 102 stone tunnels with panoramic 360° observation glass ceiling.</p><p class=""><strong>Afternoon:</strong> Arrive in Shimla; botanical briefing on subalpine conifers with Dr. Norbu.</p><p class=""><strong>Evening:</strong> Acclimatization stroll on Ridge; baseline pulse-oximetry check (Avg SpO2: 96%).</p></div><div class="mt-3 flex justify-end"><button onclick="openDayModal(0)" class="text-xs text-forest-700 hover:text-forest-900 underline font-bold">View Detailed Protocol Dossier →</button></div></div></div>
+    
+      <div class="border border-emerald-500/40 bg-sand-50/60 rounded-xl transition duration-200 overflow-hidden"><div onclick="toggleDay(1)" class="p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 cursor-pointer select-none"><div class="flex items-start gap-3"><span class="w-8 h-8 rounded-lg bg-forest-700 text-lime-400 font-bold flex items-center justify-center text-xs shrink-0 font-mono">02</span><div><div class="flex items-center gap-2"><h3 class="font-extrabold text-sm text-forest-900">Sutlej Gorge Traverse &amp; Kinnaur Apple Orchards</h3><span class="text-[9px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded border border-emerald-400 font-mono uppercase">IRCTC Rail Connected Transfer</span></div><p class="text-xs text-forest-700 mt-0.5">Connecting directly from UNESCO rail terminus to private high-torque all-terrain electric 4WD drive. Checking into stone-wood sanctuary facing sacred Kinner Kailash peak.</p></div></div><div class="flex items-center gap-3 shrink-0 self-end sm:self-center"><span class="font-mono text-xs font-bold text-forest-800 bg-white px-2 py-0.5 rounded border border-sand-200">Elev: 2,960m</span><span class="text-forest-600 text-sm font-bold">▼</span></div></div><div id="dayContent-1" class="hidden px-4 pb-4 pt-1 border-t border-sand-200 bg-white"><div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs pt-2"><div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200"><span class="font-bold text-forest-800 block mb-1">⏰ Window &amp; Transit</span><span class="text-forest-700">07:30 – 15:30 (Rail-Synchronized EV)</span></div><div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200"><span class="font-bold text-forest-800 block mb-1">🔭 Lead Naturalist</span><span class="text-forest-700">Sonam Dorje</span></div><div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200"><span class="font-bold text-forest-800 block mb-1">🍲 Curated Dining</span><span class="text-forest-700">Kinnaur Apple &amp; Spiced Red Rice with slow-cooked kidney beans (No onion/garlic, cold-pressed oil)</span></div></div><div class="mt-3 text-xs space-y-1 text-forest-800 bg-forest-50/40 p-3 rounded-lg border border-forest-100"><p class=""><strong>Morning:</strong> Seamless transfer from Shimla heritage rail head along Hindustan-Tibet highway carved into sheer gneiss river gorges.</p><p class=""><strong>Afternoon:</strong> Visit 800-year-old Kamru Fort; explore apple orchard conservation nursery in Sangla.</p><p class=""><strong>Evening:</strong> Bioluminescent stargazing session overlooking Kinner Kailash range.</p></div><div class="mt-3 flex justify-end"><button onclick="openDayModal(1)" class="text-xs text-forest-700 hover:text-forest-900 underline font-bold">View Detailed Protocol Dossier →</button></div></div></div>
+    
+      <div class="border-2 border-emerald-500 bg-emerald-50/30 rounded-xl transition duration-200 overflow-hidden shadow-xs"><div class="bg-emerald-600 text-white font-mono text-[9px] font-bold uppercase tracking-wider px-3 py-1 flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-lime-300 animate-pulse"></span>✓ RESOLVED BY SAFETY AGENT: ALTITUDE BUFFER ADDED (+320M DELTA SAFE ZONE)</span><span class="text-emerald-100 font-extrabold">AUTONOMOUS CORRECTION ENFORCED</span></div><div onclick="toggleDay(2)" class="p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 cursor-pointer select-none"><div class="flex items-start gap-3"><span class="w-8 h-8 rounded-lg bg-emerald-700 text-white font-bold flex items-center justify-center text-xs shrink-0 font-mono shadow-xs">03</span><div><div class="flex items-center gap-2"><h3 class="font-extrabold text-sm text-forest-900">Hindustan-Tibet Way &amp; Tabo Monastery Acclimatization</h3><span class="text-[9px] font-bold bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded border border-emerald-500/40 uppercase font-mono">Safe Delta Ramp</span></div><p class="text-xs text-forest-700 mt-0.5">Restructured single-day altitude delta from +840m down to a safe +320m. Sunset cliff meditation, baseline SpO2 monitoring, and Tibetan breathwork.</p></div></div><div class="flex items-center gap-3 shrink-0 self-end sm:self-center"><span class="font-mono text-xs font-extrabold text-emerald-900 bg-emerald-100 px-2.5 py-0.5 rounded border border-emerald-500/50">Elev: 3,280m (+320m delta safe zone)</span><span class="text-forest-600 text-sm font-bold">▼</span></div></div><div id="dayContent-2" class="hidden px-4 pb-4 pt-1 border-t border-sand-200 bg-white"><div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs pt-2"><div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200"><span class="font-bold text-forest-800 block mb-1">⏰ Window &amp; Transit</span><span class="text-forest-700">09:00 – 16:00</span></div><div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200"><span class="font-bold text-forest-800 block mb-1">🔭 Lead Naturalist</span><span class="text-forest-700">Lobzang Bodh</span></div><div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200"><span class="font-bold text-forest-800 block mb-1">🍲 Curated Dining</span><span class="text-forest-700">Steamed Himalayan Buckwheat momos with tomato-coriander chutney &amp; Tabo seabuckthorn herbal tea</span></div></div><div class="mt-3 text-xs space-y-1 text-forest-800 bg-forest-50/40 p-3 rounded-lg border border-forest-100"><p class=""><strong>Morning:</strong> Crossing confluence of Spiti and Sutlej rivers at Khab; entering high desert bioclimatic zone.</p><p class=""><strong>Afternoon:</strong> Exploration of Tabo Chos-Khor Monastery murals dating to 996 CE (Ajanta of the Himalayas).</p><p class=""><strong>Evening:</strong> Three-point pulse oximetry audit; pranayama breathing session with resident lama.</p></div><div class="mt-3 flex justify-end"><button onclick="openDayModal(2)" class="text-xs text-forest-700 hover:text-forest-900 underline font-bold">View Detailed Protocol Dossier →</button></div></div></div>
+    
+      <div class="border border-sand-200 bg-sand-50/60 rounded-xl transition duration-200 overflow-hidden">
+        
+        <div onclick="toggleDay(3)" class="p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 cursor-pointer select-none">
+          <div class="flex items-start gap-3">
+            <span class="w-8 h-8 rounded-lg bg-forest-700 text-lime-400 font-bold flex items-center justify-center text-xs shrink-0 font-mono">
+              04
+            </span>
+            <div>
+              <div class="flex items-center gap-2"><h3 class="font-extrabold text-sm text-forest-900">Dhankar Fort Citadel &amp; Spiti River Basin Arrival</h3><span class="text-[9px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded border border-emerald-400 font-mono uppercase">AMS Safe Ramp</span></div>
+              <p class="text-xs text-forest-700 mt-0.5">Gradual ascent along lunar cliff formations. Evening briefing on Himalayan snow leopard signs and telemetry collars.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 shrink-0 self-end sm:self-center">
+            <span class="font-mono text-xs font-bold text-forest-800 bg-white px-2 py-0.5 rounded border border-sand-200">
+              Elev: 3,800m
+            </span>
+            <span class="text-forest-600 text-sm font-bold">▼</span>
+          </div>
+        </div>
+        <div id="dayContent-3" class="hidden px-4 pb-4 pt-1 border-t border-sand-200 bg-white">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs pt-2">
+            <div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200">
+              <span class="font-bold text-forest-800 block mb-1">⏰ Window &amp; Transit</span>
+              <span class="text-forest-700">08:00 – 16:30</span>
+            </div>
+            <div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200">
+              <span class="font-bold text-forest-800 block mb-1">🔭 Lead Naturalist</span>
+              <span class="text-forest-700">Tracker Lobzang Dorje</span>
+            </div>
+            <div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200">
+              <span class="font-bold text-forest-800 block mb-1">🍲 Curated Dining</span>
+              <span class="text-forest-700">Roasted Spiti Tsampa porridge with wild mint &amp; apricot-almond milk</span>
+            </div>
+          </div>
+          <div class="mt-3 text-xs space-y-1 text-forest-800 bg-forest-50/40 p-3 rounded-lg border border-forest-100">
+            <p class=""><strong>Morning:</strong> Scramble to Dhankar cliff-edge meditation cell suspended 300m above river gorge.</p>
+            <p class=""><strong>Afternoon:</strong> Drive into Kaza township; equip sub-zero down suits and high-altitude thermal boots.</p>
+            <p class=""><strong>Evening:</strong> Master Tracker lecture on snow leopard territorial scent-marking patterns.</p>
+          </div>
+          <div class="mt-3 flex justify-end">
+            <button onclick="openDayModal(3)" class="text-xs text-forest-700 hover:text-forest-900 underline font-bold">
+              View Detailed Protocol Dossier →
+            </button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="border border-sand-200 bg-sand-50/60 rounded-xl transition duration-200 overflow-hidden">
+        
+        <div onclick="toggleDay(4)" class="p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 cursor-pointer select-none">
+          <div class="flex items-start gap-3">
+            <span class="w-8 h-8 rounded-lg bg-forest-700 text-lime-400 font-bold flex items-center justify-center text-xs shrink-0 font-mono">
+              05
+            </span>
+            <div>
+              <div class="flex items-center gap-2"><h3 class="font-extrabold text-sm text-forest-900">Kibber Wildlife Sanctuary &amp; Snow Leopard Spotting Ridge</h3><span class="text-[9px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded border border-emerald-400 font-mono uppercase">SpO2 Telemetry Monitored (94%)</span></div>
+              <p class="text-xs text-forest-700 mt-0.5">Early dawn hide at 4,200m using optical spotter scopes. Spotting Himalayan Blue Sheep, Tibetan Wolf packs, and cliff raptors.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 shrink-0 self-end sm:self-center">
+            <span class="font-mono text-xs font-bold text-forest-800 bg-white px-2 py-0.5 rounded border border-sand-200">
+              Elev: 4,205m
+            </span>
+            <span class="text-forest-600 text-sm font-bold">▼</span>
+          </div>
+        </div>
+        <div id="dayContent-4" class="hidden px-4 pb-4 pt-1 border-t border-sand-200 bg-white">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs pt-2">
+            <div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200">
+              <span class="font-bold text-forest-800 block mb-1">⏰ Window &amp; Transit</span>
+              <span class="text-forest-700">05:30 – 13:00</span>
+            </div>
+            <div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200">
+              <span class="font-bold text-forest-800 block mb-1">🔭 Lead Naturalist</span>
+              <span class="text-forest-700">Lead Spotter Chhewang Tenzin</span>
+            </div>
+            <div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200">
+              <span class="font-bold text-forest-800 block mb-1">🍲 Curated Dining</span>
+              <span class="text-forest-700">Kibber Barley Stew with mountain wild greens &amp; cold-pressed sesame drizzle</span>
+            </div>
+          </div>
+          <div class="mt-3 text-xs space-y-1 text-forest-800 bg-forest-50/40 p-3 rounded-lg border border-forest-100">
+            <p class=""><strong>Morning:</strong> Silent ascent to Rong Nullah ridge. Setup 40x Swarovski spotting scopes.</p>
+            <p class=""><strong>Afternoon:</strong> Sightings of Blue Sheep herds grazing on moraine scree; golden eagle soaring over Kye.</p>
+            <p class=""><strong>Evening:</strong> Debrief by fireside at Kibber mud-solar homestay with solar water heater.</p>
+          </div>
+          <div class="mt-3 flex justify-end">
+            <button onclick="openDayModal(4)" class="text-xs text-forest-700 hover:text-forest-900 underline font-bold">
+              View Detailed Protocol Dossier →
+            </button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="border border-sand-200 bg-sand-50/60 rounded-xl transition duration-200 overflow-hidden">
+        
+        <div onclick="toggleDay(5)" class="p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 cursor-pointer select-none">
+          <div class="flex items-start gap-3">
+            <span class="w-8 h-8 rounded-lg bg-forest-700 text-lime-400 font-bold flex items-center justify-center text-xs shrink-0 font-mono">
+              06
+            </span>
+            <div>
+              <h3 class="font-extrabold text-sm text-forest-900">Langza Marine Fossil Beds &amp; World Highest Post Office</h3>
+              <p class="text-xs text-forest-700 mt-0.5">Tethys ocean ammonite fossil exploration (no removal policy). Sending hand-stamped postcards from Hikkim.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 shrink-0 self-end sm:self-center">
+            <span class="font-mono text-xs font-bold text-forest-800 bg-white px-2 py-0.5 rounded border border-sand-200">
+              Elev: 4,400m
+            </span>
+            <span class="text-forest-600 text-sm font-bold">▼</span>
+          </div>
+        </div>
+        <div id="dayContent-5" class="hidden px-4 pb-4 pt-1 border-t border-sand-200 bg-white">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs pt-2">
+            <div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200">
+              <span class="font-bold text-forest-800 block mb-1">⏰ Window &amp; Transit</span>
+              <span class="text-forest-700">09:00 – 15:00</span>
+            </div>
+            <div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200">
+              <span class="font-bold text-forest-800 block mb-1">🔭 Lead Naturalist</span>
+              <span class="text-forest-700">Geologist Dr. K. Mehta</span>
+            </div>
+            <div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200">
+              <span class="font-bold text-forest-800 block mb-1">🍲 Curated Dining</span>
+              <span class="text-forest-700">Hikkim organic Foxtail Millet khichdi with roasted cumin &amp; wild thyme tea</span>
+            </div>
+          </div>
+          <div class="mt-3 text-xs space-y-1 text-forest-800 bg-forest-50/40 p-3 rounded-lg border border-forest-100">
+            <p class=""><strong>Morning:</strong> Geological walk along 200-million-year-old Tethys sea bed at Langza village.</p>
+            <p class=""><strong>Afternoon:</strong> Visit Hikkim Post Office (4,440m); hand stamp postcards to family across the globe.</p>
+            <p class=""><strong>Evening:</strong> Traditional Spitite communal dinner with local village council heads.</p>
+          </div>
+          <div class="mt-3 flex justify-end">
+            <button onclick="openDayModal(5)" class="text-xs text-forest-700 hover:text-forest-900 underline font-bold">
+              View Detailed Protocol Dossier →
+            </button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="border border-sand-200 bg-sand-50/60 rounded-xl transition duration-200 overflow-hidden">
+        
+        <div onclick="toggleDay(6)" class="p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 cursor-pointer select-none">
+          <div class="flex items-start gap-3">
+            <span class="w-8 h-8 rounded-lg bg-forest-700 text-lime-400 font-bold flex items-center justify-center text-xs shrink-0 font-mono">
+              07
+            </span>
+            <div>
+              <h3 class="font-extrabold text-sm text-forest-900">Kye Gompa High Blessing &amp; Descent to Kalpa Sanctum</h3>
+              <p class="text-xs text-forest-700 mt-0.5">Dawn chanting ceremonies inside the 11th-century cliff monastery before deliberate, oxygen-rich descent.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 shrink-0 self-end sm:self-center">
+            <span class="font-mono text-xs font-bold text-forest-800 bg-white px-2 py-0.5 rounded border border-sand-200">
+              Elev: 2,960m
+            </span>
+            <span class="text-forest-600 text-sm font-bold">▼</span>
+          </div>
+        </div>
+        <div id="dayContent-6" class="hidden px-4 pb-4 pt-1 border-t border-sand-200 bg-white">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs pt-2">
+            <div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200">
+              <span class="font-bold text-forest-800 block mb-1">⏰ Window &amp; Transit</span>
+              <span class="text-forest-700">06:00 – 17:00</span>
+            </div>
+            <div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200">
+              <span class="font-bold text-forest-800 block mb-1">🔭 Lead Naturalist</span>
+              <span class="text-forest-700">Dr. Tsering Norbu</span>
+            </div>
+            <div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200">
+              <span class="font-bold text-forest-800 block mb-1">🍲 Curated Dining</span>
+              <span class="text-forest-700">Kalpa saffron-infused almond milk &amp; steamed amaranth flatbreads</span>
+            </div>
+          </div>
+          <div class="mt-3 text-xs space-y-1 text-forest-800 bg-forest-50/40 p-3 rounded-lg border border-forest-100">
+            <p class=""><strong>Morning:</strong> Attend morning prayer conch call at Kye Gompa; receive butter lamp traveler blessing.</p>
+            <p class=""><strong>Afternoon:</strong> Gradual descent back down Sutlej basin; oxygen saturation returns to 98%.</p>
+            <p class=""><strong>Evening:</strong> Expedition farewell banquet at Kalpa Pine Sanctuary with organic Kinnauri cider.</p>
+          </div>
+          <div class="mt-3 flex justify-end">
+            <button onclick="openDayModal(6)" class="text-xs text-forest-700 hover:text-forest-900 underline font-bold">
+              View Detailed Protocol Dossier →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TAB 2: HIMALAYAN SPREAD (MAGAZINE SPREAD) ================= -->
+  <section id="view-flipbook" class="page-spread hidden bg-[#fcfcfa] rounded-3xl border border-sand-300 shadow-2xl p-6 sm:p-10">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-sand-200 gap-4">
+      <div>
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-forest-600 bg-sand-100 px-3 py-1 rounded-full">
+          ● Screen 02 · Spread <span id="spreadCounter" class="">03 of 12</span> · Vol. IV
+        </span>
+        <h2 id="spreadTitle" class="text-3xl font-extrabold text-forest-900 mt-1 font-serif">The Western &amp; Eastern Himalayan Sanctuaries</h2>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onclick="cycleSpread(-1)" class="px-3 py-1.5 rounded-full border border-sand-300 text-forest-700 hover:bg-sand-100 text-xs font-bold font-mono transition">
+          ← Prev Spread
+        </button>
+        <span class="text-xs font-mono text-forest-600 font-bold" id="plateIndicator">Plate 05 – 06</span>
+        <button onclick="cycleSpread(1)" class="px-3 py-1.5 rounded-full bg-forest-700 text-lime-400 hover:bg-forest-800 text-xs font-bold font-mono transition">
+          Next Spread →
+        </button>
+      </div>
+    </div>
+
+    <!-- 2-PAGE SPREAD CONTENT -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-6" id="spreadContent">
+    <!-- LEFT PAGE -->
+    <div class="bg-white p-6 sm:p-8 rounded-2xl border border-sand-200 shadow-sm flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between text-xs font-mono text-forest-600 pb-3 border-b border-sand-200">
+          <span class="">FIELD REGISTER 31°N · 78°E</span>
+          <span class="font-bold">PAGE 05</span>
+        </div>
+        <h3 class="text-2xl font-extrabold text-forest-900 font-serif mt-4 mb-2">Spiti Valley: The Fossil Ridge &amp; Millennium Cloister</h3>
+        <p class="text-xs text-forest-700 leading-relaxed">Carved by the glacial retreat of the ancient Tethys Sea, Spiti unfolds at 3,800 meters as a sanctuary of wind-sheared shale, ninth-century mud-plastered monasteries, and undisturbed wildlife migration ridges.</p>
+        <div class="mt-4 p-3 bg-sand-50 rounded-xl border border-sand-200">
+          <h4 class="font-bold text-xs text-forest-900 mb-2">Acclimatized Sequence Stages:</h4>
+          <ul class="text-xs space-y-1 text-forest-700">
+            <li class="">• Stage 01: Shimla to Sangla Valley (2,600m)</li><li class="">• Stage 02: Tabo Monastery &amp; Dhankar (3,280m)</li><li class="">• Stage 03: Chandratal Crescent Lake (4,300m)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-4 border-t border-sand-200 text-[10px] text-forest-500 font-mono">
+        Voyara High Altitude Curatorial Atlas
+      </div>
+    </div>
+
+    <!-- RIGHT PAGE -->
+    <div class="bg-white p-6 sm:p-8 rounded-2xl border border-sand-200 shadow-sm flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between text-xs font-mono text-forest-600 pb-3 border-b border-sand-200">
+          <span class="">PRESERVATION STANDARD</span>
+          <span class="font-bold">PAGE 06</span>
+        </div>
+        <h3 class="text-2xl font-extrabold text-forest-900 font-serif mt-4 mb-2">Curated Adobe Sanctuaries &amp; Trans-Himalayan Palates</h3>
+        <p class="text-xs text-forest-700 leading-relaxed mb-4">High-altitude slow travel demands symbiotic shelter. Every residency on this route is community-owned, passive solar-heated, and rooted in indigenous Spitite hospitality.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="p-3 bg-forest-50 rounded-xl border border-forest-200">
+            <span class="text-[10px] font-mono font-bold text-forest-600 block">Passive Solar Adobe</span>
+            <strong class="text-xs text-forest-900 block my-1">Kibber High Ridge Retreat</strong>
+            <p class="text-[11px] text-forest-700">Warm rammed-earth thermal mass with sub-zero solar capture.</p>
+          </div>
+          <div class="p-3 bg-forest-50 rounded-xl border border-forest-200">
+            <span class="text-[10px] font-mono font-bold text-forest-600 block">Local Harvest Trail</span>
+            <strong class="text-xs text-forest-900 block my-1">Barley, Chhurpi &amp; Broths</strong>
+            <p class="text-[11px] text-forest-700">Zero-mile village food sovereignty and Seabuckthorn tea infusions.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pt-4 border-t border-sand-200 flex items-center justify-between">
+        <span class="text-[10px] text-forest-500 font-mono">Plate SP-06 · Curatorial Gastronomy</span>
+        <button onclick="openModal('bookingModal')" class="bg-forest-700 text-lime-400 px-3 py-1.5 rounded-lg text-xs font-bold transition">
+          Reserve Spread ↗
+        </button>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <!-- ================= TAB 3: DESTINATIONS (10 LIVING BIOMES) ================= -->
+  <section id="view-destinations" class="page-spread hidden bg-white rounded-3xl border border-sand-200 shadow-xl p-6 sm:p-8">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-sand-200 gap-4">
+      <div>
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-forest-600 bg-forest-50 px-3 py-1 rounded-full">
+          ● Screen 03 · Plate Index · Edition X.XIV
+        </span>
+        <h2 class="text-3xl font-extrabold text-forest-900 mt-1 font-serif">Pan-India Wilderness &amp; Heritage Sanctuaries</h2>
+        <p class="text-forest-700 text-xs mt-1">A cartographic compendium of sovereign wilderness corridors cataloged for slow, regenerative expeditions.</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-xs text-forest-600 font-mono">10 Living Biomes:</span>
+        <span class="bg-forest-800 text-lime-400 text-xs font-bold px-3 py-1 rounded-full font-mono">100% Protected</span>
+      </div>
+    </div>
+
+    <!-- CATEGORY FILTER CHIPS -->
+    <div class="flex items-center gap-2 mt-4 pb-2 overflow-x-auto text-xs custom-scroll" id="destFilterRow">
+      <button onclick="filterDestinations('all')" class="dest-chip bg-forest-700 text-lime-400 font-bold px-3 py-1.5 rounded-full shrink-0 transition">
+        All Sanctuaries (10)
+      </button>
+      <button onclick="filterDestinations('himalaya')" class="dest-chip bg-sand-100 hover:bg-sand-200 text-forest-800 px-3 py-1.5 rounded-full shrink-0 transition">
+        Himalayan High Passes
+      </button>
+      <button onclick="filterDestinations('ghats')" class="dest-chip bg-sand-100 hover:bg-sand-200 text-forest-800 px-3 py-1.5 rounded-full shrink-0 transition">
+        Western Ghats Hotspots
+      </button>
+      <button onclick="filterDestinations('arid')" class="dest-chip bg-sand-100 hover:bg-sand-200 text-forest-800 px-3 py-1.5 rounded-full shrink-0 transition">
+        Royal Arid Reserves
+      </button>
+      <button onclick="filterDestinations('cloud')" class="dest-chip bg-sand-100 hover:bg-sand-200 text-forest-800 px-3 py-1.5 rounded-full shrink-0 transition">
+        Northeast Cloud Forests
+      </button>
+    </div>
+
+    <!-- 10 SANCTUARIES GRID -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mt-6" id="destinationsGrid">
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-4 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <div class="flex items-center justify-between text-[10px] font-mono text-forest-600 mb-1">
+          <span class="">3,800m ASL</span>
+          <span class="bg-sand-200 px-1.5 py-0.2 rounded font-bold">May–Oct</span>
+        </div>
+        <h3 class="font-extrabold text-base text-forest-900">Spiti &amp; Pin Valley</h3>
+        <span class="text-[11px] font-bold text-forest-600 block mb-2">Himachal Cold Desert</span>
+        <p class="text-xs text-forest-700 leading-relaxed">Snow Leopard, Tibetan Wolf, and 1,000-year Tabo mud murals carved into lunar canyon shale.</p>
+      </div>
+      <button onclick="switchTab('studio')" class="mt-4 w-full bg-forest-50 hover:bg-forest-100 text-forest-800 font-bold text-xs py-1.5 rounded-lg border border-forest-200 transition">
+        Synthesize Itinerary ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-4 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <div class="flex items-center justify-between text-[10px] font-mono text-forest-600 mb-1">
+          <span class="">80m ASL</span>
+          <span class="bg-sand-200 px-1.5 py-0.2 rounded font-bold">Nov–Apr</span>
+        </div>
+        <h3 class="font-extrabold text-base text-forest-900">Kaziranga &amp; Majuli</h3>
+        <span class="text-[11px] font-bold text-forest-600 block mb-2">Assam Brahmaputra Basin</span>
+        <p class="text-xs text-forest-700 leading-relaxed">One-horned rhinos, Neo-Vaishnavite satras, and riverine dolphin corridors across emerald silt plains.</p>
+      </div>
+      <button onclick="switchTab('studio')" class="mt-4 w-full bg-forest-50 hover:bg-forest-100 text-forest-800 font-bold text-xs py-1.5 rounded-lg border border-forest-200 transition">
+        Synthesize Itinerary ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-4 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <div class="flex items-center justify-between text-[10px] font-mono text-forest-600 mb-1">
+          <span class="">1,600m ASL</span>
+          <span class="bg-sand-200 px-1.5 py-0.2 rounded font-bold">Sept–Mar</span>
+        </div>
+        <h3 class="font-extrabold text-base text-forest-900">Munnar &amp; Wayanad</h3>
+        <span class="text-[11px] font-bold text-forest-600 block mb-2">Kerala Western Ghats</span>
+        <p class="text-xs text-forest-700 leading-relaxed">Endemic Nilgiri Tahr, shade-grown cardamom rainforests, and prehistoric Edakkal rock engravings.</p>
+      </div>
+      <button onclick="switchTab('studio')" class="mt-4 w-full bg-forest-50 hover:bg-forest-100 text-forest-800 font-bold text-xs py-1.5 rounded-lg border border-forest-200 transition">
+        Synthesize Itinerary ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-4 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <div class="flex items-center justify-between text-[10px] font-mono text-forest-600 mb-1">
+          <span class="">270m ASL</span>
+          <span class="bg-sand-200 px-1.5 py-0.2 rounded font-bold">Oct–Apr</span>
+        </div>
+        <h3 class="font-extrabold text-base text-forest-900">Ranthambore &amp; Bundi</h3>
+        <span class="text-[11px] font-bold text-forest-600 block mb-2">Rajasthan Dry Forest</span>
+        <p class="text-xs text-forest-700 leading-relaxed">Bengal tiger cliff territory, ancient subterranean stepwells, and Rajput miniature art sanctuaries.</p>
+      </div>
+      <button onclick="switchTab('studio')" class="mt-4 w-full bg-forest-50 hover:bg-forest-100 text-forest-800 font-bold text-xs py-1.5 rounded-lg border border-forest-200 transition">
+        Synthesize Itinerary ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-4 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <div class="flex items-center justify-between text-[10px] font-mono text-forest-600 mb-1">
+          <span class="">3,658m ASL</span>
+          <span class="bg-sand-200 px-1.5 py-0.2 rounded font-bold">Jul–Sept</span>
+        </div>
+        <h3 class="font-extrabold text-base text-forest-900">Valley of Flowers</h3>
+        <span class="text-[11px] font-bold text-forest-600 block mb-2">Uttarakhand UNESCO Alpine</span>
+        <p class="text-xs text-forest-700 leading-relaxed">500+ species of wild endemic flora, Himalayan Blue Poppy, and Bhotia alpine pastoralism traditions.</p>
+      </div>
+      <button onclick="switchTab('studio')" class="mt-4 w-full bg-forest-50 hover:bg-forest-100 text-forest-800 font-bold text-xs py-1.5 rounded-lg border border-forest-200 transition">
+        Synthesize Itinerary ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-4 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <div class="flex items-center justify-between text-[10px] font-mono text-forest-600 mb-1">
+          <span class="">220m ASL</span>
+          <span class="bg-sand-200 px-1.5 py-0.2 rounded font-bold">Oct–Mar</span>
+        </div>
+        <h3 class="font-extrabold text-base text-forest-900">Thar Desert &amp; Kuldhara</h3>
+        <span class="text-[11px] font-bold text-forest-600 block mb-2">Western Rajasthan Dunes</span>
+        <p class="text-xs text-forest-700 leading-relaxed">Bortle-1 darkness astronomy, wind-sheared singing dunes, and desert fox conservation habitats.</p>
+      </div>
+      <button onclick="switchTab('studio')" class="mt-4 w-full bg-forest-50 hover:bg-forest-100 text-forest-800 font-bold text-xs py-1.5 rounded-lg border border-forest-200 transition">
+        Synthesize Itinerary ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-4 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <div class="flex items-center justify-between text-[10px] font-mono text-forest-600 mb-1">
+          <span class="">1,480m ASL</span>
+          <span class="bg-sand-200 px-1.5 py-0.2 rounded font-bold">Year-round</span>
+        </div>
+        <h3 class="font-extrabold text-base text-forest-900">Khasi Sacred Groves &amp; Cherrapunji</h3>
+        <span class="text-[11px] font-bold text-forest-600 block mb-2">Meghalaya Cloud Plateau</span>
+        <p class="text-xs text-forest-700 leading-relaxed">Living root bridges bio-engineered over 400 years, turquoise canyon waters, and sacred floral groves.</p>
+      </div>
+      <button onclick="switchTab('studio')" class="mt-4 w-full bg-forest-50 hover:bg-forest-100 text-forest-800 font-bold text-xs py-1.5 rounded-lg border border-forest-200 transition">
+        Synthesize Itinerary ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-4 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <div class="flex items-center justify-between text-[10px] font-mono text-forest-600 mb-1">
+          <span class="">3,500m ASL</span>
+          <span class="bg-sand-200 px-1.5 py-0.2 rounded font-bold">Jun–Oct</span>
+        </div>
+        <h3 class="font-extrabold text-base text-forest-900">Hemis &amp; Nubra Valley</h3>
+        <span class="text-[11px] font-bold text-forest-600 block mb-2">Trans-Himalayan Plateau</span>
+        <p class="text-xs text-forest-700 leading-relaxed">Snow leopard winter corridors, high sand dunes of Hunder, and ancient silk road gompas.</p>
+      </div>
+      <button onclick="switchTab('studio')" class="mt-4 w-full bg-forest-50 hover:bg-forest-100 text-forest-800 font-bold text-xs py-1.5 rounded-lg border border-forest-200 transition">
+        Synthesize Itinerary ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-4 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <div class="flex items-center justify-between text-[10px] font-mono text-forest-600 mb-1">
+          <span class="">1,100m ASL</span>
+          <span class="bg-sand-200 px-1.5 py-0.2 rounded font-bold">Oct–May</span>
+        </div>
+        <h3 class="font-extrabold text-base text-forest-900">Brahmagiri &amp; Coorg</h3>
+        <span class="text-[11px] font-bold text-forest-600 block mb-2">Karnataka Wet Shola Slopes</span>
+        <p class="text-xs text-forest-700 leading-relaxed">Sacred river Kaveri birthplace, endemic hornbills, and heritage Kodava estate home-stays.</p>
+      </div>
+      <button onclick="switchTab('studio')" class="mt-4 w-full bg-forest-50 hover:bg-forest-100 text-forest-800 font-bold text-xs py-1.5 rounded-lg border border-forest-200 transition">
+        Synthesize Itinerary ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-4 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <div class="flex items-center justify-between text-[10px] font-mono text-forest-600 mb-1">
+          <span class="">5m ASL</span>
+          <span class="bg-sand-200 px-1.5 py-0.2 rounded font-bold">Nov–Mar</span>
+        </div>
+        <h3 class="font-extrabold text-base text-forest-900">Sundarbans Mangrove Delta</h3>
+        <span class="text-[11px] font-bold text-forest-600 block mb-2">Bengal Tidal Estuary</span>
+        <p class="text-xs text-forest-700 leading-relaxed">Tidal mangrove labyrinth, swimming Royal Bengal tigers, and silent wooden country boat sails.</p>
+      </div>
+      <button onclick="switchTab('studio')" class="mt-4 w-full bg-forest-50 hover:bg-forest-100 text-forest-800 font-bold text-xs py-1.5 rounded-lg border border-forest-200 transition">
+        Synthesize Itinerary ↗
+      </button>
+    </div>
+  </div>
+  </section>
+
+  <!-- ================= TAB 4: ECO-LODGES & ARCHITECTURE ================= -->
+  <section id="view-stays" class="page-spread hidden bg-white rounded-3xl border border-sand-200 shadow-xl p-6 sm:p-8">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-sand-200 gap-4">
+      <div>
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-forest-600 bg-forest-50 px-3 py-1 rounded-full">
+          ● Screen 04 · Volume VII · Biophilic Living
+        </span>
+        <h2 class="text-3xl font-extrabold text-forest-900 mt-1 font-serif">Eco-Lodges &amp; Heritage Planter Retreats</h2>
+        <p class="text-forest-700 text-xs mt-1">Regenerative sanctuaries rooted in vernacular earthen craft, closed-loop microclimates, and biodiversity stewardship.</p>
+      </div>
+      <div class="bg-forest-50 p-2.5 rounded-xl border border-forest-100 text-xs flex items-center gap-3">
+        <div><strong class="block text-forest-900">Solar Ratio: 88%</strong><span class="text-[10px] text-forest-600">Autonomous Microgrid</span></div>
+        <div class="w-px h-6 bg-forest-200"></div>
+        <div><strong class="block text-forest-900">Zero Plastic</strong><span class="text-[10px] text-forest-600">100% Certified</span></div>
+      </div>
+    </div>
+
+    <!-- FILTER STAYS CHIPS -->
+    <div class="flex items-center gap-2 mt-4 pb-1 overflow-x-auto text-xs custom-scroll" id="stayFilterRow">
+      <span class="text-forest-600 font-bold shrink-0">Filter Stays:</span>
+      <button onclick="filterStays('all')" class="stay-chip px-3 py-1 rounded-full bg-forest-700 text-lime-400 font-bold">All Lodges (6)</button>
+      <button onclick="filterStays('solar')" class="stay-chip px-3 py-1 rounded-full bg-sand-100 hover:bg-sand-200 text-forest-800">100% Solar Adobe</button>
+      <button onclick="filterStays('estate')" class="stay-chip px-3 py-1 rounded-full bg-sand-100 hover:bg-sand-200 text-forest-800">Tea &amp; Spice Estates</button>
+      <button onclick="filterStays('river')" class="stay-chip px-3 py-1 rounded-full bg-sand-100 hover:bg-sand-200 text-forest-800">River &amp; Wetland Stilts</button>
+    </div>
+
+    <!-- LODGES GRID -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6" id="staysGrid">
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-5 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <span class="text-[10px] font-mono bg-emerald-100 text-emerald-900 font-bold px-2 py-0.5 rounded uppercase">100% Off-Grid Solar</span>
+        <h3 class="font-extrabold text-lg text-forest-900 mt-2">Kaza Heritage Solar Adobe</h3>
+        <span class="text-xs text-forest-600 block mb-2">Spiti Valley · Himachal Pradesh</span>
+        <p class="text-xs text-forest-700 leading-relaxed mb-3">Engineered using Spitite mud-ramming combined with evacuated solar vacuum tubes for sub-zero radiant comfort.</p>
+        <div class="text-[11px] space-y-1 bg-white p-2.5 rounded-xl border border-sand-200">
+          <div class=""><strong>Architecture:</strong> Spitian Poplar Mud</div>
+          <div class=""><strong>Resident Guide:</strong> Tenzin Norbu</div>
+        </div>
+      </div>
+      <button onclick="openModal('bookingModal')" class="mt-4 w-full bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs py-2 rounded-xl transition">
+        Reserve Sanctuary Folio ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-5 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <span class="text-[10px] font-mono bg-emerald-100 text-emerald-900 font-bold px-2 py-0.5 rounded uppercase">Reedbed Bio-Filter</span>
+        <h3 class="font-extrabold text-lg text-forest-900 mt-2">Diphlu River Bamboo Chalets</h3>
+        <span class="text-xs text-forest-600 block mb-2">Kaziranga · Assam</span>
+        <p class="text-xs text-forest-700 leading-relaxed mb-3">Raised bamboo chalets on stilts above seasonal monsoon plains, framing rhino river corridors.</p>
+        <div class="text-[11px] space-y-1 bg-white p-2.5 rounded-xl border border-sand-200">
+          <div class=""><strong>Architecture:</strong> Mishing Bamboo Stilt</div>
+          <div class=""><strong>Resident Guide:</strong> Barun Gogoi</div>
+        </div>
+      </div>
+      <button onclick="openModal('bookingModal')" class="mt-4 w-full bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs py-2 rounded-xl transition">
+        Reserve Sanctuary Folio ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-5 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <span class="text-[10px] font-mono bg-emerald-100 text-emerald-900 font-bold px-2 py-0.5 rounded uppercase">Shola Forest Steward</span>
+        <h3 class="font-extrabold text-lg text-forest-900 mt-2">Windermere 1920s Planter Estate</h3>
+        <span class="text-xs text-forest-600 block mb-2">Munnar · Kerala Cardamom Highlands</span>
+        <p class="text-xs text-forest-700 leading-relaxed mb-3">Perched on a 60-acre estate where high-grown cardamom understoreys merge into the wild Western Ghats cliff sanctuary.</p>
+        <div class="text-[11px] space-y-1 bg-white p-2.5 rounded-xl border border-sand-200">
+          <div class=""><strong>Architecture:</strong> Stone Cedar Bungalow</div>
+          <div class=""><strong>Resident Guide:</strong> Kurian Varghese</div>
+        </div>
+      </div>
+      <button onclick="openModal('bookingModal')" class="mt-4 w-full bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs py-2 rounded-xl transition">
+        Reserve Sanctuary Folio ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-5 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <span class="text-[10px] font-mono bg-emerald-100 text-emerald-900 font-bold px-2 py-0.5 rounded uppercase">Heritage Solar Restored</span>
+        <h3 class="font-extrabold text-lg text-forest-900 mt-2">Rawla Narlai Leopard Rock Sanctuary</h3>
+        <span class="text-xs text-forest-600 block mb-2">Aravalli Hills · Rajasthan</span>
+        <p class="text-xs text-forest-700 leading-relaxed mb-3">17th-century hunting lodge converted into sustainable refuge beneath a 350-foot monolithic granite rock.</p>
+        <div class="text-[11px] space-y-1 bg-white p-2.5 rounded-xl border border-sand-200">
+          <div class=""><strong>Architecture:</strong> Rajput Carved Stone Haveli</div>
+          <div class=""><strong>Resident Guide:</strong> Bhairon Singh</div>
+        </div>
+      </div>
+      <button onclick="openModal('bookingModal')" class="mt-4 w-full bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs py-2 rounded-xl transition">
+        Reserve Sanctuary Folio ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-5 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <span class="text-[10px] font-mono bg-emerald-100 text-emerald-900 font-bold px-2 py-0.5 rounded uppercase">Zero Emission Waterway</span>
+        <h3 class="font-extrabold text-lg text-forest-900 mt-2">Vembanad Solar-Cruiser Suites</h3>
+        <span class="text-xs text-forest-600 block mb-2">Kumarakom Backwaters · Kerala</span>
+        <p class="text-xs text-forest-700 leading-relaxed mb-3">Custom-built solar hybrid traditional wooden houseboats utilizing non-toxic jackwood hull sealants and battery storage.</p>
+        <div class="text-[11px] space-y-1 bg-white p-2.5 rounded-xl border border-sand-200">
+          <div class=""><strong>Architecture:</strong> Anjili Wood Kettuvallam</div>
+          <div class=""><strong>Resident Guide:</strong> Captain Biju</div>
+        </div>
+      </div>
+      <button onclick="openModal('bookingModal')" class="mt-4 w-full bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs py-2 rounded-xl transition">
+        Reserve Sanctuary Folio ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-5 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <span class="text-[10px] font-mono bg-emerald-100 text-emerald-900 font-bold px-2 py-0.5 rounded uppercase">Bio-Reserve Certified</span>
+        <h3 class="font-extrabold text-lg text-forest-900 mt-2">Wild Mahseer Colonial Tea Heritage</h3>
+        <span class="text-xs text-forest-600 block mb-2">Balipara Tract · Assam</span>
+        <p class="text-xs text-forest-700 leading-relaxed mb-3">145-year-old British planter bungalow set in a 22-acre botanical sanctuary with 100,000 endemic trees.</p>
+        <div class="text-[11px] space-y-1 bg-white p-2.5 rounded-xl border border-sand-200">
+          <div class=""><strong>Architecture:</strong> Assam Type Timber Frame</div>
+          <div class=""><strong>Resident Guide:</strong> Dr. Robin Sharma</div>
+        </div>
+      </div>
+      <button onclick="openModal('bookingModal')" class="mt-4 w-full bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs py-2 rounded-xl transition">
+        Reserve Sanctuary Folio ↗
+      </button>
+    </div>
+  </div>
+  </section>
+
+  <!-- ================= TAB 5: SCENIC RAIL ================= -->
+  <section id="view-rail" class="page-spread hidden bg-white rounded-3xl border border-sand-200 shadow-xl p-6 sm:p-8">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-sand-200 gap-4">
+      <div>
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-forest-600 bg-forest-50 px-3 py-1 rounded-full">
+          ● Screen 05 · The Iron &amp; Mist Folio
+        </span>
+        <h2 class="text-3xl font-extrabold text-forest-900 mt-1 font-serif">Scenic Mountain &amp; Coastal Rail Expeditions</h2>
+        <p class="text-forest-700 text-xs mt-1">Five slow railway corridors engineered through cloud-level rack rails, high Himalayan snowsheds, and monsoonal viaducts.</p>
+      </div>
+      <div class="bg-forest-900 text-white px-4 py-2 rounded-xl text-xs flex items-center gap-3">
+        <span class="text-lime-400 font-bold font-mono">-74.2% CO2</span>
+        <span class="">vs Domestic Flight / SUV Transfers</span>
+      </div>
+    </div>
+
+    <!-- RAILWAYS SHOWCASE -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6" id="railGrid">
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-5 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <div class="flex items-center justify-between text-[11px] font-mono text-forest-600 mb-1">
+          <span class="font-bold text-forest-900">Baramulla ⇄ Banihal</span>
+          <span class="bg-lime-100 text-forest-900 px-1.5 py-0.5 rounded font-bold">3 hrs 15 mins</span>
+        </div>
+        <h3 class="font-extrabold text-lg text-forest-900 mt-1">Vistadome Kashmir Pir Panjal</h3>
+        <p class="text-xs text-forest-700 leading-relaxed mt-2 mb-3">Traversing the 11.2-km Pir Panjal tunnel through the icy spine of Kashmir with heated panoramic coaches and 360-degree swivel armchairs.</p>
+        <div class="text-[11px] bg-white p-2.5 rounded-xl border border-sand-200 space-y-1">
+          <div class=""><strong>Artisan Hamper:</strong> Saffron Kahwa &amp; Walnut Bread</div>
+          <div class="text-emerald-700 font-bold"><strong>Sustainability:</strong> -78% CO2 vs Taxi</div>
+        </div>
+      </div>
+      <button onclick="applyFastPrompt('Lock scenic rail tickets for Vistadome Kashmir Pir Panjal')" class="mt-4 w-full bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs py-2 rounded-xl transition">
+        Sync with Swarm Itinerary ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-5 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <div class="flex items-center justify-between text-[11px] font-mono text-forest-600 mb-1">
+          <span class="font-bold text-forest-900">Mettupalayam ⇄ Ooty</span>
+          <span class="bg-lime-100 text-forest-900 px-1.5 py-0.5 rounded font-bold">4 hrs 50 mins</span>
+        </div>
+        <h3 class="font-extrabold text-lg text-forest-900 mt-1">Nilgiri Cog-Wheel Mountain Rail</h3>
+        <p class="text-xs text-forest-700 leading-relaxed mt-2 mb-3">Asia's steepest rack-and-pinion line climbing 46 km across 250 bridges through wild shola cloud forests and tea terraces.</p>
+        <div class="text-[11px] bg-white p-2.5 rounded-xl border border-sand-200 space-y-1">
+          <div class=""><strong>Artisan Hamper:</strong> Coorg Filter Coffee &amp; Banana Chips</div>
+          <div class="text-emerald-700 font-bold"><strong>Sustainability:</strong> UNESCO Heritage</div>
+        </div>
+      </div>
+      <button onclick="applyFastPrompt('Lock scenic rail tickets for Nilgiri Cog-Wheel Mountain Rail')" class="mt-4 w-full bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs py-2 rounded-xl transition">
+        Sync with Swarm Itinerary ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-5 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <div class="flex items-center justify-between text-[11px] font-mono text-forest-600 mb-1">
+          <span class="font-bold text-forest-900">Mumbai CSMT ⇄ Madgaon</span>
+          <span class="bg-lime-100 text-forest-900 px-1.5 py-0.5 rounded font-bold">8 hrs 40 mins</span>
+        </div>
+        <h3 class="font-extrabold text-lg text-forest-900 mt-1">Konkan Monsoon Vistadome</h3>
+        <p class="text-xs text-forest-700 leading-relaxed mt-2 mb-3">Crossing 2,000 bridges through Western Ghats UNESCO biodiversity hotspot with direct views of raging Dudhsagar waterfalls.</p>
+        <div class="text-[11px] bg-white p-2.5 rounded-xl border border-sand-200 space-y-1">
+          <div class=""><strong>Artisan Hamper:</strong> Kokum Sharbat &amp; Malvani Poha</div>
+          <div class="text-emerald-700 font-bold"><strong>Sustainability:</strong> -88% CO2 vs Flight</div>
+        </div>
+      </div>
+      <button onclick="applyFastPrompt('Lock scenic rail tickets for Konkan Monsoon Vistadome')" class="mt-4 w-full bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs py-2 rounded-xl transition">
+        Sync with Swarm Itinerary ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-5 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <div class="flex items-center justify-between text-[11px] font-mono text-forest-600 mb-1">
+          <span class="font-bold text-forest-900">Kalka ⇄ Shimla</span>
+          <span class="bg-lime-100 text-forest-900 px-1.5 py-0.5 rounded font-bold">5 hrs 20 mins</span>
+        </div>
+        <h3 class="font-extrabold text-lg text-forest-900 mt-1">Kalka-Shimla Toy Train Vistadome</h3>
+        <p class="text-xs text-forest-700 leading-relaxed mt-2 mb-3">Historical 1903 narrow-gauge line weaving across 919 curves and deodar pine forests into British summer capital heights.</p>
+        <div class="text-[11px] bg-white p-2.5 rounded-xl border border-sand-200 space-y-1">
+          <div class=""><strong>Artisan Hamper:</strong> Himalayan Apple Jam &amp; Spiced Chai</div>
+          <div class="text-emerald-700 font-bold"><strong>Sustainability:</strong> 100% Narrow Gauge</div>
+        </div>
+      </div>
+      <button onclick="applyFastPrompt('Lock scenic rail tickets for Kalka-Shimla Toy Train Vistadome')" class="mt-4 w-full bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs py-2 rounded-xl transition">
+        Sync with Swarm Itinerary ↗
+      </button>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-5 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <div class="flex items-center justify-between text-[11px] font-mono text-forest-600 mb-1">
+          <span class="font-bold text-forest-900">Visakhapatnam ⇄ Araku</span>
+          <span class="bg-lime-100 text-forest-900 px-1.5 py-0.5 rounded font-bold">3 hrs 45 mins</span>
+        </div>
+        <h3 class="font-extrabold text-lg text-forest-900 mt-1">Araku Valley Glass Roof Express</h3>
+        <p class="text-xs text-forest-700 leading-relaxed mt-2 mb-3">Climbing Eastern Ghats through 58 tunnels and lush organic coffee valleys, overlooking Borra Caves and limestone ravines.</p>
+        <div class="text-[11px] bg-white p-2.5 rounded-xl border border-sand-200 space-y-1">
+          <div class=""><strong>Artisan Hamper:</strong> Araku Organic Roast &amp; Bamboo Chicken</div>
+          <div class="text-emerald-700 font-bold"><strong>Sustainability:</strong> Tribal Direct Supply</div>
+        </div>
+      </div>
+      <button onclick="applyFastPrompt('Lock scenic rail tickets for Araku Valley Glass Roof Express')" class="mt-4 w-full bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs py-2 rounded-xl transition">
+        Sync with Swarm Itinerary ↗
+      </button>
+    </div>
+  </div>
+  </section>
+
+  <!-- ================= TAB 6: CURATED ESCAPES ================= -->
+  <section id="view-holidays" class="page-spread hidden bg-white rounded-3xl border border-sand-200 shadow-xl p-6 sm:p-8">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-sand-200 gap-4">
+      <div>
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-forest-600 bg-forest-50 px-3 py-1 rounded-full">
+          ● Screen 06 · Thomas Cook Certified Escapes
+        </span>
+        <h2 class="text-3xl font-extrabold text-forest-900 mt-1 font-serif">Curated Wilderness Escapes of the Week</h2>
+        <p class="text-forest-700 text-xs mt-1">Guaranteed scheduled departures with vetted homestay hosts, zero single-supplement surcharges, and multi-agent assistance.</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-xs text-forest-600 font-mono">Affiliation:</span>
+        <span class="text-xs bg-forest-50 text-forest-800 px-3 py-1 rounded-md border border-forest-200 font-bold">Thomas Cook Network Partner</span>
+      </div>
+    </div>
+
+    <!-- CURATED PACKAGES GRID -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6" id="escapesGrid">
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-4 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded uppercase bg-amber-500 text-white">Early Bird Savings</span>
+        <span class="text-[10px] font-mono text-forest-600 block mt-2">4N / 5D · Brahmaputra</span>
+        <h3 class="font-extrabold text-base text-forest-900 mt-1">Kaziranga Forest Canopy &amp; Rhino Sanctum</h3>
+        <p class="text-xs text-forest-700 leading-relaxed mt-2 mb-3">3 Jeep safaris through Central &amp; Western zones with river dolphin cruise and Mishing village immersion.</p>
+      </div>
+      <div class="pt-3 border-t border-sand-200 flex items-center justify-between">
+        <span class="text-base font-extrabold text-forest-900 font-serif">₹19,200</span>
+        <button onclick="openModal('bookingModal')" class="bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs px-3 py-1.5 rounded-lg transition">
+          Book ↗
+        </button>
+      </div>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-4 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded uppercase bg-emerald-600 text-white">Free Rail Upgrade</span>
+        <span class="text-[10px] font-mono text-forest-600 block mt-2">5N / 6D · Kerala Ghats</span>
+        <h3 class="font-extrabold text-base text-forest-900 mt-1">Munnar Colonial Tea Estates &amp; Spice Sanctum</h3>
+        <p class="text-xs text-forest-700 leading-relaxed mt-2 mb-3">Stay in 1920s planter bungalows with tea tasting masterclasses, Nilgiri Tahr safari, and Vistadome rail ticket.</p>
+      </div>
+      <div class="pt-3 border-t border-sand-200 flex items-center justify-between">
+        <span class="text-base font-extrabold text-forest-900 font-serif">₹22,400</span>
+        <button onclick="openModal('bookingModal')" class="bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs px-3 py-1.5 rounded-lg transition">
+          Book ↗
+        </button>
+      </div>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-4 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded uppercase bg-forest-800 text-lime-400">Zone 1–5 Safari</span>
+        <span class="text-[10px] font-mono text-forest-600 block mt-2">3N / 4D · Sawai Madhopur</span>
+        <h3 class="font-extrabold text-base text-forest-900 mt-1">Ranthambore Royal Tiger Treks &amp; Fort Ruins</h3>
+        <p class="text-xs text-forest-700 leading-relaxed mt-2 mb-3">Luxury tented sanctuary with private naturalists and 4 premium safari tracks through ancient Rajput ruins.</p>
+      </div>
+      <div class="pt-3 border-t border-sand-200 flex items-center justify-between">
+        <span class="text-base font-extrabold text-forest-900 font-serif">₹28,900</span>
+        <button onclick="openModal('bookingModal')" class="bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs px-3 py-1.5 rounded-lg transition">
+          Book ↗
+        </button>
+      </div>
+    </div>
+  
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-4 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded uppercase bg-forest-800 text-lime-400">Slow Travel Favorite</span>
+        <span class="text-[10px] font-mono text-forest-600 block mt-2">3N / 4D · Vembanad Lake</span>
+        <h3 class="font-extrabold text-base text-forest-900 mt-1">Alleppey Backwater Houseboat &amp; Paddy Trails</h3>
+        <p class="text-xs text-forest-700 leading-relaxed mt-2 mb-3">Solar-hybrid slow cruising, on-board private Ayurvedic chef, and low-tide canoe excursions.</p>
+      </div>
+      <div class="pt-3 border-t border-sand-200 flex items-center justify-between">
+        <span class="text-base font-extrabold text-forest-900 font-serif">₹17,800</span>
+        <button onclick="openModal('bookingModal')" class="bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs px-3 py-1.5 rounded-lg transition">
+          Book ↗
+        </button>
+      </div>
+    </div>
+  </div>
+  </section>
+
+</main>
+
+<!-- ================= MODALS ================= -->
+
+<!-- 1. SWARM TELEMETRY & DELIBERATION MODAL -->
+<div id="swarmModal" class="fixed inset-0 z-50 bg-forest-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
+  <div class="bg-white rounded-2xl max-w-4xl w-full p-6 shadow-2xl border border-forest-100 max-h-[88vh] flex flex-col">
+    <div class="flex items-center justify-between pb-4 border-b border-sand-200">
+      <div>
+        <span class="text-xs uppercase font-extrabold tracking-wider text-forest-600 font-mono">Autonomous Deliberation Core v4.2</span>
+        <h2 class="text-xl font-extrabold text-forest-800 font-serif">5-Agent Live Conflict Resolution &amp; Route Consensus</h2>
+      </div>
+      <button onclick="closeModal('swarmModal')" class="w-8 h-8 rounded-full bg-sand-100 hover:bg-sand-200 flex items-center justify-center text-forest-700 font-bold text-lg cursor-pointer">×</button>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4 grow overflow-y-auto custom-scroll pr-1" id="swarmModalFeeds">
+    <div class="p-3 bg-sand-50 rounded-xl border border-sand-200 flex flex-col gap-1.5">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">🚆</span>
+        <div>
+          <strong class="block text-forest-900 text-xs">Transit &amp; Heritage Rail</strong>
+          <span class="text-[10px] text-forest-600">IRCTC Vistadome &amp; 4WD Mountain</span>
+        </div>
+      </div>
+      <div class="text-[10px] font-mono bg-white p-2 rounded border border-sand-200 text-forest-700">
+        Status: <span class="font-bold text-emerald-700">SYNCHRONIZED</span><br>
+        Telemetry: Real-time route optimization active. Zero policy conflicts detected.
+      </div>
+    </div>
+  
+    <div class="p-3 bg-sand-50 rounded-xl border border-sand-200 flex flex-col gap-1.5">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">🏡</span>
+        <div>
+          <strong class="block text-forest-900 text-xs">Eco-Sanctuary Lodges</strong>
+          <span class="text-[10px] text-forest-600">Tethys Mud Homestays &amp; Poplar Stays</span>
+        </div>
+      </div>
+      <div class="text-[10px] font-mono bg-white p-2 rounded border border-sand-200 text-forest-700">
+        Status: <span class="font-bold text-emerald-700">TABO HELD</span><br>
+        Telemetry: Real-time route optimization active. Zero policy conflicts detected.
+      </div>
+    </div>
+  
+    <div class="p-3 bg-sand-50 rounded-xl border border-sand-200 flex flex-col gap-1.5">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">🔭</span>
+        <div>
+          <strong class="block text-forest-900 text-xs">Master Naturalist (Kaza)</strong>
+          <span class="text-[10px] text-forest-600">Spiti Ibex &amp; Snow Leopard Trackers</span>
+        </div>
+      </div>
+      <div class="text-[10px] font-mono bg-white p-2 rounded border border-sand-200 text-forest-700">
+        Status: <span class="font-bold text-emerald-700">CLEARED</span><br>
+        Telemetry: Real-time route optimization active. Zero policy conflicts detected.
+      </div>
+    </div>
+  
+    <div class="p-3 bg-sand-50 rounded-xl border border-sand-200 flex flex-col gap-1.5">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">🍲</span>
+        <div>
+          <strong class="block text-forest-900 text-xs">Regional Culinary Agent</strong>
+          <span class="text-[10px] text-forest-600">Millet Sourcing / High-Calorie Barley</span>
+        </div>
+      </div>
+      <div class="text-[10px] font-mono bg-white p-2 rounded border border-sand-200 text-forest-700">
+        Status: <span class="font-bold text-emerald-700">ORGANIC</span><br>
+        Telemetry: Real-time route optimization active. Zero policy conflicts detected.
+      </div>
+    </div>
+  
+    <div class="p-3 bg-sand-50 rounded-xl border border-sand-200 flex flex-col gap-1.5">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">🫀</span>
+        <div>
+          <strong class="block text-forest-900 text-xs">Biometric AMS &amp; Safety</strong>
+          <span class="text-[10px] text-forest-600">Barometric Pacing &amp; Oximetry</span>
+        </div>
+      </div>
+      <div class="text-[10px] font-mono bg-white p-2 rounded border border-sand-200 text-forest-700">
+        Status: <span class="font-bold text-emerald-700">HIGH VIGILANCE</span><br>
+        Telemetry: Real-time route optimization active. Zero policy conflicts detected.
+      </div>
+    </div>
+  </div>
+    <div class="bg-sand-100 p-3.5 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-forest-800 border border-sand-200">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+        <span class="">Consensus Status: <strong class="text-forest-900">All 5 Agent State-Locks Harmonized</strong></span>
+      </div>
+      <button onclick="closeModal('swarmModal'); showToast('Consensus applied to live expedition spread.');" class="bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold px-4 py-2 rounded-lg cursor-pointer transition shadow-xs">
+        Apply to Live Expedition Spread
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- 2. AGENT DETAIL MODAL -->
+<div id="agentDetailModal" class="fixed inset-0 z-50 bg-forest-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
+  <div class="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl border border-forest-100 flex flex-col">
+    <div class="flex items-center justify-between pb-3 border-b border-sand-200">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-forest-700 text-lime-400 font-extrabold flex items-center justify-center text-lg" id="agentModalIcon">🫀</div>
+        <div>
+          <span class="text-[10px] font-mono uppercase text-forest-600 tracking-wider">Cognitive Agent Telemetry</span>
+          <h3 class="text-lg font-extrabold text-forest-900" id="agentModalTitle">Biometric Safety &amp; AMS Agent</h3>
+        </div>
+      </div>
+      <button onclick="closeModal('agentDetailModal')" class="w-8 h-8 rounded-full bg-sand-100 hover:bg-sand-200 flex items-center justify-center text-forest-700 font-bold text-lg cursor-pointer">×</button>
+    </div>
+    <div class="my-4 space-y-3 text-xs" id="agentModalBody">
+      <!-- Injected dynamically -->
+    </div>
+    <div class="pt-3 border-t border-sand-200 flex justify-end gap-2">
+      <button onclick="closeModal('agentDetailModal')" class="px-4 py-2 rounded-xl bg-sand-100 hover:bg-sand-200 text-forest-800 font-bold text-xs cursor-pointer">Close</button>
+      <button onclick="triggerAgentResync()" class="px-4 py-2 rounded-xl bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs cursor-pointer">Trigger Priority Re-sync</button>
+    </div>
+  </div>
+</div>
+
+<!-- 3. DAY EXPANSION MODAL -->
+<div id="dayDetailModal" class="fixed inset-0 z-50 bg-forest-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
+  <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-forest-100 max-h-[90vh] flex flex-col">
+    <div class="flex items-center justify-between pb-4 border-b border-sand-200">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded font-mono font-bold bg-forest-700 text-lime-400 text-xs" id="dayModalNumber">DAY 01</span>
+          <span class="text-xs font-mono text-forest-600" id="dayModalElev">Elev: 2,205m</span>
+        </div>
+        <h3 class="text-xl font-extrabold text-forest-900 mt-1 font-serif" id="dayModalTitle">Scenic Foothill Ascent</h3>
+      </div>
+      <button onclick="closeModal('dayDetailModal')" class="w-8 h-8 rounded-full bg-sand-100 hover:bg-sand-200 flex items-center justify-center text-forest-700 font-bold text-lg cursor-pointer">×</button>
+    </div>
+    <div class="my-4 space-y-4 overflow-y-auto custom-scroll pr-1 text-xs" id="dayModalContent">
+      <!-- Injected dynamically -->
+    </div>
+    <div class="pt-3 border-t border-sand-200 flex justify-between items-center text-xs">
+      <span class="text-forest-600 font-mono">Voyara Field Protocol V-4</span>
+      <button onclick="closeModal('dayDetailModal')" class="bg-forest-700 hover:bg-forest-800 text-lime-400 px-4 py-2 rounded-xl font-bold cursor-pointer">Done Inspecting</button>
+    </div>
+  </div>
+</div>
+
+<!-- 4. BOOKING / HOLD SEAT MODAL -->
+<div id="bookingModal" class="fixed inset-0 z-50 bg-forest-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
+  <div class="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl border border-forest-100 flex flex-col">
+    <div class="flex items-center justify-between pb-3 border-b border-sand-200">
+      <div>
+        <span class="text-xs font-mono uppercase text-forest-600 tracking-wider font-bold">48-Hour Complimentary Hold</span>
+        <h3 class="text-xl font-extrabold text-forest-900 font-serif">Reserve Expedition Dossier</h3>
+      </div>
+      <button onclick="closeModal('bookingModal')" class="w-8 h-8 rounded-full bg-sand-100 hover:bg-sand-200 flex items-center justify-center text-forest-700 font-bold text-lg cursor-pointer">×</button>
+    </div>
+    <form onsubmit="confirmHoldBooking(event)" class="my-4 space-y-3 text-xs">
+      <div>
+        <label class="block font-bold text-forest-800 mb-1">Lead Explorer Full Name</label>
+        <input required="" type="text" class="w-full bg-sand-50 border border-sand-300 rounded-xl px-3 py-2 text-forest-900 focus:outline-none" value="Captain R. Scott">
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block font-bold text-forest-800 mb-1">Explorer Count</label>
+          <select id="modalPassengerSelect" onchange="updateBookingTotal()" class="w-full bg-sand-50 border border-sand-300 rounded-xl px-3 py-2 text-forest-900 focus:outline-none">
+            <option value="1">1 Explorer (Single Sanctum)</option>
+            <option value="2" selected="">2 Explorers (Shared Sanctuary)</option>
+            <option value="4">4 Explorers (Private Rover &amp; Guide)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-bold text-forest-800 mb-1">Dietary Directive</label>
+          <select class="w-full bg-sand-50 border border-sand-300 rounded-xl px-3 py-2 text-forest-900 focus:outline-none">
+            <option>Strict Satvik &amp; Millet Only</option>
+            <option>Organic Vegan / Plant-Based</option>
+            <option>Wild Foraged Regional Palette</option>
+          </select>
+        </div>
+      </div>
+      <div class="p-3 bg-sand-100 rounded-xl space-y-1.5 border border-sand-200">
+        <div class="flex justify-between">
+          <span class="text-forest-700">Base Expedition Rate:</span>
+          <span class="font-mono font-bold text-forest-900" id="bookingBaseRate">₹78,400</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-forest-700">Naturalist &amp; Forest Cess (Included):</span>
+          <span class="font-mono text-emerald-700">100% Direct Pay</span>
+        </div>
+        <div class="flex justify-between border-t border-sand-300 pt-1.5 font-bold">
+          <span class="text-forest-900">Total Escrow Hold:</span>
+          <span class="font-mono text-base text-forest-900" id="bookingTotalRate">₹1,56,800</span>
+        </div>
+      </div>
+      <div class="pt-3 border-t border-sand-200 flex justify-end gap-2">
+        <button type="button" onclick="closeModal('bookingModal')" class="px-4 py-2 rounded-xl bg-sand-100 hover:bg-sand-200 text-forest-800 font-bold cursor-pointer">Cancel</button>
+        <button type="submit" class="px-5 py-2 rounded-xl bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold cursor-pointer shadow-sm">
+          Confirm 48-Hour Seat Hold ↗
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- 5. DOSSIER EXPORT MODAL -->
+<div id="dossierModal" class="fixed inset-0 z-50 bg-forest-900/60 backdrop-blur-sm hidden items-center justify-center p-4"><div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-forest-100 flex flex-col max-h-[90vh]"><div class="flex items-center justify-between pb-3 border-b border-sand-200"><div><span class="text-xs font-mono uppercase text-forest-600 tracking-wider font-bold">Field Dossier Compilation</span><h3 class="text-xl font-extrabold text-forest-900 font-serif">Export Swarm Expedition Brief</h3></div><button onclick="closeModal('dossierModal')" class="w-8 h-8 rounded-full bg-sand-100 hover:bg-sand-200 flex items-center justify-center text-forest-700 font-bold text-lg cursor-pointer">×</button></div><div class="my-4 space-y-4 text-xs text-forest-800 overflow-y-auto custom-scroll pr-1"><div class="p-4 bg-forest-50 border border-forest-200 rounded-xl space-y-2.5"><div class="flex items-center justify-between"><div class="font-bold text-sm text-forest-900" id="dossierRouteTitle">Spiti High Sanctuary Expedition Brief</div><span class="text-[10px] font-mono bg-emerald-100 text-emerald-900 font-bold px-2 py-0.5 rounded">5/5 Models Validated</span></div><p class="text-forest-700 text-xs leading-relaxed">Compiled archival docket containing live cognitive agent constraints (Biometric &amp; AMS, Transit, Lodging, Naturalist, Gastronomy), barometric day elevation profiles, verified certifications, and carbon mitigation metrics.</p><div class="flex items-center justify-between text-[11px] font-mono text-forest-600 bg-white p-2.5 rounded-lg border border-forest-100"><span class="">Target Spec: <strong class="text-forest-900">VOYARA-EXPEDITION-ARCHIVE-v4.2</strong></span><span class="text-emerald-700 font-bold">Live Sync Active</span></div></div><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs"><button type="button" onclick="exportDossierJSON()" class="p-3.5 rounded-xl border border-forest-200 bg-white hover:bg-forest-50 flex flex-col items-start gap-1 cursor-pointer transition shadow-xs text-left group"><div class="flex items-center gap-2 font-bold text-forest-900 group-hover:text-forest-700"><span class="text-base">💾</span><span class="">Download Dossier (JSON)</span></div><span class="text-[11px] text-forest-600">Generates complete machine-readable telemetry and 7-day schedule file.</span></button><button type="button" onclick="exportDossierPrintPDF()" class="p-3.5 rounded-xl border border-forest-200 bg-white hover:bg-forest-50 flex flex-col items-start gap-1 cursor-pointer transition shadow-xs text-left group"><div class="flex items-center gap-2 font-bold text-forest-900 group-hover:text-forest-700"><span class="text-base">📄</span><span class="">Printable Dossier (PDF / Print)</span></div><span class="text-[11px] text-forest-600">Opens archival field dispatch view configured for clean PDF export.</span></button></div><div class="p-3 bg-sand-100 rounded-xl border border-sand-200 flex items-center justify-between gap-3 text-xs"><div class="flex items-center gap-2 text-forest-700"><span class="text-base">📋</span><span class="">Need quick integration? Copy raw state to clipboard.</span></div><button type="button" onclick="copyDossierClipboard()" class="px-3 py-1.5 rounded-lg bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold font-mono text-[11px] cursor-pointer transition shrink-0">Copy Raw JSON</button></div></div><div class="pt-3 border-t border-sand-200 flex justify-between items-center text-xs"><span class="text-forest-600 font-mono text-[11px]">Telemetry Hash: SHA256-SWARM-VOYARA</span><button onclick="closeModal('dossierModal')" class="px-4 py-2 rounded-xl bg-forest-700 text-lime-400 font-bold text-xs cursor-pointer hover:bg-forest-800 transition">Done</button></div></div></div>
+
+<!-- TOAST NOTIFICATION -->
+<div id="toast" class="fixed bottom-6 right-6 z-50 bg-forest-900 text-white px-5 py-3 rounded-2xl shadow-2xl border border-forest-700 text-xs flex items-center gap-3 transform transition duration-300">
+  <span class="w-2.5 h-2.5 rounded-full bg-lime-400 animate-pulse"></span>
+  <span id="toastMsg" class="">Transit Agent executed: UNESCO Heritage Rail Synchronized (-48kg CO2e).</span>
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-forest-900 text-[#dceee5] border-t border-forest-800 mt-auto py-12 px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-xs">
+    <div>
+      <div class="flex items-center gap-2 mb-3">
+        <div class="w-7 h-7 rounded-lg bg-forest-700 flex items-center justify-center text-lime-400 font-bold text-sm">↗</div>
+        <span class="font-extrabold text-base tracking-tight text-white">VOYARA</span>
+      </div>
+      <p class="text-forest-200/70 leading-relaxed">
+        Autonomous subcontinental expedition platform coordinating specialized multi-agent cognitive models with ethical forestry, high-touch naturalist guides, and heritage slow rail.
+      </p>
+    </div>
+    <div>
+      <strong class="block text-white uppercase tracking-wider text-[11px] mb-3">Expedition Catalog Folios</strong>
+      <ul class="space-y-2 text-forest-200/80">
+        <li class=""><button onclick="switchTab('flipbook')" class="hover:text-lime-400 transition cursor-pointer text-left">Himalayan Flipbook Spread</button></li>
+        <li class=""><button onclick="switchTab('destinations')" class="hover:text-lime-400 transition cursor-pointer text-left">Pan-India Wilderness Corridors</button></li>
+        <li class=""><button onclick="switchTab('stays')" class="hover:text-lime-400 transition cursor-pointer text-left">Eco-Lodges &amp; Biophilic Stays</button></li>
+        <li class=""><button onclick="switchTab('rail')" class="hover:text-lime-400 transition cursor-pointer text-left">Mountain Gauge &amp; Coastal Rail</button></li>
+      </ul>
+    </div>
+    <div>
+      <strong class="block text-white uppercase tracking-wider text-[11px] mb-3">Multi-Agent Cognition</strong>
+      <ul class="space-y-2 text-forest-200/80">
+        <li class=""><button onclick="inspectAgent('transit')" class="hover:text-lime-300 cursor-pointer text-left flex items-center gap-1.5"><span class="text-lime-400">● Transit:</span> IRCTC &amp; 4WD Sync</button></li>
+        <li class=""><button onclick="inspectAgent('biometric')" class="hover:text-lime-300 cursor-pointer text-left flex items-center gap-1.5"><span class="text-lime-400">● Safety:</span> AMS Elevation Telemetry</button></li>
+        <li class=""><button onclick="inspectAgent('lodging')" class="hover:text-lime-300 cursor-pointer text-left flex items-center gap-1.5"><span class="text-lime-400">● Lodging:</span> Mud-Thermal Solar</button></li>
+        <li class=""><button onclick="inspectAgent('culinary')" class="hover:text-lime-300 cursor-pointer text-left flex items-center gap-1.5"><span class="text-lime-400">● Culinary:</span> Satvik &amp; Organic Millets</button></li>
+      </ul>
+    </div>
+    <div>
+      <strong class="block text-white uppercase tracking-wider text-[11px] mb-3">Guarantees &amp; Compliance</strong>
+      <p class="text-forest-200/70 leading-relaxed mb-3">
+        100% direct-pay to local trackers. Zero single-use plastic certified. Autonomous carbon offsets synced with national bio-reserve trusts.
+      </p>
+      <span class="text-[10px] text-lime-400 font-mono block">© 2026 Voyara Expeditions Ltd. All Rights Reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- JAVASCRIPT LOGIC & HEFTY DATASET -->
+<script>
+/* -----------------------------------------------------------
+   HEFTY SEED DATASET: 4 PROFILES (28 DAYS TOTAL)
+----------------------------------------------------------- */
+const profiles = {
+  spiti: {
+    id: 'spiti',
+    name: '01. Winter Spiti Wild',
+    heading: 'Collaborative 7-Day Expedition Studio',
+    desc: 'High altitude AMS pacing, sub-zero snow leopard tracking, passive solar earth adobe sanctuaries, and sacred monastic millenia.',
+    routeTitle: 'Trans-Himalayan Winter Edition: Shimla to Spiti High Sanctuary',
+    terrainBadge: 'Terrain: Cold Steppe (3,100m – 4,400m)',
+    price: 78400,
+    priceSubtitle: 'per explorer (naturalist fee & forestry cess incl.)',
+    pills: { bio: '3,800m Pacing', transit: 'Vistadome 4WD', stay: 'Passive Solar', guide: 'Snow Leopard #07', food: 'Satvik / Millet' },
+    checkmarks: ['✓ 0% Single-Use Plastic', '✓ IRCTC Heritage Sync', '✓ Local Guide 100% Direct Pay', '✓ Certified Eco-Mud Stays'],
+    agents: [
+      { id: 'transit', icon: '🚆', title: 'Transit & Heritage Rail', subtitle: 'IRCTC Vistadome & 4WD Mountain', status: 'SYNCHRONIZED', statusClass: 'text-emerald-700 bg-emerald-50' },
+      { id: 'lodging', icon: '🏡', title: 'Eco-Sanctuary Lodges', subtitle: 'Tethys Mud Homestays & Poplar Stays', status: 'TABO HELD', statusClass: 'text-emerald-700 bg-emerald-50' },
+      { id: 'naturalist', icon: '🔭', title: 'Master Naturalist (Kaza)', subtitle: 'Spiti Ibex & Snow Leopard Trackers', status: 'CLEARED', statusClass: 'text-emerald-700 bg-emerald-50' },
+      { id: 'culinary', icon: '🍲', title: 'Regional Culinary Agent', subtitle: 'Millet Sourcing / High-Calorie Barley', status: 'ORGANIC', statusClass: 'text-emerald-700 bg-emerald-50' },
+      { id: 'biometric', icon: '🫀', title: 'Biometric AMS & Safety', subtitle: 'Barometric Pacing & Oximetry', status: 'HIGH VIGILANCE', statusClass: 'text-amber-700 bg-amber-50' }
+    ],
+    deliberations: [
+      { agent: 'Biometric Agent', text: 'Kalpa (2,960m) to Kaza (3,800m) direct transit poses acute 48% AMS threat for rapid elevation leap.', color: 'text-amber-400' },
+      { agent: 'Transit Agent', text: 'Detour inserted at Tabo (3,280m) intermediate layover with solar-heated homestay. EV departure at 07:30 AM.', color: 'text-lime-300' },
+      { agent: 'Consensus', text: 'Single-day altitude gain capped at +320m. Safety margin restored to 9.8/10 across all travelers.', color: 'text-emerald-300' }
+    ],
+    days: [
+      {
+        num: '01', title: 'Scenic Foothill Ascent & Himalayan Vistadome Rail',
+        desc: 'UNESCO Mountain Railway slow ascent through deodar pine canopies with observation glass ceiling.',
+        elev: '2,205m', time: '08:30 – 14:00', guide: 'Dr. Tsering Norbu', food: 'Kangra Tea Hamper & roasted walnuts',
+        morning: 'Board historic Vistadome coach at Kalka station; ascend 1,500m across 102 stone tunnels.',
+        afternoon: 'Arrive in Shimla; botanical briefing on subalpine conifers with Dr. Norbu.',
+        evening: 'Acclimatization stroll on Ridge; baseline pulse-oximetry check (Avg SpO2: 96%).'
+      },
+      {
+        num: '02', title: 'Sutlej Gorge Traverse & Kinnaur Apple Orchards',
+        desc: 'Private high-torque all-terrain electric 4WD drive. Checking into stone-wood sanctuary facing sacred Kinner Kailash peak.',
+        elev: '2,960m', time: '07:30 – 15:30', guide: 'Sonam Dorje', food: 'Spiced red rice & slow-cooked kidney beans',
+        morning: 'Depart Shimla along Hindustan-Tibet highway carved into sheer gneiss river gorges.',
+        afternoon: 'Visit 800-year-old Kamru Fort; explore apple orchard conservation nursery in Sangla.',
+        evening: 'Bioluminescent stargazing session overlooking Kinner Kailash range.'
+      },
+      {
+        num: '03', title: 'Hindustan-Tibet Way & Tabo Monastery Acclimatization',
+        desc: 'Restructured single-day altitude delta from +840m down to a safe +320m. Sunset cliff meditation and Tibetan breathwork.',
+        elev: '3,280m', badge: '✓ Resolved by Safety Agent: Altitude Buffer Added',
+        time: '09:00 – 16:00', guide: 'Lobzang Bodh', food: 'Steamed buckwheat momos & Seabuckthorn berry reduction',
+        morning: 'Crossing confluence of Spiti and Sutlej rivers at Khab; entering high desert bioclimatic zone.',
+        afternoon: 'Exploration of Tabo Chos-Khor Monastery murals dating to 996 CE (Ajanta of the Himalayas).',
+        evening: 'Three-point pulse oximetry audit; pranayama breathing session with resident lama.'
+      },
+      {
+        num: '04', title: 'Dhankar Fort Citadel & Spiti River Basin Arrival',
+        desc: 'Gradual ascent along lunar cliff formations. Evening briefing on Himalayan snow leopard signs and telemetry collars.',
+        elev: '3,800m', time: '08:00 – 16:30', guide: 'Tracker Lobzang Dorje', food: 'Roasted tsampa & yak butter tea with barley soup',
+        morning: 'Scramble to Dhankar cliff-edge meditation cell suspended 300m above river gorge.',
+        afternoon: 'Drive into Kaza township; equip sub-zero down suits and high-altitude thermal boots.',
+        evening: 'Master Tracker lecture on snow leopard territorial scent-marking patterns.'
+      },
+      {
+        num: '05', title: 'Kibber Wildlife Sanctuary & Snow Leopard Spotting Ridge',
+        desc: 'Early dawn hide at 4,200m using optical spotter scopes. Spotting Himalayan Blue Sheep, Tibetan Wolf packs, and cliff raptors.',
+        elev: '4,205m', time: '05:30 – 13:00', guide: 'Lead Spotter Chhewang Tenzin', food: 'High-energy millet flapjacks & dry fruit pemmican',
+        morning: 'Silent ascent to Rong Nullah ridge. Setup 40x Swarovski spotting scopes.',
+        afternoon: 'Sightings of Blue Sheep herds grazing on moraine scree; golden eagle soaring over Kye.',
+        evening: 'Debrief by fireside at Kibber mud-solar homestay with solar water heater.'
+      },
+      {
+        num: '06', title: 'Langza Marine Fossil Beds & World Highest Post Office',
+        desc: 'Tethys ocean ammonite fossil exploration (no removal policy). Sending hand-stamped postcards from Hikkim.',
+        elev: '4,400m', time: '09:00 – 15:00', guide: 'Geologist Dr. K. Mehta', food: 'Barley sourdough bread & wild chives broth',
+        morning: 'Geological walk along 200-million-year-old Tethys sea bed at Langza village.',
+        afternoon: 'Visit Hikkim Post Office (4,440m); hand stamp postcards to family across the globe.',
+        evening: 'Traditional Spitite communal dinner with local village council heads.'
+      },
+      {
+        num: '07', title: 'Kye Gompa High Blessing & Descent to Kalpa Sanctum',
+        desc: 'Dawn chanting ceremonies inside the 11th-century cliff monastery before deliberate, oxygen-rich descent.',
+        elev: '2,960m', time: '06:00 – 17:00', guide: 'Dr. Tsering Norbu', food: 'Hot apple crumble & saffron ginger infusion',
+        morning: 'Attend morning prayer conch call at Kye Gompa; receive butter lamp traveler blessing.',
+        afternoon: 'Gradual descent back down Sutlej basin; oxygen saturation returns to 98%.',
+        evening: 'Expedition farewell banquet at Kalpa Pine Sanctuary with organic Kinnauri cider.'
+      }
+    ]
+  },
+
+  kerala: {
+    id: 'kerala',
+    name: '02. Monsoon Kerala',
+    heading: 'Monsoon Kerala Regenerative Wellness Sanctuary',
+    desc: 'Ayurvedic Satvik retreat, Vembanad solar hybrid slow cruising, zero-stairs Munnar estate, and Nilgiri Tahr mountain ridge trails.',
+    routeTitle: 'Western Ghats to Backwaters: Kochi, Munnar & Vembanad Wetlands',
+    terrainBadge: 'Terrain: Rainforest & Coastal Delta (12m – 1,600m)',
+    price: 42000,
+    priceSubtitle: 'per explorer (doctor consultation & houseboat fees incl.)',
+    pills: { bio: 'Dosha Balanced', transit: 'Solar Hybrid Boat', stay: 'Heritage Estate', guide: 'Nilgiri Spotter', food: '100% Satvik / Vegan' },
+    checkmarks: ['✓ 0% Single-Use Plastic', '✓ Solar Hybrid Cruising', '✓ Doctor Led Wellness Checks', '✓ Zero-Stairs Accessibility'],
+    agents: [
+      { id: 'transit', icon: '🛥️', title: 'Transit & Waterways', subtitle: 'Solar-Hybrid Kettuvallam & EV', status: 'SYNCHRONIZED', statusClass: 'text-emerald-700 bg-emerald-50' },
+      { id: 'lodging', icon: '🌿', title: 'Eco-Sanctuary Lodges', subtitle: 'Windermere 1920s & Lake Villas', status: 'HELD 100%', statusClass: 'text-emerald-700 bg-emerald-50' },
+      { id: 'naturalist', icon: '🦜', title: 'Ghats Naturalist Agent', subtitle: 'Endemic Birds & Shola Forest', status: 'VERIFIED', statusClass: 'text-emerald-700 bg-emerald-50' },
+      { id: 'culinary', icon: '🥥', title: 'Ayurvedic Gastronomy', subtitle: 'Strict Satvik / Red Matta Rice', status: 'ORGANIC', statusClass: 'text-emerald-700 bg-emerald-50' },
+      { id: 'biometric', icon: '🫀', title: 'Biometric Mobility Pacing', subtitle: 'Heart Rate & Zero-Stair Routing', status: 'OPTIMIZED', statusClass: 'text-emerald-700 bg-emerald-50' }
+    ],
+    deliberations: [
+      { agent: 'Biometric Agent', text: 'Zero-stair access enforced for Munnar bungalow wing. Elevation max capped at comfortable 1,600m.', color: 'text-lime-300' },
+      { agent: 'Gastronomy Agent', text: 'All meals converted to tridoshic balancing Satvik diet: zero alliums, steamed matta rice, ash gourd infusions.', color: 'text-amber-400' },
+      { agent: 'Consensus', text: 'Alleppey solar hybrid houseboat synchronized with Cochin port arrivals. Carbon footprint reduced by 82%.', color: 'text-emerald-300' }
+    ],
+    days: [
+      {
+        num: '01', title: 'Fort Kochi Heritage Harbor & Spice Warehouse Walk',
+        desc: 'Arrival in colonial seaside quarters. Private consultation with senior Vaidya Ayurvedic physician.',
+        elev: '5m', time: '10:00 – 17:00', guide: 'Kurian Varghese', food: 'Steamed idiyappam with coconut milk and cardamom',
+        morning: 'Check in to restored Dutch warehouse sanctuary; welcoming tender coconut elixir.',
+        afternoon: 'Personal pulse assessment (Nadi Pariksha) by Dr. Radhamani to personalize weekly wellness oils.',
+        evening: 'Slow walk past ancient Chinese fishing nets and sunset Kathakali makeup recital.'
+      },
+      {
+        num: '02', title: 'Ascent to Munnar Cardamom Hills via Neriamangalam Bridge',
+        desc: 'Slow winding drive through cascading Cheeyappara falls and wild bamboo groves into cool misty Shola ridges.',
+        elev: '1,200m', time: '08:30 – 14:30', guide: 'Vaidyanathan S.', food: 'Red matta rice, ash gourd olan, and moru curry',
+        morning: 'Depart coastal plains; watch flora transition from coconut palms to giant tree ferns.',
+        afternoon: 'Arrive at 1920s Windermere Planter Estate; check into ground-level verandah suite.',
+        evening: 'Freshly roasted plantation tea cupping and herbal foot bath.'
+      },
+      {
+        num: '03', title: 'Eravikulam Shola Sanctuary & Nilgiri Tahr Ridge',
+        desc: 'Early morning expedition into protected high-altitude grassland to observe endangered Nilgiri Ibex.',
+        elev: '1,600m', badge: '✓ Naturalist Agent: Private Eco-Zone Permit Cleared',
+        time: '07:00 – 12:30', guide: 'Rajan Pillai', food: 'Steamed ragi puttu with banana and jaggery',
+        morning: 'Private access gate entry to Rajamala; spot mother and fawn Nilgiri Tahr on rocky cliffs.',
+        afternoon: 'Visit Lockhart organic tea factory using vintage 1879 Orthodox rolling machinery.',
+        evening: 'Full body Abhyanga warm herbal oil massage with botanical steam box.'
+      },
+      {
+        num: '04', title: 'Cardamom Harvesting & Canopy Birding Walk',
+        desc: 'Explore 60 acres of bio-diverse shade-grown coffee, vanilla orchids, and pepper vines under giant cedar trees.',
+        elev: '1,450m', time: '08:00 – 13:00', guide: 'Kurian Varghese', food: 'Jackfruit seed roast & tender bamboo shoot stew',
+        morning: 'Spotting Malabar Whistling Thrush and Nilgiri Flycatcher with binoculars.',
+        afternoon: 'Hands-on cardamom pod picking and smokehouse curing explanation with estate planters.',
+        evening: 'Sunset yoga and meditative yoga nidra overlooking Chithirapuram valley.'
+      },
+      {
+        num: '05', title: 'Descent to Vembanad Lake & Solar-Hybrid Houseboat Embarkation',
+        desc: 'Boarding Voyara-certified zero-emission solar hybrid kettuvallam for silent cruising through palm-fringed backwaters.',
+        elev: '12m', time: '09:00 – 16:00', guide: 'Captain Biju', food: 'Plantain leaf banana blossom bake for vegans',
+        morning: 'Scenic descent through spice foothills to Kumarakom jetty.',
+        afternoon: 'Silent glide through canal network without engine fumes or wake pollution; observing darter birds.',
+        evening: 'Anchor in secluded backwater cove; candlelit satvik dinner under open monsoonal stars.'
+      },
+      {
+        num: '06', title: 'Paddy Field Canoeing & Khadi Weaving Guilds',
+        desc: 'Switching to narrow wooden canoes to explore low-lying Kuttanad farming below sea level.',
+        elev: '-1.5m', time: '07:30 – 14:00', guide: 'Master Weaver Janaki', food: 'Tender coconut water & roasted tapioca',
+        morning: 'Observe farmers managing centuries-old bio-saline dyke agriculture.',
+        afternoon: 'Visit cooperative organic cotton spinning shed; try traditional pit loom weaving.',
+        evening: 'Sunset Ayurvedic herbal bath infused with vetiver roots and sacred basil.'
+      },
+      {
+        num: '07', title: 'Marari Beach Conservation & Turtle Hatchery Release',
+        desc: 'Concluding at peaceful Marari fishing hamlet with native tree planting and beach conservation walk.',
+        elev: '3m', time: '09:00 – 16:00', guide: 'Marine Biologist Anu', food: 'Payasam made with coconut milk and red rice flakes',
+        morning: 'Visit community-managed Olive Ridley sea turtle sanctuary and beach nursery.',
+        afternoon: 'Final Ayurvedic wellness review and take-home herbal formulation package.',
+        evening: 'Depart for Kochi International Airport with zero flight-stress clearance.'
+      }
+    ]
+  },
+
+  rajasthan: {
+    id: 'rajasthan',
+    name: '03. Autumn Rajasthan',
+    heading: 'Royal Desert Astronomy & Rajput Craft Expedition',
+    desc: 'Bortle-1 dark sky astronomy in Thar dunes, stepwell acoustics, private camel safari pacing, and organic pearl millet gastronomy.',
+    routeTitle: 'Golden Sand Atlas: Jodhpur, Thar Sand Sanctuary & Jaisalmer Fort',
+    terrainBadge: 'Terrain: Arid Dunes & Aravalli Scrub (220m – 340m)',
+    price: 115000,
+    priceSubtitle: 'per explorer (luxury tented sanctuary, optical telescope & caravan incl.)',
+    pills: { bio: 'Hydration 3.5L', transit: 'Desert EV Rover', stay: 'Heritage Haveli', guide: 'Resident Astronomer', food: 'Bajra / Ghee Feast' },
+    checkmarks: ['✓ Bortle-1 Dark Sky Telescope', '✓ 0% Single-Use Plastic', '✓ 100% Camel Welfare Certified', '✓ Master Astrophotographer Guide'],
+    agents: [
+      { id: 'transit', icon: '🐪', title: 'Transit & Desert Logistics', subtitle: '4WD Rover & Gentle Camel Caravan', status: 'SYNCHRONIZED', statusClass: 'text-emerald-700 bg-emerald-50' },
+      { id: 'lodging', icon: '🏰', title: 'Eco-Sanctuary Lodges', subtitle: 'Rawla Narlai & Thar Dune Glamping', status: 'SECURED', statusClass: 'text-emerald-700 bg-emerald-50' },
+      { id: 'naturalist', icon: '🔭', title: 'Resident Astronomer', subtitle: '16-inch Dobsonian Sky Tracker', status: 'CLEAR SKIES', statusClass: 'text-emerald-700 bg-emerald-50' },
+      { id: 'culinary', icon: '🌾', title: 'Culinary Heritage Agent', subtitle: 'Bajra Khichdi & Wild Ker Sangri', status: 'ROYAL SATVIK', statusClass: 'text-emerald-700 bg-emerald-50' },
+      { id: 'biometric', icon: '💧', title: 'Biometric Heat & Water', subtitle: 'Electrolyte Telemetry & Siesta Pacing', status: 'HYDRATED', statusClass: 'text-emerald-700 bg-emerald-50' }
+    ],
+    deliberations: [
+      { agent: 'Biometric Agent', text: 'Midday desert heat indices reach 33C. Mandatory shade siesta from 12:30 to 15:30 enforced.', color: 'text-amber-400' },
+      { agent: 'Astronomer Agent', text: 'New moon phase verified for Thar Glamping night. Zero light pollution allows Bortle Class 1 Milky Way imaging.', color: 'text-lime-300' },
+      { agent: 'Consensus', text: 'All plastic bottles eliminated; mobile stainless solar chiller unit deployed with electrolyte water.', color: 'text-emerald-300' }
+    ],
+    days: [
+      {
+        num: '01', title: 'Sun City Jodhpur & Mehrangarh Cliff Ramparts',
+        desc: 'Private after-hours access to Mehrangarh Fort ramparts with conservation architect and folk musicians.',
+        elev: '230m', time: '11:00 – 19:00', guide: 'Mahendra Singh (Historian)', food: 'Warm bajra roti with churned butter and garlic chutney',
+        morning: 'Check into 18th century heritage haveli; refreshing rose water sherbet.',
+        afternoon: 'Architectural walk of blue Brahmin quarters and Stepwell Toorji Ka Jhalra.',
+        evening: 'Private rooftop sitar performance overlooking the illuminated citadel.'
+      },
+      {
+        num: '02', title: 'Bishnoi Village Wilderness & Blackbuck Sanctuary',
+        desc: 'Visit sacred Bishnoi conservation communities who have protected deer and Khejri trees for 500 years.',
+        elev: '210m', time: '07:30 – 14:00', guide: 'Khamu Ram Bishnoi', food: 'Hand-pounded millet porridge with wild berries',
+        morning: 'Spotting endangered Indian Blackbuck and Chinkara gazelles roaming unmolested.',
+        afternoon: 'Observe indigenous potter spinning clay urns and dhurrie rug weaving.',
+        evening: 'Traditional Opium-alternative saffron tea ceremony with village elders.'
+      },
+      {
+        num: '03', title: 'Ancient Stepwells of Osian & Desert Portal',
+        desc: 'Exploration of 8th-century carved stone Sun Temples and stepwell water-harvesting engineering.',
+        elev: '260m', time: '09:00 – 16:30', guide: 'Archeologist Dr. S. Rao', food: 'Ker sangri berry curry & roasted cumin buttermilk',
+        morning: 'Drive towards deep desert; explore sand-submerged Mahavira temples.',
+        afternoon: 'Acoustic resonance demonstration inside subterranean baoli stepwells.',
+        evening: 'Desert campfire under the first emerging desert constellation signs.'
+      },
+      {
+        num: '04', title: 'Deep Thar Dunes & Luxury Solar Tented Camp',
+        desc: 'Arriving at exclusive off-grid glamping oasis. Zero light pollution and solar battery powered lanterns.',
+        elev: '220m', badge: '✓ Astronomer Agent: Bortle-1 Darkness Confirmed',
+        time: '14:00 – 23:00', guide: 'Astronomer Vikramaditya', food: 'Smoked dal baati churma cooked over dried cow-dung coals',
+        morning: 'Late morning departure into the shifting ripples of Sam sand dunes.',
+        afternoon: 'Settle into spacious canvas royal tents with hand-stitched block prints.',
+        evening: 'Deep space telescope viewing of Andromeda galaxy, Jupiter moons, and nebula clusters.'
+      },
+      {
+        num: '05', title: 'Desert Fox Spotting & Living Sand Sculpture Trek',
+        desc: 'Dawn tracking of the elusive White-footed Desert Fox and Great Indian Bustard habitat buffer.',
+        elev: '240m', time: '05:45 – 11:30', guide: 'Wildlife Tracker Bhairon Singh', food: 'Crisp kachoris & dry fruit laddoos',
+        morning: 'Follow paw tracks over virgin wind-rippled crests; spot desert hare and eagle owls.',
+        afternoon: 'Shade siesta during peak sun in nomadic wool tents.',
+        evening: 'Masterclass in long-exposure astro-photography with motorized star trackers.'
+      },
+      {
+        num: '06', title: 'Golden Fortress Jaisalmer & Jain Temple Manuscripts',
+        desc: 'Explore the world’s only continuously inhabited sandstone living fort and 12th-century libraries.',
+        elev: '280m', time: '09:00 – 16:00', guide: 'Epigraphist Ramesh Jain', food: 'Gatte ki sabzi with whole wheat parathas',
+        morning: 'Walk inside Sonar Qila; marvel at yellow limestone filigree jharokha screens.',
+        afternoon: 'View sacred palm-leaf manuscripts preserved in temperature-stable underground vaults.',
+        evening: 'Sunset over Gadisar Lake listening to desert Manganiyar balladeers.'
+      },
+      {
+        num: '07', title: 'Kuldhara Haunted Heritage & Royal Departure',
+        desc: 'Morning visit to abandoned 13th-century Paliwal Brahmin settlement before onward scenic rail transfer.',
+        elev: '250m', time: '08:30 – 14:00', guide: 'Historian Mahendra Singh', food: 'Almond saffron milk & baked sesame crisps',
+        morning: 'Investigate the ruins and urban water drainage of enigmatic Kuldhara ghost village.',
+        afternoon: 'Board First Class Palace on Wheels connection or flight transfer from Jodhpur.',
+        evening: 'Swarm logs journey close: 0 g of carbon waste, 100% verified local impact.'
+      }
+    ]
+  },
+
+  assam: {
+    id: 'assam',
+    name: '04. Wet Biome Assam',
+    heading: 'Brahmaputra Rainforest & Living Root Bridges',
+    desc: 'Kaziranga rhino patrols, Brahmaputra riverine dolphin cruisers, bio-engineered Ficus elastica root architectures, and organic tea estates.',
+    routeTitle: 'Northeast Eco-Corridor: Kaziranga, Majuli Island & Meghalaya Clouds',
+    terrainBadge: 'Terrain: Cloud Forest & Riverine Basin (80m – 1,480m)',
+    price: 56800,
+    priceSubtitle: 'per explorer (riverboat expedition, naturalists & permits incl.)',
+    pills: { bio: 'Humidity Sync 82%', transit: 'Electric River Cruiser', stay: 'Bamboo Stilt Lodges', guide: 'Rhino Ranger #04', food: 'Assamese Joha / Bamboo' },
+    checkmarks: ['✓ 0% Single-Use Plastic', '✓ Electric Riverboat Cruise', '✓ Khasi Village Community Fund', '✓ Certified Rhino Protection Guard'],
+    agents: [
+      { id: 'naturalist', icon: '🦏', title: 'Forest Guard Naturalist', subtitle: 'Kaziranga Eastern & Central Zones', status: 'CLEARED', statusClass: 'text-emerald-700 bg-emerald-50' },
+      { id: 'transit', icon: '⛵', title: 'Brahmaputra Waterways', subtitle: 'Silent Solar Catamaran', status: 'SYNCHRONIZED', statusClass: 'text-emerald-700 bg-emerald-50' },
+      { id: 'lodging', icon: '🛖', title: 'Stilt Bio-Architecture', subtitle: 'Diphlu River Bamboo Lodges', status: 'RESERVED', statusClass: 'text-emerald-700 bg-emerald-50' },
+      { id: 'culinary', icon: '🍵', title: 'Rainforest Culinary Agent', subtitle: 'Joha Fragrant Rice & Bamboo Shoot', status: 'INDIGENOUS', statusClass: 'text-emerald-700 bg-emerald-50' },
+      { id: 'biometric', icon: '🌧️', title: 'Biometric Microclimate', subtitle: 'Monsoon Humidity & Gait Pacing', status: 'OPTIMAL', statusClass: 'text-emerald-700 bg-emerald-50' }
+    ],
+    deliberations: [
+      { agent: 'Transit Agent', text: 'River water levels verified via telemetry. Solar catamaran cleared for dolphin sanctuary run.', color: 'text-lime-300' },
+      { agent: 'Biometric Agent', text: 'High relative humidity (82%). Electrolyte hydration and anti-leech gaiters deployed to gear checklist.', color: 'text-amber-400' },
+      { agent: 'Consensus', text: 'All meals strictly organic sourced from Majuli Island Mishing tribal cooperatives. Zero single-use containers.', color: 'text-emerald-300' }
+    ],
+    days: [
+      {
+        num: '01', title: 'Guwahati Gateway & Brahmaputra Sunset Catamaran',
+        desc: 'Arrival in Assam river valley. Evening silent catamaran sail along sandbar channels watching Gangetic dolphins.',
+        elev: '55m', time: '12:00 – 18:30', guide: 'Barun Gogoi', food: 'Steamed Joha rice, lentil dal with kaji nemu lime',
+        morning: 'Welcome at Guwahati; transfer to river pavilion.',
+        afternoon: 'Botanical walk along Peacock Island; visit prehistoric Umananda temple.',
+        evening: 'Acoustic dolphin hydrophone listening session on silent solar catamaran.'
+      },
+      {
+        num: '02', title: 'Kaziranga National Park: Rhino Grassland Patrol',
+        desc: 'Morning jeep safari into Central Range (Kohora). Spotting Great Indian One-horned Rhinos and wild water buffalo.',
+        elev: '75m', time: '06:00 – 14:00', guide: 'Senior Forest Ranger Pranjal Saikia', food: 'Pitha rice cakes & organic orthodox black tea',
+        morning: 'Dawn entry through elephant grass; observe wild rhino mothers grazing peacefully.',
+        afternoon: 'Birdwatching at Donga water body: Pallas’s fish eagle, storks, and swamp deer.',
+        evening: 'Briefing by anti-poaching drone operators on community wildlife intelligence.'
+      },
+      {
+        num: '03', title: 'Panbari Reserve Forest & Hoolock Gibbon Canopy',
+        desc: 'Foot walk into evergreen rainforest corridor to track India’s only ape species, the Western Hoolock Gibbon.',
+        elev: '120m', badge: '✓ Naturalist Agent: Canopy Calling Heard (07:15 AM)',
+        time: '06:30 – 12:00', guide: 'Pranjal Saikia', food: 'Bamboo shoot soup with roasted sweet potato',
+        morning: 'Deep forest walk; locate vocalizing gibbon family swinging 30 meters up in canopy.',
+        afternoon: 'Visit Hathikuli organic tea estate; try handcrafted green and white needle teas.',
+        evening: 'Relax on private stilts at Diphlu River Lodge watching deer drink from water bank.'
+      },
+      {
+        num: '04', title: 'Majuli Island: World’s Largest River Island & Satras',
+        desc: 'Ferry crossing to Majuli island to witness mask-making traditions and monastic dance theater.',
+        elev: '80m', time: '07:30 – 16:30', guide: 'Master Artisan Hemchandra Goswami', food: 'Traditional Mishing tribal feast served on banana leaf',
+        morning: 'Cross Brahmaputra waters with flying waterfowl flocks.',
+        afternoon: 'Hands-on organic bamboo and clay mask making workshop at Samaguri Satra.',
+        evening: 'Borgeet devotional music and drum resonance recital inside Kamalabari monastery.'
+      },
+      {
+        num: '05', title: 'Ascent to Meghalaya Clouds & Cherrapunjee Plateau',
+        desc: 'Winding climb into Khasi hills, entering one of the wettest biomes on earth with dramatic plunging waterfalls.',
+        elev: '1,300m', time: '08:00 – 15:30', guide: 'Balaram Khongwir', food: 'Red rice, boiled wild greens, toasted sesame paste',
+        morning: 'Depart Brahmaputra plains; drive up via Umiam Lake into pine-scented mist.',
+        afternoon: 'Stand on the precipice of Nohkalikai Falls plunging 340 meters into turquoise pools.',
+        evening: 'Check into cliff-edge stone lodge; learn Khasi matrilineal social customs.'
+      },
+      {
+        num: '06', title: 'Nongriat Living Root Bridges & Ancient Sacred Groves',
+        desc: 'Descend through dense mossy cloud jungle to cross centuries-old bio-engineered double-decker living root bridges.',
+        elev: '850m', time: '07:00 – 15:00', guide: 'Living Root Elder Morningstar', food: 'Khasi roasted sweet corn & fresh river spring water',
+        morning: 'Hike through Khasi stone steps down to the Umshiang double-decker root bridge.',
+        afternoon: 'Swim in crystal-clear natural limestone pools below the bridge.',
+        evening: 'Learn how living Ficus roots are continually woven across generations to withstand monsoons.'
+      },
+      {
+        num: '07', title: 'Mawphlang Sacred Forest & Botanical Legacy Return',
+        desc: 'Walk through protected sacred grove where ancient taboos have preserved virgin biodiversity for 800 years.',
+        elev: '1,480m', time: '08:30 – 15:00', guide: 'Balaram Khongwir', food: 'Warm ginger tea and wild honey flapjacks',
+        morning: 'Explore sacred forest canopy teeming with carnivorous pitcher plants and ancient orchids.',
+        afternoon: 'Farewell ceremony with community village preservation council.',
+        evening: 'Guwahati airport departure; swarm marks mission successfully concluded.'
+      }
+    ]
+  }
+};
+
+/* -----------------------------------------------------------
+   HEFTY DATASET: 10 LIVING BIOMES (PAN-INDIA DESTINATIONS)
+----------------------------------------------------------- */
+const destinations = [
+  { id: 'spiti', cat: 'himalaya', title: 'Spiti & Pin Valley', reg: 'Himachal Cold Desert', elev: '3,800m ASL', season: 'May–Oct', desc: 'Snow Leopard, Tibetan Wolf, and 1,000-year Tabo mud murals carved into lunar canyon shale.' },
+  { id: 'kaziranga', cat: 'cloud', title: 'Kaziranga & Majuli', reg: 'Assam Brahmaputra Basin', elev: '80m ASL', season: 'Nov–Apr', desc: 'One-horned rhinos, Neo-Vaishnavite satras, and riverine dolphin corridors across emerald silt plains.' },
+  { id: 'munnar', cat: 'ghats', title: 'Munnar & Wayanad', reg: 'Kerala Western Ghats', elev: '1,600m ASL', season: 'Sept–Mar', desc: 'Endemic Nilgiri Tahr, shade-grown cardamom rainforests, and prehistoric Edakkal rock engravings.' },
+  { id: 'ranthambore', cat: 'arid', title: 'Ranthambore & Bundi', reg: 'Rajasthan Dry Forest', elev: '270m ASL', season: 'Oct–Apr', desc: 'Bengal tiger cliff territory, ancient subterranean stepwells, and Rajput miniature art sanctuaries.' },
+  { id: 'flowers', cat: 'himalaya', title: 'Valley of Flowers', reg: 'Uttarakhand UNESCO Alpine', elev: '3,658m ASL', season: 'Jul–Sept', desc: '500+ species of wild endemic flora, Himalayan Blue Poppy, and Bhotia alpine pastoralism traditions.' },
+  { id: 'jaisalmer', cat: 'arid', title: 'Thar Desert & Kuldhara', reg: 'Western Rajasthan Dunes', elev: '220m ASL', season: 'Oct–Mar', desc: 'Bortle-1 darkness astronomy, wind-sheared singing dunes, and desert fox conservation habitats.' },
+  { id: 'meghalaya', cat: 'cloud', title: 'Khasi Sacred Groves & Cherrapunji', reg: 'Meghalaya Cloud Plateau', elev: '1,480m ASL', season: 'Year-round', desc: 'Living root bridges bio-engineered over 400 years, turquoise canyon waters, and sacred floral groves.' },
+  { id: 'ladakh', cat: 'himalaya', title: 'Hemis & Nubra Valley', reg: 'Trans-Himalayan Plateau', elev: '3,500m ASL', season: 'Jun–Oct', desc: 'Snow leopard winter corridors, high sand dunes of Hunder, and ancient silk road gompas.' },
+  { id: 'coorg', cat: 'ghats', title: 'Brahmagiri & Coorg', reg: 'Karnataka Wet Shola Slopes', elev: '1,100m ASL', season: 'Oct–May', desc: 'Sacred river Kaveri birthplace, endemic hornbills, and heritage Kodava estate home-stays.' },
+  { id: 'sundarbans', cat: 'ghats', title: 'Sundarbans Mangrove Delta', reg: 'Bengal Tidal Estuary', elev: '5m ASL', season: 'Nov–Mar', desc: 'Tidal mangrove labyrinth, swimming Royal Bengal tigers, and silent wooden country boat sails.' }
+];
+
+/* -----------------------------------------------------------
+   HEFTY DATASET: 6 ECO-LODGES
+----------------------------------------------------------- */
+const staysData = [
+  { cat: 'solar', name: 'Kaza Heritage Solar Adobe', loc: 'Spiti Valley · Himachal Pradesh', badge: '100% Off-Grid Solar', desc: 'Engineered using Spitite mud-ramming combined with evacuated solar vacuum tubes for sub-zero radiant comfort.', vernacular: 'Spitian Poplar Mud', guide: 'Tenzin Norbu' },
+  { cat: 'river', name: 'Diphlu River Bamboo Chalets', loc: 'Kaziranga · Assam', badge: 'Reedbed Bio-Filter', desc: 'Raised bamboo chalets on stilts above seasonal monsoon plains, framing rhino river corridors.', vernacular: 'Mishing Bamboo Stilt', guide: 'Barun Gogoi' },
+  { cat: 'estate', name: 'Windermere 1920s Planter Estate', loc: 'Munnar · Kerala Cardamom Highlands', badge: 'Shola Forest Steward', desc: 'Perched on a 60-acre estate where high-grown cardamom understoreys merge into the wild Western Ghats cliff sanctuary.', vernacular: 'Stone Cedar Bungalow', guide: 'Kurian Varghese' },
+  { cat: 'solar', name: 'Rawla Narlai Leopard Rock Sanctuary', loc: 'Aravalli Hills · Rajasthan', badge: 'Heritage Solar Restored', desc: '17th-century hunting lodge converted into sustainable refuge beneath a 350-foot monolithic granite rock.', vernacular: 'Rajput Carved Stone Haveli', guide: 'Bhairon Singh' },
+  { cat: 'river', name: 'Vembanad Solar-Cruiser Suites', loc: 'Kumarakom Backwaters · Kerala', badge: 'Zero Emission Waterway', desc: 'Custom-built solar hybrid traditional wooden houseboats utilizing non-toxic jackwood hull sealants and battery storage.', vernacular: 'Anjili Wood Kettuvallam', guide: 'Captain Biju' },
+  { cat: 'estate', name: 'Wild Mahseer Colonial Tea Heritage', loc: 'Balipara Tract · Assam', badge: 'Bio-Reserve Certified', desc: '145-year-old British planter bungalow set in a 22-acre botanical sanctuary with 100,000 endemic trees.', vernacular: 'Assam Type Timber Frame', guide: 'Dr. Robin Sharma' }
+];
+
+/* -----------------------------------------------------------
+   HEFTY DATASET: 5 SCENIC RAILWAYS
+----------------------------------------------------------- */
+const railData = [
+  { title: 'Vistadome Kashmir Pir Panjal', route: 'Baramulla ⇄ Banihal', duration: '3 hrs 15 mins', desc: 'Traversing the 11.2-km Pir Panjal tunnel through the icy spine of Kashmir with heated panoramic coaches and 360-degree swivel armchairs.', hamper: 'Saffron Kahwa & Walnut Bread', metric: '-78% CO2 vs Taxi' },
+  { title: 'Nilgiri Cog-Wheel Mountain Rail', route: 'Mettupalayam ⇄ Ooty', duration: '4 hrs 50 mins', desc: 'Asia\'s steepest rack-and-pinion line climbing 46 km across 250 bridges through wild shola cloud forests and tea terraces.', hamper: 'Coorg Filter Coffee & Banana Chips', metric: 'UNESCO Heritage' },
+  { title: 'Konkan Monsoon Vistadome', route: 'Mumbai CSMT ⇄ Madgaon', duration: '8 hrs 40 mins', desc: 'Crossing 2,000 bridges through Western Ghats UNESCO biodiversity hotspot with direct views of raging Dudhsagar waterfalls.', hamper: 'Kokum Sharbat & Malvani Poha', metric: '-88% CO2 vs Flight' },
+  { title: 'Kalka-Shimla Toy Train Vistadome', route: 'Kalka ⇄ Shimla', duration: '5 hrs 20 mins', desc: 'Historical 1903 narrow-gauge line weaving across 919 curves and deodar pine forests into British summer capital heights.', hamper: 'Himalayan Apple Jam & Spiced Chai', metric: '100% Narrow Gauge' },
+  { title: 'Araku Valley Glass Roof Express', route: 'Visakhapatnam ⇄ Araku', duration: '3 hrs 45 mins', desc: 'Climbing Eastern Ghats through 58 tunnels and lush organic coffee valleys, overlooking Borra Caves and limestone ravines.', hamper: 'Araku Organic Roast & Bamboo Chicken', metric: 'Tribal Direct Supply' }
+];
+
+/* -----------------------------------------------------------
+   HEFTY DATASET: 4 CURATED ESCAPES
+----------------------------------------------------------- */
+const escapesData = [
+  { tag: 'Early Bird Savings', tagClass: 'bg-amber-500 text-white', dur: '4N / 5D · Brahmaputra', title: 'Kaziranga Forest Canopy & Rhino Sanctum', desc: '3 Jeep safaris through Central & Western zones with river dolphin cruise and Mishing village immersion.', price: '₹19,200' },
+  { tag: 'Free Rail Upgrade', tagClass: 'bg-emerald-600 text-white', dur: '5N / 6D · Kerala Ghats', title: 'Munnar Colonial Tea Estates & Spice Sanctum', desc: 'Stay in 1920s planter bungalows with tea tasting masterclasses, Nilgiri Tahr safari, and Vistadome rail ticket.', price: '₹22,400' },
+  { tag: 'Zone 1–5 Safari', tagClass: 'bg-forest-800 text-lime-400', dur: '3N / 4D · Sawai Madhopur', title: 'Ranthambore Royal Tiger Treks & Fort Ruins', desc: 'Luxury tented sanctuary with private naturalists and 4 premium safari tracks through ancient Rajput ruins.', price: '₹28,900' },
+  { tag: 'Slow Travel Favorite', tagClass: 'bg-forest-800 text-lime-400', dur: '3N / 4D · Vembanad Lake', title: 'Alleppey Backwater Houseboat & Paddy Trails', desc: 'Solar-hybrid slow cruising, on-board private Ayurvedic chef, and low-tide canoe excursions.', price: '₹17,800' }
+];
+
+/* -----------------------------------------------------------
+   MAGAZINE SPREADS DATA
+----------------------------------------------------------- */
+const spreads = [
+  {
+    num: '03 of 12', title: 'The Western & Eastern Himalayan Sanctuaries', plates: 'Plate 05 – 06',
+    left: {
+      field: 'FIELD REGISTER 31°N · 78°E', page: 'PAGE 05',
+      title: 'Spiti Valley: The Fossil Ridge & Millennium Cloister',
+      body: 'Carved by the glacial retreat of the ancient Tethys Sea, Spiti unfolds at 3,800 meters as a sanctuary of wind-sheared shale, ninth-century mud-plastered monasteries, and undisturbed wildlife migration ridges.',
+      stages: ['Stage 01: Shimla to Sangla Valley (2,600m)', 'Stage 02: Tabo Monastery & Dhankar (3,280m)', 'Stage 03: Chandratal Crescent Lake (4,300m)']
+    },
+    right: {
+      page: 'PAGE 06', sub: 'PRESERVATION STANDARD',
+      title: 'Curated Adobe Sanctuaries & Trans-Himalayan Palates',
+      body: 'High-altitude slow travel demands symbiotic shelter. Every residency on this route is community-owned, passive solar-heated, and rooted in indigenous Spitite hospitality.',
+      box1: { label: 'Passive Solar Adobe', title: 'Kibber High Ridge Retreat', desc: 'Warm rammed-earth thermal mass with sub-zero solar capture.' },
+      box2: { label: 'Local Harvest Trail', title: 'Barley, Chhurpi & Broths', desc: 'Zero-mile village food sovereignty and Seabuckthorn tea infusions.' }
+    }
+  },
+  {
+    num: '04 of 12', title: 'Western Ghats Monsoonal Rainforest Corridors', plates: 'Plate 07 – 08',
+    left: {
+      field: 'FIELD REGISTER 10°N · 77°E', page: 'PAGE 07',
+      title: 'Munnar Shola Mist: Cloud Forests of the Nilgiri Ibex',
+      body: 'The ancient metamorphic folds of the Western Ghats predate the Himalayas by 50 million years, harboring 325 globally threatened flora species in moss-hung evergreen sanctuaries.',
+      stages: ['Stage 01: Fort Kochi Spice Harbor (5m)', 'Stage 02: Windermere Cardamom Estate (1,200m)', 'Stage 03: Eravikulam National Park Ridge (1,600m)']
+    },
+    right: {
+      page: 'PAGE 08', sub: 'AYURVEDA & WATERWAYS',
+      title: 'Closed-Loop Planter Sanctuaries & Solar Cruisers',
+      body: 'From single-estate orthodox teas harvested at dawn to silent solar hybrid kettuvallams navigating lotus-carpeted lagoons, every interaction leaves the bio-reserve richer.',
+      box1: { label: 'Heritage Planter Craft', title: 'Windermere 1920s Cedar Chalet', desc: 'Stone and cedar bungalow nestled in wild understorey.' },
+      box2: { label: 'Vembanad Waterways', title: 'Solar Hybrid Houseboat', desc: 'Zero-emission slow navigation through low-impact fishing canals.' }
+    }
+  }
+];
+
+/* -----------------------------------------------------------
+   APPLICATION LOGIC & EVENT HANDLERS
+----------------------------------------------------------- */
+const tabNames = ['studio', 'flipbook', 'destinations', 'stays', 'rail', 'holidays'];
+let currentTab = 'studio';
+let activeProfile = 'spiti';
+let currentSpreadIdx = 0;
+let openDaySet = new Set([0]);
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+  setTimeout(() => t.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none'), 3500);
+}
+
+function switchTab(tabId) {
+  currentTab = tabId;
+  tabNames.forEach(t => {
+    const view = document.getElementById(`view-${t}`);
+    const tabBtn = document.getElementById(`tab-${t}`);
+    if (t === tabId) {
+      view.classList.remove('hidden');
+      if (tabBtn) {
+        tabBtn.className = 'px-4 py-1.5 rounded-full text-xs font-bold transition bg-forest-700 text-white shadow-sm';
+      }
+    } else {
+      view.classList.add('hidden');
+      if (tabBtn) {
+        tabBtn.className = 'px-4 py-1.5 rounded-full text-xs font-bold transition text-forest-700 hover:text-forest-900';
+      }
+    }
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  showToast(`View switched to ${tabId.toUpperCase()}. All cognitive models synchronized.`);
+}
+
+function cycleNextTab() {
+  const nextIdx = (tabNames.indexOf(currentTab) + 1) % tabNames.length;
+  switchTab(tabNames[nextIdx]);
+}
+
+function openModal(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.classList.remove('hidden');
+    el.classList.add('flex');
+  }
+}
+
+function closeModal(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.classList.add('hidden');
+    el.classList.remove('flex');
+  }
+}
+
+function setProfile(pKey) {
+  if (!profiles[pKey]) return;
+  activeProfile = pKey;
+  const data = profiles[pKey];
+
+  // Highlight button
+  document.querySelectorAll('.profile-btn').forEach(btn => {
+    if (btn.id === `btn-${pKey}`) {
+      btn.className = 'profile-btn px-3 py-1.5 rounded-lg font-bold bg-forest-700 text-lime-400 border border-forest-800 shadow-xs transition';
+    } else {
+      btn.className = 'profile-btn px-3 py-1.5 rounded-lg font-bold bg-white text-forest-800 hover:bg-sand-100 border border-sand-200 transition';
+    }
+  });
+
+  // Text updates
+  document.getElementById('studioHeading').textContent = data.heading;
+  document.getElementById('studioDesc').textContent = data.desc;
+  document.getElementById('routeTitle').textContent = data.routeTitle;
+  document.getElementById('terrainBadge').textContent = data.terrainBadge;
+  document.getElementById('priceDisplay').textContent = `₹${data.price.toLocaleString('en-IN')}`;
+  document.getElementById('priceSubtitle').textContent = data.priceSubtitle;
+  document.getElementById('bookingBaseRate').textContent = `₹${data.price.toLocaleString('en-IN')}`;
+  document.getElementById('dossierRouteTitle').textContent = `${data.routeTitle} Brief`;
+
+  // Update pills
+  document.getElementById('pill-bio').textContent = data.pills.bio;
+  document.getElementById('pill-transit').textContent = data.pills.transit;
+  document.getElementById('pill-stay').textContent = data.pills.stay;
+  document.getElementById('pill-guide').textContent = data.pills.guide;
+  document.getElementById('pill-food').textContent = data.pills.food;
+
+  // Checkmarks
+  document.getElementById('checkmarksBox').innerHTML = data.checkmarks.map(c => `<span class="flex items-center gap-1.5">${c}</span>`).join('');
+
+  // Roster
+  renderSwarmRoster(data.agents);
+
+  // Deliberation Log
+  renderDeliberationFeed(data.deliberations);
+
+  // Days list
+  renderDays(data.days);
+
+  updateBookingTotal();
+
+  // Swarm arbitration pulse
+  const badge = document.getElementById('consensusBadge');
+  badge.textContent = 'Harmonizing...';
+  badge.className = 'text-[10px] font-mono uppercase bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded animate-pulse';
+  setTimeout(() => {
+    badge.textContent = 'Consensus Validated';
+    badge.className = 'text-[10px] font-mono uppercase bg-emerald-100 text-emerald-900 font-bold px-2 py-0.5 rounded';
+  }, 600);
+
+  showToast(`Swarm profile synthesized: ${data.name}. 7-day schedule loaded.`);
+}
+
+function renderSwarmRoster(agents) {
+  const container = document.getElementById('swarmAgentRoster');
+  container.innerHTML = agents.map(ag => `
+    <div onclick="inspectAgent('${ag.id}')" class="flex items-center justify-between p-2 bg-white hover:bg-forest-50/50 transition rounded-lg border border-sand-200 cursor-pointer">
+      <div class="flex items-center gap-2">
+        <span class="text-base">${ag.icon}</span>
+        <div>
+          <strong class="block text-forest-800 text-xs">${ag.title}</strong>
+          <span class="text-[10px] text-forest-600">${ag.subtitle}</span>
+        </div>
+      </div>
+      <span class="text-[10px] ${ag.statusClass} px-2 py-0.5 rounded font-mono font-bold">${ag.status}</span>
+    </div>
+  `).join('');
+
+  // Also populate Swarm Modal feeds
+  const modalFeeds = document.getElementById('swarmModalFeeds');
+  modalFeeds.innerHTML = agents.map(ag => `
+    <div class="p-3 bg-sand-50 rounded-xl border border-sand-200 flex flex-col gap-1.5">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">${ag.icon}</span>
+        <div>
+          <strong class="block text-forest-900 text-xs">${ag.title}</strong>
+          <span class="text-[10px] text-forest-600">${ag.subtitle}</span>
+        </div>
+      </div>
+      <div class="text-[10px] font-mono bg-white p-2 rounded border border-sand-200 text-forest-700">
+        Status: <span class="font-bold text-emerald-700">${ag.status}</span><br>
+        Telemetry: Real-time route optimization active. Zero policy conflicts detected.
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderDeliberationFeed(delibs) {
+  const container = document.getElementById('deliberationFeed');
+  container.innerHTML = delibs.map(d => `
+    <p class="text-[11px] leading-relaxed text-forest-100">
+      <span class="${d.color} font-bold">[${d.agent}]:</span> ${d.text}
+    </p>
+  `).join('');
+}
+
+function renderDays(days) {
+  const container = document.getElementById('itineraryDaysList');
+  container.innerHTML = days.map((day, idx) => {
+    const isOpen = openDaySet.has(idx);
+    return `
+      <div class="border ${day.badge ? 'border-2 border-emerald-500/50 bg-emerald-50/20' : 'border-sand-200 bg-sand-50/60'} rounded-xl transition duration-200 overflow-hidden">
+        ${day.badge ? `
+          <div class="bg-emerald-600 text-white font-mono text-[9px] font-bold uppercase tracking-wider px-3 py-0.5 flex items-center justify-between">
+            <span>${day.badge}</span>
+            <span class="text-emerald-200">Autonomous Correction</span>
+          </div>
+        ` : ''}
+        <div onclick="toggleDay(${idx})" class="p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 cursor-pointer select-none">
+          <div class="flex items-start gap-3">
+            <span class="w-8 h-8 rounded-lg ${day.badge ? 'bg-emerald-700 text-white' : 'bg-forest-700 text-lime-400'} font-bold flex items-center justify-center text-xs shrink-0 font-mono">
+              ${day.num}
+            </span>
+            <div>
+              <h3 class="font-extrabold text-sm text-forest-900">${day.title}</h3>
+              <p class="text-xs text-forest-700 mt-0.5">${day.desc}</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 shrink-0 self-end sm:self-center">
+            <span class="font-mono text-xs font-bold text-forest-800 bg-white px-2 py-0.5 rounded border border-sand-200">
+              Elev: ${day.elev}
+            </span>
+            <span class="text-forest-600 text-sm font-bold">${isOpen ? '▲' : '▼'}</span>
+          </div>
+        </div>
+        <div id="dayContent-${idx}" class="${isOpen ? 'block' : 'hidden'} px-4 pb-4 pt-1 border-t border-sand-200 bg-white">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs pt-2">
+            <div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200">
+              <span class="font-bold text-forest-800 block mb-1">⏰ Window & Transit</span>
+              <span class="text-forest-700">${day.time}</span>
+            </div>
+            <div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200">
+              <span class="font-bold text-forest-800 block mb-1">🔭 Lead Naturalist</span>
+              <span class="text-forest-700">${day.guide}</span>
+            </div>
+            <div class="bg-sand-50 p-2.5 rounded-lg border border-sand-200">
+              <span class="font-bold text-forest-800 block mb-1">🍲 Curated Dining</span>
+              <span class="text-forest-700">${day.food}</span>
+            </div>
+          </div>
+          <div class="mt-3 text-xs space-y-1 text-forest-800 bg-forest-50/40 p-3 rounded-lg border border-forest-100">
+            <p><strong>Morning:</strong> ${day.morning}</p>
+            <p><strong>Afternoon:</strong> ${day.afternoon}</p>
+            <p><strong>Evening:</strong> ${day.evening}</p>
+          </div>
+          <div class="mt-3 flex justify-end">
+            <button onclick="openDayModal(${idx})" class="text-xs text-forest-700 hover:text-forest-900 underline font-bold">
+              View Detailed Protocol Dossier →
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function toggleDay(idx) {
+  if (openDaySet.has(idx)) {
+    openDaySet.delete(idx);
+  } else {
+    openDaySet.add(idx);
+  }
+  renderDays(profiles[activeProfile].days);
+}
+
+function toggleAllDays() {
+  if (openDaySet.size > 0) {
+    openDaySet.clear();
+  } else {
+    profiles[activeProfile].days.forEach((_, i) => openDaySet.add(i));
+  }
+  renderDays(profiles[activeProfile].days);
+}
+
+function openDayModal(idx) {
+  const day = profiles[activeProfile].days[idx];
+  document.getElementById('dayModalNumber').textContent = `DAY ${day.num}`;
+  document.getElementById('dayModalElev').textContent = `Elev: ${day.elev}`;
+  document.getElementById('dayModalTitle').textContent = day.title;
+  document.getElementById('dayModalContent').innerHTML = `
+    <div class="p-3 bg-forest-50 border border-forest-200 rounded-xl space-y-2">
+      <p class="text-forest-800 text-xs"><strong>Overview:</strong> ${day.desc}</p>
+      <div class="grid grid-cols-2 gap-2 text-xs">
+        <div><strong>Assigned Naturalist:</strong> ${day.guide}</div>
+        <div><strong>Dining Hamper:</strong> ${day.food}</div>
+      </div>
+    </div>
+    <div class="space-y-2 bg-sand-50 p-3 rounded-xl border border-sand-200">
+      <h4 class="font-bold text-forest-900">Synchronized Time Slots:</h4>
+      <p><strong>Morning:</strong> ${day.morning}</p>
+      <p><strong>Afternoon:</strong> ${day.afternoon}</p>
+      <p><strong>Evening:</strong> ${day.evening}</p>
+    </div>
+  `;
+  openModal('dayDetailModal');
+}
+
+function inspectAgent(agId) {
+  const data = profiles[activeProfile];
+  const agent = data.agents.find(a => a.id === agId) || data.agents[0];
+  document.getElementById('agentModalIcon').textContent = agent.icon;
+  document.getElementById('agentModalTitle').textContent = agent.title;
+  document.getElementById('agentModalBody').innerHTML = `
+    <div class="p-3 bg-forest-50 border border-forest-200 rounded-xl space-y-1">
+      <div class="font-bold text-forest-900 text-sm">Status: ${agent.status}</div>
+      <p class="text-forest-700">${agent.subtitle}</p>
+    </div>
+    <div class="p-3 bg-sand-100 rounded-xl space-y-1 text-forest-800">
+      <strong class="block">Active Constraint Rules:</strong>
+      <p>• Autonomous route arbitration active</p>
+      <p>• Zero single-use plastic enforcement verified</p>
+      <p>• IRCTC mountain gauge connection confirmed</p>
+    </div>
+  `;
+  openModal('agentDetailModal');
+}
+
+function triggerAgentResync() {
+  closeModal('agentDetailModal');
+  showToast('Triggering priority swarm re-sync across all 5 cognitive agents...');
+  setTimeout(() => showToast('Swarm state re-harmonized with zero conflicts.'), 800);
+}
+
+function applyFastPrompt(text) {
+  const container = document.getElementById('deliberationFeed');
+  const newEntry = document.createElement('p');
+  newEntry.className = 'text-[11px] leading-relaxed text-forest-100';
+  newEntry.innerHTML = `<span class="text-lime-300 font-bold">[Traveler Directive]:</span> ${text}`;
+  container.prepend(newEntry);
+  showToast(`Directive injected: "${text.substring(0, 38)}..." Swarm re-synthesizing.`);
+}
+
+function handleSynthesize(e) {
+  e.preventDefault();
+  const input = document.getElementById('promptInput');
+  const val = input.value.trim();
+  if (!val) return;
+  applyFastPrompt(val);
+  input.value = '';
+}
+
+function updateBookingTotal() {
+  const count = parseInt(document.getElementById('modalPassengerSelect').value, 10) || 2;
+  const unit = profiles[activeProfile].price;
+  const total = unit * count;
+  document.getElementById('bookingTotalRate').textContent = `₹${total.toLocaleString('en-IN')}`;
+}
+
+function confirmHoldBooking(e) {
+  e.preventDefault();
+  closeModal('bookingModal');
+  showToast('48-Hour Complimentary Seat Hold Confirmed! Expedition dossier locked.');
+}
+
+function simulateDownload(type) {
+  closeModal('dossierModal');
+  showToast(`Compiling and downloading complete ${type} expedition docket...`);
+}
+
+/* -----------------------------------------------------------
+   RENDER DESTINATIONS (10 BIOMES)
+----------------------------------------------------------- */
+function renderDestinations(items) {
+  const grid = document.getElementById('destinationsGrid');
+  grid.innerHTML = items.map(d => `
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-4 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <div class="flex items-center justify-between text-[10px] font-mono text-forest-600 mb-1">
+          <span>${d.elev}</span>
+          <span class="bg-sand-200 px-1.5 py-0.2 rounded font-bold">${d.season}</span>
+        </div>
+        <h3 class="font-extrabold text-base text-forest-900">${d.title}</h3>
+        <span class="text-[11px] font-bold text-forest-600 block mb-2">${d.reg}</span>
+        <p class="text-xs text-forest-700 leading-relaxed">${d.desc}</p>
+      </div>
+      <button onclick="switchTab('studio')" class="mt-4 w-full bg-forest-50 hover:bg-forest-100 text-forest-800 font-bold text-xs py-1.5 rounded-lg border border-forest-200 transition">
+        Synthesize Itinerary ↗
+      </button>
+    </div>
+  `).join('');
+}
+
+function filterDestinations(cat) {
+  document.querySelectorAll('.dest-chip').forEach(c => {
+    c.className = 'dest-chip bg-sand-100 hover:bg-sand-200 text-forest-800 px-3 py-1.5 rounded-full shrink-0 transition';
+  });
+  event.target.className = 'dest-chip bg-forest-700 text-lime-400 font-bold px-3 py-1.5 rounded-full shrink-0 transition';
+  
+  if (cat === 'all') {
+    renderDestinations(destinations);
+  } else {
+    renderDestinations(destinations.filter(d => d.cat === cat));
+  }
+}
+
+/* -----------------------------------------------------------
+   RENDER STAYS (6 ECO-LODGES)
+----------------------------------------------------------- */
+function renderStays(items) {
+  const grid = document.getElementById('staysGrid');
+  grid.innerHTML = items.map(s => `
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-5 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <span class="text-[10px] font-mono bg-emerald-100 text-emerald-900 font-bold px-2 py-0.5 rounded uppercase">${s.badge}</span>
+        <h3 class="font-extrabold text-lg text-forest-900 mt-2">${s.name}</h3>
+        <span class="text-xs text-forest-600 block mb-2">${s.loc}</span>
+        <p class="text-xs text-forest-700 leading-relaxed mb-3">${s.desc}</p>
+        <div class="text-[11px] space-y-1 bg-white p-2.5 rounded-xl border border-sand-200">
+          <div><strong>Architecture:</strong> ${s.vernacular}</div>
+          <div><strong>Resident Guide:</strong> ${s.guide}</div>
+        </div>
+      </div>
+      <button onclick="openModal('bookingModal')" class="mt-4 w-full bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs py-2 rounded-xl transition">
+        Reserve Sanctuary Folio ↗
+      </button>
+    </div>
+  `).join('');
+}
+
+function filterStays(cat) {
+  document.querySelectorAll('.stay-chip').forEach(c => {
+    c.className = 'stay-chip px-3 py-1 rounded-full bg-sand-100 hover:bg-sand-200 text-forest-800';
+  });
+  event.target.className = 'stay-chip px-3 py-1 rounded-full bg-forest-700 text-lime-400 font-bold';
+
+  if (cat === 'all') {
+    renderStays(staysData);
+  } else {
+    renderStays(staysData.filter(s => s.cat === cat));
+  }
+}
+
+/* -----------------------------------------------------------
+   RENDER RAIL & ESCAPES
+----------------------------------------------------------- */
+function renderRail() {
+  const grid = document.getElementById('railGrid');
+  grid.innerHTML = railData.map(r => `
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-5 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <div class="flex items-center justify-between text-[11px] font-mono text-forest-600 mb-1">
+          <span class="font-bold text-forest-900">${r.route}</span>
+          <span class="bg-lime-100 text-forest-900 px-1.5 py-0.5 rounded font-bold">${r.duration}</span>
+        </div>
+        <h3 class="font-extrabold text-lg text-forest-900 mt-1">${r.title}</h3>
+        <p class="text-xs text-forest-700 leading-relaxed mt-2 mb-3">${r.desc}</p>
+        <div class="text-[11px] bg-white p-2.5 rounded-xl border border-sand-200 space-y-1">
+          <div><strong>Artisan Hamper:</strong> ${r.hamper}</div>
+          <div class="text-emerald-700 font-bold"><strong>Sustainability:</strong> ${r.metric}</div>
+        </div>
+      </div>
+      <button onclick="applyFastPrompt('Lock scenic rail tickets for ${r.title}')" class="mt-4 w-full bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs py-2 rounded-xl transition">
+        Sync with Swarm Itinerary ↗
+      </button>
+    </div>
+  `).join('');
+}
+
+function renderEscapes() {
+  const grid = document.getElementById('escapesGrid');
+  grid.innerHTML = escapesData.map(e => `
+    <div class="bg-sand-50 hover:bg-white border border-sand-200 rounded-2xl p-4 flex flex-col justify-between transition shadow-xs hover:shadow-md">
+      <div>
+        <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded uppercase ${e.tagClass}">${e.tag}</span>
+        <span class="text-[10px] font-mono text-forest-600 block mt-2">${e.dur}</span>
+        <h3 class="font-extrabold text-base text-forest-900 mt-1">${e.title}</h3>
+        <p class="text-xs text-forest-700 leading-relaxed mt-2 mb-3">${e.desc}</p>
+      </div>
+      <div class="pt-3 border-t border-sand-200 flex items-center justify-between">
+        <span class="text-base font-extrabold text-forest-900 font-serif">${e.price}</span>
+        <button onclick="openModal('bookingModal')" class="bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold text-xs px-3 py-1.5 rounded-lg transition">
+          Book ↗
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* -----------------------------------------------------------
+   RENDER MAGAZINE SPREAD
+----------------------------------------------------------- */
+function renderSpread(idx) {
+  const sp = spreads[idx];
+  document.getElementById('spreadCounter').textContent = sp.num;
+  document.getElementById('spreadTitle').textContent = sp.title;
+  document.getElementById('plateIndicator').textContent = sp.plates;
+
+  const content = document.getElementById('spreadContent');
+  content.innerHTML = `
+    <!-- LEFT PAGE -->
+    <div class="bg-white p-6 sm:p-8 rounded-2xl border border-sand-200 shadow-sm flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between text-xs font-mono text-forest-600 pb-3 border-b border-sand-200">
+          <span>${sp.left.field}</span>
+          <span class="font-bold">${sp.left.page}</span>
+        </div>
+        <h3 class="text-2xl font-extrabold text-forest-900 font-serif mt-4 mb-2">${sp.left.title}</h3>
+        <p class="text-xs text-forest-700 leading-relaxed">${sp.left.body}</p>
+        <div class="mt-4 p-3 bg-sand-50 rounded-xl border border-sand-200">
+          <h4 class="font-bold text-xs text-forest-900 mb-2">Acclimatized Sequence Stages:</h4>
+          <ul class="text-xs space-y-1 text-forest-700">
+            ${sp.left.stages.map(s => `<li>• ${s}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+      <div class="pt-4 border-t border-sand-200 text-[10px] text-forest-500 font-mono">
+        Voyara High Altitude Curatorial Atlas
+      </div>
+    </div>
+
+    <!-- RIGHT PAGE -->
+    <div class="bg-white p-6 sm:p-8 rounded-2xl border border-sand-200 shadow-sm flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between text-xs font-mono text-forest-600 pb-3 border-b border-sand-200">
+          <span>${sp.right.sub}</span>
+          <span class="font-bold">${sp.right.page}</span>
+        </div>
+        <h3 class="text-2xl font-extrabold text-forest-900 font-serif mt-4 mb-2">${sp.right.title}</h3>
+        <p class="text-xs text-forest-700 leading-relaxed mb-4">${sp.right.body}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="p-3 bg-forest-50 rounded-xl border border-forest-200">
+            <span class="text-[10px] font-mono font-bold text-forest-600 block">${sp.right.box1.label}</span>
+            <strong class="text-xs text-forest-900 block my-1">${sp.right.box1.title}</strong>
+            <p class="text-[11px] text-forest-700">${sp.right.box1.desc}</p>
+          </div>
+          <div class="p-3 bg-forest-50 rounded-xl border border-forest-200">
+            <span class="text-[10px] font-mono font-bold text-forest-600 block">${sp.right.box2.label}</span>
+            <strong class="text-xs text-forest-900 block my-1">${sp.right.box2.title}</strong>
+            <p class="text-[11px] text-forest-700">${sp.right.box2.desc}</p>
+          </div>
+        </div>
+      </div>
+      <div class="pt-4 border-t border-sand-200 flex items-center justify-between">
+        <span class="text-[10px] text-forest-500 font-mono">Plate SP-06 · Curatorial Gastronomy</span>
+        <button onclick="openModal('bookingModal')" class="bg-forest-700 text-lime-400 px-3 py-1.5 rounded-lg text-xs font-bold transition">
+          Reserve Spread ↗
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function cycleSpread(delta) {
+  currentSpreadIdx = (currentSpreadIdx + delta + spreads.length) % spreads.length;
+  renderSpread(currentSpreadIdx);
+  showToast(`Turned page to spread ${spreads[currentSpreadIdx].num}`);
+}
+
+/* -----------------------------------------------------------
+   INITIALIZATION
+----------------------------------------------------------- */
+window.addEventListener('DOMContentLoaded', () => {
+  setProfile('spiti');
+  renderDestinations(destinations);
+  renderStays(staysData);
+  renderRail();
+  renderEscapes();
+  renderSpread(0);
+});
+</script>
+
+
+
+
+<script id="dossierExportScript" class="">function compileActiveDossierData() { const p = profiles[activeProfile] || profiles['spiti']; return { system: 'Voyara Autonomous Expedition Engine', version: '4.2', exportTimestamp: new Date().toISOString(), simulationProfile: { id: p.id, name: p.name, heading: p.heading, description: p.desc, routeTitle: p.routeTitle, terrain: p.terrainBadge, basePriceINR: p.price, pricingScope: p.priceSubtitle }, telemetryState: { livePills: p.pills, consensusVerified: true, complianceCheckmarks: p.checkmarks, activeAgents: p.agents, recentDeliberationLog: p.deliberations }, dayByDayItinerary: p.days.map(d => ({ day: d.num, title: d.title, description: d.desc, elevation: d.elev, timeSlot: d.time, naturalistGuide: d.guide, culinaryHamper: d.food, schedule: { morning: d.morning, afternoon: d.afternoon, evening: d.evening }, correctionBadge: d.badge || 'Standard Consensus Cleared' })), guarantees: { localDirectPay: '100% Direct Pay to Guides & Trackers', singleUsePlastics: '0% Certified', carbonOffsetSync: 'National Bio-Reserve Trust Verified' } }; } function exportDossierJSON() { const data = compileActiveDossierData(); const jsonStr = JSON.stringify(data, null, 2); const blob = new Blob([jsonStr], { type: 'application/json' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); const safeName = (data.simulationProfile.id || 'expedition').toLowerCase(); a.href = url; a.download = `voyara-dossier-${safeName}-v4.2.json`; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url); showToast('Multi-Agent Dossier JSON successfully downloaded.'); } function copyDossierClipboard() { const data = compileActiveDossierData(); const jsonStr = JSON.stringify(data, null, 2); navigator.clipboard.writeText(jsonStr).then(() => { showToast('Raw multi-agent JSON copied to clipboard!'); }).catch(() => { showToast('Dossier compiled. Ready for export.'); }); } function exportDossierPrintPDF() { const data = compileActiveDossierData(); const printWin = window.open('', '_blank'); if (!printWin) { showToast('Pop-up blocked. Please allow pop-ups for print view.'); return; } const daysHtml = data.dayByDayItinerary.map(d => ` <div style="border:1px solid #dce0d2; padding:12px; margin-bottom:12px; border-radius:8px; page-break-inside:avoid;"> <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eaece2; padding-bottom:6px; margin-bottom:8px;"> <strong style="font-size:14px; color:#113a2f;">DAY ${d.day}: ${d.title}</strong> <span style="font-family:monospace; font-size:12px; color:#1e6b57; font-weight:bold;">Elev: ${d.elevation}</span> </div> <p style="font-size:12px; color:#333; margin:0 0 6px 0;">${d.description}</p> <div style="font-size:11px; color:#555; display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:8px; background:#f5f6f0; padding:8px; border-radius:6px;"> <div><strong>Transit Window:</strong> ${d.timeSlot}</div> <div><strong>Naturalist Guide:</strong> ${d.naturalistGuide}</div> <div style="grid-column: span 2;"><strong>Culinary Hamper:</strong> ${d.culinaryHamper}</div> </div> <div style="font-size:11px; color:#222; line-height:1.5;"> <div><strong>• Morning:</strong> ${d.schedule.morning}</div> <div><strong>• Afternoon:</strong> ${d.schedule.afternoon}</div> <div><strong>• Evening:</strong> ${d.schedule.evening}</div> </div> </div> `).join(''); const agentRosterHtml = data.telemetryState.activeAgents.map(a => ` <li style="margin-bottom:4px;"><strong>${a.title}</strong>: ${a.subtitle} (<span style="color:#1e6b57; font-weight:bold;">${a.status}</span>)</li> `).join(''); printWin.document.write(` <!DOCTYPE html> <html> <head> <meta charset="utf-8"> <title>Voyara Expedition Dossier — ${data.simulationProfile.routeTitle}</title> <style> body { font-family: 'Georgia', serif; color: #113a2f; padding: 32px; max-width: 820px; margin: 0 auto; background: #fff; } h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; margin-top: 0; } .header-bar { border-bottom: 2px solid #113a2f; padding-bottom: 12px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; } .tag { font-family: monospace; font-size: 11px; background: #f0f7f4; padding: 3px 8px; border-radius: 4px; border: 1px solid #bcded0; color: #1e6b57; } .meta-box { background: #fbfbf9; border: 1px solid #eaece2; padding: 14px; border-radius: 8px; font-size: 12px; margin-bottom: 20px; } @media print { body { padding: 16px; font-size: 11pt; } .no-print { display: none !important; } } </style> </head> <body> <div class="no-print" style="display:flex; justify-content:space-between; margin-bottom:20px;"> <button onclick="window.print()" style="background:#174f40; color:#d7f36a; border:none; padding:10px 18px; font-weight:bold; border-radius:8px; cursor:pointer;">🖨 Print or Save as PDF</button> <button onclick="window.close()" style="background:#f5f6f0; color:#333; border:1px solid #ccc; padding:10px 18px; border-radius:8px; cursor:pointer;">Close Window</button> </div> <div class="header-bar"> <div> <div class="tag">VOYARA FIELD ARCHIVES · VOL IV.2</div> <h1 style="font-size:24px; margin:8px 0 4px 0;">${data.simulationProfile.routeTitle}</h1> <div style="font-size:13px; color:#555;">${data.simulationProfile.terrain} · Investment Base: ₹${data.simulationProfile.basePriceINR.toLocaleString('en-IN')}</div> </div> <div style="text-align:right; font-family:monospace; font-size:11px; color:#666;"> Exported: ${new Date().toLocaleDateString()}<br> Authenticated Swarm Engine </div> </div> <div class="meta-box"> <h3 style="margin-bottom:6px; font-size:14px;">Cognitive Agent State & Directives</h3> <ul style="padding-left:18px; margin:0 0 10px 0; font-size:12px; line-height:1.5;"> ${agentRosterHtml} </ul> <div style="border-top:1px solid #eaece2; padding-top:8px; font-size:11px; color:#444;"> <strong>Ethical Commitments:</strong> ${data.telemetryState.complianceCheckmarks.join(' · ')} </div> </div> <h2 style="font-size:18px; border-bottom:1px solid #dce0d2; padding-bottom:6px; margin-bottom:16px;">7-Day Synchronized Route Schedule</h2> <div>${daysHtml}</div> <div style="border-top:2px solid #113a2f; margin-top:24px; padding-top:12px; font-size:10px; font-family:monospace; color:#666; display:flex; justify-content:space-between;"> <span>Voyara Expeditions & Sanctuaries © 2026</span> <span>Autonomous Verification Consensus: Harmonized</span> </div> </body> </html> `); printWin.document.close(); showToast('Printable Field Dossier opened. Ready for print or PDF export.'); }</script></body></html>

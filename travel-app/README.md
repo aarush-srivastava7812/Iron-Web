@@ -7,6 +7,8 @@ Voyara is organized as a React application and a FastAPI service:
 - `image/images.json` — responsive Unsplash catalog for places, stays and food.
 - `transitions/` — airplane, train, journal and compass-loader animation assets.
 
+The main landing page uses the new Stitch travel-booking design, backed by the existing live catalog APIs. Sign-in, saved trips, booking requests, profile preferences, itineraries and the assistant remain part of the same React application.
+
 The current repository does not contain a provisioned Bolt Database project or Bolt auth credentials. The app therefore uses its existing SQLAlchemy database and bearer-token auth. Personal records are scoped to the authenticated user, and PostgreSQL row-level-security policies are supplied for deployment.
 
 ## Run locally
@@ -32,7 +34,7 @@ Open `http://127.0.0.1:5173/`. Vite proxies `/api` and the transition assets to 
 
 The frontend proxy defaults to `http://127.0.0.1:8000`. To use a different backend, copy `frontend/.env.example` to `frontend/.env.local` and change `BACKEND_PROXY_TARGET`; `VITE_API_BASE_URL` can point the built app at an API host when deployed separately.
 
-To serve the frontend from FastAPI instead of Vite, build it with `npm run build` in `frontend/`, then open `http://127.0.0.1:8000/`.
+To serve the frontend from FastAPI instead of Vite, build it with `npm run build` in `frontend/`, then open `http://127.0.0.1:8000/`. The server requires this build for its web routes; the retired static starter is no longer used as a fallback.
 
 ## Persistence and deployment
 

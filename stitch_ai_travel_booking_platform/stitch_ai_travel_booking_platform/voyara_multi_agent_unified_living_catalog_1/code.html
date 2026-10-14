@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Voyara — Multi-Agent Autonomous Expedition Engine &amp; Living Catalog</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+          },
+          colors: {
+            forest: {
+              50: '#f0f7f4',
+              100: '#dceee5',
+              200: '#bcded0',
+              600: '#1e6b57',
+              700: '#174f40',
+              800: '#113a2f',
+              900: '#0b241d',
+            },
+            lime: {
+              300: '#e5fa8d',
+              400: '#d7f36a',
+              500: '#beea38',
+            },
+            sand: {
+              50: '#fbfbf9',
+              100: '#f5f6f0',
+              200: '#eaece2',
+              300: '#dce0d2',
+            },
+            amber: {
+              500: '#e78d5b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* 3D Catalog Flip Book Transitions */
+    .perspective-container {
+      perspective: 2400px;
+      perspective-origin: center top;
+    }
+    .page-spread {
+      transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+    }
+    .page-flip-left {
+      transform: rotateY(-88deg);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .page-flip-right {
+      transform: rotateY(88deg);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .page-active {
+      transform: rotateY(0deg);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Spine effect on catalog spread */
+    .book-spine-shadow {
+      box-shadow: inset 24px 0 32px -16px rgba(17, 58, 47, 0.08), inset -24px 0 32px -16px rgba(17, 58, 47, 0.08);
+    }
+    .spine-crease {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(17, 58, 47, 0.12), rgba(17, 58, 47, 0.04) 90%);
+      transform: translateX(-50%);
+      z-index: 25;
+    }
+
+    /* Pulse radar glow */
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 0.9; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.15); }
+    }
+    .animate-radar {
+      animation: pulse-subtle 2.2s infinite ease-in-out;
+    }
+    
+    /* Custom Scrollbar for Deliberation Room */
+    .custom-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: rgba(17, 58, 47, 0.03);
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: rgba(23, 79, 64, 0.2);
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-[#f7f8f4] text-forest-900 font-sans antialiased selection:bg-lime-400 selection:text-forest-900 overflow-x-hidden min-h-screen flex flex-col">
+<!-- TOP BAR & STATUS LEDGER -->
+<header class="sticky top-0 z-50 bg-[#ffffff]/90 backdrop-blur-md border-b border-sand-200">
+<!-- Sub-header: Multi-Agent Swarm Registry Telemetry -->
+<div class="bg-forest-900 text-[#dceee5] px-4 py-1.5 text-xs flex flex-wrap items-center justify-between gap-3 font-mono">
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center gap-1.5 text-lime-400 font-semibold uppercase tracking-wider text-[11px]">
+<span class="w-2 h-2 rounded-full bg-lime-400 animate-radar"></span>
+          Autonomous Multi-Agent Swarm v4.2
+        </span>
+<span class="text-forest-200/60 hidden sm:inline">|</span>
+<span class="text-forest-100 hidden md:inline">5 Specialized Cognitive Agents Engaged</span>
+<span class="text-forest-200/60 hidden md:inline">|</span>
+<span class="text-lime-300">Memory Sync: Active</span>
+</div>
+<div class="flex items-center gap-4 text-[11px]">
+<div class="flex items-center gap-2">
+<span class="text-forest-200/70">Subcontinental Eco-Grid:</span>
+<span class="text-white bg-forest-800 px-2 py-0.5 rounded border border-forest-600/30">10 Living Biomes</span>
+</div>
+<div class="hidden lg:flex items-center gap-2">
+<span class="text-forest-200/70">Transit Sync:</span>
+<span class="text-lime-400">IRCTC &amp; Mountain Gauge OK</span>
+</div>
+<!-- Expand Swarm Toggle -->
+<button class="hover:text-white underline text-lime-400 font-sans cursor-pointer transition" id="toggleSwarmDrawer">
+          View Swarm Matrix
+        </button>
+</div>
+</div>
+<!-- Main Navigation Bar -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+<!-- Brand Logo -->
+<a class="flex items-center gap-2.5 group" href="#" onclick="switchPage('studio')">
+<div class="w-9 h-9 rounded-xl bg-forest-700 flex items-center justify-center text-lime-400 font-extrabold text-xl shadow-sm transform -rotate-3 group-hover:rotate-0 transition duration-300">
+          ↗
+        </div>
+<div class="flex flex-col">
+<span class="font-extrabold text-xl tracking-tight text-forest-800 leading-none">VOYARA</span>
+<span class="text-[9px] font-bold uppercase tracking-widest text-forest-600">Expeditions &amp; Sanctuaries</span>
+</div>
+</a>
+<!-- Navigation Tabs (Catalog Pages) -->
+<nav class="hidden md:flex items-center gap-1 bg-sand-100 p-1 rounded-full border border-sand-200" id="mainNav">
+<button class="nav-tab px-4 py-1.5 rounded-full text-xs font-bold transition duration-200 bg-forest-700 text-white shadow-sm flex items-center gap-1.5" data-page="studio" onclick="switchPage('studio')">
+<span class="w-1.5 h-1.5 rounded-full bg-lime-400"></span> Studio &amp; Swarm
+        </button>
+<button class="nav-tab px-4 py-1.5 rounded-full text-xs font-bold transition duration-200 text-forest-700 hover:text-forest-900 flex items-center gap-1.5" data-page="flipbook" onclick="switchPage('flipbook')">
+          📖 Himalayan Spread
+        </button>
+<button class="nav-tab px-4 py-1.5 rounded-full text-xs font-bold transition duration-200 text-forest-700 hover:text-forest-900" data-page="destinations" onclick="switchPage('destinations')">
+          Destinations (10)
+        </button>
+<button class="nav-tab px-4 py-1.5 rounded-full text-xs font-bold transition duration-200 text-forest-700 hover:text-forest-900" data-page="stays" onclick="switchPage('stays')">
+          Eco-Lodges
+        </button>
+<button class="nav-tab px-4 py-1.5 rounded-full text-xs font-bold transition duration-200 text-forest-700 hover:text-forest-900" data-page="rail" onclick="switchPage('rail')">
+          Scenic Rail
+        </button>
+<button class="nav-tab px-4 py-1.5 rounded-full text-xs font-bold transition duration-200 text-forest-700 hover:text-forest-900" data-page="holidays" onclick="switchPage('holidays')">
+          Curated Escapes
+        </button>
+</nav>
+<!-- Right Action Controls -->
+<div class="flex items-center gap-3">
+<!-- Turn Page Button -->
+<button class="hidden sm:inline-flex items-center gap-1.5 bg-forest-50 hover:bg-forest-100 text-forest-700 border border-forest-200 px-3 py-1.5 rounded-full text-xs font-bold transition shadow-xs cursor-pointer" onclick="nextPage()">
+<span>Flip Page</span>
+<span class="text-forest-600 font-mono">→</span>
+</button>
+<div class="h-6 w-px bg-sand-200 hidden sm:block"></div>
+<button class="bg-forest-700 hover:bg-forest-800 text-lime-400 px-4 py-2 rounded-full text-xs font-bold tracking-tight shadow-sm flex items-center gap-1.5 transition" onclick="triggerIntervention('Satvik &amp; High-Altitude Acclimatization')">
+<span class="text-sm">✦</span>
+<span>Instruct Swarm</span>
+</button>
+</div>
+</div>
+</header>
+<!-- PERSISTENT MULTI-AGENT SWARM CONTROLLER / CHAT DOCK (Present Across Every Screen) -->
+<aside class="sticky top-[89px] z-40 bg-white/95 backdrop-blur-md border-b border-forest-100 shadow-sm transition-all duration-300" id="swarmDock">
+<div class="max-w-7xl mx-auto px-4 py-3 sm:px-6">
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+<!-- Active Domain Agent Status Pills -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 lg:pb-0 text-xs">
+<div class="flex items-center gap-1.5 bg-forest-50 border border-forest-100 text-forest-800 px-3 py-1.5 rounded-lg shrink-0">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="font-bold">Biometric &amp; AMS</span>
+<span class="text-[10px] text-forest-600 font-mono">3,800m Pacing</span>
+</div>
+<div class="flex items-center gap-1.5 bg-forest-50 border border-forest-100 text-forest-800 px-3 py-1.5 rounded-lg shrink-0">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="font-bold">Transit &amp; Rail</span>
+<span class="text-[10px] text-forest-600 font-mono">Vistadome Sync</span>
+</div>
+<div class="flex items-center gap-1.5 bg-forest-50 border border-forest-100 text-forest-800 px-3 py-1.5 rounded-lg shrink-0">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="font-bold">Eco-Lodging</span>
+<span class="text-[10px] text-forest-600 font-mono">Passive Solar</span>
+</div>
+<div class="flex items-center gap-1.5 bg-forest-50 border border-forest-100 text-forest-800 px-3 py-1.5 rounded-lg shrink-0">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="font-bold">Naturalist Guide</span>
+<span class="text-[10px] text-forest-600 font-mono">Snow Leopard #07</span>
+</div>
+<div class="flex items-center gap-1.5 bg-forest-50 border border-forest-100 text-forest-800 px-3 py-1.5 rounded-lg shrink-0">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="font-bold">Gastronomy</span>
+<span class="text-[10px] text-forest-600 font-mono">Satvik / Millet</span>
+</div>
+</div>
+<!-- Inline Prompt Synthesizer & Memory Injection -->
+<form class="flex items-center gap-2 grow max-w-xl" id="agentPromptForm" onsubmit="handleAgentSubmit(event)">
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-forest-600 text-xs">
+              ✦
+            </div>
+<input class="w-full bg-sand-100 hover:bg-sand-50 focus:bg-white pl-8 pr-24 py-2 text-xs rounded-xl border border-sand-300 focus:border-forest-600 focus:outline-none focus:ring-1 focus:ring-forest-600 text-forest-900 transition" id="agentInput" placeholder="Instruct all 5 agents (e.g. 'Add 1 day acclimatization at Tabo', 'Switch to Satvik dining', 'Filter zero-plastic stays')..." type="text"/>
+<div class="absolute inset-y-1 right-1 flex items-center gap-1">
+<span class="text-[10px] font-mono text-forest-600 bg-sand-200 px-1.5 py-0.5 rounded">v4.2</span>
+<button class="bg-forest-700 hover:bg-forest-800 text-lime-400 px-3 py-1 rounded-lg text-xs font-bold transition" type="submit">
+                Synthesize
+              </button>
+</div>
+</div>
+</form>
+</div>
+<!-- Quick Action Prompt Chips -->
+<div class="flex items-center gap-2 mt-2 pt-2 border-t border-sand-200/60 overflow-x-auto text-[11px]">
+<span class="text-forest-600 font-bold shrink-0">Fast Prompts:</span>
+<button class="hover:bg-sand-200 bg-sand-100 text-forest-800 px-2.5 py-0.5 rounded-full shrink-0 border border-sand-200 transition" onclick="applyPromptChip('Enforce strict Satvik and organic millet meals throughout')">
+          + Satvik / Vegan
+        </button>
+<button class="hover:bg-sand-200 bg-sand-100 text-forest-800 px-2.5 py-0.5 rounded-full shrink-0 border border-sand-200 transition" onclick="applyPromptChip('Insert mandatory 24h altitude acclimatization pause below 3,300m')">
+          + AMS Altitude Safety Buffer
+        </button>
+<button class="hover:bg-sand-200 bg-sand-100 text-forest-800 px-2.5 py-0.5 rounded-full shrink-0 border border-sand-200 transition" onclick="applyPromptChip('Prioritize Vistadome mountain rail and zero-emission transit')">
+          + IRCTC Heritage Rail Sync
+        </button>
+<button class="hover:bg-sand-200 bg-sand-100 text-forest-800 px-2.5 py-0.5 rounded-full shrink-0 border border-sand-200 transition" onclick="applyPromptChip('Audit stays for zero-single-use plastics and passive solar heating')">
+          + Zero-Plastic Eco-Audit
+        </button>
+<button class="hover:bg-sand-200 bg-sand-100 text-forest-800 px-2.5 py-0.5 rounded-full shrink-0 border border-sand-200 transition" onclick="applyPromptChip('Assign certified local Snow Leopard spotter tracker')">
+          + Wildlife Spotter Concierge
+        </button>
+</div>
+</div>
+</aside>
+<!-- LIVE SWARM DELIBERATION MODAL / DRAWER (Reveals Behind-the-Scenes Agent Consensus) -->
+<div class="fixed inset-0 z-50 bg-forest-900/60 backdrop-blur-sm hidden items-center justify-center p-4" id="swarmModal">
+<div class="bg-white rounded-2xl max-w-4xl w-full p-6 shadow-2xl border border-forest-100 max-h-[85vh] flex flex-col">
+<div class="flex items-center justify-between pb-4 border-b border-sand-200">
+<div>
+<span class="text-xs uppercase font-extrabold tracking-wider text-forest-600">Autonomous Deliberation Core</span>
+<h2 class="text-xl font-extrabold text-forest-800">5-Agent Live Conflict Resolution &amp; Route Consensus</h2>
+</div>
+<button class="w-8 h-8 rounded-full bg-sand-100 hover:bg-sand-200 flex items-center justify-center text-forest-700 font-bold text-lg" onclick="closeSwarmModal()">×</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4 grow overflow-y-auto custom-scroll pr-1">
+<!-- Agent Feed 1 -->
+<div class="bg-forest-50 p-4 rounded-xl border border-forest-100 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-forest-800">Biometric Safety Agent</span>
+<span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-mono">14:02:11</span>
+</div>
+<p class="text-xs text-forest-700 leading-relaxed">
+<strong class="text-amber-600">Conflict Flagged:</strong> Kalpa (2,960m) to Kaza (3,800m) transit forces +840m altitude leap with steep negative gradient. AMS probability rises to 48% for unacclimatized travelers.
+          </p>
+<div class="mt-auto pt-2 border-t border-forest-200 text-[11px] text-forest-600 font-medium">
+            → Action: Insert mandatory rest stop at Tabo (3,280m).
+          </div>
+</div>
+<!-- Agent Feed 2 -->
+<div class="bg-forest-50 p-4 rounded-xl border border-forest-100 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-forest-800">Transit &amp; Rail Agent</span>
+<span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-mono">14:02:18</span>
+</div>
+<p class="text-xs text-forest-700 leading-relaxed">
+<strong class="text-forest-800">Route Re-alignment:</strong> Detour via Hindustan-Tibet road scheduled. Secured high-clearance EV Rover departure from Kalpa at 07:30 AM to beat valley wind shear.
+          </p>
+<div class="mt-auto pt-2 border-t border-forest-200 text-[11px] text-forest-600 font-medium">
+            → Action: Vistadome Rail connection synchronized at Kalka.
+          </div>
+</div>
+<!-- Agent Feed 3 -->
+<div class="bg-forest-50 p-4 rounded-xl border border-forest-100 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-forest-800">Eco-Sanctuary Lodging</span>
+<span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-mono">14:02:24</span>
+</div>
+<p class="text-xs text-forest-700 leading-relaxed">
+<strong class="text-forest-800">Dwelling Allocation:</strong> Tabo Heritage Earth-Lodge confirmed. Passive solar-wall heated room, zero single-use plastics, and medical oxygen reserve held.
+          </p>
+<div class="mt-auto pt-2 border-t border-forest-200 text-[11px] text-forest-600 font-medium">
+            → Action: 100% off-grid clean energy rating verified.
+          </div>
+</div>
+</div>
+<div class="bg-sand-100 p-3 rounded-xl flex items-center justify-between text-xs text-forest-800">
+<span>Consensus Status: <strong class="text-forest-800">Itinerary Fully Harmonized across All 5 Agents</strong></span>
+<button class="bg-forest-700 text-lime-400 font-bold px-4 py-1.5 rounded-lg" onclick="closeSwarmModal()">Apply to Live Expedition Spread</button>
+</div>
+</div>
+</div>
+<!-- MAIN BOOK / CATALOG VIEWER CONTAINER (Holds and Flips all 5 Distinct Screens) -->
+<main class="grow max-w-7xl mx-auto w-full px-4 sm:px-6 py-6 perspective-container relative min-h-[880px]">
+<!-- ================= PAGE 1: EXPEDITION STUDIO & 7-DAY SYNTHESIZER ================= -->
+<section class="page-spread page-active w-full bg-white rounded-3xl border border-sand-200 shadow-xl p-6 sm:p-8" id="page-studio">
+<div class="flex flex-col lg:flex-row items-start justify-between gap-6 pb-6 border-b border-sand-200">
+<div>
+<div class="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-forest-600 bg-forest-50 px-3 py-1 rounded-full border border-forest-100 mb-2">
+<span>● Screen 01</span>
+<span>Multi-Agent Expedition Studio</span>
+</div>
+<h1 class="text-3xl sm:text-4xl font-extrabold text-forest-900 tracking-tight font-serif">
+            Collaborative 7-Day Expedition Studio
+          </h1>
+<p class="text-forest-700 text-sm mt-1 max-w-3xl leading-relaxed">
+            Your dedicated domain agents (Transit, Lodging, Flora/Fauna Naturalist, Gastronomy, and Biometric Safety) continually deliberate, resolve real-time route conflicts, and construct an acclimatized subcontinental journey.
+          </p>
+</div>
+<!-- Persona Scenario Selector -->
+<div class="bg-sand-50 p-3 rounded-2xl border border-sand-200 flex flex-col gap-1 text-xs">
+<span class="font-bold text-forest-800 uppercase tracking-wider text-[10px]">Select Simulation Profile:</span>
+<div class="flex flex-wrap gap-1.5">
+<button class="persona-btn px-2.5 py-1 rounded-lg font-bold bg-forest-700 text-lime-400" onclick="selectPersona('spiti')">01. Winter Spiti Wild</button>
+<button class="persona-btn px-2.5 py-1 rounded-lg font-bold bg-white text-forest-800 hover:bg-sand-100 border border-sand-200" onclick="selectPersona('kerala')">02. Monsoon Kerala</button>
+<button class="persona-btn px-2.5 py-1 rounded-lg font-bold bg-white text-forest-800 hover:bg-sand-100 border border-sand-200" onclick="selectPersona('rajasthan')">03. Autumn Rajasthan</button>
+<button class="persona-btn px-2.5 py-1 rounded-lg font-bold bg-white text-forest-800 hover:bg-sand-100 border border-sand-200" onclick="selectPersona('assam')">04. Wet Biome Assam</button>
+</div>
+</div>
+</div>
+<!-- Studio Two-Column Grid: Deliberation Ledger (Left) + 7-Day Visual Matrix (Right) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-6">
+<!-- Left: Real-time Autonomous Deliberation Engine -->
+<div class="lg:col-span-4 flex flex-col gap-4">
+<div class="bg-forest-50/70 border border-forest-100 rounded-2xl p-4">
+<div class="flex items-center justify-between pb-3 border-b border-forest-200/60">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="font-extrabold text-sm text-forest-900">Autonomous Swarm Room</span>
+</div>
+<span class="text-[10px] font-mono uppercase bg-emerald-100 text-emerald-900 font-bold px-2 py-0.5 rounded">Arbitration Idle</span>
+</div>
+<!-- Agent Roster Status -->
+<div class="flex flex-col gap-2 mt-3 text-xs">
+<div class="flex items-center justify-between p-2 bg-white rounded-lg border border-sand-200">
+<div class="flex items-center gap-2">
+<span class="text-sm">🚆</span>
+<div>
+<strong class="block text-forest-800">Transit &amp; Heritage Rail</strong>
+<span class="text-[10px] text-forest-600">IRCTC Vistadome &amp; 4WD Mountain</span>
+</div>
+</div>
+<span class="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-mono font-bold">SYNCHRONIZED</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-white rounded-lg border border-sand-200">
+<div class="flex items-center gap-2">
+<span class="text-sm">🏡</span>
+<div>
+<strong class="block text-forest-800">Eco-Sanctuary Lodges</strong>
+<span class="text-[10px] text-forest-600">Tethys Mud Homestays &amp; Tea Estates</span>
+</div>
+</div>
+<span class="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-mono font-bold">TABO HELD</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-white rounded-lg border border-sand-200">
+<div class="flex items-center gap-2">
+<span class="text-sm">🔭</span>
+<div>
+<strong class="block text-forest-800">Master Naturalist (Kaza)</strong>
+<span class="text-[10px] text-forest-600">Spiti Ibex &amp; Snow Leopard Trackers</span>
+</div>
+</div>
+<span class="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-mono font-bold">CLEARED</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-white rounded-lg border border-sand-200">
+<div class="flex items-center gap-2">
+<span class="text-sm">🍲</span>
+<div>
+<strong class="block text-forest-800">Regional Culinary Agent</strong>
+<span class="text-[10px] text-forest-600">Millet Sourcing / High-Calorie Barley</span>
+</div>
+</div>
+<span class="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-mono font-bold">ORGANIC</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-white rounded-lg border border-sand-200">
+<div class="flex items-center gap-2">
+<span class="text-sm">🫀</span>
+<div>
+<strong class="block text-forest-800">Biometric AMS &amp; Safety</strong>
+<span class="text-[10px] text-forest-600">Barometric Pacing &amp; Oximetry</span>
+</div>
+</div>
+<span class="text-[10px] text-amber-700 bg-amber-50 px-2 py-0.5 rounded font-mono font-bold">HIGH VIGILANCE</span>
+</div>
+</div>
+<!-- Deliberation Transcript Card -->
+<div class="mt-4 p-3 bg-forest-900 text-[#dceee5] rounded-xl text-xs flex flex-col gap-2 font-mono">
+<div class="flex items-center justify-between text-[11px] text-forest-200/80 pb-1 border-b border-forest-800">
+<span class="text-lime-400 font-bold">Real-Time Deliberation Log</span>
+<span>Auto-Resolved in 340ms</span>
+</div>
+<p class="text-[11px] leading-relaxed text-forest-100">
+<span class="text-amber-400 font-bold">[Biometric Agent]:</span> Kalpa (2,960m) to Kaza (3,800m) direct transit poses acute 48% AMS threat.
+              </p>
+<p class="text-[11px] leading-relaxed text-forest-100">
+<span class="text-lime-300 font-bold">[Transit Agent]:</span> Inserting Tabo (3,280m) intermediate layover with solar-heated homestay.
+              </p>
+<p class="text-[11px] leading-relaxed text-forest-100">
+<span class="text-emerald-300 font-bold">[Consensus]:</span> Single-day altitude gain capped at +320m. Safety margin restored to 9.8/10.
+              </p>
+</div>
+</div>
+<!-- Traveler Investment Summary -->
+<div class="bg-forest-900 text-white rounded-2xl p-5 flex flex-col gap-3 shadow-md">
+<div class="flex items-center justify-between">
+<span class="text-xs uppercase font-extrabold text-forest-200 tracking-wider">Expedition Investment Ledger</span>
+<span class="text-xs bg-forest-800 text-lime-400 px-2 py-0.5 rounded border border-forest-700">All-Inclusive</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-extrabold text-lime-400 font-serif">₹78,400</span>
+<span class="text-xs text-forest-200">per explorer (inclusive of naturalist fee &amp; forestry cess)</span>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-2 border-t border-forest-800 text-[11px] text-forest-200">
+<span class="flex items-center gap-1.5">✓ 0% Single-Use Plastic</span>
+<span class="flex items-center gap-1.5">✓ IRCTC Heritage Sync</span>
+<span class="flex items-center gap-1.5">✓ Local Guide 100% Direct Pay</span>
+<span class="flex items-center gap-1.5">✓ Certified Eco-Mud Stays</span>
+</div>
+<div class="flex gap-2 mt-2">
+<button class="grow bg-lime-400 hover:bg-lime-500 text-forest-900 font-extrabold py-2 px-3 rounded-xl text-xs transition text-center" onclick="switchPage('flipbook')">
+                Open 3D Catalog Flipbook ↗
+              </button>
+</div>
+</div>
+</div>
+<!-- Right: 7-Day Synchronized Schedule -->
+<div class="lg:col-span-8 flex flex-col gap-3">
+<div class="flex items-center justify-between pb-2 border-b border-sand-200">
+<div class="flex items-center gap-2">
+<span class="font-extrabold text-base text-forest-900">Trans-Himalayan Winter Edition: Shimla to Spiti High Sanctuary</span>
+</div>
+<span class="text-xs font-mono text-forest-700 bg-sand-100 px-2 py-1 rounded">Terrain: Cold Steppe (3,100m – 4,400m)</span>
+</div>
+<!-- Day Cards (1 through 7) -->
+<div class="space-y-3 mt-1" id="itineraryDays">
+<!-- Day 01 -->
+<div class="bg-sand-50 hover:bg-white transition border border-sand-200 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3">
+<span class="w-8 h-8 rounded-lg bg-forest-700 text-lime-400 font-extrabold flex items-center justify-center text-xs shrink-0 font-mono">01</span>
+<div>
+<h4 class="font-extrabold text-sm text-forest-900">Scenic Foothill Ascent &amp; Himalayan Vistadome Rail</h4>
+<p class="text-xs text-forest-600 mt-0.5">UNESCO Mountain Railway slow ascent through deodar pine canopies with observation glass ceiling.</p>
+<div class="flex flex-wrap items-center gap-3 mt-2 text-[11px] text-forest-700 font-medium">
+<span class="flex items-center gap-1">⏰ 08:30 – 14:00</span>
+<span class="flex items-center gap-1">🔭 Naturalist: Dr. Tsering Norbu</span>
+<span class="flex items-center gap-1">🍵 Kangra Tea Hamper</span>
+</div>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="text-xs font-mono font-bold text-forest-800 bg-sand-200 px-2 py-1 rounded">Elev: 2,205m</span>
+</div>
+</div>
+<!-- Day 02 -->
+<div class="bg-sand-50 hover:bg-white transition border border-sand-200 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3">
+<span class="w-8 h-8 rounded-lg bg-forest-700 text-lime-400 font-extrabold flex items-center justify-center text-xs shrink-0 font-mono">02</span>
+<div>
+<h4 class="font-extrabold text-sm text-forest-900">Sutlej Gorge Traverse &amp; Kinnaur Apple Orchards</h4>
+<p class="text-xs text-forest-600 mt-0.5">Private high-torque all-terrain electric 4WD drive. Checking into stone-wood sanctuary facing sacred Kinner Kailash peak.</p>
+<div class="flex flex-wrap items-center gap-3 mt-2 text-[11px] text-forest-700 font-medium">
+<span class="flex items-center gap-1">🚙 Private EV Rover</span>
+<span class="flex items-center gap-1">🏡 Kinnaur Wood Sanctum</span>
+<span class="flex items-center gap-1">🍲 Spiced red rice &amp; slow-cooked kidney beans</span>
+</div>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="text-xs font-mono font-bold text-forest-800 bg-sand-200 px-2 py-1 rounded">Elev: 2,960m</span>
+</div>
+</div>
+<!-- Day 03 (Acclimatization Added by AI Agent) -->
+<div class="bg-emerald-50/70 border-2 border-emerald-500/40 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative">
+<span class="absolute -top-2.5 right-4 bg-emerald-600 text-white font-mono text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
+                ✓ Resolved by Safety Agent: Altitude Buffer Added
+              </span>
+<div class="flex items-start gap-3">
+<span class="w-8 h-8 rounded-lg bg-emerald-700 text-lime-400 font-extrabold flex items-center justify-center text-xs shrink-0 font-mono">03</span>
+<div>
+<h4 class="font-extrabold text-sm text-forest-900">Hindustan-Tibet Way &amp; Tabo Monastery Acclimatization</h4>
+<p class="text-xs text-forest-700 mt-0.5">Restructured single-day altitude delta from +840m down to a safe +320m. Sunset cliff meditation and Tibetan breathwork.</p>
+<div class="flex flex-wrap items-center gap-3 mt-2 text-[11px] text-emerald-900 font-medium">
+<span class="flex items-center gap-1">🫀 Pulse Oximetry Check 3x daily</span>
+<span class="flex items-center gap-1">🏡 Tabo Eco-Homestay</span>
+<span class="flex items-center gap-1">🍲 Steamed buckwheat momos</span>
+</div>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="text-xs font-mono font-bold text-emerald-800 bg-emerald-100 px-2 py-1 rounded">Elev: 3,280m</span>
+</div>
+</div>
+<!-- Day 04 -->
+<div class="bg-sand-50 hover:bg-white transition border border-sand-200 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3">
+<span class="w-8 h-8 rounded-lg bg-forest-700 text-lime-400 font-extrabold flex items-center justify-center text-xs shrink-0 font-mono">04</span>
+<div>
+<h4 class="font-extrabold text-sm text-forest-900">Dhankar Fort Citadel &amp; Spiti River Basin Arrival</h4>
+<p class="text-xs text-forest-600 mt-0.5">Gradual ascent along lunar cliff formations. Evening briefing on Himalayan snow leopard signs and telemetry collars.</p>
+<div class="flex flex-wrap items-center gap-3 mt-2 text-[11px] text-forest-700 font-medium">
+<span class="flex items-center gap-1">🥾 Cliff Path Walking</span>
+<span class="flex items-center gap-1">🔭 Tracker: Lobzang Dorje</span>
+<span class="flex items-center gap-1">🍲 Roasted tsampa &amp; yak butter tea</span>
+</div>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="text-xs font-mono font-bold text-forest-800 bg-sand-200 px-2 py-1 rounded">Elev: 3,800m</span>
+</div>
+</div>
+<!-- Day 05 -->
+<div class="bg-sand-50 hover:bg-white transition border border-sand-200 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3">
+<span class="w-8 h-8 rounded-lg bg-forest-700 text-lime-400 font-extrabold flex items-center justify-center text-xs shrink-0 font-mono">05</span>
+<div>
+<h4 class="font-extrabold text-sm text-forest-900">Kibber Wildlife Sanctuary &amp; Snow Leopard Spotting Ridge</h4>
+<p class="text-xs text-forest-600 mt-0.5">Early dawn hide at 4,200m using optical spotter scopes. Spotting Himalayan Blue Sheep, Tibetan Wolf packs, and cliff raptors.</p>
+<div class="flex flex-wrap items-center gap-3 mt-2 text-[11px] text-forest-700 font-medium">
+<span class="flex items-center gap-1">🔭 40x Optical Spotting</span>
+<span class="flex items-center gap-1">🐆 Zero Wildlife Harassment Certified</span>
+</div>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="text-xs font-mono font-bold text-forest-800 bg-sand-200 px-2 py-1 rounded">Elev: 4,205m</span>
+</div>
+</div>
+<!-- Day 06 & 07 -->
+<div class="bg-sand-50 hover:bg-white transition border border-sand-200 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3">
+<span class="w-8 h-8 rounded-lg bg-forest-700 text-lime-400 font-extrabold flex items-center justify-center text-xs shrink-0 font-mono">06</span>
+<div>
+<h4 class="font-extrabold text-sm text-forest-900">Langza Marine Fossil Beds &amp; High Post Office Exchange</h4>
+<p class="text-xs text-forest-600 mt-0.5">Tethys ocean ammonite fossil exploration (no removal policy). Sending hand-stamped postcards from Hikkim.</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="text-xs font-mono font-bold text-forest-800 bg-sand-200 px-2 py-1 rounded">Elev: 4,400m</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= PAGE 2: 3D HIMALAYAN EXPEDITION FLIPBOOK SPREAD ================= -->
+<section class="page-spread page-flip-right hidden w-full bg-[#fcfcfa] rounded-3xl border border-sand-300 shadow-2xl p-6 sm:p-10 relative book-spine-shadow" id="page-flipbook">
+<div class="spine-crease hidden md:block"></div>
+<!-- Spread Header -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-sand-200 gap-4">
+<div>
+<span class="text-xs font-mono font-bold uppercase tracking-widest text-forest-600 bg-sand-100 px-3 py-1 rounded-full">
+            ● Screen 02 · Spread 03 of 12 · Vol. IV
+          </span>
+<h2 class="text-3xl font-extrabold text-forest-900 mt-1 font-serif">The Western &amp; Eastern Himalayan Sanctuaries</h2>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-3 py-1.5 rounded-full border border-sand-300 text-forest-700 hover:bg-sand-100 text-xs font-bold font-mono" onclick="prevPage()">← Prev Spread</button>
+<span class="text-xs font-mono text-forest-600">Plate 05 – 06</span>
+<button class="px-3 py-1.5 rounded-full bg-forest-700 text-lime-400 hover:bg-forest-800 text-xs font-bold font-mono" onclick="nextPage()">Next Spread →</button>
+</div>
+</div>
+<!-- Two-Page Magazine Spread (Left Page & Right Page) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-6 relative">
+<!-- LEFT FOLIO (Plate 05) -->
+<div class="pr-0 md:pr-6 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between text-xs font-mono text-forest-600 pb-2 border-b border-sand-200">
+<span>FIELD REGISTER 31°N · 78°E</span>
+<span>PAGE 05</span>
+</div>
+<h3 class="text-2xl font-serif font-extrabold text-forest-900 mt-3 leading-snug">
+              Spiti Valley: The Fossil Ridge &amp; Millennium Cloister
+            </h3>
+<p class="text-forest-700 text-xs mt-2 leading-relaxed">
+              Carved by the glacial retreat of the ancient Tethys Sea, Spiti unfolds at 3,800 meters as a sanctuary of wind-sheared shale, ninth-century mud-plastered monasteries, and undisturbed wildlife migration ridges.
+            </p>
+<!-- Visual Feature Box -->
+<div class="mt-4 rounded-xl overflow-hidden border border-sand-200 relative bg-forest-900 h-48 sm:h-56">
+<img alt="Spiti Valley High Sanctuary" class="w-full h-full object-cover opacity-85" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-forest-900 via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3 text-white flex justify-between items-end">
+<div>
+<span class="text-[10px] font-mono text-lime-400 uppercase tracking-wider block">Monastic Bastion</span>
+<strong class="text-sm">Kye Gompa &amp; Pin Valley Basin</strong>
+</div>
+<span class="text-xs font-mono bg-white/20 backdrop-blur-md px-2 py-0.5 rounded">4,166 m</span>
+</div>
+</div>
+<!-- Route Sequence Summary -->
+<div class="mt-4 p-3 bg-sand-100 rounded-xl text-xs space-y-1.5">
+<div class="font-bold text-forest-900">Acclimatized Sequence Arc:</div>
+<div class="text-forest-700 text-[11px] flex justify-between">
+<span>Stage 01: Shimla to Sangla Valley</span>
+<span class="font-mono text-forest-600">2,600m</span>
+</div>
+<div class="text-forest-700 text-[11px] flex justify-between">
+<span>Stage 02: Tabo Monastery &amp; Dhankar</span>
+<span class="font-mono text-forest-600">3,280m</span>
+</div>
+<div class="text-forest-700 text-[11px] flex justify-between">
+<span>Stage 03: Chandratal Crescent Lake</span>
+<span class="font-mono text-forest-600">4,300m</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-sand-200 flex justify-between text-[11px] text-forest-600">
+<span>Himalayan High Altitude Atlas</span>
+<span>Zero Single-Use Plastic Mandate</span>
+</div>
+</div>
+<!-- RIGHT FOLIO (Plate 06) -->
+<div class="pl-0 md:pl-6 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between text-xs font-mono text-forest-600 pb-2 border-b border-sand-200">
+<span>PAGE 06</span>
+<span>PRESERVATION STANDARD</span>
+</div>
+<h3 class="text-2xl font-serif font-extrabold text-forest-900 mt-3 leading-snug">
+              Curated Adobe Sanctuaries &amp; Trans-Himalayan Palates
+            </h3>
+<p class="text-forest-700 text-xs mt-2 leading-relaxed">
+              High-altitude slow travel demands symbiotic shelter. Every residency on this route is community-owned, passive solar-heated, and rooted in indigenous Spitite hospitality.
+            </p>
+<!-- Dual Micro-Showcases -->
+<div class="grid grid-cols-2 gap-3 mt-4">
+<div class="bg-white p-3 rounded-xl border border-sand-200 shadow-xs">
+<span class="text-[10px] font-mono text-forest-600 uppercase block">Passive Solar Adobe</span>
+<h4 class="font-bold text-xs text-forest-900 mt-1">Kibber High Ridge Retreat</h4>
+<p class="text-[11px] text-forest-600 mt-1">Warm rammed-earth thermal mass with sub-zero solar capture.</p>
+<div class="mt-2 text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded inline-block">100% Thermal Solar</div>
+</div>
+<div class="bg-white p-3 rounded-xl border border-sand-200 shadow-xs">
+<span class="text-[10px] font-mono text-forest-600 uppercase block">Local Harvest Trail</span>
+<h4 class="font-bold text-xs text-forest-900 mt-1">Barley, Chhurpi &amp; Broths</h4>
+<p class="text-[11px] text-forest-600 mt-1">Zero-mile village food sovereignty and Seabuckthorn tea infusions.</p>
+<div class="mt-2 text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded inline-block">Organic Sourced</div>
+</div>
+</div>
+<!-- Inclusions Docket -->
+<div class="mt-4 p-4 bg-forest-900 text-white rounded-xl">
+<div class="flex items-center justify-between pb-2 border-b border-forest-800">
+<span class="text-xs uppercase font-bold text-lime-400">Voyara Assurance Inclusions</span>
+<span class="text-[10px] text-forest-200">7D / 6N All-Inclusive</span>
+</div>
+<div class="grid grid-cols-2 gap-2 mt-2 text-xs text-forest-100">
+<span>✓ Private Naturalist Guide</span>
+<span>✓ All Permits &amp; Forestry Cess</span>
+<span>✓ Medical O2 Acclimatization Kit</span>
+<span>✓ High-Clearance EV Transport</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-sand-200 flex items-center justify-between">
+<span class="text-xs text-forest-700">Plate No. SP-06 · Curatorial Gastronomy</span>
+<button class="bg-forest-700 hover:bg-forest-800 text-lime-400 px-4 py-1.5 rounded-lg text-xs font-bold transition" onclick="triggerIntervention('Book Himalayan Lookbook Spread')">
+              Reserve Expedition Docket ↗
+            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= PAGE 3: PAN-INDIA DESTINATIONS & SANCTUARIES ================= -->
+<section class="page-spread page-flip-right hidden w-full bg-white rounded-3xl border border-sand-200 shadow-xl p-6 sm:p-8" id="page-destinations">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-sand-200 gap-4">
+<div>
+<span class="text-xs font-mono font-bold uppercase tracking-widest text-forest-600 bg-forest-50 px-3 py-1 rounded-full">
+            ● Screen 03 · Plate Index · Edition X.XIV
+          </span>
+<h2 class="text-3xl font-extrabold text-forest-900 mt-1 font-serif">Pan-India Wilderness &amp; Heritage Sanctuaries</h2>
+<p class="text-forest-700 text-xs mt-1">A cartographic compendium of sovereign wilderness corridors cataloged for slow, regenerative expeditions.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs text-forest-600 font-mono">10 Living Biomes:</span>
+<span class="bg-forest-800 text-lime-400 text-xs font-bold px-3 py-1 rounded-full">100% Protected</span>
+</div>
+</div>
+<!-- Biome Category Filter Chips -->
+<div class="flex items-center gap-2 mt-4 pb-2 overflow-x-auto text-xs">
+<button class="bg-forest-700 text-lime-400 font-bold px-3 py-1.5 rounded-full shrink-0">All Sanctuaries (10)</button>
+<button class="bg-sand-100 hover:bg-sand-200 text-forest-800 px-3 py-1.5 rounded-full shrink-0">Himalayan High Passes</button>
+<button class="bg-sand-100 hover:bg-sand-200 text-forest-800 px-3 py-1.5 rounded-full shrink-0">Western Ghats Bio-Hotspots</button>
+<button class="bg-sand-100 hover:bg-sand-200 text-forest-800 px-3 py-1.5 rounded-full shrink-0">Royal Arid Reserves</button>
+<button class="bg-sand-100 hover:bg-sand-200 text-forest-800 px-3 py-1.5 rounded-full shrink-0">Northeast Cloud Forests</button>
+</div>
+<!-- 10 Sanctuaries Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mt-6">
+<!-- 01: Spiti & Pin Valley -->
+<div class="bg-sand-50 rounded-2xl overflow-hidden border border-sand-200 flex flex-col justify-between group hover:shadow-md transition">
+<div class="h-32 bg-forest-900 relative overflow-hidden">
+<img alt="Spiti" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<span class="absolute top-2 left-2 bg-black/60 backdrop-blur-md text-white text-[9px] font-mono px-2 py-0.5 rounded">3,800m ASL</span>
+</div>
+<div class="p-3">
+<h4 class="font-extrabold text-sm text-forest-900">Spiti &amp; Pin Valley</h4>
+<span class="text-[11px] text-forest-600 block">Himachal Cold Desert</span>
+<p class="text-[11px] text-forest-700 mt-1 line-clamp-2">Snow Leopard, Tibetan Wolf, and 1,000-year Tabo mud murals.</p>
+</div>
+<div class="p-3 pt-0 flex items-center justify-between border-t border-sand-200/60 mt-2">
+<span class="text-[10px] font-mono text-forest-600">Season: May–Oct</span>
+<button class="text-forest-700 hover:text-forest-900 font-bold text-xs" onclick="switchPage('flipbook')">View Spread ↗</button>
+</div>
+</div>
+<!-- 02: Kaziranga & Majuli -->
+<div class="bg-sand-50 rounded-2xl overflow-hidden border border-sand-200 flex flex-col justify-between group hover:shadow-md transition">
+<div class="h-32 bg-forest-900 relative overflow-hidden">
+<img alt="Kaziranga" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<span class="absolute top-2 left-2 bg-black/60 backdrop-blur-md text-white text-[9px] font-mono px-2 py-0.5 rounded">80m ASL</span>
+</div>
+<div class="p-3">
+<h4 class="font-extrabold text-sm text-forest-900">Kaziranga &amp; Majuli</h4>
+<span class="text-[11px] text-forest-600 block">Assam Brahmaputra Basin</span>
+<p class="text-[11px] text-forest-700 mt-1 line-clamp-2">One-horned rhinos, Neo-Vaishnavite satras, and riverine dolphin corridors.</p>
+</div>
+<div class="p-3 pt-0 flex items-center justify-between border-t border-sand-200/60 mt-2">
+<span class="text-[10px] font-mono text-forest-600">Season: Nov–Apr</span>
+<button class="text-forest-700 hover:text-forest-900 font-bold text-xs" onclick="switchPage('flipbook')">View Spread ↗</button>
+</div>
+</div>
+<!-- 03: Munnar & Wayanad -->
+<div class="bg-sand-50 rounded-2xl overflow-hidden border border-sand-200 flex flex-col justify-between group hover:shadow-md transition">
+<div class="h-32 bg-forest-900 relative overflow-hidden">
+<img alt="Munnar" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<span class="absolute top-2 left-2 bg-black/60 backdrop-blur-md text-white text-[9px] font-mono px-2 py-0.5 rounded">1,600m ASL</span>
+</div>
+<div class="p-3">
+<h4 class="font-extrabold text-sm text-forest-900">Munnar &amp; Wayanad</h4>
+<span class="text-[11px] text-forest-600 block">Kerala Western Ghats</span>
+<p class="text-[11px] text-forest-700 mt-1 line-clamp-2">Endemic Nilgiri Tahr, cardamom rainforests, and Edakkal rock engravings.</p>
+</div>
+<div class="p-3 pt-0 flex items-center justify-between border-t border-sand-200/60 mt-2">
+<span class="text-[10px] font-mono text-forest-600">Season: Sept–Mar</span>
+<button class="text-forest-700 hover:text-forest-900 font-bold text-xs" onclick="switchPage('flipbook')">View Spread ↗</button>
+</div>
+</div>
+<!-- 04: Ranthambore & Bundi -->
+<div class="bg-sand-50 rounded-2xl overflow-hidden border border-sand-200 flex flex-col justify-between group hover:shadow-md transition">
+<div class="h-32 bg-forest-900 relative overflow-hidden">
+<img alt="Ranthambore" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<span class="absolute top-2 left-2 bg-black/60 backdrop-blur-md text-white text-[9px] font-mono px-2 py-0.5 rounded">270m ASL</span>
+</div>
+<div class="p-3">
+<h4 class="font-extrabold text-sm text-forest-900">Ranthambore &amp; Bundi</h4>
+<span class="text-[11px] text-forest-600 block">Rajasthan Aravalli Dry Forest</span>
+<p class="text-[11px] text-forest-700 mt-1 line-clamp-2">Bengal tiger cliff territory, ancient stepwells, and Rajput miniature art.</p>
+</div>
+<div class="p-3 pt-0 flex items-center justify-between border-t border-sand-200/60 mt-2">
+<span class="text-[10px] font-mono text-forest-600">Season: Oct–Apr</span>
+<button class="text-forest-700 hover:text-forest-900 font-bold text-xs" onclick="switchPage('flipbook')">View Spread ↗</button>
+</div>
+</div>
+<!-- 05: Valley of Flowers -->
+<div class="bg-sand-50 rounded-2xl overflow-hidden border border-sand-200 flex flex-col justify-between group hover:shadow-md transition">
+<div class="h-32 bg-forest-900 relative overflow-hidden">
+<img alt="Valley of Flowers" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<span class="absolute top-2 left-2 bg-black/60 backdrop-blur-md text-white text-[9px] font-mono px-2 py-0.5 rounded">3,658m ASL</span>
+</div>
+<div class="p-3">
+<h4 class="font-extrabold text-sm text-forest-900">Valley of Flowers</h4>
+<span class="text-[11px] text-forest-600 block">Uttarakhand UNESCO Alpine</span>
+<p class="text-[11px] text-forest-700 mt-1 line-clamp-2">500+ species of wild endemic flora, Blue Poppy, and Bhotia alpine pastoralism.</p>
+</div>
+<div class="p-3 pt-0 flex items-center justify-between border-t border-sand-200/60 mt-2">
+<span class="text-[10px] font-mono text-forest-600">Season: Jul–Sept</span>
+<button class="text-forest-700 hover:text-forest-900 font-bold text-xs" onclick="switchPage('flipbook')">View Spread ↗</button>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= PAGE 4: ECO-LODGES & ARCHITECTURAL ANTHOLOGY ================= -->
+<section class="page-spread page-flip-right hidden w-full bg-white rounded-3xl border border-sand-200 shadow-xl p-6 sm:p-8" id="page-stays">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-sand-200 gap-4">
+<div>
+<span class="text-xs font-mono font-bold uppercase tracking-widest text-forest-600 bg-forest-50 px-3 py-1 rounded-full">
+            ● Screen 04 · Volume VII · Biophilic Living
+          </span>
+<h2 class="text-3xl font-extrabold text-forest-900 mt-1 font-serif">Eco-Lodges &amp; Heritage Planter Retreats</h2>
+<p class="text-forest-700 text-xs mt-1">Regenerative sanctuaries rooted in vernacular earthen craft, closed-loop microclimates, and biodiversity stewardship.</p>
+</div>
+<div class="bg-forest-50 p-2.5 rounded-xl border border-forest-100 text-xs flex items-center gap-3">
+<div><strong class="block text-forest-900">Solar Ratio: 88%</strong><span class="text-[10px] text-forest-600">Autonomous Microgrid</span></div>
+<div class="w-px h-6 bg-forest-200"></div>
+<div><strong class="block text-forest-900">Zero Plastic</strong><span class="text-[10px] text-forest-600">100% Certified</span></div>
+</div>
+</div>
+<!-- Lodges Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+<!-- Stay 1 -->
+<div class="bg-sand-50 rounded-2xl overflow-hidden border border-sand-200 flex flex-col justify-between">
+<div class="h-48 bg-forest-900 relative">
+<img alt="Kaza Solar Adobe" class="w-full h-full object-cover" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<span class="absolute top-3 left-3 bg-forest-900/80 backdrop-blur-md text-lime-400 font-mono text-xs px-2.5 py-1 rounded-md">100% Off-Grid Solar</span>
+</div>
+<div class="p-5 flex flex-col gap-2 grow">
+<span class="text-[10px] font-mono uppercase text-forest-600">Spiti Valley · Himachal Pradesh</span>
+<h3 class="font-extrabold text-lg text-forest-900">Kaza Heritage Solar Adobe</h3>
+<p class="text-xs text-forest-700 leading-relaxed">
+              Engineered using millennia-old Spitite mud-ramming techniques combined with evacuated solar vacuum tubes for sub-zero radiant comfort.
+            </p>
+<div class="mt-3 pt-3 border-t border-sand-200 text-xs space-y-1 text-forest-800">
+<div class="flex justify-between"><span>Vernacular Style:</span> <strong>Spitian Poplar Mud</strong></div>
+<div class="flex justify-between"><span>Resident Naturalist:</span> <strong>Tenzin Norbu</strong></div>
+<div class="flex justify-between"><span>Culinary:</span> <strong>Wood-fired tsampa sourdough</strong></div>
+</div>
+</div>
+<div class="p-5 pt-0 flex items-center justify-between">
+<span class="text-xs text-forest-600">Field Rate Included in Swarm</span>
+<button class="bg-forest-700 hover:bg-forest-800 text-lime-400 text-xs font-bold px-4 py-2 rounded-xl transition" onclick="triggerIntervention('Inspect Kaza Solar Adobe')">
+              Inspect Sanctuary ↗
+            </button>
+</div>
+</div>
+<!-- Stay 2 -->
+<div class="bg-sand-50 rounded-2xl overflow-hidden border border-sand-200 flex flex-col justify-between">
+<div class="h-48 bg-forest-900 relative">
+<img alt="Diphlu River Lodge" class="w-full h-full object-cover" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<span class="absolute top-3 left-3 bg-forest-900/80 backdrop-blur-md text-lime-400 font-mono text-xs px-2.5 py-1 rounded-md">Biological Reedbed Filter</span>
+</div>
+<div class="p-5 flex flex-col gap-2 grow">
+<span class="text-[10px] font-mono uppercase text-forest-600">Kaziranga · Assam</span>
+<h3 class="font-extrabold text-lg text-forest-900">Diphlu River Bamboo Chalets</h3>
+<p class="text-xs text-forest-700 leading-relaxed">
+              Raised bamboo chalets on stilts above seasonal monsoon plains, framing unimpeded perspectives across rhino river corridors.
+            </p>
+<div class="mt-3 pt-3 border-t border-sand-200 text-xs space-y-1 text-forest-800">
+<div class="flex justify-between"><span>Vernacular Style:</span> <strong>Mishing Bamboo Stilt</strong></div>
+<div class="flex justify-between"><span>Resident Naturalist:</span> <strong>Barun Gogoi</strong></div>
+<div class="flex justify-between"><span>Culinary:</span> <strong>Brahmaputra slow herbs &amp; Joha rice</strong></div>
+</div>
+</div>
+<div class="p-5 pt-0 flex items-center justify-between">
+<span class="text-xs text-forest-600">Field Rate Included in Swarm</span>
+<button class="bg-forest-700 hover:bg-forest-800 text-lime-400 text-xs font-bold px-4 py-2 rounded-xl transition" onclick="triggerIntervention('Inspect Diphlu Chalets')">
+              Inspect Sanctuary ↗
+            </button>
+</div>
+</div>
+<!-- Stay 3 -->
+<div class="bg-sand-50 rounded-2xl overflow-hidden border border-sand-200 flex flex-col justify-between">
+<div class="h-48 bg-forest-900 relative">
+<img alt="Windermere Estate" class="w-full h-full object-cover" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<span class="absolute top-3 left-3 bg-forest-900/80 backdrop-blur-md text-lime-400 font-mono text-xs px-2.5 py-1 rounded-md">Shola Forest Steward</span>
+</div>
+<div class="p-5 flex flex-col gap-2 grow">
+<span class="text-[10px] font-mono uppercase text-forest-600">Munnar · Kerala Cardamom Highlands</span>
+<h3 class="font-extrabold text-lg text-forest-900">Windermere 1920s Planter Estate</h3>
+<p class="text-xs text-forest-700 leading-relaxed">
+              Perched on a 60-acre estate where high-grown cardamom understoreys merge into the wild Western Ghats cliff sanctuary.
+            </p>
+<div class="mt-3 pt-3 border-t border-sand-200 text-xs space-y-1 text-forest-800">
+<div class="flex justify-between"><span>Vernacular Style:</span> <strong>Stone Cedar Bungalow</strong></div>
+<div class="flex justify-between"><span>Resident Naturalist:</span> <span>Kurian Varghese</span></div>
+<div class="flex justify-between"><span>Culinary:</span> <strong>Estate pepper &amp; appam hearth</strong></div>
+</div>
+</div>
+<div class="p-5 pt-0 flex items-center justify-between">
+<span class="text-xs text-forest-600">Field Rate Included in Swarm</span>
+<button class="bg-forest-700 hover:bg-forest-800 text-lime-400 text-xs font-bold px-4 py-2 rounded-xl transition" onclick="triggerIntervention('Inspect Windermere')">
+              Inspect Sanctuary ↗
+            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= PAGE 5: SCENIC MOUNTAIN & COASTAL RAIL ================= -->
+<section class="page-spread page-flip-right hidden w-full bg-white rounded-3xl border border-sand-200 shadow-xl p-6 sm:p-8" id="page-rail">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-sand-200 gap-4">
+<div>
+<span class="text-xs font-mono font-bold uppercase tracking-widest text-forest-600 bg-forest-50 px-3 py-1 rounded-full">
+            ● Screen 05 · The Iron &amp; Mist Folio
+          </span>
+<h2 class="text-3xl font-extrabold text-forest-900 mt-1 font-serif">Scenic Mountain &amp; Coastal Rail Expeditions</h2>
+<p class="text-forest-700 text-xs mt-1">Five slow railway corridors engineered through cloud-level rack rails, high Himalayan snowsheds, and monsoonal viaducts.</p>
+</div>
+<div class="bg-forest-900 text-white px-4 py-2 rounded-xl text-xs flex items-center gap-3">
+<span class="text-lime-400 font-bold font-mono">-74.2% CO2</span>
+<span>vs Domestic Flight / SUV Transfers</span>
+</div>
+</div>
+<!-- Rail Corridors Showcase -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+<!-- Rail 1 -->
+<div class="bg-sand-50 rounded-2xl overflow-hidden border border-sand-200 p-5 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-2 border-b border-sand-200 text-xs">
+<span class="font-mono text-forest-600">Baramulla ⇄ Banihal</span>
+<span class="font-bold text-forest-800">3 hrs 15 mins</span>
+</div>
+<h3 class="font-extrabold text-lg text-forest-900 mt-3">Vistadome Kashmir Pir Panjal</h3>
+<p class="text-xs text-forest-700 mt-1 leading-relaxed">
+              Traversing the 11.2-kilometer Pir Panjal railway tunnel through the icy spine of Kashmir with heated panoramic coaches and 360-degree swivel armchairs.
+            </p>
+<div class="mt-3 p-3 bg-white rounded-xl border border-sand-200 text-xs space-y-1 text-forest-800">
+<div>Signature Hamper: <strong>Saffron Kahwa &amp; Walnut Bread</strong></div>
+<div>Altitude Reached: <strong>1,700m ASL</strong></div>
+</div>
+</div>
+<button class="mt-4 bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold py-2 rounded-xl text-xs transition" onclick="triggerIntervention('Link Pir Panjal Rail')">
+            Reserve Glass Saloon ↗
+          </button>
+</div>
+<!-- Rail 2 -->
+<div class="bg-sand-50 rounded-2xl overflow-hidden border border-sand-200 p-5 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-2 border-b border-sand-200 text-xs">
+<span class="font-mono text-forest-600">Mettupalayam ⇄ Ooty</span>
+<span class="font-bold text-forest-800">4 hrs 50 mins</span>
+</div>
+<h3 class="font-extrabold text-lg text-forest-900 mt-3">Nilgiri Cog-Wheel Mountain Rail</h3>
+<p class="text-xs text-forest-700 mt-1 leading-relaxed">
+              Asia's steepest rack-and-pinion line climbing 46 km across 250 bridges and 16 tunnels through wild shola cloud forests.
+            </p>
+<div class="mt-3 p-3 bg-white rounded-xl border border-sand-200 text-xs space-y-1 text-forest-800">
+<div>Signature Hamper: <strong>Coorg Filter Coffee &amp; Banana Chips</strong></div>
+<div>UNESCO Status: <strong>World Heritage Verified</strong></div>
+</div>
+</div>
+<button class="mt-4 bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold py-2 rounded-xl text-xs transition" onclick="triggerIntervention('Link Nilgiri Rail')">
+            Reserve Glass Saloon ↗
+          </button>
+</div>
+<!-- Rail 3 -->
+<div class="bg-sand-50 rounded-2xl overflow-hidden border border-sand-200 p-5 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-2 border-b border-sand-200 text-xs">
+<span class="font-mono text-forest-600">Mumbai CSMT ⇄ Madgaon</span>
+<span class="font-bold text-forest-800">8 hrs 40 mins</span>
+</div>
+<h3 class="font-extrabold text-lg text-forest-900 mt-3">Konkan Monsoon Vistadome</h3>
+<p class="text-xs text-forest-700 mt-1 leading-relaxed">
+              Crossing 2,000 bridges through Western Ghats UNESCO biodiversity hotspot with direct views of raging Dudhsagar waterfall sprays.
+            </p>
+<div class="mt-3 p-3 bg-white rounded-xl border border-sand-200 text-xs space-y-1 text-forest-800">
+<div>Signature Hamper: <strong>Kokum Sharbat &amp; Malvani Poha</strong></div>
+<div>Carbon Reduction: <strong>-88% vs Short-Haul Flight</strong></div>
+</div>
+</div>
+<button class="mt-4 bg-forest-700 hover:bg-forest-800 text-lime-400 font-bold py-2 rounded-xl text-xs transition" onclick="triggerIntervention('Link Konkan Rail')">
+            Reserve Glass Saloon ↗
+          </button>
+</div>
+</div>
+</section>
+<!-- ================= PAGE 6: THOMAS COOK CURATED ESCAPES ================= -->
+<section class="page-spread page-flip-right hidden w-full bg-white rounded-3xl border border-sand-200 shadow-xl p-6 sm:p-8" id="page-holidays">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-sand-200 gap-4">
+<div>
+<span class="text-xs font-mono font-bold uppercase tracking-widest text-forest-600 bg-forest-50 px-3 py-1 rounded-full">
+            ● Screen 06 · Thomas Cook Certified Escapes
+          </span>
+<h2 class="text-3xl font-extrabold text-forest-900 mt-1 font-serif">Curated Wilderness Escapes of the Week</h2>
+<p class="text-forest-700 text-xs mt-1">Guaranteed scheduled departures with vetted homestay hosts, zero single-supplement surcharges, and multi-agent assistance.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs text-forest-600 font-mono">Affiliation:</span>
+<span class="text-xs bg-forest-50 text-forest-800 px-3 py-1 rounded-md border border-forest-200 font-bold">Thomas Cook Network Partner</span>
+</div>
+</div>
+<!-- Curated Packages Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+<!-- Card 1 -->
+<div class="bg-sand-50 rounded-2xl overflow-hidden border border-sand-200 flex flex-col justify-between">
+<div class="h-44 bg-forest-900 relative">
+<img alt="Kaziranga" class="w-full h-full object-cover" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<span class="absolute top-2 left-2 bg-amber-500 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded">Early Bird Savings</span>
+</div>
+<div class="p-4 flex flex-col gap-1 grow">
+<span class="text-[10px] font-mono text-forest-600">4 Nights / 5 Days · Brahmaputra Valley</span>
+<h4 class="font-extrabold text-base text-forest-900">Kaziranga Forest Canopy &amp; Rhino Sanctum</h4>
+<p class="text-xs text-forest-700 mt-1">3 Jeep safaris through Central and Western zones with river dolphin cruise.</p>
+</div>
+<div class="p-4 pt-0 border-t border-sand-200 mt-2 flex items-center justify-between">
+<div>
+<span class="text-[10px] text-forest-600 block">Per explorer:</span>
+<strong class="text-sm font-extrabold text-forest-900">₹19,200</strong>
+</div>
+<button class="bg-forest-700 hover:bg-forest-800 text-lime-400 px-3 py-1.5 rounded-lg text-xs font-bold transition" onclick="triggerIntervention('Book Kaziranga')">
+              Inquire Docket ↗
+            </button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-sand-50 rounded-2xl overflow-hidden border border-sand-200 flex flex-col justify-between">
+<div class="h-44 bg-forest-900 relative">
+<img alt="Munnar" class="w-full h-full object-cover" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<span class="absolute top-2 left-2 bg-emerald-600 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded">Free Rail Upgrade</span>
+</div>
+<div class="p-4 flex flex-col gap-1 grow">
+<span class="text-[10px] font-mono text-forest-600">5 Nights / 6 Days · Kerala Ghats</span>
+<h4 class="font-extrabold text-base text-forest-900">Munnar Colonial Tea Estates &amp; Spice Sanctum</h4>
+<p class="text-xs text-forest-700 mt-1">Stay in 1920s planter bungalows with tea tasting masterclasses and Vistadome rail.</p>
+</div>
+<div class="p-4 pt-0 border-t border-sand-200 mt-2 flex items-center justify-between">
+<div>
+<span class="text-[10px] text-forest-600 block">Per explorer:</span>
+<strong class="text-sm font-extrabold text-forest-900">₹22,400</strong>
+</div>
+<button class="bg-forest-700 hover:bg-forest-800 text-lime-400 px-3 py-1.5 rounded-lg text-xs font-bold transition" onclick="triggerIntervention('Book Munnar')">
+              Inquire Docket ↗
+            </button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-sand-50 rounded-2xl overflow-hidden border border-sand-200 flex flex-col justify-between">
+<div class="h-44 bg-forest-900 relative">
+<img alt="Ranthambore" class="w-full h-full object-cover" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<span class="absolute top-2 left-2 bg-forest-800 text-lime-400 font-mono text-[10px] font-bold px-2 py-0.5 rounded">Zone 1–5 Safari</span>
+</div>
+<div class="p-4 flex flex-col gap-1 grow">
+<span class="text-[10px] font-mono text-forest-600">3 Nights / 4 Days · Sawai Madhopur</span>
+<h4 class="font-extrabold text-base text-forest-900">Ranthambore Royal Tiger Treks &amp; Fort Ruins</h4>
+<p class="text-xs text-forest-700 mt-1">Luxury tented sanctuary with private naturalists and 4 premium safari tracks.</p>
+</div>
+<div class="p-4 pt-0 border-t border-sand-200 mt-2 flex items-center justify-between">
+<div>
+<span class="text-[10px] text-forest-600 block">Per explorer:</span>
+<strong class="text-sm font-extrabold text-forest-900">₹28,900</strong>
+</div>
+<button class="bg-forest-700 hover:bg-forest-800 text-lime-400 px-3 py-1.5 rounded-lg text-xs font-bold transition" onclick="triggerIntervention('Book Ranthambore')">
+              Inquire Docket ↗
+            </button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-sand-50 rounded-2xl overflow-hidden border border-sand-200 flex flex-col justify-between">
+<div class="h-44 bg-forest-900 relative">
+<img alt="Alleppey" class="w-full h-full object-cover" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<span class="absolute top-2 left-2 bg-forest-800 text-lime-400 font-mono text-[10px] font-bold px-2 py-0.5 rounded">Slow Travel Favorite</span>
+</div>
+<div class="p-4 flex flex-col gap-1 grow">
+<span class="text-[10px] font-mono text-forest-600">3 Nights / 4 Days · Vembanad Lake</span>
+<h4 class="font-extrabold text-base text-forest-900">Alleppey Backwater Houseboat &amp; Paddy Trails</h4>
+<p class="text-xs text-forest-700 mt-1">Solar-hybrid slow cruising, on-board private chef, and Ayurvedic consultations.</p>
+</div>
+<div class="p-4 pt-0 border-t border-sand-200 mt-2 flex items-center justify-between">
+<div>
+<span class="text-[10px] text-forest-600 block">Per explorer:</span>
+<strong class="text-sm font-extrabold text-forest-900">₹17,800</strong>
+</div>
+<button class="bg-forest-700 hover:bg-forest-800 text-lime-400 px-3 py-1.5 rounded-lg text-xs font-bold transition" onclick="triggerIntervention('Book Alleppey')">
+              Inquire Docket ↗
+            </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- TOAST NOTIFICATION FOR SWARM ARBITRATIONS -->
+<div class="fixed bottom-6 right-6 z-50 bg-forest-900 text-white px-5 py-3 rounded-2xl shadow-2xl border border-forest-700 text-xs flex items-center gap-3 transform translate-y-20 opacity-0 transition duration-300 pointer-events-none" id="toast">
+<span class="w-2.5 h-2.5 rounded-full bg-lime-400 animate-pulse"></span>
+<span id="toastMsg">Swarm reconciled changes across all 5 agents.</span>
+</div>
+<!-- COMPREHENSIVE FOOTER -->
+<footer class="bg-forest-900 text-[#dceee5] border-t border-forest-800 mt-auto py-12 px-4 sm:px-6">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-xs">
+<div>
+<div class="flex items-center gap-2 mb-3">
+<div class="w-7 h-7 rounded-lg bg-forest-700 flex items-center justify-center text-lime-400 font-bold text-sm">↗</div>
+<span class="font-extrabold text-base tracking-tight text-white">VOYARA</span>
+</div>
+<p class="text-forest-200/70 leading-relaxed">
+          Autonomous subcontinental expedition platform coordinating specialized multi-agent cognitive models with ethical forestry, high-touch naturalist guides, and heritage slow rail.
+        </p>
+</div>
+<div>
+<strong class="block text-white uppercase tracking-wider text-[11px] mb-3">Expedition Catalog Folios</strong>
+<ul class="space-y-2 text-forest-200/80">
+<li><a class="hover:text-lime-400 transition" href="#" onclick="switchPage('flipbook')">Himalayan Flipbook Spread</a></li>
+<li><a class="hover:text-lime-400 transition" href="#" onclick="switchPage('destinations')">Pan-India Wilderness Corridors</a></li>
+<li><a class="hover:text-lime-400 transition" href="#" onclick="switchPage('stays')">Eco-Lodges &amp; Biophilic Stays</a></li>
+<li><a class="hover:text-lime-400 transition" href="#" onclick="switchPage('rail')">Mountain Gauge &amp; Coastal Rail</a></li>
+</ul>
+</div>
+<div>
+<strong class="block text-white uppercase tracking-wider text-[11px] mb-3">Multi-Agent Cognition</strong>
+<ul class="space-y-2 text-forest-200/80">
+<li><span class="text-lime-400">● Transit Agent:</span> IRCTC &amp; 4WD Sync</li>
+<li><span class="text-lime-400">● Safety Agent:</span> AMS Elevation Telemetry</li>
+<li><span class="text-lime-400">● Lodging Agent:</span> Mud-Thermal Solar</li>
+<li><span class="text-lime-400">● Culinary Agent:</span> Satvik &amp; Organic Millets</li>
+</ul>
+</div>
+<div>
+<strong class="block text-white uppercase tracking-wider text-[11px] mb-3">Guarantees &amp; Compliance</strong>
+<p class="text-forest-200/70 leading-relaxed mb-3">
+          100% direct-pay to local trackers. Zero single-use plastic certified. Autonomous carbon offsets synced with national bio-reserve trusts.
+        </p>
+<span class="text-[10px] text-lime-400 font-mono block">© 2026 Voyara Expeditions Ltd. All Rights Reserved.</span>
+</div>
+</div>
+</footer>
+<!-- MULTI-PAGE FLIP TRANSITIONS & SWARM INTERACTIVITY SCRIPT -->
+<script>
+    const pages = ['studio', 'flipbook', 'destinations', 'stays', 'rail', 'holidays'];
+    let currentPageIndex = 0;
+    let isTransitioning = false;
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.textContent = message;
+      toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+      }, 3500);
+    }
+
+    function switchPage(pageId) {
+      if (isTransitioning) return;
+      const targetIndex = pages.indexOf(pageId);
+      if (targetIndex === -1 || targetIndex === currentPageIndex) return;
+
+      isTransitioning = true;
+      const currentEl = document.getElementById(`page-${pages[currentPageIndex]}`);
+      const nextEl = document.getElementById(`page-${pageId}`);
+
+      // Update Nav Tab UI
+      document.querySelectorAll('.nav-tab').forEach(tab => {
+        if (tab.dataset.page === pageId) {
+          tab.classList.add('bg-forest-700', 'text-white', 'shadow-sm');
+          tab.classList.remove('text-forest-700');
+        } else {
+          tab.classList.remove('bg-forest-700', 'text-white', 'shadow-sm');
+          tab.classList.add('text-forest-700');
+        }
+      });
+
+      // 3D Flip Direction Calculation
+      const isForward = targetIndex > currentPageIndex;
+      
+      currentEl.classList.remove('page-active');
+      currentEl.classList.add(isForward ? 'page-flip-left' : 'page-flip-right');
+
+      setTimeout(() => {
+        currentEl.classList.add('hidden');
+        nextEl.classList.remove('hidden');
+        
+        // Prepare next element position
+        nextEl.classList.remove('page-active');
+        nextEl.classList.add(isForward ? 'page-flip-right' : 'page-flip-left');
+        
+        // Force reflow
+        void nextEl.offsetWidth;
+
+        nextEl.classList.remove('page-flip-right', 'page-flip-left');
+        nextEl.classList.add('page-active');
+        
+        currentPageIndex = targetIndex;
+        isTransitioning = false;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 320);
+
+      showToast(`Flipped to ${pageId.toUpperCase()} spread. All 5 domain agents synced.`);
+    }
+
+    function nextPage() {
+      const nextIndex = (currentPageIndex + 1) % pages.length;
+      switchPage(pages[nextIndex]);
+    }
+
+    function prevPage() {
+      const prevIndex = (currentPageIndex - 1 + pages.length) % pages.length;
+      switchPage(pages[prevIndex]);
+    }
+
+    // Modal Drawer logic for agent deliberations
+    document.getElementById('toggleSwarmDrawer').addEventListener('click', () => {
+      const modal = document.getElementById('swarmModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    });
+
+    function closeSwarmModal() {
+      const modal = document.getElementById('swarmModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function applyPromptChip(promptText) {
+      document.getElementById('agentInput').value = promptText;
+      triggerIntervention(promptText);
+    }
+
+    function handleAgentSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('agentInput');
+      if (input.value.trim()) {
+        triggerIntervention(input.value.trim());
+        input.value = '';
+      }
+    }
+
+    function triggerIntervention(instruction) {
+      showToast(`Swarm Deliberating: "${instruction}"`);
+      setTimeout(() => {
+        showToast(`Consensus Reached! 5 Agents updated route matrix with zero conflicts.`);
+      }, 1200);
+    }
+
+    function selectPersona(persona) {
+      document.querySelectorAll('.persona-btn').forEach(btn => {
+        btn.classList.remove('bg-forest-700', 'text-lime-400');
+        btn.classList.add('bg-white', 'text-forest-800');
+      });
+      event.target.classList.add('bg-forest-700', 'text-lime-400');
+      event.target.classList.remove('bg-white', 'text-forest-800');
+
+      if (persona === 'spiti') {
+        showToast('Swarm switched to Winter Spiti High Altitude Active Simulation.');
+      } else if (persona === 'kerala') {
+        showToast('Swarm switched to Monsoon Kerala Slow Wellness (Zero Stairs, Satvik).');
+      } else if (persona === 'rajasthan') {
+        showToast('Swarm switched to Autumn Rajasthan Heritage Astronomy & Millet Craft.');
+      } else if (persona === 'assam') {
+        showToast('Swarm switched to Meghalaya & Assam Rainforest Biome Protocol.');
+      }
+    }
+  </script>
+</body>
+</html>

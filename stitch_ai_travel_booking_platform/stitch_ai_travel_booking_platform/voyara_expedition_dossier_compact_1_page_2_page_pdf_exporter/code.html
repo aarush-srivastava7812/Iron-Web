@@ -1,0 +1,960 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Voyara Expedition Dossier - Spiti Wild 7-Day Multi-Agent Synthesis</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&amp;family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #13251f;
+    --muted: #53645c;
+    --paper: #f8faf6;
+    --surface: #ffffff;
+    --green-dark: #112f27;
+    --green-forest: #174f40;
+    --green-leaf: #236f5b;
+    --lime: #d7f36a;
+    --line: #e3ebd8;
+    --amber-soft: #fbf3d5;
+    --amber-border: #e0ca79;
+    --alert-red: #c0392b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #e9eee4;
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13.5px;
+    line-height: 1.55;
+    padding: 24px 20px 80px;
+    -webkit-font-smoothing: antialiased;
+    transition: all 0.2s ease;
+  }
+
+  /* Printable & Action Bar */
+  .export-control-bar {
+    max-width: 900px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--green-dark);
+    padding: 14px 22px;
+    border-radius: 18px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(17,47,39,0.18);
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .export-control-bar .title-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .export-control-bar h1 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  /* Segmented Toggle Control */
+  .view-toggle-group {
+    display: inline-flex;
+    background: rgba(0,0,0,0.3);
+    padding: 3px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .view-toggle-btn {
+    border: none;
+    background: transparent;
+    color: #b5c7be;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    padding: 6px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+  }
+  .view-toggle-btn.active {
+    background: var(--lime);
+    color: var(--green-dark);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  }
+
+  .status-badge {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: rgba(215,243,106,0.18);
+    color: var(--lime);
+    border: 1px solid rgba(215,243,106,0.35);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .export-control-bar .actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn-action {
+    background: var(--lime);
+    color: var(--ink);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 800;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+  }
+  .btn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(215,243,106,0.4);
+  }
+  .btn-secondary {
+    background: rgba(255,255,255,0.12);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.22);
+  }
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.22);
+  }
+
+  /* Dossier Document Sheet */
+  .dossier-sheet {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--surface);
+    border-radius: 24px;
+    border: 1px solid var(--line);
+    box-shadow: 0 20px 60px rgba(19,37,31,0.08);
+    padding: 54px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Document Header Accent Strip */
+  .dossier-sheet::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(90deg, var(--green-forest), var(--lime), var(--green-leaf));
+  }
+
+  .dossier-header {
+    border-bottom: 2px solid var(--line);
+    padding-bottom: 26px;
+    margin-bottom: 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .brand-stamp {
+    font-family: 'Cinzel', serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--green-forest);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .brand-stamp span.mark {
+    background: var(--green-forest);
+    color: var(--lime);
+    width: 32px;
+    height: 32px;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+  }
+  .doc-meta {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .doc-title {
+    margin-top: 14px;
+  }
+  .doc-kicker {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--green-leaf);
+    margin-bottom: 4px;
+  }
+  .doc-heading {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  /* Summary Metrics Strip */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    background: #f4f8f2;
+    padding: 16px 20px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    margin-bottom: 28px;
+  }
+  .metric-item small {
+    display: block;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .metric-item strong {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--green-forest);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Section Styling */
+  .section-label {
+    font-size: 12px;
+    font-weight: 850;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--green-forest);
+    border-bottom: 1.5px solid var(--line);
+    padding-bottom: 8px;
+    margin: 26px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Directives Cards */
+  .directives-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .directive-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--green-forest);
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+  .directive-box.alert-border {
+    border-left-color: #d97706;
+    background: #fffdf5;
+  }
+  .dir-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .dir-title {
+    font-weight: 800;
+    font-size: 12.5px;
+    color: var(--ink);
+  }
+  .badge {
+    font-size: 9.5px;
+    font-weight: 800;
+    padding: 2.5px 7px;
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.3px;
+  }
+  .badge-green { background: #d7f36a; color: #13251f; }
+  .badge-amber { background: #fef08a; color: #78350f; }
+  .badge-red { background: #fee2e2; color: #991b1b; }
+  .dir-desc {
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.48;
+  }
+
+  /* Camera Trap Telemetry Grid */
+  .telemetry-banner {
+    background: #fbf5e7;
+    border: 1px solid var(--amber-border);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 24px;
+  }
+  .telemetry-row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 9px 0;
+    border-bottom: 1px dashed rgba(0,0,0,0.08);
+  }
+  .telemetry-row:last-child { border-bottom: none; }
+  .telemetry-node {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #92400e;
+    background: rgba(217,119,6,0.12);
+    padding: 3px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .telemetry-body strong {
+    color: var(--ink);
+    font-size: 12px;
+  }
+  .telemetry-body p {
+    font-size: 11px;
+    color: #635032;
+    margin-top: 2px;
+    line-height: 1.45;
+  }
+
+  /* Page Break in 2-Page mode */
+  .page-break-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 30px 0 20px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .page-break-divider::before, .page-break-divider::after {
+    content: "";
+    flex: 1;
+    border-top: 1px dashed var(--line);
+  }
+  .page-break-divider span {
+    background: #f4f8f2;
+    border: 1px solid var(--line);
+    padding: 3px 12px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--green-forest);
+    font-weight: 700;
+  }
+
+  /* Itinerary Table */
+  .itinerary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 11.5px;
+  }
+  .itinerary-table th {
+    background: #f4f8f2;
+    text-align: left;
+    padding: 9px 12px;
+    font-weight: 800;
+    color: var(--green-forest);
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1.5px solid var(--line);
+  }
+  .itinerary-table td {
+    padding: 11px 12px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .itinerary-table tr:hover td {
+    background: #fafdf8;
+  }
+  .day-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    color: var(--green-forest);
+    font-size: 10.5px;
+    display: inline-block;
+    padding: 2.5px 7px;
+    background: #eef6ec;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+  .itinerary-title {
+    font-weight: 750;
+    color: var(--ink);
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+  .itinerary-detail {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+
+  /* Ledger Box */
+  .ledger-box {
+    background: #112f27;
+    color: white;
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .ledger-box b {
+    display: block;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: var(--lime);
+    margin-bottom: 4px;
+  }
+  .ledger-box span {
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: #e4ece7;
+  }
+
+  /* ==============================================================
+     COMPACT 1-PAGE MODE STYLES & PRINT OVERRIDES
+     ============================================================== */
+  body.compact-mode {
+    padding: 16px 12px 60px;
+  }
+  body.compact-mode .dossier-sheet {
+    max-width: 860px;
+    padding: 18px 22px;
+    border-radius: 16px;
+  }
+  body.compact-mode .dossier-sheet::before {
+    height: 5px;
+  }
+  body.compact-mode .dossier-header {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  body.compact-mode .brand-stamp {
+    font-size: 18px;
+    gap: 6px;
+  }
+  body.compact-mode .brand-stamp span.mark {
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+    border-radius: 6px;
+  }
+  body.compact-mode .doc-title {
+    margin-top: 4px;
+  }
+  body.compact-mode .doc-kicker {
+    font-size: 8.5px;
+    letter-spacing: 1.2px;
+    margin-bottom: 1px;
+  }
+  body.compact-mode .doc-heading {
+    font-size: 17px;
+    letter-spacing: -0.4px;
+    line-height: 1.15;
+  }
+  body.compact-mode .doc-meta {
+    font-size: 8.5px;
+    line-height: 1.35;
+  }
+  body.compact-mode .metrics-grid {
+    padding: 6px 12px;
+    gap: 8px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+  }
+  body.compact-mode .metric-item small {
+    font-size: 8px;
+    letter-spacing: 0.8px;
+    margin-bottom: 1px;
+  }
+  body.compact-mode .metric-item strong {
+    font-size: 12.5px;
+  }
+  body.compact-mode .section-label {
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding-bottom: 4px;
+    margin: 12px 0 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  body.compact-mode .directives-list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  body.compact-mode .directive-box {
+    padding: 6px 8px;
+    border-radius: 8px;
+    border-left-width: 3px;
+  }
+  body.compact-mode .dir-header {
+    margin-bottom: 3px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  body.compact-mode .dir-title {
+    font-size: 9.5px;
+    line-height: 1.2;
+  }
+  body.compact-mode .badge {
+    font-size: 7.5px;
+    padding: 1.5px 5px;
+  }
+  body.compact-mode .dir-desc {
+    font-size: 8px;
+    line-height: 1.3;
+  }
+  body.compact-mode .telemetry-banner {
+    padding: 7px 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  body.compact-mode .telemetry-row {
+    padding: 4px 0;
+    gap: 10px;
+  }
+  body.compact-mode .telemetry-node {
+    font-size: 8px;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  body.compact-mode .telemetry-body strong {
+    font-size: 9.5px;
+    line-height: 1.2;
+    display: inline;
+  }
+  body.compact-mode .telemetry-body p {
+    font-size: 8px;
+    line-height: 1.25;
+    margin-top: 1px;
+  }
+  body.compact-mode .page-break-divider {
+    display: none !important;
+    break-before: auto !important;
+  }
+  body.compact-mode .itinerary-table {
+    margin-top: 4px;
+    font-size: 8.5px;
+  }
+  body.compact-mode .itinerary-table th {
+    padding: 4px 8px;
+    font-size: 8px;
+    letter-spacing: 0.8px;
+  }
+  body.compact-mode .itinerary-table td {
+    padding: 3.5px 8px;
+    line-height: 1.22;
+  }
+  body.compact-mode .day-tag {
+    font-size: 8px;
+    padding: 1.5px 5px;
+    border-radius: 4px;
+  }
+  body.compact-mode .itinerary-title {
+    font-size: 9px;
+    margin-bottom: 1px;
+  }
+  body.compact-mode .itinerary-detail {
+    font-size: 8px;
+    line-height: 1.22;
+  }
+  body.compact-mode .ledger-box {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    gap: 10px;
+  }
+  body.compact-mode .ledger-box b {
+    font-size: 8px;
+    letter-spacing: 0.8px;
+    margin-bottom: 2px;
+  }
+  body.compact-mode .ledger-box span {
+    font-size: 8px;
+    line-height: 1.25;
+  }
+
+  /* ==============================================================
+     PRINT ENGINE SETUP
+     ============================================================== */
+  @page {
+    size: A4 portrait;
+    margin: 12mm 14mm;
+  }
+
+  @media print {
+    body {
+      background: white !important;
+      padding: 0 !important;
+      color: #000 !important;
+    }
+    .export-control-bar {
+      display: none !important;
+    }
+    .dossier-sheet {
+      box-shadow: none !important;
+      border: none !important;
+      padding: 0 !important;
+      max-width: 100% !important;
+    }
+
+    /* In 2-page detailed mode */
+    body:not(.compact-mode) .telemetry-banner {
+      break-after: page !important;
+      page-break-after: always !important;
+    }
+    body:not(.compact-mode) .page-break-divider {
+      break-before: page !important;
+      page-break-before: always !important;
+      margin: 0 0 16px 0 !important;
+      padding-top: 12px !important;
+    }
+    body:not(.compact-mode) .itinerary-table tr {
+      page-break-inside: avoid;
+    }
+
+    /* In Compact 1-Page Mode: strict single page fit */
+    body.compact-mode {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    @page {
+      size: A4 portrait;
+      margin: 5mm 6mm !important;
+    }
+    body.compact-mode .telemetry-banner {
+      break-after: auto !important;
+      page-break-after: auto !important;
+    }
+    body.compact-mode .page-break-divider {
+      display: none !important;
+    }
+    body.compact-mode .dossier-sheet {
+      max-width: 100% !important;
+      padding: 0 !important;
+    }
+  }
+</style>
+</head>
+<body class="" onload="setTimeout(function(){ window.print(); }, 600);">
+<div class="export-control-bar">
+<div class="title-group">
+<h1 class=""><span class="">📁</span> Voyara Multi-Agent Expedition Dossier</h1>
+<!-- Segmented Toggle -->
+<div aria-label="Dossier Print Mode" class="view-toggle-group" role="tablist">
+<button class="view-toggle-btn" id="btn-1page" onclick="setDossierMode('1page')">
+<span class="">📄</span> Compact 1-Page (PDF Fit)
+      </button>
+<button class="view-toggle-btn active" id="btn-2page" onclick="setDossierMode('2page')">
+<span class="">📑</span> 2-Page Detailed
+      </button>
+</div>
+<span class="status-badge" id="mode-status-badge">📑 2-Page Detailed Mode Active</span>
+</div>
+<div class="actions">
+<button class="btn-action" onclick="printWithCurrentMode()"><span class="">🖨️</span> Save as PDF / Print</button>
+<button class="btn-action btn-secondary" onclick="downloadMarkdown()"><span class="">⬇️</span> Export Markdown</button>
+</div>
+</div>
+<main class="dossier-sheet">
+<header class="dossier-header">
+<div>
+<div class="brand-stamp"><span class="mark">↗</span> voyara</div>
+<div class="doc-title">
+<div class="doc-kicker">Autonomous Multi-Agent Synthesis Brief</div>
+<h2 class="doc-heading">Winter Spiti Wild: 7-Day Expedition Dossier</h2>
+</div>
+</div>
+<div class="doc-meta">
+<div class="">DOSSIER ID: VOY-SPITI-4289</div>
+<div class="">SWARM CONSENSUS: 5/5 VALIDATED</div>
+<div class="">EXPEDITION CLASS: HIGH-ALTITUDE</div>
+<div class="">DATE: MARCH 30, 2026</div>
+</div>
+</header>
+<div class="metrics-grid">
+<div class="metric-item">
+<small>Elevation Range</small>
+<strong>3,100m – 4,400m</strong>
+</div>
+<div class="metric-item">
+<small>AMS Pacing Delta</small>
+<strong>≤ +350m / Day</strong>
+</div>
+<div class="metric-item">
+<small>Carbon Abatement</small>
+<strong>-48kg CO2e Rail</strong>
+</div>
+<div class="metric-item">
+<small>All-Inclusive Plan</small>
+<strong>₹78,400 / Pax</strong>
+</div>
+</div>
+<div class="section-label">⚡ Autonomous Directives &amp; Swarm Consensus Status</div>
+<div class="directives-list">
+<div class="directive-box">
+<div class="dir-header">
+<span class="dir-title">🌱 Satvik / Vegan Nutrition</span>
+<span class="badge badge-green">100% ENFORCED</span>
+</div>
+<div class="dir-desc">Zero alliums (onion/garlic); cold-pressed oils; high-altitude Kangni &amp; Foxtail millets; custom rail hamper and village homestay prep.</div>
+</div>
+<div class="directive-box">
+<div class="dir-header">
+<span class="dir-title">🚆 UNESCO Heritage Rail</span>
+<span class="badge badge-green">SYNCHRONIZED</span>
+</div>
+<div class="dir-desc">Displaced 180km mountain hairpin highway with Kalka-Shimla Toy Train (Coach CZ Vistadome, 102 tunnels). Net -48kg CO2e abatement.</div>
+</div>
+<div class="directive-box alert-border">
+<div class="dir-header">
+<span class="dir-title">🚨 Wildlife Camera Trap Grid</span>
+<span class="badge badge-amber">TRAP CAM-12 ALERT</span>
+</div>
+<div class="dir-desc">16/16 Nodes live. Live intercept locked for 18 Himalayan Ibex (Pin Valley). Monitored Snow Leopard telemetry at Kibber Cam-07.</div>
+</div>
+<div class="directive-box">
+<div class="dir-header">
+<span class="dir-title">🫁 AMS Altitude Buffer</span>
+<span class="badge badge-green">ENFORCED</span>
+</div>
+<div class="dir-desc">Daily elevation ascent capped at ≤ +350m/day. Acclimatization days at Tabo and Kalpa; SpO2 telemetry baseline ≥ 90%.</div>
+</div>
+</div>
+<div class="section-label">🔭 Live Wildlife Sensor Grid &amp; Camera Trap Feed</div>
+<div class="telemetry-banner">
+<div class="telemetry-row">
+<div class="telemetry-node">TRAP CAM-12 (06:02 AM)</div>
+<div class="telemetry-body">
+<strong>Pin Valley National Park (3,920m ASL) — Himalayan Ibex Herd (18 Individuals)</strong>
+<p class="">Optical passive IR trigger. 4 mature trophy males, 9 adult females, 5 yearlings descending southern scree line. 96.8% sighting confidence. Naturalist team pre-deployed with 40x Swarovski spotting scopes.</p>
+</div>
+</div>
+<div class="telemetry-row">
+<div class="telemetry-node">TRAP CAM-07 (04:18 AM)</div>
+<div class="telemetry-body">
+<strong>Kibber High Ridge (4,210m ASL) — Snow Leopard (Panthera uncia)</strong>
+<p class="">Infrared thermal trigger logged female Snow Leopard with juvenile cub traversing toward Rong Nullah snow gully. Sighting confidence 91.4%. Optical blind standoff distance: 600m.</p>
+</div>
+</div>
+<div class="telemetry-row">
+<div class="telemetry-node">TRAP CAM-04 (01:45 AM)</div>
+<div class="telemetry-body">
+<strong>Langza Marine Fossil Basin (4,380m ASL) — Tibetan Wolf Pack (Canis lupus chanco)</strong>
+<p class="">3 individuals recorded traversing western scree. Routine telemetry logging; non-invasive monitoring verified.</p>
+</div>
+</div>
+</div>
+<div class="page-break-divider" style="break-before: page; margin-top: 36px;"><span class="">✂️ Page 2 • 7-Day Expedition Itinerary Matrix</span></div>
+<div class="section-label">📅 Synchronized 7-Day Field Itinerary</div>
+<table class="itinerary-table">
+<thead>
+<tr>
+<th class="" style="width: 76px;">Day</th>
+<th class="" style="width: 170px;">Leg / Elevation</th>
+<th class="">Transit, Wildlife &amp; Satvik Regimen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class=""><span class="day-tag">DAY 01</span></td>
+<td class="">
+<div class="itinerary-title">Scenic Foothill Rail</div>
+<div class="itinerary-detail">2,205m ASL (Shimla)</div>
+</td>
+<td class="">
+<div class="itinerary-detail"><strong>Transit:</strong> UNESCO Kalka-Shimla Vistadome (Coach CZ, 102 stone tunnels, -48kg CO2e).<br>
+<strong>Satvik Vegan Hamper:</strong> Kangra herbal brew, steamed amaranth crackers, roasted walnut patties (Zero alliums).</div>
+</td>
+</tr>
+<tr>
+<td class=""><span class="day-tag">DAY 02</span></td>
+<td class="">
+<div class="itinerary-title">Sutlej River Gorge</div>
+<div class="itinerary-detail">2,600m ASL (+395m)</div>
+</td>
+<td class="">
+<div class="itinerary-detail"><strong>Transit:</strong> Electric 4WD fleet convoy via carved granite highway corridors.<br>
+<strong>Satvik Cuisine:</strong> Kinnaur red rice, wild apple purée &amp; mountain rajma with cold-pressed virgin mustard oil.</div>
+</td>
+</tr>
+<tr>
+<td class=""><span class="day-tag">DAY 03</span></td>
+<td class="">
+<div class="itinerary-title">Tabo Mud Citadel</div>
+<div class="itinerary-detail">3,280m ASL (+320m)</div>
+</td>
+<td class="">
+<div class="itinerary-detail"><strong>Acclimatization:</strong> Strict AMS delta cap ramp; resting SpO2 monitoring (95%).<br>
+<strong>Dining:</strong> Himalayan buckwheat wood-fired flatbreads with Tabo wild sea-buckthorn herbal tea.</div>
+</td>
+</tr>
+<tr>
+<td class=""><span class="day-tag">DAY 04</span></td>
+<td class="">
+<div class="itinerary-title">Pin Valley Ibex Safari</div>
+<div class="itinerary-detail">3,800m ASL (+520m)</div>
+</td>
+<td class="">
+<div class="itinerary-detail"><strong>Wildlife Intercept:</strong> Live sync with <strong>Trap Cam-12 Alert</strong>. Observation of 18 Himalayan Ibex from riverbed blind with 40x Swarovski spotting scopes.<br>
+<strong>Dining:</strong> Roasted Spiti Tsampa porridge with wild mint &amp; apricot-almond milk.</div>
+</td>
+</tr>
+<tr>
+<td class=""><span class="day-tag">DAY 05</span></td>
+<td class="">
+<div class="itinerary-title">Kibber High Ridge</div>
+<div class="itinerary-detail">4,205m ASL (+405m)</div>
+</td>
+<td class="">
+<div class="itinerary-detail"><strong>Wildlife Intercept:</strong> <strong>Trap Cam-07 Telemetry Sync</strong> at Rong Nullah for Snow Leopard sighting (91.4% probability).<br>
+<strong>Dining:</strong> Kibber barley broth with wild alpine greens &amp; cold-pressed sesame seed crumble. SpO2 telemetry verified (94%).</div>
+</td>
+</tr>
+<tr>
+<td class=""><span class="day-tag">DAY 06</span></td>
+<td class="">
+<div class="itinerary-title">Langza Marine Beds</div>
+<div class="itinerary-detail">4,400m ASL (+195m)</div>
+</td>
+<td class="">
+<div class="itinerary-detail"><strong>Field Study:</strong> Exploration of 200M-year-old Tethys marine fossil beds (Zero removal code).<br>
+<strong>Dining:</strong> Foxtail millet khichdi with roasted mountain cumin &amp; wild thyme brew.</div>
+</td>
+</tr>
+<tr>
+<td class=""><span class="day-tag">DAY 07</span></td>
+<td class="">
+<div class="itinerary-title">Kye Blessing &amp; Descent</div>
+<div class="itinerary-detail">2,960m ASL (-1,440m)</div>
+</td>
+<td class="">
+<div class="itinerary-detail"><strong>Descent:</strong> Recovery corridor to oxygen-rich Kinnaur valley.<br>
+<strong>Dining:</strong> Kalpa saffron almond elixir &amp; steamed amaranth rotis with stewed orchard plums.</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="ledger-box">
+<div>
+<b>🌱 Ethical Footprint</b>
+<span class="">0.0% Single-use plastics onboard; certified passive solar mud-adobe eco-stays.</span>
+</div>
+<div>
+<b>🤝 Local Guide Equity</b>
+<span class="">100% direct-pay local naturalist compensation; zero intermediary fee commissions.</span>
+</div>
+<div>
+<b>🚂 Carbon Abatement</b>
+<span class="">-48kg CO2e via UNESCO Rail leg; remaining net offset via native juniper afforestation.</span>
+</div>
+</div>
+</main>
+<script>
+let currentMode = '1page';
+
+function setDossierMode(mode) {
+  currentMode = mode;
+  const btn1Page = document.getElementById('btn-1page');
+  const btn2Page = document.getElementById('btn-2page');
+  const badge = document.getElementById('mode-status-badge');
+
+  if (mode === '1page') {
+    document.body.classList.add('compact-mode');
+    btn1Page.classList.add('active');
+    btn2Page.classList.remove('active');
+    badge.style.display = 'inline-flex';
+    badge.textContent = '⚡ 1-Page Fit Mode Active';
+  } else {
+    document.body.classList.remove('compact-mode');
+    btn2Page.classList.add('active');
+    btn1Page.classList.remove('active');
+    badge.style.display = 'inline-flex';
+    badge.textContent = '📑 2-Page Detailed Mode Active';
+  }
+}
+
+function printWithCurrentMode() {
+  window.print();
+}
+
+function downloadMarkdown() {
+  const markdownText = `# VOYARA MULTI-AGENT EXPEDITION SYNTHESIS DOSSIER\n` +
+`**Autonomous Swarm Intelligence v4.2 • Autonomous Travel & Wildlife Telemetry System**\n` +
+`*Generated: March 30, 2026 | Document Class: Official Field Brief & Compliance Ledger*\n\n` +
+`## 1. EXPEDITION OVERVIEW\n` +
+`- Mission: 01. Winter Spiti Wild (Shimla to Spiti High Sanctuary)\n` +
+`- Elevation Range: 3,100m – 4,400m ASL\n` +
+`- Total Cost: ₹78,400 per explorer\n` +
+`- AMS Pacing: Max +350m/day\n` +
+`- Carbon Abatement: -48kg CO2e (UNESCO Kalka-Shimla Vistadome Rail)\n\n` +
+`## 2. ACTIVE DIRECTIVES\n` +
+`- Satvik / Vegan: 100% plant-based, zero alliums, cold-pressed oils\n` +
+`- IRCTC Heritage Rail: Displaced 180km mountain roads with UNESCO Toy Train CZ Vistadome\n` +
+`- Live Wildlife Telemetry: Trap Cam-12 Alert (18 Himalayan Ibex) & Trap Cam-07 (Snow Leopard)\n` +
+`- AMS Altitude Buffer: Daily elevation capped at <= +350m/day; SpO2 baseline monitored\n\n` +
+`## 3. CAMERA TRAP SENSOR ALERTS\n` +
+`- Trap Cam-12: Pin Valley (3,920m) — 18 Himalayan Ibex Herd (06:02 AM) [96.8% Confidence]\n` +
+`- Trap Cam-07: Kibber (4,210m) — Panthera uncia Snow Leopard + Cub (04:18 AM) [91.4% Confidence]\n` +
+`- Trap Cam-04: Langza (4,380m) — Tibetan Wolf Pack (01:45 AM)\n\n` +
+`## 4. 7-DAY ITINERARY\n` +
+`- Day 01: Scenic Foothill Rail (UNESCO Vistadome, Satvik Hamper)\n` +
+`- Day 02: Sutlej River Gorge (Electric 4WD Fleet, Kinnaur Red Rice)\n` +
+`- Day 03: Tabo Ancient Mud Citadel (AMS Buffer Acclimatization, Sea-buckthorn Tea)\n` +
+`- Day 04: Pin Valley Ibex Safari (Trap Cam-12 Live Intercept, Tsampa Porridge)\n` +
+`- Day 05: Kibber High Ridge (Trap Cam-07 Snow Leopard Standoff Blind, Barley Broth)\n` +
+`- Day 06: Langza Marine Fossil Beds (Tethys Geological Study, Foxtail Millet Khichdi)\n` +
+`- Day 07: Kye Gompa Blessing & Kalpa Oxygen-Rich Descent (Saffron Almond Elixir)\n\n` +
+`*Certified by Voyara Autonomous Swarm Controller v4.2*`;
+
+  const blob = new Blob([markdownText], { type: 'text/markdown;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'Voyara-Spiti-Wild-Expedition-Dossier.md';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+</script>
+
+
+</body></html>

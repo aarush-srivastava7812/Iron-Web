@@ -1,7 +1,7 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import {
-  ArrowDownRight, ArrowRight, ArrowUpRight, CalendarDays, Check, ChevronDown,
-  Compass, Heart, MapPin, Menu, MessageCircle, Plane, Search, ShieldCheck,
+  ArrowRight, ArrowUpRight, CalendarDays, Check, ChevronDown,
+  Compass, Heart, Menu, MessageCircle, Plane, Search, ShieldCheck,
   ShoppingBag, Sparkles, TrainFront, UserRound, X,
 } from "lucide-react";
 import { Link, NavLink, Navigate, Route, Routes, useLocation, useNavigate, useParams } from "react-router-dom";
@@ -83,61 +83,117 @@ function SectionHeading({ eyebrow, title, link, to }: { eyebrow: string; title: 
   return <div className="section-heading"><div><span className="eyebrow">{eyebrow}</span><h2>{title}</h2></div>{link && to && <Link to={to} className="inline-link">{link}<ArrowRight size={16} /></Link>}</div>;
 }
 
+const homeCategories: { kind: CatalogKind | "all"; icon: string; title: string; detail: string }[] = [
+  { kind: "stays", icon: "🧭", title: "Holiday packages", detail: "Easy escapes" },
+  { kind: "stays", icon: "🛏️", title: "Stays", detail: "Rest your way" },
+  { kind: "food", icon: "☕", title: "Food & cafés", detail: "Local favourites" },
+  { kind: "transport", icon: "🚆", title: "Getting there", detail: "Compare routes" },
+  { kind: "guides", icon: "🥾", title: "Experiences", detail: "Do more, locally" },
+  { kind: "guides", icon: "🗺️", title: "Local guides", detail: "Know the place" },
+];
+
 function HomePage() {
   const images = useImages();
   const [destinations, setDestinations] = useState<CatalogItem[]>([]);
-  const [stays, setStays] = useState<CatalogItem[]>([]);
+  const [listings, setListings] = useState<(CatalogItem & { catalogKind: CatalogKind })[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [search, setSearch] = useState("");
+  const [kind, setKind] = useState<CatalogKind | "all">("all");
+  const [budget, setBudget] = useState("any");
+  const [showAll, setShowAll] = useState(false);
   useEffect(() => {
-    Promise.all([catalog("destinations", { limit: "6" }), catalog("stays", { limit: "3" })])
-      .then(([places, accommodations]) => { setDestinations(places); setStays(accommodations); })
-      .catch((reason: Error) => setError(reason.message)).finally(() => setLoading(false));
+    let cancelled = false;
+    Promise.all([
+      catalog("destinations", { limit: "100" }),
+      catalog("stays", { limit: "100" }),
+      catalog("food", { limit: "100" }),
+      catalog("transport", { limit: "100" }),
+      catalog("guides", { limit: "100" }),
+    ]).then(([places, stays, food, transport, guides]) => {
+      if (cancelled) return;
+      setDestinations(places);
+      setListings([
+        ...stays.map((item) => ({ ...item, catalogKind: "stays" as const })),
+        ...food.map((item) => ({ ...item, catalogKind: "food" as const })),
+        ...transport.map((item) => ({ ...item, catalogKind: "transport" as const })),
+        ...guides.map((item) => ({ ...item, catalogKind: "guides" as const })),
+      ]);
+    }).catch((reason: Error) => {
+      if (!cancelled) setError(reason.message);
+    }).finally(() => {
+      if (!cancelled) setLoading(false);
+    });
+    return () => { cancelled = true; };
   }, []);
   const destination = destinations[0];
   const heroImage = destination ? imageFor(destination, destinations, images, "destinations") : images.destinations[0]?.image ?? "";
   const { addToCart } = useApp();
-  return <div className="home-page">
-    <section className="hero-wrap">
-      <div className="hero-copy"><span className="eyebrow eyebrow-light"><span className="eyebrow-dot" /> YOUR NEXT CHAPTER STARTS HERE</span>
-        <h1>Travel like<br />you <em>mean it.</em></h1>
-        <p>Less scrolling, more somewhere. Find thoughtful stays, local flavors and the kind of trip that feels like you.</p>
-        <div className="hero-actions"><Link to="/destinations" className="button button-lime">Explore places <ArrowUpRight size={16} /></Link><Link to="/assistant" className="button button-glass"><Sparkles size={15} /> Meet your AI guide</Link></div>
-        <div className="hero-proof"><span className="proof-avatars">✦ <span>V</span><span>R</span><span>A</span></span><span>Plans made personal, not cookie-cutter.</span></div>
+  const matchingListings = listings.filter((item) => {
+    const destinationName = destinations.find((place) => place.id === item.destination_id)?.name ?? "";
+    const searchable = [item.name, item.description, destinationName, item.operator, item.mode, item.cuisine]
+      .filter(Boolean).join(" ").toLowerCase();
+    const matchesSearch = searchable.includes(search.trim().toLowerCase());
+    const matchesKind = kind === "all" || kind === item.catalogKind;
+    const price = item.price_inr ?? 0;
+    const matchesBudget = budget === "any" || (budget === "premium" ? price >= 15000 : price <= Number(budget));
+    return matchesSearch && matchesKind && matchesBudget;
+  });
+  const visibleListings = showAll ? matchingListings : matchingListings.slice(0, 6);
+  const showListings = (nextKind: CatalogKind | "all" = "all") => {
+    setKind(nextKind);
+    setShowAll(true);
+    document.getElementById("stitch-listings")?.scrollIntoView({ behavior: "smooth" });
+  };
+  return <div className="stitch-home">
+    <section className="stitch-hero">
+      <div className="stitch-hero-copy"><span className="eyebrow eyebrow-light">A little farther, a little freer</span>
+        <h1>Find your<br /><em>somewhere.</em></h1>
+        <p>Thoughtfully planned journeys, local discoveries, and all the little details that make a trip feel like yours.</p>
+        <div className="hero-actions"><Link to="/destinations" className="button button-lime">Explore destinations <ArrowUpRight size={16} /></Link><Link to="/itineraries" className="button button-glass">Build my itinerary</Link></div>
+        <div className="hero-proof"><strong>One place for the whole journey.</strong><span> From the first idea to the way back home.</span></div>
       </div>
-      <div className="hero-visual">
-        {heroImage && <Image src={heroImage} alt="A scenic place to begin your next trip" className="hero-photo" />}
-        <div className="hero-image-shade" />
-        <div className="hero-floating hero-float-top"><span className="float-icon"><MapPinIcon /></span><div><small>Somewhere worth slowing down</small><strong>{destination?.name ?? "Find your somewhere"}</strong></div></div>
-        <div className="hero-floating hero-float-bottom"><div className="float-stars">★★★★★</div><strong>Good trips feel like you.</strong><small>Start with what you love.</small></div>
-        <span className="hero-index">01 <span>/ 05</span></span>
+      <div className="stitch-hero-art">
+        {heroImage && <Image src={heroImage} alt="" className="stitch-hero-photo" />}
+        <div className="stitch-orbit" aria-hidden="true" /><span className="stitch-orbit-label" aria-hidden="true"><Plane size={44} /></span>
+        <div className="stitch-floating stitch-float-one"><small><i /> YOUR NEXT ESCAPE</small><strong>{destination?.name ?? "Mountains calling"}</strong></div>
+        <div className="stitch-floating stitch-float-two"><small>TRIP STYLE</small><strong>Slow travel · Local finds</strong></div>
       </div>
-      <span className="hero-scribble" aria-hidden="true">go<br />well ↗</span>
     </section>
-    <section className="trust-strip"><span><ShieldCheck size={17} /> Request first, confirm when ready</span><span><Heart size={17} /> Made for your kind of travel</span><span><Sparkles size={17} /> Your preferences, remembered</span></section>
-    <section className="content-section">
-      <SectionHeading eyebrow="A little inspiration" title="Places with a pulse" link="All destinations" to="/destinations" />
-      {loading ? <Loader label="Finding lovely places…" variant="passport" /> : error ? <EmptyState title="Places are taking the scenic route" detail={error} /> : <div className="destination-grid">
-        {destinations.slice(0, 4).map((item, index) => <DestinationTile key={item.id} item={item} destinations={destinations} images={images} index={index} />)}
+    <form className="stitch-search" onSubmit={(event) => { event.preventDefault(); showListings(kind); }}>
+      <label><span>Where to?</span><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Destination, city or experience" /></label>
+      <label><span>I'm looking for</span><select value={kind} onChange={(event) => setKind(event.target.value as CatalogKind | "all")}><option value="all">Anything inspiring</option><option value="stays">Hotels &amp; stays</option><option value="food">Food &amp; cafés</option><option value="guides">Activities &amp; guides</option><option value="transport">Transport</option></select></label>
+      <label><span>Budget per person</span><select value={budget} onChange={(event) => setBudget(event.target.value)}><option value="any">Any budget</option><option value="5000">Under ₹5,000</option><option value="15000">Under ₹15,000</option><option value="30000">Under ₹30,000</option><option value="premium">Premium</option></select></label>
+      <button className="button button-dark" type="submit">Search trips <ArrowUpRight size={16} /></button>
+    </form>
+    <div className="stitch-trust"><span><ShieldCheck size={17} /> Request first, confirm when ready</span><span><Heart size={17} /> Made for your kind of travel</span><span><Sparkles size={17} /> Your preferences, remembered</span></div>
+    <section className="stitch-section" id="destinations">
+      <div className="stitch-section-heading"><div><span className="eyebrow">Made for your kind of curious</span><h2>Where will you go next?</h2><p>Big-name favourites and places worth taking the longer road for.</p></div><Link className="inline-link" to="/destinations">Explore all destinations <ArrowRight size={16} /></Link></div>
+      {loading ? <Loader label="Finding your somewhere…" variant="passport" /> : error ? <EmptyState title="Destinations are taking the scenic route" detail={error} /> : <div className="stitch-destinations">
+        {destinations.slice(0, 5).map((item, index) => <Link className={`stitch-destination stitch-destination-${index}`} key={item.id} to={`/destinations/${item.id}`}>
+          <Image src={imageFor(item, destinations, images, "destinations")} alt={`${item.name ?? "Destination"} landscape`} />
+          <span className="stitch-destination-arrow"><ArrowUpRight size={17} /></span><div><span>{item.tags?.slice(0, 2).join(" · ") || item.state}</span><h3>{item.name}</h3><p>{[item.state, item.country].filter(Boolean).join(", ")}</p></div>
+        </Link>)}
       </div>}
     </section>
-    <section className="content-section">
-      <SectionHeading eyebrow="Stay somewhere special" title="Good nights, better mornings" link="Browse stays" to="/stays" />
-      {loading ? <Loader variant="suitcase" /> : error ? <EmptyState title="Stays are taking the scenic route" detail={error} /> : <div className="catalog-grid">{stays.map((item) => <CatalogCard key={item.id} item={item} kind="stays" destinations={destinations} imageCatalog={images} onAdd={() => addToCart({ item_type: "stay", item_id: item.id, name: item.name ?? "Stay", price: item.price_inr ?? 0 })} />)}</div>}
+    <section className="stitch-section stitch-experiences" id="experiences">
+      <div className="stitch-section-heading"><div><span className="eyebrow">Travel, your way</span><h2>What are you in the mood for?</h2><p>Build a trip around the things you love doing.</p></div></div>
+      <div className="stitch-categories">
+        {homeCategories.map(({ kind: nextKind, icon, title, detail }) => <button className="stitch-category" key={title} onClick={() => showListings(nextKind)}><span>{icon}</span><strong>{title}</strong><small>{detail}</small></button>)}
+      </div>
     </section>
-    <section className="manifesto-panel">
-      <div className="manifesto-art"><div className="manifesto-orbit"><Compass size={66} strokeWidth={1} /></div><span className="manifesto-spark">✳</span><span className="manifesto-coordinates">20° 35' N — 72° 56' E</span></div>
-      <div className="manifesto-copy"><span className="eyebrow">A better way to get away</span><h2>Not just where.<br /><em>How it feels.</em></h2><p>Your budget, pace, food and little preferences matter. Voyara brings every part of a trip together and keeps what matters to you in mind.</p><Link to="/assistant" className="inline-link">Tell us what you love <ArrowRight size={16} /></Link></div>
+    <section className="stitch-section" id="stitch-listings">
+      <div className="stitch-section-heading"><div><span className="eyebrow">From the Voyara catalog</span><h2>Places to stay and explore.</h2><p>Curated sample listings and prices; availability is not live.</p></div><button className="inline-link stitch-text-button" onClick={() => showListings("all")}>View all listings <ArrowRight size={16} /></button></div>
+      {loading ? <Loader label="Loading recommendations…" variant="suitcase" /> : error ? <EmptyState title="Listings are taking the scenic route" detail={error} /> : visibleListings.length ? <div className="catalog-grid">{visibleListings.map((item) => <CatalogCard key={`${item.catalogKind}-${item.id}`} item={item} kind={item.catalogKind} destinations={destinations} imageCatalog={images} onAdd={() => addToCart({ item_type: item.catalogKind === "stays" ? "stay" : item.catalogKind === "transport" ? "transport" : item.catalogKind === "guides" ? "guide" : "food", item_id: item.id, name: item.name ?? item.operator ?? "Travel experience", price: item.price_inr ?? 0 })} />)}</div> : <EmptyState title="No matching listings found" detail="Try a broader destination, category or budget." />}
+      {!showAll && matchingListings.length > visibleListings.length && <button className="button button-outline stitch-more" onClick={() => setShowAll(true)}>Show all {matchingListings.length} listings <ArrowRight size={15} /></button>}
     </section>
-    <section className="how-section">
-      <SectionHeading eyebrow="The good kind of planning" title="Your trip, in three easy steps" />
-      <div className="steps-grid"><Step number="01" icon={<Search />} title="Find your somewhere" detail="Explore destinations and the stays, bites and routes around them." /><Step number="02" icon={<MessageCircle />} title="Make it yours" detail="Save your preferences and ask your AI guide for a hand." /><Step number="03" icon={<CalendarDays />} title="Put it together" detail="Build an itinerary and send booking requests, all in one place." /></div>
+    <section className="stitch-planner" id="planner">
+      <div><span className="eyebrow">Your trip, pieced together</span><h2>Less tab-hopping.<br />More looking forward.</h2><p>Bring stays, transport, food stops and things to do into one editable itinerary. Start with a destination, then shape the days around your time and budget.</p><Link className="button button-dark" to="/itineraries">Start planning <ArrowUpRight size={16} /></Link></div>
+      <div className="stitch-plan-card"><div><strong>A weekend in the hills</strong><span>SAMPLE ITINERARY</span></div><article><span>🚆</span><p><strong>Morning train to the mountains</strong><small>Day 1 · Transport idea</small></p></article><article><span>🏡</span><p><strong>Check in at a local homestay</strong><small>Day 1 · Stay idea</small></p></article><article><span>🥘</span><p><strong>Find a local lunch spot</strong><small>Day 2 · Food idea</small></p></article><small>Sample only · Create a private itinerary to make it yours</small></div>
     </section>
-    <section className="closing-cta"><span className="eyebrow eyebrow-light">THE WORLD IS STILL WONDERFUL</span><h2>Ready for a little<br /><em>somewhere?</em></h2><Link to="/destinations" className="button button-lime">Let's find it <ArrowUpRight size={16} /></Link><Plane className="closing-plane" size={112} strokeWidth={0.75} /></section>
+    <section className="stitch-closing"><span className="eyebrow eyebrow-light">THE WORLD IS STILL WONDERFUL</span><h2>Ready for a little<br /><em>somewhere?</em></h2><Link to="/destinations" className="button button-lime">Let's find it <ArrowUpRight size={16} /></Link><Plane className="stitch-closing-plane" size={100} strokeWidth={0.75} /></section>
   </div>;
 }
-
-function MapPinIcon() { return <MapPin size={17} />; }
 function DestinationTile({ item, destinations, images, index }: { item: CatalogItem; destinations: CatalogItem[]; images: ImageCatalog; index: number }) {
   const src = imageFor(item, destinations, images, "destinations");
   return <Link to={`/destinations/${item.id}`} className={`destination-tile tile-${index}`}>
@@ -145,10 +201,6 @@ function DestinationTile({ item, destinations, images, index }: { item: CatalogI
     <div className="tile-shade" /><span className="tile-index">0{index + 1}</span>
     <div className="tile-copy"><span>{item.tags?.[0] ?? item.state ?? "Somewhere to explore"}</span><h3>{item.name}</h3><p>{item.state}, {item.country}</p></div><span className="tile-arrow"><ArrowUpRight size={18} /></span>
   </Link>;
-}
-
-function Step({ number, icon, title, detail }: { number: string; icon: ReactNode; title: string; detail: string }) {
-  return <article className="step-card"><span className="step-number">{number}</span><span className="step-icon">{icon}</span><h3>{title}</h3><p>{detail}</p><ArrowDownRight className="step-arrow" size={18} /></article>;
 }
 
 const catalogInfo: Record<Exclude<CatalogKind, "destinations">, { eyebrow: string; title: string; detail: string; placeholder: string }> = {

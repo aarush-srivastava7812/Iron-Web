@@ -36,8 +36,7 @@ def homepage():
     built_index = frontend_dist / "index.html"
     if built_index.is_file():
         return FileResponse(built_index)
-    index = Path(__file__).resolve().parents[3] / "voyara_travel_starter" / "voyara_travel_starter" / "index.html"
-    return FileResponse(index)
+    raise HTTPException(503, "Frontend build not found. Run npm run build in travel-app/frontend.")
 
 
 @app.get("/transitions.js", include_in_schema=False)
@@ -64,4 +63,4 @@ def spa_fallback(spa_path: str):
     built_index = frontend_dist / "index.html"
     if built_index.is_file():
         return FileResponse(built_index)
-    return {"detail": "Frontend build not found. Run npm run build in travel-app/frontend."}
+    raise HTTPException(503, "Frontend build not found. Run npm run build in travel-app/frontend.")
