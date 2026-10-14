@@ -1,0 +1,16 @@
+{
+  "generic_fp16": {
+    "status": "rejected_before_measurement",
+    "errors": [
+      "Type parameter (T) of Optype (Sub) bound to different types (tensor(float16) and tensor(float)) in node /roberta/Sub",
+      "Type tensor(float16) of output /roberta/Cast_output_0 does not match expected tensor(float)"
+    ]
+  },
+  "onnxruntime_transformer_conversion": {
+    "status": "Loaded and tested on all 597 retained twenty percent questions",
+    "precision": "mixed FP16",
+    "unchanged_candidate_pool": true,
+    "unchanged_token_limit": 512
+  },
+  "production_model_changed": false
+}

@@ -60,4 +60,6 @@ The [full 20% analysis](report/full20_graph_analysis_20261013/report.md) compare
 
 The [latency breakdown](report/latency_breakdown_20261014/report.md) separates local model work, vector search, Redis round trips, graph copying and lock waits on the same evaluated revision and 20% cohorts. It includes individual timing records, all quality metrics, bounded write probes, concurrency measurements and the observed socket timeout. [PDF](report/latency_breakdown_20261014/report.pdf).
 
+The [reranker diagnosis](report/reranker_diagnosis_20261014/report.md) profiles tokenization and inference, compares candidate limits and an optimized FP16 model on every retained 20% question, and lists the measured quality tradeoffs. [PDF](report/reranker_diagnosis_20261014/report.pdf). Converted models remain in ignored profiling data; production model settings are unchanged.
+
 Optional profiling dependencies are in `requirements/profiling.txt`; legacy comparisons additionally use `requirements/migration.txt`. The full test command is `python scripts/full_graph_analysis.py --run-id NEW_RUN_ID --report report/NEW_REPORT`. Retained inputs and the recorded CUDA runtime are required. Do not reuse a completed run ID for different source/configuration settings.

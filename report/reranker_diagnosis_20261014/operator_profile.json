@@ -1,0 +1,128 @@
+{
+  "providers": {
+    "CUDAExecutionProvider": {
+      "events": 1083,
+      "host_duration_us": 52406
+    },
+    "CPUExecutionProvider": {
+      "events": 24,
+      "host_duration_us": 531
+    }
+  },
+  "operators": {
+    "CUDAExecutionProvider:Equal": {
+      "events": 3,
+      "host_duration_us": 310
+    },
+    "CUDAExecutionProvider:Not": {
+      "events": 3,
+      "host_duration_us": 116
+    },
+    "CUDAExecutionProvider:Cast": {
+      "events": 9,
+      "host_duration_us": 357
+    },
+    "CUDAExecutionProvider:CumSum": {
+      "events": 3,
+      "host_duration_us": 126
+    },
+    "CUDAExecutionProvider:Mul": {
+      "events": 6,
+      "host_duration_us": 221
+    },
+    "CUDAExecutionProvider:Add": {
+      "events": 297,
+      "host_duration_us": 12624
+    },
+    "CUDAExecutionProvider:Gather": {
+      "events": 12,
+      "host_duration_us": 525
+    },
+    "CUDAExecutionProvider:Shape": {
+      "events": 3,
+      "host_duration_us": 46
+    },
+    "CPUExecutionProvider:Gather": {
+      "events": 6,
+      "host_duration_us": 108
+    },
+    "CPUExecutionProvider:Unsqueeze": {
+      "events": 6,
+      "host_duration_us": 109
+    },
+    "CUDAExecutionProvider:Slice": {
+      "events": 3,
+      "host_duration_us": 153
+    },
+    "CPUExecutionProvider:Concat": {
+      "events": 3,
+      "host_duration_us": 99
+    },
+    "CPUExecutionProvider:Reshape": {
+      "events": 3,
+      "host_duration_us": 66
+    },
+    "CPUExecutionProvider:Equal": {
+      "events": 3,
+      "host_duration_us": 71
+    },
+    "CPUExecutionProvider:Where": {
+      "events": 3,
+      "host_duration_us": 78
+    },
+    "CUDAExecutionProvider:Expand": {
+      "events": 3,
+      "host_duration_us": 168
+    },
+    "CUDAExecutionProvider:LayerNormalization": {
+      "events": 75,
+      "host_duration_us": 3585
+    },
+    "CUDAExecutionProvider:MatMul": {
+      "events": 252,
+      "host_duration_us": 16872
+    },
+    "CUDAExecutionProvider:Reshape": {
+      "events": 144,
+      "host_duration_us": 3245
+    },
+    "CUDAExecutionProvider:Transpose": {
+      "events": 144,
+      "host_duration_us": 6278
+    },
+    "CUDAExecutionProvider:FusedMatMul": {
+      "events": 36,
+      "host_duration_us": 3479
+    },
+    "CUDAExecutionProvider:Unsqueeze": {
+      "events": 6,
+      "host_duration_us": 129
+    },
+    "CUDAExecutionProvider:Sub": {
+      "events": 3,
+      "host_duration_us": 141
+    },
+    "CUDAExecutionProvider:Softmax": {
+      "events": 36,
+      "host_duration_us": 1671
+    },
+    "CUDAExecutionProvider:BiasGelu": {
+      "events": 36,
+      "host_duration_us": 1578
+    },
+    "CUDAExecutionProvider:Gemm": {
+      "events": 6,
+      "host_duration_us": 673
+    },
+    "CUDAExecutionProvider:Tanh": {
+      "events": 3,
+      "host_duration_us": 109
+    }
+  },
+  "raw_profile": "D:\\Opencode_\\reserchpaper\\data\\reranker_diagnosis\\onnx_profile_2026-10-14_18-45-58.json",
+  "input_shape": [
+    2,
+    484
+  ],
+  "limitation": "Host node trace durations; no CUPTI GPU kernel timing"
+}

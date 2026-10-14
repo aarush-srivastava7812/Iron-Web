@@ -484,7 +484,7 @@ def main():
             "matched the previous optimized FalkorDB result for the same dataset and profile. The "
             "153 dataset/profile/metric rows are saved in accuracy.csv. Metrics include recall, "
             "precision and nDCG at 1/3/5/10, MRR, average precision at 10, exact match, substring match "
-            "and token F1. LoCoMo has 395 retrieval-scored and 397 answer-scored examples. Answer scoring "
+            "and token F1. LoCoMo has 395 retrieval-scored and 328 answer-scored examples. Answer scoring "
             "uses the same first-context-line generator, not an external language model.\n",
             "This run adds instrumentation; it does not apply an optimization. Differences between "
             "its total timings and the previous report are fresh measurement differences, not a "

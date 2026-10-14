@@ -1,0 +1,13 @@
+{
+  "script_lint": "passed",
+  "script_syntax": "passed",
+  "full_twenty_percent_questions": 597,
+  "reranking_measurements": 1791,
+  "quality_metric_values": 153,
+  "baseline_rankings_and_predictions_match": true,
+  "exclusive_timing_accounting": "passed",
+  "pdf_text_verification": "passed",
+  "pdf_visual_review": "passed",
+  "pdf_pages": 6,
+  "production_model_settings_changed": false
+}

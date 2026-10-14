@@ -1,0 +1,22 @@
+{
+  "fused_operators": {
+    "EmbedLayerNormalization": 0,
+    "Attention": 12,
+    "MultiHeadAttention": 0,
+    "Gelu": 0,
+    "FastGelu": 0,
+    "BiasGelu": 12,
+    "GemmFastGelu": 0,
+    "LayerNormalization": 1,
+    "SimplifiedLayerNormalization": 0,
+    "SkipLayerNormalization": 24,
+    "SkipSimplifiedLayerNormalization": 0,
+    "RotaryEmbedding": 0,
+    "QOrderedAttention": 0,
+    "QOrderedGelu": 0,
+    "QOrderedLayerNormalization": 0,
+    "QOrderedMatMul": 0
+  },
+  "conversion": "ONNX Runtime transformer optimizer with symbolic shape inference",
+  "output_bytes": 556137378
+}

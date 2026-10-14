@@ -1,0 +1,10 @@
+dataset,variant,queries,exact_top10,exact_top1,exact_predictions
+dmr,baseline,100,100,100,100
+dmr,cap20,100,0,52,52
+dmr,fp16_optimized,100,81,99,99
+locomo,baseline,397,397,397,397
+locomo,cap20,397,311,388,388
+locomo,fp16_optimized,397,324,397,397
+longmemeval,baseline,100,100,100,100
+longmemeval,cap20,100,9,94,94
+longmemeval,fp16_optimized,100,48,99,99

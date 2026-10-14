@@ -1,0 +1,107 @@
+{
+  "model_path": "C:\\Users\\User\\AppData\\Local\\Temp\\fastembed_cache\\models--BAAI--bge-reranker-base\\snapshots\\2cfc18c9415c912f9d8155881c133215df768a70\\onnx\\model.onnx",
+  "weights_bytes": 1112459588,
+  "initializer_types": {
+    "FLOAT": 201
+  },
+  "parameter_elements": 278044417,
+  "node_types": {
+    "Constant": 292,
+    "Shape": 99,
+    "Gather": 102,
+    "Unsqueeze": 101,
+    "Slice": 1,
+    "Concat": 49,
+    "Reshape": 49,
+    "ConstantOfShape": 1,
+    "Mul": 52,
+    "Equal": 2,
+    "Where": 1,
+    "Expand": 1,
+    "Cast": 3,
+    "Sub": 26,
+    "Not": 1,
+    "CumSum": 1,
+    "Add": 173,
+    "ReduceMean": 50,
+    "Pow": 25,
+    "Sqrt": 25,
+    "Div": 49,
+    "MatMul": 96,
+    "Transpose": 48,
+    "Softmax": 12,
+    "Erf": 12,
+    "Gemm": 2,
+    "Tanh": 1
+  },
+  "tokenizer_truncation": {
+    "max_length": 512,
+    "stride": 0,
+    "strategy": "longest_first",
+    "direction": "right"
+  },
+  "tokenizer_padding": {
+    "length": null,
+    "pad_to_multiple_of": null,
+    "pad_id": 1,
+    "pad_token": "<pad>",
+    "pad_type_id": 0,
+    "direction": "right"
+  },
+  "packages": {
+    "onnx": "1.23.2"
+  },
+  "source_fingerprint": "52bbfef0133a427a72d1a0f5e1fb6b7433888d4bb69329c90915b6678c15afc6",
+  "cases": 597,
+  "variants": {
+    "baseline": {
+      "name": "baseline",
+      "cap": 0,
+      "length": 512,
+      "batch": 16,
+      "precision": "fp32"
+    },
+    "batch8": {
+      "name": "batch8",
+      "cap": 0,
+      "length": 512,
+      "batch": 8,
+      "precision": "fp32"
+    },
+    "batch32": {
+      "name": "batch32",
+      "cap": 0,
+      "length": 512,
+      "batch": 32,
+      "precision": "fp32"
+    },
+    "cap20": {
+      "name": "cap20",
+      "cap": 20,
+      "length": 512,
+      "batch": 16,
+      "precision": "fp32"
+    },
+    "cap40": {
+      "name": "cap40",
+      "cap": 40,
+      "length": 512,
+      "batch": 16,
+      "precision": "fp32"
+    },
+    "length256": {
+      "name": "length256",
+      "cap": 0,
+      "length": 256,
+      "batch": 16,
+      "precision": "fp32"
+    },
+    "fp16": {
+      "name": "fp16",
+      "cap": 0,
+      "length": 512,
+      "batch": 16,
+      "precision": "fp16"
+    }
+  }
+}

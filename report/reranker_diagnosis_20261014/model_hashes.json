@@ -1,0 +1,10 @@
+{
+  "original": {
+    "sha256": "15b9a8c3da82eddf263df571281166e00e9308fe19d077084b642ebfcaf06d2b",
+    "bytes": 1112459588
+  },
+  "optimized": {
+    "sha256": "3ecdeca184b63186e557ab91cccf1fcf1bbd7aaf7b00b556f495948ea6e6d66b",
+    "bytes": 556137378
+  }
+}

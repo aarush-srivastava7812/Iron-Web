@@ -1,0 +1,102 @@
+{
+  "model_dir": "C:\\Users\\User\\AppData\\Local\\Temp\\fastembed_cache\\models--BAAI--bge-reranker-base\\snapshots\\2cfc18c9415c912f9d8155881c133215df768a70",
+  "model_file": "onnx/model.onnx",
+  "model_bytes": 1112459588,
+  "config": {
+    "_name_or_path": "xlm-roberta-base",
+    "architectures": [
+      "XLMRobertaForSequenceClassification"
+    ],
+    "attention_probs_dropout_prob": 0.1,
+    "bos_token_id": 0,
+    "classifier_dropout": null,
+    "eos_token_id": 2,
+    "hidden_act": "gelu",
+    "hidden_dropout_prob": 0.1,
+    "hidden_size": 768,
+    "id2label": {
+      "0": "LABEL_0"
+    },
+    "initializer_range": 0.02,
+    "intermediate_size": 3072,
+    "label2id": {
+      "LABEL_0": 0
+    },
+    "layer_norm_eps": 1e-05,
+    "max_position_embeddings": 514,
+    "model_type": "xlm-roberta",
+    "num_attention_heads": 12,
+    "num_hidden_layers": 12,
+    "output_past": true,
+    "pad_token_id": 1,
+    "position_embedding_type": "absolute",
+    "torch_dtype": "float32",
+    "transformers_version": "4.30.0",
+    "type_vocab_size": 1,
+    "use_cache": true,
+    "vocab_size": 250002
+  },
+  "tokenizer_truncation": {
+    "max_length": 512,
+    "stride": 0,
+    "strategy": "longest_first",
+    "direction": "right"
+  },
+  "tokenizer_padding": {
+    "length": null,
+    "pad_to_multiple_of": null,
+    "pad_id": 1,
+    "pad_token": "<pad>",
+    "pad_type_id": 0,
+    "direction": "right"
+  },
+  "providers": [
+    "CUDAExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "provider_options": {
+    "CUDAExecutionProvider": {
+      "device_id": "0",
+      "has_user_compute_stream": "0",
+      "cudnn_conv1d_pad_to_nc1d": "0",
+      "user_compute_stream": "0",
+      "gpu_external_alloc": "0",
+      "gpu_mem_limit": "18446744073709551615",
+      "enable_cuda_graph": "0",
+      "gpu_external_free": "0",
+      "gpu_external_empty_cache": "0",
+      "arena_extend_strategy": "kNextPowerOfTwo",
+      "cudnn_conv_algo_search": "EXHAUSTIVE",
+      "do_copy_in_default_stream": "1",
+      "cudnn_conv_use_max_workspace": "1",
+      "tunable_op_enable": "0",
+      "tunable_op_tuning_enable": "0",
+      "tunable_op_max_tuning_duration_ms": "0",
+      "enable_skip_layer_norm_strict_mode": "0",
+      "prefer_nhwc": "0",
+      "use_ep_level_unified_stream": "0",
+      "use_tf32": "1",
+      "sdpa_kernel": "0",
+      "fuse_conv_bias": "0"
+    },
+    "CPUExecutionProvider": {}
+  },
+  "input_shapes": [
+    {
+      "name": "input_ids",
+      "type": "tensor(int64)",
+      "shape": [
+        "batch_size",
+        "sequence_length"
+      ]
+    },
+    {
+      "name": "attention_mask",
+      "type": "tensor(int64)",
+      "shape": [
+        "batch_size",
+        "sequence_length"
+      ]
+    }
+  ]
+}

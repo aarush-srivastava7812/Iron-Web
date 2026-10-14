@@ -1,0 +1,22 @@
+{
+  "measured_requests": 1791,
+  "full_variants": 3,
+  "original_output_equality": true,
+  "quality_values": 153,
+  "component_accounting": true,
+  "application_changes": false,
+  "scoring_counts": {
+    "dmr": {
+      "retrieval_scored_examples": 100,
+      "answer_scored_examples": 100
+    },
+    "locomo": {
+      "retrieval_scored_examples": 395,
+      "answer_scored_examples": 328
+    },
+    "longmemeval": {
+      "retrieval_scored_examples": 100,
+      "answer_scored_examples": 100
+    }
+  }
+}
