@@ -1,0 +1,57 @@
+{
+  "answer": {
+    "ok": true
+  },
+  "constrained": true,
+  "calls": [
+    {
+      "label": "schema-probe",
+      "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Return exactly {\"ok\":true,\"unexpected\":\"extra\"}."
+        }
+      ],
+      "max_tokens": 128,
+      "temperature": 0,
+      "streaming": true,
+      "enable_thinking": false,
+      "top_p": 0.95,
+      "guided_json": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "additionalProperties": false
+      },
+      "content": "{\"ok\":true}",
+      "usage": {
+        "completion_tokens": 6,
+        "prompt_tokens": 29,
+        "total_tokens": 35,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "ttft_ms": 666.5961999970023,
+      "parsed": {
+        "ok": true
+      },
+      "elapsed_ms": 671.0289000038756
+    }
+  ]
+}

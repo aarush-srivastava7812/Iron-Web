@@ -1,0 +1,8 @@
+{
+  "valid_schema": true,
+  "current_budget": true,
+  "current_walking": true,
+  "correct_pause": true,
+  "no_supplier_ids": true,
+  "null_total": true
+}

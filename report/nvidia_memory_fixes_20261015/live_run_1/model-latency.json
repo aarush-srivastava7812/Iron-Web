@@ -1,0 +1,88 @@
+[
+  {
+    "label": "intake-1",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Extract explicit travel claims as JSON {\"claims\":[{\"predicate\":...,\"value\":...,\"action\":\"assert\" or \"supersede\",\"reason\":...,\"source_quote\":...}]}. Every claim requires a verbatim source_quote containing its value AND field/units/qualifiers. Copy literal source words; do not paraphrase or infer missing values. Cover every explicit requirement, including each field in a coordinated update. If any requirement is unclear/unsupported, return claims:[] for the entire message. Do not create empty values, diagnoses, identity/authority, protection or targets. The application supplies subject, scope and kinds. Only explicit changes supersede; ordinary/repeated preferences assert. A usual diet is a preference. Vocabulary: {\"destination\": \"fact: city name copied from source\", \"dates\": \"fact: YYYY-MM-DD to YYYY-MM-DD\", \"budget\": \"rule: numeric TOTAL budget, no per-person/night amount\", \"currency\": \"fact: explicit INR/USD/EUR/GBP\", \"departure_city\": \"fact: city copied from source\", \"traveller_count\": \"rule: explicit integer party size\", \"dietary\": \"rule for a trip requirement; preference for usual food preferences\", \"pace\": \"preference: active/relaxed if explicit\", \"interests\": \"preference: array of literal interests\", \"seat_preference\": \"preference: aisle/window\", \"accessibility\": \"rule: explicit step-free/wheelchair-accessible requirement\", \"max_walk_metres\": \"rule: integer maximum walking distance in metres\", \"avoid_boats\": \"rule: boolean; true for no boats, false for boats explicitly allowed\", \"max_activities_per_day\": \"rule: integer daily limit\", \"flight_time_preference\": \"rule: morning/afternoon/evening\", \"activity_preferences\": \"preference: literal string or array of activities\", \"hotel_preference\": \"preference: literal hotel style\", \"mood\": \"preference: explicitly stated current mood; never a diagnosis\"}. Trusted context: {\"subject\": \"Riya\", \"scope\": {}}"
+      },
+      {
+        "role": "user",
+        "content": "Usually I prefer vegetarian food, an active pace, an aisle seat, and interests in hiking, boat rides and local food."
+      }
+    ],
+    "max_tokens": 4000,
+    "temperature": 0,
+    "streaming": true,
+    "enable_thinking": false,
+    "top_p": 0.95,
+    "content": "{\"claims\":[{\"predicate\":\"dietary\",\"value\":\"vegetarian\",\"action\":\"assert\",\"reason\":\"Usually I prefer vegetarian food\",\"source_quote\":\"Usually I prefer vegetarian food\",\"meta\":{\"scope\":{}}},{\"predicate\":\"pace\",\"value\":\"active\",\"action\":\"assert\",\"reason\":\"an active pace\",\"source_quote\":\"an active pace\",\"meta\":{\"scope\":{}}},{\"predicate\":\"seat_preference\",\"value\":\"aisle\",\"action\":\"assert\",\"reason\":\"an aisle seat\",\"source_quote\":\"an aisle seat\",\"meta\":{\"scope\":{}}},{\"predicate\":\"interests\",\"value\":[\"hiking\",\"boat rides\",\"local food\"],\"action\":\"assert\",\"reason\":\"interests in hiking, boat rides and local food\",\"source_quote\":\"interests in hiking, boat rides and local food\",\"meta\":{\"scope\":{}}}]}",
+    "usage": {
+      "completion_tokens": 182,
+      "prompt_tokens": 503,
+      "total_tokens": 685,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 0
+      }
+    },
+    "finish_reason": "stop",
+    "ttft_ms": 1058.1039999960922,
+    "parsed": {
+      "claims": [
+        {
+          "predicate": "dietary",
+          "value": "vegetarian",
+          "action": "assert",
+          "reason": "Usually I prefer vegetarian food",
+          "source_quote": "Usually I prefer vegetarian food",
+          "meta": {
+            "scope": {}
+          }
+        },
+        {
+          "predicate": "pace",
+          "value": "active",
+          "action": "assert",
+          "reason": "an active pace",
+          "source_quote": "an active pace",
+          "meta": {
+            "scope": {}
+          }
+        },
+        {
+          "predicate": "seat_preference",
+          "value": "aisle",
+          "action": "assert",
+          "reason": "an aisle seat",
+          "source_quote": "an aisle seat",
+          "meta": {
+            "scope": {}
+          }
+        },
+        {
+          "predicate": "interests",
+          "value": [
+            "hiking",
+            "boat rides",
+            "local food"
+          ],
+          "action": "assert",
+          "reason": "interests in hiking, boat rides and local food",
+          "source_quote": "interests in hiking, boat rides and local food",
+          "meta": {
+            "scope": {}
+          }
+        }
+      ]
+    },
+    "elapsed_ms": 3419.0291999984765
+  }
+]

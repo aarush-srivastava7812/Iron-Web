@@ -1,0 +1,1501 @@
+[
+  {
+    "path": "/v1/events",
+    "actor": "user",
+    "request": {
+      "event_id": "usual-preferences",
+      "text": "Usually I prefer vegetarian food, an active pace, an aisle seat, and interests in hiking, boat rides and local food.",
+      "subject": "Riya",
+      "scope": {},
+      "confirmed": true
+    },
+    "http_status": 202,
+    "response": {
+      "id": "usual-preferences",
+      "status": "queued",
+      "submitted": 1792083083.4461746,
+      "started": null,
+      "ready": null,
+      "attempts": 0,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 39.08100000990089
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 10.956800004350953
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.286300004925579
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.317200011224486
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.1630000012228265
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 13.869300004444085
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.5351000115042552
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 4.222200004733168
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.007199993589893
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.9246999949682504
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.0247999966377392
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.082600000197999
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.706600003875792
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.993600006448105
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.4014999982900918
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.6404999991646037
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.1808000057935715
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.122199996141717
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.779199989163317
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.1712999916635454
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.6448999997228384
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.561999994213693
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.89360000169836
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.940999998827465
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.043499993509613
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.1087999959709123
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.6652999988291413
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.657999997609295
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 4.154900001594797
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 19.434400004683994
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.3965000038733706
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.3346999989589676
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.629300011903979
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.583800000138581
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 4.527600001893006
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 4.625000001396984
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.0584000051021576
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.1752999930176884
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.9054000042378902
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.885800004354678
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.6676999987103045
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.556999989086762
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.207499990821816
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.2001000072341412
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.2860999926924706
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.1525999947916716
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.9804000116419047
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.877999999327585
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.937700002803467
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.561499990406446
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.260700003011152
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.086800003075041
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 18.086900003254414
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.811199999996461
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 19.68969999870751
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.028099992661737
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.8187000134494156
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.4816999977920204
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.211100003682077
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 4.08259998948779
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 18.482600004062988
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.4707000013440847
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.8645999991567805
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 6.818100009695627
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "failed",
+      "submitted": 1792083083.4461746,
+      "started": 1792083083.4494355,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4bfa5f8984e0f62dbac7d9ba1206fd9e",
+      "error": "Invalid intake claim fields.",
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 16.586600002483465
+  }
+]

@@ -268,6 +268,8 @@ class ContextAccess:
                             actor=principal.actor,
                             stamp=stamp,
                             expires=expires,
+                            status=result["status"],
+                            claim_ids=result["claim_ids"],
                             request=dict(
                                 subject=request.subject,
                                 scope=request.scope,

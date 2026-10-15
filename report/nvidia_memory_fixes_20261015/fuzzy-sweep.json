@@ -1,0 +1,22 @@
+{
+  "evaluations": 3636,
+  "direction": "source_quality increased by 0.01 with other inputs fixed",
+  "violation_count": 0,
+  "violations": [],
+  "limitation": "Finite grid diagnostic; no statistical calibration or causal inference.",
+  "age": {
+    "evaluations": 16470,
+    "violation_count": 0,
+    "violations": []
+  },
+  "support": {
+    "evaluations": 240,
+    "violation_count": 0,
+    "violations": []
+  },
+  "conflict": {
+    "evaluations": 1260,
+    "violation_count": 0,
+    "violations": []
+  }
+}

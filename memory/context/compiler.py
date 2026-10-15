@@ -26,9 +26,16 @@ def compile_field(predicate, answer):
             values.append(value)
             seen_values.add(serialized)
         claims.append(row["claim_id"])
-        events.extend(
-            s["event_id"] for s in row.get("sources", []) if s.get("event_id")
-        )
+        for source in row.get("sources", []):
+            event = source.get("event_id")
+            if not event:
+                # Sources written before event_id persistence still retain the
+                # shared-service receipt in their original metadata.
+                event = json.loads(source.get("metadata_json", "{}")).get(
+                    "service_receipt"
+                )
+            if event:
+                events.append(event)
     ids = sorted(set(claims))
     text = (
         predicate + ": " + canonical_json(values) + " [claims: " + ", ".join(ids) + "]"

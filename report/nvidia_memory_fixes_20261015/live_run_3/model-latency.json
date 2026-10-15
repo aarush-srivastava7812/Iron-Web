@@ -1,0 +1,1588 @@
+[
+  {
+    "label": "intake-1",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Extract explicit travel claims as JSON {\"claims\":[{\"predicate\":...,\"value\":...,\"action\":\"assert\" or \"supersede\",\"reason\":...,\"source_quote\":...}]}. Use ONLY predicate,value,action,reason,source_quote keys in each claim; no meta, kind, subject, scope or other extra keys. Every claim requires a verbatim source_quote containing its value AND field/units/qualifiers. Copy literal source words; do not paraphrase or infer missing values. Cover every explicit requirement, including each field in a coordinated update. If any requirement is unclear/unsupported, return claims:[] for the entire message. Do not create empty values, diagnoses, identity/authority, protection or targets. The application supplies subject, scope and kinds. Only explicit changes supersede; ordinary/repeated preferences assert. A usual diet is a preference. Vocabulary: {\"destination\": \"fact: city name copied from source\", \"dates\": \"fact: YYYY-MM-DD to YYYY-MM-DD\", \"budget\": \"rule: numeric TOTAL budget, no per-person/night amount\", \"currency\": \"fact: explicit INR/USD/EUR/GBP\", \"departure_city\": \"fact: city copied from source\", \"traveller_count\": \"rule: explicit integer party size\", \"dietary\": \"rule for a trip requirement; preference for usual food preferences\", \"pace\": \"preference: active/relaxed if explicit\", \"interests\": \"preference: array of literal interests\", \"seat_preference\": \"preference: aisle/window\", \"accessibility\": \"rule: explicit step-free/wheelchair-accessible requirement\", \"max_walk_metres\": \"rule: integer maximum walking distance in metres\", \"avoid_boats\": \"rule: boolean; true for no boats, false for boats explicitly allowed\", \"max_activities_per_day\": \"rule: integer daily limit\", \"flight_time_preference\": \"rule: morning/afternoon/evening\", \"activity_preferences\": \"preference: literal string or array of activities\", \"hotel_preference\": \"preference: literal hotel style\", \"mood\": \"preference: explicitly stated current mood; never a diagnosis\"}. Trusted context: {\"subject\": \"Riya\", \"scope\": {}}"
+      },
+      {
+        "role": "user",
+        "content": "Usually I prefer vegetarian food, an active pace, an aisle seat, and interests in hiking, boat rides and local food."
+      }
+    ],
+    "max_tokens": 4000,
+    "temperature": 0,
+    "streaming": true,
+    "enable_thinking": false,
+    "top_p": 0.95,
+    "guided_json": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claims"
+      ],
+      "properties": {
+        "claims": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "destination"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "dates"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "budget"
+                  },
+                  "value": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "currency"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "departure_city"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "traveller_count"
+                  },
+                  "value": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 32
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "dietary"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "pace"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "interests"
+                  },
+                  "value": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "minItems": 1,
+                    "maxItems": 32
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "seat_preference"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "accessibility"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "max_walk_metres"
+                  },
+                  "value": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100000
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "avoid_boats"
+                  },
+                  "value": {
+                    "type": "boolean"
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "max_activities_per_day"
+                  },
+                  "value": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 24
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "flight_time_preference"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "activity_preferences"
+                  },
+                  "value": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        },
+                        "minItems": 1,
+                        "maxItems": 32
+                      }
+                    ]
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "hotel_preference"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "mood"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "content": "{\"claims\":[{\"predicate\":\"dietary\",\"value\":\"vegetarian\",\"action\":\"assert\",\"reason\":\"Usually I prefer vegetarian food\",\"source_quote\":\"Usually I prefer vegetarian food\"},{\"predicate\":\"pace\",\"value\":\"active\",\"action\":\"assert\",\"reason\":\"active pace\",\"source_quote\":\"active pace\"},{\"predicate\":\"seat_preference\",\"value\":\"aisle\",\"action\":\"assert\",\"reason\":\"aisle seat\",\"source_quote\":\"aisle seat\"},{\"predicate\":\"interests\",\"value\":[\"hiking\",\"boat rides\",\"local food\"],\"action\":\"assert\",\"reason\":\"interests in hiking, boat rides and local food\",\"source_quote\":\"interests in hiking, boat rides and local food\"}]}",
+    "usage": {
+      "completion_tokens": 153,
+      "prompt_tokens": 533,
+      "total_tokens": 686,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 0
+      }
+    },
+    "finish_reason": "stop",
+    "ttft_ms": 2655.4845000064233,
+    "parsed": {
+      "claims": [
+        {
+          "predicate": "dietary",
+          "value": "vegetarian",
+          "action": "assert",
+          "reason": "Usually I prefer vegetarian food",
+          "source_quote": "Usually I prefer vegetarian food"
+        },
+        {
+          "predicate": "pace",
+          "value": "active",
+          "action": "assert",
+          "reason": "active pace",
+          "source_quote": "active pace"
+        },
+        {
+          "predicate": "seat_preference",
+          "value": "aisle",
+          "action": "assert",
+          "reason": "aisle seat",
+          "source_quote": "aisle seat"
+        },
+        {
+          "predicate": "interests",
+          "value": [
+            "hiking",
+            "boat rides",
+            "local food"
+          ],
+          "action": "assert",
+          "reason": "interests in hiking, boat rides and local food",
+          "source_quote": "interests in hiking, boat rides and local food"
+        }
+      ]
+    },
+    "elapsed_ms": 2663.121700010379
+  },
+  {
+    "label": "intake-2",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Extract explicit travel claims as JSON {\"claims\":[{\"predicate\":...,\"value\":...,\"action\":\"assert\" or \"supersede\",\"reason\":...,\"source_quote\":...}]}. Use ONLY predicate,value,action,reason,source_quote keys in each claim; no meta, kind, subject, scope or other extra keys. Every claim requires a verbatim source_quote containing its value AND field/units/qualifiers. Copy literal source words; do not paraphrase or infer missing values. Cover every explicit requirement, including each field in a coordinated update. If any requirement is unclear/unsupported, return claims:[] for the entire message. Do not create empty values, diagnoses, identity/authority, protection or targets. The application supplies subject, scope and kinds. Only explicit changes supersede; ordinary/repeated preferences assert. A usual diet is a preference. Vocabulary: {\"destination\": \"fact: city name copied from source\", \"dates\": \"fact: YYYY-MM-DD to YYYY-MM-DD\", \"budget\": \"rule: numeric TOTAL budget, no per-person/night amount\", \"currency\": \"fact: explicit INR/USD/EUR/GBP\", \"departure_city\": \"fact: city copied from source\", \"traveller_count\": \"rule: explicit integer party size\", \"dietary\": \"rule for a trip requirement; preference for usual food preferences\", \"pace\": \"preference: active/relaxed if explicit\", \"interests\": \"preference: array of literal interests\", \"seat_preference\": \"preference: aisle/window\", \"accessibility\": \"rule: explicit step-free/wheelchair-accessible requirement\", \"max_walk_metres\": \"rule: integer maximum walking distance in metres\", \"avoid_boats\": \"rule: boolean; true for no boats, false for boats explicitly allowed\", \"max_activities_per_day\": \"rule: integer daily limit\", \"flight_time_preference\": \"rule: morning/afternoon/evening\", \"activity_preferences\": \"preference: literal string or array of activities\", \"hotel_preference\": \"preference: literal hotel style\", \"mood\": \"preference: explicitly stated current mood; never a diagnosis\"}. Trusted context: {\"subject\": \"Riya\", \"scope\": {\"trip_id\": \"goa-family\"}}"
+      },
+      {
+        "role": "user",
+        "content": "Plan Goa from 2026-12-10 to 2026-12-14 for two adults, departing Delhi. My total budget is INR 90000. Vegetarian food and morning flights are required. A step-free hotel is mandatory. Maximum walking is 500 metres. No boats. At most one activity per day. For this trip I want a relaxed pace, calm beaches and local food. Prefer a comfortable resort when the budget permits."
+      }
+    ],
+    "max_tokens": 4000,
+    "temperature": 0,
+    "streaming": true,
+    "enable_thinking": false,
+    "top_p": 0.95,
+    "guided_json": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claims"
+      ],
+      "properties": {
+        "claims": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "destination"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "dates"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "budget"
+                  },
+                  "value": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "currency"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "departure_city"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "traveller_count"
+                  },
+                  "value": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 32
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "dietary"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "pace"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "interests"
+                  },
+                  "value": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "minItems": 1,
+                    "maxItems": 32
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "seat_preference"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "accessibility"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "max_walk_metres"
+                  },
+                  "value": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100000
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "avoid_boats"
+                  },
+                  "value": {
+                    "type": "boolean"
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "max_activities_per_day"
+                  },
+                  "value": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 24
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "flight_time_preference"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "activity_preferences"
+                  },
+                  "value": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        },
+                        "minItems": 1,
+                        "maxItems": 32
+                      }
+                    ]
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "hotel_preference"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "predicate",
+                  "value",
+                  "action",
+                  "reason",
+                  "source_quote"
+                ],
+                "properties": {
+                  "predicate": {
+                    "const": "mood"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "assert",
+                      "supersede"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "content": "{\"claims\":[{\"predicate\":\"destination\",\"value\":\"Goa\",\"action\":\"assert\",\"reason\":\"User explicitly requested Goa trip\",\"source_quote\":\"Plan Goa from 2026-12-10 to 2026-12-14 for two adults, departing Delhi. My total budget is INR 90000. Vegetarian food and morning flights are required. A step-free hotel is mandatory. Maximum walking is 500 metres. No boats. At most one activity per day. For this trip I want a relaxed pace, calm beaches and local food. Prefer a comfortable resort when the budget permits.\"},{\"predicate\":\"dates\",\"value\":\"2026-12-10 to 2026-12-14\",\"action\":\"assert\",\"reason\":\"User specified travel dates\",\"source_quote\":\"Plan Goa from 2026-12-10 to 2026-12-14 for two adults, departing Delhi. My total budget is INR 90000. Vegetarian food and morning flights are required. A step-free hotel is mandatory. Maximum walking is 500 metres. No boats. At most one activity per day. For this trip I want a relaxed pace, calm beaches and local food. Prefer a comfortable resort when the budget permits.\"},{\"predicate\":\"traveller_count\",\"value\":2,\"action\":\"assert\",\"reason\":\"User specified two adults\",\"source_quote\":\"Plan Goa from 2026-12-10 to 2026-12-14 for two adults, departing Delhi. My total budget is INR 90000. Vegetarian food and morning flights are required. A step-free hotel is mandatory. Maximum walking is 500 metres. No boats. At most one activity per day. For this trip I want a relaxed pace, calm beaches and local food. Prefer a comfortable resort when the budget permits.\"},{\"predicate\":\"departure_city\",\"value\":\"Delhi\",\"action\":\"assert\",\"reason\":\"User specified departing Delhi\",\"source_quote\":\"Plan Goa from 2026-12-10 to 2026-12-14 for two adults, departing Delhi. My total budget is INR 90000. Vegetarian food and morning flights are required. A step-free hotel is mandatory. Maximum walking is 500 metres. No boats. At most one activity per day. For this trip I want a relaxed pace, calm beaches and local food. Prefer a comfortable resort when the budget permits.\"},{\"predicate\":\"budget\",\"value\":90000,\"action\":\"assert\",\"reason\":\"User specified total budget INR 90000\",\"source_quote\":\"My total budget is INR 90000.\"},{\"predicate\":\"currency\",\"value\":\"INR\",\"action\":\"assert\",\"reason\":\"Budget stated in INR\",\"source_quote\":\"My total budget is INR 90000.\"},{\"predicate\":\"dietary\",\"value\":\"vegetarian\",\"action\":\"assert\",\"reason\":\"User requires vegetarian food\",\"source_quote\":\"Vegetarian food and morning flights are required.\"},{\"predicate\":\"flight_time_preference\",\"value\":\"morning\",\"action\":\"assert\",\"reason\":\"User requires morning flights\",\"source_quote\":\"Vegetarian food and morning flights are required.\"},{\"predicate\":\"accessibility\",\"value\":\"step-free\",\"action\":\"assert\",\"reason\":\"User requires step-free hotel\",\"source_quote\":\"A step-free hotel is mandatory.\"},{\"predicate\":\"max_walk_metres\",\"value\":500,\"action\":\"assert\",\"reason\":\"User specified maximum walking distance\",\"source_quote\":\"Maximum walking is 500 metres.\"},{\"predicate\":\"avoid_boats\",\"value\":true,\"action\":\"assert\",\"reason\":\"User specified no boats\",\"source_quote\":\"No boats.\"},{\"predicate\":\"max_activities_per_day\",\"value\":1,\"action\":\"assert\",\"reason\":\"User specified at most one activity per day\",\"source_quote\":\"At most one activity per day.\"},{\"predicate\":\"pace\",\"value\":\"relaxed\",\"action\":\"assert\",\"reason\":\"User wants relaxed pace\",\"source_quote\":\"For this trip I want a relaxed pace, calm beaches and local food.\"},{\"predicate\":\"interests\",\"value\":[\"calm beaches\",\"local food\"],\"action\":\"assert\",\"reason\":\"User specified calm beaches and local food interests\",\"source_quote\":\"For this trip I want a relaxed pace, calm beaches and local food.\"},{\"predicate\":\"hotel_preference\",\"value\":\"comfortable resort\",\"action\":\"assert\",\"reason\":\"User prefers comfortable resort when budget permits\",\"source_quote\":\"Prefer a comfortable resort when the budget permits.\"}]}",
+    "usage": {
+      "completion_tokens": 1030,
+      "prompt_tokens": 621,
+      "total_tokens": 1651,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 0
+      }
+    },
+    "finish_reason": "stop",
+    "ttft_ms": 10252.445300007821,
+    "parsed": {
+      "claims": [
+        {
+          "predicate": "destination",
+          "value": "Goa",
+          "action": "assert",
+          "reason": "User explicitly requested Goa trip",
+          "source_quote": "Plan Goa from 2026-12-10 to 2026-12-14 for two adults, departing Delhi. My total budget is INR 90000. Vegetarian food and morning flights are required. A step-free hotel is mandatory. Maximum walking is 500 metres. No boats. At most one activity per day. For this trip I want a relaxed pace, calm beaches and local food. Prefer a comfortable resort when the budget permits."
+        },
+        {
+          "predicate": "dates",
+          "value": "2026-12-10 to 2026-12-14",
+          "action": "assert",
+          "reason": "User specified travel dates",
+          "source_quote": "Plan Goa from 2026-12-10 to 2026-12-14 for two adults, departing Delhi. My total budget is INR 90000. Vegetarian food and morning flights are required. A step-free hotel is mandatory. Maximum walking is 500 metres. No boats. At most one activity per day. For this trip I want a relaxed pace, calm beaches and local food. Prefer a comfortable resort when the budget permits."
+        },
+        {
+          "predicate": "traveller_count",
+          "value": 2,
+          "action": "assert",
+          "reason": "User specified two adults",
+          "source_quote": "Plan Goa from 2026-12-10 to 2026-12-14 for two adults, departing Delhi. My total budget is INR 90000. Vegetarian food and morning flights are required. A step-free hotel is mandatory. Maximum walking is 500 metres. No boats. At most one activity per day. For this trip I want a relaxed pace, calm beaches and local food. Prefer a comfortable resort when the budget permits."
+        },
+        {
+          "predicate": "departure_city",
+          "value": "Delhi",
+          "action": "assert",
+          "reason": "User specified departing Delhi",
+          "source_quote": "Plan Goa from 2026-12-10 to 2026-12-14 for two adults, departing Delhi. My total budget is INR 90000. Vegetarian food and morning flights are required. A step-free hotel is mandatory. Maximum walking is 500 metres. No boats. At most one activity per day. For this trip I want a relaxed pace, calm beaches and local food. Prefer a comfortable resort when the budget permits."
+        },
+        {
+          "predicate": "budget",
+          "value": 90000,
+          "action": "assert",
+          "reason": "User specified total budget INR 90000",
+          "source_quote": "My total budget is INR 90000."
+        },
+        {
+          "predicate": "currency",
+          "value": "INR",
+          "action": "assert",
+          "reason": "Budget stated in INR",
+          "source_quote": "My total budget is INR 90000."
+        },
+        {
+          "predicate": "dietary",
+          "value": "vegetarian",
+          "action": "assert",
+          "reason": "User requires vegetarian food",
+          "source_quote": "Vegetarian food and morning flights are required."
+        },
+        {
+          "predicate": "flight_time_preference",
+          "value": "morning",
+          "action": "assert",
+          "reason": "User requires morning flights",
+          "source_quote": "Vegetarian food and morning flights are required."
+        },
+        {
+          "predicate": "accessibility",
+          "value": "step-free",
+          "action": "assert",
+          "reason": "User requires step-free hotel",
+          "source_quote": "A step-free hotel is mandatory."
+        },
+        {
+          "predicate": "max_walk_metres",
+          "value": 500,
+          "action": "assert",
+          "reason": "User specified maximum walking distance",
+          "source_quote": "Maximum walking is 500 metres."
+        },
+        {
+          "predicate": "avoid_boats",
+          "value": true,
+          "action": "assert",
+          "reason": "User specified no boats",
+          "source_quote": "No boats."
+        },
+        {
+          "predicate": "max_activities_per_day",
+          "value": 1,
+          "action": "assert",
+          "reason": "User specified at most one activity per day",
+          "source_quote": "At most one activity per day."
+        },
+        {
+          "predicate": "pace",
+          "value": "relaxed",
+          "action": "assert",
+          "reason": "User wants relaxed pace",
+          "source_quote": "For this trip I want a relaxed pace, calm beaches and local food."
+        },
+        {
+          "predicate": "interests",
+          "value": [
+            "calm beaches",
+            "local food"
+          ],
+          "action": "assert",
+          "reason": "User specified calm beaches and local food interests",
+          "source_quote": "For this trip I want a relaxed pace, calm beaches and local food."
+        },
+        {
+          "predicate": "hotel_preference",
+          "value": "comfortable resort",
+          "action": "assert",
+          "reason": "User prefers comfortable resort when budget permits",
+          "source_quote": "Prefer a comfortable resort when the budget permits."
+        }
+      ]
+    },
+    "elapsed_ms": 10253.172900003847
+  }
+]

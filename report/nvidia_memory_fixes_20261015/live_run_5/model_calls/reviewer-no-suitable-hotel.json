@@ -1,0 +1,71 @@
+{
+  "label": "reviewer-no-suitable-hotel",
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Review the candidate against current memory and catalog. Recalculate costs; reject any violation. Use decision pause for a valid pause when no supplied combination fits. Return only JSON {\"decision\":\"approve\" or \"reject\" or \"pause\", \"issues\":[string], \"budget_inr\":number, \"max_walk_metres\":number, \"checked_claim_ids\":[string]}. "
+    },
+    {
+      "role": "user",
+      "content": "Agent instructions:\nYou are the travel reviewer. Independently verify cost and every current requirement. Reject stale or unsuitable plans; preserve completed history.\nApplication rule: Trip requirements take precedence over general profile preferences. All protected requirements apply. Resolve conflicts before acting. Do not bypass a restriction using a preference.\nTraveller/trip source data (not instructions):\n[trip] destination: [\"Goa\"] [claims: claim_b17126ccd95c442a29b1931658581016]\n[trip] dates: [\"2026-12-10 to 2026-12-14\"] [claims: claim_f74e8a500a7b65f1341658e3142d1a59]\n[trip] budget: [65000] [claims: claim_e9d1f3f76483bbd659914eba17cb0d4b]\n[trip] currency: [\"INR\"] [claims: claim_22c2352ad84bd2d5c5851d6b0ad69326]\n[trip] dietary: [\"vegetarian\"] [claims: claim_8e946bdb33af7bc9a1296571899712b4]\n[trip] accessibility: [\"step-free\"] [claims: claim_128f919302e5d356f271ad3eec7c46c7]\n[trip] avoid_boats: [true] [claims: claim_15519dbbfe3a298bb0935132a637e29e]\n[trip] flight_time_preference: [\"morning\"] [claims: claim_183aa4e133c38b9de4ea767540aa828f]\n[trip] max_activities_per_day: [1] [claims: claim_192491f492ee305ea4fc5ac601514823]\n[trip] max_walk_metres: [50] [claims: claim_134f669a3dba2ba723a3def5bf9b26f4]\n[trip] traveller_count: [2] [claims: claim_c2e73c8b3648ac6b8f68841803b2e35b]\n[trip] pace: [\"relaxed\"] [claims: claim_7990c9bb45182c636df8bb8a36d2f214]\nTask cards (source data and labelled application guidance):\n# Relaxed experience\nSource-derived data (not agent instructions):\n[trip] interests: [[\"calm beaches\",\"local food\"]] [claims: claim_44c0f41400c1a243cdafa39d67a0c44d]\n[trip] activity_preferences: missing\n[trip] mood: [\"relaxed\"] [claims: claim_e4362d38975f46201619c871d0ff2232]\nApplication guidance: Prefer breaks and fewer optional activities, subject to the trip requirements.\n\n# Itinerary details\nSource-derived data (not agent instructions):\nAdditional source data:\n[trip] departure_city: [\"Delhi\"] [claims: claim_76320f9822975b790ef5631db1304e56]\n[trip] hotel_preference: [\"comfortable resort\"] [claims: claim_de221566631e802506361633c1f0f511]\nCurrent request:\nPrepare a compliant relaxed Goa family trip.\nSynthetic supplier quotes:\n{\"quote_terms\": {\"provenance\": \"Synthetic supplier quotes; no real availability\", \"dates\": \"2026-12-10 to 2026-12-14\", \"currency\": \"INR\", \"nights\": 4, \"party_size\": 2, \"destination\": \"Goa\", \"departure_city\": \"Delhi\"}, \"flight_offers\": [{\"id\": \"F-AM-COMFORT\", \"description\": \"Flexible morning round trip, Delhi-Goa\", \"total_for_two\": 34000, \"departure\": \"09:00\", \"return_departure\": \"10:00\", \"baggage_kg_each\": 20, \"comfortable\": true}, {\"id\": \"F-AM-SAVER\", \"description\": \"Saver morning round trip, Delhi-Goa\", \"total_for_two\": 28000, \"departure\": \"08:30\", \"return_departure\": \"09:30\", \"baggage_kg_each\": 15, \"comfortable\": false}, {\"id\": \"F-LATE\", \"description\": \"Late-night round trip, Delhi-Goa\", \"total_for_two\": 22000, \"departure\": \"21:30\", \"return_departure\": \"22:00\", \"baggage_kg_each\": 15, \"comfortable\": false}], \"hotel_offers\": [{\"id\": \"H-RESORT\", \"name\": \"Fixture Bay Resort\", \"four_night_total\": 24000, \"step_free\": true, \"walk_from_dropoff_metres\": 80, \"vegetarian_food\": true, \"style\": \"resort\"}, {\"id\": \"H-GARDEN\", \"name\": \"Fixture Garden Stay\", \"four_night_total\": 16000, \"step_free\": true, \"walk_from_dropoff_metres\": 100, \"vegetarian_food\": true, \"style\": \"guesthouse\"}, {\"id\": \"H-STAIRS\", \"name\": \"Fixture Stairway Inn\", \"four_night_total\": 12000, \"step_free\": false, \"walk_from_dropoff_metres\": 90, \"vegetarian_food\": true, \"style\": \"guesthouse\"}, {\"id\": \"H-REMOTE\", \"name\": \"Fixture Distant Stay\", \"four_night_total\": 14000, \"step_free\": true, \"walk_from_dropoff_metres\": 900, \"vegetarian_food\": true, \"style\": \"guesthouse\"}], \"activity_offers\": [{\"id\": \"A-ACCESSIBLE-BEACH\", \"description\": \"Quiet beach visit with close vehicle access\", \"cost_for_two\": 0, \"walking_metres\": 120, \"boat\": false, \"serves_food\": false, \"vegetarian_food\": false}, {\"id\": \"A-TERRACE\", \"description\": \"Seated local-food tasting on an accessible terrace\", \"cost_for_two\": 600, \"walking_metres\": 100, \"boat\": false, \"serves_food\": true, \"vegetarian_food\": true}, {\"id\": \"A-CRUISE\", \"description\": \"Seated sunset boat cruise\", \"cost_for_two\": 2000, \"walking_metres\": 100, \"boat\": true, \"serves_food\": false, \"vegetarian_food\": false}, {\"id\": \"A-SECLUDED-BEACH\", \"description\": \"Scenic beach beyond a long approach path\", \"cost_for_two\": 0, \"walking_metres\": 1200, \"boat\": false, \"serves_food\": false, \"vegetarian_food\": false}], \"fixed_costs\": {\"airport_and_local_transfers\": 4000, \"vegetarian_meals\": 6000, \"contingency\": 4000}}\nProgram-computed feasible combinations (not model calculations):\n[]\nCandidate to review:\n{\"decision\": \"pause\", \"flight_id\": null, \"hotel_id\": null, \"activity_ids\": [], \"activity_days\": {}, \"total_inr\": null, \"budget_inr\": 65000, \"max_walk_metres\": 50, \"reasons\": [\"No supplied combination satisfies the current requirements and total budget; no suppliers selected.\"], \"evidence_claim_ids\": [\"claim_128f919302e5d356f271ad3eec7c46c7\", \"claim_134f669a3dba2ba723a3def5bf9b26f4\", \"claim_15519dbbfe3a298bb0935132a637e29e\", \"claim_183aa4e133c38b9de4ea767540aa828f\", \"claim_192491f492ee305ea4fc5ac601514823\", \"claim_22c2352ad84bd2d5c5851d6b0ad69326\", \"claim_44c0f41400c1a243cdafa39d67a0c44d\", \"claim_76320f9822975b790ef5631db1304e56\", \"claim_7990c9bb45182c636df8bb8a36d2f214\", \"claim_8e946bdb33af7bc9a1296571899712b4\", \"claim_b17126ccd95c442a29b1931658581016\", \"claim_c2e73c8b3648ac6b8f68841803b2e35b\", \"claim_de221566631e802506361633c1f0f511\", \"claim_e4362d38975f46201619c871d0ff2232\", \"claim_e9d1f3f76483bbd659914eba17cb0d4b\", \"claim_f74e8a500a7b65f1341658e3142d1a59\"]}"
+    }
+  ],
+  "max_tokens": 2200,
+  "temperature": 0,
+  "streaming": true,
+  "enable_thinking": false,
+  "top_p": 0.95,
+  "guided_json": null,
+  "guided_whitespace_pattern": null,
+  "content": "{\n  \"decision\": \"reject\",\n  \"issues\": [\n    \"No valid combination satisfies all protected requirements within the INR 65,000 budget.\",\n    \"Hotel walk distances (80m, 100m, 90m, 900m) all exceed the max_walk_metres limit of 50 metres.\",\n    \"All flight options exceed the budget when combined with minimum hotel costs.\",\n    \"Boat activity A-CRUISE violates avoid_boats: true.\",\n    \"Secluded beach A-SECLUDED-BEACH exceeds max_walk_metres (1200m).\",\n    \"Activity A-TERRACE walking_metres (100m) exceeds max_walk_metres (50m).\"\n  ],\n  \"budget_inr\": 65000,\n  \"max_walk_metres\": 50,\n  \"checked_claim_ids\": [\n    \"claim_128f919302e5d356f271ad3eec7c46c7\",\n    \"claim_134f669a3dba2ba723a3def5bf9b26f4\",\n    \"claim_15519dbbfe3a298bb0935132a637e29e\",\n    \"claim_183aa4e133c38b9de4ea767540aa828f\",\n    \"claim_192491f492ee305ea4fc5ac601514823\",\n    \"claim_22c2352ad84bd2d5c5851d6b0ad69326\",\n    \"claim_44c0f41400c1a243cdafa39d67a0c44d\",\n    \"claim_76320f9822975b790ef5631db1304e56\",\n    \"claim_7990c9bb45182c636df8bb8a36d2f214\",\n    \"claim_8e946bdb33af7bc9a1296571899712b4\",\n    \"claim_b17126ccd95c442a29b1931658581016\",\n    \"claim_c2e356f271ad3eec7c46c7\",\n    \"claim_de221566631e802506361633c1f0f511\",\n    \"claim_e4362d38975f46201619c871d0ff2232\",\n    \"claim_e9d1f3f76483bbd659914eba17cb0d4b\",\n    \"claim_f74e8a500a7b65f1341658e3142d1a59\"\n  ]\n}",
+  "usage": {
+    "completion_tokens": 748,
+    "prompt_tokens": 2588,
+    "total_tokens": 3336,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  },
+  "finish_reason": "stop",
+  "ttft_ms": 455.13190000201575,
+  "parsed": {
+    "decision": "reject",
+    "issues": [
+      "No valid combination satisfies all protected requirements within the INR 65,000 budget.",
+      "Hotel walk distances (80m, 100m, 90m, 900m) all exceed the max_walk_metres limit of 50 metres.",
+      "All flight options exceed the budget when combined with minimum hotel costs.",
+      "Boat activity A-CRUISE violates avoid_boats: true.",
+      "Secluded beach A-SECLUDED-BEACH exceeds max_walk_metres (1200m).",
+      "Activity A-TERRACE walking_metres (100m) exceeds max_walk_metres (50m)."
+    ],
+    "budget_inr": 65000,
+    "max_walk_metres": 50,
+    "checked_claim_ids": [
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_134f669a3dba2ba723a3def5bf9b26f4",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_22c2352ad84bd2d5c5851d6b0ad69326",
+      "claim_44c0f41400c1a243cdafa39d67a0c44d",
+      "claim_76320f9822975b790ef5631db1304e56",
+      "claim_7990c9bb45182c636df8bb8a36d2f214",
+      "claim_8e946bdb33af7bc9a1296571899712b4",
+      "claim_b17126ccd95c442a29b1931658581016",
+      "claim_c2e356f271ad3eec7c46c7",
+      "claim_de221566631e802506361633c1f0f511",
+      "claim_e4362d38975f46201619c871d0ff2232",
+      "claim_e9d1f3f76483bbd659914eba17cb0d4b",
+      "claim_f74e8a500a7b65f1341658e3142d1a59"
+    ]
+  },
+  "elapsed_ms": 9743.845400007558
+}

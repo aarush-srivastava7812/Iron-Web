@@ -1,0 +1,238 @@
+[
+  {
+    "intake": 1,
+    "changes": [
+      {
+        "predicate": "dietary",
+        "quote": "Usually I prefer vegetarian food",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "pace",
+        "quote": "an active pace",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "seat_preference",
+        "quote": "an aisle seat",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "interests",
+        "quote": "interests in hiking, boat rides and local food",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      }
+    ]
+  },
+  {
+    "intake": 2,
+    "changes": [
+      {
+        "predicate": "destination",
+        "quote": "Goa from 2026-12-10 to 2026-12-14 for two adults, departing Delhi. My total budget is INR 90000. Vegetarian food and morning flights are required. A step-free hotel is mandatory. Maximum walking is 500 metres. No boats. At most one activity per day. For this trip I want a relaxed pace, calm beaches and local food. Prefer a comfortable resort when the budget permits.",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "dates",
+        "quote": "Goa from 2026-12-10 to 2026-12-14 for two adults, departing Delhi.",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "traveller_count",
+        "quote": "for two adults",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "departure_city",
+        "quote": "departing Delhi",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "budget",
+        "quote": "My total budget is INR 90000",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "currency",
+        "quote": "My total budget is INR 90000",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "dietary",
+        "quote": "Vegetarian food and morning flights are required",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "flight_time_preference",
+        "quote": "Vegetarian food and morning flights are required",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "accessibility",
+        "quote": "A step-free hotel is mandatory",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "max_walk_metres",
+        "quote": "Maximum walking is 500 metres",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "avoid_boats",
+        "quote": "No boats",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "max_activities_per_day",
+        "quote": "At most one activity per day",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "pace",
+        "quote": "For this trip I want a relaxed pace",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "interests",
+        "quote": "calm beaches and local food",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "hotel_preference",
+        "quote": "Prefer a comfortable resort when the budget permits.",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      }
+    ]
+  },
+  {
+    "intake": 3,
+    "changes": [
+      {
+        "predicate": "mood",
+        "quote": "My current mood for this trip is relaxed.",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      }
+    ]
+  },
+  {
+    "intake": 4,
+    "changes": [
+      {
+        "predicate": "budget",
+        "quote": "Change my total trip budget to INR 65000.",
+        "before": "assert",
+        "after": "supersede",
+        "grounded": true
+      }
+    ]
+  },
+  {
+    "intake": 5,
+    "changes": [
+      {
+        "predicate": "max_walk_metres",
+        "quote": "Change my maximum walking distance to 50 metres",
+        "before": "assert",
+        "after": "supersede",
+        "grounded": true
+      }
+    ]
+  },
+  {
+    "intake": 6,
+    "changes": [
+      {
+        "predicate": "destination",
+        "quote": "Bengaluru trip",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "dates",
+        "quote": "from 2027-01-10 to 2027-01-12",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "budget",
+        "quote": "total budget is INR 18000",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "currency",
+        "quote": "INR 18000",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      }
+    ]
+  },
+  {
+    "intake": 7,
+    "changes": [
+      {
+        "predicate": "seat_preference",
+        "quote": "I prefer an aisle seat.",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      }
+    ]
+  },
+  {
+    "intake": 8,
+    "changes": [
+      {
+        "predicate": "seat_preference",
+        "quote": "I prefer an aisle seat.",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      }
+    ]
+  }
+]

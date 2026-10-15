@@ -1,0 +1,116 @@
+{
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "run_id": "f9f65a0010",
+  "failure": {
+    "type": "SharedRequestError",
+    "message": "Event is not usable semantic memory"
+  },
+  "checks": {},
+  "counts": {
+    "passed": 0,
+    "failed": 0
+  },
+  "elapsed_ms": 65955.2326999983,
+  "initialization_ms": 1045.5566000018734,
+  "model_calls": 2,
+  "model_latency": {
+    "n": 2,
+    "min_ms": 3210.620199999539,
+    "p50_ms": 30589.64145000209,
+    "p95_ms": 55230.76057500439,
+    "max_ms": 57968.66270000464,
+    "mean_ms": 30589.64145000209
+  },
+  "sum_model_call_ms": 61179.28290000418,
+  "memory_benchmarks": {},
+  "local_http_latency": {
+    "/v1/events": {
+      "n": 2,
+      "min_ms": 4.629300005035475,
+      "p50_ms": 28.44770000228891,
+      "p95_ms": 49.884259999817004,
+      "max_ms": 52.26609999954235,
+      "mean_ms": 28.44770000228891
+    },
+    "/v1/events/status": {
+      "n": 955,
+      "min_ms": 1.6974000027403235,
+      "p50_ms": 13.070400003925897,
+      "p95_ms": 27.543869995861314,
+      "max_ms": 31.601399998180568,
+      "mean_ms": 14.153348586381247
+    },
+    "/v1/context": {
+      "n": 1,
+      "min_ms": 8.05920000129845,
+      "p50_ms": 8.05920000129845,
+      "p95_ms": 8.05920000129845,
+      "max_ms": 8.05920000129845,
+      "mean_ms": 8.05920000129845
+    }
+  },
+  "ingestion_events": 1,
+  "interpreted_claims": 4,
+  "ingested_source_utf8_bytes": 116,
+  "storage_final": null,
+  "gpu_requested": true,
+  "consumer_tokenizer": "NVIDIA-Nemotron-3.5-Lightning-30B-A3B:623c34567aebb18582765289fbe23d901c62704d6518d71866e0e58db892b5b7",
+  "versions": {
+    "openai": "1.60.0",
+    "tokenizers": "0.20.3",
+    "qdrant-client": "1.18.0",
+    "falkordb": "1.7.1"
+  },
+  "api_base": "https://integrate.api.nvidia.com/v1",
+  "source_commit": "69f45bde6028ab3f0a49bb1e021ad0753415cf3d",
+  "source_dirty": true,
+  "agent_decision_sources": {},
+  "physical_disk_after_close_bytes": 61969,
+  "api_usage": [
+    {
+      "label": "intake-1",
+      "usage": {
+        "completion_tokens": 155,
+        "prompt_tokens": 533,
+        "total_tokens": 688,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "intake-2",
+      "usage": {
+        "completion_tokens": 4000,
+        "prompt_tokens": 621,
+        "total_tokens": 4621,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    }
+  ],
+  "limits": [
+    "One synthetic travel task; one run, no statistical answer-quality claim.",
+    "Same hosted model serves distinct planner/reviewer contexts; correlated errors remain possible.",
+    "Schema-guided intake and role/card definitions are application configuration; no autonomous persona invention.",
+    "Tier 1 and 2 are overlapping derivatives of tier 3, not disjoint source partitions.",
+    "Tier 2 CUDA stores card vectors; card text remains in host memory and is sent to the hosted model.",
+    "RAM bytes are cache-accounted payload, not all Python/model memory; GPU provider/context overhead is separate.",
+    "Local token counts cover the memory prompt; provider usage includes complete chat formatting and the fixture catalog."
+  ]
+}

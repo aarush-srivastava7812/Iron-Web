@@ -1019,10 +1019,16 @@ class MemoryEngine:
         depends_on=None,
         description="",
         agent_id="",
+        requirement_context=None,
     ):
         with coordinated_write(self.vector_store, self.graph_store, []):
             return self.lifecycle.register_work(
-                work_id, claim_ids, depends_on, description, agent_id
+                work_id,
+                claim_ids,
+                depends_on,
+                description,
+                agent_id,
+                requirement_context=requirement_context,
             )
 
     @serialized

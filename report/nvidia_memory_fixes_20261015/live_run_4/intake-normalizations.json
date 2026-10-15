@@ -1,0 +1,35 @@
+[
+  {
+    "intake": 1,
+    "changes": [
+      {
+        "predicate": "dietary",
+        "quote": "Usually I prefer vegetarian food",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "pace",
+        "quote": "an active pace",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "seat_preference",
+        "quote": "an aisle seat",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      },
+      {
+        "predicate": "interests",
+        "quote": "interests in hiking, boat rides and local food",
+        "before": "assert",
+        "after": "assert",
+        "grounded": true
+      }
+    ]
+  }
+]

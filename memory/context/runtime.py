@@ -1,6 +1,7 @@
 """Trusted context configuration and deterministic, evidence-backed compilation."""
 
 import hashlib
+from copy import deepcopy
 from pathlib import Path
 
 from pydantic import Field
@@ -310,6 +311,7 @@ class ContextRuntime:
             evidence_text=evidence_text,
             prompt=prompt,
             claim_ids=claims,
+            fields=deepcopy(compiled["fields"]),
             tokenizer=self.tokens.identity,
             tokens=dict(
                 agent=self.tokens.count(compiled["agent_text"]),

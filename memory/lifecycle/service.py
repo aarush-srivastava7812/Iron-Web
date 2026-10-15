@@ -295,6 +295,7 @@ class MemoryLifecycle:
         props = dict(
             id=sid,
             memory_id=memory_id,
+            event_id=source.event_id or memory_id,
             text=content,
             origin=source.origin,
             actor_id=source.actor_id,
@@ -1249,8 +1250,64 @@ class MemoryLifecycle:
             )
         return candidates
 
+    def _work_watches(self, claims, requirement_context=None):
+        watches = {
+            canonical_json(
+                dict(subject_id=c["subject_id"], scope=json.loads(c["scope_json"]))
+            )
+            for c in claims
+        }
+        if requirement_context is not None:
+            watches.add(canonical_json(requirement_context))
+        return [json.loads(w) for w in sorted(watches)]
+
+    def _work_requirements(self, watches, at):
+        """Discover new mandatory fields within the work's subjects and scopes.
+
+        Group keys watch additions; exact USES edges still determine whether a
+        change to an existing field affects this task. Unrelated trips do not
+        enter the query. Future rules are discovered once they become active.
+        """
+        expanded = []
+        for watch in watches:
+            scope = watch["scope"]
+            scopes = {canonical_json({}), canonical_json(scope)}
+            if "session_id" in scope:
+                scopes.add(
+                    canonical_json(
+                        {k: v for k, v in scope.items() if k != "session_id"}
+                    )
+                )
+            expanded.append(
+                dict(
+                    subjects=self.equivalent_subjects(watch["subject_id"], at),
+                    scopes=sorted(scopes),
+                )
+            )
+        rows = self._bounded(
+            self._rows(
+                "UNWIND $watches AS watch MATCH(c:MemoryClaim) "
+                "WHERE c.subject_id IN watch.subjects AND c.scope_json IN watch.scopes "
+                "AND (c.kind IN ['rule','instruction'] OR c.protected=true) "
+                "RETURN DISTINCT c.id,properties(c) LIMIT $limit",
+                watches=expanded,
+                limit=self.limit + 1,
+            )
+        )
+        return [
+            c
+            for c in self.selected([dict(r[1]) for r in rows], at, "now", at)
+            if not c["predicate"].startswith("__retracted__.")
+        ]
+
     def register_work(
-        self, work_id, claim_ids, depends_on=None, description="", agent_id=""
+        self,
+        work_id,
+        claim_ids,
+        depends_on=None,
+        description="",
+        agent_id="",
+        requirement_context=None,
     ):
         if not isinstance(work_id, str) or not work_id.strip():
             raise ValueError("Work ID must be nonempty.")
@@ -1268,10 +1325,15 @@ class MemoryLifecycle:
             or work_id in depends_on
         ):
             raise ValueError("Invalid work dependencies.")
-        fingerprint = identifier(
-            "work_",
-            [sorted(set(claim_ids)), sorted(set(depends_on)), description, agent_id],
-        )
+        fingerprint_data = [
+            sorted(set(claim_ids)),
+            sorted(set(depends_on)),
+            description,
+            agent_id,
+        ]
+        if requirement_context is not None:
+            fingerprint_data.append(requirement_context)
+        fingerprint = identifier("work_", fingerprint_data)
         old = self._rows(
             "MATCH(w:MemoryWork {id:$id}) RETURN w.fingerprint", id=work_id
         )
@@ -1280,6 +1342,7 @@ class MemoryLifecycle:
                 raise ValueError("Work versions are immutable; use a new work ID.")
             return self.work(work_id)
         at = int(time.time())
+        claims = []
         for cid in claim_ids:
             c = self.claim(cid)
             if c is None:
@@ -1293,6 +1356,7 @@ class MemoryLifecycle:
                 raise ValueError(
                     "Work cannot rely on inactive, disputed or unconfirmed claims."
                 )
+            claims.append(c)
         for wid in depends_on:
             w = self.work(wid)
             if (
@@ -1301,6 +1365,10 @@ class MemoryLifecycle:
                 or w.get("validation_state") == "stale"
             ):
                 raise ValueError("Work prerequisite is missing or stale.")
+            if self.handoff([wid])["work"][0]["needs_review"]:
+                raise ValueError("Work prerequisite evidence requires review.")
+        watches = self._work_watches(claims, requirement_context)
+        requirements = self._work_requirements(watches, at)
         self.ensure_schema()
         props = dict(
             id=work_id,
@@ -1312,6 +1380,10 @@ class MemoryLifecycle:
             fingerprint=fingerprint,
             used_claim_ids=canonical_json(list(dict.fromkeys(claim_ids))),
             dependency_ids=canonical_json(list(dict.fromkeys(depends_on))),
+            requirement_watches_json=canonical_json(watches),
+            known_requirement_fields_json=canonical_json(
+                sorted({c["group_key"] for c in requirements})
+            ),
         )
         self._rows("CREATE(w:MemoryWork {id:$props.id}) SET w += $props", props=props)
         self._rows(
@@ -1391,14 +1463,38 @@ class MemoryLifecycle:
         ):
             raise ValueError("Handoff needs one to 64 work IDs.")
         at = int(time.time())
-        packets = []
-        for wid in work_ids:
+        evaluated, visiting = {}, set()
+
+        def evaluate(wid):
+            if wid in evaluated:
+                return evaluated[wid]
+            if wid in visiting:
+                raise ValueError("Cyclic work prerequisites require review.")
+            if len(evaluated) + len(visiting) >= 64:
+                raise ValueError("Work prerequisite review exceeds the 64-task bound.")
+            visiting.add(wid)
             work = self.work(wid)
             if work is None:
                 raise ValueError("Unknown work ID.")
             used = []
             current = {}
             warnings = []
+            if "requirement_watches_json" not in work:
+                warnings.append(
+                    "Legacy work has no requirement snapshot; create a reviewed work version."
+                )
+            else:
+                requirements = self._work_requirements(
+                    json.loads(work["requirement_watches_json"]), at
+                )
+                known = set(json.loads(work["known_requirement_fields_json"]))
+                added = [c for c in requirements if c["group_key"] not in known]
+                if added:
+                    warnings.append(
+                        "New mandatory requirements were added; review a fresh context."
+                    )
+                    for c in added:
+                        current[c["id"]] = self.view(c, at)
             for cid in json.loads(work["used_claim_ids"]):
                 c = self.claim(cid)
                 if c is None:
@@ -1415,27 +1511,40 @@ class MemoryLifecycle:
                 or any(v["status"] == "disputed" for v in current.values())
             )
             prerequisites = [self.work(d) for d in json.loads(work["dependency_ids"])]
-            needs_review = needs_review or any(
-                d is None
-                or d["status"] == "stale"
-                or d.get("validation_state") == "stale"
+            prerequisite_reviews = {
+                d["id"]: evaluate(d["id"])["needs_review"]
                 for d in prerequisites
-            )
-            packets.append(
-                dict(
-                    work=work,
-                    used_versions=used,
-                    current_evidence=list(current.values()),
-                    prerequisites=prerequisites,
-                    awaiting_prerequisites=[
-                        d["id"]
-                        for d in prerequisites
-                        if d is not None and d["status"] != "completed"
-                    ],
-                    needs_review=needs_review,
-                    warnings=warnings,
+                if d is not None
+            }
+            needs_review = (
+                needs_review
+                or any(
+                    d is None
+                    or d["status"] == "stale"
+                    or d.get("validation_state") == "stale"
+                    for d in prerequisites
                 )
+                or any(prerequisite_reviews.values())
             )
+            packet = dict(
+                work=work,
+                used_versions=used,
+                current_evidence=list(current.values()),
+                prerequisites=prerequisites,
+                awaiting_prerequisites=[
+                    d["id"]
+                    for d in prerequisites
+                    if d is not None and d["status"] != "completed"
+                ],
+                needs_review=needs_review,
+                warnings=warnings,
+                prerequisite_reviews=prerequisite_reviews,
+            )
+            visiting.remove(wid)
+            evaluated[wid] = packet
+            return packet
+
+        packets = [evaluate(wid) for wid in work_ids]
         return dict(
             as_of=at,
             can_continue=not any(

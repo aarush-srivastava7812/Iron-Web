@@ -1,0 +1,304 @@
+{
+  "empty": {
+    "tier1": {
+      "cache_entries": 0,
+      "accounted_ram_payload_bytes": 0,
+      "agent_text_utf8_bytes": 0,
+      "traveller_text_utf8_bytes": 0,
+      "agent_tokens": 0,
+      "traveller_tokens": 0
+    },
+    "tier2": {
+      "unique_cached_cards": 0,
+      "cached_card_text_utf8_bytes": 0,
+      "active_catalog_cards": 0,
+      "cpu_matrix_bytes": 0,
+      "residency": {
+        "device": "cpu",
+        "resident_bytes": 0,
+        "peak_owned_tensor_bytes": 0,
+        "max_card_budget_bytes": 67108864,
+        "provider_arena_limit_bytes": 0,
+        "fallback_reason": "uninitialized"
+      }
+    },
+    "tier3": {
+      "graph": "test_nv_be6cc24ec5_30835c026cb2d3ad4f04a8e3",
+      "node_counts": {
+        "Entity": 0,
+        "Observation": 0
+      },
+      "edge_counts": {
+        "RELATES": 0,
+        "ABOUT": 0,
+        "CONTRADICTS": 0,
+        "SUPERSEDES": 0
+      },
+      "node_total": 0,
+      "edge_total": 0,
+      "graph_serialized_logical_bytes": 7,
+      "redis_reported_graph_bytes": 64,
+      "vector_count": 0,
+      "raw_vector_float32_bytes": 0,
+      "vector_payload_json_bytes": 0,
+      "qdrant_directory_bytes": 12816,
+      "journal_files_bytes": {
+        "events.sqlite3": 4096,
+        "events.sqlite3-shm": 32768,
+        "events.sqlite3-wal": 74192
+      },
+      "event_count": 0
+    },
+    "process_rss_bytes": 402006016,
+    "process_peak_working_set_bytes": 402006016
+  },
+  "after_intake_and_cache_warm": {
+    "tier1": {
+      "cache_entries": 3,
+      "accounted_ram_payload_bytes": 38554,
+      "agent_text_utf8_bytes": 445,
+      "traveller_text_utf8_bytes": 2821,
+      "agent_tokens": 78,
+      "traveller_tokens": 1687
+    },
+    "tier2": {
+      "unique_cached_cards": 4,
+      "cached_card_text_utf8_bytes": 822,
+      "active_catalog_cards": 2,
+      "cpu_matrix_bytes": 3072,
+      "residency": {
+        "device": "cuda",
+        "resident_bytes": 3072,
+        "peak_owned_tensor_bytes": 4616,
+        "max_card_budget_bytes": 67108864,
+        "provider_arena_limit_bytes": 33554432,
+        "fallback_reason": null
+      }
+    },
+    "tier3": {
+      "graph": "test_nv_be6cc24ec5_30835c026cb2d3ad4f04a8e3",
+      "node_counts": {
+        "Entity": 1,
+        "Observation": 3,
+        "MemorySource": 3,
+        "MemoryClaim": 20,
+        "MemoryContext": 2,
+        "MemoryField": 17
+      },
+      "edge_counts": {
+        "RELATES": 0,
+        "ABOUT": 23,
+        "CONTRADICTS": 0,
+        "SUPERSEDES": 0,
+        "SUPPORTED_BY": 20,
+        "IN_CONTEXT": 20,
+        "ASSERTS_FIELD": 20
+      },
+      "node_total": 46,
+      "edge_total": 83,
+      "graph_serialized_logical_bytes": 50381,
+      "redis_reported_graph_bytes": 64,
+      "vector_count": 3,
+      "raw_vector_float32_bytes": 4608,
+      "vector_payload_json_bytes": 3015,
+      "qdrant_directory_bytes": 25104,
+      "journal_files_bytes": {
+        "events.sqlite3": 4096,
+        "events.sqlite3-shm": 32768,
+        "events.sqlite3-wal": 292552
+      },
+      "event_count": 3
+    },
+    "process_rss_bytes": 801677312,
+    "process_peak_working_set_bytes": 801832960
+  },
+  "after_full_scenario": {
+    "tier1": {
+      "cache_entries": 2,
+      "accounted_ram_payload_bytes": 18351,
+      "agent_text_utf8_bytes": 298,
+      "traveller_text_utf8_bytes": 1102,
+      "agent_tokens": 52,
+      "traveller_tokens": 619
+    },
+    "tier2": {
+      "unique_cached_cards": 3,
+      "cached_card_text_utf8_bytes": 706,
+      "active_catalog_cards": 2,
+      "cpu_matrix_bytes": 3072,
+      "residency": {
+        "device": "cuda",
+        "resident_bytes": 3072,
+        "peak_owned_tensor_bytes": 4616,
+        "max_card_budget_bytes": 67108864,
+        "provider_arena_limit_bytes": 33554432,
+        "fallback_reason": null
+      }
+    },
+    "tier3": {
+      "graph": "test_nv_be6cc24ec5_30835c026cb2d3ad4f04a8e3",
+      "node_counts": {
+        "Entity": 1,
+        "Observation": 8,
+        "MemorySource": 8,
+        "MemoryClaim": 28,
+        "MemoryContext": 3,
+        "MemoryField": 17,
+        "MemoryWork": 2
+      },
+      "edge_counts": {
+        "RELATES": 0,
+        "ABOUT": 36,
+        "CONTRADICTS": 0,
+        "SUPERSEDES": 2,
+        "SUPPORTED_BY": 28,
+        "IN_CONTEXT": 28,
+        "ASSERTS_FIELD": 28,
+        "CONFIRMS": 3,
+        "USES": 32
+      },
+      "node_total": 67,
+      "edge_total": 157,
+      "graph_serialized_logical_bytes": 113511,
+      "redis_reported_graph_bytes": 64,
+      "vector_count": 8,
+      "raw_vector_float32_bytes": 12288,
+      "vector_payload_json_bytes": 6354,
+      "qdrant_directory_bytes": 53776,
+      "journal_files_bytes": {
+        "events.sqlite3": 4096,
+        "events.sqlite3-shm": 32768,
+        "events.sqlite3-wal": 618032
+      },
+      "event_count": 8
+    },
+    "process_rss_bytes": 806092800,
+    "process_peak_working_set_bytes": 806313984
+  },
+  "after_restart_before_context": {
+    "tier1": {
+      "cache_entries": 0,
+      "accounted_ram_payload_bytes": 0,
+      "agent_text_utf8_bytes": 0,
+      "traveller_text_utf8_bytes": 0,
+      "agent_tokens": 0,
+      "traveller_tokens": 0
+    },
+    "tier2": {
+      "unique_cached_cards": 0,
+      "cached_card_text_utf8_bytes": 0,
+      "active_catalog_cards": 0,
+      "cpu_matrix_bytes": 0,
+      "residency": {
+        "device": "cpu",
+        "resident_bytes": 0,
+        "peak_owned_tensor_bytes": 4616,
+        "max_card_budget_bytes": 67108864,
+        "provider_arena_limit_bytes": 33554432,
+        "fallback_reason": null
+      }
+    },
+    "tier3": {
+      "graph": "test_nv_be6cc24ec5_30835c026cb2d3ad4f04a8e3",
+      "node_counts": {
+        "Entity": 1,
+        "Observation": 8,
+        "MemorySource": 8,
+        "MemoryClaim": 28,
+        "MemoryContext": 3,
+        "MemoryField": 17,
+        "MemoryWork": 2
+      },
+      "edge_counts": {
+        "RELATES": 0,
+        "ABOUT": 36,
+        "CONTRADICTS": 0,
+        "SUPERSEDES": 2,
+        "SUPPORTED_BY": 28,
+        "IN_CONTEXT": 28,
+        "ASSERTS_FIELD": 28,
+        "CONFIRMS": 3,
+        "USES": 32
+      },
+      "node_total": 67,
+      "edge_total": 157,
+      "graph_serialized_logical_bytes": 113511,
+      "redis_reported_graph_bytes": 64,
+      "vector_count": 8,
+      "raw_vector_float32_bytes": 12288,
+      "vector_payload_json_bytes": 6354,
+      "qdrant_directory_bytes": 53776,
+      "journal_files_bytes": {
+        "events.sqlite3": 65536,
+        "events.sqlite3-shm": 32768,
+        "events.sqlite3-wal": 0
+      },
+      "event_count": 8
+    },
+    "process_rss_bytes": 805883904,
+    "process_peak_working_set_bytes": 806313984
+  },
+  "after_restart_rebuilt": {
+    "tier1": {
+      "cache_entries": 1,
+      "accounted_ram_payload_bytes": 13346,
+      "agent_text_utf8_bytes": 149,
+      "traveller_text_utf8_bytes": 960,
+      "agent_tokens": 26,
+      "traveller_tokens": 578
+    },
+    "tier2": {
+      "unique_cached_cards": 2,
+      "cached_card_text_utf8_bytes": 578,
+      "active_catalog_cards": 2,
+      "cpu_matrix_bytes": 3072,
+      "residency": {
+        "device": "cuda",
+        "resident_bytes": 3072,
+        "peak_owned_tensor_bytes": 4616,
+        "max_card_budget_bytes": 67108864,
+        "provider_arena_limit_bytes": 33554432,
+        "fallback_reason": null
+      }
+    },
+    "tier3": {
+      "graph": "test_nv_be6cc24ec5_30835c026cb2d3ad4f04a8e3",
+      "node_counts": {
+        "Entity": 1,
+        "Observation": 8,
+        "MemorySource": 8,
+        "MemoryClaim": 28,
+        "MemoryContext": 3,
+        "MemoryField": 17,
+        "MemoryWork": 2
+      },
+      "edge_counts": {
+        "RELATES": 0,
+        "ABOUT": 36,
+        "CONTRADICTS": 0,
+        "SUPERSEDES": 2,
+        "SUPPORTED_BY": 28,
+        "IN_CONTEXT": 28,
+        "ASSERTS_FIELD": 28,
+        "CONFIRMS": 3,
+        "USES": 32
+      },
+      "node_total": 67,
+      "edge_total": 157,
+      "graph_serialized_logical_bytes": 113511,
+      "redis_reported_graph_bytes": 64,
+      "vector_count": 8,
+      "raw_vector_float32_bytes": 12288,
+      "vector_payload_json_bytes": 6354,
+      "qdrant_directory_bytes": 53776,
+      "journal_files_bytes": {
+        "events.sqlite3": 65536,
+        "events.sqlite3-shm": 32768,
+        "events.sqlite3-wal": 0
+      },
+      "event_count": 8
+    },
+    "process_rss_bytes": 805892096,
+    "process_peak_working_set_bytes": 806313984
+  }
+}

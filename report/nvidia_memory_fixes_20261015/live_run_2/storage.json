@@ -1,0 +1,55 @@
+{
+  "empty": {
+    "tier1": {
+      "cache_entries": 0,
+      "accounted_ram_payload_bytes": 0,
+      "agent_text_utf8_bytes": 0,
+      "traveller_text_utf8_bytes": 0,
+      "agent_tokens": 0,
+      "traveller_tokens": 0
+    },
+    "tier2": {
+      "unique_cached_cards": 0,
+      "cached_card_text_utf8_bytes": 0,
+      "active_catalog_cards": 0,
+      "cpu_matrix_bytes": 0,
+      "residency": {
+        "device": "cpu",
+        "resident_bytes": 0,
+        "peak_owned_tensor_bytes": 0,
+        "max_card_budget_bytes": 67108864,
+        "provider_arena_limit_bytes": 0,
+        "fallback_reason": "uninitialized"
+      }
+    },
+    "tier3": {
+      "graph": "test_nv_3e8e0babbf_32a4b8bb306d46180ed17d4a",
+      "node_counts": {
+        "Entity": 0,
+        "Observation": 0
+      },
+      "edge_counts": {
+        "RELATES": 0,
+        "ABOUT": 0,
+        "CONTRADICTS": 0,
+        "SUPERSEDES": 0
+      },
+      "node_total": 0,
+      "edge_total": 0,
+      "graph_serialized_logical_bytes": 7,
+      "redis_reported_graph_bytes": 64,
+      "vector_count": 0,
+      "raw_vector_float32_bytes": 0,
+      "vector_payload_json_bytes": 0,
+      "qdrant_directory_bytes": 12816,
+      "journal_files_bytes": {
+        "events.sqlite3": 4096,
+        "events.sqlite3-shm": 32768,
+        "events.sqlite3-wal": 74192
+      },
+      "event_count": 0
+    },
+    "process_rss_bytes": 401870848,
+    "process_peak_working_set_bytes": 401870848
+  }
+}

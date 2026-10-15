@@ -517,16 +517,51 @@ class SharedMemoryService:
             ]
 
     def record_work(
-        self, principal, work_id, claim_ids, depends_on=None, description=""
+        self,
+        principal,
+        work_id,
+        claim_ids,
+        depends_on=None,
+        description="",
+        context_token=None,
     ):
         with self._gate(principal):
             self._ready_for_claims(principal, claim_ids)
             if depends_on:
                 self._ready_for_work(principal, depends_on)
-            # Unowned until an agent explicitly acquires a fenced execution attempt.
-            result = self.engine(principal.tenant).record_work(
-                work_id, claim_ids, depends_on, description
-            )
+            engine = self.engine(principal.tenant)
+            with engine.graph_store.write_lock, engine._operation_lock:
+                requirement_context = None
+                if context_token is not None:
+                    if (
+                        not self.context_access
+                        or not self.validate_context(principal, context_token)["valid"]
+                    ):
+                        raise ValueError("Work needs a current context proof.")
+                    proof = self.context_access._decode(context_token, principal)
+                    if proof.get("status") != "ready" or not set(
+                        proof.get("claim_ids", [])
+                    ) <= set(claim_ids):
+                        raise ValueError(
+                            "Work must include the complete ready context evidence."
+                        )
+                    from memory.lifecycle.service import subject_id
+
+                    request = proof["request"]
+                    scope = dict(request["scope"])
+                    if request.get("session_id"):
+                        scope["session_id"] = request["session_id"]
+                    requirement_context = dict(
+                        subject_id=subject_id(request["subject"]), scope=scope
+                    )
+                # Unowned until an agent acquires a fenced execution attempt.
+                result = engine.record_work(
+                    work_id,
+                    claim_ids,
+                    depends_on,
+                    description,
+                    requirement_context=requirement_context,
+                )
             result.pop("lease_token", None)
             return result
 
@@ -549,13 +584,13 @@ class SharedMemoryService:
                 work = engine.lifecycle.work(work_id)
                 if work is None:
                     raise ValueError("Unknown work.")
-                if work["status"] == "completed":
-                    work.pop("lease_token", None)
-                    return dict(status="already_completed", work=work)
                 if not engine.lifecycle.handoff([work_id])["can_continue"]:
                     raise ValueError(
                         "Work requires current evidence and completed prerequisites."
                     )
+                if work["status"] == "completed":
+                    work.pop("lease_token", None)
+                    return dict(status="already_completed", work=work)
                 now = time.time()
                 active = work.get("lease_until", 0) > now
                 if active:

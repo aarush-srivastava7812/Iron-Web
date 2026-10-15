@@ -1,0 +1,1639 @@
+{
+  "actual_before": {
+    "claim_id": "claim_2cd11e15ee7ac2ed5e834c91226f5cb4",
+    "memory_id": "evt_c5b2cfb60f293e35f3684f763932f74a",
+    "subject": "Riya",
+    "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+    "predicate": "seat_preference",
+    "value": "aisle",
+    "kind": "preference",
+    "scope": {},
+    "status": "accepted",
+    "accepted": true,
+    "current_eligible": true,
+    "protected": false,
+    "accepted_for_current_use": true,
+    "correction_known": false,
+    "protected_at_creation": false,
+    "fuzzy_score": 0.865246068252889,
+    "fuzzy_explanation": {
+      "score": 0.865246068252889,
+      "inputs": {
+        "freshness": 0.9999876988525479,
+        "quality": 0.9,
+        "support": 0.3333333333333333,
+        "agreement": 1.0
+      },
+      "memberships": {
+        "freshness": {
+          "low": 0.0,
+          "medium": 2.4602294904196853e-05,
+          "high": 0.9999753977050958
+        },
+        "quality": {
+          "low": 0.0,
+          "medium": 0.19999999999999996,
+          "high": 0.8
+        },
+        "support": {
+          "low": 0.33333333333333337,
+          "medium": 0.6666666666666666,
+          "high": 0.0
+        },
+        "agreement": {
+          "low": 0.0,
+          "medium": 0.0,
+          "high": 1.0
+        }
+      },
+      "fired_rules": [
+        {
+          "conditions": {
+            "freshness": "medium",
+            "quality": "medium",
+            "support": "low",
+            "agreement": "high"
+          },
+          "firing_strength": 1.6401529936131234e-06,
+          "output": 0.55
+        },
+        {
+          "conditions": {
+            "freshness": "medium",
+            "quality": "medium",
+            "support": "medium",
+            "agreement": "high"
+          },
+          "firing_strength": 3.2803059872262463e-06,
+          "output": 0.6175
+        },
+        {
+          "conditions": {
+            "freshness": "medium",
+            "quality": "high",
+            "support": "low",
+            "agreement": "high"
+          },
+          "firing_strength": 6.560611974452496e-06,
+          "output": 0.7300000000000001
+        },
+        {
+          "conditions": {
+            "freshness": "medium",
+            "quality": "high",
+            "support": "medium",
+            "agreement": "high"
+          },
+          "firing_strength": 1.3121223948904989e-05,
+          "output": 0.7975000000000001
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "medium",
+            "support": "low",
+            "agreement": "high"
+          },
+          "firing_strength": 0.06666502651367305,
+          "output": 0.685
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "medium",
+            "support": "medium",
+            "agreement": "high"
+          },
+          "firing_strength": 0.13333005302734607,
+          "output": 0.7525000000000001
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "high",
+            "support": "low",
+            "agreement": "high"
+          },
+          "firing_strength": 0.26666010605469226,
+          "output": 0.865
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "high",
+            "support": "medium",
+            "agreement": "high"
+          },
+          "firing_strength": 0.5333202121093844,
+          "output": 0.9325
+        }
+      ],
+      "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+      "calibrated_probability": false
+    },
+    "previous_score": null,
+    "changed_by": null,
+    "change_reason": null,
+    "conflicting_claim_ids": [],
+    "sources": [
+      {
+        "id": "source_d7583ce32368d00808265701d2c10ae1",
+        "memory_id": "evt_c5b2cfb60f293e35f3684f763932f74a",
+        "event_id": "usual-preferences",
+        "text": "Usually I prefer vegetarian food, an active pace, an aisle seat, and interests in hiking, boat rides and local food.",
+        "origin": "user",
+        "actor_id": "user",
+        "user_confirmed": true,
+        "quality": 0.9,
+        "evidence_group": "user:user",
+        "recorded_at": 1792083863,
+        "received_at": 1792083867,
+        "digest": "receipt_c44b7b928c841b131454c9e08939db31",
+        "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"usual-preferences\",\"session_id\":\"\"}"
+      }
+    ],
+    "valid_from": 0,
+    "valid_until": 9223372036854775807,
+    "accepted_at": 1792083863,
+    "ended_at": null,
+    "reason": "Source quote: an aisle seat",
+    "historical_meaning": "source assertion; effective dates unspecified",
+    "references": [],
+    "identity_evidence": [],
+    "evidence_path": [
+      "claim_2cd11e15ee7ac2ed5e834c91226f5cb4",
+      "SUPPORTED_BY",
+      "source_d7583ce32368d00808265701d2c10ae1"
+    ]
+  },
+  "actual_after_agent_repetition": {
+    "claim_id": "claim_2cd11e15ee7ac2ed5e834c91226f5cb4",
+    "memory_id": "evt_c5b2cfb60f293e35f3684f763932f74a",
+    "subject": "Riya",
+    "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+    "predicate": "seat_preference",
+    "value": "aisle",
+    "kind": "preference",
+    "scope": {},
+    "status": "accepted",
+    "accepted": true,
+    "current_eligible": true,
+    "protected": false,
+    "accepted_for_current_use": true,
+    "correction_known": false,
+    "protected_at_creation": false,
+    "fuzzy_score": 0.8652457653916231,
+    "fuzzy_explanation": {
+      "score": 0.8652457653916231,
+      "inputs": {
+        "freshness": 0.9999874314379795,
+        "quality": 0.9,
+        "support": 0.3333333333333333,
+        "agreement": 1.0
+      },
+      "memberships": {
+        "freshness": {
+          "low": 0.0,
+          "medium": 2.5137124040952585e-05,
+          "high": 0.999974862875959
+        },
+        "quality": {
+          "low": 0.0,
+          "medium": 0.19999999999999996,
+          "high": 0.8
+        },
+        "support": {
+          "low": 0.33333333333333337,
+          "medium": 0.6666666666666666,
+          "high": 0.0
+        },
+        "agreement": {
+          "low": 0.0,
+          "medium": 0.0,
+          "high": 1.0
+        }
+      },
+      "fired_rules": [
+        {
+          "conditions": {
+            "freshness": "medium",
+            "quality": "medium",
+            "support": "low",
+            "agreement": "high"
+          },
+          "firing_strength": 1.675808269396839e-06,
+          "output": 0.55
+        },
+        {
+          "conditions": {
+            "freshness": "medium",
+            "quality": "medium",
+            "support": "medium",
+            "agreement": "high"
+          },
+          "firing_strength": 3.3516165387936774e-06,
+          "output": 0.6175
+        },
+        {
+          "conditions": {
+            "freshness": "medium",
+            "quality": "high",
+            "support": "low",
+            "agreement": "high"
+          },
+          "firing_strength": 6.703233077587358e-06,
+          "output": 0.7300000000000001
+        },
+        {
+          "conditions": {
+            "freshness": "medium",
+            "quality": "high",
+            "support": "medium",
+            "agreement": "high"
+          },
+          "firing_strength": 1.3406466155174713e-05,
+          "output": 0.7975000000000001
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "medium",
+            "support": "low",
+            "agreement": "high"
+          },
+          "firing_strength": 0.06666499085839726,
+          "output": 0.685
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "medium",
+            "support": "medium",
+            "agreement": "high"
+          },
+          "firing_strength": 0.1333299817167945,
+          "output": 0.7525000000000001
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "high",
+            "support": "low",
+            "agreement": "high"
+          },
+          "firing_strength": 0.26665996343358916,
+          "output": 0.865
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "high",
+            "support": "medium",
+            "agreement": "high"
+          },
+          "firing_strength": 0.5333199268671782,
+          "output": 0.9325
+        }
+      ],
+      "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+      "calibrated_probability": false
+    },
+    "previous_score": null,
+    "changed_by": null,
+    "change_reason": null,
+    "conflicting_claim_ids": [],
+    "sources": [
+      {
+        "id": "source_d7583ce32368d00808265701d2c10ae1",
+        "memory_id": "evt_c5b2cfb60f293e35f3684f763932f74a",
+        "event_id": "usual-preferences",
+        "text": "Usually I prefer vegetarian food, an active pace, an aisle seat, and interests in hiking, boat rides and local food.",
+        "origin": "user",
+        "actor_id": "user",
+        "user_confirmed": true,
+        "quality": 0.9,
+        "evidence_group": "user:user",
+        "recorded_at": 1792083863,
+        "received_at": 1792083867,
+        "digest": "receipt_c44b7b928c841b131454c9e08939db31",
+        "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"usual-preferences\",\"session_id\":\"\"}"
+      },
+      {
+        "id": "source_4b164917c9c33277f636634c98eb2135",
+        "memory_id": "evt_68e4a8ab0e4b3eb3312fac3347c61534",
+        "event_id": "repeated-seat-planner",
+        "text": "I prefer an aisle seat.",
+        "origin": "agent",
+        "actor_id": "planner",
+        "user_confirmed": false,
+        "quality": 0.5,
+        "evidence_group": "agent_assertions",
+        "recorded_at": 1792084001,
+        "received_at": 1792084003,
+        "digest": "receipt_f2101ffe5c402a0a8d7683c2de14d673",
+        "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"repeated-seat-planner\",\"session_id\":\"\"}"
+      },
+      {
+        "id": "source_363ad53f8b4b66d7ce785d2c3bad745a",
+        "memory_id": "evt_f5d2f80d788cc65ce82a20b926a2e70f",
+        "event_id": "repeated-seat-reviewer",
+        "text": "I prefer an aisle seat.",
+        "origin": "agent",
+        "actor_id": "reviewer",
+        "user_confirmed": false,
+        "quality": 0.5,
+        "evidence_group": "agent_assertions",
+        "recorded_at": 1792084003,
+        "received_at": 1792084004,
+        "digest": "receipt_b82bd8fce005b0fcc0fcc184a5c8a249",
+        "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"repeated-seat-reviewer\",\"session_id\":\"\"}"
+      }
+    ],
+    "valid_from": 0,
+    "valid_until": 9223372036854775807,
+    "accepted_at": 1792083863,
+    "ended_at": null,
+    "reason": "Source quote: an aisle seat",
+    "historical_meaning": "source assertion; effective dates unspecified",
+    "references": [],
+    "identity_evidence": [],
+    "evidence_path": [
+      "claim_2cd11e15ee7ac2ed5e834c91226f5cb4",
+      "SUPPORTED_BY",
+      "source_d7583ce32368d00808265701d2c10ae1"
+    ]
+  },
+  "actual_time_controls": [
+    {
+      "days": 0,
+      "claim_id": "claim_2cd11e15ee7ac2ed5e834c91226f5cb4",
+      "memory_id": "evt_c5b2cfb60f293e35f3684f763932f74a",
+      "subject": "Riya",
+      "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+      "predicate": "seat_preference",
+      "value": "aisle",
+      "kind": "preference",
+      "scope": {},
+      "status": "accepted",
+      "accepted": true,
+      "current_eligible": true,
+      "protected": false,
+      "accepted_for_current_use": true,
+      "correction_known": false,
+      "protected_at_creation": false,
+      "fuzzy_score": 0.8652456644378944,
+      "fuzzy_explanation": {
+        "score": 0.8652456644378944,
+        "inputs": {
+          "freshness": 0.9999873422998059,
+          "quality": 0.9,
+          "support": 0.3333333333333333,
+          "agreement": 1.0
+        },
+        "memberships": {
+          "freshness": {
+            "low": 0.0,
+            "medium": 2.53154003881928e-05,
+            "high": 0.9999746845996118
+          },
+          "quality": {
+            "low": 0.0,
+            "medium": 0.19999999999999996,
+            "high": 0.8
+          },
+          "support": {
+            "low": 0.33333333333333337,
+            "medium": 0.6666666666666666,
+            "high": 0.0
+          },
+          "agreement": {
+            "low": 0.0,
+            "medium": 0.0,
+            "high": 1.0
+          }
+        },
+        "fired_rules": [
+          {
+            "conditions": {
+              "freshness": "medium",
+              "quality": "medium",
+              "support": "low",
+              "agreement": "high"
+            },
+            "firing_strength": 1.6876933592128531e-06,
+            "output": 0.55
+          },
+          {
+            "conditions": {
+              "freshness": "medium",
+              "quality": "medium",
+              "support": "medium",
+              "agreement": "high"
+            },
+            "firing_strength": 3.375386718425706e-06,
+            "output": 0.6175
+          },
+          {
+            "conditions": {
+              "freshness": "medium",
+              "quality": "high",
+              "support": "low",
+              "agreement": "high"
+            },
+            "firing_strength": 6.750773436851414e-06,
+            "output": 0.7300000000000001
+          },
+          {
+            "conditions": {
+              "freshness": "medium",
+              "quality": "high",
+              "support": "medium",
+              "agreement": "high"
+            },
+            "firing_strength": 1.3501546873702825e-05,
+            "output": 0.7975000000000001
+          },
+          {
+            "conditions": {
+              "freshness": "high",
+              "quality": "medium",
+              "support": "low",
+              "agreement": "high"
+            },
+            "firing_strength": 0.06666497897330745,
+            "output": 0.685
+          },
+          {
+            "conditions": {
+              "freshness": "high",
+              "quality": "medium",
+              "support": "medium",
+              "agreement": "high"
+            },
+            "firing_strength": 0.13332995794661487,
+            "output": 0.7525000000000001
+          },
+          {
+            "conditions": {
+              "freshness": "high",
+              "quality": "high",
+              "support": "low",
+              "agreement": "high"
+            },
+            "firing_strength": 0.26665991589322985,
+            "output": 0.865
+          },
+          {
+            "conditions": {
+              "freshness": "high",
+              "quality": "high",
+              "support": "medium",
+              "agreement": "high"
+            },
+            "firing_strength": 0.5333198317864596,
+            "output": 0.9325
+          }
+        ],
+        "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+        "calibrated_probability": false
+      },
+      "previous_score": null,
+      "changed_by": null,
+      "change_reason": null,
+      "conflicting_claim_ids": [],
+      "sources": [
+        {
+          "id": "source_d7583ce32368d00808265701d2c10ae1",
+          "memory_id": "evt_c5b2cfb60f293e35f3684f763932f74a",
+          "event_id": "usual-preferences",
+          "text": "Usually I prefer vegetarian food, an active pace, an aisle seat, and interests in hiking, boat rides and local food.",
+          "origin": "user",
+          "actor_id": "user",
+          "user_confirmed": true,
+          "quality": 0.9,
+          "evidence_group": "user:user",
+          "recorded_at": 1792083863,
+          "received_at": 1792083867,
+          "digest": "receipt_c44b7b928c841b131454c9e08939db31",
+          "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"usual-preferences\",\"session_id\":\"\"}"
+        },
+        {
+          "id": "source_4b164917c9c33277f636634c98eb2135",
+          "memory_id": "evt_68e4a8ab0e4b3eb3312fac3347c61534",
+          "event_id": "repeated-seat-planner",
+          "text": "I prefer an aisle seat.",
+          "origin": "agent",
+          "actor_id": "planner",
+          "user_confirmed": false,
+          "quality": 0.5,
+          "evidence_group": "agent_assertions",
+          "recorded_at": 1792084001,
+          "received_at": 1792084003,
+          "digest": "receipt_f2101ffe5c402a0a8d7683c2de14d673",
+          "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"repeated-seat-planner\",\"session_id\":\"\"}"
+        },
+        {
+          "id": "source_363ad53f8b4b66d7ce785d2c3bad745a",
+          "memory_id": "evt_f5d2f80d788cc65ce82a20b926a2e70f",
+          "event_id": "repeated-seat-reviewer",
+          "text": "I prefer an aisle seat.",
+          "origin": "agent",
+          "actor_id": "reviewer",
+          "user_confirmed": false,
+          "quality": 0.5,
+          "evidence_group": "agent_assertions",
+          "recorded_at": 1792084003,
+          "received_at": 1792084004,
+          "digest": "receipt_b82bd8fce005b0fcc0fcc184a5c8a249",
+          "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"repeated-seat-reviewer\",\"session_id\":\"\"}"
+        }
+      ],
+      "valid_from": 0,
+      "valid_until": 9223372036854775807,
+      "accepted_at": 1792083863,
+      "ended_at": null,
+      "reason": "Source quote: an aisle seat",
+      "historical_meaning": "source assertion; effective dates unspecified",
+      "references": [],
+      "identity_evidence": [],
+      "evidence_path": [
+        "claim_2cd11e15ee7ac2ed5e834c91226f5cb4",
+        "SUPPORTED_BY",
+        "source_d7583ce32368d00808265701d2c10ae1"
+      ]
+    },
+    {
+      "days": 30,
+      "claim_id": "claim_2cd11e15ee7ac2ed5e834c91226f5cb4",
+      "memory_id": "evt_c5b2cfb60f293e35f3684f763932f74a",
+      "subject": "Riya",
+      "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+      "predicate": "seat_preference",
+      "value": "aisle",
+      "kind": "preference",
+      "scope": {},
+      "status": "accepted",
+      "accepted": true,
+      "current_eligible": true,
+      "protected": false,
+      "accepted_for_current_use": true,
+      "correction_known": false,
+      "protected_at_creation": false,
+      "fuzzy_score": 0.6429793446826134,
+      "fuzzy_explanation": {
+        "score": 0.6429793446826134,
+        "inputs": {
+          "freshness": 0.793690479560798,
+          "quality": 0.9,
+          "support": 0.3333333333333333,
+          "agreement": 1.0
+        },
+        "memberships": {
+          "freshness": {
+            "low": 0.0,
+            "medium": 0.41261904087840406,
+            "high": 0.5873809591215959
+          },
+          "quality": {
+            "low": 0.0,
+            "medium": 0.19999999999999996,
+            "high": 0.8
+          },
+          "support": {
+            "low": 0.33333333333333337,
+            "medium": 0.6666666666666666,
+            "high": 0.0
+          },
+          "agreement": {
+            "low": 0.0,
+            "medium": 0.0,
+            "high": 1.0
+          }
+        },
+        "fired_rules": [
+          {
+            "conditions": {
+              "freshness": "medium",
+              "quality": "medium",
+              "support": "low",
+              "agreement": "high"
+            },
+            "firing_strength": 0.027507936058560268,
+            "output": 0.55
+          },
+          {
+            "conditions": {
+              "freshness": "medium",
+              "quality": "medium",
+              "support": "medium",
+              "agreement": "high"
+            },
+            "firing_strength": 0.05501587211712053,
+            "output": 0.6175
+          },
+          {
+            "conditions": {
+              "freshness": "medium",
+              "quality": "high",
+              "support": "low",
+              "agreement": "high"
+            },
+            "firing_strength": 0.11003174423424111,
+            "output": 0.7300000000000001
+          },
+          {
+            "conditions": {
+              "freshness": "medium",
+              "quality": "high",
+              "support": "medium",
+              "agreement": "high"
+            },
+            "firing_strength": 0.22006348846848217,
+            "output": 0.7975000000000001
+          },
+          {
+            "conditions": {
+              "freshness": "high",
+              "quality": "medium",
+              "support": "low",
+              "agreement": "high"
+            },
+            "firing_strength": 0.039158730608106394,
+            "output": 0.685
+          },
+          {
+            "conditions": {
+              "freshness": "high",
+              "quality": "medium",
+              "support": "medium",
+              "agreement": "high"
+            },
+            "firing_strength": 0.07831746121621277,
+            "output": 0.7525000000000001
+          },
+          {
+            "conditions": {
+              "freshness": "high",
+              "quality": "high",
+              "support": "low",
+              "agreement": "high"
+            },
+            "firing_strength": 0.1566349224324256,
+            "output": 0.865
+          },
+          {
+            "conditions": {
+              "freshness": "high",
+              "quality": "high",
+              "support": "medium",
+              "agreement": "high"
+            },
+            "firing_strength": 0.31326984486485115,
+            "output": 0.9325
+          }
+        ],
+        "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+        "calibrated_probability": false
+      },
+      "previous_score": null,
+      "changed_by": null,
+      "change_reason": null,
+      "conflicting_claim_ids": [],
+      "sources": [
+        {
+          "id": "source_d7583ce32368d00808265701d2c10ae1",
+          "memory_id": "evt_c5b2cfb60f293e35f3684f763932f74a",
+          "event_id": "usual-preferences",
+          "text": "Usually I prefer vegetarian food, an active pace, an aisle seat, and interests in hiking, boat rides and local food.",
+          "origin": "user",
+          "actor_id": "user",
+          "user_confirmed": true,
+          "quality": 0.9,
+          "evidence_group": "user:user",
+          "recorded_at": 1792083863,
+          "received_at": 1792083867,
+          "digest": "receipt_c44b7b928c841b131454c9e08939db31",
+          "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"usual-preferences\",\"session_id\":\"\"}"
+        },
+        {
+          "id": "source_4b164917c9c33277f636634c98eb2135",
+          "memory_id": "evt_68e4a8ab0e4b3eb3312fac3347c61534",
+          "event_id": "repeated-seat-planner",
+          "text": "I prefer an aisle seat.",
+          "origin": "agent",
+          "actor_id": "planner",
+          "user_confirmed": false,
+          "quality": 0.5,
+          "evidence_group": "agent_assertions",
+          "recorded_at": 1792084001,
+          "received_at": 1792084003,
+          "digest": "receipt_f2101ffe5c402a0a8d7683c2de14d673",
+          "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"repeated-seat-planner\",\"session_id\":\"\"}"
+        },
+        {
+          "id": "source_363ad53f8b4b66d7ce785d2c3bad745a",
+          "memory_id": "evt_f5d2f80d788cc65ce82a20b926a2e70f",
+          "event_id": "repeated-seat-reviewer",
+          "text": "I prefer an aisle seat.",
+          "origin": "agent",
+          "actor_id": "reviewer",
+          "user_confirmed": false,
+          "quality": 0.5,
+          "evidence_group": "agent_assertions",
+          "recorded_at": 1792084003,
+          "received_at": 1792084004,
+          "digest": "receipt_b82bd8fce005b0fcc0fcc184a5c8a249",
+          "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"repeated-seat-reviewer\",\"session_id\":\"\"}"
+        }
+      ],
+      "valid_from": 0,
+      "valid_until": 9223372036854775807,
+      "accepted_at": 1792083863,
+      "ended_at": null,
+      "reason": "Source quote: an aisle seat",
+      "historical_meaning": "source assertion; effective dates unspecified",
+      "references": [],
+      "identity_evidence": [],
+      "evidence_path": [
+        "claim_2cd11e15ee7ac2ed5e834c91226f5cb4",
+        "SUPPORTED_BY",
+        "source_d7583ce32368d00808265701d2c10ae1"
+      ]
+    },
+    {
+      "days": 90,
+      "claim_id": "claim_2cd11e15ee7ac2ed5e834c91226f5cb4",
+      "memory_id": "evt_c5b2cfb60f293e35f3684f763932f74a",
+      "subject": "Riya",
+      "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+      "predicate": "seat_preference",
+      "value": "aisle",
+      "kind": "preference",
+      "scope": {},
+      "status": "accepted",
+      "accepted": true,
+      "current_eligible": true,
+      "protected": false,
+      "accepted_for_current_use": true,
+      "correction_known": false,
+      "protected_at_creation": false,
+      "fuzzy_score": 0.3657995239098716,
+      "fuzzy_explanation": {
+        "score": 0.3657995239098716,
+        "inputs": {
+          "freshness": 0.49999367114990295,
+          "quality": 0.9,
+          "support": 0.3333333333333333,
+          "agreement": 1.0
+        },
+        "memberships": {
+          "freshness": {
+            "low": 1.26577001940964e-05,
+            "medium": 0.9999873422998059,
+            "high": 0.0
+          },
+          "quality": {
+            "low": 0.0,
+            "medium": 0.19999999999999996,
+            "high": 0.8
+          },
+          "support": {
+            "low": 0.33333333333333337,
+            "medium": 0.6666666666666666,
+            "high": 0.0
+          },
+          "agreement": {
+            "low": 0.0,
+            "medium": 0.0,
+            "high": 1.0
+          }
+        },
+        "fired_rules": [
+          {
+            "conditions": {
+              "freshness": "low",
+              "quality": "medium",
+              "support": "low",
+              "agreement": "high"
+            },
+            "firing_strength": 8.438466796064266e-07,
+            "output": 0.41500000000000004
+          },
+          {
+            "conditions": {
+              "freshness": "low",
+              "quality": "medium",
+              "support": "medium",
+              "agreement": "high"
+            },
+            "firing_strength": 1.687693359212853e-06,
+            "output": 0.48250000000000004
+          },
+          {
+            "conditions": {
+              "freshness": "low",
+              "quality": "high",
+              "support": "low",
+              "agreement": "high"
+            },
+            "firing_strength": 3.375386718425707e-06,
+            "output": 0.5950000000000001
+          },
+          {
+            "conditions": {
+              "freshness": "low",
+              "quality": "high",
+              "support": "medium",
+              "agreement": "high"
+            },
+            "firing_strength": 6.7507734368514125e-06,
+            "output": 0.6625000000000001
+          },
+          {
+            "conditions": {
+              "freshness": "medium",
+              "quality": "medium",
+              "support": "low",
+              "agreement": "high"
+            },
+            "firing_strength": 0.06666582281998705,
+            "output": 0.55
+          },
+          {
+            "conditions": {
+              "freshness": "medium",
+              "quality": "medium",
+              "support": "medium",
+              "agreement": "high"
+            },
+            "firing_strength": 0.13333164563997407,
+            "output": 0.6175
+          },
+          {
+            "conditions": {
+              "freshness": "medium",
+              "quality": "high",
+              "support": "low",
+              "agreement": "high"
+            },
+            "firing_strength": 0.2666632912799483,
+            "output": 0.7300000000000001
+          },
+          {
+            "conditions": {
+              "freshness": "medium",
+              "quality": "high",
+              "support": "medium",
+              "agreement": "high"
+            },
+            "firing_strength": 0.5333265825598965,
+            "output": 0.7975000000000001
+          }
+        ],
+        "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+        "calibrated_probability": false
+      },
+      "previous_score": null,
+      "changed_by": null,
+      "change_reason": null,
+      "conflicting_claim_ids": [],
+      "sources": [
+        {
+          "id": "source_d7583ce32368d00808265701d2c10ae1",
+          "memory_id": "evt_c5b2cfb60f293e35f3684f763932f74a",
+          "event_id": "usual-preferences",
+          "text": "Usually I prefer vegetarian food, an active pace, an aisle seat, and interests in hiking, boat rides and local food.",
+          "origin": "user",
+          "actor_id": "user",
+          "user_confirmed": true,
+          "quality": 0.9,
+          "evidence_group": "user:user",
+          "recorded_at": 1792083863,
+          "received_at": 1792083867,
+          "digest": "receipt_c44b7b928c841b131454c9e08939db31",
+          "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"usual-preferences\",\"session_id\":\"\"}"
+        },
+        {
+          "id": "source_4b164917c9c33277f636634c98eb2135",
+          "memory_id": "evt_68e4a8ab0e4b3eb3312fac3347c61534",
+          "event_id": "repeated-seat-planner",
+          "text": "I prefer an aisle seat.",
+          "origin": "agent",
+          "actor_id": "planner",
+          "user_confirmed": false,
+          "quality": 0.5,
+          "evidence_group": "agent_assertions",
+          "recorded_at": 1792084001,
+          "received_at": 1792084003,
+          "digest": "receipt_f2101ffe5c402a0a8d7683c2de14d673",
+          "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"repeated-seat-planner\",\"session_id\":\"\"}"
+        },
+        {
+          "id": "source_363ad53f8b4b66d7ce785d2c3bad745a",
+          "memory_id": "evt_f5d2f80d788cc65ce82a20b926a2e70f",
+          "event_id": "repeated-seat-reviewer",
+          "text": "I prefer an aisle seat.",
+          "origin": "agent",
+          "actor_id": "reviewer",
+          "user_confirmed": false,
+          "quality": 0.5,
+          "evidence_group": "agent_assertions",
+          "recorded_at": 1792084003,
+          "received_at": 1792084004,
+          "digest": "receipt_b82bd8fce005b0fcc0fcc184a5c8a249",
+          "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"repeated-seat-reviewer\",\"session_id\":\"\"}"
+        }
+      ],
+      "valid_from": 0,
+      "valid_until": 9223372036854775807,
+      "accepted_at": 1792083863,
+      "ended_at": null,
+      "reason": "Source quote: an aisle seat",
+      "historical_meaning": "source assertion; effective dates unspecified",
+      "references": [],
+      "identity_evidence": [],
+      "evidence_path": [
+        "claim_2cd11e15ee7ac2ed5e834c91226f5cb4",
+        "SUPPORTED_BY",
+        "source_d7583ce32368d00808265701d2c10ae1"
+      ]
+    },
+    {
+      "days": 365,
+      "claim_id": "claim_2cd11e15ee7ac2ed5e834c91226f5cb4",
+      "memory_id": "evt_c5b2cfb60f293e35f3684f763932f74a",
+      "subject": "Riya",
+      "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+      "predicate": "seat_preference",
+      "value": "aisle",
+      "kind": "preference",
+      "scope": {},
+      "status": "accepted",
+      "accepted": true,
+      "current_eligible": true,
+      "protected": false,
+      "accepted_for_current_use": true,
+      "correction_known": false,
+      "protected_at_creation": false,
+      "fuzzy_score": 0.0369269740918541,
+      "fuzzy_explanation": {
+        "score": 0.0369269740918541,
+        "inputs": {
+          "freshness": 0.06013822858458112,
+          "quality": 0.9,
+          "support": 0.3333333333333333,
+          "agreement": 1.0
+        },
+        "memberships": {
+          "freshness": {
+            "low": 0.8797235428308378,
+            "medium": 0.12027645716916224,
+            "high": 0.0
+          },
+          "quality": {
+            "low": 0.0,
+            "medium": 0.19999999999999996,
+            "high": 0.8
+          },
+          "support": {
+            "low": 0.33333333333333337,
+            "medium": 0.6666666666666666,
+            "high": 0.0
+          },
+          "agreement": {
+            "low": 0.0,
+            "medium": 0.0,
+            "high": 1.0
+          }
+        },
+        "fired_rules": [
+          {
+            "conditions": {
+              "freshness": "low",
+              "quality": "medium",
+              "support": "low",
+              "agreement": "high"
+            },
+            "firing_strength": 0.05864823618872251,
+            "output": 0.41500000000000004
+          },
+          {
+            "conditions": {
+              "freshness": "low",
+              "quality": "medium",
+              "support": "medium",
+              "agreement": "high"
+            },
+            "firing_strength": 0.117296472377445,
+            "output": 0.48250000000000004
+          },
+          {
+            "conditions": {
+              "freshness": "low",
+              "quality": "high",
+              "support": "low",
+              "agreement": "high"
+            },
+            "firing_strength": 0.23459294475489012,
+            "output": 0.5950000000000001
+          },
+          {
+            "conditions": {
+              "freshness": "low",
+              "quality": "high",
+              "support": "medium",
+              "agreement": "high"
+            },
+            "firing_strength": 0.46918588950978013,
+            "output": 0.6625000000000001
+          },
+          {
+            "conditions": {
+              "freshness": "medium",
+              "quality": "medium",
+              "support": "low",
+              "agreement": "high"
+            },
+            "firing_strength": 0.008018430477944148,
+            "output": 0.55
+          },
+          {
+            "conditions": {
+              "freshness": "medium",
+              "quality": "medium",
+              "support": "medium",
+              "agreement": "high"
+            },
+            "firing_strength": 0.016036860955888292,
+            "output": 0.6175
+          },
+          {
+            "conditions": {
+              "freshness": "medium",
+              "quality": "high",
+              "support": "low",
+              "agreement": "high"
+            },
+            "firing_strength": 0.032073721911776605,
+            "output": 0.7300000000000001
+          },
+          {
+            "conditions": {
+              "freshness": "medium",
+              "quality": "high",
+              "support": "medium",
+              "agreement": "high"
+            },
+            "firing_strength": 0.0641474438235532,
+            "output": 0.7975000000000001
+          }
+        ],
+        "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+        "calibrated_probability": false
+      },
+      "previous_score": null,
+      "changed_by": null,
+      "change_reason": null,
+      "conflicting_claim_ids": [],
+      "sources": [
+        {
+          "id": "source_d7583ce32368d00808265701d2c10ae1",
+          "memory_id": "evt_c5b2cfb60f293e35f3684f763932f74a",
+          "event_id": "usual-preferences",
+          "text": "Usually I prefer vegetarian food, an active pace, an aisle seat, and interests in hiking, boat rides and local food.",
+          "origin": "user",
+          "actor_id": "user",
+          "user_confirmed": true,
+          "quality": 0.9,
+          "evidence_group": "user:user",
+          "recorded_at": 1792083863,
+          "received_at": 1792083867,
+          "digest": "receipt_c44b7b928c841b131454c9e08939db31",
+          "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"usual-preferences\",\"session_id\":\"\"}"
+        },
+        {
+          "id": "source_4b164917c9c33277f636634c98eb2135",
+          "memory_id": "evt_68e4a8ab0e4b3eb3312fac3347c61534",
+          "event_id": "repeated-seat-planner",
+          "text": "I prefer an aisle seat.",
+          "origin": "agent",
+          "actor_id": "planner",
+          "user_confirmed": false,
+          "quality": 0.5,
+          "evidence_group": "agent_assertions",
+          "recorded_at": 1792084001,
+          "received_at": 1792084003,
+          "digest": "receipt_f2101ffe5c402a0a8d7683c2de14d673",
+          "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"repeated-seat-planner\",\"session_id\":\"\"}"
+        },
+        {
+          "id": "source_363ad53f8b4b66d7ce785d2c3bad745a",
+          "memory_id": "evt_f5d2f80d788cc65ce82a20b926a2e70f",
+          "event_id": "repeated-seat-reviewer",
+          "text": "I prefer an aisle seat.",
+          "origin": "agent",
+          "actor_id": "reviewer",
+          "user_confirmed": false,
+          "quality": 0.5,
+          "evidence_group": "agent_assertions",
+          "recorded_at": 1792084003,
+          "received_at": 1792084004,
+          "digest": "receipt_b82bd8fce005b0fcc0fcc184a5c8a249",
+          "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"repeated-seat-reviewer\",\"session_id\":\"\"}"
+        }
+      ],
+      "valid_from": 0,
+      "valid_until": 9223372036854775807,
+      "accepted_at": 1792083863,
+      "ended_at": null,
+      "reason": "Source quote: an aisle seat",
+      "historical_meaning": "source assertion; effective dates unspecified",
+      "references": [],
+      "identity_evidence": [],
+      "evidence_path": [
+        "claim_2cd11e15ee7ac2ed5e834c91226f5cb4",
+        "SUPPORTED_BY",
+        "source_d7583ce32368d00808265701d2c10ae1"
+      ]
+    }
+  ],
+  "current_protected_budget": {
+    "claim_id": "claim_e9d1f3f76483bbd659914eba17cb0d4b",
+    "memory_id": "evt_d9dceefc33a4aed9b0fcc94d288e7548",
+    "subject": "Riya",
+    "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+    "predicate": "budget",
+    "value": 65000,
+    "kind": "rule",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "status": "accepted",
+    "accepted": true,
+    "current_eligible": true,
+    "protected": true,
+    "accepted_for_current_use": true,
+    "correction_known": false,
+    "protected_at_creation": true,
+    "fuzzy_score": 1.0,
+    "fuzzy_explanation": {
+      "score": 1.0,
+      "hard_rule": "user_confirmed_protection",
+      "fired_rules": []
+    },
+    "previous_score": null,
+    "changed_by": null,
+    "change_reason": null,
+    "conflicting_claim_ids": [],
+    "sources": [
+      {
+        "id": "source_ba9f9927af0294dbc049f7947454d861",
+        "memory_id": "evt_d9dceefc33a4aed9b0fcc94d288e7548",
+        "event_id": "lower-budget",
+        "text": "Change my total trip budget to INR 65000.",
+        "origin": "user",
+        "actor_id": "user",
+        "user_confirmed": true,
+        "quality": 0.9,
+        "evidence_group": "user:user",
+        "recorded_at": 1792083919,
+        "received_at": 1792083921,
+        "digest": "receipt_3e02e6cb35cf9920c14e2081e774f779",
+        "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"lower-budget\",\"session_id\":\"\"}"
+      }
+    ],
+    "valid_from": 0,
+    "valid_until": 9223372036854775807,
+    "accepted_at": 1792083919,
+    "ended_at": null,
+    "reason": "Explicit source update. Source quote: Change my total trip budget to INR 65000.",
+    "historical_meaning": "source assertion; effective dates unspecified",
+    "references": [],
+    "identity_evidence": [],
+    "evidence_path": [
+      "claim_e9d1f3f76483bbd659914eba17cb0d4b",
+      "SUPPORTED_BY",
+      "source_ba9f9927af0294dbc049f7947454d861"
+    ]
+  },
+  "old_budget_views": [
+    {
+      "claim_id": "claim_d4cffadb33bfca1e296ba964f5142a13",
+      "memory_id": "evt_39a0feda0adaa21b4532b8b413ec23b4",
+      "subject": "Riya",
+      "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+      "predicate": "budget",
+      "value": 90000,
+      "kind": "rule",
+      "scope": {
+        "trip_id": "goa-family"
+      },
+      "status": "superseded",
+      "accepted": true,
+      "current_eligible": false,
+      "protected": false,
+      "accepted_for_current_use": false,
+      "correction_known": false,
+      "protected_at_creation": true,
+      "fuzzy_score": 0.0,
+      "fuzzy_explanation": {
+        "score": 0.0,
+        "hard_rule": "not_current",
+        "fired_rules": []
+      },
+      "previous_score": 1.0,
+      "changed_by": "claim_e9d1f3f76483bbd659914eba17cb0d4b",
+      "change_reason": "Explicit source update. Source quote: Change my total trip budget to INR 65000.",
+      "conflicting_claim_ids": [
+        "claim_e9d1f3f76483bbd659914eba17cb0d4b"
+      ],
+      "sources": [
+        {
+          "id": "source_cff6724562df073470835280feea54fd",
+          "memory_id": "evt_39a0feda0adaa21b4532b8b413ec23b4",
+          "event_id": "goa-intake",
+          "text": "Plan Goa from 2026-12-10 to 2026-12-14 for two adults, departing Delhi. My total budget is INR 90000. Vegetarian food and morning flights are required. A step-free hotel is mandatory. Maximum walking is 500 metres. No boats. At most one activity per day. For this trip I want a relaxed pace, calm beaches and local food. Prefer a comfortable resort when the budget permits.",
+          "origin": "user",
+          "actor_id": "user",
+          "user_confirmed": true,
+          "quality": 0.9,
+          "evidence_group": "user:user",
+          "recorded_at": 1792083867,
+          "received_at": 1792083876,
+          "digest": "receipt_7b16f5d4e0ac82058768a5ea420a762a",
+          "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v4_grounded\",\"service_receipt\":\"goa-intake\",\"session_id\":\"\"}"
+        }
+      ],
+      "valid_from": 0,
+      "valid_until": 9223372036854775807,
+      "accepted_at": 1792083867,
+      "ended_at": 1792083919,
+      "reason": "Source quote: My total budget is INR 90000",
+      "historical_meaning": "source assertion; effective dates unspecified",
+      "references": [],
+      "identity_evidence": [],
+      "evidence_path": [
+        "claim_d4cffadb33bfca1e296ba964f5142a13",
+        "SUPPORTED_BY",
+        "source_cff6724562df073470835280feea54fd"
+      ]
+    }
+  ],
+  "mathematical_controls": {
+    "fresh_one_source": {
+      "score": 0.86526,
+      "inputs": {
+        "freshness": 1.0,
+        "quality": 0.9,
+        "support": 0.3333333333333333,
+        "agreement": 1.0
+      },
+      "memberships": {
+        "freshness": {
+          "low": 0.0,
+          "medium": 0.0,
+          "high": 1.0
+        },
+        "quality": {
+          "low": 0.0,
+          "medium": 0.19999999999999996,
+          "high": 0.8
+        },
+        "support": {
+          "low": 0.33333333333333337,
+          "medium": 0.6666666666666666,
+          "high": 0.0
+        },
+        "agreement": {
+          "low": 0.0,
+          "medium": 0.0,
+          "high": 1.0
+        }
+      },
+      "fired_rules": [
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "medium",
+            "support": "low",
+            "agreement": "high"
+          },
+          "firing_strength": 0.06666666666666667,
+          "output": 0.685
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "medium",
+            "support": "medium",
+            "agreement": "high"
+          },
+          "firing_strength": 0.1333333333333333,
+          "output": 0.7525000000000001
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "high",
+            "support": "low",
+            "agreement": "high"
+          },
+          "firing_strength": 0.2666666666666667,
+          "output": 0.865
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "high",
+            "support": "medium",
+            "agreement": "high"
+          },
+          "firing_strength": 0.5333333333333333,
+          "output": 0.9325
+        }
+      ],
+      "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+      "calibrated_probability": false
+    },
+    "three_independent_sources": {
+      "score": 0.95436,
+      "inputs": {
+        "freshness": 1.0,
+        "quality": 0.9,
+        "support": 1.0,
+        "agreement": 1.0
+      },
+      "memberships": {
+        "freshness": {
+          "low": 0.0,
+          "medium": 0.0,
+          "high": 1.0
+        },
+        "quality": {
+          "low": 0.0,
+          "medium": 0.19999999999999996,
+          "high": 0.8
+        },
+        "support": {
+          "low": 0.0,
+          "medium": 0.0,
+          "high": 1.0
+        },
+        "agreement": {
+          "low": 0.0,
+          "medium": 0.0,
+          "high": 1.0
+        }
+      },
+      "fired_rules": [
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "medium",
+            "support": "high",
+            "agreement": "high"
+          },
+          "firing_strength": 0.19999999999999996,
+          "output": 0.8200000000000001
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "high",
+            "support": "high",
+            "agreement": "high"
+          },
+          "firing_strength": 0.8,
+          "output": 1.0
+        }
+      ],
+      "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+      "calibrated_probability": false
+    },
+    "conflicting_source": {
+      "score": 0.798435,
+      "inputs": {
+        "freshness": 1.0,
+        "quality": 0.9,
+        "support": 0.3333333333333333,
+        "agreement": 0.5
+      },
+      "memberships": {
+        "freshness": {
+          "low": 0.0,
+          "medium": 0.0,
+          "high": 1.0
+        },
+        "quality": {
+          "low": 0.0,
+          "medium": 0.19999999999999996,
+          "high": 0.8
+        },
+        "support": {
+          "low": 0.33333333333333337,
+          "medium": 0.6666666666666666,
+          "high": 0.0
+        },
+        "agreement": {
+          "low": 0.0,
+          "medium": 1.0,
+          "high": 0.0
+        }
+      },
+      "fired_rules": [
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "medium",
+            "support": "low",
+            "agreement": "medium"
+          },
+          "firing_strength": 0.06666666666666667,
+          "output": 0.6175
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "medium",
+            "support": "medium",
+            "agreement": "medium"
+          },
+          "firing_strength": 0.1333333333333333,
+          "output": 0.685
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "high",
+            "support": "low",
+            "agreement": "medium"
+          },
+          "firing_strength": 0.2666666666666667,
+          "output": 0.7975
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "high",
+            "support": "medium",
+            "agreement": "medium"
+          },
+          "firing_strength": 0.5333333333333333,
+          "output": 0.865
+        }
+      ],
+      "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+      "calibrated_probability": false
+    },
+    "older_90_days": {
+      "score": 0.36580500000000005,
+      "inputs": {
+        "freshness": 0.5,
+        "quality": 0.9,
+        "support": 0.3333333333333333,
+        "agreement": 1.0
+      },
+      "memberships": {
+        "freshness": {
+          "low": 0.0,
+          "medium": 1.0,
+          "high": 0.0
+        },
+        "quality": {
+          "low": 0.0,
+          "medium": 0.19999999999999996,
+          "high": 0.8
+        },
+        "support": {
+          "low": 0.33333333333333337,
+          "medium": 0.6666666666666666,
+          "high": 0.0
+        },
+        "agreement": {
+          "low": 0.0,
+          "medium": 0.0,
+          "high": 1.0
+        }
+      },
+      "fired_rules": [
+        {
+          "conditions": {
+            "freshness": "medium",
+            "quality": "medium",
+            "support": "low",
+            "agreement": "high"
+          },
+          "firing_strength": 0.06666666666666667,
+          "output": 0.55
+        },
+        {
+          "conditions": {
+            "freshness": "medium",
+            "quality": "medium",
+            "support": "medium",
+            "agreement": "high"
+          },
+          "firing_strength": 0.1333333333333333,
+          "output": 0.6175
+        },
+        {
+          "conditions": {
+            "freshness": "medium",
+            "quality": "high",
+            "support": "low",
+            "agreement": "high"
+          },
+          "firing_strength": 0.2666666666666667,
+          "output": 0.7300000000000001
+        },
+        {
+          "conditions": {
+            "freshness": "medium",
+            "quality": "high",
+            "support": "medium",
+            "agreement": "high"
+          },
+          "firing_strength": 0.5333333333333333,
+          "output": 0.7975000000000001
+        }
+      ],
+      "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+      "calibrated_probability": false
+    },
+    "lower_quality": {
+      "score": 0.68706,
+      "inputs": {
+        "freshness": 1.0,
+        "quality": 0.4,
+        "support": 0.3333333333333333,
+        "agreement": 1.0
+      },
+      "memberships": {
+        "freshness": {
+          "low": 0.0,
+          "medium": 0.0,
+          "high": 1.0
+        },
+        "quality": {
+          "low": 0.19999999999999996,
+          "medium": 0.8,
+          "high": 0.0
+        },
+        "support": {
+          "low": 0.33333333333333337,
+          "medium": 0.6666666666666666,
+          "high": 0.0
+        },
+        "agreement": {
+          "low": 0.0,
+          "medium": 0.0,
+          "high": 1.0
+        }
+      },
+      "fired_rules": [
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "low",
+            "support": "low",
+            "agreement": "high"
+          },
+          "firing_strength": 0.06666666666666667,
+          "output": 0.505
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "low",
+            "support": "medium",
+            "agreement": "high"
+          },
+          "firing_strength": 0.1333333333333333,
+          "output": 0.5725
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "medium",
+            "support": "low",
+            "agreement": "high"
+          },
+          "firing_strength": 0.2666666666666667,
+          "output": 0.685
+        },
+        {
+          "conditions": {
+            "freshness": "high",
+            "quality": "medium",
+            "support": "medium",
+            "agreement": "high"
+          },
+          "firing_strength": 0.5333333333333333,
+          "output": 0.7525000000000001
+        }
+      ],
+      "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+      "calibrated_probability": false
+    }
+  }
+}

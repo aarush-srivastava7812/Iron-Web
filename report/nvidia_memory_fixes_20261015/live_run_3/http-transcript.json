@@ -1,0 +1,5213 @@
+[
+  {
+    "path": "/v1/events",
+    "actor": "user",
+    "request": {
+      "event_id": "usual-preferences",
+      "text": "Usually I prefer vegetarian food, an active pace, an aisle seat, and interests in hiking, boat rides and local food.",
+      "subject": "Riya",
+      "scope": {},
+      "confirmed": true
+    },
+    "http_status": 202,
+    "response": {
+      "id": "usual-preferences",
+      "status": "queued",
+      "submitted": 1792083440.3048108,
+      "started": null,
+      "ready": null,
+      "attempts": 0,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 56.73100000421982
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 18.040299997664988
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.284200003487058
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.8276999946683645
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 14.718999998876825
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.132400001049973
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 18.636199994944036
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 13.467400000081398
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.766299992799759
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.440500000375323
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.6442000089446083
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.37660001241602
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 13.179400004446507
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.5027999994345
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.0634000102290884
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.1634000004269183
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.313199991476722
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 25.164499995298684
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.083300001686439
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.3923999979160726
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.290999997057952
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 22.16710000357125
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 27.339499996742234
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.2744000054663047
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 20.943900002748705
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 12.08549999864772
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.788599992869422
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 28.33400000235997
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.547000001301058
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.665699998033233
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.992300011101179
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.2421999892685562
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 20.846800005529076
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 24.667400008183904
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 29.32229998987168
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.27980000397656
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.467700008652173
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.30640000279527
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.8738999972119927
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 17.566399998031557
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 25.962400002754293
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.6751000006916
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 21.978800010401756
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": "nvidia_evaluation_travel_intake_v4_grounded",
+      "claim_kinds": [
+        "preference"
+      ],
+      "semantic_claim_count": 4
+    },
+    "elapsed_ms": 4.912900010822341
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": "nvidia_evaluation_travel_intake_v4_grounded",
+      "claim_kinds": [
+        "preference"
+      ],
+      "semantic_claim_count": 4
+    },
+    "elapsed_ms": 5.136900013894774
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": "nvidia_evaluation_travel_intake_v4_grounded",
+      "claim_kinds": [
+        "preference"
+      ],
+      "semantic_claim_count": 4
+    },
+    "elapsed_ms": 20.937499997671694
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": "nvidia_evaluation_travel_intake_v4_grounded",
+      "claim_kinds": [
+        "preference"
+      ],
+      "semantic_claim_count": 4
+    },
+    "elapsed_ms": 2.8086000093026087
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": "nvidia_evaluation_travel_intake_v4_grounded",
+      "claim_kinds": [
+        "preference"
+      ],
+      "semantic_claim_count": 4
+    },
+    "elapsed_ms": 3.1887999939499423
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "interpreting",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": "nvidia_evaluation_travel_intake_v4_grounded",
+      "claim_kinds": [
+        "preference"
+      ],
+      "semantic_claim_count": 4
+    },
+    "elapsed_ms": 2.4498999991919845
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "usual-preferences"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "usual-preferences",
+      "status": "ready",
+      "submitted": 1792083440.3048108,
+      "started": 1792083440.316437,
+      "ready": 1792083443.32479,
+      "attempts": 1,
+      "memory_id": "evt_4fe56ce2499b3cbe8a7d18d95ad77bfc",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": "nvidia_evaluation_travel_intake_v4_grounded",
+      "claim_kinds": [
+        "preference"
+      ],
+      "semantic_claim_count": 4
+    },
+    "elapsed_ms": 19.62880000064615
+  },
+  {
+    "path": "/v1/events",
+    "actor": "user",
+    "request": {
+      "event_id": "goa-intake",
+      "text": "Plan Goa from 2026-12-10 to 2026-12-14 for two adults, departing Delhi. My total budget is INR 90000. Vegetarian food and morning flights are required. A step-free hotel is mandatory. Maximum walking is 500 metres. No boats. At most one activity per day. For this trip I want a relaxed pace, calm beaches and local food. Prefer a comfortable resort when the budget permits.",
+      "subject": "Riya",
+      "scope": {
+        "trip_id": "goa-family"
+      },
+      "confirmed": true
+    },
+    "http_status": 202,
+    "response": {
+      "id": "goa-intake",
+      "status": "queued",
+      "submitted": 1792083443.3635623,
+      "started": null,
+      "ready": null,
+      "attempts": 0,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 4.602400003932416
+  },
+  {
+    "path": "/v1/context",
+    "actor": "planner",
+    "request": {
+      "subject": "Riya",
+      "scope": {
+        "trip_id": "goa-family"
+      },
+      "task_type": "itinerary",
+      "session_id": "call-1",
+      "query": "Prepare a compliant relaxed Goa family trip."
+    },
+    "http_status": 409,
+    "response": {
+      "status": "pending_memory",
+      "error": "New memory is not ready; resolve pending or failed events before acting.",
+      "receipts": [
+        {
+          "id": "goa-intake",
+          "status": "interpreting",
+          "submitted": 1792083443.3635623,
+          "started": 1792083443.366303,
+          "ready": null,
+          "attempts": 1,
+          "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+          "error": null,
+          "blocks_work": 1,
+          "interpretation": null,
+          "claim_kinds": [],
+          "semantic_claim_count": 0
+        }
+      ]
+    },
+    "elapsed_ms": 8.027699994272552
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.0094000065000728
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.313299997127615
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.456499996129423
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 12.502099998528138
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.0205000075511634
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 20.162100001471117
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.902200008975342
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 20.060499999090098
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.965399995446205
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.601400003186427
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.861900007701479
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.5055000005522743
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.282299992861226
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.886800008127466
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.965399995446205
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.0735000036656857
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.6769000105559826
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.170199998887256
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.29270000034012
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.05240000411868
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.007799999206327
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.300400000764057
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.1017000001156703
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.2223000016529113
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.87829999194946
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.020400006789714
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 18.31879999372177
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.108300006715581
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.246499996748753
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.818299995851703
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.5391999990679324
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 12.900500005343929
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.0006000015418977
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 17.57280000310857
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.22319999395404
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 18.226300002424978
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 25.225199991837144
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.17279999924358
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.047300004051067
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.788500001770444
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 1.9496000022627413
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.0069000020157546
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.337400001124479
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 20.05069999722764
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.1782999974675477
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.389100001892075
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.1855000086361542
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 22.248199995374307
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.4979000008897856
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 22.312599990982562
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 25.272400001995265
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.3095000069588423
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 20.87300000130199
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.413399997749366
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 19.243300004745834
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.702799994382076
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.5065999943763018
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 1.9457000016700476
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.543900001910515
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.332599993678741
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.3526999866589904
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 24.229500006185845
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 27.06949999264907
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.1037999977124855
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.082600000197999
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.305799993337132
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.4034999989671633
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 13.473799990606494
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.129199987393804
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.4492000084137544
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 13.143200005288236
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 27.05920000153128
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.38209999713581
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.8387999918777496
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.0669999978272244
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.836400002706796
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.554899998358451
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.2936999885132536
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.6188000047113746
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 13.915399991674349
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.1715000038966537
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 21.193399996263906
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 25.234200002159923
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.4458999978378415
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 18.18220000131987
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.0386000105645508
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 21.343400003388524
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 1.8889999919338152
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 19.852999990689568
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 25.85449999605771
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.192499994067475
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.035099998465739
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.3230999941006303
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.4803999986033887
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.0377000037115067
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.0942999981343746
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 1.8352000042796135
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 18.47029999771621
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 12.299499998334795
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.0538999960990623
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.0832000009249896
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 14.163600004394539
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.777000001515262
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 20.78110000002198
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.108599990606308
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.0290000102249905
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 1.9840000022668391
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.1283999958541244
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.66689999261871
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.5701000122353435
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.326000001630746
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.172900000005029
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.7714999887393788
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 1.937199995154515
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.2261999984038994
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.118100004736334
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.3930999886943027
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.150100001017563
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.1877999970456585
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.438600000459701
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 14.093899997533299
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.405400009592995
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 18.824700004188344
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.71059999067802
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 5.183600005693734
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.998900003149174
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 16.887800011318177
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 25.235100009012967
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 24.994599996716715
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.375900003244169
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 21.04910000343807
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 1.9229000026825815
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 19.90549999754876
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.70720001333393
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.6843999949051067
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.042199998162687
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.439899995806627
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 3.5844999947585166
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.712499990593642
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 18.619599999510683
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 27.05479999713134
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 25.764299993170425
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.475500004948117
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 20.125300012296066
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.0125000010011718
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 18.960899993544444
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.8061000048182905
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.17720000364352
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.5774999958230183
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 20.437600003788248
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.6799000042956322
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.358600002480671
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.638899997691624
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.0539999968605116
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.0125000010011718
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 21.40329999383539
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 1.9816999993054196
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 21.6906999994535
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.0592999935615808
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.8517000027932227
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 25.795000008656643
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.30089999968186
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 22.17140000720974
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.5774999958230183
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.2308000043267384
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.1019999985583127
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 21.282700006850064
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 26.96740000101272
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.315500008990057
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 22.256199998082593
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.935800002887845
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "interpreting",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": null,
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.534900006139651
+  },
+  {
+    "path": "/v1/events/status",
+    "actor": "user",
+    "request": {
+      "eid": "goa-intake"
+    },
+    "http_status": 200,
+    "response": {
+      "id": "goa-intake",
+      "status": "failed",
+      "submitted": 1792083443.3635623,
+      "started": 1792083443.366303,
+      "ready": null,
+      "attempts": 1,
+      "memory_id": "evt_fdef05a519fbda478dd1210168f0eb62",
+      "error": "Per-unit money needs review; a quote cannot omit its qualifier.",
+      "blocks_work": 1,
+      "interpretation": null,
+      "claim_kinds": [],
+      "semantic_claim_count": 0
+    },
+    "elapsed_ms": 2.3576000094180927
+  }
+]
