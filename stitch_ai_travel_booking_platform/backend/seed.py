@@ -1,6 +1,8 @@
 """Synthetic demo data. Run: python seed.py (idempotent)."""
+import datetime as dt
+
 from app.db import SessionLocal, create_schema
-from app.models import Destination, FoodPlace, Guide, Stay, TransportRoute
+from app.models import Destination, FoodPlace, Guide, Offer, Stay, TransportRoute
 
 DESTS = [
     ("goa", "Goa", "Goa", "Salt air, later mornings and old Portuguese lanes. Find a quiet cove, a family-run kitchen or a village that still moves at its own pace.", ["beach", "nightlife", "slow travel"], "Nov-Feb", 15.30, 74.12, 28000, "Tropical coast"),
@@ -57,7 +59,22 @@ def run():
                     TransportRoute(origin_id=first_origin.id, destination_id=d.id, mode="bus", operator="Local Routes (sample)", duration_min=540 + i * 65, price_inr=850 + i * 95, seats_available=32),
                 ])
         db.commit()
-        print(f"seeded {len(ds)} destinations")
+
+        OFFERS = [
+            ("SLOWTRAVEL15", "15% off slow-travel stays", "Take it easy: 15% off any homestay or resort request.", 15.0, None, "stays", None, dt.date(2026, 12, 31)),
+            ("FIRSTBITE", "₹250 off your first food stop", "Flat ₹250 off food requests above ₹1,000.", None, 250, "food", 1000, dt.date(2026, 12, 31)),
+            ("SCENICROUTE", "10% off any transport route", "Trains, buses or flights — 10% off your seats.", 10.0, None, "transport", None, dt.date(2026, 12, 31)),
+            ("LOCALGUIDE500", "₹500 off a local guide day", "Flat ₹500 off guide days above ₹1,500.", None, 500, "guide", 1500, dt.date(2026, 12, 31)),
+            ("WANDER10", "10% off any trip request", "Applies to any combination of trip items.", 10.0, None, "any", 5000, dt.date(2026, 12, 31)),
+        ]
+        existing_codes = {offer.code for offer in db.query(Offer).all()}
+        for code, title, description, percent, flat, module, min_amount, valid_till in OFFERS:
+            if code not in existing_codes:
+                db.add(Offer(code=code, title=title, description=description, discount_percent=percent,
+                             discount_flat_inr=flat, module=module, min_amount_inr=min_amount,
+                             valid_till=valid_till, active=True))
+        db.commit()
+        print(f"seeded {len(ds)} destinations, {len(OFFERS)} offers")
 
 
 if __name__ == "__main__":

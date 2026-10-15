@@ -1,0 +1,11 @@
+1  | s1   | Aarav  | home        | needs_clarification | trip consultant                 | yes | -   | -                        | 0   |  10565
+2  | s2   | Aarav  | explore     | ok                  | explore, trip consultant        | no  | -   | -                        | 2   |   4861
+3  | s3   | Diya   | stays       | ok                  | budget booking, stay, trip cons | no  | -   | ₹5,973 (estimate)        | 2   |   5845
+4  | s4   | Diya   | food_guide  | ok                  | food guide, trip consultant     | no  | -   | -                        | 2   |  23572
+5  | s5   | Kabir  | tour_guide  | ok                  | tour guide, trip consultant     | no  | -   | -                        | 1   |   9298
+6  | s6   | Kabir  | plan        | ok                  | budget booking, explore, food g | no  | 4   | ₹14,905 (estimate)       | 2   |  11936
+7  | s7   | Meera  | plan        | ok                  | budget booking, explore, food g | no  | 3   | ₹12,540 (estimate)       | 1   |  11581
+8  | s8   | Meera  | support     | ok                  | travel support, trip consultant | no  | -   | -                        | 1   |  11327
+9  | s9   | Rohan  | support     | ok                  | travel support, trip consultant | no  | -   | -                        | 1   |   4691
+10 | s10  | Sana   | explore     | ok                  | explore, trip consultant        | no  | -   | -                        | 1   |   5176
+M  | s1+2 | Aarav  | memory      | ok                  | memory_gateway                  | -   | -   | -                        | -   |    138

@@ -1,0 +1,30 @@
+AGENT 05 — FOOD GUIDE AGENT
+===========================
+
+PURPOSE
+Discovers local cuisine and suitable restaurants near accommodation or planned activities.
+
+BEHAVIOUR
+Consider cuisine, budget, distance, meal time, opening hours, and explicitly stated dietary
+requirements. Suggest local dishes when useful. Verify current details where possible.
+Distinguish recommendations from confirmed table availability. Never assume dietary or
+religious preferences; honor user corrections.
+
+LANGGRAPH
+derive_constraints -> retrieve_restaurants -> filter_location_hours ->
+rank_options -> return_recommendations. Reservations are separate provider-backed actions.
+
+MEMORY
+Retrieve cuisine preferences, explicit dietary restrictions, price range, liked/disliked
+experiences, and relevant location context. Propose writes for explicit new preferences or
+feedback, not temporary searches.
+
+TOOLS
+Restaurant/place search, maps, current hours/menu sources, reservation provider, Memory Gateway.
+
+OUTPUT
+Restaurant/experience, cuisine, approximate price, location/distance, source, hours caveat,
+supported dietary suitability, reservation status.
+
+TESTS
+Applies explicit constraints; does not claim open/table-available without current evidence.

@@ -160,8 +160,10 @@ def test_memory_bridge_fetches_external_preferences(monkeypatch):
 def test_booking_and_cancel():
     h = auth()
     body = {"items": [
-        {"item_type": "stay", "item_id": 1, "start_date": "2026-12-01", "end_date": "2026-12-04"},
-        {"item_type": "transport", "item_id": 1, "quantity": 2},
+        {"item_type": "stay", "item_id": 1, "start_date": "2026-12-01", "end_date": "2026-12-04",
+         "start_time": "15:00", "duration_min": 180},
+        {"item_type": "transport", "item_id": 1, "quantity": 2, "start_date": "2026-12-01",
+         "start_time": "08:00", "duration_min": 60},
     ]}
     r = c.post("/api/bookings", json=body, headers=h)
     assert r.status_code == 201
@@ -169,11 +171,19 @@ def test_booking_and_cancel():
     route = c.get("/api/transport/1").json()
     assert r.json()["total_inr"] == stay * 3 + route["price_inr"] * 2
     assert c.get("/api/transport/1").json()["seats_available"] == route["seats_available"]
+    assert r.json()["items"][0]["start_time"] == "15:00:00"
+    assert r.json()["items"][0]["duration_min"] == 180
+    assert r.json()["items"][1]["start_time"] == "08:00:00"
+    assert r.json()["items"][1]["duration_min"] == 60
     bid = r.json()["id"]
     assert r.json()["status"] == "requested"
     assert c.post(f"/api/bookings/{bid}/cancel", headers=h).json()["status"] == "cancelled"
     assert c.get("/api/transport/1").json()["seats_available"] == route["seats_available"] + 2
     assert c.post("/api/bookings", json={"items": [{"item_type": "stay", "item_id": 1}]}, headers=h).status_code == 422
+    legacy_food = c.post("/api/bookings", json={"items": [{"item_type": "food", "item_id": 1}]}, headers=h)
+    assert legacy_food.status_code == 201
+    assert legacy_food.json()["items"][0]["start_time"] is None
+    assert legacy_food.json()["items"][0]["duration_min"] is None
 
 
 def test_profile_memory_and_recommendation_preferences():
@@ -229,10 +239,14 @@ def test_itineraries_and_assistant_data_are_user_scoped():
         json={"content": "I like scenic train journeys."},
     )
     assert saved.status_code == 200
-    assert saved.json()["connection_status"] == "not_configured"
-    assert c.get(
+    assert saved.json()["connection_status"] == "local_rules_based"
+    assert saved.json()["reply"]["role"] == "assistant"
+    assert "catalog" in saved.json()["reply"]["content"].lower()
+    conversation_messages = c.get(
         f"/api/assistant/conversations/{conversation['id']}", headers=owner_headers
-    ).json()["messages"][0]["content"] == "I like scenic train journeys."
+    ).json()["messages"]
+    assert conversation_messages[0]["content"] == "I like scenic train journeys."
+    assert any(m["role"] == "assistant" for m in conversation_messages)
     assert c.get(
         f"/api/assistant/conversations/{conversation['id']}", headers=stranger_headers
     ).status_code == 404
@@ -243,3 +257,63 @@ def test_itineraries_and_assistant_data_are_user_scoped():
     })
     assert snapshot.status_code == 201
     assert c.get("/api/assistant/memory", headers=stranger_headers).json() == []
+
+
+def test_offers_and_coupon_booking():
+    offers = c.get("/api/offers")
+    assert offers.status_code == 200 and offers.json()
+    any_offer = next(o for o in offers.json() if o["module"] == "any")
+    h = auth()
+    validation = c.post("/api/offers/validate", json={"code": any_offer["code"], "subtotal_inr": 20000})
+    assert validation.status_code == 200 and validation.json()["valid"]
+    assert validation.json()["discount_inr"] > 0
+    invalid = c.post("/api/offers/validate", json={"code": "NOSUCHCODE", "subtotal_inr": 20000}).json()
+    assert not invalid["valid"]
+
+    body = {"items": [
+        {"item_type": "stay", "item_id": 1, "start_date": "2026-12-01", "end_date": "2026-12-03",
+         "start_time": "15:00", "duration_min": 120},
+    ]}
+    plain = c.post("/api/bookings", json=body, headers=h).json()
+    stay_price = c.get("/api/stays/1").json()["price_inr"]
+    assert plain["total_inr"] == stay_price * 2
+    coupon_body = dict(body, coupon_code="SLOWTRAVEL15")
+    couponed = c.post("/api/bookings", json=coupon_body, headers=h).json()
+    assert couponed["total_inr"] == round(stay_price * 2 * 0.85)
+    wrong_module = c.post("/api/bookings", json=dict(body, coupon_code="FIRSTBITE"), headers=h)
+    assert wrong_module.status_code == 422
+
+
+def test_booking_server_side_conflict_rejection():
+    h = auth()
+    body = {"items": [
+        {"item_type": "transport", "item_id": 1, "quantity": 1, "start_date": "2027-01-05",
+         "start_time": "10:00", "duration_min": 120},
+        {"item_type": "food", "item_id": 1, "quantity": 2, "start_date": "2027-01-05",
+         "start_time": "11:00", "duration_min": 60},
+    ]}
+    assert c.post("/api/bookings", json=body, headers=h).status_code == 422
+
+
+def test_favorites_flow():
+    h = auth()
+    assert c.get("/api/favorites", headers=h).json() == []
+    added = c.post("/api/favorites", headers=h, json={"item_type": "stay", "item_id": 1})
+    assert added.status_code == 201
+    duplicate = c.post("/api/favorites", headers=h, json={"item_type": "stay", "item_id": 1})
+    assert duplicate.status_code == 201
+    assert len(c.get("/api/favorites", headers=h).json()) == 1
+    bad = c.post("/api/favorites", headers=h, json={"item_type": "destination", "item_id": 1})
+    assert bad.status_code == 422
+    assert c.delete("/api/favorites/stay/1", headers=h).status_code == 204
+    assert c.get("/api/favorites", headers=h).json() == []
+
+
+def test_lead_capture():
+    ok = c.post("/api/leads", json={"name": "Vansh", "phone": "+91 98765 43210",
+                                    "interest": "Goa in December", "preferred_time": "evening"})
+    assert ok.status_code == 201 and ok.json()["name"] == "Vansh"
+    bad_phone = c.post("/api/leads", json={"name": "X Y", "phone": "abc"})
+    assert bad_phone.status_code == 422
+    short_name = c.post("/api/leads", json={"name": "A", "phone": "9876543210"})
+    assert short_name.status_code == 422

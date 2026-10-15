@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 export type User = {
   id: string;
   email: string;
@@ -49,6 +51,23 @@ export type Profile = {
   favorite_destinations: string[];
 };
 
+export type Offer = {
+  id: number;
+  code: string;
+  title: string;
+  description?: string | null;
+  discount_percent?: number | null;
+  discount_flat_inr?: number | null;
+  module: "stays" | "food" | "transport" | "guides" | "any";
+  min_amount_inr?: number | null;
+  valid_till?: string | null;
+  active: boolean;
+};
+
+export type Favorite = { item_type: Exclude<CatalogKind, "destinations">; item_id: number };
+
+export type Lead = { id: number; name: string; phone: string };
+
 const API_BASE = import.meta.env.VITE_API_BASE_URL ?? "";
 const TOKEN_KEY = "voyara_access_token";
 
@@ -70,6 +89,15 @@ export async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
   if (!response.ok) {
     const payload = await response.json().catch(() => null);
     const detail = typeof payload?.detail === "string" ? payload.detail : `Request failed (${response.status})`;
+    // An expired session should sign the user out globally instead of surfacing
+    // "Request failed (401)" on every page.
+    if (response.status === 401 && getToken()) {
+      setToken(null);
+      window.dispatchEvent(new Event("voyara:unauthorized"));
+      if (!window.location.pathname.startsWith("/login")) {
+        window.location.assign(`/login?redirect=${encodeURIComponent(window.location.pathname + window.location.search)}`);
+      }
+    }
     throw new Error(detail);
   }
   if (response.status === 204) return undefined as T;
@@ -79,6 +107,15 @@ export async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
 export async function catalog(kind: CatalogKind, params: Record<string, string> = {}) {
   const query = new URLSearchParams(Object.entries(params).filter(([, value]) => value !== ""));
   return api<CatalogItem[]>(`/${kind}${query.size ? `?${query}` : ""}`);
+}
+
+export function useDebouncedValue<T>(value: T, delay = 300): T {
+  const [debounced, setDebounced] = useState(value);
+  useEffect(() => {
+    const timer = window.setTimeout(() => setDebounced(value), delay);
+    return () => window.clearTimeout(timer);
+  }, [value, delay]);
+  return debounced;
 }
 
 export function imageFor(item: CatalogItem, destinations: CatalogItem[], imageCatalog: ImageCatalog, kind?: CatalogKind) {

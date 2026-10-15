@@ -44,10 +44,13 @@ class BookingItemIn(BaseModel):
     quantity: int = Field(default=1, ge=1, le=20)
     start_date: dt.date | None = None
     end_date: dt.date | None = None
+    start_time: dt.time | None = None
+    duration_min: int | None = Field(default=None, ge=1, le=1440)
 
 
 class BookingIn(BaseModel):
     items: list[BookingItemIn] = Field(min_length=1, max_length=20)
+    coupon_code: str | None = Field(default=None, max_length=40)
 
 
 class BookingItemOut(BaseModel):
@@ -58,6 +61,8 @@ class BookingItemOut(BaseModel):
     unit_price_inr: int
     start_date: dt.date | None
     end_date: dt.date | None
+    start_time: dt.time | None
+    duration_min: int | None
 
 
 class BookingOut(BaseModel):
@@ -112,3 +117,59 @@ class MemoryIn(BaseModel):
     category: str = Field(min_length=1, max_length=60)
     value: dict
     source_conversation_id: str | None = None
+
+
+class OfferOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: int
+    code: str
+    title: str
+    description: str | None
+    discount_percent: float | None
+    discount_flat_inr: int | None
+    module: str
+    min_amount_inr: int | None
+    valid_till: dt.date | None
+    active: bool
+
+
+class OfferValidateIn(BaseModel):
+    code: str = Field(min_length=1, max_length=40)
+    subtotal_inr: int = Field(ge=0)
+
+
+class OfferValidateOut(BaseModel):
+    code: str
+    valid: bool
+    discount_inr: int = 0
+    message: str
+
+
+class FavoriteIn(BaseModel):
+    item_type: Literal["stay", "food", "transport", "guide"]
+    item_id: int = Field(ge=1)
+
+
+class FavoriteOut(BaseModel):
+    item_type: str
+    item_id: int
+    created_at: dt.datetime
+
+
+class LeadIn(BaseModel):
+    name: str = Field(min_length=2, max_length=120)
+    phone: str = Field(min_length=7, max_length=20, pattern=r"^[0-9+\-\s()]+$")
+    email: EmailStr | None = None
+    interest: str | None = Field(default=None, max_length=120)
+    preferred_time: str | None = Field(default=None, max_length=80)
+
+
+class LeadOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: int
+    name: str
+    phone: str
+    email: str | None
+    interest: str | None
+    preferred_time: str | None
+    created_at: dt.datetime

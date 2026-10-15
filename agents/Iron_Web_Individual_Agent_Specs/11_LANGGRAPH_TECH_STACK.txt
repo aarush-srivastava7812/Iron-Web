@@ -1,0 +1,54 @@
+LANGGRAPH AND SUPPORTING TECHNOLOGIES
+=====================================
+
+LANGGRAPH ROLE
+LangGraph manages workflow state, transitions, conditional routing, parallel branches,
+bounded loops, and resumable execution with a checkpointer. It coordinates agents; it is
+not the long-term memory database.
+
+SUGGESTED PARENT GRAPH
+START -> parse_request -> retrieve_memory_context -> trip_consultant/clarify_if_needed
+-> plan_tasks -> required specialist tasks (parallel where possible)
+-> collect_results -> itinerary_planner if needed -> validate_results
+-> bounded revise_or_continue -> synthesize_response
+-> propose_memory_writes -> persist_approved_writes -> END
+
+A simple food question may need only the Orchestrator, Food Guide, a place-search tool, and
+the Memory Gateway. Not every request needs every agent.
+
+POSSIBLE TECHNOLOGY ROLES
+- LangGraph: orchestration and workflow state transitions.
+- LangChain abstractions: optional model/tool wrappers; not mandatory.
+- Pydantic or typed dictionaries: structured inputs, outputs, and validation.
+- Existing Iron Web MemoryEngine: durable memory API.
+- Qdrant: vector retrieval as implemented by Iron Web.
+- FalkorDB: relationship graph as implemented by Iron Web.
+- Existing Python server or FastAPI: application API, based on current project needs.
+- Provider APIs: maps, hotels, restaurants, transport, weather, booking.
+- Cache: optional transient data cache with expiry/invalidation.
+- LangGraph checkpointer/session store: resumable execution state.
+- OpenTelemetry or equivalent: tracing and observability.
+- pytest/evaluation scripts: automated testing.
+
+Do not add every library by default. Verify compatibility with the existing repository and
+select only what the implementation actually needs.
+
+STATE
+Potential fields: request_id, user_id, session_id, page, request, trip_brief,
+memory_context_ref, tasks, agent_results, source_refs, itinerary, validation_issues,
+write_proposals, response, errors, status.
+Keep state bounded; use references for large payloads and avoid full-history duplication.
+
+AGENT CONTRACTS
+Each agent needs a role, allowed tools, typed input/output, memory policy, evidence policy,
+timeout/retry policy, and tests. A deterministic function or one structured LLM call may be
+better than a fully autonomous agent for simple tasks.
+
+OBSERVABILITY
+Track request/task IDs, node names, latency, tool outcomes, retries, and error categories.
+Redact secrets and avoid logging full private memories by default.
+
+TESTS
+Unit tests per agent; contract tests for Memory Gateway/actual MemoryEngine; integration
+tests for routing and checkpoint recovery; end-to-end travel scenarios; memory relevance
+evaluations; concurrency/model resource tests.

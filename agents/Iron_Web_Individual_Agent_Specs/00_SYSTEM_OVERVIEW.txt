@@ -1,0 +1,96 @@
+IRON WEB TRAVEL MULTI-AGENT SYSTEM — OVERVIEW
+================================================
+
+AGENT SET
+1. Travel Orchestrator
+2. Trip Consultant
+3. Stay Agent
+4. Tour Guide Agent
+5. Food Guide Agent
+6. Explore Agent
+7. Itinerary Planner
+8. Budget & Booking Agent
+9. Travel Support Agent
+
+SHARED COMPONENTS
+- LangGraph: workflow state, conditional routing, parallel branches, bounded retries,
+  and resumable execution.
+- Iron Web: durable long-term memory using the existing MemoryEngine.
+- Memory Gateway: controlled adapter between agents and Iron Web.
+- Travel tools: maps, destination search, accommodation, restaurants, transport, weather,
+  and booking providers.
+- Session/checkpoint store: active tasks, progress, retries, and workflow state.
+- Resource manager: model loading, concurrency, RAM/VRAM budgets, and inference scheduling.
+- Validation functions: budget arithmetic, schedule conflicts, source freshness, and
+  booking-status checks.
+
+CORE PRINCIPLE
+Iron Web is the long-term memory layer. LangGraph coordinates workflows. A LangGraph
+checkpointer is not a replacement for long-term personal memory. Keep durable facts in
+Iron Web and transient execution state in workflow/session state.
+
+HIGH-LEVEL FLOW
+Travel UI -> Orchestrator/LangGraph -> Memory Gateway -> Iron Web
+                                  -> specialist agents -> travel tools
+                                  -> validation -> response
+                                  -> selected memory-write proposals
+
+LANGGRAPH WORKFLOW
+A parent StateGraph can contain:
+parse_request -> retrieve_context -> classify_intent -> clarify_if_needed
+-> plan_tasks -> execute_required_agents -> validate_results
+-> synthesize_response -> propose_memory_updates -> persist_approved_updates -> END
+
+Use conditional edges to select relevant agents. Parallelize independent research, such as
+hotel, food, and attraction searches. The itinerary planner waits for sufficient results.
+Use bounded revision loops so failed validation cannot loop forever.
+
+Do not deploy every role as a separate autonomous system by default. Begin with one parent
+graph and reusable nodes/subgraphs. A role can initially be a function/tool wrapper or a
+structured LLM call; make it a subgraph only if it needs its own planning loop, tools,
+state, or retry policy.
+
+PROPOSED SHARED STATE
+request_id, user_id, session_id, current_page, user_request, trip_constraints,
+relevant_memories, tasks_to_run, agent_results, evidence_sources, draft_itinerary,
+validation_issues, memory_write_proposals, final_response, errors/status.
+
+Keep state typed and small. Store references to large payloads rather than duplicating raw
+API responses or full conversation histories in every node.
+
+MEMORY GATEWAY
+- Verify user/tenant access before retrieval.
+- Query the actual MemoryEngine API using task-specific context and temporal options.
+- Return a small, relevant context with provenance/validity information where available.
+- Accept write proposals with source, owner, importance/confidence, and timestamps.
+- Reject unsupported assumptions and transient noise.
+- Preserve Iron Web's coordinated-write/rollback mechanisms.
+- Do not let agents write directly to Qdrant and FalkorDB independently.
+
+MEMORY PLACEMENT
+- Durable preferences/facts and entity relationships: Iron Web.
+- Current request and draft itinerary: workflow/session state.
+- Pending tasks, retries, and execution progress: LangGraph checkpointer/session store.
+- Cached external data: cache with expiry and invalidation.
+- Model KV cache and VRAM: inference runtime/resource manager.
+
+SECURITY/RELIABILITY
+Enforce user boundaries; treat external results as untrusted data; do not allow memories to
+override policies or tool permissions; never claim a booking without provider confirmation;
+request user confirmation for consequential bookings; keep secrets out of state/logs; use
+timeouts, bounded retries, and idempotency keys.
+
+IMPLEMENTATION ORDER
+1. Inspect actual MemoryEngine methods and schema.
+2. Build/test the Memory Gateway.
+3. Implement the parent LangGraph workflow and Orchestrator.
+4. Add Trip Consultant and Explore first.
+5. Add Stay, Tour Guide, and Food.
+6. Add Itinerary, Budget/Booking, and Support.
+7. Add validation, controlled memory writes, tracing, and evaluation.
+8. Optimize resource scheduling after measuring latency.
+
+EVALUATION
+Measure retrieval relevance, end-to-end/per-agent latency, tool failure rate, budget
+accuracy, schedule conflicts, source freshness, duplicate memory writes, task completion,
+and peak RAM/VRAM/model load time.

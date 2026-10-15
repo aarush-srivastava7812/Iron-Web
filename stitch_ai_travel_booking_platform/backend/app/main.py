@@ -8,7 +8,7 @@ from fastapi.staticfiles import StaticFiles
 
 from .config import settings
 from .db import create_schema
-from .routers import assistant, auth, bookings, catalog, itineraries, profile
+from .routers import assistant, auth, bookings, catalog, favorites, itineraries, leads, offers, profile
 
 
 @asynccontextmanager
@@ -25,6 +25,9 @@ app.include_router(bookings.router, prefix="/api")
 app.include_router(profile.router, prefix="/api")
 app.include_router(itineraries.router, prefix="/api")
 app.include_router(assistant.router, prefix="/api")
+app.include_router(offers.router, prefix="/api")
+app.include_router(favorites.router, prefix="/api")
+app.include_router(leads.router, prefix="/api")
 app.include_router(catalog.router, prefix="/api")  # last: generic /{kind} routes
 frontend_dist = Path(__file__).resolve().parents[2] / "frontend" / "dist"
 if frontend_dist.exists():

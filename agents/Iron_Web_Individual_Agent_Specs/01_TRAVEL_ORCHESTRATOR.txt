@@ -1,0 +1,44 @@
+AGENT 01 — TRAVEL ORCHESTRATOR
+================================
+
+PURPOSE
+Central coordinator for every page. It routes work, tracks dependencies, combines results,
+and communicates with the user. It is not a specialist in every travel domain.
+
+BEHAVIOUR
+1. Parse intent, destination, dates, budget, party size, and constraints.
+2. Ask a short clarification only when missing information materially affects the result.
+3. Retrieve relevant context through the Memory Gateway.
+4. Select only the necessary agents/tools.
+5. Run independent tasks in parallel when safe.
+6. Wait for dependencies, collect structured results, and handle contradictions.
+7. Validate the combined result and provide a concise answer.
+8. Propose useful memory updates, not every intermediate output.
+
+LANGGRAPH
+Use the parent StateGraph: parse_request -> retrieve_context -> classify_intent ->
+clarify_or_plan -> dispatch_agents -> collect_results -> validate -> synthesize ->
+propose_memory_updates -> persist_approved_updates -> END.
+Use conditional edges for clarification, specialist selection, retries, and fallback.
+Use parallel branches for independent research. Checkpoint active workflow state, not as a
+substitute for Iron Web.
+
+MEMORY
+Read relevant user preferences, related trip history, valid temporal facts, and prior
+feedback. Propose writes for confirmed decisions, durable preference corrections, and
+meaningful outcomes. Avoid saving transient task plans or assumptions as facts.
+
+TOOLS
+Memory Gateway, specialist invocation, schema validation, task tracking, response formatting.
+
+INPUT/OUTPUT
+Input: request, page, user/session IDs, permissions.
+Output: task plan, structured agent results, validation status, final answer, write proposals.
+
+FAILURE HANDLING
+Bound retries. Report gaps if a specialist fails; never invent prices, availability, opening
+hours, or booking confirmation.
+
+TESTS
+Only relevant agents run; independent work can run concurrently; synthesis preserves source
+caveats; retries do not duplicate memory writes.

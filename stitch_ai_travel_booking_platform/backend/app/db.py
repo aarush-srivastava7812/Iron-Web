@@ -29,6 +29,11 @@ def create_schema():
             connection.exec_driver_sql("ALTER TABLE destinations ADD COLUMN avg_cost_inr INTEGER")
         if "climate" not in columns:
             connection.exec_driver_sql("ALTER TABLE destinations ADD COLUMN climate VARCHAR(120)")
+        booking_item_columns = {column["name"] for column in inspect(connection).get_columns("booking_items")}
+        if "start_time" not in booking_item_columns:
+            connection.exec_driver_sql("ALTER TABLE booking_items ADD COLUMN start_time TIME")
+        if "duration_min" not in booking_item_columns:
+            connection.exec_driver_sql("ALTER TABLE booking_items ADD COLUMN duration_min INTEGER")
 
 
 def get_db():

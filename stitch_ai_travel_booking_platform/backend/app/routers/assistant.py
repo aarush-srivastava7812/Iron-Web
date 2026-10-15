@@ -1,13 +1,47 @@
 from fastapi import APIRouter, Depends, HTTPException
+import sqlalchemy as sa
 from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
 from ..db import get_db
 from ..deps import current_user
-from ..models import AIConversation, AIMemory, AIMessage, User
+from ..models import AIConversation, AIMemory, AIMessage, Destination, FoodPlace, Guide, Stay, TransportRoute, User
 from ..schemas import ConversationIn, MemoryIn, MessageIn
 
 router = APIRouter(prefix="/assistant", tags=["assistant"])
+
+CATALOG_HINTS = {
+    "stay": Stay, "food": FoodPlace, "transport": TransportRoute, "guide": Guide,
+}
+
+
+def _suggest(query: str, db: Session) -> str:
+    """Rules-based reply: match the message against the live catalog so the
+    travel desk can suggest real listings without an external AI provider."""
+    words = [w for w in query.lower().replace("?", " ").split() if len(w) > 2]
+    if not words:
+        return "Tell me a place, a mood or a food you love, and I'll suggest something real from our catalog."
+    found: list[tuple[str, str]] = []
+    for kind, model in CATALOG_HINTS.items():
+        for word in words:
+            for column in ("name", "description", "kind", "cuisine", "mode", "specialties", "languages"):
+                if not hasattr(model, column):
+                    continue
+                stmt = select(model).where(sa.cast(getattr(model, column), sa.String).ilike(f"%{word}%")).limit(2)
+                for obj in db.scalars(stmt):
+                    label = obj.name if hasattr(obj, "name") else getattr(obj, "operator", "")
+                    found.append((kind, f"{label}"))
+            if len(found) >= 4:
+                break
+        if len(found) >= 4:
+            break
+    if not found:
+        places = db.scalars(select(Destination).limit(3)).all()
+        names = ", ".join(place.name for place in places)
+        return f"I couldn't match that to a specific listing yet, but you could start with {names} — or browse the Explore page and add favourites to your trip plan."
+    unique = list(dict.fromkeys(found))[:4]
+    summary = "; ".join(f"{kind.title()}: {label}" for kind, label in unique)
+    return f"Here are some ideas from our catalog that match your message — {summary}. Add any of them to your trip plan and pick dates when you're ready."
 
 
 @router.get("/conversations")
@@ -63,11 +97,16 @@ def save_message(
     db.add(message)
     if conversation.title == "New travel chat":
         conversation.title = body.content.strip()[:137] + ("..." if len(body.content.strip()) > 137 else "")
+    reply_text = _suggest(body.content, db)
+    reply = AIMessage(conversation_id=conversation.id, role="assistant", content=reply_text)
+    db.add(reply)
+    conversation.updated_at = conversation.updated_at
     db.commit()
     return {
         "message": message,
-        "connection_status": "not_configured",
-        "detail": "Your message is saved. Connect your AI memory backend to generate a response.",
+        "reply": reply,
+        "connection_status": "local_rules_based",
+        "detail": "Suggested from our live catalog. Deeper AI advice arrives when the memory backend is connected.",
     }
 
 

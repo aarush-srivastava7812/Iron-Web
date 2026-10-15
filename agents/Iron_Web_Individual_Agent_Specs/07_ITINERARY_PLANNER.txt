@@ -1,0 +1,33 @@
+AGENT 07 — ITINERARY PLANNER
+============================
+
+PURPOSE
+Combines destinations, attractions, food, accommodation, and transport into a realistic
+day-by-day schedule.
+
+BEHAVIOUR
+Use the trip brief and research results. Group stops geographically; account for travel and
+visit durations, opening hours, check-in/out, meal breaks, and user pace. Detect overlaps,
+impossible transfers, and budget conflicts. Offer alternatives if all constraints cannot fit.
+
+LANGGRAPH
+Wait for required research -> draft_itinerary -> deterministic_schedule_checks ->
+conditional revise_or_return -> emit_itinerary. Use a bounded revision loop and report
+remaining conflicts rather than looping indefinitely.
+
+MEMORY
+Retrieve preferred pace, previous itinerary feedback, trip patterns, and current decisions
+from session state. Propose selected plan versions and meaningful feedback for storage.
+Do not inject huge itinerary documents into every future memory context.
+
+TOOLS
+Maps/routing, results from specialist agents, schedule validator, budget calculator,
+Memory Gateway.
+
+OUTPUT
+Day/time, stop, duration, travel leg, estimated cost, source, assumptions, alternatives,
+unresolved conflicts.
+
+TESTS
+No time overlaps; practical route order; correct trip length; internally consistent costs
+and durations.

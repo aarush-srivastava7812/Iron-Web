@@ -1,7 +1,7 @@
 import datetime as dt
 import uuid
 
-from sqlalchemy import JSON, Date, DateTime, Float, ForeignKey, Index, Integer, String, Text
+from sqlalchemy import JSON, Date, DateTime, Float, ForeignKey, Index, Integer, String, Text, Time
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .db import Base
@@ -114,6 +114,8 @@ class BookingItem(Base):
     unit_price_inr: Mapped[int] = mapped_column(Integer)
     start_date: Mapped[dt.date | None] = mapped_column(Date)
     end_date: Mapped[dt.date | None] = mapped_column(Date)
+    start_time: Mapped[dt.time | None] = mapped_column(Time)
+    duration_min: Mapped[int | None] = mapped_column(Integer)
     booking: Mapped[Booking] = relationship(back_populates="items")
 
 
@@ -178,3 +180,36 @@ class AIMemory(Base):
         ForeignKey("ai_conversations.id", ondelete="SET NULL")
     )
     updated_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now, onupdate=_now)
+
+
+class Offer(Base):
+    __tablename__ = "offers"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    code: Mapped[str] = mapped_column(String(40), unique=True, index=True)
+    title: Mapped[str] = mapped_column(String(120))
+    description: Mapped[str | None] = mapped_column(Text, default=None)
+    discount_percent: Mapped[float | None] = mapped_column(Float, default=None)  # e.g. 20.0 = 20%
+    discount_flat_inr: Mapped[int | None] = mapped_column(Integer, default=None)  # e.g. 250
+    module: Mapped[str] = mapped_column(String(20))  # stays|food|transport|guides|any
+    min_amount_inr: Mapped[int | None] = mapped_column(Integer, default=None)
+    valid_till: Mapped[dt.date | None] = mapped_column(Date)
+    active: Mapped[bool] = mapped_column(default=True)
+
+
+class Favorite(Base):
+    __tablename__ = "favorites"
+    user_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
+    item_type: Mapped[str] = mapped_column(String(10))  # stay|food|transport|guide
+    item_id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
+class Lead(Base):
+    __tablename__ = "leads"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(120))
+    phone: Mapped[str] = mapped_column(String(20))
+    email: Mapped[str | None] = mapped_column(String(120), default=None)
+    interest: Mapped[str | None] = mapped_column(String(120), default=None)  # e.g. "Goa in December"
+    preferred_time: Mapped[str | None] = mapped_column(String(80), default=None)  # e.g. "Evening"
+    created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
