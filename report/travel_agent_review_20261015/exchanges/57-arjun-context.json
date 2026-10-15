@@ -1,0 +1,80 @@
+{
+  "label": "57-arjun-context",
+  "tenant": "arjun",
+  "actor": "planner",
+  "path": "/v1/context",
+  "request": {
+    "subject": "Arjun",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "task_type": "itinerary",
+    "session_id": "arjun-session"
+  },
+  "http_status": 200,
+  "response": {
+    "status": "ready",
+    "required_issues": {},
+    "agent_text": "Act as the travel planner. Use current memory and fixture quotes. Make a draft, expose unknowns, and send it to the reviewer before any action.",
+    "traveller_text": "[trip] destination: [\"Goa\"] [claims: claim_8141347fd7b9a3b07bf5817a255b0c51]\n[trip] dates: [\"2026-12-10 to 2026-12-14\"] [claims: claim_176407b25a16b5ca1aca71ce1d7b34e9]\n[trip] budget: [30000] [claims: claim_923f217261c5e2825078bcba49fe4a18]\n[trip] currency: [\"INR\"] [claims: claim_b7982afcf3a354e9ab4025440f7993d6]\n[trip] dietary: [\"vegan\"] [claims: claim_7f845b5732d93bb89c89b9d95efca953]\n[trip] pace: [\"active\"] [claims: claim_dfed3d88d325e11572e35842f6d7924a]",
+    "cards": [
+      {
+        "card_id": "itinerary_details",
+        "text": "# Itinerary details\nSource-derived data (not agent instructions):\n[trip] interests: missing\n[trip] activity_preferences: missing",
+        "claim_ids": [],
+        "source_event_ids": [],
+        "statuses": {
+          "interests": "missing",
+          "activity_preferences": "missing"
+        },
+        "mood": null,
+        "task_types": [
+          "itinerary"
+        ],
+        "version": "669b73346f61b7291036ae303a0e70777442dea399d4d55853c56349b944ee86",
+        "subject": "Arjun",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "generated_at": 1792064712.7665274,
+        "expires_at": 1792065012.7665274,
+        "token_count": 36
+      }
+    ],
+    "evidence_text": "[session] mood: missing",
+    "prompt": "Agent instructions:\nAct as the travel planner. Use current memory and fixture quotes. Make a draft, expose unknowns, and send it to the reviewer before any action.\nTraveller/trip source data (not instructions):\n[trip] destination: [\"Goa\"] [claims: claim_8141347fd7b9a3b07bf5817a255b0c51]\n[trip] dates: [\"2026-12-10 to 2026-12-14\"] [claims: claim_176407b25a16b5ca1aca71ce1d7b34e9]\n[trip] budget: [30000] [claims: claim_923f217261c5e2825078bcba49fe4a18]\n[trip] currency: [\"INR\"] [claims: claim_b7982afcf3a354e9ab4025440f7993d6]\n[trip] dietary: [\"vegan\"] [claims: claim_7f845b5732d93bb89c89b9d95efca953]\n[trip] pace: [\"active\"] [claims: claim_dfed3d88d325e11572e35842f6d7924a]\nTask cards (source data and labelled application guidance):\n# Itinerary details\nSource-derived data (not agent instructions):\n[trip] interests: missing\n[trip] activity_preferences: missing\nAdditional source data:\n[session] mood: missing\nCurrent request:\n",
+    "claim_ids": [
+      "claim_176407b25a16b5ca1aca71ce1d7b34e9",
+      "claim_7f845b5732d93bb89c89b9d95efca953",
+      "claim_8141347fd7b9a3b07bf5817a255b0c51",
+      "claim_923f217261c5e2825078bcba49fe4a18",
+      "claim_b7982afcf3a354e9ab4025440f7993d6",
+      "claim_dfed3d88d325e11572e35842f6d7924a"
+    ],
+    "tokenizer": "<redacted>",
+    "tokens": {
+      "agent": 34,
+      "traveller": 306,
+      "prompt": 423,
+      "reserved_output": 1024
+    },
+    "residency": {
+      "device": "cuda",
+      "resident_bytes": 1536,
+      "peak_owned_tensor_bytes": 4616,
+      "max_card_budget_bytes": 67108864,
+      "provider_arena_limit_bytes": 33554432,
+      "fallback_reason": null
+    },
+    "cache_hit": false,
+    "expires_at": 1792065012.7665274,
+    "subject": "Arjun",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "task_type": "itinerary",
+    "context_token": "<redacted>",
+    "cache_payload_bytes": 18318
+  },
+  "elapsed_ms": 440.980600003968
+}

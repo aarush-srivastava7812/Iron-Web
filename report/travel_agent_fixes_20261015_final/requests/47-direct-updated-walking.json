@@ -1,0 +1,14 @@
+{
+  "label": "47-direct-updated-walking",
+  "path": "/v1/recall",
+  "body": {
+    "query": "walking limit",
+    "subject": "Riya",
+    "predicate": "max_walk_metres",
+    "scope": {
+      "trip_id": "goa-family"
+    }
+  },
+  "actor": "reviewer",
+  "tenant": "riya"
+}

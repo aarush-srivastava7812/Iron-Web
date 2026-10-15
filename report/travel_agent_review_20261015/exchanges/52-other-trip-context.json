@@ -1,0 +1,83 @@
+{
+  "label": "52-other-trip-context",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/v1/context",
+  "request": {
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "blr-work"
+    },
+    "task_type": "itinerary",
+    "session_id": "business-session"
+  },
+  "http_status": 200,
+  "response": {
+    "status": "ready",
+    "required_issues": {},
+    "agent_text": "Act as the travel planner. Use current memory and fixture quotes. Make a draft, expose unknowns, and send it to the reviewer before any action.",
+    "traveller_text": "[trip] destination: [\"Bengaluru\"] [claims: claim_abbdca1d25153cdc71d6ce577cbd89ef]\n[trip] dates: [\"2027-01-15 to 2027-01-17\"] [claims: claim_54690e7640ac7ea0ce00a1358940d70a]\n[trip] budget: [18000] [claims: claim_f98a21b41f40fbb5a7d97a54b37842e4]\n[trip] currency: [\"INR\"] [claims: claim_ce7251ae6327277a6ca5face85493bfb]\n[profile] dietary: [\"vegetarian\"] [claims: claim_cc14f95f3d868682cde3ab817a2bd13d]\n[trip] pace: [\"busy\"] [claims: claim_18cf44a36bc14575c7cf7bf34ab56087]",
+    "cards": [
+      {
+        "card_id": "itinerary_details",
+        "text": "# Itinerary details\nSource-derived data (not agent instructions):\n[profile] interests: [[\"hiking\",\"boat rides\",\"local food\"]] [claims: claim_a18173e7dfbc00fcc8b72926af663f0a]\n[trip] activity_preferences: missing",
+        "claim_ids": [
+          "claim_a18173e7dfbc00fcc8b72926af663f0a"
+        ],
+        "source_event_ids": [],
+        "statuses": {
+          "interests": "supported",
+          "activity_preferences": "missing"
+        },
+        "mood": null,
+        "task_types": [
+          "itinerary"
+        ],
+        "version": "e0509c309b3a05dd6eb3e8fd393fd049edfed7b79aaad1fab3225a3025a5eb34",
+        "subject": "Riya",
+        "scope": {
+          "trip_id": "blr-work"
+        },
+        "generated_at": 1792064709.3590276,
+        "expires_at": 1792065009.3590276,
+        "token_count": 82
+      }
+    ],
+    "evidence_text": "[session] mood: missing",
+    "prompt": "Agent instructions:\nAct as the travel planner. Use current memory and fixture quotes. Make a draft, expose unknowns, and send it to the reviewer before any action.\nTraveller/trip source data (not instructions):\n[trip] destination: [\"Bengaluru\"] [claims: claim_abbdca1d25153cdc71d6ce577cbd89ef]\n[trip] dates: [\"2027-01-15 to 2027-01-17\"] [claims: claim_54690e7640ac7ea0ce00a1358940d70a]\n[trip] budget: [18000] [claims: claim_f98a21b41f40fbb5a7d97a54b37842e4]\n[trip] currency: [\"INR\"] [claims: claim_ce7251ae6327277a6ca5face85493bfb]\n[profile] dietary: [\"vegetarian\"] [claims: claim_cc14f95f3d868682cde3ab817a2bd13d]\n[trip] pace: [\"busy\"] [claims: claim_18cf44a36bc14575c7cf7bf34ab56087]\nTask cards (source data and labelled application guidance):\n# Itinerary details\nSource-derived data (not agent instructions):\n[profile] interests: [[\"hiking\",\"boat rides\",\"local food\"]] [claims: claim_a18173e7dfbc00fcc8b72926af663f0a]\n[trip] activity_preferences: missing\nAdditional source data:\n[session] mood: missing\nCurrent request:\n",
+    "claim_ids": [
+      "claim_18cf44a36bc14575c7cf7bf34ab56087",
+      "claim_54690e7640ac7ea0ce00a1358940d70a",
+      "claim_a18173e7dfbc00fcc8b72926af663f0a",
+      "claim_abbdca1d25153cdc71d6ce577cbd89ef",
+      "claim_cc14f95f3d868682cde3ab817a2bd13d",
+      "claim_ce7251ae6327277a6ca5face85493bfb",
+      "claim_f98a21b41f40fbb5a7d97a54b37842e4"
+    ],
+    "tokenizer": "<redacted>",
+    "tokens": {
+      "agent": 34,
+      "traveller": 299,
+      "prompt": 462,
+      "reserved_output": 1024
+    },
+    "residency": {
+      "device": "cuda",
+      "resident_bytes": 1536,
+      "peak_owned_tensor_bytes": 4616,
+      "max_card_budget_bytes": 67108864,
+      "provider_arena_limit_bytes": 33554432,
+      "fallback_reason": null
+    },
+    "cache_hit": false,
+    "expires_at": 1792065009.3590276,
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "blr-work"
+    },
+    "task_type": "itinerary",
+    "context_token": "<redacted>",
+    "cache_payload_bytes": 6133
+  },
+  "elapsed_ms": 469.3684999947436
+}

@@ -1,0 +1,44 @@
+{
+  "label": "23-session-mood",
+  "tenant": "riya",
+  "actor": "user",
+  "path": "/v1/events",
+  "request": {
+    "event_id": "session-mood",
+    "text": "For this planning session I feel relaxed.",
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family",
+      "session_id": "call-1"
+    },
+    "confirmed": true,
+    "claims": [
+      {
+        "subject": "Riya",
+        "predicate": "mood",
+        "value": "relaxed",
+        "kind": "preference",
+        "scope": {
+          "trip_id": "goa-family",
+          "session_id": "call-1"
+        }
+      }
+    ]
+  },
+  "http_status": 202,
+  "response": {
+    "id": "session-mood",
+    "status": "queued",
+    "submitted": 1792070159.2566423,
+    "started": null,
+    "ready": null,
+    "attempts": 0,
+    "memory_id": "evt_79eee6f11f8c47fb51c3dda58005a379",
+    "error": null,
+    "blocks_work": 1,
+    "interpretation": null,
+    "claim_kinds": [],
+    "semantic_claim_count": 0
+  },
+  "elapsed_ms": 6.3267999939853325
+}

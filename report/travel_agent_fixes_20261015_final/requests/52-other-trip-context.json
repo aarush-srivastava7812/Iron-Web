@@ -1,0 +1,14 @@
+{
+  "label": "52-other-trip-context",
+  "path": "/v1/context",
+  "body": {
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "blr-work"
+    },
+    "task_type": "itinerary",
+    "session_id": "business-session"
+  },
+  "actor": "planner",
+  "tenant": "riya"
+}

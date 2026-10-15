@@ -1,0 +1,14 @@
+{
+  "label": "57-arjun-context",
+  "path": "/v1/context",
+  "body": {
+    "subject": "Arjun",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "task_type": "itinerary",
+    "session_id": "arjun-session"
+  },
+  "actor": "planner",
+  "tenant": "arjun"
+}

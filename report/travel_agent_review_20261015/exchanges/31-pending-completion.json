@@ -1,0 +1,32 @@
+{
+  "label": "31-pending-completion",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/v1/work/complete",
+  "request": {
+    "work_id": "goa-plan-v1",
+    "lease_token": "<redacted>"
+  },
+  "http_status": 409,
+  "response": {
+    "status": "pending_memory",
+    "error": "New memory is not ready; resolve pending or failed events before acting.",
+    "receipts": [
+      {
+        "id": "budget-reduction",
+        "status": "queued",
+        "submitted": 1792056299.5088875,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_82c346d1e92704e424106d3a0e46eca1",
+        "error": null,
+        "blocks_work": 1,
+        "interpretation": null,
+        "claim_kinds": [],
+        "semantic_claim_count": 0
+      }
+    ]
+  },
+  "elapsed_ms": 40.302699999301694
+}

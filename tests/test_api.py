@@ -52,6 +52,40 @@ def test_actual_api_save_and_search_preserve_literal_text(api):
     assert status == 200 and result["results"][0]["content"] == content
 
 
+def test_actual_api_versioned_claim_and_missing_answer(api):
+    url, engine = api
+    status, saved = post(
+        url,
+        "/api/add",
+        dict(
+            content="North approved a budget of 600",
+            memory_id="typed_api",
+            claims=[dict(subject="North", predicate="budget", value=600, kind="rule")],
+            source_info=dict(origin="user", actor_id="north", user_confirmed=True),
+        ),
+    )
+    assert status == 201
+    status, packet = post(
+        url, "/api/recall", dict(query="What is North's budget?", subject="North")
+    )
+    assert status == 200 and packet["result"]["answer_status"] == "supported"
+    assert packet["result"]["evidence"][0]["fuzzy_score"] == 1
+    status, missing = post(
+        url, "/api/recall", dict(query="What is North's phone number?", subject="North")
+    )
+    assert status == 200 and missing["result"]["answer_status"] == "missing"
+    status, forged = post(
+        url,
+        "/api/add",
+        dict(
+            content="False confirmation",
+            claims=[dict(subject="North", predicate="budget", value=900)],
+            source_info=dict(origin="agent", actor_id="planner", user_confirmed=True),
+        ),
+    )
+    assert status == 400 and engine.vector_store.count() == 1
+
+
 def test_bad_requests_return_errors_without_writes(api):
     url, engine = api
     for path, body in [

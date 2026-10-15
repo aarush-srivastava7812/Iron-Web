@@ -1,0 +1,7 @@
+{
+  "label": "32-process-budget",
+  "path": "/audit/drain",
+  "body": {},
+  "actor": "planner",
+  "tenant": "riya"
+}

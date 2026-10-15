@@ -1,0 +1,9 @@
+{
+  "label": "59-cross-user-proof",
+  "path": "/v1/context/validate",
+  "body": {
+    "context_token": "$response:58-riya-after-arjun:context_token"
+  },
+  "actor": "planner",
+  "tenant": "arjun"
+}

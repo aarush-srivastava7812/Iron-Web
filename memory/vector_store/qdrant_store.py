@@ -16,12 +16,13 @@ from qdrant_client.models import (
     Filter,
     FieldCondition,
     MatchAny,
+    MatchValue,
 )
 from memory.embeddings.embedder import Embedder
+from memory.schema import validate_metadata
 
 # Namespace for generating deterministic UUIDs from memory IDs
 MEMORY_NAMESPACE = uuid.UUID("12345678-1234-5678-1234-567812345678")
-from memory.schema import validate_metadata
 
 
 class QdrantVectorStore:
@@ -339,9 +340,23 @@ def create_temporal_filter(
         return None
 
 
-def create_search_filter(query_time, mode="auto", document_ids=None):
+def create_search_filter(
+    query_time, mode="auto", document_ids=None, include_versioned=False
+):
     temporal = create_temporal_filter(query_time, mode)
-    conditions = list(temporal.must or []) if temporal else []
+    if temporal and include_versioned:
+        conditions = [
+            Filter(
+                should=[
+                    temporal,
+                    FieldCondition(
+                        key="memory_versioned", match=MatchValue(value=True)
+                    ),
+                ]
+            )
+        ]
+    else:
+        conditions = list(temporal.must or []) if temporal else []
     if document_ids is not None:
         conditions.append(
             FieldCondition(key="memory_id", match=MatchAny(any=document_ids))

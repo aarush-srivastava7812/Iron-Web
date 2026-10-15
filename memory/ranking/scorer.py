@@ -79,6 +79,7 @@ class HybridScorer:
             + w.epsilon_entity * overlap
             + w.eta_historical * candidate.get("historical_relevance", 0)
             - w.theta_contradiction * candidate.get("contradiction_penalty", 0)
+            + candidate.get("reliability_boost", 0)
         )
 
     def score_batch(

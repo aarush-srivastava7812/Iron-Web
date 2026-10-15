@@ -1,0 +1,28 @@
+{
+  "label": "42-walking-limit-change",
+  "path": "/v1/events",
+  "body": {
+    "event_id": "walking-limit-change",
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "text": "Change the maximum walking segment for this trip to 50 metres.",
+    "confirmed": true,
+    "claims": [
+      {
+        "subject": "Riya",
+        "predicate": "max_walk_metres",
+        "value": 50,
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "action": "supersede",
+        "reason": "User reduced maximum walking distance"
+      }
+    ]
+  },
+  "actor": "user",
+  "tenant": "riya"
+}

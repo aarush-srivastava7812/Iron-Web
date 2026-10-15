@@ -18,6 +18,13 @@
 | Complete-context slices | Question subsets retain their full histories. Existing versions and historical outputs remain unchanged. |
 | Research boundary | Mechanism baselines and genuine SDK adapters are separate from the user application and carry distinct names. |
 | Historical evidence | Earlier designs, scripts and outputs remain recoverable. Current behavior is documented from the implemented code and verification records. |
+| Versioned claim layer | Optional structured claims retain sources, exact scopes, confirmations, disputes and accepted changes inside FalkorDB. Ordinary fuzzy scores and explicit protection are separate from importance. |
+| Authoritative evidence | Versioned vector/graph hits are reconciled with eligible field-level graph evidence. Field recall reports missing/disputed information and source paths. |
+| Work dependencies | Exact used claim versions and prerequisites drive bounded invalidation and evidence-carrying handoffs; completion history survives later review requirements. |
 
 The earlier design decisions and phase examples are retained under `archive/2026-10-12/design-history/`. The pre-cleanup repository state is Git commit `724c551`.
 The FalkorDB replacement is documented in [the migration decision record](architecture/adr-001-falkordb.md). Earlier benchmark measurements at `6d10601` used Kùzu and do not measure the new backend.
+
+The vector-placement experiment retains Qdrant: [measured comparison](../report/vector_placement_20261013_p5_paired/REPORT.md). The [memory evolution guide](memory_evolution.md) describes the implemented claim, fuzzy-score and evidence interfaces, including their limits and trusted-caller boundary.
+
+The optional [three-tier context layer](three_tier_memory_usage.md), implemented on 2026-10-15, adds equal agent/traveller text budgets, evidence-backed task/mood cards, bounded host caching and actual CUDA card-vector matching with CPU fallback. It discovers scoped saved fields and makes rules/instructions mandatory, preserving their exact dependency IDs. Authenticated context snapshots hash relevant claim/source state, identity links and durable journal rows, with runtime identity and time expiry. Cache hits retain trip-aware pending/failed/unclear gates; global changes remain conservative blockers, and consumers revalidate after generation. Permanent claims and work coordination remain in the existing stores. The context layer requires explicit local consumer-tokenizer/profile configuration and does not itself provide a generative model or site integration.

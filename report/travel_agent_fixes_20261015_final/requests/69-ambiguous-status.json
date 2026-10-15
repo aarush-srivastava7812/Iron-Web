@@ -1,0 +1,8 @@
+{
+  "label": "69-ambiguous-status",
+  "path": "/v1/events/status",
+  "actor": "user",
+  "body": {
+    "eid": "ambiguous-intake"
+  }
+}

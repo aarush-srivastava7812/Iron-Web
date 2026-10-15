@@ -1,0 +1,3633 @@
+{
+  "checks": {
+    "one_task_owner": true,
+    "affected_work_review": true,
+    "completed_unrelated_work_retained": true,
+    "accepted_change_and_protection": true,
+    "procedural_memory_used": true,
+    "second_agent_completes_revised_work": true,
+    "missing_answer": true,
+    "private_user_spaces": true,
+    "mixed_http_no_lost_events": true,
+    "restart_preserves_memory": true,
+    "restart_preserves_completed_work": true,
+    "agent_proposal_does_not_take_authority": true
+  },
+  "load": {
+    "concurrent_clients": 8,
+    "writes": 24,
+    "status_reads": 48,
+    "status_read_errors": 0,
+    "receipt_median_ms": 29.431849980028346,
+    "receipt_p95_ms": 40.193599998019636,
+    "completed_events_per_second": 4.834353690823421,
+    "total_seconds": 4.964469200000167,
+    "semantic_ready_p95_ms": 4638.275384902954
+  },
+  "api_url": "http://127.0.0.1:15451",
+  "graphs": {
+    "A": "shared_demo_1e0cafe9fb_773bbeb4fa68d62b41ded4fa",
+    "B": "shared_demo_1e0cafe9fb_221b20d31ee87f2c14a81d96"
+  },
+  "model": "BAAI/bge-small-en-v1.5",
+  "exchanges": [
+    {
+      "endpoint": "/v1/events",
+      "actor": "traveller",
+      "tenant": "A",
+      "request": {
+        "event_id": "budget-1",
+        "text": "My maximum travel budget is 1000.",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-budget-1",
+        "confirmed": true
+      },
+      "status": 202,
+      "result": {
+        "id": "budget-1",
+        "status": "queued",
+        "submitted": 1791933175.7557883,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_768fc47c408e99b79014b02de6d8e139",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "traveller",
+      "tenant": "A",
+      "request": {
+        "event_id": "seat-1",
+        "text": "I prefer an aisle seat.",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-seat-1",
+        "confirmed": true
+      },
+      "status": 202,
+      "result": {
+        "id": "seat-1",
+        "status": "queued",
+        "submitted": 1791933177.3210852,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_b09209d86321550999070baa94b47648",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "traveller",
+      "tenant": "A",
+      "request": {
+        "event_id": "procedure-1",
+        "text": "Review requirements before drafting a travel plan.",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-procedure-1",
+        "confirmed": true,
+        "claims": [
+          {
+            "subject": "Traveller",
+            "predicate": "planning_procedure",
+            "kind": "procedure",
+            "scope": {
+              "trip_id": "demo-trip"
+            },
+            "value": {
+              "steps": [
+                "Read current requirements",
+                "Check unresolved disputes",
+                "Draft within approved constraints",
+                "Verify current evidence before handoff"
+              ]
+            }
+          }
+        ]
+      },
+      "status": 202,
+      "result": {
+        "id": "procedure-1",
+        "status": "queued",
+        "submitted": 1791933177.5763319,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_f83947d833d07248035947d8c39575a5",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/recall",
+      "actor": "traveller",
+      "tenant": "A",
+      "request": {
+        "query": "What is the budget?",
+        "subject": "Traveller",
+        "predicate": "budget",
+        "scope": {
+          "trip_id": "demo-trip"
+        }
+      },
+      "status": 200,
+      "result": {
+        "answer_status": "supported",
+        "subject": "Traveller",
+        "requested_predicate": "budget",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "temporal_mode": "now",
+        "evidence": [
+          {
+            "claim_id": "claim_449038834a38197543c2e8e133b627e3",
+            "memory_id": "evt_768fc47c408e99b79014b02de6d8e139",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "budget",
+            "value": 1000,
+            "kind": "rule",
+            "scope": {
+              "trip_id": "demo-trip"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": true,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 1.0,
+            "fuzzy_explanation": {
+              "score": 1.0,
+              "hard_rule": "user_confirmed_protection",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_5ce90c41773cc75ae98539b8221f0010",
+                "memory_id": "evt_768fc47c408e99b79014b02de6d8e139",
+                "text": "My maximum travel budget is 1000.",
+                "origin": "user",
+                "actor_id": "traveller",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:traveller",
+                "recorded_at": 1791933175,
+                "received_at": 1791933177,
+                "digest": "receipt_05f8495f4c4e127cab914627b39cd71c",
+                "metadata_json": "{\"interpretation\":\"travel_grammar_v1\",\"service_receipt\":\"budget-1\",\"session_id\":\"session-budget-1\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1791933175,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_449038834a38197543c2e8e133b627e3",
+              "SUPPORTED_BY",
+              "source_5ce90c41773cc75ae98539b8221f0010"
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "endpoint": "/v1/recall",
+      "actor": "traveller",
+      "tenant": "A",
+      "request": {
+        "query": "What is the seat_preference?",
+        "subject": "Traveller",
+        "predicate": "seat_preference",
+        "scope": {
+          "trip_id": "demo-trip"
+        }
+      },
+      "status": 200,
+      "result": {
+        "answer_status": "supported",
+        "subject": "Traveller",
+        "requested_predicate": "seat_preference",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "temporal_mode": "now",
+        "evidence": [
+          {
+            "claim_id": "claim_9b8ef61c0982b303fd05eed3e3c9b244",
+            "memory_id": "evt_b09209d86321550999070baa94b47648",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "seat_preference",
+            "value": "aisle",
+            "kind": "preference",
+            "scope": {
+              "trip_id": "demo-trip"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8468035714285715,
+            "fuzzy_explanation": {
+              "score": 0.8468035714285715,
+              "inputs": {
+                "freshness": 1.0,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_675005fbafaa9c66458b0931451c8722",
+                "memory_id": "evt_b09209d86321550999070baa94b47648",
+                "text": "I prefer an aisle seat.",
+                "origin": "user",
+                "actor_id": "traveller",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:traveller",
+                "recorded_at": 1791933177,
+                "received_at": 1791933177,
+                "digest": "receipt_f3bf2addfd30f16a1a1ac4b7ad30026a",
+                "metadata_json": "{\"interpretation\":\"travel_grammar_v1\",\"service_receipt\":\"seat-1\",\"session_id\":\"session-seat-1\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1791933177,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_9b8ef61c0982b303fd05eed3e3c9b244",
+              "SUPPORTED_BY",
+              "source_675005fbafaa9c66458b0931451c8722"
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "endpoint": "/v1/recall",
+      "actor": "traveller",
+      "tenant": "A",
+      "request": {
+        "query": "What is the planning_procedure?",
+        "subject": "Traveller",
+        "predicate": "planning_procedure",
+        "scope": {
+          "trip_id": "demo-trip"
+        }
+      },
+      "status": 200,
+      "result": {
+        "answer_status": "supported",
+        "subject": "Traveller",
+        "requested_predicate": "planning_procedure",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "temporal_mode": "now",
+        "evidence": [
+          {
+            "claim_id": "claim_06eb5ca40e1ac0a621f1d52b8d7a5255",
+            "memory_id": "evt_f83947d833d07248035947d8c39575a5",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "planning_procedure",
+            "value": {
+              "steps": [
+                "Read current requirements",
+                "Check unresolved disputes",
+                "Draft within approved constraints",
+                "Verify current evidence before handoff"
+              ]
+            },
+            "kind": "procedure",
+            "scope": {
+              "trip_id": "demo-trip"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8468035714285715,
+            "fuzzy_explanation": {
+              "score": 0.8468035714285715,
+              "inputs": {
+                "freshness": 1.0,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_d3401443bc71b5ba24d15d0f1ce0b7ee",
+                "memory_id": "evt_f83947d833d07248035947d8c39575a5",
+                "text": "Review requirements before drafting a travel plan.",
+                "origin": "user",
+                "actor_id": "traveller",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:traveller",
+                "recorded_at": 1791933177,
+                "received_at": 1791933177,
+                "digest": "receipt_70f98183c5466433de7998fa8969de63",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"procedure-1\",\"session_id\":\"session-procedure-1\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1791933177,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_06eb5ca40e1ac0a621f1d52b8d7a5255",
+              "SUPPORTED_BY",
+              "source_d3401443bc71b5ba24d15d0f1ce0b7ee"
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "endpoint": "/v1/work",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "work_id": "plan-v1",
+        "claim_ids": [
+          "claim_449038834a38197543c2e8e133b627e3",
+          "claim_06eb5ca40e1ac0a621f1d52b8d7a5255"
+        ],
+        "description": "Demonstration planning work"
+      },
+      "status": 200,
+      "result": {
+        "id": "plan-v1",
+        "description": "Demonstration planning work",
+        "agent_id": "",
+        "status": "ready",
+        "created_at": 1791933177,
+        "validation_state": "current",
+        "fingerprint": "work_6d5ae165a43b52531e7e54cd92925d83",
+        "used_claim_ids": "[\"claim_449038834a38197543c2e8e133b627e3\",\"claim_06eb5ca40e1ac0a621f1d52b8d7a5255\"]",
+        "dependency_ids": "[]"
+      }
+    },
+    {
+      "endpoint": "/v1/work",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "work_id": "seat-note",
+        "claim_ids": [
+          "claim_9b8ef61c0982b303fd05eed3e3c9b244"
+        ],
+        "description": "Demonstration planning work"
+      },
+      "status": 200,
+      "result": {
+        "id": "seat-note",
+        "description": "Demonstration planning work",
+        "agent_id": "",
+        "status": "ready",
+        "created_at": 1791933178,
+        "validation_state": "current",
+        "fingerprint": "work_b94598074bd09b043508f2a52758783f",
+        "used_claim_ids": "[\"claim_9b8ef61c0982b303fd05eed3e3c9b244\"]",
+        "dependency_ids": "[]"
+      }
+    },
+    {
+      "endpoint": "/v1/work/claim",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "work_id": "plan-v1"
+      },
+      "status": 200,
+      "result": {
+        "status": "owned",
+        "work": {
+          "id": "plan-v1",
+          "description": "Demonstration planning work",
+          "agent_id": "planner",
+          "status": "ready",
+          "created_at": 1791933177,
+          "validation_state": "current",
+          "fingerprint": "work_6d5ae165a43b52531e7e54cd92925d83",
+          "used_claim_ids": "[\"claim_449038834a38197543c2e8e133b627e3\",\"claim_06eb5ca40e1ac0a621f1d52b8d7a5255\"]",
+          "dependency_ids": "[]",
+          "lease_until": 1791933478.37685,
+          "owner_version": 1
+        }
+      }
+    },
+    {
+      "endpoint": "/v1/work/claim",
+      "actor": "reviewer",
+      "tenant": "A",
+      "request": {
+        "work_id": "plan-v1"
+      },
+      "status": 409,
+      "result": {
+        "error": "Operation could not be committed; inspect event status or review task ownership."
+      }
+    },
+    {
+      "endpoint": "/v1/work/claim",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "work_id": "seat-note"
+      },
+      "status": 200,
+      "result": {
+        "status": "owned",
+        "work": {
+          "id": "seat-note",
+          "description": "Demonstration planning work",
+          "agent_id": "planner",
+          "status": "ready",
+          "created_at": 1791933178,
+          "validation_state": "current",
+          "fingerprint": "work_b94598074bd09b043508f2a52758783f",
+          "used_claim_ids": "[\"claim_9b8ef61c0982b303fd05eed3e3c9b244\"]",
+          "dependency_ids": "[]",
+          "lease_until": 1791933478.73534,
+          "owner_version": 1
+        }
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "traveller",
+      "tenant": "A",
+      "request": {
+        "event_id": "budget-2",
+        "text": "Change my travel budget to 600.",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-budget-2",
+        "confirmed": true
+      },
+      "status": 202,
+      "result": {
+        "id": "budget-2",
+        "status": "queued",
+        "submitted": 1791933178.981774,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_afff3131f1ba16f7c9e6d09f5f644e55",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/handoff",
+      "actor": "reviewer",
+      "tenant": "A",
+      "request": {
+        "work_ids": [
+          "plan-v1",
+          "seat-note"
+        ]
+      },
+      "status": 200,
+      "result": {
+        "as_of": 1791933179,
+        "can_continue": false,
+        "work": [
+          {
+            "work": {
+              "id": "plan-v1",
+              "description": "Demonstration planning work",
+              "agent_id": "planner",
+              "status": "stale",
+              "created_at": 1791933177,
+              "validation_state": "stale",
+              "fingerprint": "work_6d5ae165a43b52531e7e54cd92925d83",
+              "used_claim_ids": "[\"claim_449038834a38197543c2e8e133b627e3\",\"claim_06eb5ca40e1ac0a621f1d52b8d7a5255\"]",
+              "dependency_ids": "[]",
+              "lease_until": 1791933478.37685,
+              "owner_version": 1,
+              "invalidated_by": "claim_dd799d445b9c827fc9f0ad56e77c8c18",
+              "review_reason": "Explicit budget change in the source message"
+            },
+            "used_versions": [
+              {
+                "claim_id": "claim_449038834a38197543c2e8e133b627e3",
+                "memory_id": "evt_768fc47c408e99b79014b02de6d8e139",
+                "subject": "Traveller",
+                "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+                "predicate": "budget",
+                "value": 1000,
+                "kind": "rule",
+                "scope": {
+                  "trip_id": "demo-trip"
+                },
+                "status": "superseded",
+                "accepted": true,
+                "current_eligible": false,
+                "protected": false,
+                "accepted_for_current_use": false,
+                "correction_known": false,
+                "protected_at_creation": true,
+                "fuzzy_score": 0.0,
+                "fuzzy_explanation": {
+                  "score": 0.0,
+                  "hard_rule": "not_current",
+                  "fired_rules": []
+                },
+                "previous_score": 1.0,
+                "conflicting_claim_ids": [
+                  "claim_dd799d445b9c827fc9f0ad56e77c8c18"
+                ],
+                "sources": [
+                  {
+                    "id": "source_5ce90c41773cc75ae98539b8221f0010",
+                    "memory_id": "evt_768fc47c408e99b79014b02de6d8e139",
+                    "text": "My maximum travel budget is 1000.",
+                    "origin": "user",
+                    "actor_id": "traveller",
+                    "user_confirmed": true,
+                    "quality": 0.9,
+                    "evidence_group": "user:traveller",
+                    "recorded_at": 1791933175,
+                    "received_at": 1791933177,
+                    "digest": "receipt_05f8495f4c4e127cab914627b39cd71c",
+                    "metadata_json": "{\"interpretation\":\"travel_grammar_v1\",\"service_receipt\":\"budget-1\",\"session_id\":\"session-budget-1\"}"
+                  }
+                ],
+                "valid_from": 0,
+                "valid_until": 9223372036854775807,
+                "accepted_at": 1791933175,
+                "ended_at": 1791933178,
+                "reason": "",
+                "historical_meaning": "source assertion; effective dates unspecified",
+                "references": [],
+                "identity_evidence": [],
+                "evidence_path": [
+                  "claim_449038834a38197543c2e8e133b627e3",
+                  "SUPPORTED_BY",
+                  "source_5ce90c41773cc75ae98539b8221f0010"
+                ]
+              },
+              {
+                "claim_id": "claim_06eb5ca40e1ac0a621f1d52b8d7a5255",
+                "memory_id": "evt_f83947d833d07248035947d8c39575a5",
+                "subject": "Traveller",
+                "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+                "predicate": "planning_procedure",
+                "value": {
+                  "steps": [
+                    "Read current requirements",
+                    "Check unresolved disputes",
+                    "Draft within approved constraints",
+                    "Verify current evidence before handoff"
+                  ]
+                },
+                "kind": "procedure",
+                "scope": {
+                  "trip_id": "demo-trip"
+                },
+                "status": "accepted",
+                "accepted": true,
+                "current_eligible": true,
+                "protected": false,
+                "accepted_for_current_use": true,
+                "correction_known": false,
+                "protected_at_creation": false,
+                "fuzzy_score": 0.8468032373024417,
+                "fuzzy_explanation": {
+                  "score": 0.8468032373024417,
+                  "inputs": {
+                    "freshness": 0.9999998217214201,
+                    "quality": 0.9,
+                    "support": 0.3333333333333333,
+                    "agreement": 1.0
+                  },
+                  "memberships": {
+                    "freshness": {
+                      "low": 0.0,
+                      "medium": 3.5655715979743263e-07,
+                      "high": 0.9999996434428402
+                    },
+                    "quality": {
+                      "low": 0.0,
+                      "medium": 0.19999999999999996,
+                      "high": 0.8
+                    },
+                    "support": {
+                      "low": 0.33333333333333337,
+                      "medium": 0.6666666666666666,
+                      "high": 0.0
+                    },
+                    "agreement": {
+                      "low": 0.0,
+                      "medium": 0.0,
+                      "high": 1.0
+                    }
+                  },
+                  "fired_rules": [
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "medium",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 3.5655715979743263e-07,
+                      "output": 0.55
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "medium",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 3.5655715979743263e-07,
+                      "output": 0.6175
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "high",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 3.5655715979743263e-07,
+                      "output": 0.7300000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "high",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 3.5655715979743263e-07,
+                      "output": 0.7975000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "medium",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.19999999999999996,
+                      "output": 0.685
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "medium",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.19999999999999996,
+                      "output": 0.7525000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "high",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.33333333333333337,
+                      "output": 0.865
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "high",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.6666666666666666,
+                      "output": 0.9325
+                    }
+                  ],
+                  "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+                  "calibrated_probability": false
+                },
+                "previous_score": null,
+                "conflicting_claim_ids": [],
+                "sources": [
+                  {
+                    "id": "source_d3401443bc71b5ba24d15d0f1ce0b7ee",
+                    "memory_id": "evt_f83947d833d07248035947d8c39575a5",
+                    "text": "Review requirements before drafting a travel plan.",
+                    "origin": "user",
+                    "actor_id": "traveller",
+                    "user_confirmed": true,
+                    "quality": 0.9,
+                    "evidence_group": "user:traveller",
+                    "recorded_at": 1791933177,
+                    "received_at": 1791933177,
+                    "digest": "receipt_70f98183c5466433de7998fa8969de63",
+                    "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"procedure-1\",\"session_id\":\"session-procedure-1\"}"
+                  }
+                ],
+                "valid_from": 0,
+                "valid_until": 9223372036854775807,
+                "accepted_at": 1791933177,
+                "ended_at": null,
+                "reason": "",
+                "historical_meaning": "source assertion; effective dates unspecified",
+                "references": [],
+                "identity_evidence": [],
+                "evidence_path": [
+                  "claim_06eb5ca40e1ac0a621f1d52b8d7a5255",
+                  "SUPPORTED_BY",
+                  "source_d3401443bc71b5ba24d15d0f1ce0b7ee"
+                ]
+              }
+            ],
+            "current_evidence": [
+              {
+                "claim_id": "claim_dd799d445b9c827fc9f0ad56e77c8c18",
+                "memory_id": "evt_afff3131f1ba16f7c9e6d09f5f644e55",
+                "subject": "Traveller",
+                "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+                "predicate": "budget",
+                "value": 600,
+                "kind": "rule",
+                "scope": {
+                  "trip_id": "demo-trip"
+                },
+                "status": "accepted",
+                "accepted": true,
+                "current_eligible": true,
+                "protected": true,
+                "accepted_for_current_use": true,
+                "correction_known": false,
+                "protected_at_creation": true,
+                "fuzzy_score": 1.0,
+                "fuzzy_explanation": {
+                  "score": 1.0,
+                  "hard_rule": "user_confirmed_protection",
+                  "fired_rules": []
+                },
+                "previous_score": null,
+                "conflicting_claim_ids": [],
+                "sources": [
+                  {
+                    "id": "source_63f82cc1e07bf298e34e9128cd4e4680",
+                    "memory_id": "evt_afff3131f1ba16f7c9e6d09f5f644e55",
+                    "text": "Change my travel budget to 600.",
+                    "origin": "user",
+                    "actor_id": "traveller",
+                    "user_confirmed": true,
+                    "quality": 0.9,
+                    "evidence_group": "user:traveller",
+                    "recorded_at": 1791933178,
+                    "received_at": 1791933179,
+                    "digest": "receipt_2a0eac7b6dc5c5b392491596acfb36c9",
+                    "metadata_json": "{\"interpretation\":\"travel_grammar_v1\",\"service_receipt\":\"budget-2\",\"session_id\":\"session-budget-2\"}"
+                  }
+                ],
+                "valid_from": 0,
+                "valid_until": 9223372036854775807,
+                "accepted_at": 1791933178,
+                "ended_at": null,
+                "reason": "Explicit budget change in the source message",
+                "historical_meaning": "source assertion; effective dates unspecified",
+                "references": [],
+                "identity_evidence": [],
+                "evidence_path": [
+                  "claim_dd799d445b9c827fc9f0ad56e77c8c18",
+                  "SUPPORTED_BY",
+                  "source_63f82cc1e07bf298e34e9128cd4e4680"
+                ]
+              },
+              {
+                "claim_id": "claim_06eb5ca40e1ac0a621f1d52b8d7a5255",
+                "memory_id": "evt_f83947d833d07248035947d8c39575a5",
+                "subject": "Traveller",
+                "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+                "predicate": "planning_procedure",
+                "value": {
+                  "steps": [
+                    "Read current requirements",
+                    "Check unresolved disputes",
+                    "Draft within approved constraints",
+                    "Verify current evidence before handoff"
+                  ]
+                },
+                "kind": "procedure",
+                "scope": {
+                  "trip_id": "demo-trip"
+                },
+                "status": "accepted",
+                "accepted": true,
+                "current_eligible": true,
+                "protected": false,
+                "accepted_for_current_use": true,
+                "correction_known": false,
+                "protected_at_creation": false,
+                "fuzzy_score": 0.8468032373024417,
+                "fuzzy_explanation": {
+                  "score": 0.8468032373024417,
+                  "inputs": {
+                    "freshness": 0.9999998217214201,
+                    "quality": 0.9,
+                    "support": 0.3333333333333333,
+                    "agreement": 1.0
+                  },
+                  "memberships": {
+                    "freshness": {
+                      "low": 0.0,
+                      "medium": 3.5655715979743263e-07,
+                      "high": 0.9999996434428402
+                    },
+                    "quality": {
+                      "low": 0.0,
+                      "medium": 0.19999999999999996,
+                      "high": 0.8
+                    },
+                    "support": {
+                      "low": 0.33333333333333337,
+                      "medium": 0.6666666666666666,
+                      "high": 0.0
+                    },
+                    "agreement": {
+                      "low": 0.0,
+                      "medium": 0.0,
+                      "high": 1.0
+                    }
+                  },
+                  "fired_rules": [
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "medium",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 3.5655715979743263e-07,
+                      "output": 0.55
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "medium",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 3.5655715979743263e-07,
+                      "output": 0.6175
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "high",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 3.5655715979743263e-07,
+                      "output": 0.7300000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "high",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 3.5655715979743263e-07,
+                      "output": 0.7975000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "medium",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.19999999999999996,
+                      "output": 0.685
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "medium",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.19999999999999996,
+                      "output": 0.7525000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "high",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.33333333333333337,
+                      "output": 0.865
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "high",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.6666666666666666,
+                      "output": 0.9325
+                    }
+                  ],
+                  "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+                  "calibrated_probability": false
+                },
+                "previous_score": null,
+                "conflicting_claim_ids": [],
+                "sources": [
+                  {
+                    "id": "source_d3401443bc71b5ba24d15d0f1ce0b7ee",
+                    "memory_id": "evt_f83947d833d07248035947d8c39575a5",
+                    "text": "Review requirements before drafting a travel plan.",
+                    "origin": "user",
+                    "actor_id": "traveller",
+                    "user_confirmed": true,
+                    "quality": 0.9,
+                    "evidence_group": "user:traveller",
+                    "recorded_at": 1791933177,
+                    "received_at": 1791933177,
+                    "digest": "receipt_70f98183c5466433de7998fa8969de63",
+                    "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"procedure-1\",\"session_id\":\"session-procedure-1\"}"
+                  }
+                ],
+                "valid_from": 0,
+                "valid_until": 9223372036854775807,
+                "accepted_at": 1791933177,
+                "ended_at": null,
+                "reason": "",
+                "historical_meaning": "source assertion; effective dates unspecified",
+                "references": [],
+                "identity_evidence": [],
+                "evidence_path": [
+                  "claim_06eb5ca40e1ac0a621f1d52b8d7a5255",
+                  "SUPPORTED_BY",
+                  "source_d3401443bc71b5ba24d15d0f1ce0b7ee"
+                ]
+              }
+            ],
+            "prerequisites": [],
+            "needs_review": true,
+            "warnings": []
+          },
+          {
+            "work": {
+              "id": "seat-note",
+              "description": "Demonstration planning work",
+              "agent_id": "planner",
+              "status": "completed",
+              "created_at": 1791933178,
+              "validation_state": "current",
+              "fingerprint": "work_b94598074bd09b043508f2a52758783f",
+              "used_claim_ids": "[\"claim_9b8ef61c0982b303fd05eed3e3c9b244\"]",
+              "dependency_ids": "[]",
+              "lease_until": 1791933478.73534,
+              "owner_version": 1,
+              "completed_at": 1791933178
+            },
+            "used_versions": [
+              {
+                "claim_id": "claim_9b8ef61c0982b303fd05eed3e3c9b244",
+                "memory_id": "evt_b09209d86321550999070baa94b47648",
+                "subject": "Traveller",
+                "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+                "predicate": "seat_preference",
+                "value": "aisle",
+                "kind": "preference",
+                "scope": {
+                  "trip_id": "demo-trip"
+                },
+                "status": "accepted",
+                "accepted": true,
+                "current_eligible": true,
+                "protected": false,
+                "accepted_for_current_use": true,
+                "correction_known": false,
+                "protected_at_creation": false,
+                "fuzzy_score": 0.8468032373024417,
+                "fuzzy_explanation": {
+                  "score": 0.8468032373024417,
+                  "inputs": {
+                    "freshness": 0.9999998217214201,
+                    "quality": 0.9,
+                    "support": 0.3333333333333333,
+                    "agreement": 1.0
+                  },
+                  "memberships": {
+                    "freshness": {
+                      "low": 0.0,
+                      "medium": 3.5655715979743263e-07,
+                      "high": 0.9999996434428402
+                    },
+                    "quality": {
+                      "low": 0.0,
+                      "medium": 0.19999999999999996,
+                      "high": 0.8
+                    },
+                    "support": {
+                      "low": 0.33333333333333337,
+                      "medium": 0.6666666666666666,
+                      "high": 0.0
+                    },
+                    "agreement": {
+                      "low": 0.0,
+                      "medium": 0.0,
+                      "high": 1.0
+                    }
+                  },
+                  "fired_rules": [
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "medium",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 3.5655715979743263e-07,
+                      "output": 0.55
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "medium",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 3.5655715979743263e-07,
+                      "output": 0.6175
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "high",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 3.5655715979743263e-07,
+                      "output": 0.7300000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "high",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 3.5655715979743263e-07,
+                      "output": 0.7975000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "medium",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.19999999999999996,
+                      "output": 0.685
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "medium",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.19999999999999996,
+                      "output": 0.7525000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "high",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.33333333333333337,
+                      "output": 0.865
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "high",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.6666666666666666,
+                      "output": 0.9325
+                    }
+                  ],
+                  "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+                  "calibrated_probability": false
+                },
+                "previous_score": null,
+                "conflicting_claim_ids": [],
+                "sources": [
+                  {
+                    "id": "source_675005fbafaa9c66458b0931451c8722",
+                    "memory_id": "evt_b09209d86321550999070baa94b47648",
+                    "text": "I prefer an aisle seat.",
+                    "origin": "user",
+                    "actor_id": "traveller",
+                    "user_confirmed": true,
+                    "quality": 0.9,
+                    "evidence_group": "user:traveller",
+                    "recorded_at": 1791933177,
+                    "received_at": 1791933177,
+                    "digest": "receipt_f3bf2addfd30f16a1a1ac4b7ad30026a",
+                    "metadata_json": "{\"interpretation\":\"travel_grammar_v1\",\"service_receipt\":\"seat-1\",\"session_id\":\"session-seat-1\"}"
+                  }
+                ],
+                "valid_from": 0,
+                "valid_until": 9223372036854775807,
+                "accepted_at": 1791933177,
+                "ended_at": null,
+                "reason": "",
+                "historical_meaning": "source assertion; effective dates unspecified",
+                "references": [],
+                "identity_evidence": [],
+                "evidence_path": [
+                  "claim_9b8ef61c0982b303fd05eed3e3c9b244",
+                  "SUPPORTED_BY",
+                  "source_675005fbafaa9c66458b0931451c8722"
+                ]
+              }
+            ],
+            "current_evidence": [
+              {
+                "claim_id": "claim_9b8ef61c0982b303fd05eed3e3c9b244",
+                "memory_id": "evt_b09209d86321550999070baa94b47648",
+                "subject": "Traveller",
+                "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+                "predicate": "seat_preference",
+                "value": "aisle",
+                "kind": "preference",
+                "scope": {
+                  "trip_id": "demo-trip"
+                },
+                "status": "accepted",
+                "accepted": true,
+                "current_eligible": true,
+                "protected": false,
+                "accepted_for_current_use": true,
+                "correction_known": false,
+                "protected_at_creation": false,
+                "fuzzy_score": 0.8468032373024417,
+                "fuzzy_explanation": {
+                  "score": 0.8468032373024417,
+                  "inputs": {
+                    "freshness": 0.9999998217214201,
+                    "quality": 0.9,
+                    "support": 0.3333333333333333,
+                    "agreement": 1.0
+                  },
+                  "memberships": {
+                    "freshness": {
+                      "low": 0.0,
+                      "medium": 3.5655715979743263e-07,
+                      "high": 0.9999996434428402
+                    },
+                    "quality": {
+                      "low": 0.0,
+                      "medium": 0.19999999999999996,
+                      "high": 0.8
+                    },
+                    "support": {
+                      "low": 0.33333333333333337,
+                      "medium": 0.6666666666666666,
+                      "high": 0.0
+                    },
+                    "agreement": {
+                      "low": 0.0,
+                      "medium": 0.0,
+                      "high": 1.0
+                    }
+                  },
+                  "fired_rules": [
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "medium",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 3.5655715979743263e-07,
+                      "output": 0.55
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "medium",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 3.5655715979743263e-07,
+                      "output": 0.6175
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "high",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 3.5655715979743263e-07,
+                      "output": 0.7300000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "high",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 3.5655715979743263e-07,
+                      "output": 0.7975000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "medium",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.19999999999999996,
+                      "output": 0.685
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "medium",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.19999999999999996,
+                      "output": 0.7525000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "high",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.33333333333333337,
+                      "output": 0.865
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "high",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.6666666666666666,
+                      "output": 0.9325
+                    }
+                  ],
+                  "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+                  "calibrated_probability": false
+                },
+                "previous_score": null,
+                "conflicting_claim_ids": [],
+                "sources": [
+                  {
+                    "id": "source_675005fbafaa9c66458b0931451c8722",
+                    "memory_id": "evt_b09209d86321550999070baa94b47648",
+                    "text": "I prefer an aisle seat.",
+                    "origin": "user",
+                    "actor_id": "traveller",
+                    "user_confirmed": true,
+                    "quality": 0.9,
+                    "evidence_group": "user:traveller",
+                    "recorded_at": 1791933177,
+                    "received_at": 1791933177,
+                    "digest": "receipt_f3bf2addfd30f16a1a1ac4b7ad30026a",
+                    "metadata_json": "{\"interpretation\":\"travel_grammar_v1\",\"service_receipt\":\"seat-1\",\"session_id\":\"session-seat-1\"}"
+                  }
+                ],
+                "valid_from": 0,
+                "valid_until": 9223372036854775807,
+                "accepted_at": 1791933177,
+                "ended_at": null,
+                "reason": "",
+                "historical_meaning": "source assertion; effective dates unspecified",
+                "references": [],
+                "identity_evidence": [],
+                "evidence_path": [
+                  "claim_9b8ef61c0982b303fd05eed3e3c9b244",
+                  "SUPPORTED_BY",
+                  "source_675005fbafaa9c66458b0931451c8722"
+                ]
+              }
+            ],
+            "prerequisites": [],
+            "needs_review": false,
+            "warnings": []
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "/v1/recall",
+      "actor": "traveller",
+      "tenant": "A",
+      "request": {
+        "query": "What is the budget?",
+        "subject": "Traveller",
+        "predicate": "budget",
+        "scope": {
+          "trip_id": "demo-trip"
+        }
+      },
+      "status": 200,
+      "result": {
+        "answer_status": "supported",
+        "subject": "Traveller",
+        "requested_predicate": "budget",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "temporal_mode": "now",
+        "evidence": [
+          {
+            "claim_id": "claim_dd799d445b9c827fc9f0ad56e77c8c18",
+            "memory_id": "evt_afff3131f1ba16f7c9e6d09f5f644e55",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "budget",
+            "value": 600,
+            "kind": "rule",
+            "scope": {
+              "trip_id": "demo-trip"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": true,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 1.0,
+            "fuzzy_explanation": {
+              "score": 1.0,
+              "hard_rule": "user_confirmed_protection",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_63f82cc1e07bf298e34e9128cd4e4680",
+                "memory_id": "evt_afff3131f1ba16f7c9e6d09f5f644e55",
+                "text": "Change my travel budget to 600.",
+                "origin": "user",
+                "actor_id": "traveller",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:traveller",
+                "recorded_at": 1791933178,
+                "received_at": 1791933179,
+                "digest": "receipt_2a0eac7b6dc5c5b392491596acfb36c9",
+                "metadata_json": "{\"interpretation\":\"travel_grammar_v1\",\"service_receipt\":\"budget-2\",\"session_id\":\"session-budget-2\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1791933178,
+            "ended_at": null,
+            "reason": "Explicit budget change in the source message",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_dd799d445b9c827fc9f0ad56e77c8c18",
+              "SUPPORTED_BY",
+              "source_63f82cc1e07bf298e34e9128cd4e4680"
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "endpoint": "/v1/work",
+      "actor": "reviewer",
+      "tenant": "A",
+      "request": {
+        "work_id": "plan-v2",
+        "claim_ids": [
+          "claim_dd799d445b9c827fc9f0ad56e77c8c18",
+          "claim_06eb5ca40e1ac0a621f1d52b8d7a5255"
+        ],
+        "depends_on": [
+          "seat-note"
+        ]
+      },
+      "status": 200,
+      "result": {
+        "id": "plan-v2",
+        "description": "",
+        "agent_id": "",
+        "status": "ready",
+        "created_at": 1791933179,
+        "validation_state": "current",
+        "fingerprint": "work_897d113aaf9dc899b1aed0335fb217c5",
+        "used_claim_ids": "[\"claim_dd799d445b9c827fc9f0ad56e77c8c18\",\"claim_06eb5ca40e1ac0a621f1d52b8d7a5255\"]",
+        "dependency_ids": "[\"seat-note\"]"
+      }
+    },
+    {
+      "endpoint": "/v1/recall",
+      "actor": "traveller",
+      "tenant": "A",
+      "request": {
+        "query": "What is the phone_number?",
+        "subject": "Traveller",
+        "predicate": "phone_number",
+        "scope": {
+          "trip_id": "demo-trip"
+        }
+      },
+      "status": 200,
+      "result": {
+        "answer_status": "missing",
+        "subject": "Traveller",
+        "requested_predicate": "phone_number",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "temporal_mode": "now",
+        "evidence": [],
+        "warnings": []
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "traveller",
+      "tenant": "B",
+      "request": {
+        "event_id": "budget-1",
+        "text": "My travel budget is 300.",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-budget-1",
+        "confirmed": true
+      },
+      "status": 202,
+      "result": {
+        "id": "budget-1",
+        "status": "queued",
+        "submitted": 1791933180.0528452,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_83f4dd653a84b71889ab89d619c6e19c",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/recall",
+      "actor": "traveller",
+      "tenant": "B",
+      "request": {
+        "query": "What is the budget?",
+        "subject": "Traveller",
+        "predicate": "budget",
+        "scope": {
+          "trip_id": "demo-trip"
+        }
+      },
+      "status": 200,
+      "result": {
+        "answer_status": "supported",
+        "subject": "Traveller",
+        "requested_predicate": "budget",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "temporal_mode": "now",
+        "evidence": [
+          {
+            "claim_id": "claim_449038834a38197543c2e8e133b627e3",
+            "memory_id": "evt_83f4dd653a84b71889ab89d619c6e19c",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "budget",
+            "value": 300,
+            "kind": "rule",
+            "scope": {
+              "trip_id": "demo-trip"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": true,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 1.0,
+            "fuzzy_explanation": {
+              "score": 1.0,
+              "hard_rule": "user_confirmed_protection",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_5ce90c41773cc75ae98539b8221f0010",
+                "memory_id": "evt_83f4dd653a84b71889ab89d619c6e19c",
+                "text": "My travel budget is 300.",
+                "origin": "user",
+                "actor_id": "traveller",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:traveller",
+                "recorded_at": 1791933180,
+                "received_at": 1791933180,
+                "digest": "receipt_7a4b828a3c75ace63b2ff42d6e616f6f",
+                "metadata_json": "{\"interpretation\":\"travel_grammar_v1\",\"service_receipt\":\"budget-1\",\"session_id\":\"session-budget-1\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1791933180,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_449038834a38197543c2e8e133b627e3",
+              "SUPPORTED_BY",
+              "source_5ce90c41773cc75ae98539b8221f0010"
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "endpoint": "/v1/recall",
+      "actor": "traveller",
+      "tenant": "A",
+      "request": {
+        "query": "What is the budget?",
+        "subject": "Traveller",
+        "predicate": "budget",
+        "scope": {
+          "trip_id": "demo-trip"
+        }
+      },
+      "status": 200,
+      "result": {
+        "answer_status": "supported",
+        "subject": "Traveller",
+        "requested_predicate": "budget",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "temporal_mode": "now",
+        "evidence": [
+          {
+            "claim_id": "claim_dd799d445b9c827fc9f0ad56e77c8c18",
+            "memory_id": "evt_afff3131f1ba16f7c9e6d09f5f644e55",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "budget",
+            "value": 600,
+            "kind": "rule",
+            "scope": {
+              "trip_id": "demo-trip"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": true,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 1.0,
+            "fuzzy_explanation": {
+              "score": 1.0,
+              "hard_rule": "user_confirmed_protection",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_63f82cc1e07bf298e34e9128cd4e4680",
+                "memory_id": "evt_afff3131f1ba16f7c9e6d09f5f644e55",
+                "text": "Change my travel budget to 600.",
+                "origin": "user",
+                "actor_id": "traveller",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:traveller",
+                "recorded_at": 1791933178,
+                "received_at": 1791933179,
+                "digest": "receipt_2a0eac7b6dc5c5b392491596acfb36c9",
+                "metadata_json": "{\"interpretation\":\"travel_grammar_v1\",\"service_receipt\":\"budget-2\",\"session_id\":\"session-budget-2\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1791933178,
+            "ended_at": null,
+            "reason": "Explicit budget change in the source message",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_dd799d445b9c827fc9f0ad56e77c8c18",
+              "SUPPORTED_BY",
+              "source_63f82cc1e07bf298e34e9128cd4e4680"
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-0",
+        "text": "Planner checkpoint 0",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-0",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-0",
+        "status": "queued",
+        "submitted": 1791933180.4366012,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_069e145e74605ec3dc18e9ee68cc7f67",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-1",
+        "text": "Planner checkpoint 1",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-1",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-1",
+        "status": "queued",
+        "submitted": 1791933180.448271,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_83d45b2331267d3d52c4bc9c0b630b13",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-2",
+        "text": "Planner checkpoint 2",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-2",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-2",
+        "status": "queued",
+        "submitted": 1791933180.4575136,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_f777cce829c544e12566d944a5ebc2eb",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-3",
+        "text": "Planner checkpoint 3",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-3",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-3",
+        "status": "queued",
+        "submitted": 1791933180.460736,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_a00964c7f3f5ab98b03b4c655db79770",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-4",
+        "text": "Planner checkpoint 4",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-4",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-4",
+        "status": "queued",
+        "submitted": 1791933180.4639862,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_ddd2fabd63f1650f9c0b346f42223cc6",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-5",
+        "text": "Planner checkpoint 5",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-5",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-5",
+        "status": "queued",
+        "submitted": 1791933180.4678621,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_f95d870aed9bf4bd920e66aacff03a58",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-7",
+        "text": "Planner checkpoint 7",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-7",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-7",
+        "status": "queued",
+        "submitted": 1791933180.4718575,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_43bd8d7daaa03d2d7372db717a1b2f66",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-6",
+        "text": "Planner checkpoint 6",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-6",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-6",
+        "status": "queued",
+        "submitted": 1791933180.4757965,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_34ccb65e9e843c0b35fc494a0992af28",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-8",
+        "text": "Planner checkpoint 8",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-8",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-8",
+        "status": "queued",
+        "submitted": 1791933180.4792929,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_2b3f201babea386326a3f45dabd09650",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-9",
+        "text": "Planner checkpoint 9",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-9",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-9",
+        "status": "queued",
+        "submitted": 1791933180.4831579,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_f8b39eb3e996127637ac7fcd30fb4023",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-10",
+        "text": "Planner checkpoint 10",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-10",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-10",
+        "status": "queued",
+        "submitted": 1791933180.4877188,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_ebe7dc06013595fc2bdfe990c4e8cbcf",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-11",
+        "text": "Planner checkpoint 11",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-11",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-11",
+        "status": "queued",
+        "submitted": 1791933180.4904983,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_ba365d01f2657b6b3e744d26f10ef0b1",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-12",
+        "text": "Planner checkpoint 12",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-12",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-12",
+        "status": "queued",
+        "submitted": 1791933180.4946537,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_d250ca673b7557de41dfa0b5f2e4f37e",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-13",
+        "text": "Planner checkpoint 13",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-13",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-13",
+        "status": "queued",
+        "submitted": 1791933180.498718,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_07c2a519cac04b16957fe5117bdaa9d5",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-15",
+        "text": "Planner checkpoint 15",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-15",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-15",
+        "status": "queued",
+        "submitted": 1791933180.5039947,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_3089cbf69a7d9be7958ef2d5d95b1b24",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-16",
+        "text": "Planner checkpoint 16",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-16",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-16",
+        "status": "queued",
+        "submitted": 1791933180.5070043,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_0580e208325e007a033360be35bf0055",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-17",
+        "text": "Planner checkpoint 17",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-17",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-17",
+        "status": "queued",
+        "submitted": 1791933180.5118618,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_75b080c33ea4daaddcfd770c61dc825f",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-18",
+        "text": "Planner checkpoint 18",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-18",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-18",
+        "status": "queued",
+        "submitted": 1791933180.5148423,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_b18d3399445cc70607bd9ca29dadb3fc",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-19",
+        "text": "Planner checkpoint 19",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-19",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-19",
+        "status": "queued",
+        "submitted": 1791933180.5183685,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_ca73fd1b35faa0d15fa515e5b76bb789",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-14",
+        "text": "Planner checkpoint 14",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-14",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-14",
+        "status": "queued",
+        "submitted": 1791933180.5218818,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_589051cb14c981608a4ada25247ca116",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-21",
+        "text": "Planner checkpoint 21",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-21",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-21",
+        "status": "queued",
+        "submitted": 1791933180.5248818,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_b19c71700b904ec441cf14b2181b2e67",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-22",
+        "text": "Planner checkpoint 22",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-22",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-22",
+        "status": "queued",
+        "submitted": 1791933180.5278823,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_655f517d6eba1f2d1817a023f3718c88",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-20",
+        "text": "Planner checkpoint 20",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-20",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-20",
+        "status": "queued",
+        "submitted": 1791933180.5313911,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_8f5c29150c172205ca8226b8ad3aea4c",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "load-23",
+        "text": "Planner checkpoint 23",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-load-23",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "load-23",
+        "status": "queued",
+        "submitted": 1791933180.5343995,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_2ff1cfb501f7316fc04a1a3ef834f314",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/recall",
+      "actor": "traveller",
+      "tenant": "A",
+      "request": {
+        "query": "What is the budget?",
+        "subject": "Traveller",
+        "predicate": "budget",
+        "scope": {
+          "trip_id": "demo-trip"
+        }
+      },
+      "status": 200,
+      "result": {
+        "answer_status": "supported",
+        "subject": "Traveller",
+        "requested_predicate": "budget",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "temporal_mode": "now",
+        "evidence": [
+          {
+            "claim_id": "claim_dd799d445b9c827fc9f0ad56e77c8c18",
+            "memory_id": "evt_afff3131f1ba16f7c9e6d09f5f644e55",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "budget",
+            "value": 600,
+            "kind": "rule",
+            "scope": {
+              "trip_id": "demo-trip"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": true,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 1.0,
+            "fuzzy_explanation": {
+              "score": 1.0,
+              "hard_rule": "user_confirmed_protection",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_63f82cc1e07bf298e34e9128cd4e4680",
+                "memory_id": "evt_afff3131f1ba16f7c9e6d09f5f644e55",
+                "text": "Change my travel budget to 600.",
+                "origin": "user",
+                "actor_id": "traveller",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:traveller",
+                "recorded_at": 1791933178,
+                "received_at": 1791933179,
+                "digest": "receipt_2a0eac7b6dc5c5b392491596acfb36c9",
+                "metadata_json": "{\"interpretation\":\"travel_grammar_v1\",\"service_receipt\":\"budget-2\",\"session_id\":\"session-budget-2\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1791933178,
+            "ended_at": null,
+            "reason": "Explicit budget change in the source message",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_dd799d445b9c827fc9f0ad56e77c8c18",
+              "SUPPORTED_BY",
+              "source_63f82cc1e07bf298e34e9128cd4e4680"
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "endpoint": "/v1/handoff",
+      "actor": "reviewer",
+      "tenant": "A",
+      "request": {
+        "work_ids": [
+          "plan-v2"
+        ]
+      },
+      "status": 200,
+      "result": {
+        "as_of": 1791933186,
+        "can_continue": true,
+        "work": [
+          {
+            "work": {
+              "id": "plan-v2",
+              "description": "",
+              "agent_id": "reviewer",
+              "status": "completed",
+              "created_at": 1791933179,
+              "validation_state": "current",
+              "fingerprint": "work_897d113aaf9dc899b1aed0335fb217c5",
+              "used_claim_ids": "[\"claim_dd799d445b9c827fc9f0ad56e77c8c18\",\"claim_06eb5ca40e1ac0a621f1d52b8d7a5255\"]",
+              "dependency_ids": "[\"seat-note\"]",
+              "lease_until": 1791933479.80545,
+              "owner_version": 1,
+              "completed_at": 1791933180
+            },
+            "used_versions": [
+              {
+                "claim_id": "claim_dd799d445b9c827fc9f0ad56e77c8c18",
+                "memory_id": "evt_afff3131f1ba16f7c9e6d09f5f644e55",
+                "subject": "Traveller",
+                "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+                "predicate": "budget",
+                "value": 600,
+                "kind": "rule",
+                "scope": {
+                  "trip_id": "demo-trip"
+                },
+                "status": "accepted",
+                "accepted": true,
+                "current_eligible": true,
+                "protected": true,
+                "accepted_for_current_use": true,
+                "correction_known": false,
+                "protected_at_creation": true,
+                "fuzzy_score": 1.0,
+                "fuzzy_explanation": {
+                  "score": 1.0,
+                  "hard_rule": "user_confirmed_protection",
+                  "fired_rules": []
+                },
+                "previous_score": null,
+                "conflicting_claim_ids": [],
+                "sources": [
+                  {
+                    "id": "source_63f82cc1e07bf298e34e9128cd4e4680",
+                    "memory_id": "evt_afff3131f1ba16f7c9e6d09f5f644e55",
+                    "text": "Change my travel budget to 600.",
+                    "origin": "user",
+                    "actor_id": "traveller",
+                    "user_confirmed": true,
+                    "quality": 0.9,
+                    "evidence_group": "user:traveller",
+                    "recorded_at": 1791933178,
+                    "received_at": 1791933179,
+                    "digest": "receipt_2a0eac7b6dc5c5b392491596acfb36c9",
+                    "metadata_json": "{\"interpretation\":\"travel_grammar_v1\",\"service_receipt\":\"budget-2\",\"session_id\":\"session-budget-2\"}"
+                  }
+                ],
+                "valid_from": 0,
+                "valid_until": 9223372036854775807,
+                "accepted_at": 1791933178,
+                "ended_at": null,
+                "reason": "Explicit budget change in the source message",
+                "historical_meaning": "source assertion; effective dates unspecified",
+                "references": [],
+                "identity_evidence": [],
+                "evidence_path": [
+                  "claim_dd799d445b9c827fc9f0ad56e77c8c18",
+                  "SUPPORTED_BY",
+                  "source_63f82cc1e07bf298e34e9128cd4e4680"
+                ]
+              },
+              {
+                "claim_id": "claim_06eb5ca40e1ac0a621f1d52b8d7a5255",
+                "memory_id": "evt_f83947d833d07248035947d8c39575a5",
+                "subject": "Traveller",
+                "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+                "predicate": "planning_procedure",
+                "value": {
+                  "steps": [
+                    "Read current requirements",
+                    "Check unresolved disputes",
+                    "Draft within approved constraints",
+                    "Verify current evidence before handoff"
+                  ]
+                },
+                "kind": "procedure",
+                "scope": {
+                  "trip_id": "demo-trip"
+                },
+                "status": "accepted",
+                "accepted": true,
+                "current_eligible": true,
+                "protected": false,
+                "accepted_for_current_use": true,
+                "correction_known": false,
+                "protected_at_creation": false,
+                "fuzzy_score": 0.8468020678649094,
+                "fuzzy_explanation": {
+                  "score": 0.8468020678649094,
+                  "inputs": {
+                    "freshness": 0.9999991977466406,
+                    "quality": 0.9,
+                    "support": 0.3333333333333333,
+                    "agreement": 1.0
+                  },
+                  "memberships": {
+                    "freshness": {
+                      "low": 0.0,
+                      "medium": 1.604506718821952e-06,
+                      "high": 0.9999983954932812
+                    },
+                    "quality": {
+                      "low": 0.0,
+                      "medium": 0.19999999999999996,
+                      "high": 0.8
+                    },
+                    "support": {
+                      "low": 0.33333333333333337,
+                      "medium": 0.6666666666666666,
+                      "high": 0.0
+                    },
+                    "agreement": {
+                      "low": 0.0,
+                      "medium": 0.0,
+                      "high": 1.0
+                    }
+                  },
+                  "fired_rules": [
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "medium",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 1.604506718821952e-06,
+                      "output": 0.55
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "medium",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 1.604506718821952e-06,
+                      "output": 0.6175
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "high",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 1.604506718821952e-06,
+                      "output": 0.7300000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "high",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 1.604506718821952e-06,
+                      "output": 0.7975000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "medium",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.19999999999999996,
+                      "output": 0.685
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "medium",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.19999999999999996,
+                      "output": 0.7525000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "high",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.33333333333333337,
+                      "output": 0.865
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "high",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.6666666666666666,
+                      "output": 0.9325
+                    }
+                  ],
+                  "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+                  "calibrated_probability": false
+                },
+                "previous_score": null,
+                "conflicting_claim_ids": [],
+                "sources": [
+                  {
+                    "id": "source_d3401443bc71b5ba24d15d0f1ce0b7ee",
+                    "memory_id": "evt_f83947d833d07248035947d8c39575a5",
+                    "text": "Review requirements before drafting a travel plan.",
+                    "origin": "user",
+                    "actor_id": "traveller",
+                    "user_confirmed": true,
+                    "quality": 0.9,
+                    "evidence_group": "user:traveller",
+                    "recorded_at": 1791933177,
+                    "received_at": 1791933177,
+                    "digest": "receipt_70f98183c5466433de7998fa8969de63",
+                    "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"procedure-1\",\"session_id\":\"session-procedure-1\"}"
+                  }
+                ],
+                "valid_from": 0,
+                "valid_until": 9223372036854775807,
+                "accepted_at": 1791933177,
+                "ended_at": null,
+                "reason": "",
+                "historical_meaning": "source assertion; effective dates unspecified",
+                "references": [],
+                "identity_evidence": [],
+                "evidence_path": [
+                  "claim_06eb5ca40e1ac0a621f1d52b8d7a5255",
+                  "SUPPORTED_BY",
+                  "source_d3401443bc71b5ba24d15d0f1ce0b7ee"
+                ]
+              }
+            ],
+            "current_evidence": [
+              {
+                "claim_id": "claim_dd799d445b9c827fc9f0ad56e77c8c18",
+                "memory_id": "evt_afff3131f1ba16f7c9e6d09f5f644e55",
+                "subject": "Traveller",
+                "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+                "predicate": "budget",
+                "value": 600,
+                "kind": "rule",
+                "scope": {
+                  "trip_id": "demo-trip"
+                },
+                "status": "accepted",
+                "accepted": true,
+                "current_eligible": true,
+                "protected": true,
+                "accepted_for_current_use": true,
+                "correction_known": false,
+                "protected_at_creation": true,
+                "fuzzy_score": 1.0,
+                "fuzzy_explanation": {
+                  "score": 1.0,
+                  "hard_rule": "user_confirmed_protection",
+                  "fired_rules": []
+                },
+                "previous_score": null,
+                "conflicting_claim_ids": [],
+                "sources": [
+                  {
+                    "id": "source_63f82cc1e07bf298e34e9128cd4e4680",
+                    "memory_id": "evt_afff3131f1ba16f7c9e6d09f5f644e55",
+                    "text": "Change my travel budget to 600.",
+                    "origin": "user",
+                    "actor_id": "traveller",
+                    "user_confirmed": true,
+                    "quality": 0.9,
+                    "evidence_group": "user:traveller",
+                    "recorded_at": 1791933178,
+                    "received_at": 1791933179,
+                    "digest": "receipt_2a0eac7b6dc5c5b392491596acfb36c9",
+                    "metadata_json": "{\"interpretation\":\"travel_grammar_v1\",\"service_receipt\":\"budget-2\",\"session_id\":\"session-budget-2\"}"
+                  }
+                ],
+                "valid_from": 0,
+                "valid_until": 9223372036854775807,
+                "accepted_at": 1791933178,
+                "ended_at": null,
+                "reason": "Explicit budget change in the source message",
+                "historical_meaning": "source assertion; effective dates unspecified",
+                "references": [],
+                "identity_evidence": [],
+                "evidence_path": [
+                  "claim_dd799d445b9c827fc9f0ad56e77c8c18",
+                  "SUPPORTED_BY",
+                  "source_63f82cc1e07bf298e34e9128cd4e4680"
+                ]
+              },
+              {
+                "claim_id": "claim_06eb5ca40e1ac0a621f1d52b8d7a5255",
+                "memory_id": "evt_f83947d833d07248035947d8c39575a5",
+                "subject": "Traveller",
+                "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+                "predicate": "planning_procedure",
+                "value": {
+                  "steps": [
+                    "Read current requirements",
+                    "Check unresolved disputes",
+                    "Draft within approved constraints",
+                    "Verify current evidence before handoff"
+                  ]
+                },
+                "kind": "procedure",
+                "scope": {
+                  "trip_id": "demo-trip"
+                },
+                "status": "accepted",
+                "accepted": true,
+                "current_eligible": true,
+                "protected": false,
+                "accepted_for_current_use": true,
+                "correction_known": false,
+                "protected_at_creation": false,
+                "fuzzy_score": 0.8468020678649094,
+                "fuzzy_explanation": {
+                  "score": 0.8468020678649094,
+                  "inputs": {
+                    "freshness": 0.9999991977466406,
+                    "quality": 0.9,
+                    "support": 0.3333333333333333,
+                    "agreement": 1.0
+                  },
+                  "memberships": {
+                    "freshness": {
+                      "low": 0.0,
+                      "medium": 1.604506718821952e-06,
+                      "high": 0.9999983954932812
+                    },
+                    "quality": {
+                      "low": 0.0,
+                      "medium": 0.19999999999999996,
+                      "high": 0.8
+                    },
+                    "support": {
+                      "low": 0.33333333333333337,
+                      "medium": 0.6666666666666666,
+                      "high": 0.0
+                    },
+                    "agreement": {
+                      "low": 0.0,
+                      "medium": 0.0,
+                      "high": 1.0
+                    }
+                  },
+                  "fired_rules": [
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "medium",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 1.604506718821952e-06,
+                      "output": 0.55
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "medium",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 1.604506718821952e-06,
+                      "output": 0.6175
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "high",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 1.604506718821952e-06,
+                      "output": 0.7300000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "medium",
+                        "quality": "high",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 1.604506718821952e-06,
+                      "output": 0.7975000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "medium",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.19999999999999996,
+                      "output": 0.685
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "medium",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.19999999999999996,
+                      "output": 0.7525000000000001
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "high",
+                        "support": "low",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.33333333333333337,
+                      "output": 0.865
+                    },
+                    {
+                      "conditions": {
+                        "freshness": "high",
+                        "quality": "high",
+                        "support": "medium",
+                        "agreement": "high"
+                      },
+                      "firing_strength": 0.6666666666666666,
+                      "output": 0.9325
+                    }
+                  ],
+                  "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+                  "calibrated_probability": false
+                },
+                "previous_score": null,
+                "conflicting_claim_ids": [],
+                "sources": [
+                  {
+                    "id": "source_d3401443bc71b5ba24d15d0f1ce0b7ee",
+                    "memory_id": "evt_f83947d833d07248035947d8c39575a5",
+                    "text": "Review requirements before drafting a travel plan.",
+                    "origin": "user",
+                    "actor_id": "traveller",
+                    "user_confirmed": true,
+                    "quality": 0.9,
+                    "evidence_group": "user:traveller",
+                    "recorded_at": 1791933177,
+                    "received_at": 1791933177,
+                    "digest": "receipt_70f98183c5466433de7998fa8969de63",
+                    "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"procedure-1\",\"session_id\":\"session-procedure-1\"}"
+                  }
+                ],
+                "valid_from": 0,
+                "valid_until": 9223372036854775807,
+                "accepted_at": 1791933177,
+                "ended_at": null,
+                "reason": "",
+                "historical_meaning": "source assertion; effective dates unspecified",
+                "references": [],
+                "identity_evidence": [],
+                "evidence_path": [
+                  "claim_06eb5ca40e1ac0a621f1d52b8d7a5255",
+                  "SUPPORTED_BY",
+                  "source_d3401443bc71b5ba24d15d0f1ce0b7ee"
+                ]
+              }
+            ],
+            "prerequisites": [
+              {
+                "id": "seat-note",
+                "description": "Demonstration planning work",
+                "agent_id": "planner",
+                "status": "completed",
+                "created_at": 1791933178,
+                "validation_state": "current",
+                "fingerprint": "work_b94598074bd09b043508f2a52758783f",
+                "used_claim_ids": "[\"claim_9b8ef61c0982b303fd05eed3e3c9b244\"]",
+                "dependency_ids": "[]",
+                "lease_until": 1791933478.73534,
+                "owner_version": 1,
+                "completed_at": 1791933178
+              }
+            ],
+            "needs_review": false,
+            "warnings": []
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "/v1/events",
+      "actor": "planner",
+      "tenant": "A",
+      "request": {
+        "event_id": "proposal",
+        "text": "My budget is 900.",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "session_id": "session-proposal",
+        "confirmed": false
+      },
+      "status": 202,
+      "result": {
+        "id": "proposal",
+        "status": "queued",
+        "submitted": 1791933186.1474159,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_5b26359a2c83c4691a36f470f6a2ff12",
+        "error": null,
+        "blocks_work": 1
+      }
+    },
+    {
+      "endpoint": "/v1/recall",
+      "actor": "traveller",
+      "tenant": "A",
+      "request": {
+        "query": "What is the budget?",
+        "subject": "Traveller",
+        "predicate": "budget",
+        "scope": {
+          "trip_id": "demo-trip"
+        }
+      },
+      "status": 200,
+      "result": {
+        "answer_status": "disputed",
+        "subject": "Traveller",
+        "requested_predicate": "budget",
+        "scope": {
+          "trip_id": "demo-trip"
+        },
+        "temporal_mode": "now",
+        "evidence": [
+          {
+            "claim_id": "claim_ed23b6326751bce5a495e0b6c717b719",
+            "memory_id": "evt_5b26359a2c83c4691a36f470f6a2ff12",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "budget",
+            "value": 900,
+            "kind": "rule",
+            "scope": {
+              "trip_id": "demo-trip"
+            },
+            "status": "disputed",
+            "accepted": false,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": false,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.6558750000000001,
+            "fuzzy_explanation": {
+              "score": 0.6558750000000001,
+              "inputs": {
+                "freshness": 1.0,
+                "quality": 0.5,
+                "support": 0.3333333333333333,
+                "agreement": 0.5
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 1.0,
+                  "high": 0.0
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 1.0,
+                  "high": 0.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "medium"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "medium"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.685
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "conflicting_claim_ids": [
+              "claim_dd799d445b9c827fc9f0ad56e77c8c18"
+            ],
+            "sources": [
+              {
+                "id": "source_4c7fc3b1381bbbdf5b663fa90ecccdeb",
+                "memory_id": "evt_5b26359a2c83c4691a36f470f6a2ff12",
+                "text": "My budget is 900.",
+                "origin": "agent",
+                "actor_id": "planner",
+                "user_confirmed": false,
+                "quality": 0.5,
+                "evidence_group": "agent_assertions",
+                "recorded_at": 1791933186,
+                "received_at": 1791933186,
+                "digest": "receipt_50ff570e9e0fa7f7af9909b280f06d90",
+                "metadata_json": "{\"interpretation\":\"travel_grammar_v1\",\"service_receipt\":\"proposal\",\"session_id\":\"session-proposal\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1791933186,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_ed23b6326751bce5a495e0b6c717b719",
+              "SUPPORTED_BY",
+              "source_4c7fc3b1381bbbdf5b663fa90ecccdeb"
+            ]
+          },
+          {
+            "claim_id": "claim_dd799d445b9c827fc9f0ad56e77c8c18",
+            "memory_id": "evt_afff3131f1ba16f7c9e6d09f5f644e55",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "budget",
+            "value": 600,
+            "kind": "rule",
+            "scope": {
+              "trip_id": "demo-trip"
+            },
+            "status": "disputed",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": true,
+            "accepted_for_current_use": false,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 1.0,
+            "fuzzy_explanation": {
+              "score": 1.0,
+              "hard_rule": "user_confirmed_protection",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "conflicting_claim_ids": [
+              "claim_ed23b6326751bce5a495e0b6c717b719"
+            ],
+            "sources": [
+              {
+                "id": "source_63f82cc1e07bf298e34e9128cd4e4680",
+                "memory_id": "evt_afff3131f1ba16f7c9e6d09f5f644e55",
+                "text": "Change my travel budget to 600.",
+                "origin": "user",
+                "actor_id": "traveller",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:traveller",
+                "recorded_at": 1791933178,
+                "received_at": 1791933179,
+                "digest": "receipt_2a0eac7b6dc5c5b392491596acfb36c9",
+                "metadata_json": "{\"interpretation\":\"travel_grammar_v1\",\"service_receipt\":\"budget-2\",\"session_id\":\"session-budget-2\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1791933178,
+            "ended_at": null,
+            "reason": "Explicit budget change in the source message",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_dd799d445b9c827fc9f0ad56e77c8c18",
+              "SUPPORTED_BY",
+              "source_63f82cc1e07bf298e34e9128cd4e4680"
+            ]
+          }
+        ],
+        "warnings": [
+          "Resolve conflicting claims before acting."
+        ]
+      }
+    }
+  ],
+  "receipts": [
+    {
+      "id": "budget-1",
+      "status": "ready",
+      "submitted": 1791933175.7557883,
+      "started": 1791933175.7602947,
+      "ready": 1791933177.314173,
+      "attempts": 1,
+      "memory_id": "evt_768fc47c408e99b79014b02de6d8e139",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "seat-1",
+      "status": "ready",
+      "submitted": 1791933177.3210852,
+      "started": 1791933177.3240948,
+      "ready": 1791933177.5583177,
+      "attempts": 1,
+      "memory_id": "evt_b09209d86321550999070baa94b47648",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "procedure-1",
+      "status": "ready",
+      "submitted": 1791933177.5763319,
+      "started": 1791933177.5793312,
+      "ready": 1791933177.760711,
+      "attempts": 1,
+      "memory_id": "evt_f83947d833d07248035947d8c39575a5",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "budget-2",
+      "status": "ready",
+      "submitted": 1791933178.981774,
+      "started": 1791933178.9962158,
+      "ready": 1791933179.203042,
+      "attempts": 1,
+      "memory_id": "evt_afff3131f1ba16f7c9e6d09f5f644e55",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-0",
+      "status": "ready",
+      "submitted": 1791933180.4366012,
+      "started": 1791933180.4522715,
+      "ready": 1791933180.7051744,
+      "attempts": 1,
+      "memory_id": "evt_069e145e74605ec3dc18e9ee68cc7f67",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-1",
+      "status": "ready",
+      "submitted": 1791933180.448271,
+      "started": 1791933180.7165942,
+      "ready": 1791933180.9187543,
+      "attempts": 1,
+      "memory_id": "evt_83d45b2331267d3d52c4bc9c0b630b13",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-2",
+      "status": "ready",
+      "submitted": 1791933180.4575136,
+      "started": 1791933180.9294,
+      "ready": 1791933181.110168,
+      "attempts": 1,
+      "memory_id": "evt_f777cce829c544e12566d944a5ebc2eb",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-3",
+      "status": "ready",
+      "submitted": 1791933180.460736,
+      "started": 1791933181.1219559,
+      "ready": 1791933181.313808,
+      "attempts": 1,
+      "memory_id": "evt_a00964c7f3f5ab98b03b4c655db79770",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-4",
+      "status": "ready",
+      "submitted": 1791933180.4639862,
+      "started": 1791933181.3255446,
+      "ready": 1791933181.5221784,
+      "attempts": 1,
+      "memory_id": "evt_ddd2fabd63f1650f9c0b346f42223cc6",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-5",
+      "status": "ready",
+      "submitted": 1791933180.4678621,
+      "started": 1791933181.5336077,
+      "ready": 1791933181.7155144,
+      "attempts": 1,
+      "memory_id": "evt_f95d870aed9bf4bd920e66aacff03a58",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-7",
+      "status": "ready",
+      "submitted": 1791933180.4718575,
+      "started": 1791933181.7270865,
+      "ready": 1791933181.916353,
+      "attempts": 1,
+      "memory_id": "evt_43bd8d7daaa03d2d7372db717a1b2f66",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-6",
+      "status": "ready",
+      "submitted": 1791933180.4757965,
+      "started": 1791933181.928164,
+      "ready": 1791933182.1231086,
+      "attempts": 1,
+      "memory_id": "evt_34ccb65e9e843c0b35fc494a0992af28",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-8",
+      "status": "ready",
+      "submitted": 1791933180.4792929,
+      "started": 1791933182.1350412,
+      "ready": 1791933182.3271213,
+      "attempts": 1,
+      "memory_id": "evt_2b3f201babea386326a3f45dabd09650",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-9",
+      "status": "ready",
+      "submitted": 1791933180.4831579,
+      "started": 1791933182.331912,
+      "ready": 1791933182.529612,
+      "attempts": 1,
+      "memory_id": "evt_f8b39eb3e996127637ac7fcd30fb4023",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-10",
+      "status": "ready",
+      "submitted": 1791933180.4877188,
+      "started": 1791933182.540849,
+      "ready": 1791933182.7363522,
+      "attempts": 1,
+      "memory_id": "evt_ebe7dc06013595fc2bdfe990c4e8cbcf",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-11",
+      "status": "ready",
+      "submitted": 1791933180.4904983,
+      "started": 1791933182.7482698,
+      "ready": 1791933182.9403486,
+      "attempts": 1,
+      "memory_id": "evt_ba365d01f2657b6b3e744d26f10ef0b1",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-12",
+      "status": "ready",
+      "submitted": 1791933180.4946537,
+      "started": 1791933182.9476793,
+      "ready": 1791933183.1365488,
+      "attempts": 1,
+      "memory_id": "evt_d250ca673b7557de41dfa0b5f2e4f37e",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-13",
+      "status": "ready",
+      "submitted": 1791933180.498718,
+      "started": 1791933183.14802,
+      "ready": 1791933183.3528774,
+      "attempts": 1,
+      "memory_id": "evt_07c2a519cac04b16957fe5117bdaa9d5",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-15",
+      "status": "ready",
+      "submitted": 1791933180.5039947,
+      "started": 1791933183.355105,
+      "ready": 1791933183.5493958,
+      "attempts": 1,
+      "memory_id": "evt_3089cbf69a7d9be7958ef2d5d95b1b24",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-16",
+      "status": "ready",
+      "submitted": 1791933180.5070043,
+      "started": 1791933183.5615542,
+      "ready": 1791933183.7603602,
+      "attempts": 1,
+      "memory_id": "evt_0580e208325e007a033360be35bf0055",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-17",
+      "status": "ready",
+      "submitted": 1791933180.5118618,
+      "started": 1791933183.7636096,
+      "ready": 1791933183.955409,
+      "attempts": 1,
+      "memory_id": "evt_75b080c33ea4daaddcfd770c61dc825f",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-18",
+      "status": "ready",
+      "submitted": 1791933180.5148423,
+      "started": 1791933183.96715,
+      "ready": 1791933184.1506913,
+      "attempts": 1,
+      "memory_id": "evt_b18d3399445cc70607bd9ca29dadb3fc",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-19",
+      "status": "ready",
+      "submitted": 1791933180.5183685,
+      "started": 1791933184.1625485,
+      "ready": 1791933184.3605819,
+      "attempts": 1,
+      "memory_id": "evt_ca73fd1b35faa0d15fa515e5b76bb789",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-14",
+      "status": "ready",
+      "submitted": 1791933180.5218818,
+      "started": 1791933184.3721132,
+      "ready": 1791933184.5643356,
+      "attempts": 1,
+      "memory_id": "evt_589051cb14c981608a4ada25247ca116",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-21",
+      "status": "ready",
+      "submitted": 1791933180.5248818,
+      "started": 1791933184.576381,
+      "ready": 1791933184.7702339,
+      "attempts": 1,
+      "memory_id": "evt_b19c71700b904ec441cf14b2181b2e67",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-22",
+      "status": "ready",
+      "submitted": 1791933180.5278823,
+      "started": 1791933184.7821043,
+      "ready": 1791933184.9695086,
+      "attempts": 1,
+      "memory_id": "evt_655f517d6eba1f2d1817a023f3718c88",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-20",
+      "status": "ready",
+      "submitted": 1791933180.5313911,
+      "started": 1791933184.9813051,
+      "ready": 1791933185.1696665,
+      "attempts": 1,
+      "memory_id": "evt_8f5c29150c172205ca8226b8ad3aea4c",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "load-23",
+      "status": "ready",
+      "submitted": 1791933180.5343995,
+      "started": 1791933185.1804752,
+      "ready": 1791933185.3835933,
+      "attempts": 1,
+      "memory_id": "evt_2ff1cfb501f7316fc04a1a3ef834f314",
+      "error": null,
+      "blocks_work": 1
+    },
+    {
+      "id": "proposal",
+      "status": "ready",
+      "submitted": 1791933186.1474159,
+      "started": 1791933186.153689,
+      "ready": 1791933186.4101024,
+      "attempts": 1,
+      "memory_id": "evt_5b26359a2c83c4691a36f470f6a2ff12",
+      "error": null,
+      "blocks_work": 1
+    }
+  ],
+  "scope": "Explicit local demonstration. Raw travel messages use the named limited grammar. This is not a general language-model agent, actual booking, large-scale benchmark or public deployment."
+}

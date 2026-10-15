@@ -1,0 +1,28 @@
+{
+  "label": "40-completed-not-reclaimed",
+  "tenant": "riya",
+  "actor": "reviewer",
+  "path": "/v1/work/claim",
+  "request": {
+    "work_id": "goa-reviewed-v2"
+  },
+  "http_status": 200,
+  "response": {
+    "status": "already_completed",
+    "work": {
+      "id": "goa-reviewed-v2",
+      "description": "Reviewed INR 58600 draft using task contexts AND manually retrieved walking/boat/day/party/flight constraints. No booking.",
+      "agent_id": "planner",
+      "status": "completed",
+      "created_at": 1792064653,
+      "validation_state": "current",
+      "fingerprint": "work_814069b4d1e7e20df4850c6815e62ed8",
+      "used_claim_ids": "[\"claim_0d1cbc05795e8c873f13419c244c9569\",\"claim_391a1f524401f540d580e46a5e071172\",\"claim_3d30d14a5adadf5efe3b9984ff25135c\",\"claim_4a3f3760dd8c787bfa8c58db4c7fc150\",\"claim_4a84a27565751acd3b9adc47b560df92\",\"claim_54c6e9b9efd0763a63778734d33711c6\",\"claim_5ec4fc4df991d9ab648a00cd3b08ea5d\",\"claim_6ac158f1571bfb09d49681f2033a2a71\",\"claim_6e8c088c8bc3246c6cb03919739a20c2\",\"claim_8b69634b656e75ee3b0ce78ff2d60f3d\",\"claim_95b14d9b723844c4c3604d225260aba5\",\"claim_a18173e7dfbc00fcc8b72926af663f0a\",\"claim_c2202425fb814d4eebcd5b2e55af8a11\",\"claim_ce8223694af4d2183d72914543cc0271\",\"claim_e28b5ebf3ee39ed0f84403e6fe4d3caf\",\"claim_e746f9d3cdc9832898cccdf5bfa1067b\",\"claim_fb2f1fb633b7e8289b6f8911ebe7f1da\"]",
+      "dependency_ids": "[]",
+      "lease_until": 1792068255.05695,
+      "owner_version": 1,
+      "completed_at": 1792064656
+    }
+  },
+  "elapsed_ms": 156.60709999792743
+}

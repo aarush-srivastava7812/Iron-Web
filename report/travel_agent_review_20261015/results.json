@@ -1,0 +1,266 @@
+{
+  "method": "Same assistant roleplayed both agents; no independent generative agent model or live suppliers. Real HTTP, embeddings, CUDA and isolated durable stores were used. Queue processing was explicitly stepped by the audit harness.",
+  "results": [
+    {
+      "name": "Distinct authenticated agent profiles",
+      "outcome": "PASS",
+      "classification": "correctness",
+      "evidence": [
+        "09-planner-itinerary",
+        "11-reviewer-hotel"
+      ]
+    },
+    {
+      "name": "RAM cache and actual CUDA cards",
+      "outcome": "PASS",
+      "classification": "correctness",
+      "evidence": [
+        "09-planner-itinerary",
+        "12-itinerary-warm"
+      ]
+    },
+    {
+      "name": "Durable hybrid discovery and exact restriction recall",
+      "outcome": "PASS",
+      "classification": "correctness",
+      "evidence": [
+        "22b-hybrid-discovery",
+        "15-recall-walking",
+        "16-recall-boats"
+      ]
+    },
+    {
+      "name": "Complex ordinary travel message automatically understood",
+      "outcome": "GAP",
+      "classification": "language limitation",
+      "evidence": [
+        "01-raw-intake",
+        "03-raw-status"
+      ]
+    },
+    {
+      "name": "Unclear confirmed input blocks agent work safely",
+      "outcome": "PASS",
+      "classification": "correctness",
+      "evidence": [
+        "04-raw-blocks-planner"
+      ]
+    },
+    {
+      "name": "All scenario-critical itinerary constraints reach the automatic brief",
+      "outcome": "GAP",
+      "classification": "high-impact context omission",
+      "evidence": [
+        "09-planner-itinerary",
+        "15-recall-walking",
+        "16-recall-boats",
+        "17-recall-activity-limit"
+      ]
+    },
+    {
+      "name": "Flight brief contains origin, party size and morning requirement",
+      "outcome": "GAP",
+      "classification": "high-impact context omission",
+      "evidence": [
+        "10-planner-flight",
+        "18-recall-party",
+        "19-recall-morning",
+        "20-recall-origin"
+      ]
+    },
+    {
+      "name": "Trip mood is inherited when an ordinary session ID is supplied",
+      "outcome": "GAP",
+      "classification": "scope limitation",
+      "evidence": [
+        "09-planner-itinerary",
+        "13-trip-mood-no-session",
+        "21-recall-trip-mood"
+      ]
+    },
+    {
+      "name": "Explicit session mood selects its card",
+      "outcome": "PASS",
+      "classification": "correctness",
+      "evidence": [
+        "23-session-mood",
+        "25-session-itinerary"
+      ]
+    },
+    {
+      "name": "Pending budget change blocks context and completion",
+      "outcome": "PASS",
+      "classification": "correctness",
+      "evidence": [
+        "30-pending-context",
+        "31-pending-completion"
+      ]
+    },
+    {
+      "name": "Accepted budget change rejects old brief and reaches new brief",
+      "outcome": "PASS",
+      "classification": "correctness",
+      "evidence": [
+        "33-stale-context-proof",
+        "36-revised-context"
+      ]
+    },
+    {
+      "name": "Budget change flags related work for review",
+      "outcome": "PASS",
+      "classification": "correctness",
+      "evidence": [
+        "34-reviewer-handoff",
+        "35-stale-completion"
+      ]
+    },
+    {
+      "name": "Roleplayed revised draft satisfies the then-current fixture requirements",
+      "outcome": "PASS",
+      "classification": "assistant-authored plan arithmetic and checks",
+      "evidence": [
+        "agent_decisions_revised.json",
+        "travel_fixture.json"
+      ]
+    },
+    {
+      "name": "Completed work is retained without a second execution attempt",
+      "outcome": "PASS",
+      "classification": "correctness",
+      "evidence": [
+        "39-complete-reviewed-v2",
+        "40-completed-not-reclaimed"
+      ]
+    },
+    {
+      "name": "Manually enriched dependencies detect the walking change",
+      "outcome": "PASS",
+      "classification": "correctness",
+      "evidence": [
+        "44-reviewed-handoff-after-walking"
+      ]
+    },
+    {
+      "name": "Brief-only dependencies detect the same walking change",
+      "outcome": "GAP",
+      "classification": "consequence of omitted dependency",
+      "evidence": [
+        "41-register-brief-only-control",
+        "45-brief-only-handoff-after-walking",
+        "47-direct-updated-walking"
+      ]
+    },
+    {
+      "name": "Different trips keep their values separate",
+      "outcome": "PASS",
+      "classification": "correctness",
+      "evidence": [
+        "52-other-trip-context",
+        "53-goa-after-other-trip"
+      ]
+    },
+    {
+      "name": "Unrelated trip updates leave the active Goa workflow available",
+      "outcome": "GAP",
+      "classification": "intentional coarse blocking/cache trade-off",
+      "evidence": [
+        "48-warm-goa-before-other-trip",
+        "50-goa-blocked-by-other-trip",
+        "53-goa-after-other-trip"
+      ]
+    },
+    {
+      "name": "Different users are isolated, including pending events and proof ownership",
+      "outcome": "PASS",
+      "classification": "correctness",
+      "evidence": [
+        "55-riya-unblocked-by-other-user",
+        "57-arjun-context",
+        "58-riya-after-arjun",
+        "59-cross-user-proof"
+      ]
+    },
+    {
+      "name": "Deleting the revised budget does not resurrect either old cap",
+      "outcome": "PASS",
+      "classification": "correctness",
+      "evidence": [
+        "61-deletion-pending-blocks-context",
+        "63-after-deletion-context",
+        "64-after-deletion-budget"
+      ]
+    },
+    {
+      "name": "Implementation, tests and configuration remained unchanged",
+      "outcome": "PASS",
+      "classification": "no-fixes boundary",
+      "evidence": [
+        "source_before.json",
+        "source_after.json"
+      ]
+    }
+  ],
+  "counts": {
+    "PASS": 15,
+    "GAP": 6
+  },
+  "coverage": {
+    "itinerary": {
+      "budget": true,
+      "dates": true,
+      "destination": true,
+      "currency": true,
+      "dietary": true,
+      "accessibility": false,
+      "max_walk_metres": false,
+      "avoid_boats": false,
+      "max_activities_per_day": false,
+      "traveller_count": false,
+      "departure_city": false,
+      "flight_time_preference": false
+    },
+    "flight": {
+      "budget": true,
+      "dates": true,
+      "destination": true,
+      "currency": true,
+      "dietary": false,
+      "accessibility": false,
+      "max_walk_metres": false,
+      "avoid_boats": false,
+      "max_activities_per_day": false,
+      "traveller_count": false,
+      "departure_city": false,
+      "flight_time_preference": false
+    },
+    "hotel": {
+      "budget": true,
+      "dates": true,
+      "destination": true,
+      "currency": true,
+      "dietary": false,
+      "accessibility": true,
+      "max_walk_metres": false,
+      "avoid_boats": false,
+      "max_activities_per_day": false,
+      "traveller_count": false,
+      "departure_city": false,
+      "flight_time_preference": false
+    }
+  },
+  "plan_before_budget_change": 72600,
+  "plan_after_budget_change": 58600,
+  "new_budget": 65000,
+  "changed_implementation_files": [],
+  "protected_files": 133,
+  "final_agent_decision": "Pause: the later 50-metre limit makes the supplied hotels/activities unsuitable; after the separate deletion test, a budget also needs reconfirmation. No external booking occurred.",
+  "audit_harness_errors": [
+    "22-hybrid-discovery used top_k/mode instead of the actual k/retrieval_mode arguments. Corrected request 22b succeeded; this was an audit-call error, not a product finding."
+  ],
+  "limits": [
+    "One synthetic family scenario, one alternate trip and one second user; not a statistical or production-load study.",
+    "Agent decisions were authored by the same assistant using actual memory output plus a supplied fixture catalog, not generated by independently configured agent models.",
+    "Additional reviewer memory lookups and a deliberately brief-only control expose dependency coverage; the graph correctly tracks cited versions and does not infer uncited dependencies.",
+    "No fixes, profile-template expansions, task-field patches or production deployment were applied."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "label": "69-ambiguous-status",
+  "tenant": "riya",
+  "actor": "user",
+  "path": "/v1/events/status",
+  "request": {
+    "eid": "ambiguous-intake"
+  },
+  "http_status": 200,
+  "response": {
+    "id": "ambiguous-intake",
+    "status": "needs_review",
+    "submitted": 1792070176.7682836,
+    "started": 1792070176.7770052,
+    "ready": 1792070176.9502604,
+    "attempts": 1,
+    "memory_id": "evt_4e09dade64cc9b2b54f2bb989ca7b2bf",
+    "error": "Requirement preserved as an event, but its meaning needs review.",
+    "blocks_work": 1,
+    "interpretation": "travel_grammar_v2",
+    "claim_kinds": [
+      "episode"
+    ],
+    "semantic_claim_count": 0
+  },
+  "elapsed_ms": 4.025499991257675
+}

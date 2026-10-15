@@ -1,0 +1,26 @@
+{
+  "label": "26-register-reviewed-plan-v1",
+  "path": "/v1/work",
+  "body": {
+    "work_id": "goa-plan-v1",
+    "claim_ids": [
+      "claim_029525c8e27b2f34b9da797ca8c72afa",
+      "claim_0d1cbc05795e8c873f13419c244c9569",
+      "claim_391a1f524401f540d580e46a5e071172",
+      "claim_3d30d14a5adadf5efe3b9984ff25135c",
+      "claim_5ec4fc4df991d9ab648a00cd3b08ea5d",
+      "claim_6ac158f1571bfb09d49681f2033a2a71",
+      "claim_6e8c088c8bc3246c6cb03919739a20c2",
+      "claim_8b69634b656e75ee3b0ce78ff2d60f3d",
+      "claim_95b14d9b723844c4c3604d225260aba5",
+      "claim_a18173e7dfbc00fcc8b72926af663f0a",
+      "claim_c2202425fb814d4eebcd5b2e55af8a11",
+      "claim_ce8223694af4d2183d72914543cc0271",
+      "claim_e28b5ebf3ee39ed0f84403e6fe4d3caf",
+      "claim_e746f9d3cdc9832898cccdf5bfa1067b"
+    ],
+    "description": "Assistant-roleplayed draft: INR 72600; manual constraint recall checked; no booking."
+  },
+  "actor": "planner",
+  "tenant": "riya"
+}

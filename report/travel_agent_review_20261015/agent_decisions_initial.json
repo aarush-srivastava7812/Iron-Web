@@ -1,0 +1,16 @@
+{
+  "method": "The same assistant role-plays planner and reviewer, reading actual API outputs and the synthetic quote catalog. These are authored decisions, not independent agent-model or blind benchmark outputs.",
+  "planner": {
+    "inputs": ["09-planner-itinerary", "10-planner-flight", "11-reviewer-hotel", "travel_fixture.json"],
+    "draft": {"flight": "F-AM-COMFORT", "hotel": "H-RESORT", "activities": ["A-ACCESSIBLE-BEACH", "A-TERRACE"], "fixed_costs_included": true, "total_inr": 72600, "budget_inr": 90000},
+    "reason": "Morning flights, comfortable baggage allowance, step-free hotel, calm beach time and local food match the visible brief. This is a draft only. Party size, maximum walking, daily activity limit and boating restrictions need an evidence check before approval.",
+    "no_external_actions": true
+  },
+  "reviewer": {
+    "additional_actual_tools": ["15-recall-walking", "16-recall-boats", "17-recall-activity-limit", "18-recall-party", "19-recall-morning", "20-recall-origin", "22b-hybrid-discovery"],
+    "recovered": {"max_walk_metres": 500, "avoid_boats": true, "max_activities_per_day": 1, "traveller_count": 2, "flight_time_preference": "morning", "departure_city": "Delhi"},
+    "excluded_offers": {"F-LATE": "Violates morning-flight requirement", "H-STAIRS": "No step-free access", "H-REMOTE": "900-metre approach exceeds the walking limit", "A-CRUISE": "Violates the no-boats rule", "A-SECLUDED-BEACH": "1200-metre approach exceeds the walking limit"},
+    "decision": "Approve the draft under the original INR 90000 cap only after the additional memory checks. Limit the two planned activities to separate days and retain arrival/rest time.",
+    "memory_problem": "The default context omitted restrictions that the reviewer had to retrieve manually. The approval depends on those extra calls, not on the ready flag alone."
+  }
+}

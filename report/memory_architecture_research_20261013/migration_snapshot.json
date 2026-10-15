@@ -1,0 +1,78 @@
+{
+  "observed_at_utc": "2026-10-13T11:14:24.346829+00:00",
+  "tracked_head": "6d10601c7852d39fbbb83d79da38b8c8a6adef03",
+  "workspace_is_in_progress": true,
+  "runtime_measurements_performed": false,
+  "snapshots": [
+    {
+      "source": "config.yaml",
+      "snapshot": "D:\\Opencode_\\reserchpaper\\report\\memory_architecture_research_20261013\\migration_snapshot\\config.yaml.txt",
+      "sha256": "c46a4aa832205635fae766a829f0ab5d7550c18b62e585aa85ce21b1d815b4e2"
+    },
+    {
+      "source": "compose.yaml",
+      "snapshot": "D:\\Opencode_\\reserchpaper\\report\\memory_architecture_research_20261013\\migration_snapshot\\compose.yaml.txt",
+      "sha256": "d1d01d4c94d30988c9d58edb63b146a8ffe1b5a79e46e4c4df69c272956c1d02"
+    },
+    {
+      "source": "requirements/storage.txt",
+      "snapshot": "D:\\Opencode_\\reserchpaper\\report\\memory_architecture_research_20261013\\migration_snapshot\\requirements__storage.txt.txt",
+      "sha256": "ea080e2fd0a07617c69838b4f3727a6df5ce92f974b99d497116b6b6f0a837d8"
+    },
+    {
+      "source": "memory/engine.py",
+      "snapshot": "D:\\Opencode_\\reserchpaper\\report\\memory_architecture_research_20261013\\migration_snapshot\\memory__engine.py.txt",
+      "sha256": "7bc2387fbfa74f22e288436e5c78c6b9dc0514a1c83aaea23021f0d188ec80d2"
+    },
+    {
+      "source": "memory/storage.py",
+      "snapshot": "D:\\Opencode_\\reserchpaper\\report\\memory_architecture_research_20261013\\migration_snapshot\\memory__storage.py.txt",
+      "sha256": "301bc1cd9c91e54473e67e7cdd22f629fad1b9dbea598938af8aa9a3f67929b3"
+    },
+    {
+      "source": "memory/graph/connection.py",
+      "snapshot": "D:\\Opencode_\\reserchpaper\\report\\memory_architecture_research_20261013\\migration_snapshot\\memory__graph__connection.py.txt",
+      "sha256": "ba9edb5825eff2655451c639c76afabb9d72e0187bd50a4ba3137045ff3717ac"
+    },
+    {
+      "source": "memory/graph/falkordb_store.py",
+      "snapshot": "D:\\Opencode_\\reserchpaper\\report\\memory_architecture_research_20261013\\migration_snapshot\\memory__graph__falkordb_store.py.txt",
+      "sha256": "29e902412852f69d5f656399e345e2f5b4fa2049db949aa457d51f6b28f9154c"
+    },
+    {
+      "source": "memory/retrieval/hybrid.py",
+      "snapshot": "D:\\Opencode_\\reserchpaper\\report\\memory_architecture_research_20261013\\migration_snapshot\\memory__retrieval__hybrid.py.txt",
+      "sha256": "12c7c13521452ed8f63e9a783e21694497396697398440f8adef82e9974cef10"
+    },
+    {
+      "source": "memory/vector_store/qdrant_store.py",
+      "snapshot": "D:\\Opencode_\\reserchpaper\\report\\memory_architecture_research_20261013\\migration_snapshot\\memory__vector_store__qdrant_store.py.txt",
+      "sha256": "0388e4ad3e0febbab085388511cb0850ba87ba5421c6d231a17376c8d3ed97b0"
+    },
+    {
+      "source": "memory/tool_adapter.py",
+      "snapshot": "D:\\Opencode_\\reserchpaper\\report\\memory_architecture_research_20261013\\migration_snapshot\\memory__tool_adapter.py.txt",
+      "sha256": "b6382927308265acc4158d365592734189ae33025c822f0fd313c2423fd02952"
+    },
+    {
+      "source": "memory/schema.py",
+      "snapshot": "D:\\Opencode_\\reserchpaper\\report\\memory_architecture_research_20261013\\migration_snapshot\\memory__schema.py.txt",
+      "sha256": "0b0e235465d1964107395b31cd986603e848775dfa3c14538b4162bbb5096528"
+    },
+    {
+      "source": "docs/architecture.md",
+      "snapshot": "D:\\Opencode_\\reserchpaper\\report\\memory_architecture_research_20261013\\migration_snapshot\\docs__architecture.md.txt",
+      "sha256": "c24067c1828d07884253502df1401b812c1182ba0c5717d577cf2afae860a536"
+    },
+    {
+      "source": "docs/specification.md",
+      "snapshot": "D:\\Opencode_\\reserchpaper\\report\\memory_architecture_research_20261013\\migration_snapshot\\docs__specification.md.txt",
+      "sha256": "ec25fa40c46469f075899ed1d07214b51e660391635ae62b32ec4fe1ea72a20a"
+    },
+    {
+      "source": "research/upstream/packages.py",
+      "snapshot": "D:\\Opencode_\\reserchpaper\\report\\memory_architecture_research_20261013\\migration_snapshot\\research__upstream__packages.py.txt",
+      "sha256": "2ca5c0c0b41ee90a633f3452395669c8be35da9e590ed2e34782e49825d1325c"
+    }
+  ]
+}

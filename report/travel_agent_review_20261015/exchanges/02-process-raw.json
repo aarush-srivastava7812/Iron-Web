@@ -1,0 +1,12 @@
+{
+  "label": "02-process-raw",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/audit/drain",
+  "request": {},
+  "http_status": 200,
+  "response": {
+    "processed": 1
+  },
+  "elapsed_ms": 1668.6285000032512
+}

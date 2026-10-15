@@ -1,0 +1,12 @@
+{
+  "label": "68-process-ambiguous",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/audit/drain",
+  "request": {},
+  "http_status": 200,
+  "response": {
+    "processed": 1
+  },
+  "elapsed_ms": 180.08969999209512
+}

@@ -1,0 +1,9 @@
+[
+  "memory\\context\\access.py",
+  "memory\\context\\runtime.py",
+  "memory\\shared\\interpreter.py",
+  "memory\\shared\\journal.py",
+  "memory\\shared\\service.py",
+  "tests\\test_context_assembly.py",
+  "tests\\test_context_service.py"
+]

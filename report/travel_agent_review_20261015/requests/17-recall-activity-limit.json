@@ -1,0 +1,14 @@
+{
+  "label": "17-recall-activity-limit",
+  "path": "/v1/recall",
+  "body": {
+    "query": "max_activities_per_day",
+    "subject": "Riya",
+    "predicate": "max_activities_per_day",
+    "scope": {
+      "trip_id": "goa-family"
+    }
+  },
+  "actor": "reviewer",
+  "tenant": "riya"
+}

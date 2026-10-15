@@ -1,0 +1,35 @@
+{
+  "label": "14-device-status",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/audit/status",
+  "request": {},
+  "http_status": 200,
+  "response": {
+    "residency": {
+      "device": "cuda",
+      "resident_bytes": 3072,
+      "peak_owned_tensor_bytes": 4616,
+      "max_card_budget_bytes": 67108864,
+      "provider_arena_limit_bytes": 33554432,
+      "fallback_reason": null
+    },
+    "catalog_handle_hash": "d947ab75b1c3005f697fd933d194ade47e2160b4ef6d74fdd9bb1f31d1922ad7",
+    "cache_bytes": 49934,
+    "graphs": {
+      "riya": {
+        "name": "test_travel_fixes_20261015_e5b9de65587a8f002a54e3ac",
+        "vectors": 3,
+        "nodes": {
+          "Entity": 1,
+          "Observation": 3,
+          "MemorySource": 3,
+          "MemoryClaim": 33,
+          "MemoryContext": 3,
+          "MemoryField": 17
+        }
+      }
+    }
+  },
+  "elapsed_ms": 28.589399997144938
+}

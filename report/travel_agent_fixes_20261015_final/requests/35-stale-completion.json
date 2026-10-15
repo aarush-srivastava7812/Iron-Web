@@ -1,0 +1,10 @@
+{
+  "label": "35-stale-completion",
+  "path": "/v1/work/complete",
+  "body": {
+    "work_id": "goa-plan-v1",
+    "lease_token": "$response:27-own-plan-v1:work.lease_token"
+  },
+  "actor": "planner",
+  "tenant": "riya"
+}

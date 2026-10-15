@@ -1,0 +1,12 @@
+{
+  "label": "56-process-arjun",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/audit/drain",
+  "request": {},
+  "http_status": 200,
+  "response": {
+    "processed": 1
+  },
+  "elapsed_ms": 559.841399997822
+}

@@ -1,0 +1,39 @@
+{
+  "graph": "lifecycle_demo_0c04cf7dc046",
+  "browser_errors": [],
+  "focus_nodes": 10,
+  "all_evidence_nodes": 20,
+  "supersedes_visible": true,
+  "inspector_and_toggles": true,
+  "read_latency": {
+    "budget_dispute": {
+      "first_read_ms": 100.41690000798553,
+      "warm_p50_ms": 39.25274999346584,
+      "warm_p95_ms": 43.47649999544956,
+      "warm_samples": 10,
+      "expected_status": "disputed"
+    },
+    "missing_phone": {
+      "first_read_ms": 21.577499981503934,
+      "warm_p50_ms": 21.116750009241514,
+      "warm_p95_ms": 26.614599977619946,
+      "warm_samples": 10,
+      "expected_status": "missing"
+    },
+    "employer_location_path": {
+      "first_read_ms": 78.83430001675151,
+      "warm_p50_ms": 79.17749998159707,
+      "warm_p95_ms": 84.91199999116361,
+      "warm_samples": 10,
+      "expected_status": "supported"
+    },
+    "hybrid_budget_discovery": {
+      "first_read_ms": 268.4806000033859,
+      "warm_p50_ms": 218.6717000004137,
+      "warm_p95_ms": 237.39960000966676,
+      "warm_samples": 10,
+      "expected_status": null
+    }
+  },
+  "scope": "Local serial reads on this 41-node prepared fixture; ten warm samples per path. p95 uses nearest rank. Not a throughput, scaling, automatic extraction or answer-quality benchmark."
+}

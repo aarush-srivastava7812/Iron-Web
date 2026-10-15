@@ -171,6 +171,17 @@ class MemoryEngine:
         # 4. Retrieval helpers
         self._vector_retriever: Optional[VectorRetriever] = None
         self._hybrid_retriever: Optional[HybridRetriever] = None
+        self._lifecycle = None
+
+    @property
+    def lifecycle(self):
+        if self._lifecycle is None:
+            from memory.lifecycle.service import MemoryLifecycle
+
+            self._lifecycle = MemoryLifecycle(
+                self.graph_store, self.vector_store, self.config_data["lifecycle"]
+            )
+        return self._lifecycle
 
     def _load_config(
         self, config_input: Optional[Union[Dict[str, Any], str]]
@@ -300,6 +311,8 @@ class MemoryEngine:
         memory_id: Optional[str] = None,
         extraction: Optional[Dict[str, Any]] = None,
         enrich_graph=None,
+        claims=None,
+        source_info=None,
     ) -> str:
         """
         Ingest a memory across both Qdrant and FalkorDB stores with compensating rollback.
@@ -328,6 +341,8 @@ class MemoryEngine:
             valid_until=valid_until,
             importance=importance,
             memory_id=memory_id,
+            claims=claims,
+            source_info=source_info,
         )
         entity_ids = checked.entity_ids
 
@@ -336,13 +351,68 @@ class MemoryEngine:
         validate_metadata(metadata)
         meta = deepcopy(metadata) if metadata else {}
 
+        plan = None
+        if checked.source_info is not None:
+            from memory.lifecycle.models import ClaimInput
+
+            typed = checked.claims
+            if typed is None:
+                typed = [
+                    ClaimInput(
+                        subject=checked.source_info.actor_id,
+                        predicate="conversation_episode",
+                        value=content,
+                        kind="episode",
+                        scope={
+                            key: meta[key]
+                            for key in ("session_id", "run_id")
+                            if key in meta
+                        },
+                    )
+                ]
+                meta["memory_type"] = "episodic"
+            plan = self.lifecycle.prepare(
+                content,
+                typed,
+                checked.source_info,
+                mem_id,
+                timestamp,
+                valid_from,
+                valid_until,
+                meta,
+            )
+            if "existing_memory_id" in plan:
+                return plan["existing_memory_id"]
+            if self.vector_store.get_memory(mem_id) is not None:
+                raise ValueError(
+                    "Typed ingestion needs a new memory ID; existing source content is retained."
+                )
+            meta.update(
+                memory_claim_ids=plan["claim_ids"],
+                memory_source_id=plan["source_id"],
+                memory_versioned=True,
+            )
+        else:
+            existing = self.vector_store.get_memory(mem_id)
+            if existing and existing["payload"].get("memory_versioned"):
+                raise ValueError(
+                    "Versioned memories cannot be replaced by an unversioned write."
+                )
+
         # 1. Compute embedding
         embedding = self.embedder.embed_single(content)
 
         # 2. Extract entities and relations
         resolved_entities = []
         resolved_relations = []
-        if entity_ids is not None:
+        if plan is not None:
+            resolved_entities = plan["entities"]
+            meta.update(
+                extraction_status="typed_claims",
+                extraction_is_mock=False,
+                extractor_name="explicit_claim_contract",
+            )
+        elif entity_ids is not None:
             meta.update(
                 extraction_status="explicit_entities",
                 extraction_is_mock=False,
@@ -473,6 +543,8 @@ class MemoryEngine:
 
             if enrich_graph is not None:
                 enrich_graph(mem_id)
+            if plan is not None:
+                self.lifecycle.ingest(plan, mem_id, content)
 
         return mem_id
 
@@ -509,6 +581,8 @@ class MemoryEngine:
             "valid_until",
             "importance",
             "memory_id",
+            "claims",
+            "source_info",
         }
         for item, metadata, timestamp in zip(contents, metadatas, timestamps):
             if isinstance(item, dict):
@@ -527,6 +601,8 @@ class MemoryEngine:
                     valid_until=item.get("valid_until", 2**63 - 1),
                     importance=item.get("importance", 1.0),
                     memory_id=item.get("memory_id"),
+                    claims=item.get("claims"),
+                    source_info=item.get("source_info"),
                 )
             elif isinstance(item, str):
                 values = dict(content=item, metadata=metadata, timestamp=timestamp)
@@ -659,9 +735,9 @@ class MemoryEngine:
             return []
         q_time = int(time.time()) if query_time is None else query_time
         if retrieval_mode == "vector":
-            hits = VectorRetriever(self.embedder, self.vector_store).retrieve(
-                query, k, q_time, temporal_mode, document_ids
-            )
+            hits = VectorRetriever(
+                self.embedder, self.vector_store, lifecycle=self.lifecycle
+            ).retrieve(query, k, q_time, temporal_mode, document_ids)
         else:
             settings = self.config_data.get("retrieval", {})
             use_rerank = retrieval_mode not in {
@@ -687,6 +763,7 @@ class MemoryEngine:
                 self.graph_store,
                 self.reranker if use_rerank else None,
                 ret_conf,
+                lifecycle=self.lifecycle,
             ).retrieve(query, k, q_time, temporal_mode, document_ids)
         return [self._search_result(hit, retrieval_mode) for hit in hits]
 
@@ -733,6 +810,10 @@ class MemoryEngine:
         old_point = self.vector_store.get_memory(memory_id)
         if old_point is None:
             return False
+        if old_point["payload"].get("memory_versioned"):
+            raise ValueError(
+                "Versioned memories are immutable; add a new confirmed correction/supersession event."
+            )
 
         old_payload = dict(old_point.get("payload", {}))
         old_vector = (
@@ -855,7 +936,12 @@ class MemoryEngine:
         return True
 
     @serialized
-    def delete(self, memory_id: str, clean_orphaned_entities: bool = False) -> bool:
+    def delete(
+        self,
+        memory_id: str,
+        clean_orphaned_entities: bool = False,
+        user_confirmed: bool = False,
+    ) -> bool:
         """
         Delete a memory across Qdrant and FalkorDB.
 
@@ -864,12 +950,89 @@ class MemoryEngine:
         are pruned safely.
         """
         self._validate_id(memory_id)
+        point = self.vector_store.get_memory(memory_id)
+        if (
+            point
+            and point["payload"].get("memory_versioned")
+            and user_confirmed is not True
+        ):
+            raise ValueError(
+                "Deleting retained versioned evidence requires explicit user confirmation."
+            )
         with coordinated_write(self.vector_store, self.graph_store, [memory_id]):
+            if point and point["payload"].get("memory_versioned"):
+                self.lifecycle.remove_source(memory_id)
             qdrant_deleted = self.vector_store.delete_memory(memory_id)
             graph_deleted = self.graph_store.delete_memory(
                 memory_id=memory_id, clean_orphaned_entities=clean_orphaned_entities
             )
         return bool(qdrant_deleted or graph_deleted)
+
+    @serialized
+    def inspect_claim(self, claim_id: str, query_time=None, known_at=None):
+        self._validate_id(claim_id)
+        if query_time is not None and (
+            not isinstance(query_time, int)
+            or isinstance(query_time, bool)
+            or not 0 <= query_time <= 2**63 - 1
+        ):
+            raise ValueError("Query time must be a nonnegative INT64 integer.")
+        if known_at is not None and (
+            not isinstance(known_at, int)
+            or isinstance(known_at, bool)
+            or not 0 <= known_at <= 2**63 - 1
+        ):
+            raise ValueError("Known-at time must be a nonnegative INT64 integer.")
+        claim = self.lifecycle.claim(claim_id)
+        if claim is None:
+            return None
+        return self.lifecycle.view(
+            claim, int(time.time()) if query_time is None else query_time, known_at
+        )
+
+    @serialized
+    def recall(
+        self,
+        query: str,
+        subject: str,
+        predicate=None,
+        scope=None,
+        query_time=None,
+        temporal_mode="now",
+        known_at=None,
+    ):
+        return self.lifecycle.recall(
+            query, subject, predicate, scope, query_time, temporal_mode, known_at
+        )
+
+    @serialized
+    def recall_path(
+        self, query: str, subject: str, predicates: list, scope=None, query_time=None
+    ):
+        return self.lifecycle.recall_path(query, subject, predicates, scope, query_time)
+
+    @serialized
+    def record_work(
+        self,
+        work_id: str,
+        claim_ids: list,
+        depends_on=None,
+        description="",
+        agent_id="",
+    ):
+        with coordinated_write(self.vector_store, self.graph_store, []):
+            return self.lifecycle.register_work(
+                work_id, claim_ids, depends_on, description, agent_id
+            )
+
+    @serialized
+    def handoff(self, work_ids: list):
+        return self.lifecycle.handoff(work_ids)
+
+    @serialized
+    def complete_work(self, work_id: str, agent_id: str = ""):
+        with coordinated_write(self.vector_store, self.graph_store, []):
+            return self.lifecycle.complete_work(work_id, agent_id)
 
     # =========================================================================
     # Maintenance and Reliability Operations (Phase 4)

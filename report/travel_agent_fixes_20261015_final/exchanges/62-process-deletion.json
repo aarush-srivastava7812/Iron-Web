@@ -1,0 +1,12 @@
+{
+  "label": "62-process-deletion",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/audit/drain",
+  "request": {},
+  "http_status": 200,
+  "response": {
+    "processed": 1
+  },
+  "elapsed_ms": 189.38930000877008
+}

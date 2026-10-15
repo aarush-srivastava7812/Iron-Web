@@ -1,0 +1,62 @@
+{
+  "label": "06-profile",
+  "tenant": "riya",
+  "actor": "user",
+  "path": "/v1/events",
+  "request": {
+    "event_id": "stable-profile",
+    "text": "Usual preferences: vegetarian meals, active holidays, hiking, boat rides and local food; aisle seat. This trip can differ.",
+    "subject": "Riya",
+    "confirmed": true,
+    "claims": [
+      {
+        "subject": "Riya",
+        "predicate": "dietary",
+        "value": "vegetarian",
+        "kind": "preference",
+        "scope": {}
+      },
+      {
+        "subject": "Riya",
+        "predicate": "pace",
+        "value": "active",
+        "kind": "preference",
+        "scope": {}
+      },
+      {
+        "subject": "Riya",
+        "predicate": "interests",
+        "value": [
+          "hiking",
+          "boat rides",
+          "local food"
+        ],
+        "kind": "preference",
+        "scope": {}
+      },
+      {
+        "subject": "Riya",
+        "predicate": "seat_preference",
+        "value": "aisle",
+        "kind": "preference",
+        "scope": {}
+      }
+    ]
+  },
+  "http_status": 202,
+  "response": {
+    "id": "stable-profile",
+    "status": "queued",
+    "submitted": 1792056076.9225101,
+    "started": null,
+    "ready": null,
+    "attempts": 0,
+    "memory_id": "evt_efab370948df8db7e814bc63eea39b13",
+    "error": null,
+    "blocks_work": 1,
+    "interpretation": null,
+    "claim_kinds": [],
+    "semantic_claim_count": 0
+  },
+  "elapsed_ms": 74.74270000238903
+}

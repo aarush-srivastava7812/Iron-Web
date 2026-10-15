@@ -1,0 +1,15 @@
+{
+  "label": "33-stale-context-proof",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/v1/context/validate",
+  "request": {
+    "context_token": "<redacted>"
+  },
+  "http_status": 200,
+  "response": {
+    "valid": false,
+    "status": "context_changed"
+  },
+  "elapsed_ms": 31.252900007530116
+}

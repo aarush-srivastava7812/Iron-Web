@@ -1,0 +1,15 @@
+{
+  "label": "01-raw-intake",
+  "path": "/v1/events",
+  "body": {
+    "event_id": "raw-intake",
+    "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed.",
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "confirmed": true
+  },
+  "actor": "user",
+  "tenant": "riya"
+}

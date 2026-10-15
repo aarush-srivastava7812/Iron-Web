@@ -1,0 +1,86 @@
+{
+  "label": "47-direct-updated-walking",
+  "tenant": "riya",
+  "actor": "reviewer",
+  "path": "/v1/recall",
+  "request": {
+    "query": "walking limit",
+    "subject": "Riya",
+    "predicate": "max_walk_metres",
+    "scope": {
+      "trip_id": "goa-family"
+    }
+  },
+  "http_status": 200,
+  "response": {
+    "answer_status": "supported",
+    "subject": "Riya",
+    "requested_predicate": "max_walk_metres",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "temporal_mode": "now",
+    "evidence": [
+      {
+        "claim_id": "claim_8ff7a04362b0581b9d0ffcb5940199f8",
+        "memory_id": "evt_d262a0d5115a921582bf345e0e15cdfb",
+        "subject": "Riya",
+        "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+        "predicate": "max_walk_metres",
+        "value": 50,
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "status": "accepted",
+        "accepted": true,
+        "current_eligible": true,
+        "protected": true,
+        "accepted_for_current_use": true,
+        "correction_known": false,
+        "protected_at_creation": true,
+        "fuzzy_score": 1.0,
+        "fuzzy_explanation": {
+          "score": 1.0,
+          "hard_rule": "user_confirmed_protection",
+          "fired_rules": []
+        },
+        "previous_score": null,
+        "changed_by": null,
+        "change_reason": null,
+        "conflicting_claim_ids": [],
+        "sources": [
+          {
+            "id": "source_e12402c35a188f9e85d8701fc3b8e445",
+            "memory_id": "evt_d262a0d5115a921582bf345e0e15cdfb",
+            "text": "Change the maximum walking segment for this trip to 50 metres.",
+            "origin": "user",
+            "actor_id": "user",
+            "user_confirmed": true,
+            "quality": 0.9,
+            "evidence_group": "user:user",
+            "recorded_at": 1792070169,
+            "received_at": 1792070169,
+            "digest": "receipt_6596a24beb2ee29cac41171b3cbc66f0",
+            "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"walking-limit-change\",\"session_id\":\"\"}"
+          }
+        ],
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "accepted_at": 1792070169,
+        "ended_at": null,
+        "reason": "User reduced maximum walking distance",
+        "historical_meaning": "source assertion; effective dates unspecified",
+        "references": [],
+        "identity_evidence": [],
+        "evidence_path": [
+          "claim_8ff7a04362b0581b9d0ffcb5940199f8",
+          "SUPPORTED_BY",
+          "source_e12402c35a188f9e85d8701fc3b8e445"
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "elapsed_ms": 48.60910000570584
+}

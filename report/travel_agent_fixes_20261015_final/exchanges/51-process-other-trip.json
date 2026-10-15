@@ -1,0 +1,12 @@
+{
+  "label": "51-process-other-trip",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/audit/drain",
+  "request": {},
+  "http_status": 200,
+  "response": {
+    "processed": 1
+  },
+  "elapsed_ms": 311.7387000093004
+}

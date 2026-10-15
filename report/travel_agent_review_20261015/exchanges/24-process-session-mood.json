@@ -1,0 +1,12 @@
+{
+  "label": "24-process-session-mood",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/audit/drain",
+  "request": {},
+  "http_status": 200,
+  "response": {
+    "processed": 1
+  },
+  "elapsed_ms": 237.23850000533275
+}

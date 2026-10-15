@@ -1,0 +1,48 @@
+{
+  "label": "65-final-device-and-stores",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/audit/status",
+  "request": {},
+  "http_status": 200,
+  "response": {
+    "residency": {
+      "device": "cuda",
+      "resident_bytes": 3072,
+      "peak_owned_tensor_bytes": 4616,
+      "max_card_budget_bytes": 67108864,
+      "provider_arena_limit_bytes": 33554432,
+      "fallback_reason": null
+    },
+    "catalog_handle_hash": "e5a1c4081c445cf131478b507e1a372fe221151af863994dc7625ecc7ba28e4c",
+    "cache_bytes": 25767,
+    "graphs": {
+      "riya": {
+        "name": "test_travel_fixes_20261015_e5b9de65587a8f002a54e3ac",
+        "vectors": 6,
+        "nodes": {
+          "Entity": 1,
+          "Observation": 6,
+          "MemorySource": 6,
+          "MemoryClaim": 40,
+          "MemoryContext": 5,
+          "MemoryField": 17,
+          "MemoryWork": 3
+        }
+      },
+      "arjun": {
+        "name": "test_travel_fixes_20261015_37fbc70be3dfbccadad682d7",
+        "vectors": 1,
+        "nodes": {
+          "Entity": 1,
+          "Observation": 1,
+          "MemorySource": 1,
+          "MemoryClaim": 6,
+          "MemoryContext": 1,
+          "MemoryField": 6
+        }
+      }
+    }
+  },
+  "elapsed_ms": 45.46199999458622
+}

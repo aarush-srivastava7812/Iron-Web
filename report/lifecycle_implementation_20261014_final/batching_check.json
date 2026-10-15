@@ -1,0 +1,18 @@
+{
+  "graph": "lifecycle_demo_0c04cf7dc046",
+  "identical_ranked_evidence": true,
+  "full_retrieval": {
+    "per_claim": {
+      "samples": 10,
+      "median_ms": 414.12564998609014,
+      "p95_ms": 484.47830000077374
+    },
+    "batched": {
+      "samples": 10,
+      "median_ms": 217.5703500106465,
+      "p95_ms": 246.42270000185817
+    }
+  },
+  "rounds": 10,
+  "method": "Same graph/vectors/model/query/time/budget, alternating execution order, two warmup rounds. Only within-request batched views versus individual views vary. Small local fixture, not a scale claim."
+}

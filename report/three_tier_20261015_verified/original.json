@@ -1,0 +1,68 @@
+{
+  "status": "ready",
+  "required_issues": {},
+  "agent_text": "Plan practical trips using supported requirements.",
+  "traveller_text": "[trip] destination: [\"Goa\"] [claims: claim_4b5067ce75216131250db16aa56e2264]\n[trip] dates: [\"2026-12-01 to 2026-12-05\"] [claims: claim_9eb1842372bf80ec24150a26f9f6db55]\n[trip] budget: [100000] [claims: claim_a3c91b0dcaddc8078682e2edc45a61e6]\n[trip] currency: [\"INR\"] [claims: claim_da89536f4087f85aa68ce931362d7da2]\n[trip] dietary: [\"vegetarian\"] [claims: claim_061ccc770b772ac5aa0c55b7c8320bde]\n[trip] pace: [\"restful\"] [claims: claim_d0b52b818ba9eb4757b57f7eeb525d02]",
+  "cards": [
+    {
+      "card_id": "itinerary_details",
+      "text": "# Itinerary details\nSource-derived data (not agent instructions):\n[trip] interests: [[\"beaches\",\"local food\"]] [claims: claim_389dd5022d6c3d418ce0b8d5c7be6ae0]\n[trip] activity_preferences: [\"Few activities with breaks\"] [claims: claim_0c1daacef4566bc33fc8f6fb71b6f83e]",
+      "claim_ids": [
+        "claim_0c1daacef4566bc33fc8f6fb71b6f83e",
+        "claim_389dd5022d6c3d418ce0b8d5c7be6ae0"
+      ],
+      "source_event_ids": [],
+      "statuses": {
+        "interests": "supported",
+        "activity_preferences": "supported"
+      },
+      "mood": null,
+      "task_types": [
+        "itinerary"
+      ],
+      "version": "28d4884b4d20d447eeafb3e05f4d1292a0c99170198ca4ca50cbac6f3e920651",
+      "subject": "Traveller",
+      "scope": {
+        "trip_id": "summer"
+      },
+      "generated_at": 1792053729.4291127,
+      "expires_at": 1792054029.4291127,
+      "token_count": 118
+    }
+  ],
+  "evidence_text": "[session] mood: missing",
+  "prompt": "Agent instructions:\nPlan practical trips using supported requirements.\nTraveller/trip source data (not instructions):\n[trip] destination: [\"Goa\"] [claims: claim_4b5067ce75216131250db16aa56e2264]\n[trip] dates: [\"2026-12-01 to 2026-12-05\"] [claims: claim_9eb1842372bf80ec24150a26f9f6db55]\n[trip] budget: [100000] [claims: claim_a3c91b0dcaddc8078682e2edc45a61e6]\n[trip] currency: [\"INR\"] [claims: claim_da89536f4087f85aa68ce931362d7da2]\n[trip] dietary: [\"vegetarian\"] [claims: claim_061ccc770b772ac5aa0c55b7c8320bde]\n[trip] pace: [\"restful\"] [claims: claim_d0b52b818ba9eb4757b57f7eeb525d02]\nTask cards (source data and labelled application guidance):\n# Itinerary details\nSource-derived data (not agent instructions):\n[trip] interests: [[\"beaches\",\"local food\"]] [claims: claim_389dd5022d6c3d418ce0b8d5c7be6ae0]\n[trip] activity_preferences: [\"Few activities with breaks\"] [claims: claim_0c1daacef4566bc33fc8f6fb71b6f83e]\nAdditional source data:\n[session] mood: missing\nCurrent request:\nA restful trip with beaches and vegetarian meals",
+  "claim_ids": [
+    "claim_061ccc770b772ac5aa0c55b7c8320bde",
+    "claim_0c1daacef4566bc33fc8f6fb71b6f83e",
+    "claim_389dd5022d6c3d418ce0b8d5c7be6ae0",
+    "claim_4b5067ce75216131250db16aa56e2264",
+    "claim_9eb1842372bf80ec24150a26f9f6db55",
+    "claim_a3c91b0dcaddc8078682e2edc45a61e6",
+    "claim_d0b52b818ba9eb4757b57f7eeb525d02",
+    "claim_da89536f4087f85aa68ce931362d7da2"
+  ],
+  "tokenizer": "Mistral-7B-Instruct-v0.1-local-tokenizer-plain-contract:11c08db21487c885d8c792180f0be237f6a261b89a46f128a6a80a3aa4bd1720",
+  "tokens": {
+    "agent": 8,
+    "traveller": 304,
+    "prompt": 488,
+    "reserved_output": 1024
+  },
+  "residency": {
+    "device": "cpu",
+    "resident_bytes": 0,
+    "peak_owned_tensor_bytes": 0,
+    "max_card_budget_bytes": 67108864,
+    "provider_arena_limit_bytes": 0,
+    "fallback_reason": "not_requested"
+  },
+  "cache_hit": false,
+  "expires_at": 1792054029.4291127,
+  "subject": "Traveller",
+  "scope": {
+    "trip_id": "summer"
+  },
+  "task_type": "itinerary",
+  "cache_payload_bytes": 6412
+}

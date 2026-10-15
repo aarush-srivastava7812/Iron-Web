@@ -1,0 +1,11 @@
+{
+  "label": "70-ambiguous-blocks",
+  "path": "/v1/context",
+  "body": {
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "task_type": "itinerary"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "label": "34-reviewer-handoff",
+  "path": "/v1/handoff",
+  "body": {
+    "work_ids": [
+      "goa-plan-v1"
+    ]
+  },
+  "actor": "reviewer",
+  "tenant": "riya"
+}

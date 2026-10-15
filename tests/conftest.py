@@ -24,6 +24,8 @@ def isolated_graphs(monkeypatch, tmp_path):
 
     monkeypatch.setattr(FalkorDBGraphStore, "__init__", init)
     yield
+    if not stores:
+        return
     # Connection close leaves the persistent graph intact. A separate client
     # performs owned test cleanup, never FLUSHDB or removal of application data.
     from falkordb import FalkorDB

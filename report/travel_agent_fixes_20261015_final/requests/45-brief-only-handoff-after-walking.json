@@ -1,0 +1,11 @@
+{
+  "label": "45-brief-only-handoff-after-walking",
+  "path": "/v1/handoff",
+  "body": {
+    "work_ids": [
+      "goa-brief-only-control"
+    ]
+  },
+  "actor": "reviewer",
+  "tenant": "riya"
+}

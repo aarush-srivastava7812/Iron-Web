@@ -1,0 +1,36 @@
+{
+  "label": "50-goa-blocked-by-other-trip",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/v1/context",
+  "request": {
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "task_type": "itinerary",
+    "session_id": "call-1"
+  },
+  "http_status": 409,
+  "response": {
+    "status": "pending_memory",
+    "error": "New memory is not ready; resolve pending or failed events before acting.",
+    "receipts": [
+      {
+        "id": "unrelated-business-trip",
+        "status": "queued",
+        "submitted": 1792064707.7870612,
+        "started": null,
+        "ready": null,
+        "attempts": 0,
+        "memory_id": "evt_ca4fcb2099f7c93c18c96d12bdcd24ae",
+        "error": null,
+        "blocks_work": 1,
+        "interpretation": null,
+        "claim_kinds": [],
+        "semantic_claim_count": 0
+      }
+    ]
+  },
+  "elapsed_ms": 46.35229999257717
+}

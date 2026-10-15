@@ -1,0 +1,9 @@
+{
+  "label": "05-user-clarifies-raw",
+  "path": "/v1/events/withdraw",
+  "body": {
+    "eid": "raw-intake"
+  },
+  "actor": "user",
+  "tenant": "riya"
+}

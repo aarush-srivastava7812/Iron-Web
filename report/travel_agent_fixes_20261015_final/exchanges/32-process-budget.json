@@ -1,0 +1,12 @@
+{
+  "label": "32-process-budget",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/audit/drain",
+  "request": {},
+  "http_status": 200,
+  "response": {
+    "processed": 1
+  },
+  "elapsed_ms": 214.87029999843799
+}

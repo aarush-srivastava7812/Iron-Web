@@ -1116,19 +1116,49 @@ class FalkorDBGraphStore:
     @synchronized
     def get_node_counts(self):
         """Report real counts; query failures propagate rather than becoming zeros."""
-        return {
+        counts = {
             table: self.conn.execute(f"MATCH (n:{table}) RETURN count(n)").get_next()[0]
             for table in ("Entity", "Observation")
         }
+        for label in (
+            "MemorySource",
+            "MemoryClaim",
+            "MemoryContext",
+            "MemoryField",
+            "MemoryWork",
+        ):
+            count = self.conn.execute(f"MATCH(n:{label}) RETURN count(n)").get_next()[0]
+            if count:
+                counts[label] = count
+        return counts
 
     @synchronized
     def get_edge_counts(self):
-        return {
+        counts = {
             table: self.conn.execute(
                 f"MATCH ()-[r:{table}]->() RETURN count(r)"
             ).get_next()[0]
             for table in ("RELATES", "ABOUT", "CONTRADICTS", "SUPERSEDES")
         }
+        for label in (
+            "SUPPORTED_BY",
+            "IN_CONTEXT",
+            "ASSERTS_FIELD",
+            "CONFIRMS",
+            "RETRACTS",
+            "RETRACTS_FIELD",
+            "CANONICAL_ALIAS",
+            "IDENTIFIES",
+            "REFERS_TO",
+            "USES",
+            "DEPENDS_ON",
+        ):
+            count = self.conn.execute(
+                f"MATCH()-[r:{label}]->() RETURN count(r)"
+            ).get_next()[0]
+            if count:
+                counts[label] = count
+        return counts
 
     def execute(self, query, params=None):
         import re

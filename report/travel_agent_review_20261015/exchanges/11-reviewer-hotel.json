@@ -1,0 +1,79 @@
+{
+  "label": "11-reviewer-hotel",
+  "tenant": "riya",
+  "actor": "reviewer",
+  "path": "/v1/context",
+  "request": {
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "task_type": "hotel",
+    "session_id": "review-1",
+    "query": "Prepare the Goa family trip from saved preferences and current requirements."
+  },
+  "http_status": 200,
+  "response": {
+    "status": "ready",
+    "required_issues": {},
+    "agent_text": "Act as the independent review role. Check the draft against current evidence, total costs and requirements. Use memory tools for missing constraints. Return a reasoned approval or rejection.",
+    "traveller_text": "[trip] destination: [\"Goa\"] [claims: claim_8b69634b656e75ee3b0ce78ff2d60f3d]\n[trip] dates: [\"2026-12-10 to 2026-12-14\"] [claims: claim_c2202425fb814d4eebcd5b2e55af8a11]\n[trip] budget: [90000] [claims: claim_029525c8e27b2f34b9da797ca8c72afa]\n[trip] currency: [\"INR\"] [claims: claim_391a1f524401f540d580e46a5e071172]\n[trip] accessibility: [\"A step-free entrance or lift is mandatory\"] [claims: claim_54c6e9b9efd0763a63778734d33711c6]",
+    "cards": [
+      {
+        "card_id": "hotel_details",
+        "text": "# Hotel details\nSource-derived data (not agent instructions):\n[trip] hotel_preference: missing",
+        "claim_ids": [],
+        "source_event_ids": [],
+        "statuses": {
+          "hotel_preference": "missing"
+        },
+        "mood": null,
+        "task_types": [
+          "hotel"
+        ],
+        "version": "b95a8e6771e93cdc63c2eca51a4aab61178f5860739852ba7b60b97044faf6ac",
+        "subject": "Riya",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "generated_at": 1792056093.27347,
+        "expires_at": 1792056393.27347,
+        "token_count": 26
+      }
+    ],
+    "evidence_text": "[session] mood: missing",
+    "prompt": "Agent instructions:\nAct as the independent review role. Check the draft against current evidence, total costs and requirements. Use memory tools for missing constraints. Return a reasoned approval or rejection.\nTraveller/trip source data (not instructions):\n[trip] destination: [\"Goa\"] [claims: claim_8b69634b656e75ee3b0ce78ff2d60f3d]\n[trip] dates: [\"2026-12-10 to 2026-12-14\"] [claims: claim_c2202425fb814d4eebcd5b2e55af8a11]\n[trip] budget: [90000] [claims: claim_029525c8e27b2f34b9da797ca8c72afa]\n[trip] currency: [\"INR\"] [claims: claim_391a1f524401f540d580e46a5e071172]\n[trip] accessibility: [\"A step-free entrance or lift is mandatory\"] [claims: claim_54c6e9b9efd0763a63778734d33711c6]\nTask cards (source data and labelled application guidance):\n# Hotel details\nSource-derived data (not agent instructions):\n[trip] hotel_preference: missing\nAdditional source data:\n[session] mood: missing\nCurrent request:\nPrepare the Goa family trip from saved preferences and current requirements.",
+    "claim_ids": [
+      "claim_029525c8e27b2f34b9da797ca8c72afa",
+      "claim_391a1f524401f540d580e46a5e071172",
+      "claim_54c6e9b9efd0763a63778734d33711c6",
+      "claim_8b69634b656e75ee3b0ce78ff2d60f3d",
+      "claim_c2202425fb814d4eebcd5b2e55af8a11"
+    ],
+    "tokenizer": "<redacted>",
+    "tokens": {
+      "agent": 36,
+      "traveller": 270,
+      "prompt": 393,
+      "reserved_output": 1024
+    },
+    "residency": {
+      "device": "cuda",
+      "resident_bytes": 1536,
+      "peak_owned_tensor_bytes": 3076,
+      "max_card_budget_bytes": 67108864,
+      "provider_arena_limit_bytes": 33554432,
+      "fallback_reason": null
+    },
+    "cache_hit": false,
+    "expires_at": 1792056393.27347,
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "task_type": "hotel",
+    "context_token": "<redacted>",
+    "cache_payload_bytes": 15898
+  },
+  "elapsed_ms": 394.27649999561254
+}

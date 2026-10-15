@@ -1,0 +1,15 @@
+{
+  "label": "35-stale-completion",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/v1/work/complete",
+  "request": {
+    "work_id": "goa-plan-v1",
+    "lease_token": "<redacted>"
+  },
+  "http_status": 409,
+  "response": {
+    "error": "Operation could not be committed; inspect event status or review task ownership."
+  },
+  "elapsed_ms": 844.3044000014197
+}

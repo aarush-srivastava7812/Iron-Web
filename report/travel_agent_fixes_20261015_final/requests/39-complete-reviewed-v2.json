@@ -1,0 +1,10 @@
+{
+  "label": "39-complete-reviewed-v2",
+  "path": "/v1/work/complete",
+  "body": {
+    "work_id": "goa-reviewed-v2",
+    "lease_token": "$response:38-own-reviewed-v2:work.lease_token"
+  },
+  "actor": "planner",
+  "tenant": "riya"
+}

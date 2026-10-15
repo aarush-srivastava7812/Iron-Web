@@ -1,0 +1,15 @@
+{
+  "label": "28-fresh-before-budget",
+  "path": "/v1/context",
+  "body": {
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "task_type": "itinerary",
+    "session_id": "call-1",
+    "query": "Validate the INR 72600 family draft before returning it."
+  },
+  "actor": "planner",
+  "tenant": "riya"
+}

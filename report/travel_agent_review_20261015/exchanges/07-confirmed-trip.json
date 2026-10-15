@@ -1,0 +1,168 @@
+{
+  "label": "07-confirmed-trip",
+  "tenant": "riya",
+  "actor": "user",
+  "path": "/v1/events",
+  "request": {
+    "event_id": "confirmed-trip",
+    "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. These are reviewed structured requirements. Activities: calm beaches and local food; current trip mood relaxed.",
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "confirmed": true,
+    "claims": [
+      {
+        "subject": "Riya",
+        "predicate": "destination",
+        "value": "Goa",
+        "kind": "fact",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Riya",
+        "predicate": "dates",
+        "value": "2026-12-10 to 2026-12-14",
+        "kind": "fact",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Riya",
+        "predicate": "budget",
+        "value": 90000,
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Riya",
+        "predicate": "currency",
+        "value": "INR",
+        "kind": "fact",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Riya",
+        "predicate": "departure_city",
+        "value": "Delhi",
+        "kind": "fact",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Riya",
+        "predicate": "traveller_count",
+        "value": 2,
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Riya",
+        "predicate": "dietary",
+        "value": "vegetarian",
+        "kind": "fact",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Riya",
+        "predicate": "pace",
+        "value": "relaxed",
+        "kind": "preference",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Riya",
+        "predicate": "accessibility",
+        "value": "A step-free entrance or lift is mandatory",
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Riya",
+        "predicate": "max_walk_metres",
+        "value": 500,
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Riya",
+        "predicate": "avoid_boats",
+        "value": true,
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Riya",
+        "predicate": "max_activities_per_day",
+        "value": 1,
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Riya",
+        "predicate": "flight_time_preference",
+        "value": "morning",
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Riya",
+        "predicate": "activity_preferences",
+        "value": "Calm beaches and local food",
+        "kind": "preference",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Riya",
+        "predicate": "mood",
+        "value": "relaxed",
+        "kind": "preference",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      }
+    ]
+  },
+  "http_status": 202,
+  "response": {
+    "id": "confirmed-trip",
+    "status": "queued",
+    "submitted": 1792056077.3726115,
+    "started": null,
+    "ready": null,
+    "attempts": 0,
+    "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+    "error": null,
+    "blocks_work": 1,
+    "interpretation": null,
+    "claim_kinds": [],
+    "semantic_claim_count": 0
+  },
+  "elapsed_ms": 80.07310000539292
+}

@@ -1,0 +1,22 @@
+name,outcome,classification
+Distinct authenticated agent profiles,PASS,correctness
+RAM cache and actual CUDA cards,PASS,correctness
+Durable hybrid discovery and exact restriction recall,PASS,correctness
+Complex ordinary travel message automatically understood,GAP,language limitation
+Unclear confirmed input blocks agent work safely,PASS,correctness
+All scenario-critical itinerary constraints reach the automatic brief,GAP,high-impact context omission
+"Flight brief contains origin, party size and morning requirement",GAP,high-impact context omission
+Trip mood is inherited when an ordinary session ID is supplied,GAP,scope limitation
+Explicit session mood selects its card,PASS,correctness
+Pending budget change blocks context and completion,PASS,correctness
+Accepted budget change rejects old brief and reaches new brief,PASS,correctness
+Budget change flags related work for review,PASS,correctness
+Roleplayed revised draft satisfies the then-current fixture requirements,PASS,assistant-authored plan arithmetic and checks
+Completed work is retained without a second execution attempt,PASS,correctness
+Manually enriched dependencies detect the walking change,PASS,correctness
+Brief-only dependencies detect the same walking change,GAP,consequence of omitted dependency
+Different trips keep their values separate,PASS,correctness
+Unrelated trip updates leave the active Goa workflow available,GAP,intentional coarse blocking/cache trade-off
+"Different users are isolated, including pending events and proof ownership",PASS,correctness
+Deleting the revised budget does not resurrect either old cap,PASS,correctness
+"Implementation, tests and configuration remained unchanged",PASS,no-fixes boundary

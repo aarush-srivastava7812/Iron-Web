@@ -1,0 +1,16 @@
+{
+  "label": "22-hybrid-discovery",
+  "tenant": "riya",
+  "actor": "reviewer",
+  "path": "/v1/search",
+  "request": {
+    "query": "Riya Goa mother walking accessibility no boats morning flights one activity per day",
+    "top_k": 5,
+    "mode": "hybrid"
+  },
+  "http_status": 400,
+  "response": {
+    "error": "MemoryEngine.search() got an unexpected keyword argument 'top_k'"
+  },
+  "elapsed_ms": 58.45489999046549
+}

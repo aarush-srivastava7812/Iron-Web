@@ -1,0 +1,27 @@
+{
+  "label": "64-after-deletion-budget",
+  "tenant": "riya",
+  "actor": "reviewer",
+  "path": "/v1/recall",
+  "request": {
+    "query": "budget",
+    "subject": "Riya",
+    "predicate": "budget",
+    "scope": {
+      "trip_id": "goa-family"
+    }
+  },
+  "http_status": 200,
+  "response": {
+    "answer_status": "missing",
+    "subject": "Riya",
+    "requested_predicate": "budget",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "temporal_mode": "now",
+    "evidence": [],
+    "warnings": []
+  },
+  "elapsed_ms": 16.319700007443316
+}

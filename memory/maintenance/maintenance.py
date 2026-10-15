@@ -406,6 +406,9 @@ class MemoryDeduplication:
             "dry_run": dry_run,
         }
 
+        # Versioned claims and their source histories must not be text-merged.
+        records = [r for r in records if not (r.payload or {}).get("memory_versioned")]
+
         if len(records) < 2:
             return stats
 

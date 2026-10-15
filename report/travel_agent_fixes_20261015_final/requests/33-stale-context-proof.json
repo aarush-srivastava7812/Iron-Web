@@ -1,0 +1,9 @@
+{
+  "label": "33-stale-context-proof",
+  "path": "/v1/context/validate",
+  "body": {
+    "context_token": "$response:28-fresh-before-budget:context_token"
+  },
+  "actor": "planner",
+  "tenant": "riya"
+}

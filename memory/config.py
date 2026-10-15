@@ -53,6 +53,14 @@ class NIMSettings(Settings):
     cache_dir: str = "./data/extraction_cache"
 
 
+class LifecycleSettings(Settings):
+    fuzzy_enabled: bool = True
+    half_life_days: float = Field(default=90.0, gt=0, allow_inf_nan=False)
+    max_related_claims: int = Field(default=256, ge=16, le=1024)
+    max_affected_work: int = Field(default=128, ge=1, le=1024)
+    reliability_weight: float = Field(default=0.15, ge=0, le=1, allow_inf_nan=False)
+
+
 class EngineSettings(Settings):
     USE_GPU: bool = False
     extraction_policy: Literal["none", "nim"] = "none"
@@ -62,3 +70,4 @@ class EngineSettings(Settings):
     reranker: RerankerSettings = Field(default_factory=RerankerSettings)
     retrieval: RetrievalSettings = Field(default_factory=RetrievalSettings)
     nim: NIMSettings = Field(default_factory=NIMSettings)
+    lifecycle: LifecycleSettings = Field(default_factory=LifecycleSettings)

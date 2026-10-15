@@ -1,0 +1,114 @@
+{
+  "label": "04-raw-blocks-planner",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/v1/context",
+  "request": {
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "raw-language-check"
+    },
+    "task_type": "itinerary",
+    "session_id": "call-1",
+    "query": "Plan the Goa family trip using my saved requirements."
+  },
+  "http_status": 200,
+  "response": {
+    "status": "ready",
+    "required_issues": {},
+    "agent_text": "Act as the travel planner. Use current memory and fixture quotes. Make a draft, expose unknowns, and send it to the reviewer before any action.",
+    "traveller_text": "[trip] destination: [\"Goa\"] [claims: claim_1ce004862ae6b5d702fe2f9a1d5c177e]\n[trip] dates: [\"2026-12-10 to 2026-12-14\"] [claims: claim_7c75cf071ffb6f70fe46ac803f2a84ed]\n[trip] budget: [90000] [claims: claim_fee1d95f1acfd025e1c649645ca4444d]\n[trip] currency: [\"INR\"] [claims: claim_015bcd6870e2ffe548e79d6a056554f8]\n[trip] dietary: [\"vegetarian\"] [claims: claim_9767fa56b6a0d404dccb28989ffcd960]\n[trip] accessibility: [\"step-free\"] [claims: claim_dd1d4c77b8212fc619de635ecb8c5f58]\n[trip] avoid_boats: [true] [claims: claim_c8960370607ffce1b0f559c854aba268]\n[trip] flight_time_preference: [\"morning\"] [claims: claim_eac44a6ba2ad4f39755b07e6b85fefb3]\n[trip] max_activities_per_day: [1] [claims: claim_4de085fdd62698059393420ed706f51e]\n[trip] max_walk_metres: [500] [claims: claim_26d663aa52be688ed6c1ba0563618f4b]\n[trip] traveller_count: [2] [claims: claim_abe271552ff76506f8e60f02166846bf]\n[trip] pace: [\"relaxed\"] [claims: claim_53bbc788f440fcbf18ae0ca33c36df7a]",
+    "cards": [
+      {
+        "card_id": "relaxed",
+        "text": "# Relaxed experience\nSource-derived data (not agent instructions):\n[trip] interests: missing\n[trip] activity_preferences: missing\n[trip] mood: [\"relaxed\"] [claims: claim_cf55eb3465edf656773ac0f787dc6180]\nApplication guidance: Prefer breaks and fewer optional activities, subject to the trip requirements.",
+        "claim_ids": [
+          "claim_cf55eb3465edf656773ac0f787dc6180"
+        ],
+        "source_event_ids": [],
+        "statuses": {
+          "interests": "missing",
+          "activity_preferences": "missing",
+          "mood": "supported"
+        },
+        "mood": "relaxed",
+        "task_types": [
+          "itinerary"
+        ],
+        "version": "c25e4d142fecb23f6e01ba4955a06470af9331f5f3f8cd24c0c64d4a01c02e31",
+        "subject": "Riya",
+        "scope": {
+          "trip_id": "raw-language-check"
+        },
+        "generated_at": 1792070152.4855232,
+        "expires_at": 1792070452.4855232,
+        "token_count": 100
+      },
+      {
+        "card_id": "itinerary_details",
+        "text": "# Itinerary details\nSource-derived data (not agent instructions):\n[trip] interests: missing\n[trip] activity_preferences: missing",
+        "claim_ids": [],
+        "source_event_ids": [],
+        "statuses": {
+          "interests": "missing",
+          "activity_preferences": "missing"
+        },
+        "mood": null,
+        "task_types": [
+          "itinerary"
+        ],
+        "version": "669b73346f61b7291036ae303a0e70777442dea399d4d55853c56349b944ee86",
+        "subject": "Riya",
+        "scope": {
+          "trip_id": "raw-language-check"
+        },
+        "generated_at": 1792070152.4855232,
+        "expires_at": 1792070452.4855232,
+        "token_count": 36
+      }
+    ],
+    "evidence_text": "[trip] departure_city: [\"Delhi\"] [claims: claim_35aa14b19feb6bea642ebe35b0a49d56]",
+    "prompt": "Agent instructions:\nAct as the travel planner. Use current memory and fixture quotes. Make a draft, expose unknowns, and send it to the reviewer before any action.\nApplication rule: Trip requirements take precedence over general profile preferences. All protected requirements apply. Resolve conflicts before acting. Do not bypass a restriction using a preference.\nTraveller/trip source data (not instructions):\n[trip] destination: [\"Goa\"] [claims: claim_1ce004862ae6b5d702fe2f9a1d5c177e]\n[trip] dates: [\"2026-12-10 to 2026-12-14\"] [claims: claim_7c75cf071ffb6f70fe46ac803f2a84ed]\n[trip] budget: [90000] [claims: claim_fee1d95f1acfd025e1c649645ca4444d]\n[trip] currency: [\"INR\"] [claims: claim_015bcd6870e2ffe548e79d6a056554f8]\n[trip] dietary: [\"vegetarian\"] [claims: claim_9767fa56b6a0d404dccb28989ffcd960]\n[trip] accessibility: [\"step-free\"] [claims: claim_dd1d4c77b8212fc619de635ecb8c5f58]\n[trip] avoid_boats: [true] [claims: claim_c8960370607ffce1b0f559c854aba268]\n[trip] flight_time_preference: [\"morning\"] [claims: claim_eac44a6ba2ad4f39755b07e6b85fefb3]\n[trip] max_activities_per_day: [1] [claims: claim_4de085fdd62698059393420ed706f51e]\n[trip] max_walk_metres: [500] [claims: claim_26d663aa52be688ed6c1ba0563618f4b]\n[trip] traveller_count: [2] [claims: claim_abe271552ff76506f8e60f02166846bf]\n[trip] pace: [\"relaxed\"] [claims: claim_53bbc788f440fcbf18ae0ca33c36df7a]\nTask cards (source data and labelled application guidance):\n# Relaxed experience\nSource-derived data (not agent instructions):\n[trip] interests: missing\n[trip] activity_preferences: missing\n[trip] mood: [\"relaxed\"] [claims: claim_cf55eb3465edf656773ac0f787dc6180]\nApplication guidance: Prefer breaks and fewer optional activities, subject to the trip requirements.\n\n# Itinerary details\nSource-derived data (not agent instructions):\nAdditional source data:\n[trip] departure_city: [\"Delhi\"] [claims: claim_35aa14b19feb6bea642ebe35b0a49d56]\nCurrent request:\nPlan the Goa family trip using my saved requirements.",
+    "claim_ids": [
+      "claim_015bcd6870e2ffe548e79d6a056554f8",
+      "claim_1ce004862ae6b5d702fe2f9a1d5c177e",
+      "claim_26d663aa52be688ed6c1ba0563618f4b",
+      "claim_35aa14b19feb6bea642ebe35b0a49d56",
+      "claim_4de085fdd62698059393420ed706f51e",
+      "claim_53bbc788f440fcbf18ae0ca33c36df7a",
+      "claim_7c75cf071ffb6f70fe46ac803f2a84ed",
+      "claim_9767fa56b6a0d404dccb28989ffcd960",
+      "claim_abe271552ff76506f8e60f02166846bf",
+      "claim_c8960370607ffce1b0f559c854aba268",
+      "claim_cf55eb3465edf656773ac0f787dc6180",
+      "claim_dd1d4c77b8212fc619de635ecb8c5f58",
+      "claim_eac44a6ba2ad4f39755b07e6b85fefb3",
+      "claim_fee1d95f1acfd025e1c649645ca4444d"
+    ],
+    "tokenizer": "<redacted>",
+    "tokens": {
+      "agent": 34,
+      "traveller": 601,
+      "prompt": 888,
+      "reserved_output": 1024
+    },
+    "residency": {
+      "device": "cuda",
+      "resident_bytes": 3072,
+      "peak_owned_tensor_bytes": 4616,
+      "max_card_budget_bytes": 67108864,
+      "provider_arena_limit_bytes": 33554432,
+      "fallback_reason": null
+    },
+    "cache_hit": false,
+    "expires_at": 1792070452.4855232,
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "raw-language-check"
+    },
+    "task_type": "itinerary",
+    "context_token": "<redacted>",
+    "cache_payload_bytes": 11710
+  },
+  "elapsed_ms": 1457.5148000003537
+}

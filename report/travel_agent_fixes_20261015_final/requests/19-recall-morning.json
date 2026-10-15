@@ -1,0 +1,14 @@
+{
+  "label": "19-recall-morning",
+  "path": "/v1/recall",
+  "body": {
+    "query": "flight_time_preference",
+    "subject": "Riya",
+    "predicate": "flight_time_preference",
+    "scope": {
+      "trip_id": "goa-family"
+    }
+  },
+  "actor": "reviewer",
+  "tenant": "riya"
+}

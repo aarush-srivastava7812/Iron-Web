@@ -1,0 +1,27 @@
+{
+  "label": "05-user-clarifies-raw",
+  "tenant": "riya",
+  "actor": "user",
+  "path": "/v1/events/withdraw",
+  "request": {
+    "eid": "raw-intake"
+  },
+  "http_status": 200,
+  "response": {
+    "id": "raw-intake",
+    "status": "withdrawn",
+    "submitted": 1792056073.1130433,
+    "started": 1792056073.5551023,
+    "ready": 1792056075.1758237,
+    "attempts": 1,
+    "memory_id": "evt_cfd3b6ca457c844ad2415c819eaccb71",
+    "error": "Requirement preserved as an event, but its meaning needs review.",
+    "blocks_work": 1,
+    "interpretation": "travel_grammar_v1",
+    "claim_kinds": [
+      "episode"
+    ],
+    "semantic_claim_count": 0
+  },
+  "elapsed_ms": 53.10470001131762
+}

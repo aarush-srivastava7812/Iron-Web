@@ -1,0 +1,39 @@
+{
+  "label": "04-raw-blocks-planner",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/v1/context",
+  "request": {
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "task_type": "itinerary",
+    "session_id": "call-1",
+    "query": "Plan the Goa family trip using my saved requirements."
+  },
+  "http_status": 409,
+  "response": {
+    "status": "pending_memory",
+    "error": "New memory is not ready; resolve pending or failed events before acting.",
+    "receipts": [
+      {
+        "id": "raw-intake",
+        "status": "needs_review",
+        "submitted": 1792056073.1130433,
+        "started": 1792056073.5551023,
+        "ready": 1792056075.1758237,
+        "attempts": 1,
+        "memory_id": "evt_cfd3b6ca457c844ad2415c819eaccb71",
+        "error": "Requirement preserved as an event, but its meaning needs review.",
+        "blocks_work": 1,
+        "interpretation": "travel_grammar_v1",
+        "claim_kinds": [
+          "episode"
+        ],
+        "semantic_claim_count": 0
+      }
+    ]
+  },
+  "elapsed_ms": 53.57080000976566
+}

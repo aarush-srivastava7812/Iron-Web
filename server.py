@@ -91,7 +91,16 @@ class IronWebHandler(SimpleHTTPRequestHandler):
 
     def do_POST(self):
         path = urlparse(self.path).path
-        if path not in {"/api/add", "/api/search"}:
+        if path not in {
+            "/api/add",
+            "/api/search",
+            "/api/recall",
+            "/api/recall-path",
+            "/api/claim",
+            "/api/work",
+            "/api/handoff",
+            "/api/complete-work",
+        }:
             return self._send_json({"error": "Endpoint not found"}, 404)
         origin = self.headers.get("Origin")
         if origin and urlparse(origin).netloc != self.headers.get("Host"):
@@ -117,7 +126,24 @@ class IronWebHandler(SimpleHTTPRequestHandler):
             )
             if not isinstance(body, dict):
                 raise ValueError("Request must be a JSON object.")
-            if path == "/api/search":
+            if path in {
+                "/api/recall",
+                "/api/recall-path",
+                "/api/claim",
+                "/api/work",
+                "/api/handoff",
+                "/api/complete-work",
+            }:
+                methods = {
+                    "/api/recall": get_engine().recall,
+                    "/api/recall-path": get_engine().recall_path,
+                    "/api/claim": get_engine().inspect_claim,
+                    "/api/work": get_engine().record_work,
+                    "/api/handoff": get_engine().handoff,
+                    "/api/complete-work": get_engine().complete_work,
+                }
+                self._send_json(dict(success=True, result=methods[path](**body)))
+            elif path == "/api/search":
                 allowed = {
                     "query",
                     "k",
@@ -150,6 +176,8 @@ class IronWebHandler(SimpleHTTPRequestHandler):
                     "valid_until",
                     "importance",
                     "memory_id",
+                    "claims",
+                    "source_info",
                 }
                 if set(body) - allowed:
                     raise ValueError("Unknown memory fields.")

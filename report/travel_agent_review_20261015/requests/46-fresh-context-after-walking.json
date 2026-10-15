@@ -1,0 +1,15 @@
+{
+  "label": "46-fresh-context-after-walking",
+  "path": "/v1/context",
+  "body": {
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "task_type": "itinerary",
+    "session_id": "call-1",
+    "query": "Continue the current Goa plan after the latest user changes."
+  },
+  "actor": "planner",
+  "tenant": "riya"
+}

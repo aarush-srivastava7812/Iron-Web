@@ -1,0 +1,7 @@
+{
+  "label": "62-process-deletion",
+  "path": "/audit/drain",
+  "body": {},
+  "actor": "planner",
+  "tenant": "riya"
+}

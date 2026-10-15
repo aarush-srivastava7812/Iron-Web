@@ -1,0 +1,13 @@
+predicate,itinerary_brief,flight_brief,hotel_brief
+budget,True,True,True
+dates,True,True,True
+destination,True,True,True
+currency,True,True,True
+dietary,True,False,False
+accessibility,False,False,True
+max_walk_metres,False,False,False
+avoid_boats,False,False,False
+max_activities_per_day,False,False,False
+traveller_count,False,False,False
+departure_city,False,False,False
+flight_time_preference,False,False,False

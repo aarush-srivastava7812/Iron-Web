@@ -1,0 +1,14 @@
+{
+  "label": "59-cross-user-proof",
+  "tenant": "arjun",
+  "actor": "planner",
+  "path": "/v1/context/validate",
+  "request": {
+    "context_token": "<redacted>"
+  },
+  "http_status": 403,
+  "response": {
+    "error": "Context proof belongs to another principal."
+  },
+  "elapsed_ms": 37.93489999952726
+}

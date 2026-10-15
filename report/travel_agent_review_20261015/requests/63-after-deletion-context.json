@@ -1,0 +1,14 @@
+{
+  "label": "63-after-deletion-context",
+  "path": "/v1/context",
+  "body": {
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "task_type": "itinerary",
+    "session_id": "call-1"
+  },
+  "actor": "planner",
+  "tenant": "riya"
+}

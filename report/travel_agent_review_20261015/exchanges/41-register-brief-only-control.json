@@ -1,0 +1,34 @@
+{
+  "label": "41-register-brief-only-control",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/v1/work",
+  "request": {
+    "work_id": "goa-brief-only-control",
+    "claim_ids": [
+      "claim_391a1f524401f540d580e46a5e071172",
+      "claim_4a84a27565751acd3b9adc47b560df92",
+      "claim_5ec4fc4df991d9ab648a00cd3b08ea5d",
+      "claim_6e8c088c8bc3246c6cb03919739a20c2",
+      "claim_8b69634b656e75ee3b0ce78ff2d60f3d",
+      "claim_a18173e7dfbc00fcc8b72926af663f0a",
+      "claim_c2202425fb814d4eebcd5b2e55af8a11",
+      "claim_e746f9d3cdc9832898cccdf5bfa1067b",
+      "claim_fb2f1fb633b7e8289b6f8911ebe7f1da"
+    ],
+    "description": "CONTROL: same INR 58600 draft registered using ONLY the context-provided dependency IDs. No manual constraint recalls; no booking."
+  },
+  "http_status": 200,
+  "response": {
+    "id": "goa-brief-only-control",
+    "description": "CONTROL: same INR 58600 draft registered using ONLY the context-provided dependency IDs. No manual constraint recalls; no booking.",
+    "agent_id": "",
+    "status": "ready",
+    "created_at": 1792064657,
+    "validation_state": "current",
+    "fingerprint": "work_3937d1d646ed5a4d290b579ab5f0f265",
+    "used_claim_ids": "[\"claim_391a1f524401f540d580e46a5e071172\",\"claim_4a84a27565751acd3b9adc47b560df92\",\"claim_5ec4fc4df991d9ab648a00cd3b08ea5d\",\"claim_6e8c088c8bc3246c6cb03919739a20c2\",\"claim_8b69634b656e75ee3b0ce78ff2d60f3d\",\"claim_a18173e7dfbc00fcc8b72926af663f0a\",\"claim_c2202425fb814d4eebcd5b2e55af8a11\",\"claim_e746f9d3cdc9832898cccdf5bfa1067b\",\"claim_fb2f1fb633b7e8289b6f8911ebe7f1da\"]",
+    "dependency_ids": "[]"
+  },
+  "elapsed_ms": 303.7650000042049
+}

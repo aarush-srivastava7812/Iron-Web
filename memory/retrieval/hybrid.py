@@ -9,7 +9,15 @@ from memory.temporal.filter import filter_by_time
 
 
 class HybridRetriever:
-    def __init__(self, embedder, vector_store, graph_store, reranker=None, config=None):
+    def __init__(
+        self,
+        embedder,
+        vector_store,
+        graph_store,
+        reranker=None,
+        config=None,
+        lifecycle=None,
+    ):
         self.embedder, self.vector_store, self.graph_store, self.reranker = (
             embedder,
             vector_store,
@@ -18,6 +26,7 @@ class HybridRetriever:
         )
         self.config = config or RetrievalConfig()
         self.scorer = HybridScorer(self.config)
+        self.lifecycle = lifecycle
 
     def retrieve(
         self, query, k=None, query_time=None, temporal_mode="auto", document_ids=None
@@ -50,7 +59,12 @@ class HybridRetriever:
             hits = self.vector_store.search(
                 query_embedding,
                 k=max(k, self.config.vector_candidates),
-                filter_condition=create_search_filter(now, mode, document_ids),
+                filter_condition=create_search_filter(
+                    now,
+                    mode,
+                    document_ids,
+                    include_versioned=self.lifecycle is not None,
+                ),
             )
             vector = [
                 dict(
@@ -73,11 +87,21 @@ class HybridRetriever:
         )
         stage_ms["graph"] = (time.perf_counter() - stage_start) * 1000
         combined = self._combine_candidates(vector, graph)
-        combined = filter_by_time(combined, now, mode)
+        managed = [c for c in combined if c.get("payload", {}).get("memory_versioned")]
+        ordinary = [
+            c for c in combined if not c.get("payload", {}).get("memory_versioned")
+        ]
+        combined = filter_by_time(ordinary, now, mode) + managed
         stage_start = time.perf_counter()
         if self.config.use_graph_expansion:
             combined = self._resolve_contradictions(combined, now, mode)
         stage_ms["conflicts"] = (time.perf_counter() - stage_start) * 1000
+        if self.lifecycle is not None:
+            stage_start = time.perf_counter()
+            combined = self.lifecycle.reconcile(
+                combined, query, now, mode, document_ids, query_embedding
+            )
+            stage_ms["lifecycle"] = (time.perf_counter() - stage_start) * 1000
         stage_start = time.perf_counter()
         if self.config.use_reranker and combined:
             if self.reranker is None:
@@ -100,6 +124,7 @@ class HybridRetriever:
                 superseded=candidate.get("superseded", False),
                 stage_ms=stage_ms,
                 total_retrieval_ms=(time.perf_counter() - start) * 1000,
+                lifecycle=candidate.get("lifecycle_trace"),
             )
         return combined[:k]
 
@@ -197,6 +222,17 @@ class HybridRetriever:
                     )
                 )
         # Deduplicate before applying the graph candidate ceiling.
+        if self.lifecycle is not None:
+            results.extend(
+                self.lifecycle.graph_candidates(
+                    [e["id"] for e in entities],
+                    query_time,
+                    temporal_mode,
+                    document_ids,
+                    query_embedding,
+                    self.config.graph_max_nodes,
+                )
+            )
         return sorted(
             self._combine_candidates([], results),
             key=lambda c: (

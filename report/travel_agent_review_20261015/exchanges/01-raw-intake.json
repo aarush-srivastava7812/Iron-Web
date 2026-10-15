@@ -1,0 +1,31 @@
+{
+  "label": "01-raw-intake",
+  "tenant": "riya",
+  "actor": "user",
+  "path": "/v1/events",
+  "request": {
+    "event_id": "raw-intake",
+    "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed.",
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "confirmed": true
+  },
+  "http_status": 202,
+  "response": {
+    "id": "raw-intake",
+    "status": "queued",
+    "submitted": 1792056073.1130433,
+    "started": null,
+    "ready": null,
+    "attempts": 0,
+    "memory_id": "evt_cfd3b6ca457c844ad2415c819eaccb71",
+    "error": null,
+    "blocks_work": 1,
+    "interpretation": null,
+    "claim_kinds": [],
+    "semantic_claim_count": 0
+  },
+  "elapsed_ms": 54.390400007832795
+}

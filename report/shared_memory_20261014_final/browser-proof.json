@@ -1,0 +1,11 @@
+{
+  "browser_errors": [],
+  "two_agent_ui_flow": true,
+  "completed_record_retained_after_change": true,
+  "second_user_cannot_read_first_users_trip": true,
+  "task_proofs_hidden": true,
+  "graph_viewer_inspector": true,
+  "runtime_files_not_served": true,
+  "video": "walkthrough.webm",
+  "scope": "Actual local UI/API with real cached BGE embeddings; test created a separate browser-proof trip in the demonstration user space."
+}

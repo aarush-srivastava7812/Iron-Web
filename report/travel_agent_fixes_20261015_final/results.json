@@ -1,0 +1,251 @@
+{
+  "counts": {
+    "PASS": 24,
+    "FAIL": 0
+  },
+  "checks": [
+    {
+      "name": "Distinct authenticated agent profiles",
+      "outcome": "PASS",
+      "evidence": [
+        "09-planner-itinerary",
+        "11-reviewer-hotel"
+      ]
+    },
+    {
+      "name": "RAM hit and actual CUDA residency",
+      "outcome": "PASS",
+      "evidence": [
+        "09-planner-itinerary",
+        "12-itinerary-warm"
+      ]
+    },
+    {
+      "name": "Durable hybrid discovery and exact walking recall",
+      "outcome": "PASS",
+      "evidence": [
+        "22b-hybrid-discovery",
+        "15-recall-walking"
+      ]
+    },
+    {
+      "name": "Original multi-part intake accepted with complete requirements",
+      "outcome": "PASS",
+      "evidence": [
+        "01-raw-intake",
+        "03-raw-status",
+        "04-raw-blocks-planner"
+      ]
+    },
+    {
+      "name": "Ambiguous intake remains a blocking review item",
+      "outcome": "PASS",
+      "evidence": [
+        "67-ambiguous-intake",
+        "70-ambiguous-blocks"
+      ]
+    },
+    {
+      "name": "Every scenario-critical itinerary field reaches the brief",
+      "outcome": "PASS",
+      "evidence": [
+        "09-planner-itinerary"
+      ]
+    },
+    {
+      "name": "Flight includes departure city, party and morning requirement",
+      "outcome": "PASS",
+      "evidence": [
+        "10-planner-flight"
+      ]
+    },
+    {
+      "name": "Trip mood inherits into an ordinary session",
+      "outcome": "PASS",
+      "evidence": [
+        "09-planner-itinerary"
+      ]
+    },
+    {
+      "name": "Explicit session mood takes its own scope",
+      "outcome": "PASS",
+      "evidence": [
+        "25-session-itinerary"
+      ]
+    },
+    {
+      "name": "Pending relevant budget blocks context and completion",
+      "outcome": "PASS",
+      "evidence": [
+        "30-pending-context",
+        "31-pending-completion"
+      ]
+    },
+    {
+      "name": "Accepted budget replaces the old brief and proof",
+      "outcome": "PASS",
+      "evidence": [
+        "33-stale-context-proof",
+        "36-revised-context"
+      ]
+    },
+    {
+      "name": "Budget change flags plan for review and refuses stale completion",
+      "outcome": "PASS",
+      "evidence": [
+        "34-reviewer-handoff",
+        "35-stale-completion"
+      ]
+    },
+    {
+      "name": "Roleplayed plans satisfy the then-current fixture requirements",
+      "outcome": "PASS",
+      "evidence": [
+        "agent_decisions_initial.json",
+        "agent_decisions_revised.json"
+      ]
+    },
+    {
+      "name": "Completed work is not executed again",
+      "outcome": "PASS",
+      "evidence": [
+        "40-completed-not-reclaimed"
+      ]
+    },
+    {
+      "name": "Walking update preserves completed history and requires review",
+      "outcome": "PASS",
+      "evidence": [
+        "44-reviewed-handoff-after-walking"
+      ]
+    },
+    {
+      "name": "Brief-only dependency control now detects walking update",
+      "outcome": "PASS",
+      "evidence": [
+        "41-register-brief-only-control",
+        "45-brief-only-handoff-after-walking"
+      ]
+    },
+    {
+      "name": "Trip values remain separate",
+      "outcome": "PASS",
+      "evidence": [
+        "52-other-trip-context",
+        "53-goa-after-other-trip"
+      ]
+    },
+    {
+      "name": "Unrelated pending trip leaves Goa available",
+      "outcome": "PASS",
+      "evidence": [
+        "50-goa-blocked-by-other-trip"
+      ]
+    },
+    {
+      "name": "Users and proof ownership remain isolated",
+      "outcome": "PASS",
+      "evidence": [
+        "55-riya-unblocked-by-other-user",
+        "57-arjun-context",
+        "59-cross-user-proof"
+      ]
+    },
+    {
+      "name": "Budget deletion blocks and never resurrects either cap",
+      "outcome": "PASS",
+      "evidence": [
+        "61-deletion-pending-blocks-context",
+        "63-after-deletion-context",
+        "64-after-deletion-budget"
+      ]
+    },
+    {
+      "name": "Hotel brief includes all scenario-critical fields",
+      "outcome": "PASS",
+      "evidence": [
+        "11-reviewer-hotel"
+      ]
+    },
+    {
+      "name": "Fresh walking brief contains 50m and reviewer stops",
+      "outcome": "PASS",
+      "evidence": [
+        "46-fresh-context-after-walking",
+        "agent_decision_final.json"
+      ]
+    },
+    {
+      "name": "Goa stays warm before and after unrelated trip processing",
+      "outcome": "PASS",
+      "evidence": [
+        "50-goa-blocked-by-other-trip",
+        "53-goa-after-other-trip"
+      ]
+    },
+    {
+      "name": "Every task's dependency list includes walking evidence",
+      "outcome": "PASS",
+      "evidence": [
+        "09-planner-itinerary",
+        "10-planner-flight",
+        "11-reviewer-hotel",
+        "15-recall-walking"
+      ]
+    }
+  ],
+  "coverage": {
+    "itinerary": {
+      "accessibility": true,
+      "avoid_boats": true,
+      "budget": true,
+      "currency": true,
+      "dates": true,
+      "departure_city": true,
+      "destination": true,
+      "dietary": true,
+      "flight_time_preference": true,
+      "max_activities_per_day": true,
+      "max_walk_metres": true,
+      "traveller_count": true
+    },
+    "flight": {
+      "accessibility": true,
+      "avoid_boats": true,
+      "budget": true,
+      "currency": true,
+      "dates": true,
+      "departure_city": true,
+      "destination": true,
+      "dietary": true,
+      "flight_time_preference": true,
+      "max_activities_per_day": true,
+      "max_walk_metres": true,
+      "traveller_count": true
+    },
+    "hotel": {
+      "accessibility": true,
+      "avoid_boats": true,
+      "budget": true,
+      "currency": true,
+      "dates": true,
+      "departure_city": true,
+      "destination": true,
+      "dietary": true,
+      "flight_time_preference": true,
+      "max_activities_per_day": true,
+      "max_walk_metres": true,
+      "traveller_count": true
+    }
+  },
+  "http_calls": 70,
+  "method": "Same assistant roleplayed planner/reviewer with deterministic fixture checks; real authenticated HTTP, BGE embeddings, FalkorDB, Qdrant, RAM and CUDA. No independent generative-agent or booking run.",
+  "harness_call_error": null,
+  "original_report_preserved": true,
+  "final_agent_decision": {
+    "decision": "pause",
+    "reason": "No fixture hotel satisfies the current walking/access requirements",
+    "max_walk_metres": 50,
+    "suitable_hotels": []
+  }
+}

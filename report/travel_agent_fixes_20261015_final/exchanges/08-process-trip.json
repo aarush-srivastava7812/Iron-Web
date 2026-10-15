@@ -1,0 +1,12 @@
+{
+  "label": "08-process-trip",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/audit/drain",
+  "request": {},
+  "http_status": 200,
+  "response": {
+    "processed": 2
+  },
+  "elapsed_ms": 1092.0069999992847
+}

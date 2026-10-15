@@ -25,6 +25,7 @@ class VectorRetriever:
         vector_store: QdrantVectorStore,
         use_temporal_filter: bool = False,
         default_top_k: int = 10,
+        lifecycle=None,
     ):
         """
         Initialize vector retriever.
@@ -39,6 +40,7 @@ class VectorRetriever:
         self.vector_store = vector_store
         self.use_temporal_filter = use_temporal_filter
         self.default_top_k = default_top_k
+        self.lifecycle = lifecycle
 
     def retrieve(
         self,
@@ -72,7 +74,12 @@ class VectorRetriever:
         import time
 
         query_time = int(time.time()) if query_time is None else query_time
-        filter_condition = create_search_filter(query_time, temporal_mode, document_ids)
+        filter_condition = create_search_filter(
+            query_time,
+            temporal_mode,
+            document_ids,
+            include_versioned=self.lifecycle is not None,
+        )
 
         # Search
         results = self.vector_store.search(
@@ -92,6 +99,28 @@ class VectorRetriever:
                 }
             )
 
+        if self.lifecycle is not None:
+            formatted = self.lifecycle.reconcile(
+                formatted,
+                query,
+                query_time,
+                temporal_mode,
+                document_ids,
+                query_embedding,
+            )
+            for candidate in formatted:
+                if "lifecycle_trace" in candidate:
+                    candidate["final_score"] = candidate["score"] + candidate.get(
+                        "reliability_boost", 0
+                    )
+                    candidate["retrieval_trace"] = {
+                        "lifecycle": candidate["lifecycle_trace"],
+                        "vector_score": candidate["score"],
+                    }
+            formatted = sorted(
+                formatted,
+                key=lambda c: (-c.get("final_score", c["score"]), c["memory_id"]),
+            )[:k]
         return formatted
 
     def retrieve_with_embedding(
@@ -111,7 +140,12 @@ class VectorRetriever:
         import time
 
         query_time = int(time.time()) if query_time is None else query_time
-        filter_condition = create_search_filter(query_time, temporal_mode, document_ids)
+        filter_condition = create_search_filter(
+            query_time,
+            temporal_mode,
+            document_ids,
+            include_versioned=self.lifecycle is not None,
+        )
 
         results = self.vector_store.search(
             query_embedding=query_embedding, k=k, filter_condition=filter_condition
@@ -129,6 +163,19 @@ class VectorRetriever:
                 }
             )
 
+        if self.lifecycle is not None:
+            formatted = self.lifecycle.reconcile(
+                formatted, "", query_time, temporal_mode, document_ids, query_embedding
+            )
+            for candidate in formatted:
+                if "lifecycle_trace" in candidate:
+                    candidate["final_score"] = candidate["score"] + candidate.get(
+                        "reliability_boost", 0
+                    )
+            formatted = sorted(
+                formatted,
+                key=lambda c: (-c.get("final_score", c["score"]), c["memory_id"]),
+            )[:k]
         return formatted
 
 

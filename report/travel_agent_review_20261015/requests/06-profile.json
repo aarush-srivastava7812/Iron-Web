@@ -1,0 +1,46 @@
+{
+  "label": "06-profile",
+  "path": "/v1/events",
+  "body": {
+    "event_id": "stable-profile",
+    "text": "Usual preferences: vegetarian meals, active holidays, hiking, boat rides and local food; aisle seat. This trip can differ.",
+    "subject": "Riya",
+    "confirmed": true,
+    "claims": [
+      {
+        "subject": "Riya",
+        "predicate": "dietary",
+        "value": "vegetarian",
+        "kind": "preference",
+        "scope": {}
+      },
+      {
+        "subject": "Riya",
+        "predicate": "pace",
+        "value": "active",
+        "kind": "preference",
+        "scope": {}
+      },
+      {
+        "subject": "Riya",
+        "predicate": "interests",
+        "value": [
+          "hiking",
+          "boat rides",
+          "local food"
+        ],
+        "kind": "preference",
+        "scope": {}
+      },
+      {
+        "subject": "Riya",
+        "predicate": "seat_preference",
+        "value": "aisle",
+        "kind": "preference",
+        "scope": {}
+      }
+    ]
+  },
+  "actor": "user",
+  "tenant": "riya"
+}

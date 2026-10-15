@@ -1,0 +1,2942 @@
+{
+  "label": "22b-hybrid-discovery",
+  "tenant": "riya",
+  "actor": "reviewer",
+  "path": "/v1/search",
+  "request": {
+    "query": "Riya Goa mother walking accessibility no boats morning flights one activity per day",
+    "k": 5,
+    "retrieval_mode": "hybrid"
+  },
+  "http_status": 200,
+  "response": [
+    {
+      "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+      "content": "Riya: destination = Goa (context: {\"trip_id\":\"goa-family\"})\nRiya: dates = 2026-12-10 to 2026-12-14 (context: {\"trip_id\":\"goa-family\"})\nRiya: budget = 90000 (context: {\"trip_id\":\"goa-family\"})\nRiya: currency = INR (context: {\"trip_id\":\"goa-family\"})\nRiya: departure city = Delhi (context: {\"trip_id\":\"goa-family\"})\nRiya: traveller count = 2 (context: {\"trip_id\":\"goa-family\"})\nRiya: dietary = vegetarian (context: {\"trip_id\":\"goa-family\"})\nRiya: pace = relaxed (context: {\"trip_id\":\"goa-family\"})\nRiya: accessibility = A step-free entrance or lift is mandatory (context: {\"trip_id\":\"goa-family\"})\nRiya: max walk metres = 500 (context: {\"trip_id\":\"goa-family\"})\nRiya: avoid boats = True (context: {\"trip_id\":\"goa-family\"})\nRiya: max activities per day = 1 (context: {\"trip_id\":\"goa-family\"})\nRiya: flight time preference = morning (context: {\"trip_id\":\"goa-family\"})\nRiya: activity preferences = Calm beaches and local food (context: {\"trip_id\":\"goa-family\"})\nRiya: mood = relaxed (context: {\"trip_id\":\"goa-family\"})",
+      "score": 2.289289331748483,
+      "metadata": {
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "importance": 1.0,
+        "memory_type": "semantic",
+        "timestamp": 1792056077,
+        "service_receipt": "confirmed-trip",
+        "interpretation": "structured",
+        "session_id": "",
+        "memory_claim_ids": [
+          "claim_8b69634b656e75ee3b0ce78ff2d60f3d",
+          "claim_c2202425fb814d4eebcd5b2e55af8a11",
+          "claim_029525c8e27b2f34b9da797ca8c72afa",
+          "claim_391a1f524401f540d580e46a5e071172",
+          "claim_ce8223694af4d2183d72914543cc0271",
+          "claim_3d30d14a5adadf5efe3b9984ff25135c",
+          "claim_5ec4fc4df991d9ab648a00cd3b08ea5d",
+          "claim_e746f9d3cdc9832898cccdf5bfa1067b",
+          "claim_54c6e9b9efd0763a63778734d33711c6",
+          "claim_0d1cbc05795e8c873f13419c244c9569",
+          "claim_6ac158f1571bfb09d49681f2033a2a71",
+          "claim_e28b5ebf3ee39ed0f84403e6fe4d3caf",
+          "claim_95b14d9b723844c4c3604d225260aba5",
+          "claim_6e8c088c8bc3246c6cb03919739a20c2",
+          "claim_3f0748db8d966266a6bad5e392671a9b"
+        ],
+        "memory_source_id": "source_48156925eac232c455215d5a0bfe49dd",
+        "memory_versioned": true,
+        "extraction_status": "typed_claims",
+        "extraction_is_mock": false,
+        "extractor_name": "explicit_claim_contract",
+        "memory_evidence": [
+          {
+            "claim_id": "claim_8b69634b656e75ee3b0ce78ff2d60f3d",
+            "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "destination",
+            "value": "Goa",
+            "kind": "fact",
+            "scope": {
+              "trip_id": "goa-family"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.846778179262051,
+            "fuzzy_explanation": {
+              "score": 0.846778179262051,
+              "inputs": {
+                "freshness": 0.9999864509185071,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 2.7098162985739194e-05,
+                  "high": 0.9999729018370143
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_48156925eac232c455215d5a0bfe49dd",
+                "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+                "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. These are reviewed structured requirements. Activities: calm beaches and local food; current trip mood relaxed.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056077,
+                "received_at": 1792056078,
+                "digest": "receipt_c780f108b0676874e7d983f18ba8c4bf",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"confirmed-trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056077,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_8b69634b656e75ee3b0ce78ff2d60f3d",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ]
+          },
+          {
+            "claim_id": "claim_c2202425fb814d4eebcd5b2e55af8a11",
+            "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "dates",
+            "value": "2026-12-10 to 2026-12-14",
+            "kind": "fact",
+            "scope": {
+              "trip_id": "goa-family"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.846778179262051,
+            "fuzzy_explanation": {
+              "score": 0.846778179262051,
+              "inputs": {
+                "freshness": 0.9999864509185071,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 2.7098162985739194e-05,
+                  "high": 0.9999729018370143
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_48156925eac232c455215d5a0bfe49dd",
+                "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+                "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. These are reviewed structured requirements. Activities: calm beaches and local food; current trip mood relaxed.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056077,
+                "received_at": 1792056078,
+                "digest": "receipt_c780f108b0676874e7d983f18ba8c4bf",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"confirmed-trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056077,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_c2202425fb814d4eebcd5b2e55af8a11",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ]
+          },
+          {
+            "claim_id": "claim_029525c8e27b2f34b9da797ca8c72afa",
+            "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "budget",
+            "value": 90000,
+            "kind": "rule",
+            "scope": {
+              "trip_id": "goa-family"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": true,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 1.0,
+            "fuzzy_explanation": {
+              "score": 1.0,
+              "hard_rule": "user_confirmed_protection",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_48156925eac232c455215d5a0bfe49dd",
+                "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+                "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. These are reviewed structured requirements. Activities: calm beaches and local food; current trip mood relaxed.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056077,
+                "received_at": 1792056078,
+                "digest": "receipt_c780f108b0676874e7d983f18ba8c4bf",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"confirmed-trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056077,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_029525c8e27b2f34b9da797ca8c72afa",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ]
+          },
+          {
+            "claim_id": "claim_391a1f524401f540d580e46a5e071172",
+            "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "currency",
+            "value": "INR",
+            "kind": "fact",
+            "scope": {
+              "trip_id": "goa-family"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.846778179262051,
+            "fuzzy_explanation": {
+              "score": 0.846778179262051,
+              "inputs": {
+                "freshness": 0.9999864509185071,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 2.7098162985739194e-05,
+                  "high": 0.9999729018370143
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_48156925eac232c455215d5a0bfe49dd",
+                "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+                "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. These are reviewed structured requirements. Activities: calm beaches and local food; current trip mood relaxed.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056077,
+                "received_at": 1792056078,
+                "digest": "receipt_c780f108b0676874e7d983f18ba8c4bf",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"confirmed-trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056077,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_391a1f524401f540d580e46a5e071172",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ]
+          },
+          {
+            "claim_id": "claim_ce8223694af4d2183d72914543cc0271",
+            "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "departure_city",
+            "value": "Delhi",
+            "kind": "fact",
+            "scope": {
+              "trip_id": "goa-family"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.846778179262051,
+            "fuzzy_explanation": {
+              "score": 0.846778179262051,
+              "inputs": {
+                "freshness": 0.9999864509185071,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 2.7098162985739194e-05,
+                  "high": 0.9999729018370143
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_48156925eac232c455215d5a0bfe49dd",
+                "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+                "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. These are reviewed structured requirements. Activities: calm beaches and local food; current trip mood relaxed.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056077,
+                "received_at": 1792056078,
+                "digest": "receipt_c780f108b0676874e7d983f18ba8c4bf",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"confirmed-trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056077,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_ce8223694af4d2183d72914543cc0271",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ]
+          },
+          {
+            "claim_id": "claim_3d30d14a5adadf5efe3b9984ff25135c",
+            "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "traveller_count",
+            "value": 2,
+            "kind": "rule",
+            "scope": {
+              "trip_id": "goa-family"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": true,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 1.0,
+            "fuzzy_explanation": {
+              "score": 1.0,
+              "hard_rule": "user_confirmed_protection",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_48156925eac232c455215d5a0bfe49dd",
+                "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+                "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. These are reviewed structured requirements. Activities: calm beaches and local food; current trip mood relaxed.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056077,
+                "received_at": 1792056078,
+                "digest": "receipt_c780f108b0676874e7d983f18ba8c4bf",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"confirmed-trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056077,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_3d30d14a5adadf5efe3b9984ff25135c",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ]
+          },
+          {
+            "claim_id": "claim_5ec4fc4df991d9ab648a00cd3b08ea5d",
+            "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "dietary",
+            "value": "vegetarian",
+            "kind": "fact",
+            "scope": {
+              "trip_id": "goa-family"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.846778179262051,
+            "fuzzy_explanation": {
+              "score": 0.846778179262051,
+              "inputs": {
+                "freshness": 0.9999864509185071,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 2.7098162985739194e-05,
+                  "high": 0.9999729018370143
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_48156925eac232c455215d5a0bfe49dd",
+                "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+                "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. These are reviewed structured requirements. Activities: calm beaches and local food; current trip mood relaxed.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056077,
+                "received_at": 1792056078,
+                "digest": "receipt_c780f108b0676874e7d983f18ba8c4bf",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"confirmed-trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056077,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_5ec4fc4df991d9ab648a00cd3b08ea5d",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ]
+          },
+          {
+            "claim_id": "claim_e746f9d3cdc9832898cccdf5bfa1067b",
+            "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "pace",
+            "value": "relaxed",
+            "kind": "preference",
+            "scope": {
+              "trip_id": "goa-family"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.846778179262051,
+            "fuzzy_explanation": {
+              "score": 0.846778179262051,
+              "inputs": {
+                "freshness": 0.9999864509185071,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 2.7098162985739194e-05,
+                  "high": 0.9999729018370143
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_48156925eac232c455215d5a0bfe49dd",
+                "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+                "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. These are reviewed structured requirements. Activities: calm beaches and local food; current trip mood relaxed.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056077,
+                "received_at": 1792056078,
+                "digest": "receipt_c780f108b0676874e7d983f18ba8c4bf",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"confirmed-trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056077,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_e746f9d3cdc9832898cccdf5bfa1067b",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ]
+          },
+          {
+            "claim_id": "claim_54c6e9b9efd0763a63778734d33711c6",
+            "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "accessibility",
+            "value": "A step-free entrance or lift is mandatory",
+            "kind": "rule",
+            "scope": {
+              "trip_id": "goa-family"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": true,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 1.0,
+            "fuzzy_explanation": {
+              "score": 1.0,
+              "hard_rule": "user_confirmed_protection",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_48156925eac232c455215d5a0bfe49dd",
+                "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+                "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. These are reviewed structured requirements. Activities: calm beaches and local food; current trip mood relaxed.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056077,
+                "received_at": 1792056078,
+                "digest": "receipt_c780f108b0676874e7d983f18ba8c4bf",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"confirmed-trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056077,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_54c6e9b9efd0763a63778734d33711c6",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ]
+          },
+          {
+            "claim_id": "claim_0d1cbc05795e8c873f13419c244c9569",
+            "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "max_walk_metres",
+            "value": 500,
+            "kind": "rule",
+            "scope": {
+              "trip_id": "goa-family"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": true,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 1.0,
+            "fuzzy_explanation": {
+              "score": 1.0,
+              "hard_rule": "user_confirmed_protection",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_48156925eac232c455215d5a0bfe49dd",
+                "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+                "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. These are reviewed structured requirements. Activities: calm beaches and local food; current trip mood relaxed.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056077,
+                "received_at": 1792056078,
+                "digest": "receipt_c780f108b0676874e7d983f18ba8c4bf",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"confirmed-trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056077,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_0d1cbc05795e8c873f13419c244c9569",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ]
+          },
+          {
+            "claim_id": "claim_6ac158f1571bfb09d49681f2033a2a71",
+            "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "avoid_boats",
+            "value": true,
+            "kind": "rule",
+            "scope": {
+              "trip_id": "goa-family"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": true,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 1.0,
+            "fuzzy_explanation": {
+              "score": 1.0,
+              "hard_rule": "user_confirmed_protection",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_48156925eac232c455215d5a0bfe49dd",
+                "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+                "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. These are reviewed structured requirements. Activities: calm beaches and local food; current trip mood relaxed.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056077,
+                "received_at": 1792056078,
+                "digest": "receipt_c780f108b0676874e7d983f18ba8c4bf",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"confirmed-trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056077,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_6ac158f1571bfb09d49681f2033a2a71",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ]
+          },
+          {
+            "claim_id": "claim_e28b5ebf3ee39ed0f84403e6fe4d3caf",
+            "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "max_activities_per_day",
+            "value": 1,
+            "kind": "rule",
+            "scope": {
+              "trip_id": "goa-family"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": true,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 1.0,
+            "fuzzy_explanation": {
+              "score": 1.0,
+              "hard_rule": "user_confirmed_protection",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_48156925eac232c455215d5a0bfe49dd",
+                "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+                "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. These are reviewed structured requirements. Activities: calm beaches and local food; current trip mood relaxed.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056077,
+                "received_at": 1792056078,
+                "digest": "receipt_c780f108b0676874e7d983f18ba8c4bf",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"confirmed-trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056077,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_e28b5ebf3ee39ed0f84403e6fe4d3caf",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ]
+          },
+          {
+            "claim_id": "claim_95b14d9b723844c4c3604d225260aba5",
+            "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "flight_time_preference",
+            "value": "morning",
+            "kind": "rule",
+            "scope": {
+              "trip_id": "goa-family"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": true,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 1.0,
+            "fuzzy_explanation": {
+              "score": 1.0,
+              "hard_rule": "user_confirmed_protection",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_48156925eac232c455215d5a0bfe49dd",
+                "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+                "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. These are reviewed structured requirements. Activities: calm beaches and local food; current trip mood relaxed.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056077,
+                "received_at": 1792056078,
+                "digest": "receipt_c780f108b0676874e7d983f18ba8c4bf",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"confirmed-trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056077,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_95b14d9b723844c4c3604d225260aba5",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ]
+          },
+          {
+            "claim_id": "claim_6e8c088c8bc3246c6cb03919739a20c2",
+            "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "activity_preferences",
+            "value": "Calm beaches and local food",
+            "kind": "preference",
+            "scope": {
+              "trip_id": "goa-family"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.846778179262051,
+            "fuzzy_explanation": {
+              "score": 0.846778179262051,
+              "inputs": {
+                "freshness": 0.9999864509185071,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 2.7098162985739194e-05,
+                  "high": 0.9999729018370143
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_48156925eac232c455215d5a0bfe49dd",
+                "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+                "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. These are reviewed structured requirements. Activities: calm beaches and local food; current trip mood relaxed.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056077,
+                "received_at": 1792056078,
+                "digest": "receipt_c780f108b0676874e7d983f18ba8c4bf",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"confirmed-trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056077,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_6e8c088c8bc3246c6cb03919739a20c2",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ]
+          },
+          {
+            "claim_id": "claim_3f0748db8d966266a6bad5e392671a9b",
+            "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "mood",
+            "value": "relaxed",
+            "kind": "preference",
+            "scope": {
+              "trip_id": "goa-family"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.846778179262051,
+            "fuzzy_explanation": {
+              "score": 0.846778179262051,
+              "inputs": {
+                "freshness": 0.9999864509185071,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 2.7098162985739194e-05,
+                  "high": 0.9999729018370143
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7098162985739194e-05,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_48156925eac232c455215d5a0bfe49dd",
+                "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+                "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. These are reviewed structured requirements. Activities: calm beaches and local food; current trip mood relaxed.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056077,
+                "received_at": 1792056078,
+                "digest": "receipt_c780f108b0676874e7d983f18ba8c4bf",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"confirmed-trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056077,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_3f0748db8d966266a6bad5e392671a9b",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ]
+          }
+        ],
+        "answer_status": "evidence"
+      },
+      "entity_ids": [
+        "subject_360fa6f577843e5a8388898b87bc228a"
+      ],
+      "retrieval_method": "graph+vector",
+      "timestamp": 1792056077,
+      "valid_from": 0,
+      "valid_until": 9223372036854775807,
+      "importance": 1.0,
+      "is_superseded": false,
+      "retrieval_trace": {
+        "memory_id": "evt_20c659ee8704bfb51f3cc31423a342b7",
+        "retrieval_method": "graph+vector",
+        "vector_score": 0.7392933964729309,
+        "rerank_score": null,
+        "graph_relevance": 1.0,
+        "linked_entities": [
+          "subject_360fa6f577843e5a8388898b87bc228a"
+        ],
+        "final_score": 2.289289331748483,
+        "selection_rank": 1,
+        "candidate_count": 3,
+        "superseded": false,
+        "stage_ms": {
+          "vector": 1.0910000128205866,
+          "graph": 12.821900003473274,
+          "conflicts": 6.3768999971216545,
+          "lifecycle": 118.68159999721684,
+          "rerank": 0.0014999968698248267
+        },
+        "total_retrieval_ms": 148.94690000801347,
+        "lifecycle": {
+          "claim_ids": [
+            "claim_8b69634b656e75ee3b0ce78ff2d60f3d",
+            "claim_c2202425fb814d4eebcd5b2e55af8a11",
+            "claim_029525c8e27b2f34b9da797ca8c72afa",
+            "claim_391a1f524401f540d580e46a5e071172",
+            "claim_ce8223694af4d2183d72914543cc0271",
+            "claim_3d30d14a5adadf5efe3b9984ff25135c",
+            "claim_5ec4fc4df991d9ab648a00cd3b08ea5d",
+            "claim_e746f9d3cdc9832898cccdf5bfa1067b",
+            "claim_54c6e9b9efd0763a63778734d33711c6",
+            "claim_0d1cbc05795e8c873f13419c244c9569",
+            "claim_6ac158f1571bfb09d49681f2033a2a71",
+            "claim_e28b5ebf3ee39ed0f84403e6fe4d3caf",
+            "claim_95b14d9b723844c4c3604d225260aba5",
+            "claim_6e8c088c8bc3246c6cb03919739a20c2",
+            "claim_3f0748db8d966266a6bad5e392671a9b"
+          ],
+          "source_paths": [
+            [
+              "claim_8b69634b656e75ee3b0ce78ff2d60f3d",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ],
+            [
+              "claim_c2202425fb814d4eebcd5b2e55af8a11",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ],
+            [
+              "claim_029525c8e27b2f34b9da797ca8c72afa",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ],
+            [
+              "claim_391a1f524401f540d580e46a5e071172",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ],
+            [
+              "claim_ce8223694af4d2183d72914543cc0271",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ],
+            [
+              "claim_3d30d14a5adadf5efe3b9984ff25135c",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ],
+            [
+              "claim_5ec4fc4df991d9ab648a00cd3b08ea5d",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ],
+            [
+              "claim_e746f9d3cdc9832898cccdf5bfa1067b",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ],
+            [
+              "claim_54c6e9b9efd0763a63778734d33711c6",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ],
+            [
+              "claim_0d1cbc05795e8c873f13419c244c9569",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ],
+            [
+              "claim_6ac158f1571bfb09d49681f2033a2a71",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ],
+            [
+              "claim_e28b5ebf3ee39ed0f84403e6fe4d3caf",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ],
+            [
+              "claim_95b14d9b723844c4c3604d225260aba5",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ],
+            [
+              "claim_6e8c088c8bc3246c6cb03919739a20c2",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ],
+            [
+              "claim_3f0748db8d966266a6bad5e392671a9b",
+              "SUPPORTED_BY",
+              "source_48156925eac232c455215d5a0bfe49dd"
+            ]
+          ],
+          "discovery_memory_ids": [
+            "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "evt_cfd3b6ca457c844ad2415c819eaccb71",
+            "evt_efab370948df8db7e814bc63eea39b13"
+          ]
+        }
+      }
+    },
+    {
+      "memory_id": "evt_cfd3b6ca457c844ad2415c819eaccb71",
+      "content": "Riya: conversation episode = Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. (context: {\"trip_id\":\"goa-family\"})",
+      "score": 2.254514860616224,
+      "metadata": {
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "importance": 1.0,
+        "memory_type": "semantic",
+        "timestamp": 1792056073,
+        "service_receipt": "raw-intake",
+        "interpretation": "travel_grammar_v1",
+        "session_id": "",
+        "memory_claim_ids": [
+          "claim_1ce004862ae6b5d702fe2f9a1d5c177e"
+        ],
+        "memory_source_id": "source_0a6ab4f3b49bcaa5ac045e8a8cefd2e7",
+        "memory_versioned": true,
+        "extraction_status": "typed_claims",
+        "extraction_is_mock": false,
+        "extractor_name": "explicit_claim_contract",
+        "memory_evidence": [
+          {
+            "claim_id": "claim_1ce004862ae6b5d702fe2f9a1d5c177e",
+            "memory_id": "evt_cfd3b6ca457c844ad2415c819eaccb71",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "conversation_episode",
+            "value": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed.",
+            "kind": "episode",
+            "scope": {
+              "trip_id": "goa-family"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8467775110859843,
+            "fuzzy_explanation": {
+              "score": 0.8467775110859843,
+              "inputs": {
+                "freshness": 0.99998609436621,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 2.7811267580002408e-05,
+                  "high": 0.99997218873242
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7811267580002408e-05,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7811267580002408e-05,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7811267580002408e-05,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7811267580002408e-05,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_0a6ab4f3b49bcaa5ac045e8a8cefd2e7",
+                "memory_id": "evt_cfd3b6ca457c844ad2415c819eaccb71",
+                "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056073,
+                "received_at": 1792056074,
+                "digest": "receipt_4f5464c6129a7460ac785e8467e87182",
+                "metadata_json": "{\"interpretation\":\"travel_grammar_v1\",\"service_receipt\":\"raw-intake\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056073,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_1ce004862ae6b5d702fe2f9a1d5c177e",
+              "SUPPORTED_BY",
+              "source_0a6ab4f3b49bcaa5ac045e8a8cefd2e7"
+            ]
+          }
+        ],
+        "answer_status": "evidence"
+      },
+      "entity_ids": [
+        "subject_360fa6f577843e5a8388898b87bc228a"
+      ],
+      "retrieval_method": "graph+vector",
+      "timestamp": 1792056073,
+      "valid_from": 0,
+      "valid_until": 9223372036854775807,
+      "importance": 1.0,
+      "is_superseded": false,
+      "retrieval_trace": {
+        "memory_id": "evt_cfd3b6ca457c844ad2415c819eaccb71",
+        "retrieval_method": "graph+vector",
+        "vector_score": 0.7275024056434631,
+        "rerank_score": null,
+        "graph_relevance": 1.0,
+        "linked_entities": [
+          "subject_360fa6f577843e5a8388898b87bc228a"
+        ],
+        "final_score": 2.254514860616224,
+        "selection_rank": 2,
+        "candidate_count": 3,
+        "superseded": false,
+        "stage_ms": {
+          "vector": 1.0910000128205866,
+          "graph": 12.821900003473274,
+          "conflicts": 6.3768999971216545,
+          "lifecycle": 118.68159999721684,
+          "rerank": 0.0014999968698248267
+        },
+        "total_retrieval_ms": 148.94980000099167,
+        "lifecycle": {
+          "claim_ids": [
+            "claim_1ce004862ae6b5d702fe2f9a1d5c177e"
+          ],
+          "source_paths": [
+            [
+              "claim_1ce004862ae6b5d702fe2f9a1d5c177e",
+              "SUPPORTED_BY",
+              "source_0a6ab4f3b49bcaa5ac045e8a8cefd2e7"
+            ]
+          ],
+          "discovery_memory_ids": [
+            "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "evt_cfd3b6ca457c844ad2415c819eaccb71",
+            "evt_efab370948df8db7e814bc63eea39b13"
+          ]
+        }
+      }
+    },
+    {
+      "memory_id": "evt_efab370948df8db7e814bc63eea39b13",
+      "content": "Riya: dietary = vegetarian\nRiya: pace = active\nRiya: interests = ['hiking', 'boat rides', 'local food']\nRiya: seat preference = aisle",
+      "score": 2.0661091793493873,
+      "metadata": {
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "importance": 1.0,
+        "memory_type": "semantic",
+        "timestamp": 1792056076,
+        "service_receipt": "stable-profile",
+        "interpretation": "structured",
+        "session_id": "",
+        "memory_claim_ids": [
+          "claim_cc14f95f3d868682cde3ab817a2bd13d",
+          "claim_9cd0aa1c3af1179f197ae80a93554e9c",
+          "claim_a18173e7dfbc00fcc8b72926af663f0a",
+          "claim_4a3f3760dd8c787bfa8c58db4c7fc150"
+        ],
+        "memory_source_id": "source_58a61aa833677cddaaefd854eb39f403",
+        "memory_versioned": true,
+        "extraction_status": "typed_claims",
+        "extraction_is_mock": false,
+        "extractor_name": "explicit_claim_contract",
+        "memory_evidence": [
+          {
+            "claim_id": "claim_cc14f95f3d868682cde3ab817a2bd13d",
+            "memory_id": "evt_efab370948df8db7e814bc63eea39b13",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "dietary",
+            "value": "vegetarian",
+            "kind": "preference",
+            "scope": {},
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8467780122178473,
+            "fuzzy_explanation": {
+              "score": 0.8467780122178473,
+              "inputs": {
+                "freshness": 0.9999863617804209,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 2.7276439158230303e-05,
+                  "high": 0.9999727235608418
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7276439158230303e-05,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7276439158230303e-05,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7276439158230303e-05,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7276439158230303e-05,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_58a61aa833677cddaaefd854eb39f403",
+                "memory_id": "evt_efab370948df8db7e814bc63eea39b13",
+                "text": "Usual preferences: vegetarian meals, active holidays, hiking, boat rides and local food; aisle seat. This trip can differ.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056076,
+                "received_at": 1792056077,
+                "digest": "receipt_be9cfcc882954ba20664a69baaa20cf5",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"stable-profile\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056076,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_cc14f95f3d868682cde3ab817a2bd13d",
+              "SUPPORTED_BY",
+              "source_58a61aa833677cddaaefd854eb39f403"
+            ]
+          },
+          {
+            "claim_id": "claim_9cd0aa1c3af1179f197ae80a93554e9c",
+            "memory_id": "evt_efab370948df8db7e814bc63eea39b13",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "pace",
+            "value": "active",
+            "kind": "preference",
+            "scope": {},
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8467780122178473,
+            "fuzzy_explanation": {
+              "score": 0.8467780122178473,
+              "inputs": {
+                "freshness": 0.9999863617804209,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 2.7276439158230303e-05,
+                  "high": 0.9999727235608418
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7276439158230303e-05,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7276439158230303e-05,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7276439158230303e-05,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7276439158230303e-05,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_58a61aa833677cddaaefd854eb39f403",
+                "memory_id": "evt_efab370948df8db7e814bc63eea39b13",
+                "text": "Usual preferences: vegetarian meals, active holidays, hiking, boat rides and local food; aisle seat. This trip can differ.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056076,
+                "received_at": 1792056077,
+                "digest": "receipt_be9cfcc882954ba20664a69baaa20cf5",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"stable-profile\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056076,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_9cd0aa1c3af1179f197ae80a93554e9c",
+              "SUPPORTED_BY",
+              "source_58a61aa833677cddaaefd854eb39f403"
+            ]
+          },
+          {
+            "claim_id": "claim_a18173e7dfbc00fcc8b72926af663f0a",
+            "memory_id": "evt_efab370948df8db7e814bc63eea39b13",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "interests",
+            "value": [
+              "hiking",
+              "boat rides",
+              "local food"
+            ],
+            "kind": "preference",
+            "scope": {},
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8467780122178473,
+            "fuzzy_explanation": {
+              "score": 0.8467780122178473,
+              "inputs": {
+                "freshness": 0.9999863617804209,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 2.7276439158230303e-05,
+                  "high": 0.9999727235608418
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7276439158230303e-05,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7276439158230303e-05,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7276439158230303e-05,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7276439158230303e-05,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_58a61aa833677cddaaefd854eb39f403",
+                "memory_id": "evt_efab370948df8db7e814bc63eea39b13",
+                "text": "Usual preferences: vegetarian meals, active holidays, hiking, boat rides and local food; aisle seat. This trip can differ.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056076,
+                "received_at": 1792056077,
+                "digest": "receipt_be9cfcc882954ba20664a69baaa20cf5",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"stable-profile\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056076,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_a18173e7dfbc00fcc8b72926af663f0a",
+              "SUPPORTED_BY",
+              "source_58a61aa833677cddaaefd854eb39f403"
+            ]
+          },
+          {
+            "claim_id": "claim_4a3f3760dd8c787bfa8c58db4c7fc150",
+            "memory_id": "evt_efab370948df8db7e814bc63eea39b13",
+            "subject": "Riya",
+            "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+            "predicate": "seat_preference",
+            "value": "aisle",
+            "kind": "preference",
+            "scope": {},
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8467780122178473,
+            "fuzzy_explanation": {
+              "score": 0.8467780122178473,
+              "inputs": {
+                "freshness": 0.9999863617804209,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 2.7276439158230303e-05,
+                  "high": 0.9999727235608418
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7276439158230303e-05,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7276439158230303e-05,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7276439158230303e-05,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 2.7276439158230303e-05,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_58a61aa833677cddaaefd854eb39f403",
+                "memory_id": "evt_efab370948df8db7e814bc63eea39b13",
+                "text": "Usual preferences: vegetarian meals, active holidays, hiking, boat rides and local food; aisle seat. This trip can differ.",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792056076,
+                "received_at": 1792056077,
+                "digest": "receipt_be9cfcc882954ba20664a69baaa20cf5",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"stable-profile\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792056076,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_4a3f3760dd8c787bfa8c58db4c7fc150",
+              "SUPPORTED_BY",
+              "source_58a61aa833677cddaaefd854eb39f403"
+            ]
+          }
+        ],
+        "answer_status": "evidence"
+      },
+      "entity_ids": [
+        "subject_360fa6f577843e5a8388898b87bc228a"
+      ],
+      "retrieval_method": "graph+vector",
+      "timestamp": 1792056076,
+      "valid_from": 0,
+      "valid_until": 9223372036854775807,
+      "importance": 1.0,
+      "is_superseded": false,
+      "retrieval_trace": {
+        "memory_id": "evt_efab370948df8db7e814bc63eea39b13",
+        "retrieval_method": "graph+vector",
+        "vector_score": 0.5390965689825838,
+        "rerank_score": null,
+        "graph_relevance": 1.0,
+        "linked_entities": [
+          "subject_360fa6f577843e5a8388898b87bc228a"
+        ],
+        "final_score": 2.0661091793493873,
+        "selection_rank": 3,
+        "candidate_count": 3,
+        "superseded": false,
+        "stage_ms": {
+          "vector": 1.0910000128205866,
+          "graph": 12.821900003473274,
+          "conflicts": 6.3768999971216545,
+          "lifecycle": 118.68159999721684,
+          "rerank": 0.0014999968698248267
+        },
+        "total_retrieval_ms": 148.9513000124134,
+        "lifecycle": {
+          "claim_ids": [
+            "claim_cc14f95f3d868682cde3ab817a2bd13d",
+            "claim_9cd0aa1c3af1179f197ae80a93554e9c",
+            "claim_a18173e7dfbc00fcc8b72926af663f0a",
+            "claim_4a3f3760dd8c787bfa8c58db4c7fc150"
+          ],
+          "source_paths": [
+            [
+              "claim_cc14f95f3d868682cde3ab817a2bd13d",
+              "SUPPORTED_BY",
+              "source_58a61aa833677cddaaefd854eb39f403"
+            ],
+            [
+              "claim_9cd0aa1c3af1179f197ae80a93554e9c",
+              "SUPPORTED_BY",
+              "source_58a61aa833677cddaaefd854eb39f403"
+            ],
+            [
+              "claim_a18173e7dfbc00fcc8b72926af663f0a",
+              "SUPPORTED_BY",
+              "source_58a61aa833677cddaaefd854eb39f403"
+            ],
+            [
+              "claim_4a3f3760dd8c787bfa8c58db4c7fc150",
+              "SUPPORTED_BY",
+              "source_58a61aa833677cddaaefd854eb39f403"
+            ]
+          ],
+          "discovery_memory_ids": [
+            "evt_20c659ee8704bfb51f3cc31423a342b7",
+            "evt_cfd3b6ca457c844ad2415c819eaccb71",
+            "evt_efab370948df8db7e814bc63eea39b13"
+          ]
+        }
+      }
+    }
+  ],
+  "elapsed_ms": 182.47889999474864
+}

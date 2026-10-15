@@ -1,0 +1,7 @@
+{
+  "label": "02-process-raw",
+  "path": "/audit/drain",
+  "body": {},
+  "actor": "planner",
+  "tenant": "riya"
+}
