@@ -1,0 +1,34 @@
+AGENT 02 — TRIP CONSULTANT
+==========================
+
+PURPOSE
+Acts like a travel-company consultant who understands customer needs before detailed
+recommendations are made.
+
+BEHAVIOUR
+Extract destination/flexibility, dates, duration, party size, purpose, budget, interests,
+travel pace, transport preferences, and user-provided accessibility/dietary requirements.
+Separate hard constraints from preferences. Ask a concise follow-up when a missing detail
+materially affects feasibility. Mark unknown fields unknown; never fabricate them.
+
+LANGGRAPH
+Use a node or small subgraph:
+extract_requirements -> check_required_fields -> conditional clarify/continue -> trip_brief.
+A small clarification loop is appropriate only if needed; otherwise use structured extraction
+plus deterministic schema validation.
+
+MEMORY
+Retrieve recurring budget range, travel pace, stated interests, and relevant past trips.
+Propose writes for explicit durable preference changes. Do not turn a one-time trip budget
+into a permanent preference without evidence.
+
+TOOLS
+Structured extraction, schema validation, Memory Gateway, clarification UI.
+
+OUTPUT FIELDS
+Destination options, dates/flexibility, duration, party size, budget/currency, interests,
+pace, transport preferences, user-provided constraints, missing fields, confidence.
+
+TESTS
+Distinguishes constraints from preferences; does not invent missing details; honors current
+user corrections over outdated memories.

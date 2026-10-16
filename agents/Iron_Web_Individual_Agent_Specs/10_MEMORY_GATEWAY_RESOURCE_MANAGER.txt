@@ -1,0 +1,46 @@
+SHARED COMPONENT — MEMORY GATEWAY & RESOURCE MANAGER
+===================================================
+
+MEMORY GATEWAY
+A software adapter shared by all agents; it is not a reasoning agent.
+
+RETRIEVAL
+1. Receive query, user scope, session context, requesting agent, and task.
+2. Verify access policy.
+3. Query the actual MemoryEngine API using task-relevant text and supported temporal/mode
+   options.
+4. Return a bounded, compact context with provenance/validity fields where available.
+5. Avoid redundant retrieval where safe.
+
+WRITES
+1. Accept proposed facts, preferences, decisions, and outcomes.
+2. Check ownership, provenance, confidence/importance, validity, and sensitivity.
+3. Reject noise, unsupported assumptions, and unnecessary duplicates.
+4. Apply consent/application policies.
+5. Call existing coordinated Iron Web APIs.
+6. Record status and make retries safe.
+Never bypass Iron Web's cross-store consistency by writing directly to Qdrant and FalkorDB.
+
+LANGGRAPH
+Expose retrieval as a callable node/tool. Put write proposals near the end of the workflow.
+Carry compact context or references in state. Do not log full private memories by default.
+
+RESOURCE MANAGER
+Separate component for model and machine-resource control:
+- model registry and capability mapping
+- lazy loading/unloading and model reuse
+- concurrency limits and request queues
+- context/token budgets
+- RAM/VRAM monitoring and admission control
+- CPU/GPU selection and fallback
+- timeouts, cancellation, and graceful degradation
+- latency/load/error/resource metrics
+
+IMPORTANT
+Qdrant and FalkorDB do not automatically manage inference KV cache, model residency, or
+all RAM/VRAM. Those are runtime/resource-manager concerns. Several logical agents can share
+one model; do not assume one loaded model per agent.
+
+TESTS
+User isolation; temporal filtering; duplicate-write safety; partial-failure recovery;
+resource limits and model reuse.

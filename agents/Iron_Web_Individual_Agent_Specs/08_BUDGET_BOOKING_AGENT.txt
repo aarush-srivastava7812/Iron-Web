@@ -1,0 +1,35 @@
+AGENT 08 — BUDGET & BOOKING AGENT
+=================================
+
+PURPOSE
+Estimates costs, compares packages, and assists with reservations without presenting
+estimates as confirmed transactions.
+
+BEHAVIOUR
+Break costs into transport, stay, food, tickets, activities, and contingency. Keep currency
+and per-person/group totals explicit. Refresh changing prices before calling them current.
+For actual bookings, use an authorized provider and get required user confirmation. Use
+idempotency keys/provider references for retry safety. Report success only after provider
+confirmation.
+
+LANGGRAPH
+collect_options -> calculate_estimates -> check_budget -> compare_alternatives ->
+recommend OR explicit_booking_flow.
+Booking flow: prepare -> request_confirmation -> call_provider -> verify_result -> report.
+Keep booking execution separate from ordinary recommendations.
+
+MEMORY
+Retrieve budget/currency preferences and relevant booking decisions. Propose confirmed
+booking summaries or explicit lasting budget changes. Never store payment credentials or
+secrets in general memory.
+
+TOOLS
+Deterministic cost calculator, transport/stay/activity providers, booking APIs, status
+verification, Memory Gateway.
+
+OUTPUT
+Itemized costs, assumptions, price-check time, per-person/group distinction, budget delta,
+source, and status: estimate/available/pending/confirmed/failed.
+
+TESTS
+Correct arithmetic; estimates labeled accurately; safe retries; no false booking claims.

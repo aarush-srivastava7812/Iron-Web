@@ -1,0 +1,412 @@
+IRON WEB × TRAVEL AGENCY MULTI-AGENT ARCHITECTURE
+==================================================
+
+OVERVIEW
+--------
+The travel application is designed to feel like visiting a traditional tours and
+travels company, with AI agents handling consultation, discovery, planning,
+accommodation, food, sightseeing, budgeting, booking assistance, and trip support.
+
+Architecture:
+- 9 logical agents
+- Iron Web as the shared long-term memory infrastructure
+- A Travel Orchestrator coordinating the agents
+- A Memory Gateway connecting agents to Iron Web
+- Shared external tools/APIs for travel information and booking operations
+- A separate resource manager for model loading, concurrency, RAM, and VRAM
+
+Iron Web is the memory system, not an agent. Do not create a separate memory
+database for every agent.
+
+1. AGENTS AND THEIR RESPONSIBILITIES
+------------------------------------
+
+1. Travel Orchestrator
+   Working:
+   - Receives requests from every application page.
+   - Identifies user intent and decides which agents are needed.
+   - Breaks complex requests into tasks and coordinates dependencies.
+   - Combines agent results and returns the final response.
+   - Handles failures, retries, and clarification requests.
+
+   Memory interaction:
+   - Retrieves relevant user and trip context through the Memory Gateway.
+   - Shares only relevant context with each agent.
+   - Submits important decisions and outcomes for long-term storage.
+
+2. Trip Consultant
+   Working:
+   - Collects destination, dates, trip duration, group size, travel purpose,
+     preferences, accessibility needs, and budget.
+   - Identifies missing information and asks follow-up questions.
+   - Converts the user's requirements into a structured trip brief.
+
+   Memory interaction:
+   - Retrieves previous trip requirements and stable preferences.
+   - Proposes updates when the user provides new or corrected preferences.
+
+3. Stay Agent
+   Working:
+   - Finds and compares hotels, homestays, resorts, and other accommodation.
+   - Compares amenities, location, price, and suitability.
+   - Uses current data sources for availability and booking details.
+
+   Memory interaction:
+   - Retrieves accommodation preferences, past choices, and feedback.
+   - Stores meaningful accommodation choices and feedback when appropriate.
+
+4. Tour Guide Agent
+   Working:
+   - Recommends attractions, sightseeing locations, cultural sites, and local
+     history.
+   - Suggests activities based on interests and available time.
+   - Uses reliable sources for factual and time-sensitive information.
+
+   Memory interaction:
+   - Retrieves visited places, interests, and places the user disliked.
+   - Records significant visits or preferences when useful.
+
+5. Food Guide Agent
+   Working:
+   - Recommends local cuisine, restaurants, cafes, and food experiences.
+   - Considers dietary requirements, budget, location, and opening hours.
+   - Uses current sources to verify restaurant information when possible.
+
+   Memory interaction:
+   - Retrieves food preferences and dietary requirements relevant to the user.
+   - Saves useful new preferences or feedback according to memory policies.
+
+6. Explore Agent
+   Working:
+   - Discovers destinations, activities, seasonal experiences, and lesser-known
+     attractions.
+   - Suggests alternatives based on travel style, duration, and budget.
+   - Supplies destination options to the planning workflow.
+
+   Memory interaction:
+   - Retrieves interests, previously explored destinations, and past reactions.
+   - Records destinations the user wants to revisit or explore later.
+
+7. Itinerary Planner
+   Working:
+   - Creates day-wise travel schedules.
+   - Coordinates attractions, food stops, accommodation, routes, and travel time.
+   - Balances activity level, convenience, opening hours, and trip duration.
+   - Produces a structured itinerary that can be checked by validation logic.
+
+   Memory interaction:
+   - Retrieves previous itinerary choices, travel pace, and relevant trip history.
+   - Proposes storing selected plans and useful outcomes after the trip.
+
+8. Budget & Booking Agent
+   Working:
+   - Estimates costs and compares packages, transport, and accommodation.
+   - Allocates the budget across trip components.
+   - Identifies booking requirements and assists with reservation workflows.
+   - Clearly distinguishes estimates from confirmed prices and bookings.
+
+   Memory interaction:
+   - Retrieves budget preferences and relevant booking decisions.
+   - Stores useful confirmed decisions and trip expenditure summaries where suitable.
+
+9. Travel Support Agent
+   Working:
+   - Helps with transport guidance, packing lists, trip changes, and travel
+     preparation.
+   - Provides relevant safety and emergency information.
+   - Helps the user adapt the itinerary when circumstances change.
+
+   Memory interaction:
+   - Retrieves relevant trip details and prior support context.
+   - Stores useful unresolved needs or outcomes when appropriate.
+
+A shared validation workflow should initially check costs, schedules, source
+freshness, constraints, and booking details. It does not need to be a separate
+agent at the beginning.
+
+
+2. APPLICATION PAGE MAPPING
+---------------------------
+
+Stay page:
+- Stay Agent
+- Budget & Booking Agent when price comparison or booking assistance is needed
+- Travel Orchestrator for coordination
+
+Tour Guide page:
+- Tour Guide Agent
+- Itinerary Planner when routes or schedules are requested
+- Travel Orchestrator for coordination
+
+Food Guide page:
+- Food Guide Agent
+- Explore Agent when discovering food experiences or local areas is useful
+- Travel Orchestrator for coordination
+
+Explore page:
+- Trip Consultant
+- Explore Agent
+- Tour Guide, Stay, or Food agents as required
+- Travel Orchestrator for coordination
+
+Plan / itinerary page:
+- Trip Consultant
+- Explore Agent
+- Stay Agent
+- Tour Guide Agent
+- Food Guide Agent
+- Itinerary Planner
+- Budget & Booking Agent
+- Validation workflow
+- Travel Support Agent when relevant
+- Travel Orchestrator coordinates the process
+
+The Orchestrator is shared across every page. Do not run every agent for every
+request; call only the agents needed for the task.
+
+
+3. HIGH-LEVEL ARCHITECTURE
+--------------------------
+
+User
+ |
+ v
+Travel Application UI
+(Stay / Tour Guide / Food Guide / Explore / Plan)
+ |
+ v
+Travel Orchestrator
+(intent detection, task routing, dependencies, result aggregation)
+ |
+ +------------------------------+
+ |                              |
+ v                              v
+Memory Gateway               Travel Tools
+(retrieval and writes)       (maps, destination data, hotel search,
+ |                            transport APIs, restaurant data, booking APIs)
+ v
+Iron Web MemoryEngine
+ |
+ +-------------------------+
+ |                         |
+ v                         v
+Qdrant                  FalkorDB
+semantic memory         entities and relationships
+
+Agents receive relevant context through the Orchestrator/Memory Gateway.
+They return structured results to the Orchestrator. The Orchestrator combines
+results and responds to the user.
+
+This is a logical architecture, not a requirement that every task execute in a
+strictly sequential order. Independent research tasks may run in parallel.
+
+
+4. IRON WEB INTEGRATION
+-----------------------
+
+Use a Memory Gateway between the agent framework and Iron Web.
+
+Responsibilities of the Memory Gateway:
+- Provide a consistent interface for agent memory access.
+- Build task-relevant retrieval queries.
+- Apply user, session, and agent access policies.
+- Request relevant memories from the existing MemoryEngine.
+- Return compact context with provenance and validity information where available.
+- Validate and schedule proposed writes.
+- Avoid unnecessary repeated retrievals.
+- Coordinate updates through the existing memory API.
+
+The current README identifies memory/, server.py, web/, the MemoryEngine API,
+and an in-process Python tool adapter as supported application components.
+Integrate with those existing interfaces instead of rewriting the memory layer.
+
+Illustrative interface only; adapt it to the actual MemoryEngine signatures:
+
+    context = memory_gateway.retrieve(
+        query="Find destinations matching the user's travel preferences",
+        user_id=user_id,
+        session_id=session_id,
+        agent_id="destination_research",
+        limit=10,
+    )
+
+Illustrative write proposal only:
+
+    memory_gateway.propose_write(
+        user_id=user_id,
+        session_id=session_id,
+        agent_id="itinerary_planner",
+        content="The user selected a quieter destination",
+        importance=0.7,
+    )
+
+These are proposed application-level examples, not claims that the current
+MemoryEngine already accepts these exact parameters. Confirm the real API and
+schema before implementation.
+
+
+5. MEMORY TYPES AND WHERE THEY BELONG
+--------------------------------------
+
+Long-term semantic memory:
+- Examples: prefers peaceful destinations, likes nature walks.
+- Storage: Iron Web / Qdrant retrieval, with appropriate metadata.
+
+Relationship memory:
+- Examples: visited a destination with friends; a hotel was part of a particular
+  trip; a preference relates to a destination type.
+- Storage: Iron Web / FalkorDB graph relationships.
+
+Temporal memory:
+- Examples: a budget preference changed; an older preference was superseded.
+- Storage: Iron Web's validity intervals and supersession mechanisms.
+
+Session memory:
+- Examples: current trip is four days, for a group of three, under a specified
+  budget.
+- Storage: orchestrator/session state; persist only selected facts when useful.
+
+Working memory:
+- Examples: draft itinerary, current research findings, intermediate task output.
+- Storage: temporary task context or session state unless there is a reason to
+  preserve the result long-term.
+
+Response/data cache:
+- Examples: reusable destination information or cached API results.
+- Storage: a cache layer with freshness and invalidation rules.
+
+Model KV cache:
+- Stores inference token state for a running model.
+- Managed by the inference runtime, not directly by Qdrant or FalkorDB.
+
+Agent execution state:
+- Examples: pending tasks, dependencies, retries, and workflow progress.
+- Storage: orchestrator/workflow state, not automatically in long-term memory.
+
+Important: Iron Web provides durable memory and retrieval. It does not
+automatically manage all RAM, GPU VRAM, model residency, or inference KV caches.
+Use a separate resource manager/runtime layer to coordinate those resources.
+
+
+6. MEMORY IDENTIFIERS AND OWNERSHIP
+-----------------------------------
+
+Recommended application-level identifiers:
+- user_id: whose memories are being accessed
+- session_id: the conversation or trip-planning session
+- agent_id: which agent created or requested information
+- task_id: the current operation
+- memory_id: the durable memory record
+
+These identifiers are proposed for the application and may not exist in the
+current Iron Web schema. Map them to the existing schema or add them deliberately.
+
+Preserve ownership and provenance for memory operations. Enforce access control
+before retrieving memories, especially when multiple users share the service.
+
+Do not allow every agent to write every intermediate thought to long-term memory.
+Prefer useful facts, preferences, corrections, decisions, and outcomes. Use
+controlled writes and preserve the existing coordinated-write guarantees.
+
+
+7. EXAMPLE: A RETURNING USER PLANS A TRIP
+----------------------------------------
+
+User request:
+"Plan a weekend trip like my last one."
+
+1. The Orchestrator identifies the intent and retrieves relevant history.
+2. The Trip Consultant checks dates, group size, budget, and missing details.
+3. The Explore Agent and Tour Guide Agent find suitable destinations and activities.
+4. The Stay Agent and Food Guide Agent recommend relevant accommodation and food.
+5. The Itinerary Planner combines the choices into a practical schedule.
+6. The Budget & Booking Agent estimates costs and checks booking requirements.
+7. The validation workflow checks budget totals, timing, constraints, and evidence.
+8. The Travel Support Agent contributes transport or preparation guidance if needed.
+9. The Orchestrator presents the combined recommendations.
+10. After the conversation or trip, selected preferences, decisions, and outcomes
+    are proposed for storage in Iron Web.
+
+If the user corrects a preference, update the appropriate memory according to the
+existing temporal and supersession rules. Do not erase historical events simply
+because a current preference changed.
+
+
+8. PERFORMANCE AND RESOURCE MANAGEMENT
+---------------------------------------
+
+- Retrieve relevant context once where possible and share it selectively.
+- Avoid giving every agent the user's entire conversation history.
+- Retrieve task-specific memories rather than searching indiscriminately.
+- Run independent research tasks in parallel when dependencies allow.
+- Reuse model instances when the inference framework supports safe sharing.
+- Use lightweight functions/tools instead of LLM agents for simple deterministic tasks.
+- Limit concurrent inference, context size, model residency, and resource usage.
+- Cache reusable data carefully; invalidate stale prices and availability.
+- Do not treat cached prices or booking availability as current without verification.
+- Monitor retrieval latency, end-to-end response time, memory relevance, model
+  load time, RAM/VRAM peaks, and recommendation quality.
+
+Multiple logical agents do not require multiple models to remain loaded at once.
+Model selection and concurrency should be decided by the resource manager.
+
+
+9. IMPLEMENTATION ORDER
+-----------------------
+
+Phase 1:
+- Inspect the actual MemoryEngine public API and current schema.
+- Define agent inputs, structured outputs, task contracts, and failure handling.
+- Implement the Travel Orchestrator.
+
+Phase 2:
+- Implement the Memory Gateway using the existing Iron Web API/tool adapter.
+- Define access rules, retrieval limits, provenance, and write policies.
+- Keep session state separate from durable memory.
+
+Phase 3:
+- Integrate Trip Consultant, Explore Agent, and Destination Research functionality.
+- Add Stay, Tour Guide, and Food Guide capabilities through travel data sources.
+
+Phase 4:
+- Add Itinerary Planner, Budget & Booking Agent, and Travel Support Agent.
+- Add validation checks for costs, routes, schedules, and evidence.
+
+Phase 5:
+- Add controlled memory updates and post-trip outcome capture.
+- Add caching, resource scheduling, observability, and evaluation.
+
+Start with the Orchestrator and Memory Gateway, then integrate agents incrementally.
+Do not build all agents as fully autonomous systems before the core workflow works.
+
+
+10. IMPORTANT DESIGN RULES
+--------------------------
+
+1. Shared memory, separate responsibilities: all agents use the same Iron Web
+   infrastructure, with task-specific retrieval.
+2. No unnecessary agent calls: invoke only agents relevant to the current request.
+3. Separate memory from execution state: Iron Web handles long-term knowledge;
+   the Orchestrator handles active tasks, dependencies, and retries.
+4. Validate before responding: check schedules, budgets, source freshness, and
+   booking details where applicable.
+5. Keep external information grounded: distinguish estimates from confirmed prices
+   and bookings; use external sources for live information.
+6. Preserve memory consistency: use the existing coordinated-write and rollback
+   mechanisms rather than independently writing to Qdrant and FalkorDB.
+7. Avoid unsupported assumptions: the agent contracts and Memory Gateway must be
+   adapted to the actual codebase API and schema.
+8. Protect user data: enforce ownership and access controls for all retrievals and
+   writes.
+9. Keep long-term memories selective: do not persist every message or intermediate
+   reasoning step.
+10. Measure quality: evaluate retrieval relevance, recommendation usefulness,
+    latency, failure recovery, and resource consumption.
+
+FINAL RECOMMENDATION
+--------------------
+
+Build 9 logical agents, one Travel Orchestrator, one Memory Gateway, shared travel
+tools, and a separate resource manager. Iron Web remains the shared long-term
+memory backbone. Begin with the Orchestrator and Memory Gateway, verify the actual
+MemoryEngine interface, and then connect specialized agents one by one.

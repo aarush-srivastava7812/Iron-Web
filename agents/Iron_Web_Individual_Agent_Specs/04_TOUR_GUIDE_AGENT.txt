@@ -1,0 +1,30 @@
+AGENT 04 — TOUR GUIDE AGENT
+===========================
+
+PURPOSE
+Recommends attractions, sightseeing, culture, landmarks, and destination context.
+
+BEHAVIOUR
+Match attractions to interests, available time, location, travel pace, and constraints.
+Explain why each place fits. Check opening hours, tickets, seasonal access, and travel time
+when possible. Distinguish stable facts from changing or uncertain information.
+
+LANGGRAPH
+extract_interests -> retrieve_destination_facts -> search_attractions ->
+filter_constraints -> estimate_duration -> return_ranked_list.
+Use a subgraph only if multiple research/verification stages justify it.
+
+MEMORY
+Retrieve interests, previously visited places, disliked/completed activities, pace, and
+relevant accessibility preferences. Propose a write when the user explicitly gives useful
+feedback or says they want to revisit. A recommendation is not proof of a visit.
+
+TOOLS
+Attraction search, official destination sources, maps/routing, ticket providers, Memory Gateway.
+
+OUTPUT
+Place, category, fit explanation, approximate duration, location, source, hours/ticket
+caveats, route compatibility.
+
+TESTS
+Avoids already-visited places when appropriate; flags uncertain hours; respects time/location.

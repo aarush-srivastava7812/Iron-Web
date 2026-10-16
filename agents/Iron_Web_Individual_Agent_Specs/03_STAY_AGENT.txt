@@ -1,0 +1,31 @@
+AGENT 03 — STAY AGENT
+=====================
+
+PURPOSE
+Finds accommodation that fits the trip brief and user's preferences.
+
+BEHAVIOUR
+Search hotels, hostels, homestays, resorts, or other suitable stays. Compare location,
+dates, occupancy, amenities, cancellation terms, ratings, and total price where available.
+Consider distance from attractions and transport access. Return a useful shortlist with
+trade-offs. Separate indicative listings from verified availability.
+
+LANGGRAPH
+build_filters -> query_providers -> normalize_results -> rank_options -> verify_fields
+-> return_shortlist. Parallelize providers where safe and within rate limits. Keep actual
+booking confirmation in a separate explicit workflow.
+
+MEMORY
+Retrieve accommodation type, desired amenities/location style, past feedback, and relevant
+budget preferences. Propose writes for explicit feedback or confirmed lasting preferences.
+Do not store transient search results as permanent memory.
+
+TOOLS
+Accommodation APIs, maps/distance, availability/price verification, Memory Gateway.
+
+OUTPUT
+Name, location, dates, total price/currency, amenities, source, availability status,
+cancellation notes, pros/cons, missing data.
+
+TESTS
+Correct dates/occupancy; price freshness caveats; ranking explains meaningful trade-offs.
