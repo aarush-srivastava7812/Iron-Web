@@ -6,7 +6,6 @@ travel tools, validators, and the LangGraph state all speak this vocabulary.
 from __future__ import annotations
 
 from datetime import date
-from enum import Enum
 from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -48,6 +47,7 @@ class MemoryContext(StrictModel):
     truncated: bool = False
     graph_live: bool = False
     retrieval_mode: str = "vector"
+    packet: dict[str, Any] | None = None
 
     def as_prompt_lines(self, max_chars: int = 1200) -> str:
         """Render the context as compact prompt lines with provenance."""

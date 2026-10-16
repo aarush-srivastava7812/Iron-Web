@@ -608,3 +608,15 @@ img{display:block;max-width:100%}
 
 @media(max-width:900px){.currency-tool{grid-template-columns:1fr}.nav-group-panel{min-width:320px}}
 @media(max-width:650px){.currency-card{grid-template-columns:1fr}.footer-sitemap{grid-template-columns:1fr 1fr}.video-grid{grid-template-columns:1fr}}
+/* Confirmed trip intake in the site-wide helper. */
+.helper-trip-details { margin: 12px 0; border: 1px solid #d6d9d0; border-radius: 10px; padding: 10px; }
+.helper-trip-details summary { cursor: pointer; font-weight: 600; }
+.helper-trip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-top: 12px; }
+.helper-trip-grid label, .helper-trip-switch label { display: grid; gap: 5px; font-size: 12px; min-width: 0; }
+.helper-trip-grid input, .helper-trip-grid select, .helper-trip-switch select { width: 100%; min-width: 0; padding: 8px; border: 1px solid #ccd0c5; border-radius: 6px; background: white; color: #26382a; }
+.helper-trip-grid .helper-trip-check { display: flex; align-items: center; gap: 7px; }
+.helper-trip-check input { width: auto; }
+.helper-trip-switch { display: flex; align-items: end; gap: 8px; }
+.helper-trip-switch label { flex: 1; }
+.helper-message { white-space: pre-wrap; }
+.helper-advice { max-height: 65vh; overflow-y: auto; }

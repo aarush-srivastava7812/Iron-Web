@@ -6,6 +6,7 @@ from ..db import get_db
 from ..deps import current_user
 from ..models import AIMemory, User, UserProfile
 from ..schemas import ProfileOut, ProfilePatch
+from ..agent_runtime import get_agent_runtime
 
 router = APIRouter(prefix="/profile", tags=["profile"])
 PREFERENCE_FIELDS = (
@@ -34,7 +35,13 @@ def update_profile(
     body: ProfilePatch,
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
+    runtime = Depends(get_agent_runtime),
 ):
+    with runtime.for_user(user.id).lock:
+        return _save_profile(body, user, db)
+
+
+def _save_profile(body, user, db):
     profile = db.get(UserProfile, user.id)
     if profile is None:
         profile = UserProfile(user_id=user.id)

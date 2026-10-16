@@ -284,6 +284,51 @@ function cartItemFor(kind: CatalogKind, item: CatalogItem, destinations: Catalog
   };
 }
 
+type TripFields = { destination: string; start_date: string; end_date: string; budget: string; traveller_count: string; pace: string; vegetarian: boolean };
+const emptyTrip: TripFields = { destination: "", start_date: "", end_date: "", budget: "", traveller_count: "", pace: "moderate", vegetarian: false };
+
+function TripDetails({ conversationId, ensureConversation, onSaved }: { conversationId: string; ensureConversation: () => Promise<string>; onSaved: () => void }) {
+  const [fields, setFields] = useState<TripFields>(emptyTrip);
+  const [hadDiet, setHadDiet] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  useEffect(() => {
+    let cancelled = false;
+    setFields(emptyTrip); setHadDiet(false); setError("");
+    if (conversationId) api<{ fields: { predicate: string; status: string; values: unknown[] }[] }>(`/assistant/conversations/${conversationId}/requirements`).then((packet) => {
+      if (cancelled) return;
+      const values = Object.fromEntries(packet.fields.filter((f) => f.status === "supported").map((f) => [f.predicate, f.values[0]]));
+      const dates = String(values.dates ?? "").split(" to ");
+      const diet = JSON.stringify(values.dietary ?? "").includes("vegetarian");
+      setHadDiet(diet);
+      setFields({ destination: String(values.destination ?? ""), start_date: dates[0] ?? "", end_date: dates[1] ?? "", budget: String(values.budget ?? ""), traveller_count: String(values.traveller_count ?? ""), pace: String(values.pace ?? "moderate"), vegetarian: diet });
+    }).catch((reason: Error) => { if (!cancelled) setError(reason.message); });
+    return () => { cancelled = true; };
+  }, [conversationId]);
+  const change = (key: keyof TripFields, value: string | boolean) => setFields((current) => ({ ...current, [key]: value }));
+  async function save(event: FormEvent) {
+    event.preventDefault(); setBusy(true); setError("");
+    try {
+      const id = await ensureConversation();
+      await api(`/assistant/conversations/${id}/requirements`, { method: "PUT", body: JSON.stringify({ destination: fields.destination.trim(), start_date: fields.start_date, end_date: fields.end_date, budget: Number(fields.budget), currency: "INR", traveller_count: Number(fields.traveller_count), pace: fields.pace, ...(fields.vegetarian ? { dietary: "vegetarian" } : {}) }) });
+      if (hadDiet && !fields.vegetarian) await api(`/assistant/conversations/${id}/requirements/dietary`, { method: "DELETE" });
+      setHadDiet(fields.vegetarian); onSaved();
+    } catch (reason) { setError(reason instanceof Error ? reason.message : "Trip details could not be saved."); }
+    finally { setBusy(false); }
+  }
+  return <details className="helper-trip-details"><summary>Trip details</summary><form onSubmit={save} className="helper-trip-grid">
+    <label>Destination<input required maxLength={120} value={fields.destination} onChange={(e) => change("destination", e.target.value)} /></label>
+    <label>Total budget (INR)<input required type="number" min={1} max={1000000000} step={1} value={fields.budget} onChange={(e) => change("budget", e.target.value)} /></label>
+    <label>Start date<input required type="date" value={fields.start_date} onChange={(e) => change("start_date", e.target.value)} /></label>
+    <label>End date<input required type="date" min={fields.start_date} value={fields.end_date} onChange={(e) => change("end_date", e.target.value)} /></label>
+    <label>Travelers<input required type="number" min={1} max={30} step={1} value={fields.traveller_count} onChange={(e) => change("traveller_count", e.target.value)} /></label>
+    <label>Pace<select value={fields.pace} onChange={(e) => change("pace", e.target.value)}><option value="relaxed">Relaxed</option><option value="moderate">Balanced</option><option value="packed">Packed</option></select></label>
+    <label className="helper-trip-check"><input type="checkbox" checked={fields.vegetarian} onChange={(e) => change("vegetarian", e.target.checked)} />Vegetarian food</label>
+    <button className="button button-dark" disabled={busy}>{busy ? "Saving…" : "Confirm trip details"}</button>
+    {error && <p className="form-error">{error}</p>}
+  </form></details>;
+}
+
 function TravelHelper() {
   const { user } = useApp();
   const location = useLocation();
@@ -297,8 +342,46 @@ function TravelHelper() {
   const [notice, setNotice] = useState("");
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
+  const [conversations, setConversations] = useState<{ id: string; title: string }[]>([]);
+  const [tripRevision, setTripRevision] = useState(0);
+  const messagesPanel = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (messagesPanel.current) messagesPanel.current.scrollTop = messagesPanel.current.scrollHeight;
+  }, [messages, mode, open]);
+  const activeUser = useRef(user?.id);
+  activeUser.current = user?.id;
+  useEffect(() => {
+    let cancelled = false;
+    setConversationId(""); setMessages([]); setConversations([]); setNotice(""); setError("");
+    if (user) api<{ id: string; title: string }[]>("/assistant/conversations").then((items) => {
+      if (cancelled) return;
+      setConversations(items);
+      const saved = localStorage.getItem(`voyara-trip-${user.id}`);
+      if (saved && items.some((item) => item.id === saved)) setConversationId(saved);
+    }).catch(() => {});
+    return () => { cancelled = true; };
+  }, [user?.id]);
+  useEffect(() => {
+    let cancelled = false;
+    setMessages([]);
+    if (user) localStorage.setItem(`voyara-trip-${user.id}`, conversationId);
+    if (conversationId) api<{ messages: { role: string; content: string }[] }>(`/assistant/conversations/${conversationId}`).then((conversation) => {
+      if (!cancelled) setMessages(conversation.messages.map((m) => ({ role: m.role === "user" ? "user" : "system", content: m.content })));
+    }).catch((reason: Error) => { if (!cancelled) setError(reason.message); });
+    return () => { cancelled = true; };
+  }, [conversationId]);
   const currentKind = location.pathname.split("/").filter(Boolean)[0];
   const searchKind = ["destinations", "stays", "food", "transport", "guides"].includes(currentKind) ? currentKind : "destinations";
+
+  async function ensureConversation() {
+    if (!user) { navigate("/login"); throw new Error("Sign in to save trip details."); }
+    if (conversationId) return conversationId;
+    const conversation = await api<{ id: string; title: string }>("/assistant/conversations", { method: "POST", body: JSON.stringify({}) });
+    if (activeUser.current !== user.id) throw new Error("Your account changed. Please try again.");
+    setConversationId(conversation.id);
+    setConversations((items) => [conversation, ...items]);
+    return conversation.id;
+  }
 
   async function sendMessage(event: FormEvent) {
     event.preventDefault();
@@ -307,20 +390,15 @@ function TravelHelper() {
     if (!user) { navigate("/login"); setNotice("Sign in to save a message to your travel desk."); return; }
     setSending(true); setError(""); setNotice("");
     try {
-      let id = conversationId;
-      if (!id) {
-        const conversation = await api<{ id: string }>("/assistant/conversations", {
-          method: "POST", body: JSON.stringify({ title: "Trip planning chat" }),
-        });
-        id = conversation.id;
-        setConversationId(id);
-      }
-      const result = await api<{ reply: { content: string } }>(`/assistant/conversations/${id}/messages`, {
-        method: "POST", body: JSON.stringify({ content }),
+      const id = await ensureConversation();
+      const page = ({ stays: "stays", food: "food_guide", guides: "tour_guide", destinations: "explore", plan: "plan", transport: "support" } as Record<string, string>)[currentKind] ?? "plan";
+      const result = await api<{ reply: { content: string }; detail: string; connection_status: string }>(`/assistant/conversations/${id}/messages`, {
+        method: "POST", body: JSON.stringify({ content, page }),
       });
+      if (activeUser.current !== user.id) return;
       setMessages((current) => [...current, { role: "user", content }, { role: "system", content: result.reply.content }]);
       setDraft("");
-      setNotice("Reply from your travel desk is above.");
+      setNotice(result.detail);
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : "Unable to save your message.");
     } finally {
@@ -347,8 +425,9 @@ function TravelHelper() {
         <label className="sr-only" htmlFor="travel-helper-search">Search {searchKind}</label>
         <div className="helper-search-field"><input id="travel-helper-search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="e.g. Goa, quiet beach stay…" /><button className="button button-dark" aria-label="Search"><Search size={16} /></button></div>
       </form> : <div className="helper-advice">
-        <p className="helper-disclaimer">Suggestions come from our live catalog. Sign in to keep a copy in your travel desk.</p>
-        <div className="helper-messages">{messages.map((message, index) => <p className={`helper-message helper-message-${message.role}`} key={`${index}-${message.content}`}>{message.content}</p>)}</div>
+        <p className="helper-disclaimer">Save your trip details, then ask “Plan my trip”. Your preferences carry across chats; each trip keeps its own dates and budget. Prices are estimates.</p>
+        {user && <><div className="helper-trip-switch"><label>Trip<select aria-label="Choose travel chat" disabled={sending} value={conversationId} onChange={(e) => setConversationId(e.target.value)}><option value="">New trip</option>{conversations.map((c) => <option key={c.id} value={c.id}>{c.title}</option>)}</select></label><button type="button" className="button button-ghost" disabled={sending} onClick={() => { setConversationId(""); setMessages([]); setNotice("A fresh trip. Your saved profile preferences still apply."); }}>New trip</button></div><TripDetails key={`${user.id}-${conversationId || "new"}-${tripRevision}`} conversationId={conversationId} ensureConversation={ensureConversation} onSaved={() => { setTripRevision((n) => n + 1); setNotice("Trip details saved. Ask ‘Plan my trip’ to build a draft."); setDraft("Plan my trip"); }} /></>}
+        <div className="helper-messages" ref={messagesPanel} role="log" aria-live="polite">{messages.map((message, index) => <p className={`helper-message helper-message-${message.role}`} key={`${index}-${message.content}`}>{message.content}</p>)}</div>
         {!user && <p className="muted small-copy">Sign in to save your questions.</p>}
         <form className="helper-chat-form" onSubmit={sendMessage}><input aria-label="Ask for travel advice" value={draft} onChange={(event) => setDraft(event.target.value)} placeholder="Ask about your trip…" /><button className="button button-dark" disabled={sending || !draft.trim()} aria-label="Send question">{sending ? "…" : <ArrowUpRight size={16} />}</button></form>
         {notice && <p className="helper-status">{notice}</p>}{error && <p className="form-error">{error}</p>}

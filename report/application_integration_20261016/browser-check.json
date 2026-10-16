@@ -1,0 +1,13 @@
+{
+  "signup": true,
+  "requirements": true,
+  "connected_plan": true,
+  "budget_update": true,
+  "persisted_chat": true,
+  "mobile_overflow": false,
+  "browser_errors": [],
+  "embedding_scope": "live application neural embeddings; no hosted generative model",
+  "memory_devices": [
+    "cpu"
+  ]
+}

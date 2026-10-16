@@ -1,6 +1,6 @@
 # Using the Three-Tier Memory Core
 
-Implemented on 2026-10-15. The core supports authenticated profiles, exact trip/profile/session fields, evidence-backed Markdown cards, equal tier-1 limits, a bounded RAM cache, current-state proofs, and optional actual CUDA card matching. The travel site remains separate.
+Implemented on 2026-10-15. The core supports authenticated profiles, exact trip/profile/session fields, evidence-backed Markdown cards, equal tier-1 limits, a bounded RAM cache, current-state proofs, and optional actual CUDA card matching. The travel site was connected on 2026-10-16; see the [application integration guide](application_memory_integration.md).
 
 The durable stores retain source knowledge. Card templates and agent profiles are application-owned configuration; generated cards are disposable views. Cards are returned as readable Markdown in JSON rather than accumulated as independent memory events or durable duplicate persona files. Restart rebuilds the views from retained claims and configured templates.
 

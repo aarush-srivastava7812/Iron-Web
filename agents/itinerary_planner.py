@@ -3,10 +3,10 @@ from __future__ import annotations
 
 import logging
 import time
+from datetime import timedelta
 
 from agents.schemas import (
     AgentResult,
-    AgentStatus,
     DraftItinerary,
     ItineraryDay,
     ItineraryStop,
@@ -122,7 +122,7 @@ class ItineraryPlanner:
                     ))
 
                 days.append(ItineraryDay(day=day_number,
-                                         calendar_date=brief.start_date if brief and brief.has_dates() and duration >= day_number else None,
+                                         calendar_date=brief.start_date + timedelta(days=day_number - 1) if brief and brief.has_dates() and duration >= day_number else None,
                                          stops=stops))
 
             stay = stay_options[0] if stay_options else None

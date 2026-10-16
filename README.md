@@ -63,3 +63,8 @@ The [latency breakdown](report/latency_breakdown_20261014/report.md) separates l
 The [reranker diagnosis](report/reranker_diagnosis_20261014/report.md) profiles tokenization and inference, compares candidate limits and an optimized FP16 model on every retained 20% question, and lists the measured quality tradeoffs. [PDF](report/reranker_diagnosis_20261014/report.pdf). Converted models remain in ignored profiling data; production model settings are unchanged.
 
 Optional profiling dependencies are in `requirements/profiling.txt`; legacy comparisons additionally use `requirements/migration.txt`. The full test command is `python scripts/full_graph_analysis.py --run-id NEW_RUN_ID --report report/NEW_REPORT`. Retained inputs and the recorded CUDA runtime are required. Do not reuse a completed run ID for different source/configuration settings.
+
+## Connected travel application
+
+The Voyara application now uses the travel agents and three-tier memory through
+authenticated trip-scoped chat. See the [startup and integration guide](docs/application_memory_integration.md).
