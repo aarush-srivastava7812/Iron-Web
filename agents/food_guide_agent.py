@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import logging
 import time
+import math
 
 from agents.schemas import (
     AgentResult,
@@ -58,7 +59,7 @@ class FoodGuideAgent:
                         place_id=row.get("id"),
                         name=row.get("name") or "Unnamed place",
                         cuisine=row.get("cuisine"),
-                        approx_price_per_guest_inr=row.get("price_inr"),
+                        approx_price_per_guest_inr=math.ceil(row["price_inr"] / 2) if row.get("price_inr") is not None else None,
                         location=destination_name,
                         diet=row_diet,
                         dietary_fit=dietary_fit,

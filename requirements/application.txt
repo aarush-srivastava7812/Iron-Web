@@ -1,0 +1,3 @@
+# Install alongside requirements.txt (or the existing GPU memory environment).
+-r ../stitch_ai_travel_booking_platform/backend/requirements.txt
+langgraph==0.6.11

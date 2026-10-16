@@ -1,48 +1,19 @@
 from fastapi import APIRouter, Depends, HTTPException
-import sqlalchemy as sa
+import datetime as dt
+import logging
 from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
 from ..db import get_db
 from ..deps import current_user
-from ..models import AIConversation, AIMemory, AIMessage, Destination, FoodPlace, Guide, Stay, TransportRoute, User
-from ..schemas import ConversationIn, MemoryIn, MessageIn
+from ..models import AIConversation, AIMemory, AIMessage, User
+from ..schemas import ConversationIn, MemoryIn, MessageIn, TripRequirementsIn
+from ..agent_runtime import CatalogSnapshot, get_agent_runtime
+from memory.shared.service import PendingMemory
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/assistant", tags=["assistant"])
-
-CATALOG_HINTS = {
-    "stay": Stay, "food": FoodPlace, "transport": TransportRoute, "guide": Guide,
-}
-
-
-def _suggest(query: str, db: Session) -> str:
-    """Rules-based reply: match the message against the live catalog so the
-    travel desk can suggest real listings without an external AI provider."""
-    words = [w for w in query.lower().replace("?", " ").split() if len(w) > 2]
-    if not words:
-        return "Tell me a place, a mood or a food you love, and I'll suggest something real from our catalog."
-    found: list[tuple[str, str]] = []
-    for kind, model in CATALOG_HINTS.items():
-        for word in words:
-            for column in ("name", "description", "kind", "cuisine", "mode", "specialties", "languages"):
-                if not hasattr(model, column):
-                    continue
-                stmt = select(model).where(sa.cast(getattr(model, column), sa.String).ilike(f"%{word}%")).limit(2)
-                for obj in db.scalars(stmt):
-                    label = obj.name if hasattr(obj, "name") else getattr(obj, "operator", "")
-                    found.append((kind, f"{label}"))
-            if len(found) >= 4:
-                break
-        if len(found) >= 4:
-            break
-    if not found:
-        places = db.scalars(select(Destination).limit(3)).all()
-        names = ", ".join(place.name for place in places)
-        return f"I couldn't match that to a specific listing yet, but you could start with {names} — or browse the Explore page and add favourites to your trip plan."
-    unique = list(dict.fromkeys(found))[:4]
-    summary = "; ".join(f"{kind.title()}: {label}" for kind, label in unique)
-    return f"Here are some ideas from our catalog that match your message — {summary}. Add any of them to your trip plan and pick dates when you're ready."
-
 
 @router.get("/conversations")
 def list_conversations(user: User = Depends(current_user), db: Session = Depends(get_db)):
@@ -85,6 +56,7 @@ def save_message(
     body: MessageIn,
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
+    runtime = Depends(get_agent_runtime),
 ):
     conversation = db.scalar(
         select(AIConversation).where(
@@ -97,22 +69,126 @@ def save_message(
     db.add(message)
     if conversation.title == "New travel chat":
         conversation.title = body.content.strip()[:137] + ("..." if len(body.content.strip()) > 137 else "")
-    reply_text = _suggest(body.content, db)
+    if not body.content.strip():
+        raise HTTPException(422, "Message must not be blank")
+    # Persist the user's original message even if a model/store is unavailable.
+    db.commit()
+    try:
+        traveler = runtime.for_user(user.id)
+        with traveler.lock:
+            traveler.sync_profile(db)
+            def refresh_profile():
+                db.expire_all()
+                traveler.sync_profile(db)
+            result = traveler.reply(conversation.id, body.content.strip(), body.page, CatalogSnapshot(db),
+                                    before_validate=refresh_profile)
+        status = "agents_connected"
+        detail = "Uses your confirmed trip requirements and saved preferences. Prices and availability need provider confirmation."
+    except PendingMemory:
+        result = dict(status="pending_memory", response="A memory update needs review before planning can continue. Confirm your Trip details or retry once the memory service is ready.", memory=[], agent_results=[])
+        status, detail = "memory_pending", "Your message was saved; a current plan could not be returned."
+    except Exception:
+        logger.exception("Connected travel assistant unavailable")
+        result = dict(status="unavailable", response="Your message is saved. The memory and agent service is unavailable; please retry. You can still browse the catalog.", memory=[], agent_results=[])
+        status, detail = "unavailable", "No plan was generated."
+    reply_text = result["response"]
     reply = AIMessage(conversation_id=conversation.id, role="assistant", content=reply_text)
     db.add(reply)
-    conversation.updated_at = conversation.updated_at
+    conversation.updated_at = dt.datetime.now(dt.timezone.utc)
     db.commit()
     return {
         "message": message,
         "reply": reply,
-        "connection_status": "local_rules_based",
-        "detail": "Suggested from our live catalog. Deeper AI advice arrives when the memory backend is connected.",
+        "connection_status": status,
+        "detail": detail,
+        "orchestration": result,
     }
+
+
+def _owned_conversation(db, user, conversation_id):
+    conversation = db.scalar(select(AIConversation).where(
+        AIConversation.id == conversation_id, AIConversation.user_id == user.id))
+    if conversation is None:
+        raise HTTPException(404, "Conversation not found")
+    return conversation
+
+
+@router.put("/conversations/{conversation_id}/requirements")
+def save_requirements(conversation_id: str, body: TripRequirementsIn,
+                      user: User = Depends(current_user), db: Session = Depends(get_db),
+                      runtime = Depends(get_agent_runtime)):
+    _owned_conversation(db, user, conversation_id)
+    try:
+        traveler = runtime.for_user(user.id)
+        with traveler.lock:
+            receipt = traveler.save_requirements(conversation_id, body)
+        return {"status": "ready", "event_id": receipt["id"], "trip_id": conversation_id}
+    except PendingMemory as error:
+        raise HTTPException(409, "Trip details were received but memory is not ready. Retry or inspect memory events.") from error
+    except Exception as error:
+        logger.exception("Trip requirements could not be committed")
+        raise HTTPException(503, "Memory service is unavailable. Trip details were not confirmed.") from error
+
+
+@router.get("/conversations/{conversation_id}/requirements")
+def get_requirements(conversation_id: str, user: User = Depends(current_user),
+                     db: Session = Depends(get_db), runtime = Depends(get_agent_runtime)):
+    _owned_conversation(db, user, conversation_id)
+    try:
+        traveler = runtime.for_user(user.id)
+        with traveler.lock:
+            traveler.sync_profile(db)
+            packet = traveler.service.context(traveler.principals["travel_orchestrator"],
+                subject="Traveller", scope={"trip_id": conversation_id},
+                session_id=conversation_id, task_type="itinerary")
+            return {key: packet[key] for key in ("status", "required_issues", "fields", "cards", "cache_hit", "residency")}
+    except PendingMemory as error:
+        raise HTTPException(409, "Memory has a pending update; resolve it before planning.") from error
+    except Exception as error:
+        raise HTTPException(503, "Memory service is unavailable.") from error
+
+
+@router.delete("/conversations/{conversation_id}/requirements/{predicate}", status_code=204)
+def delete_requirement(conversation_id: str, predicate: str, user: User = Depends(current_user),
+                       db: Session = Depends(get_db), runtime = Depends(get_agent_runtime)):
+    _owned_conversation(db, user, conversation_id)
+    try:
+        traveler = runtime.for_user(user.id)
+        with traveler.lock:
+            traveler.delete_field(conversation_id, predicate)
+    except ValueError as error:
+        raise HTTPException(422, str(error)) from error
+    except Exception as error:
+        raise HTTPException(503, "Memory deletion could not be confirmed.") from error
+
+
+@router.get("/conversations/{conversation_id}/memory-events")
+def memory_events(conversation_id: str, after: int = 0, user: User = Depends(current_user),
+                  db: Session = Depends(get_db), runtime = Depends(get_agent_runtime)):
+    _owned_conversation(db, user, conversation_id)
+    traveler = runtime.for_user(user.id)
+    with traveler.lock:
+        return traveler.events(conversation_id, after)
+
+
+@router.delete("/conversations/{conversation_id}/memory-events/{event_id}", status_code=204)
+def forget_event(conversation_id: str, event_id: str, user: User = Depends(current_user),
+                 db: Session = Depends(get_db), runtime = Depends(get_agent_runtime)):
+    _owned_conversation(db, user, conversation_id)
+    try:
+        traveler = runtime.for_user(user.id)
+        with traveler.lock:
+            traveler.forget_event(conversation_id, event_id)
+    except ValueError as error:
+        raise HTTPException(404, str(error)) from error
+    except Exception as error:
+        raise HTTPException(503, "Memory deletion could not be confirmed.") from error
 
 
 @router.delete("/conversations/{conversation_id}", status_code=204)
 def delete_conversation(
-    conversation_id: str, user: User = Depends(current_user), db: Session = Depends(get_db)
+    conversation_id: str, user: User = Depends(current_user), db: Session = Depends(get_db),
+    runtime = Depends(get_agent_runtime),
 ):
     conversation = db.scalar(
         select(AIConversation).where(
@@ -121,6 +197,12 @@ def delete_conversation(
     )
     if conversation is None:
         raise HTTPException(404, "Conversation not found")
+    try:
+        traveler = runtime.for_user(user.id)
+        with traveler.lock:
+            traveler.forget_trip(conversation_id)
+    except Exception as error:
+        raise HTTPException(503, "Trip memory deletion could not be confirmed; the conversation is retained for retry.") from error
     db.delete(conversation)
     db.commit()
 
@@ -134,8 +216,14 @@ def list_memory(user: User = Depends(current_user), db: Session = Depends(get_db
 
 @router.post("/memory", status_code=201)
 def save_memory(
-    body: MemoryIn, user: User = Depends(current_user), db: Session = Depends(get_db)
+    body: MemoryIn, user: User = Depends(current_user), db: Session = Depends(get_db),
+    runtime = Depends(get_agent_runtime),
 ):
+    with runtime.for_user(user.id).lock:
+        return _save_memory(body, user, db)
+
+
+def _save_memory(body, user, db):
     if body.source_conversation_id:
         exists = db.scalar(
             select(AIConversation.id).where(
@@ -158,8 +246,14 @@ def save_memory(
 
 @router.delete("/memory/{memory_id}", status_code=204)
 def delete_memory(
-    memory_id: int, user: User = Depends(current_user), db: Session = Depends(get_db)
+    memory_id: int, user: User = Depends(current_user), db: Session = Depends(get_db),
+    runtime = Depends(get_agent_runtime),
 ):
+    with runtime.for_user(user.id).lock:
+        return _delete_memory(memory_id, user, db)
+
+
+def _delete_memory(memory_id, user, db):
     snapshot = db.scalar(
         select(AIMemory).where(AIMemory.id == memory_id, AIMemory.user_id == user.id)
     )

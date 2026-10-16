@@ -45,7 +45,8 @@ logger = logging.getLogger(__name__)
 class TravelWorkflow:
     """Owns the shared gateway/agents and compiles the parent graph once."""
 
-    def __init__(self, gateway: MemoryGateway | None = None) -> None:
+    def __init__(self, gateway: MemoryGateway | None = None, *, checkpoint: bool = True) -> None:
+        self.checkpoint = checkpoint
         self.gateway = gateway or MemoryGateway()
         self.consultant = TripConsultant()
         self.explore = ExploreAgent()
@@ -102,11 +103,19 @@ class TravelWorkflow:
             session_id=state["session_id"],
             agent_id="trip_consultant",
         )
-        result = self.consultant.run(state["request"], memory)
+        if hasattr(self.gateway, "trip_brief"):
+            brief = self.gateway.trip_brief(memory)
+            result = AgentResult(agent_id="trip_consultant", status="ok",
+                                 summary=self.consultant._summary(brief), trip_brief=brief)
+        else:
+            result = self.consultant.run(state["request"], memory)
         brief = result.trip_brief or TripBrief()
         # Answers from a previous clarification round fill missing fields.
         answers = state.get("answers") or {}
         if answers:
+            if hasattr(self.gateway, "validate_current"):
+                from agents.memory_gateway.three_tier import MemoryNeedsInformation
+                raise MemoryNeedsInformation({"answers": "save confirmed Trip details before planning"})
             brief = self._apply_answers(brief, answers, state["user_id"], state["session_id"])
         return {
             "agent_results": [result],
@@ -170,6 +179,13 @@ class TravelWorkflow:
         if not brief or not brief.destination:
             return base
         response = destination_tool.search_destinations(query=brief.destination, limit=1)
+        if hasattr(self.gateway, "validate_current"):
+            from agents.memory_gateway.three_tier import MemoryNeedsInformation
+            exact = [row for row in response.data if brief.destination.strip().casefold()
+                     in {str(row.get("name", "")).casefold(), str(row.get("slug", "")).casefold()}]
+            if not response.ok or not exact:
+                raise MemoryNeedsInformation({"destination": "no exact catalog match"})
+            response.data = exact
         if response.ok and response.data:
             row = response.data[0]
             base.update({"destination_id": row.get("id"), "destination_name": row.get("name")})
@@ -232,8 +248,12 @@ class TravelWorkflow:
     def _run_support(self, state: AgentState) -> AgentState:
         if "travel_support_agent" not in state.get("tasks", []):
             return {}
+        memory = None
+        if hasattr(self.gateway, "validate_current"):
+            memory = self.gateway.retrieve(query="Current preparation requirements", user_id=state["user_id"],
+                                           session_id=state["session_id"], agent_id="travel_support_agent")
         return {"agent_results": [self.support.support(
-            state["request"], state.get("trip_brief"),
+            state["request"], state.get("trip_brief"), memory,
             destination_id=state.get("destination_id"),
             destination_name=state.get("destination_name"),
             itinerary=state.get("itinerary"),
@@ -255,6 +275,9 @@ class TravelWorkflow:
     def _run_itinerary(self, state: AgentState) -> AgentState:
         if "itinerary_planner" not in state.get("tasks", []):
             return {}
+        if hasattr(self.gateway, "validate_current"):
+            self.gateway.retrieve(query="Current itinerary and pace", user_id=state["user_id"],
+                                  session_id=state["session_id"], agent_id="itinerary_planner")
         results = state.get("agent_results", [])
         pick = lambda agent_id, field: (next(  # noqa: E731
             (getattr(r, field) for r in results if r.agent_id == agent_id and getattr(r, field, None)),
@@ -272,6 +295,9 @@ class TravelWorkflow:
     def _run_budget(self, state: AgentState) -> AgentState:
         if "budget_booking_agent" not in state.get("tasks", []):
             return {}
+        if hasattr(self.gateway, "validate_current"):
+            self.gateway.retrieve(query="Current budget and party size", user_id=state["user_id"],
+                                  session_id=state["session_id"], agent_id="budget_booking_agent")
         results = state.get("agent_results", [])
 
         def pick(agent_id: str, field: str):
@@ -297,6 +323,7 @@ class TravelWorkflow:
                 itinerary=state.get("itinerary"),
                 nights=state.get("nights", 2),
                 party_size=party,
+                per_person=False,
             )
         return {"agent_results": [result], "budget": result.budget}
 
@@ -356,13 +383,17 @@ class TravelWorkflow:
 
     def _synthesize(self, state: AgentState) -> AgentState:
         results = state.get("agent_results", [])
-        brief = state.get("trip_brief")
         parts: list[str] = []
         if state.get("clarification_question"):
             return {"response": state["clarification_question"], "status": "needs_clarification"}
         for result in results:
             if result.summary and result.status != "failed":
                 parts.append(f"{result.agent_id.replace('_', ' ').title()}: {result.summary}")
+                options = result.stay_options or result.food_options or result.attractions or result.destination_ideas
+                if options:
+                    parts.append("Suggestions: " + "; ".join(option.name for option in options[:4]))
+                if result.guidance:
+                    parts.append(result.guidance.guidance)
         itinerary = state.get("itinerary")
         if itinerary:
             day_lines = []
@@ -375,6 +406,7 @@ class TravelWorkflow:
             parts.append(f"Estimated cost: ₹{budget.total_inr:,} "
                          + ("per person" if budget.per_person else "total")
                          + " (estimates, not confirmed prices)")
+            parts.extend(budget.warnings[:2])
         warnings = [i.message for i in state.get("validation_issues", []) if i.severity == "warning"]
         if warnings:
             parts.append("Caveats: " + "; ".join(sorted(set(warnings))[:3]))
@@ -467,12 +499,12 @@ class TravelWorkflow:
         builder.add_edge("synthesize", "propose_writes")
         builder.add_edge("propose_writes", "persist_writes")
         builder.add_edge("persist_writes", END)
-        return builder.compile(checkpointer=get_saver())
+        return builder.compile(checkpointer=get_saver() if self.checkpoint else None)
 
     # ------------------------------------------------------------------
     def run(self, request: OrchestrationRequest) -> dict:
         started = time.perf_counter()
-        config = {"configurable": {"thread_id": request.session_id}}
+        config = {"configurable": {"thread_id": request.user_id + ":" + request.session_id}}
         final = self.graph.invoke(
             {"_request": request, "request": request.request,  # type: ignore[dict-item]
              "user_id": request.user_id, "session_id": request.session_id,

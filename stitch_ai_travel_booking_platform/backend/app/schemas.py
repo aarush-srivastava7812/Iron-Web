@@ -1,7 +1,7 @@
 import datetime as dt
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, EmailStr, Field
+from pydantic import BaseModel, ConfigDict, EmailStr, Field, model_validator
 
 
 class RegisterIn(BaseModel):
@@ -110,7 +110,36 @@ class ConversationIn(BaseModel):
 
 
 class MessageIn(BaseModel):
-    content: str = Field(min_length=1, max_length=8000)
+    model_config = ConfigDict(extra="forbid")
+    content: str = Field(min_length=1, max_length=2000)
+    page: Literal["home", "explore", "stays", "tour_guide", "food_guide", "plan", "support"] = "home"
+
+
+class TripRequirementsIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    destination: str | None = Field(default=None, min_length=1, max_length=120)
+    start_date: dt.date | None = None
+    end_date: dt.date | None = None
+    budget: int | None = Field(default=None, gt=0, le=10**9, strict=True)
+    currency: Literal["INR"] | None = None
+    traveller_count: int | None = Field(default=None, ge=1, le=30, strict=True)
+    dietary: Literal["vegetarian"] | None = None
+    pace: Literal["relaxed", "moderate", "packed"] | None = None
+    interests: list[str] | None = Field(default=None, max_length=16)
+
+    @model_validator(mode="after")
+    def coherent(self):
+        if not self.model_fields_set or any(getattr(self, k) is None for k in self.model_fields_set):
+            raise ValueError("Supply non-null fields to update; use the field deletion endpoint to forget.")
+        if (self.start_date is None) != (self.end_date is None):
+            raise ValueError("Supply both exact dates together.")
+        if self.start_date and not 1 <= (self.end_date - self.start_date).days <= 59:
+            raise ValueError("Choose a trip of 2 to 60 days.")
+        if self.destination is not None and not self.destination.strip():
+            raise ValueError("Destination must not be blank.")
+        if self.interests is not None and any(not s.strip() or len(s) > 80 for s in self.interests):
+            raise ValueError("Interests must be short nonempty strings.")
+        return self
 
 
 class MemoryIn(BaseModel):

@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import logging
 import time
+from contextlib import contextmanager
+from contextvars import ContextVar
 from dataclasses import dataclass, field
 
 import httpx
@@ -192,10 +194,23 @@ class MockTravelBackend:
 
 
 _backend: TravelApiBackend | MockTravelBackend | None = None
+_request_backend = ContextVar("travel_request_backend", default=None)
+
+
+@contextmanager
+def using_backend(backend):
+    """Bind a catalog snapshot to one workflow, including its copied thread contexts."""
+    token = _request_backend.set(backend)
+    try:
+        yield
+    finally:
+        _request_backend.reset(token)
 
 
 def _get_backend():
     global _backend
+    if _request_backend.get() is not None:
+        return _request_backend.get()
     if _backend is None:
         _backend = TravelApiBackend()
     return _backend

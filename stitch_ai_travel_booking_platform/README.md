@@ -1,5 +1,11 @@
 # Voyara travel platform
 
+The signed-in travel helper is now connected to the LangGraph agents and the
+three-tier memory core. Follow the [connected application guide](../docs/application_memory_integration.md)
+to run the complete hackathon flow, confirm Trip details, and resume saved trips.
+The historical standalone setup below also requires the memory/application
+dependencies for the connected helper.
+
 Voyara is organized as a React application and a FastAPI service:
 
 - `frontend/` — React 18, Vite, TypeScript, Tailwind CSS and lucide-react.
@@ -53,10 +59,10 @@ The `users` table is queried by the authentication routes to register and sign i
 - Landing page and browse/search/filter/detail pages for destinations, stays, food, transport and guides, with primary navigation available at mobile sizes.
 - Email/password signup and sign-in, profile preferences, booking history and saved itineraries.
 - A persistent trip request planner with item-level dates, time, duration and quantity, a schedule overview, and overlap checks. Checkout creates `requested` bookings; it does not take payment or claim that a provider has confirmed.
-- A site-wide helper with manual catalog search and an AI-advice mode. Advice questions can be saved as conversation messages in `ai_conversations` and `ai_messages`; the chat route reports `not_configured` until your assistant backend is connected, and no generated answer is fabricated.
+- A site-wide helper with manual catalog search and memory-backed agent advice. Confirm Trip details, ask for a plan, resume previous trips, and update the current budget without reusing stale preferences. Messages remain in `ai_conversations` and `ai_messages`.
 - A documented adapter in `backend/memory_adapter.py` for optionally ranking catalogs with your own cross-session preference service. Configure `MEMORY_SERVICE_URL` and optionally `MEMORY_SERVICE_TOKEN` in `backend/.env`.
 - Responsive Unsplash images with 400/800/1200/1600 pixel `srcset` choices and thumbnail fallback; reduced-motion-aware page-turn-style route transitions and compass loaders. Original Stitch transition assets are retained under `transitions/`.
 
-The assistant connection point is `POST /api/assistant/conversations/{conversation_id}/messages`. It persists the user's message and returns `connection_status: "not_configured"` until the custom model/memory service is wired in. Conversation and memory CRUD routes are under `/api/assistant`.
+The assistant connection point is `POST /api/assistant/conversations/{conversation_id}/messages`. It returns `connection_status: "agents_connected"` and structured agent results when the connected runtime is available. Pending/unavailable memory pauses planning. See the connected guide for requirements and memory-event endpoints.
 
 Run backend tests from `backend/` with `python -m pytest`. The frontend production type-check and build are `npm run build`.

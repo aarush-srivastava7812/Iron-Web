@@ -15,6 +15,8 @@ from .routers import assistant, auth, bookings, catalog, favorites, itineraries,
 async def lifespan(_):
     create_schema()
     yield
+    from .agent_runtime import runtime
+    runtime.close()
 
 
 app = FastAPI(title="Travel API", version="0.1.0", lifespan=lifespan)

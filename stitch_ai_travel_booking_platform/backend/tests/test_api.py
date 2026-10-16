@@ -212,7 +212,11 @@ def test_profile_memory_and_recommendation_preferences():
     assert routes[0]["mode"] == "train"
 
 
-def test_itineraries_and_assistant_data_are_user_scoped():
+def test_itineraries_and_assistant_data_are_user_scoped(monkeypatch):
+    from app.agent_runtime import runtime
+    def unavailable(_):
+        raise RuntimeError("test memory outage")
+    monkeypatch.setattr(runtime, "for_user", unavailable)
     owner = c.post("/api/auth/register", json={
         "email": "trip-owner@example.com", "username": "trip_owner", "password": "supersecret1",
     }).json()
@@ -239,7 +243,7 @@ def test_itineraries_and_assistant_data_are_user_scoped():
         json={"content": "I like scenic train journeys."},
     )
     assert saved.status_code == 200
-    assert saved.json()["connection_status"] == "local_rules_based"
+    assert saved.json()["connection_status"] == "unavailable"
     assert saved.json()["reply"]["role"] == "assistant"
     assert "catalog" in saved.json()["reply"]["content"].lower()
     conversation_messages = c.get(
@@ -250,6 +254,8 @@ def test_itineraries_and_assistant_data_are_user_scoped():
     assert c.get(
         f"/api/assistant/conversations/{conversation['id']}", headers=stranger_headers
     ).status_code == 404
+
+    monkeypatch.undo()
 
     snapshot = c.post("/api/assistant/memory", headers=owner_headers, json={
         "category": "favorite_route", "value": {"mode": "train"},

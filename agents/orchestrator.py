@@ -11,6 +11,8 @@ import logging
 from agents.schemas import AgentResult, OrchestrationRequest, OrchestrationResponse
 
 from .memory_gateway.gateway import MemoryGateway
+from .memory_gateway.three_tier import MemoryNeedsInformation
+from memory.shared.service import PendingMemory
 from .orchestration.graph import TravelWorkflow
 
 logger = logging.getLogger(__name__)
@@ -28,6 +30,12 @@ class TravelOrchestrator:
     def handle(self, request: OrchestrationRequest) -> OrchestrationResponse:
         try:
             final = self.workflow.run(request)
+        except MemoryNeedsInformation as error:
+            return OrchestrationResponse(request_id="clarify", status="needs_clarification",
+                                         response=str(error), page=request.page,
+                                         clarification_question=str(error))
+        except PendingMemory:
+            raise
         except Exception as error:
             logger.exception("orchestration failed")
             return OrchestrationResponse(
