@@ -1,0 +1,29 @@
+{
+  "checks": {
+    "google_unconfigured_ui": true,
+    "account_favorites_persist": true,
+    "package_request": true,
+    "filter_sort_composition": true,
+    "stay_request": true,
+    "experience_request": true,
+    "round_trip_route_request": true,
+    "enquiry": true,
+    "newsletter": true,
+    "saved_preferences": true,
+    "connected_plan_and_real_memory": true,
+    "concierge_memory_update": true,
+    "conversation_persists": true,
+    "forget_memory_event": true,
+    "cancel_requests": true,
+    "delete_itinerary_and_trip_memory": true,
+    "mobile_menu_and_layout": true,
+    "logout": true
+  },
+  "browser_errors": [],
+  "google_live_login": "Not tested: client ID not configured. Cookie sessions and verifier behavior tested separately.",
+  "test_auth": "API-created isolated test account; browser HttpOnly cookie bootstrap",
+  "embedding_scope": "Live CPU neural embeddings, real FalkorDB/Qdrant; deterministic travel agents",
+  "memory_devices": [
+    "cpu"
+  ]
+}

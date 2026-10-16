@@ -1,50 +1,101 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f7f5ef" />
-    <title>Voyara — Find your somewhere</title>
-    <meta name="description" content="Discover thoughtful stays, local food and journeys with Voyara. Request-first trip planning for stays, food, transport and local guides across India." />
-    <meta name="robots" content="INDEX, FOLLOW" />
-    <meta property="og:site_name" content="Voyara" />
-    <meta property="og:title" content="Voyara — Find your somewhere" />
-    <meta property="og:description" content="Thoughtful stays, local food, scenic routes and guides — planned in one place." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Voyara — Find your somewhere" />
-    <meta name="twitter:description" content="Request-first trip planning for stays, food, transport and local guides." />
-    <meta name="ai-content" content="summary, featured-snippet, conversational-faq, how-to" />
-    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
-    <link rel="dns-prefetch" href="https://images.unsplash.com" />
-    <link rel="preconnect" href="https://www.youtube-nocookie.com" />
-    <link rel="dns-prefetch" href="https://www.youtube.com" />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "TravelAgency",
-        "name": "Voyara",
-        "url": "/",
-        "description": "Request-first trip planning for stays, food, transport and local guides across India.",
-        "areaServed": "IN"
-      }
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Voyara",
-        "url": "/",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": { "@type": "EntryPoint", "urlTemplate": "/destinations?q={search_term_string}" },
-          "query-input": "required name=search_term_string"
-        }
-      }
-    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b2744" />
+    <title>Voyara Tours & Travels — Discover India</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div class="topline">
+      <span>✦ Thoughtful journeys, powered by AI</span
+      ><span><a href="#contact">Travel enquiries ↗</a></span>
+    </div>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="Voyara home"
+        ><span class="brand-mark">↗</span
+        ><span
+          ><strong>Voyara</strong><small>Tours <i>•</i> Travels</small></span
+        ></a
+      >
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        ☰
+      </button>
+      <nav class="main-nav" id="mainNav">
+        <a href="#packages">Holidays <span>⌄</span></a
+        ><a href="#destinations">Destinations <span>⌄</span></a
+        ><a href="#tours">Tours</a><a href="#hotels">Hotels</a
+        ><a href="#flights">Flights</a><a href="#planner">AI Trip Planner</a>
+      </nav>
+      <div class="header-actions">
+        <a href="#dashboard" class="account-icon" aria-label="My trips">♙</a
+        ><a class="login-link" href="#login">Login / Signup</a
+        ><a class="btn btn-small" href="#planner">Plan a trip <span>✦</span></a>
+      </div>
+    </header>
+    <main id="app" tabindex="-1"></main>
+    <footer class="site-footer">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a class="brand brand-light" href="#home"
+            ><span class="brand-mark">↗</span
+            ><span
+              ><strong>Voyara</strong
+              ><small>Tours <i>•</i> Travels</small></span
+            ></a
+          >
+          <p>Explore more. Discover deeper.<br />Make memories that stay.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <a href="#packages">Holiday packages</a
+          ><a href="#destinations">Destinations</a
+          ><a href="#tours">Tours & experiences</a
+          ><a href="#hotels">Hotels & stays</a>
+        </div>
+        <div>
+          <h4>Plan with us</h4>
+          <a href="#planner">AI trip planner</a><a href="#flights">Flights</a
+          ><a href="#dashboard">My trips</a
+          ><a href="#contact">Booking support</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="#about">About Voyara</a><a href="#contact">Contact us</a
+          ><a href="#contact">FAQs</a><a href="#privacy">Privacy & safety</a>
+        </div>
+        <div class="footer-contact">
+          <h4>Get travel inspiration</h4>
+          <p>New places, thoughtful tips and member-only offers.</p>
+          <form id="newsletter" class="newsletter">
+            <input
+              type="email"
+              placeholder="Your email address"
+              required
+              aria-label="Email address"
+            /><button class="btn" type="submit">Subscribe</button>
+          </form>
+          <small id="newsletterMsg"></small>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Voyara Tours & Travels. All rights reserved.</span
+        ><span>Made for the journey <b>✈</b></span>
+      </div>
+    </footer>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="/app.js"></script>
   </body>
 </html>

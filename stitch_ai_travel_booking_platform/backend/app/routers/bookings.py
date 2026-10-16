@@ -4,21 +4,29 @@ from sqlalchemy.orm import Session
 
 from ..db import get_db
 from ..deps import current_user
-from ..models import Booking, BookingItem, FoodPlace, Guide, Offer, Stay, TransportRoute, User
+from ..models import Booking, BookingItem, FoodPlace, Guide, Offer, Stay, TransportRoute, User, HolidayPackage, Experience
 from ..schemas import BookingIn, BookingItemIn, BookingOut
 
 router = APIRouter(prefix="/bookings", tags=["bookings"])
-MODELS = {"stay": Stay, "food": FoodPlace, "transport": TransportRoute, "guide": Guide}
+MODELS = {"stay": Stay, "food": FoodPlace, "transport": TransportRoute, "guide": Guide,
+          "package": HolidayPackage, "experience": Experience}
 
 
-def _price(item, obj) -> int:
+def _price(item, obj, reserve=True) -> int:
     """Server-side pricing; client-supplied prices are never trusted."""
     if item.item_type == "transport":
         if obj.seats_available < item.quantity:
             raise HTTPException(409, f"Only {obj.seats_available} seats left on route {obj.id}")
-        obj.seats_available -= item.quantity
+        if reserve:
+            obj.seats_available -= item.quantity
         return obj.price_inr * item.quantity
-    if item.item_type == "food":
+    if item.item_type in {"food", "experience", "package"}:
+        if item.item_type in {"experience", "package"}:
+            import datetime as dt
+            if not item.start_date or item.start_date < dt.date.today():
+                raise HTTPException(422, "Choose a departure date today or later")
+            if item.item_type == "package" and item.end_date != item.start_date + dt.timedelta(days=obj.nights):
+                raise HTTPException(422, "Package dates must match the package duration")
         return obj.price_inr * item.quantity
     if not (item.start_date and item.end_date) or item.end_date < item.start_date:
         raise HTTPException(422, "Valid start_date and end_date required")
@@ -78,6 +86,10 @@ def _apply_coupon(db: Session, code: str | None, subtotal: int, item_types: set[
 
 @router.post("", response_model=BookingOut, status_code=201)
 def create(body: BookingIn, user: User = Depends(current_user), db: Session = Depends(get_db)):
+    return build_booking(body, user, db)
+
+
+def build_booking(body: BookingIn, user: User, db: Session, *, commit=True):
     _validate_conflicts(body.items)
     booking, total, item_types = Booking(user_id=user.id, total_inr=0, status="requested"), 0, set()
     for it in body.items:
@@ -94,7 +106,10 @@ def create(body: BookingIn, user: User = Depends(current_user), db: Session = De
     offer, discount = _apply_coupon(db, body.coupon_code, total, item_types)
     booking.total_inr = max(total - discount, 0)
     db.add(booking)
-    db.commit()
+    if commit:
+        db.commit()
+    else:
+        db.flush()
     return booking
 
 

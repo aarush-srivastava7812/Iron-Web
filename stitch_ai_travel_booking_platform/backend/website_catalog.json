@@ -1,0 +1,220 @@
+{
+  "destinations": [
+    {
+      "name": "Kashmir",
+      "region": "North India",
+      "tag": "Best seller",
+      "desc": "Snowy peaks, serene lakes and unforgettable moments.",
+      "price": 24999,
+      "nights": 6,
+      "rating": "4.8",
+      "reviews": "12.4k",
+      "img": "photo-1595815771614-ade9d652a65d"
+    },
+    {
+      "name": "Manali",
+      "region": "North India",
+      "tag": "Adventure",
+      "desc": "Mountain trails, pine forests and cosy stays.",
+      "price": 18999,
+      "nights": 5,
+      "rating": "4.7",
+      "reviews": "10.8k",
+      "img": "photo-1626621341517-bbf3d9990a23"
+    },
+    {
+      "name": "Jaipur",
+      "region": "West India",
+      "tag": "Cultural",
+      "desc": "Royal heritage, colourful bazaars and timeless beauty.",
+      "price": 16999,
+      "nights": 4,
+      "rating": "4.6",
+      "reviews": "9.2k",
+      "img": "photo-1603262110263-fb0112e7cc33"
+    },
+    {
+      "name": "Goa",
+      "region": "West India",
+      "tag": "Beach",
+      "desc": "Golden beaches, laid-back sunsets and coastal flavours.",
+      "price": 13999,
+      "nights": 5,
+      "rating": "4.7",
+      "reviews": "11.6k",
+      "img": "photo-1512343879784-a960bf40e7f2"
+    },
+    {
+      "name": "Kerala",
+      "region": "South India",
+      "tag": "Wellness",
+      "desc": "Backwaters, lush greenery and slow-living escapes.",
+      "price": 18999,
+      "nights": 5,
+      "rating": "4.8",
+      "reviews": "10.9k",
+      "img": "photo-1602216056096-3b40cc0c9944"
+    },
+    {
+      "name": "Udaipur",
+      "region": "West India",
+      "tag": "Romantic",
+      "desc": "Lake palaces, sunset boat rides and royal stays.",
+      "price": 17999,
+      "nights": 5,
+      "rating": "4.6",
+      "reviews": "8.7k",
+      "img": "photo-1599661046827-dacff0c0f09a"
+    },
+    {
+      "name": "Varanasi",
+      "region": "North India",
+      "tag": "Spiritual",
+      "desc": "Ancient ghats, sacred rituals and soulful mornings.",
+      "price": 14999,
+      "nights": 4,
+      "rating": "4.9",
+      "reviews": "4.9k",
+      "img": "photo-1561361513-2d000a50f0dc"
+    },
+    {
+      "name": "Rishikesh",
+      "region": "North India",
+      "tag": "Adventure",
+      "desc": "River rafting, mountain air and riverside calm.",
+      "price": 12999,
+      "nights": 4,
+      "rating": "4.7",
+      "reviews": "8.1k",
+      "img": "photo-1500530855697-b586d89ba3ee"
+    },
+    {
+      "name": "Andaman",
+      "region": "Islands",
+      "tag": "Island escape",
+      "desc": "Crystal-clear water, coral reefs and quiet coves.",
+      "price": 28999,
+      "nights": 5,
+      "rating": "4.8",
+      "reviews": "7.6k",
+      "img": "photo-1519046904884-53103b34b206"
+    },
+    {
+      "name": "Darjeeling",
+      "region": "East India",
+      "tag": "Nature",
+      "desc": "Tea gardens, mountain views and toy-train charm.",
+      "price": 16999,
+      "nights": 5,
+      "rating": "4.6",
+      "reviews": "6.3k",
+      "img": "photo-1544735716-392fe2489ffa"
+    }
+  ],
+  "experiences": [
+    {
+      "name": "Himalayan hiking",
+      "type": "Adventure",
+      "place": "Manali",
+      "price": 2499,
+      "img": "photo-1551632811-561732d1e306",
+      "desc": "A guided trail through pine forests and panoramic mountain paths."
+    },
+    {
+      "name": "Old Jaipur walk",
+      "type": "Culture",
+      "place": "Jaipur",
+      "price": 1299,
+      "img": "photo-1599661046827-dacff0c0f09a",
+      "desc": "Discover hidden havelis, craft lanes and local stories with a guide."
+    },
+    {
+      "name": "Kerala backwater cruise",
+      "type": "Nature",
+      "place": "Alleppey",
+      "price": 3499,
+      "img": "photo-1602216056096-3b40cc0c9944",
+      "desc": "Glide past palm-lined canals and village life on a private boat."
+    },
+    {
+      "name": "Ganga sunrise ceremony",
+      "type": "Spiritual",
+      "place": "Varanasi",
+      "price": 999,
+      "img": "photo-1561361513-2d000a50f0dc",
+      "desc": "A respectful, small-group introduction to the riverfront rituals."
+    },
+    {
+      "name": "River rafting",
+      "type": "Adventure",
+      "place": "Rishikesh",
+      "price": 1799,
+      "img": "photo-1500530855697-b586d89ba3ee",
+      "desc": "Feel the rush of the Ganges with certified local river guides."
+    },
+    {
+      "name": "Coastal food trail",
+      "type": "Food",
+      "place": "Goa",
+      "price": 1599,
+      "img": "photo-1512343879784-a960bf40e7f2",
+      "desc": "Taste regional favourites at independent neighbourhood spots."
+    }
+  ],
+  "hotels": [
+    {
+      "name": "The Cedar House",
+      "place": "Manali",
+      "type": "Mountain retreat",
+      "price": 5499,
+      "rating": "4.8",
+      "img": "photo-1566073771259-6a8506099945",
+      "amenities": "Breakfast · Mountain view · Wi-Fi"
+    },
+    {
+      "name": "Lakeview Palace Stay",
+      "place": "Udaipur",
+      "type": "Heritage hotel",
+      "price": 8299,
+      "rating": "4.9",
+      "img": "photo-1542314831-068cd1dbfeeb",
+      "amenities": "Pool · Restaurant · Lake view"
+    },
+    {
+      "name": "Palm Grove Retreat",
+      "place": "Kerala",
+      "type": "Backwater resort",
+      "price": 6999,
+      "rating": "4.7",
+      "img": "photo-1571896349842-33c89424de2d",
+      "amenities": "Spa · Breakfast · Boat access"
+    },
+    {
+      "name": "Coast & Cove",
+      "place": "Goa",
+      "type": "Beachside boutique",
+      "price": 4799,
+      "rating": "4.6",
+      "img": "photo-1564501049412-61c2a3083791",
+      "amenities": "Pool · Beach access · Café"
+    },
+    {
+      "name": "The Pink Courtyard",
+      "place": "Jaipur",
+      "type": "Heritage haveli",
+      "price": 3899,
+      "rating": "4.7",
+      "img": "photo-1611892440504-42a792e24d32",
+      "amenities": "Courtyard · Restaurant · Wi-Fi"
+    },
+    {
+      "name": "Snowline Lodge",
+      "place": "Kashmir",
+      "type": "Scenic lodge",
+      "price": 6299,
+      "rating": "4.8",
+      "img": "photo-1564013799919-ab600027ffc6",
+      "amenities": "Breakfast · Heating · Valley view"
+    }
+  ]
+}

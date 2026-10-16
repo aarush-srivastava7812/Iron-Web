@@ -34,7 +34,9 @@ def run():
                 destination.avg_cost_inr = destination.avg_cost_inr or avg_cost
                 destination.climate = destination.climate or climate
         db.flush()
-        ds = list(by_slug.values())
+        from seed_website import seed_website
+        seed_website(db)
+        ds = db.query(Destination).all()
         for i, d in enumerate(ds):
             if not db.query(Stay).filter_by(destination_id=d.id).first():
                 db.add_all([

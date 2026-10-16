@@ -8,7 +8,7 @@ from fastapi.staticfiles import StaticFiles
 
 from .config import settings
 from .db import create_schema
-from .routers import assistant, auth, bookings, catalog, favorites, itineraries, leads, offers, profile
+from .routers import assistant, auth, bookings, catalog, favorites, itineraries, leads, offers, profile, google_auth, website
 
 
 @asynccontextmanager
@@ -20,9 +20,25 @@ async def lifespan(_):
 
 
 app = FastAPI(title="Travel API", version="0.1.0", lifespan=lifespan)
+
+
+@app.middleware("http")
+async def browser_headers(request, call_next):
+    response = await call_next(request)
+    response.headers["Cross-Origin-Opener-Policy"] = "same-origin-allow-popups"
+    response.headers["Referrer-Policy"] = (
+        "no-referrer-when-downgrade" if request.url.hostname in {"localhost", "127.0.0.1"}
+        else "strict-origin-when-cross-origin")
+    if request.url.path.startswith("/api/"):
+        response.headers["Cache-Control"] = "no-store"
+    return response
+
+
 app.add_middleware(CORSMiddleware, allow_origins=settings.cors_origins, allow_credentials=True,
                    allow_methods=["*"], allow_headers=["*"])
 app.include_router(auth.router, prefix="/api")
+app.include_router(google_auth.router, prefix="/api")
+app.include_router(website.router, prefix="/api")
 app.include_router(bookings.router, prefix="/api")
 app.include_router(profile.router, prefix="/api")
 app.include_router(itineraries.router, prefix="/api")

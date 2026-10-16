@@ -4,11 +4,11 @@ from sqlalchemy.orm import Session
 
 from ..db import get_db
 from ..deps import current_user
-from ..models import Favorite, User
+from ..models import Favorite, User, Stay, FoodPlace, TransportRoute, Guide, HolidayPackage
 from ..schemas import FavoriteIn, FavoriteOut
 
 router = APIRouter(prefix="/favorites", tags=["favorites"])
-_MODELS = {"stay", "food", "transport", "guide"}
+_MODELS = {"stay": Stay, "food": FoodPlace, "transport": TransportRoute, "guide": Guide, "package": HolidayPackage}
 
 
 @router.get("", response_model=list[FavoriteOut])
@@ -22,6 +22,8 @@ def list_favorites(user: User = Depends(current_user), db: Session = Depends(get
 def add_favorite(body: FavoriteIn, user: User = Depends(current_user), db: Session = Depends(get_db)):
     if body.item_type not in _MODELS:
         raise HTTPException(422, "Unknown catalog type")
+    if not db.get(_MODELS[body.item_type], body.item_id):
+        raise HTTPException(404, "Catalog item not found")
     existing = db.scalar(
         select(Favorite).where(
             Favorite.user_id == user.id,
