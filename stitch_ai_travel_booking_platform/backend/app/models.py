@@ -199,7 +199,7 @@ class Offer(Base):
 class Favorite(Base):
     __tablename__ = "favorites"
     user_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
-    item_type: Mapped[str] = mapped_column(String(10))  # stay|food|transport|guide
+    item_type: Mapped[str] = mapped_column(String(10), primary_key=True)  # stay|food|transport|guide|package
     item_id: Mapped[int] = mapped_column(Integer, primary_key=True)
     created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
 
@@ -213,3 +213,66 @@ class Lead(Base):
     interest: Mapped[str | None] = mapped_column(String(120), default=None)  # e.g. "Goa in December"
     preferred_time: Mapped[str | None] = mapped_column(String(80), default=None)  # e.g. "Evening"
     created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
+class GoogleIdentity(Base):
+    __tablename__ = "google_identities"
+    subject: Mapped[str] = mapped_column(String(255), primary_key=True)
+    user_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), unique=True)
+
+
+class LoginChallenge(Base):
+    __tablename__ = "login_challenges"
+    digest: Mapped[str] = mapped_column(String(64), primary_key=True)
+    expires_at: Mapped[int] = mapped_column(Integer, index=True)
+
+
+class HolidayPackage(Base):
+    __tablename__ = "holiday_packages"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    destination_id: Mapped[int] = mapped_column(ForeignKey("destinations.id"), unique=True)
+    name: Mapped[str] = mapped_column(String(120))
+    price_inr: Mapped[int] = mapped_column(Integer)
+    nights: Mapped[int] = mapped_column(Integer)
+    display: Mapped[dict] = mapped_column(JSON, default=dict)
+
+
+class Experience(Base):
+    __tablename__ = "experiences"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    destination_id: Mapped[int] = mapped_column(ForeignKey("destinations.id"), index=True)
+    name: Mapped[str] = mapped_column(String(120), unique=True)
+    price_inr: Mapped[int] = mapped_column(Integer)
+    display: Mapped[dict] = mapped_column(JSON, default=dict)
+
+
+class WebsiteStay(Base):
+    __tablename__ = "website_stays"
+    stay_id: Mapped[int] = mapped_column(ForeignKey("stays.id"), primary_key=True)
+    display: Mapped[dict] = mapped_column(JSON, default=dict)
+
+
+class ContactEnquiry(Base):
+    __tablename__ = "contact_enquiries"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(120))
+    email: Mapped[str] = mapped_column(String(255), index=True)
+    phone: Mapped[str | None] = mapped_column(String(20))
+    topic: Mapped[str] = mapped_column(String(120))
+    message: Mapped[str] = mapped_column(Text)
+    created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
+class NewsletterSubscription(Base):
+    __tablename__ = "newsletter_subscriptions"
+    email: Mapped[str] = mapped_column(String(255), primary_key=True)
+    created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
+class BookingRequestDetails(Base):
+    __tablename__ = "booking_request_details"
+    booking_id: Mapped[int] = mapped_column(ForeignKey("bookings.id", ondelete="CASCADE"), primary_key=True)
+    user_id: Mapped[str] = mapped_column(ForeignKey("users.id"), index=True)
+    request_key: Mapped[str] = mapped_column(String(36), unique=True)
+    fingerprint: Mapped[str] = mapped_column(String(64))
+    traveler: Mapped[dict] = mapped_column(JSON)

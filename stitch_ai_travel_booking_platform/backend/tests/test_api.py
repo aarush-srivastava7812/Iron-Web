@@ -41,7 +41,7 @@ def test_catalog_filters():
 def test_voyara_homepage():
     response = c.get("/")
     assert response.status_code == 200
-    assert "Voyara — Find your somewhere" in response.text
+    assert "Voyara Tours &amp; Travels" in response.text or "Voyara Tours & Travels" in response.text
 
 
 def test_voyara_transition_assets():

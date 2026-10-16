@@ -89,7 +89,10 @@ async def list_items(
             columns.append(cast(Destination.tags, String).ilike(f"%{search_term}%"))
         if columns:
             stmt = stmt.where(or_(*columns))
-    records = [_dict(o) for o in db.scalars(stmt.order_by(model.id).limit(limit).offset(offset))]
+    # Rank the candidate catalog before paginating; otherwise early sample
+    # flights can hide every train despite a saved train preference.
+    records = [_dict(o) for o in db.scalars(stmt.order_by(model.id)
+               .limit(1000 if user else limit).offset(0 if user else offset))]
     if amenity:
         records = [item for item in records if amenity in item.get("amenities", [])]
     items = records
@@ -130,7 +133,7 @@ async def list_items(
             response.headers["X-Memory-Status"] = "unavailable"
         if any(preferences.values()):
             items = memory_bridge.filter_inventory_by_preferences(items, preferences)
-    return items
+    return items[offset:offset + limit] if user else items
 
 
 @router.get("/{kind}/{item_id}")

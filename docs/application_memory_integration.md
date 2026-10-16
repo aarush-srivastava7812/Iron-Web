@@ -34,10 +34,12 @@ cd ../..
 .\.venv\Scripts\python.exe scripts/run_voyara.py
 ```
 
-Open `http://127.0.0.1:8000`, register/sign in, open **Search & chat → AI advice**,
-expand **Trip details**, and confirm a destination, exact dates, total INR budget
-and traveler count. Ask **Plan my trip**. The trip selector resumes saved chats;
-**New trip** creates a separate trip while retaining saved profile preferences.
+Open `http://127.0.0.1:8000`, configure and sign in with Google, then open
+**AI Trip Planner**. Confirm the destination, departure date, exact duration,
+total INR budget and traveler count, and choose **Create my trip outline**.
+**My Trips → Open conversation & memory** resumes a saved trip. **Start a new trip
+conversation** creates a separate trip while retaining saved profile preferences.
+See the [supplied frontend and Google setup guide](frontend_google_auth.md).
 
 The launcher seeds the application's explicitly synthetic demonstration catalog.
 Its default SQL database is `data/voyara_app/travel.db`. User-specific memory

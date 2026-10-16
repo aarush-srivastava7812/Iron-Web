@@ -10,6 +10,8 @@ class Settings:
     database_url = os.getenv("DATABASE_URL", "sqlite:///./travel.db")
     secret_key = os.getenv("SECRET_KEY", "dev-only-insecure-key-change-me-0000")
     access_token_minutes = int(os.getenv("ACCESS_TOKEN_MINUTES", "60"))
+    google_client_id = os.getenv("GOOGLE_CLIENT_ID", "")
+    cookie_secure = os.getenv("COOKIE_SECURE", "false").lower() == "true"
     cors_origins = [o for o in os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",") if o]
     memory_service_url = os.getenv("MEMORY_SERVICE_URL", "").rstrip("/")
     memory_service_token = os.getenv("MEMORY_SERVICE_TOKEN", "")

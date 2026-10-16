@@ -39,7 +39,7 @@ class TokenOut(BaseModel):
 
 
 class BookingItemIn(BaseModel):
-    item_type: Literal["stay", "food", "transport", "guide"]
+    item_type: Literal["stay", "food", "transport", "guide", "package", "experience"]
     item_id: int
     quantity: int = Field(default=1, ge=1, le=20)
     start_date: dt.date | None = None
@@ -175,7 +175,7 @@ class OfferValidateOut(BaseModel):
 
 
 class FavoriteIn(BaseModel):
-    item_type: Literal["stay", "food", "transport", "guide"]
+    item_type: Literal["stay", "food", "transport", "guide", "package"]
     item_id: int = Field(ge=1)
 
 
