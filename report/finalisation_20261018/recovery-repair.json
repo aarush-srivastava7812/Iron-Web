@@ -1,0 +1,13 @@
+{
+  "authorization": "User approved ten test-graph effects discarded on copy only; no cutover",
+  "volume": "iron_web_falkordb_repair_test_20261018",
+  "records_skipped": 10,
+  "bytes_skipped": 1304,
+  "original_sha256": "98741461f625591233946ec79facf8ed995fba983a1d57fbaf722ebdfa9c865a",
+  "repaired_sha256": "3ca59cba21e73e2204e4fcc557a114d281d0ca81b0fa1453a6fc7c7ddb42f5c9",
+  "all_retained_bytes_unchanged": true,
+  "original_and_recovery_volumes_modified": false,
+  "live_cutover": false,
+  "replay_exit_code": 139,
+  "outcome": "Failed on another fixture graph; not activated"
+}

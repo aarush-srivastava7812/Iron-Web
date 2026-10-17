@@ -1,0 +1,9 @@
+{
+  "original_volume": "iron_web_falkordb_data",
+  "copy_volume": "iron_web_falkordb_recovery_20261018",
+  "verification": "SHA-256 of every persisted file compared with cmp: byte identical",
+  "original_mount": "read-only",
+  "original_container": "stopped",
+  "data_discarded": false,
+  "live_cutover": false
+}

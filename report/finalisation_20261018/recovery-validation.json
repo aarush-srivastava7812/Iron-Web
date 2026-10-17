@@ -1,0 +1,192 @@
+{
+  "isolated_container": "ironweb-repair-fixtures-server",
+  "network": "none",
+  "image": "falkordb/falkordb:v4.20.7",
+  "initial_ping": true,
+  "same_image_restart_ping": true,
+  "graph_counts_identical_across_restart": true,
+  "graphs": {
+    "all_graphs": 65,
+    "non_fixture_graphs": [
+      {
+        "graph_name_sha256": "04c8d9fd0f50d24d51c55d0427d3a2774f27f109e7431b9ae6511cd47c588505",
+        "application_namespace": false,
+        "nodes": 41,
+        "edges": 59,
+        "claims": 10,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "21091ce6bd9ff9b591f65af127b717b2f6abd81276ffef6cf552566fd3a800de",
+        "application_namespace": false,
+        "nodes": 58,
+        "edges": 59,
+        "claims": 0,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "349f7e7a5d0b00de52bf23a5749a0ba17d380d060d276fd62002912cbc5193ab",
+        "application_namespace": true,
+        "nodes": 15,
+        "edges": 9,
+        "claims": 2,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "4945f18448b10f9d87cb4def9380e89d12470cd0b6984d0ff6a08f8c30248bd8",
+        "application_namespace": true,
+        "nodes": 28,
+        "edges": 49,
+        "claims": 11,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "54d70936de846a7e5ccad90e25a17af3719b0b4717858634a383d35115eae544",
+        "application_namespace": true,
+        "nodes": 19,
+        "edges": 18,
+        "claims": 4,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "5f03b51cf31460bed6d6ba1663cbacc045860394e8025b83700b8751eed5341c",
+        "application_namespace": false,
+        "nodes": 41,
+        "edges": 58,
+        "claims": 10,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "65abad4d317201c869e09a0613bc3e260e4aba24959b4fc43cf45faf7123a69f",
+        "application_namespace": false,
+        "nodes": 15,
+        "edges": 16,
+        "claims": 3,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "694add63061cc4520b0b1d9c6fc309f6c79bf62a1ad99fb79547063b588e0483",
+        "application_namespace": true,
+        "nodes": 9,
+        "edges": 0,
+        "claims": 0,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "6a42878608bdb08617fbba5617d227fad5b3a91e250e3d8a8f1ba4c016c971cc",
+        "application_namespace": false,
+        "nodes": 129,
+        "edges": 166,
+        "claims": 31,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "7d45bf510ddaa5b02e1f90d587658b7c57f5df893acaf201e1cc2877369ae341",
+        "application_namespace": false,
+        "nodes": 98,
+        "edges": 156,
+        "claims": 28,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "859f95ea349697dbf68cc9e099e7f5f61c19064992456f68672bcd1aa0f11f7a",
+        "application_namespace": true,
+        "nodes": 9,
+        "edges": 0,
+        "claims": 0,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "94a275ca0b14fb009c306249f217309d9521668fa7e6bbf9e82aa932f719d77d",
+        "application_namespace": true,
+        "nodes": 15,
+        "edges": 9,
+        "claims": 2,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "9e1fae6e3092620a758641b681b8737374b452e00cdc24a3e9ed0e3a89236c07",
+        "application_namespace": false,
+        "nodes": 98,
+        "edges": 156,
+        "claims": 28,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "a340dd172bbee9c5fdbaeec8f39e436506c956ce1eaf4c458ab78d2a172b2ebe",
+        "application_namespace": true,
+        "nodes": 73,
+        "edges": 179,
+        "claims": 43,
+        "acceptance_trip_claims": 7
+      },
+      {
+        "graph_name_sha256": "b1d6c87d3dff8f546476d5ee319da6493df593eb1bc87cf490b55fecb9c93069",
+        "application_namespace": true,
+        "nodes": 22,
+        "edges": 40,
+        "claims": 9,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "cfa03eb6cd510fa98c3040a440bdae5d577dd10b6bde6c203ca4c5a002d8cc0b",
+        "application_namespace": true,
+        "nodes": 15,
+        "edges": 9,
+        "claims": 2,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "d01d8e936714c3be3e6e2e1981da767e078dd18caa68c3deb40428ed209c6d6a",
+        "application_namespace": false,
+        "nodes": 6,
+        "edges": 5,
+        "claims": 1,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "e13dd0bb9d21f57918d2a0a399e9aa811070c84bfc260475cba47595ff1aa448",
+        "application_namespace": false,
+        "nodes": 117,
+        "edges": 146,
+        "claims": 28,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "e804a50644da87a80e29cbe7461a74a403bc8686bef98f6a23e92f1cdbaa5ace",
+        "application_namespace": true,
+        "nodes": 15,
+        "edges": 9,
+        "claims": 2,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "f1101952b86f8cf391f234e6c7fa26eb96601fc63d2b283a75446850c29a49f1",
+        "application_namespace": true,
+        "nodes": 22,
+        "edges": 40,
+        "claims": 9,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "fc49312ab2e8f4587a608a9ae5e21fe64e3900ea2c1f683c8ee89a413818c388",
+        "application_namespace": true,
+        "nodes": 0,
+        "edges": 0,
+        "claims": 0,
+        "acceptance_trip_claims": 0
+      },
+      {
+        "graph_name_sha256": "fcbfeb86171fab3f610705aaa9008b4dde808ffbdb79ad5047aa9d67f33a496f",
+        "application_namespace": true,
+        "nodes": 15,
+        "edges": 9,
+        "claims": 2,
+        "acceptance_trip_claims": 0
+      }
+    ]
+  },
+  "original_volume_modified": false,
+  "live_cutover": false,
+  "limitations": "Retained command bytes are unchanged; exact semantic equivalence to the original unstartable database cannot be established. Old fixture graphs in the base RDB remain."
+}

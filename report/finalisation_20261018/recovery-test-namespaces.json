@@ -1,0 +1,23 @@
+{
+  "authorization": "User approved broader test_app-only copy repair; no live cutover",
+  "volume": "iron_web_falkordb_repair_namespaces_20261018",
+  "records_skipped": 12693,
+  "commands_skipped": {
+    "GRAPH.EFFECT": 6336,
+    "SET": 2818,
+    "RENAME": 286,
+    "INCR": 143,
+    "GRAPH.DELETE": 219,
+    "DEL": 2749,
+    "GRAPH.RESTORE": 142
+  },
+  "bytes_skipped": 7574807,
+  "mixed_test_non_test_commands": 0,
+  "all_other_command_bytes_unchanged": true,
+  "original_sha256": "98741461f625591233946ec79facf8ed995fba983a1d57fbaf722ebdfa9c865a",
+  "repaired_sha256": "8d50a7ebfe3ab9068abe9bc9f9ee62391329ae15b4774b376dbc24fa17afcbac",
+  "original_and_recovery_volumes_modified": false,
+  "live_cutover": false,
+  "replay_exit_code": 139,
+  "outcome": "Failed on another fixture graph; not activated"
+}

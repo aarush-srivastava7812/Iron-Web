@@ -1,0 +1,6 @@
+# Explicit opt-in only. See report/finalisation_20261018/RECOVERY.md.
+# This changes the volume used by the service; it does not repair original data.
+volumes:
+  falkordb_data:
+    name: iron_web_falkordb_recovered_live_20261018
+    external: true

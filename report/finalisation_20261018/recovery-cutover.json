@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-18",
+  "authorization": "Explicit user approval: live cutover and final tests",
+  "active_volume": "iron_web_falkordb_recovered_live_20261018",
+  "image": "falkordb/falkordb:v4.20.7",
+  "health": "healthy",
+  "original_and_pristine_backup_sha256_rechecked_identical_after_cutover": true,
+  "original_volume_deleted_or_modified": false,
+  "activation_copy_verified_byte_identical_to_stopped_validated_trial": true,
+  "original_volume": "iron_web_falkordb_data",
+  "pristine_backup": "iron_web_falkordb_recovery_20261018",
+  "same_data_model_and_provider": true,
+  "command": "docker compose -f compose.yaml -f compose.recovery.yaml up -d --wait falkordb",
+  "limits": "Original volume still unstartable. Filter discards approved fixture-only log history; exact semantic parity with the unstartable original cannot be proved. No engine defect fix is claimed."
+}

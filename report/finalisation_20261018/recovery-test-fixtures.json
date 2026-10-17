@@ -1,0 +1,22 @@
+{
+  "authorization": "User approved broader all fixture-only copy repair; no live cutover",
+  "volume": "iron_web_falkordb_repair_fixtures_20261018",
+  "records_skipped": 43384,
+  "commands_skipped": {
+    "GRAPH.EFFECT": 22651,
+    "SET": 7842,
+    "RENAME": 1898,
+    "INCR": 950,
+    "GRAPH.DELETE": 1457,
+    "DEL": 7311,
+    "GRAPH.RESTORE": 1001,
+    "INCRBY": 274
+  },
+  "bytes_skipped": 40217323,
+  "mixed_test_non_test_commands": 0,
+  "all_other_command_bytes_unchanged": true,
+  "original_sha256": "98741461f625591233946ec79facf8ed995fba983a1d57fbaf722ebdfa9c865a",
+  "repaired_sha256": "036adedf5827f6f07f2929d704a0a282816c0758b699d57b860b57e0e557044f",
+  "original_and_recovery_volumes_modified": false,
+  "live_cutover": false
+}

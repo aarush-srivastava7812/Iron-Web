@@ -1,0 +1,810 @@
+{
+  "source": "isolated recovery copy mounted read-only",
+  "bytes": 41229758,
+  "sha256": "98741461f625591233946ec79facf8ed995fba983a1d57fbaf722ebdfa9c865a",
+  "resp_parse_complete": true,
+  "commands": {
+    "SELECT": 2,
+    "GRAPH.EFFECT": 22705,
+    "MULTI": 957,
+    "SET": 10886,
+    "RENAME": 1904,
+    "INCR": 953,
+    "EXEC": 957,
+    "GRAPH.DELETE": 1460,
+    "DEL": 10352,
+    "GRAPH.RESTORE": 1004,
+    "INCRBY": 274
+  },
+  "graph_keys": 2417,
+  "test_app_graphs": 76,
+  "crash_referenced_test_graph": "test_app_18b35c32_370585e2588aafc7be6287a8",
+  "commands_for_crash_referenced_test_graph": [
+    {
+      "offset": 18170,
+      "bytes": 158,
+      "command": "RENAME"
+    },
+    {
+      "offset": 18328,
+      "bytes": 157,
+      "command": "RENAME"
+    },
+    {
+      "offset": 21035,
+      "bytes": 72,
+      "command": "GRAPH.DELETE"
+    },
+    {
+      "offset": 21703537,
+      "bytes": 131,
+      "command": "GRAPH.EFFECT"
+    },
+    {
+      "offset": 21703668,
+      "bytes": 131,
+      "command": "GRAPH.EFFECT"
+    },
+    {
+      "offset": 21703799,
+      "bytes": 130,
+      "command": "GRAPH.EFFECT"
+    },
+    {
+      "offset": 21703929,
+      "bytes": 130,
+      "command": "GRAPH.EFFECT"
+    },
+    {
+      "offset": 21704059,
+      "bytes": 129,
+      "command": "GRAPH.EFFECT"
+    },
+    {
+      "offset": 21704188,
+      "bytes": 129,
+      "command": "GRAPH.EFFECT"
+    },
+    {
+      "offset": 21704317,
+      "bytes": 132,
+      "command": "GRAPH.EFFECT"
+    },
+    {
+      "offset": 21704449,
+      "bytes": 132,
+      "command": "GRAPH.EFFECT"
+    },
+    {
+      "offset": 21704581,
+      "bytes": 130,
+      "command": "GRAPH.EFFECT"
+    },
+    {
+      "offset": 21704711,
+      "bytes": 130,
+      "command": "GRAPH.EFFECT"
+    }
+  ],
+  "crash_referenced_test_graph_counts": {
+    "GRAPH.DELETE": 1,
+    "GRAPH.EFFECT": 10
+  },
+  "related_key_operations": [
+    {
+      "offset": 23,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 231,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 440,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 649,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 858,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 1069,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 1279,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 1467,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 1679,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 1887,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 2093,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 2267,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 2441,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 2615,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 2789,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 2962,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 3135,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 3308,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 3481,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 3653,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 3825,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 3997,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 4169,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 4344,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 4519,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 4694,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 4869,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 5042,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 5215,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 5388,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 5561,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 6781,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 8219,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 8746,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 8931,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 10002,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 10271,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 10431,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 11503,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 11774,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 11936,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 13011,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 13289,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 13458,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 14536,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 14806,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 14967,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 16045,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 16312,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 16470,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 17560,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 17828,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 18002,
+      "command": "SET",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 18170,
+      "command": "RENAME",
+      "key_roles": [
+        "test namespace",
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 18328,
+      "command": "RENAME",
+      "key_roles": [
+        "test namespace",
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 18485,
+      "command": "INCR",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 18573,
+      "command": "GRAPH.DELETE",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 18689,
+      "command": "DEL",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 18758,
+      "command": "SET",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 18896,
+      "command": "DEL",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 18965,
+      "command": "SET",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 19103,
+      "command": "DEL",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 19172,
+      "command": "SET",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 19310,
+      "command": "DEL",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 19379,
+      "command": "SET",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 19517,
+      "command": "DEL",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 19586,
+      "command": "SET",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 19724,
+      "command": "DEL",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 19793,
+      "command": "SET",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 19931,
+      "command": "DEL",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 20000,
+      "command": "SET",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 20138,
+      "command": "DEL",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 20207,
+      "command": "SET",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 20345,
+      "command": "DEL",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 20414,
+      "command": "SET",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 20552,
+      "command": "DEL",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 20621,
+      "command": "SET",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 20759,
+      "command": "DEL",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 20828,
+      "command": "SET",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 20966,
+      "command": "DEL",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 21035,
+      "command": "GRAPH.DELETE",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 21107,
+      "command": "DEL",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 21703537,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 21703668,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 21703799,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 21703929,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 21704059,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 21704188,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 21704317,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 21704449,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 21704581,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    },
+    {
+      "offset": 21704711,
+      "command": "GRAPH.EFFECT",
+      "key_roles": [
+        "test namespace"
+      ]
+    }
+  ],
+  "dry_run_only_proposed_test_graph_effects_to_skip": [
+    {
+      "offset": 21703537,
+      "bytes": 131,
+      "sha256": "af6b78447e6c48c3eaa2659944dad8d2f517f1063dc23888e6c3fe664f895368"
+    },
+    {
+      "offset": 21703668,
+      "bytes": 131,
+      "sha256": "dff68b341e804b7cb9767b9e1c729f7df155a2241c2535cb6e89adc53163c3e0"
+    },
+    {
+      "offset": 21703799,
+      "bytes": 130,
+      "sha256": "c91f2846b2c567cb5658c7a028f34b0d6f1506e61d94d7687958019aa9f8ef1f"
+    },
+    {
+      "offset": 21703929,
+      "bytes": 130,
+      "sha256": "0b3e5a1f4e4fae7d8882597ee8ad9c7f82463ba6f882ee2c9e9bab898a32670f"
+    },
+    {
+      "offset": 21704059,
+      "bytes": 129,
+      "sha256": "270640b98debd17b68d466d2a56427e45483a5f5341f53cbfde8601fb51ff8eb"
+    },
+    {
+      "offset": 21704188,
+      "bytes": 129,
+      "sha256": "4e5f3b92776e963812970b39aad7b8818a56a616c70b30a9bb82f6314455df57"
+    },
+    {
+      "offset": 21704317,
+      "bytes": 132,
+      "sha256": "075f00c0b390302c50e26f691e6e65e01c29d2bf6dbedf319124e3153b3b788d"
+    },
+    {
+      "offset": 21704449,
+      "bytes": 132,
+      "sha256": "c7669c7b131470beb2e72eac61958c1bc62fb0b024f8fa4145bd3ef70ec0f0b0"
+    },
+    {
+      "offset": 21704581,
+      "bytes": 130,
+      "sha256": "f7a6567b38768fc192de3c257c5c0ef6dccf8cafe6f4238f207ea856780dca59"
+    },
+    {
+      "offset": 21704711,
+      "bytes": 130,
+      "sha256": "c23bb1ab3678433641f2c6ea4c6876e1924c994a9c42f2f8feeb9661b3daac11"
+    }
+  ],
+  "proposed_skipped_bytes": 1304,
+  "test_app_namespace_only_dry_run": {
+    "commands": {
+      "GRAPH.EFFECT": 6336,
+      "SET": 2818,
+      "RENAME": 286,
+      "INCR": 143,
+      "GRAPH.DELETE": 219,
+      "DEL": 2749,
+      "GRAPH.RESTORE": 142
+    },
+    "mixed_test_non_test_key_operations": 0,
+    "records": 12693,
+    "bytes": 7574807
+  },
+  "data_changed": false,
+  "limitation": "RESP framing validity does not establish GRAPH.EFFECT semantic validity or a safe command to remove."
+}
