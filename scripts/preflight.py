@@ -17,7 +17,7 @@ def check(mode="running", offline=False):
     def record(name, ok, detail):
         rows.append(dict(check=name, ok=bool(ok), detail=detail))
     record("Python", sys.version_info >= (3, 12), "Python 3.12+ required")
-    for module in ["fastapi", "uvicorn", "httpx", "sqlalchemy", "dotenv", "falkordb", "qdrant_client", "langgraph", "reportlab"]:
+    for module in ["fastapi", "uvicorn", "httpx", "sqlalchemy", "dotenv", "falkordb", "qdrant_client", "langgraph", "reportlab", "numpy", "yaml", "fastembed", "onnxruntime", "argon2", "jwt"]:
         record("dependency:" + module, importlib.util.find_spec(module) is not None, "Install requirements/application.txt and dashboard/backend/requirements.txt")
     node = shutil.which("node")
     version = (0, 0)
@@ -53,15 +53,31 @@ def check(mode="running", offline=False):
                              password=os.getenv("FALKORDB_PASSWORD") or None,
                              ssl=os.getenv("FALKORDB_TLS", str(config.tls)).lower() in {"true", "1"}, socket_timeout=3)
             record("FalkorDB PING", client.connection.ping(), "Read-only authenticated connection")
+            modules = client.connection.module_list()
+            record("FalkorDB graph module", any(m.get("name") in {b"graph", "graph"} for m in modules), "Endpoint must be FalkorDB, not plain Redis")
             client.close()
         except Exception as error:
             record("FalkorDB PING", False, type(error).__name__ + ": check service/connection configuration")
     if not offline:
+        if importlib.util.find_spec("dotenv"):
+            from dotenv import load_dotenv
+            load_dotenv(ROOT / "stitch_ai_travel_booking_platform/backend/.env")
         sys.path.insert(0, str(ROOT))
         from agents.config import settings
         record("hosted credential configured", bool(settings.nvidia_api_key), "NVIDIA_API_KEY must be supplied privately; this does not verify validity")
     grant = ROOT / ".scratch/ironweb-live/.env"
-    record("local publication/session setup", grant.is_file() or mode == "start", "Local launcher creates private grants; standalone/public deployment needs explicit source/viewer configuration")
+    valid_grant = False
+    if grant.is_file() and importlib.util.find_spec("dotenv"):
+        from dotenv import dotenv_values
+        values = dotenv_values(grant)
+        valid_grant = all(len(values.get(k) or "") >= 32 for k in ["LOCAL_DASHBOARD_GRANT", "LOCAL_SESSION_SECRET"])
+    record("local publication/session setup", valid_grant or (mode == "start" and not grant.exists()), "Launcher creates private grants; existing files must contain strong publication and session secrets")
+    for variable in ["DASHBOARD_SOURCE_TOKEN", "DASHBOARD_VIEWER_TOKEN"]:
+        if os.getenv(variable):
+            record(variable + " strength", len(os.environ[variable]) >= 32, "At least 32 random characters; value never displayed")
+    if os.getenv("DASHBOARD_CORS_ORIGINS"):
+        origins = os.environ["DASHBOARD_CORS_ORIGINS"].split(",")
+        record("explicit CORS origins", all(x.strip().startswith(("http://", "https://")) and "*" not in x for x in origins), "Supply exact origins, never wildcard credentials")
     return rows
 
 
