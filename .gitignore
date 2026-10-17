@@ -63,3 +63,11 @@ playwright-report/
 
 .goals/
 .serena/
+
+# Exported credentials and browser authentication state must remain private.
+**/credentials.json
+**/credentials-*.json
+**/storage-state.json
+**/storageState.json
+**/session.json
+*.secret

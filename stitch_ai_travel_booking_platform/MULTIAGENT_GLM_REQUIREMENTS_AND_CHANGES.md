@@ -82,36 +82,20 @@ Voyara uses a multi-agent orchestration graph:
 
 ---
 
-## 3. NVIDIA NIM Key & `glm-5.3-flash` Model Setup
+## 3. Provider configuration (corrected 18 October 2026)
 
-### Key Status Check
-- **Current Key Found in `agents/.env`**:
-  `NVIDIA_API_KEY=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`
-- **Verification Result**:
-  - The key is **valid** and authenticated successfully with NVIDIA NIM (`HTTP 200` on `/v1/models` and `/v1/chat/completions` for `openai/gpt-oss-20b`).
-  - Available models on NVIDIA NIM include `z-ai/glm-5.3` and `z-ai/glm-5.3-flash`.
-  - However, direct requests to `z-ai/glm-5.3-flash` via the public NIM endpoint experienced high latency / read timeouts on the NVIDIA server side.
+The code defaults are NVIDIA NIM with `openai/gpt-oss-20b` for both
+`NIM_MODEL` and `NIM_AGENT_MODEL`. Set these environment variables explicitly
+to override them. `NIM_BASE_URL` defaults to the NVIDIA OpenAI-compatible endpoint.
+`VOYARA_AGENT_MODE=offline` is the explicitly labelled regression mode; `auto`
+uses NVIDIA when a credential is configured. No default was switched here.
 
-### Configuration Applied
-1. **`agents/config.py`**:
-   - Updated default `nim_model` to `"z-ai/glm-5.3-flash"`.
-   - Updated default `nim_agent_model` to `"z-ai/glm-5.3-flash"`.
-2. **`agents/.env` and `stitch_ai_travel_booking_platform/backend/.env`**:
-   - Added:
-     ```env
-     NVIDIA_API_KEY=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
-     NIM_MODEL=z-ai/glm-5.3-flash
-     NIM_AGENT_MODEL=z-ai/glm-5.3-flash
-     NIM_BASE_URL=https://integrate.api.nvidia.com/v1
-     ```
+An earlier version of this guide exposed a provider credential and incorrectly
+claimed that prose changed the code defaults to a GLM model. The credential has
+been removed from the current document. Revoke/rotate the exposed key if active;
+its earlier Git history remains until a separately approved cleanup. No rotation,
+model switch, or history rewrite was performed by this correction.
 
-### If You Wish to Update or Use a Fresh NVIDIA API Key
-To replace the key with a new one:
-1. Open [agents/.env](file:///c:/Users/vvars/OneDrive/Desktop/Iron%20Web/agents/.env)
-2. Replace `NVIDIA_API_KEY=...` with your new key:
-   ```env
-   NVIDIA_API_KEY=nvapi-your-new-key-here
-   NIM_MODEL=z-ai/glm-5.3-flash
-   NIM_AGENT_MODEL=z-ai/glm-5.3-flash
-   ```
-3. Restart the background server or run `python scripts/run_voyara.py --port 8088`.
+Supply `NVIDIA_API_KEY` privately through server environment configuration.
+Never paste keys, session secrets, or publication grants into tracked documentation.
+The dashboard shows masked provider identity and observed usage, never the key.

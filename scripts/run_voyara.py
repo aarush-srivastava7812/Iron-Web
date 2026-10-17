@@ -2,6 +2,7 @@
 
 import argparse
 import os
+import secrets
 from pathlib import Path
 import sys
 
@@ -19,7 +20,12 @@ def main():
     os.environ.setdefault("DEV_LOGIN_ENABLED", "true")
     os.environ.setdefault("COOKIE_SECURE", "false")
     if not os.environ.get("SECRET_KEY") or os.environ["SECRET_KEY"].startswith(("dev-only", "change-me")):
-        os.environ["SECRET_KEY"] = "voyara-strong-auth-secret-key-64e9a8b1c2d3f4e5a6b7c8d9e0f1a2b3"
+        private = root / ".scratch" / "voyara-local"
+        private.mkdir(parents=True, exist_ok=True)
+        secret_file = private / "session.secret"
+        if not secret_file.exists():
+            secret_file.write_text(secrets.token_urlsafe(48), encoding="utf-8")
+        os.environ["SECRET_KEY"] = secret_file.read_text(encoding="utf-8").strip()
     data = root / "data" / "voyara_app"
     data.mkdir(parents=True, exist_ok=True)
     os.environ.setdefault(
