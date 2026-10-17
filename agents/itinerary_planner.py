@@ -71,19 +71,16 @@ class ItineraryPlanner:
                         notes="travel time assumed within the morning window",
                     ))
                 else:
+                    morning = attraction_cycle[attraction_index] if attraction_index < len(attraction_cycle) else None
                     stops.append(ItineraryStop(
                         day=day_number, start_time=_DAY_START[pace],
                         end_time=_MORNING_END[pace],
-                        title=attraction_cycle[attraction_index % len(attraction_cycle)].name
-                        if attraction_cycle else "Free morning to wander",
-                        kind="attraction",
-                        location=destination_name,
-                        est_cost_inr=attraction_cycle[attraction_index % len(attraction_cycle)].price_per_person_inr or 0
-                        if attraction_cycle else 0,
-                        notes=(attraction_cycle[attraction_index % len(attraction_cycle)].why_fit
-                               if attraction_cycle else None),
-                        evidence=attraction_cycle[attraction_index % len(attraction_cycle)].evidence
-                        if attraction_cycle else None,
+                        title=morning.name if morning else "Free morning to wander",
+                        kind="attraction" if morning else "buffer",
+                        location=(morning.location or destination_name) if morning else destination_name,
+                        est_cost_inr=(morning.price_per_person_inr or 0) if morning else 0,
+                        notes=morning.why_fit if morning else "Unscheduled time; no additional catalog experience selected.",
+                        evidence=morning.evidence if morning else None,
                     ))
                     attraction_index += 1
 
@@ -93,7 +90,7 @@ class ItineraryPlanner:
                     stops.append(ItineraryStop(
                         day=day_number, start_time=_LUNCH[0], end_time=_LUNCH[1],
                         title=f"Lunch at {lunch.name}", kind="food",
-                        location=destination_name,
+                        location=lunch.location or destination_name,
                         est_cost_inr=lunch.approx_price_per_guest_inr or 0,
                         notes=lunch.dietary_fit,
                         evidence=lunch.evidence,
@@ -101,16 +98,15 @@ class ItineraryPlanner:
 
                 if day_number < duration:
                     start, end = _AFTERNOON[pace]
+                    afternoon = attraction_cycle[attraction_index] if attraction_index < len(attraction_cycle) else None
                     stops.append(ItineraryStop(
                         day=day_number, start_time=start, end_time=end,
-                        title=attraction_cycle[attraction_index % len(attraction_cycle)].name
-                        if attraction_cycle else "Local exploration",
-                        kind="attraction",
-                        location=destination_name,
-                        est_cost_inr=attraction_cycle[attraction_index % len(attraction_cycle)].price_per_person_inr or 0
-                        if attraction_cycle else 0,
-                        evidence=attraction_cycle[attraction_index % len(attraction_cycle)].evidence
-                        if attraction_cycle else None,
+                        title=afternoon.name if afternoon else "Free afternoon for local exploration",
+                        kind="attraction" if afternoon else "buffer",
+                        location=(afternoon.location or destination_name) if afternoon else destination_name,
+                        est_cost_inr=(afternoon.price_per_person_inr or 0) if afternoon else 0,
+                        notes=None if afternoon else "Unscheduled time; costs are not included.",
+                        evidence=afternoon.evidence if afternoon else None,
                     ))
                     attraction_index += 1
                 else:

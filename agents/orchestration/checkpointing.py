@@ -53,9 +53,12 @@ def get_saver():
             try:
                 from langgraph.checkpoint.memory import MemorySaver
                 from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
+                from agents import schemas
 
                 _saver = MemorySaver(serde=JsonPlusSerializer(
-                    allowed_msgpack_modules=("agents.schemas",)
+                    allowed_json_modules=[("agents.schemas", name)
+                        for name, value in vars(schemas).items()
+                        if isinstance(value, type) and value.__module__ == "agents.schemas"]
                 ))
             except ImportError:
                 _saver = _MemorySaver()

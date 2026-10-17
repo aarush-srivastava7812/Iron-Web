@@ -1,0 +1,604 @@
+[
+  {
+    "timestamp": "2026-10-17T09:41:00Z",
+    "agent": "reviewer",
+    "action": "write",
+    "memoryPath": "shared/tier-1/agent-policy.md",
+    "before": null,
+    "after": "# Agent policy\nUse confirmed traveler requirements. Cite source memory. Do not book or pay.\nResolve conflicting writes before planning."
+  },
+  {
+    "timestamp": "2026-10-17T09:41:17Z",
+    "agent": "planner",
+    "action": "write",
+    "memoryPath": "shared/tier-1/traveler.md",
+    "before": null,
+    "after": "# Traveler\nTwo adults traveling together. Vegetarian meals. Slow travel, mountain landscapes, local stays."
+  },
+  {
+    "timestamp": "2026-10-17T09:41:34Z",
+    "agent": "planner",
+    "action": "write",
+    "memoryPath": "shared/tier-1/trip-brief.md",
+    "before": null,
+    "after": "# Spiti Valley\n6 days / 2 travelers\nTotal budget: INR 48,000\nA relaxed journey from Shimla to Kaza."
+  },
+  {
+    "timestamp": "2026-10-17T09:41:51Z",
+    "agent": "reviewer",
+    "action": "write",
+    "memoryPath": "shared/tier-1/requirements.json",
+    "before": null,
+    "after": {
+      "dietary": "vegetarian",
+      "pace": "relaxed",
+      "partySize": 2,
+      "bookingAllowed": false
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:42:08Z",
+    "agent": "researcher",
+    "action": "write",
+    "memoryPath": "shared/tier-3/trip/destination.json",
+    "before": null,
+    "after": {
+      "name": "Spiti Valley",
+      "region": "Himachal Pradesh",
+      "base": "Kaza"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:42:25Z",
+    "agent": "planner",
+    "action": "write",
+    "memoryPath": "shared/tier-3/trip/dates.json",
+    "before": null,
+    "after": {
+      "start": "2026-11-03",
+      "end": "2026-11-08",
+      "days": 6
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:42:42Z",
+    "agent": "planner",
+    "action": "write",
+    "memoryPath": "shared/tier-3/trip/budget.json",
+    "before": null,
+    "after": {
+      "amount": 48000,
+      "currency": "INR",
+      "scope": "whole trip"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:42:59Z",
+    "agent": "reviewer",
+    "action": "write",
+    "memoryPath": "shared/tier-3/profile/dietary.json",
+    "before": null,
+    "after": {
+      "diet": "vegetarian",
+      "confirmed": true,
+      "source": "traveler"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:43:16Z",
+    "agent": "researcher",
+    "action": "write",
+    "memoryPath": "shared/tier-3/profile/interests.json",
+    "before": null,
+    "after": {
+      "interests": [
+        "mountains",
+        "monasteries",
+        "local culture"
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:43:33Z",
+    "agent": "researcher",
+    "action": "read",
+    "memoryPath": "shared/tier-1/traveler.md",
+    "before": "# Traveler\nTwo adults traveling together. Vegetarian meals. Slow travel, mountain landscapes, local stays.",
+    "after": "# Traveler\nTwo adults traveling together. Vegetarian meals. Slow travel, mountain landscapes, local stays."
+  },
+  {
+    "timestamp": "2026-10-17T09:43:50Z",
+    "agent": "researcher",
+    "action": "read",
+    "memoryPath": "shared/tier-1/trip-brief.md",
+    "before": "# Spiti Valley\n6 days / 2 travelers\nTotal budget: INR 48,000\nA relaxed journey from Shimla to Kaza.",
+    "after": "# Spiti Valley\n6 days / 2 travelers\nTotal budget: INR 48,000\nA relaxed journey from Shimla to Kaza."
+  },
+  {
+    "timestamp": "2026-10-17T09:44:07Z",
+    "agent": "researcher",
+    "action": "write",
+    "memoryPath": "shared/tier-2/destination.card",
+    "before": null,
+    "after": {
+      "title": "High-altitude landscapes",
+      "source": "shared/tier-3/trip/destination.json",
+      "guidance": "Allow time to acclimatize in Kaza."
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:44:24Z",
+    "agent": "researcher",
+    "action": "write",
+    "memoryPath": "shared/tier-3/evidence/route-options.json",
+    "before": null,
+    "after": {
+      "route": [
+        "Shimla",
+        "Kalpa",
+        "Tabo",
+        "Kaza"
+      ],
+      "source": "mock research notes",
+      "verified": false
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:44:41Z",
+    "agent": "researcher",
+    "action": "write",
+    "memoryPath": "shared/tier-2/route.card",
+    "before": null,
+    "after": {
+      "title": "A slower route into Spiti",
+      "source": "shared/tier-3/evidence/route-options.json",
+      "guidance": "Break the ascent with overnight stops."
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:44:58Z",
+    "agent": "researcher",
+    "action": "write",
+    "memoryPath": "shared/tier-2/accommodation.card",
+    "before": null,
+    "after": {
+      "title": "Local stays",
+      "source": "shared/tier-3/profile/interests.json",
+      "guidance": "Prefer small locally run guesthouses."
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:45:15Z",
+    "agent": "researcher",
+    "action": "write",
+    "memoryPath": "shared/tier-3/evidence/stay-options.json",
+    "before": null,
+    "after": {
+      "options": [
+        "Kaza homestay",
+        "Tabo guesthouse"
+      ],
+      "availability": "unverified",
+      "source": "mock catalog"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:45:32Z",
+    "agent": "planner",
+    "action": "read",
+    "memoryPath": "shared/tier-3/profile/dietary.json",
+    "before": {
+      "diet": "vegetarian",
+      "confirmed": true,
+      "source": "traveler"
+    },
+    "after": {
+      "diet": "vegetarian",
+      "confirmed": true,
+      "source": "traveler"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:45:49Z",
+    "agent": "planner",
+    "action": "write",
+    "memoryPath": "shared/tier-2/food.card",
+    "before": null,
+    "after": {
+      "title": "Vegetarian meals",
+      "source": "shared/tier-3/profile/dietary.json",
+      "guidance": "Check menu suitability with each host."
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:46:06Z",
+    "agent": "planner",
+    "action": "write",
+    "memoryPath": "shared/tier-2/pace.card",
+    "before": null,
+    "after": {
+      "title": "Room to breathe",
+      "pace": "relaxed",
+      "dailyActivities": 2,
+      "source": "shared/tier-1/requirements.json"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:46:23Z",
+    "agent": "planner",
+    "action": "write",
+    "memoryPath": "shared/tier-2/budget.card",
+    "before": null,
+    "after": {
+      "title": "Budget guardrail",
+      "ceiling": 48000,
+      "currency": "INR",
+      "source": "shared/tier-3/trip/budget.json"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:46:40Z",
+    "agent": "planner",
+    "action": "write",
+    "memoryPath": "shared/tier-1/active-context.json",
+    "before": null,
+    "after": {
+      "task": "Build a 6-day Spiti itinerary",
+      "selectedCards": [
+        "destination",
+        "route",
+        "pace"
+      ],
+      "status": "draft"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:46:57Z",
+    "agent": "reviewer",
+    "action": "read",
+    "memoryPath": "shared/tier-3/trip/budget.json",
+    "before": {
+      "amount": 48000,
+      "currency": "INR",
+      "scope": "whole trip"
+    },
+    "after": {
+      "amount": 48000,
+      "currency": "INR",
+      "scope": "whole trip"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:47:14Z",
+    "agent": "researcher",
+    "action": "write",
+    "memoryPath": "shared/tier-3/scratch/weather-cache.json",
+    "before": null,
+    "after": {
+      "temperatureC": 8,
+      "condition": "clear",
+      "source": "mock weather",
+      "ttlMinutes": 30
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:47:31Z",
+    "agent": "researcher",
+    "action": "write",
+    "memoryPath": "shared/tier-2/weather.card",
+    "before": null,
+    "after": {
+      "title": "Mountain conditions",
+      "source": "shared/tier-3/scratch/weather-cache.json",
+      "guidance": "Recheck road and weather conditions before departure."
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:47:48Z",
+    "agent": "researcher",
+    "action": "update",
+    "memoryPath": "shared/tier-3/trip/budget.json",
+    "before": {
+      "amount": 48000,
+      "currency": "INR",
+      "scope": "whole trip"
+    },
+    "after": {
+      "amount": 42000,
+      "currency": "INR",
+      "scope": "whole trip"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:48:05Z",
+    "agent": "planner",
+    "action": "read",
+    "memoryPath": "shared/tier-3/trip/destination.json",
+    "before": {
+      "name": "Spiti Valley",
+      "region": "Himachal Pradesh",
+      "base": "Kaza"
+    },
+    "after": {
+      "name": "Spiti Valley",
+      "region": "Himachal Pradesh",
+      "base": "Kaza"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:48:22Z",
+    "agent": "reviewer",
+    "action": "update",
+    "memoryPath": "shared/tier-3/trip/budget.json",
+    "before": {
+      "amount": 48000,
+      "currency": "INR",
+      "scope": "whole trip"
+    },
+    "after": {
+      "amount": 45000,
+      "currency": "INR",
+      "scope": "whole trip"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:48:39Z",
+    "agent": "planner",
+    "action": "read",
+    "memoryPath": "shared/tier-3/trip/budget.json",
+    "before": {
+      "amount": 42000,
+      "currency": "INR",
+      "scope": "whole trip"
+    },
+    "after": {
+      "amount": 42000,
+      "currency": "INR",
+      "scope": "whole trip"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:48:56Z",
+    "agent": "planner",
+    "action": "update",
+    "memoryPath": "shared/tier-2/budget.card",
+    "before": {
+      "title": "Budget guardrail",
+      "ceiling": 48000,
+      "currency": "INR",
+      "source": "shared/tier-3/trip/budget.json"
+    },
+    "after": {
+      "title": "Budget guardrail",
+      "ceiling": 42000,
+      "currency": "INR",
+      "source": "shared/tier-3/trip/budget.json"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:49:13Z",
+    "agent": "planner",
+    "action": "read",
+    "memoryPath": "shared/tier-2/route.card",
+    "before": {
+      "title": "A slower route into Spiti",
+      "source": "shared/tier-3/evidence/route-options.json",
+      "guidance": "Break the ascent with overnight stops."
+    },
+    "after": {
+      "title": "A slower route into Spiti",
+      "source": "shared/tier-3/evidence/route-options.json",
+      "guidance": "Break the ascent with overnight stops."
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:49:30Z",
+    "agent": "planner",
+    "action": "write",
+    "memoryPath": "shared/tier-3/decisions/itinerary.json",
+    "before": null,
+    "after": {
+      "days": 6,
+      "route": [
+        "Shimla",
+        "Kalpa",
+        "Tabo",
+        "Kaza"
+      ],
+      "budget": 42000,
+      "status": "draft",
+      "source": "shared/tier-2/route.card"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:49:47Z",
+    "agent": "reviewer",
+    "action": "read",
+    "memoryPath": "shared/tier-3/decisions/itinerary.json",
+    "before": {
+      "days": 6,
+      "route": [
+        "Shimla",
+        "Kalpa",
+        "Tabo",
+        "Kaza"
+      ],
+      "budget": 42000,
+      "status": "draft",
+      "source": "shared/tier-2/route.card"
+    },
+    "after": {
+      "days": 6,
+      "route": [
+        "Shimla",
+        "Kalpa",
+        "Tabo",
+        "Kaza"
+      ],
+      "budget": 42000,
+      "status": "draft",
+      "source": "shared/tier-2/route.card"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:50:04Z",
+    "agent": "reviewer",
+    "action": "update",
+    "memoryPath": "shared/tier-2/pace.card",
+    "before": {
+      "title": "Room to breathe",
+      "pace": "relaxed",
+      "dailyActivities": 2,
+      "source": "shared/tier-1/requirements.json"
+    },
+    "after": {
+      "title": "Room to breathe",
+      "pace": "relaxed",
+      "dailyActivities": 2,
+      "restDay": true,
+      "source": "shared/tier-1/requirements.json"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:50:21Z",
+    "agent": "reviewer",
+    "action": "read",
+    "memoryPath": "shared/tier-1/requirements.json",
+    "before": {
+      "dietary": "vegetarian",
+      "pace": "relaxed",
+      "partySize": 2,
+      "bookingAllowed": false
+    },
+    "after": {
+      "dietary": "vegetarian",
+      "pace": "relaxed",
+      "partySize": 2,
+      "bookingAllowed": false
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:50:38Z",
+    "agent": "planner",
+    "action": "update",
+    "memoryPath": "shared/tier-1/active-context.json",
+    "before": {
+      "task": "Build a 6-day Spiti itinerary",
+      "selectedCards": [
+        "destination",
+        "route",
+        "pace"
+      ],
+      "status": "draft"
+    },
+    "after": {
+      "task": "Review the Spiti itinerary",
+      "selectedCards": [
+        "budget",
+        "food",
+        "pace"
+      ],
+      "status": "review"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:50:55Z",
+    "agent": "researcher",
+    "action": "forget",
+    "memoryPath": "shared/tier-3/scratch/weather-cache.json",
+    "before": {
+      "temperatureC": 8,
+      "condition": "clear",
+      "source": "mock weather",
+      "ttlMinutes": 30
+    },
+    "after": null
+  },
+  {
+    "timestamp": "2026-10-17T09:51:12Z",
+    "agent": "reviewer",
+    "action": "read",
+    "memoryPath": "shared/tier-2/food.card",
+    "before": {
+      "title": "Vegetarian meals",
+      "source": "shared/tier-3/profile/dietary.json",
+      "guidance": "Check menu suitability with each host."
+    },
+    "after": {
+      "title": "Vegetarian meals",
+      "source": "shared/tier-3/profile/dietary.json",
+      "guidance": "Check menu suitability with each host."
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:51:29Z",
+    "agent": "planner",
+    "action": "update",
+    "memoryPath": "shared/tier-3/decisions/itinerary.json",
+    "before": {
+      "days": 6,
+      "route": [
+        "Shimla",
+        "Kalpa",
+        "Tabo",
+        "Kaza"
+      ],
+      "budget": 42000,
+      "status": "draft",
+      "source": "shared/tier-2/route.card"
+    },
+    "after": {
+      "days": 6,
+      "route": [
+        "Shimla",
+        "Kalpa",
+        "Tabo",
+        "Kaza"
+      ],
+      "budget": 42000,
+      "dietary": "vegetarian",
+      "status": "reviewed draft",
+      "source": "shared/tier-2/route.card"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:51:46Z",
+    "agent": "reviewer",
+    "action": "read",
+    "memoryPath": "shared/tier-3/decisions/itinerary.json",
+    "before": {
+      "days": 6,
+      "route": [
+        "Shimla",
+        "Kalpa",
+        "Tabo",
+        "Kaza"
+      ],
+      "budget": 42000,
+      "dietary": "vegetarian",
+      "status": "reviewed draft",
+      "source": "shared/tier-2/route.card"
+    },
+    "after": {
+      "days": 6,
+      "route": [
+        "Shimla",
+        "Kalpa",
+        "Tabo",
+        "Kaza"
+      ],
+      "budget": 42000,
+      "dietary": "vegetarian",
+      "status": "reviewed draft",
+      "source": "shared/tier-2/route.card"
+    }
+  },
+  {
+    "timestamp": "2026-10-17T09:52:03Z",
+    "agent": "planner",
+    "action": "update",
+    "memoryPath": "shared/tier-1/trip-brief.md",
+    "before": "# Spiti Valley\n6 days / 2 travelers\nTotal budget: INR 48,000\nA relaxed journey from Shimla to Kaza.",
+    "after": "# Spiti Valley\n6 days / 2 travelers\nTotal budget: INR 42,000\nA relaxed, vegetarian journey from Shimla to Kaza."
+  }
+]

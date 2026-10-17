@@ -34,6 +34,14 @@ prototype localStorage data into a user's account.
 
 ## Configure Google using current console names
 
+For local development while Google setup is pending, set `DEV_LOGIN_ENABLED=true`
+in backend/.env and restart. The login page then offers **Continue as Developer**.
+It opens a dedicated ordinary account named **Voyara Developer**, preserving that
+account's saved trips and memory between sessions. No password is needed. This
+option defaults to false, rejects remote/proxied requests and non-local hosts,
+requires a same-origin browser action, and is disabled with secure deployment
+cookies. Leave `DEV_LOGIN_ENABLED=false` on deployment.
+
 The committed template is
 `stitch_ai_travel_booking_platform/backend/.env.example`. The local ignored
 `backend/.env` already contains the requested placeholder and a generated session

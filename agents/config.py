@@ -21,6 +21,7 @@ def _load_dotenv(path: Path) -> dict[str, str]:
 
 
 _file_values = _load_dotenv(_AGENTS_DIR / ".env")
+_root_values = _load_dotenv(_AGENTS_DIR.parent / ".env")
 
 
 def _get(key: str, default: str = "") -> str:
@@ -30,10 +31,15 @@ def _get(key: str, default: str = "") -> str:
 class AgentSettings:
     """Process-wide settings; environment variables win over agents/.env."""
 
-    nvidia_api_key: str = _get("NVIDIA_API_KEY")
+    nvidia_api_key: str = _get("NVIDIA_API_KEY", _root_values.get("NVIDIA_API_KEY", "")).strip("\"'")
     nim_base_url: str = _get("NIM_BASE_URL", "https://integrate.api.nvidia.com/v1")
     nim_model: str = _get("NIM_MODEL", "openai/gpt-oss-20b")
+    nim_agent_model: str = _get("NIM_AGENT_MODEL", "openai/gpt-oss-20b")
+    nim_agent_protocol: str = _get("NIM_AGENT_PROTOCOL", "json")
     nim_timeout_s: float = float(_get("NIM_TIMEOUT_S", "45"))
+    # auto uses NIM when a credential exists; offline is an explicitly labelled demo.
+    agent_mode: str = _get("VOYARA_AGENT_MODE", "auto")
+    agent_max_turns: int = int(_get("VOYARA_AGENT_MAX_TURNS", "5"))
 
     travel_api_url: str = _get("TRAVEL_API_URL", "http://127.0.0.1:8000").rstrip("/")
     travel_api_token: str = _get("TRAVEL_API_TOKEN")

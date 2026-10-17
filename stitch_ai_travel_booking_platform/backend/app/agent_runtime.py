@@ -26,6 +26,7 @@ from agents.orchestration.graph import TravelWorkflow
 from agents.orchestrator import TravelOrchestrator
 from agents.schemas import OrchestrationRequest
 from agents.travel_tools.base import ToolResponse, TravelApiBackend, using_backend
+from memory.observability import ObservationLog
 from memory.shared.interpreter import TravelInterpreter
 from memory.shared.service import PendingMemory, SharedMemoryService
 
@@ -64,6 +65,13 @@ class CatalogSnapshot(TravelApiBackend):
                 "transport": TransportRoute,
             }.items()
         }
+        from .destination_content import REGIONS
+        self.regions = {d["id"]: {d["id"], *(child["id"] for child in self.rows["destinations"]
+                           if child["slug"] in REGIONS.get(d["slug"], ()))} for d in self.rows["destinations"]}
+        names = {d["id"]: d["name"] for d in self.rows["destinations"]}
+        for kind in ("stays", "food", "guides"):
+            for row in self.rows[kind]:
+                row["destination_name"] = names.get(row["destination_id"])
 
     def get(self, path, params=None):
         parts = path.strip("/").split("/")
@@ -73,12 +81,19 @@ class CatalogSnapshot(TravelApiBackend):
             rows = [r for r in rows if str(r["id"]) == parts[1]]
         for key in ("destination_id", "origin_id", "diet"):
             if params.get(key) is not None:
-                rows = [r for r in rows if str(r.get(key)) == str(params[key])]
+                if key == "destination_id" and parts[0] in {"stays", "food", "guides"}:
+                    ids = self.regions.get(int(params[key]), {int(params[key])})
+                    rows = [r for r in rows if r.get(key) in ids]
+                else:
+                    rows = [r for r in rows if str(r.get(key)) == str(params[key])]
         if params.get("q"):
             q = str(params["q"]).casefold()
             rows = [
                 r for r in rows if q in json.dumps(r, ensure_ascii=False).casefold()
             ]
+            if parts[0] == "destinations":
+                exact=[r for r in rows if q in {str(r.get("name","")).casefold(),str(r.get("slug","")).casefold()}]
+                rows=exact+[r for r in rows if r not in exact]
         for key, source in (
             ("amenity", "amenities"),
             ("tag", "tags"),
@@ -109,6 +124,7 @@ class TravelerMemory:
         self, user_id, root, context_runtime, *, engine_factory=None, namespace="voyara"
     ):
         self.lock = RLock()
+        self.observations = ObservationLog()
         records, tokens = [], {}
         for actor in ["app_user", *PROFILES]:
             token = secrets.token_urlsafe(32)
@@ -136,8 +152,9 @@ class TravelerMemory:
         self.profile = None
 
     def submit(self, *, text, trip_id, claims, event_id=None):
-        normalized = []
+        normalized, changes = [], []
         for claim in claims:
+            current = None
             if claim.get("action") == "supersede":
                 current = self.service.recall(
                     self.principals["app_user"],
@@ -148,7 +165,11 @@ class TravelerMemory:
                 )
                 if not current["evidence"]:
                     claim = dict(claim, action="assert")
+            changes.append(dict(predicate=claim["predicate"], action=claim.get("action", "assert"), scope=claim.get("scope", {}), after=claim.get("value"), **({"before": ([row["value"] for row in current.get("evidence", [])][0] if len(current.get("evidence", [])) == 1 else [row["value"] for row in current.get("evidence", [])])} if current is not None else {})))
             normalized.append(claim)
+        self.observations.invalidate(trip_id or None)
+        self.observations.emit(trip_id, "memory_submitted", claims=len(normalized),
+                               actions=[c.get("action", "assert") for c in normalized])
         receipt = self.service.submit(
             self.principals["app_user"],
             dict(
@@ -164,6 +185,8 @@ class TravelerMemory:
         while self.service.process_one():
             pass
         receipt = self.service.receipt(self.principals["app_user"], receipt["id"])
+        self.observations.emit(trip_id, "memory_processed", event_id=receipt["id"],
+                               status=receipt["status"], claims=len(normalized), changes=changes, memory_id=receipt.get("memory_id"))
         if receipt["status"] != "ready":
             raise PendingMemory([receipt])
         return receipt
@@ -278,6 +301,8 @@ class TravelerMemory:
         )
 
     def forget_event(self, trip_id, event_id):
+        self.observations.invalidate(trip_id, purge_history=True)
+        self.observations.emit(trip_id, "memory_forget_requested")
         cursor = 0
         while True:
             page = self.events(trip_id, cursor)
@@ -294,6 +319,8 @@ class TravelerMemory:
             cursor = page["next_cursor"]
 
     def forget_trip(self, trip_id):
+        self.observations.invalidate(trip_id, purge_history=True)
+        self.observations.emit(trip_id, "trip_forget_requested")
         cursor = 0
         while True:
             page = self.events(trip_id, cursor)
@@ -348,7 +375,7 @@ class TravelerMemory:
             ],
         )
 
-    def reply(self, trip_id, text, page, catalog, before_validate=None):
+    def reply(self, trip_id, text, page, catalog, before_validate=None, agentic=None):
         parsed = TravelInterpreter()(
             text, dict(subject="Traveller", scope={"trip_id": trip_id})
         )
@@ -363,10 +390,11 @@ class TravelerMemory:
             )
         for _ in range(3):
             gateway = ThreeTierGateway(
-                self.service, self.principals, self.user_id, trip_id
+                self.service, self.principals, self.user_id, trip_id,
+                observer=self.observations
             )
             orchestrator = TravelOrchestrator(
-                workflow=TravelWorkflow(gateway=gateway, checkpoint=False)
+                workflow=TravelWorkflow(gateway=gateway, checkpoint=False, agentic=agentic)
             )
             with using_backend(catalog):
                 result = orchestrator.handle(
@@ -388,6 +416,10 @@ class TravelerMemory:
                 )
             if not gateway.validate_current():
                 continue
+            for item in result.agent_results:
+                execution = item.execution.model_dump(mode="json") if item.execution else None
+                self.observations.emit(trip_id, "agent_completed", agent_id=item.agent_id,
+                    status=item.status, latency_ms=item.latency_ms, execution=execution)
             output = result.model_dump(mode="json")
             output.pop("memory_write_proposals", None)
             output["memory"] = gateway.diagnostics()
@@ -410,13 +442,10 @@ class TravelerMemory:
                 or result.status == "failed"
                 or any(r.status == "failed" for r in result.agent_results)
             ):
-                return dict(
-                    status="needs_clarification",
-                    response=" ".join(errors)
-                    or "Some catalog information could not be verified. Please try again.",
-                    agent_results=[],
-                    memory=output["memory"],
-                )
+                output["status"] = "failed" if any(r.status == "failed" for r in result.agent_results) else "needs_clarification"
+                output["response"] = " ".join(errors) or "A travel agent could not complete its work. Check the team’s execution details and NVIDIA configuration, then retry."
+                output["itinerary"], output["budget"] = None, None
+                return output
             return output
         return dict(
             status="context_changed",

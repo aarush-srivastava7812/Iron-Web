@@ -67,7 +67,7 @@ class TourGuideAgent:
                         why_fit=(f"aligns with your interest in {', '.join(specialties)}"
                                  if specialties else "a well-reviewed local experience"),
                         approx_duration_min=180,
-                        location=destination_name,
+                        location=row.get("destination_name") or destination_name,
                         price_per_person_inr=row.get("price_inr"),
                         hours_caveat="hours not verified against a live source",
                         evidence=response.evidence("guides.search", ref=str(row.get("id"))),

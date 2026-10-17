@@ -1,7 +1,7 @@
 import datetime as dt
 import uuid
 
-from sqlalchemy import JSON, Date, DateTime, Float, ForeignKey, Index, Integer, String, Text, Time
+from sqlalchemy import JSON, Date, DateTime, Float, ForeignKey, Index, Integer, LargeBinary, String, Text, Time, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .db import Base
@@ -168,6 +168,34 @@ class AIMessage(Base):
     content: Mapped[str] = mapped_column(Text)
     created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
     conversation: Mapped[AIConversation] = relationship(back_populates="messages")
+
+
+class PlanVersion(Base):
+    __tablename__ = "plan_versions"
+    __table_args__ = (UniqueConstraint("conversation_id", "version"),)
+    id: Mapped[int] = mapped_column(primary_key=True)
+    conversation_id: Mapped[str] = mapped_column(ForeignKey("ai_conversations.id", ondelete="CASCADE"), index=True)
+    version: Mapped[int] = mapped_column(Integer)
+    payload: Mapped[dict] = mapped_column(JSON)
+    stale: Mapped[bool] = mapped_column(default=False)
+    created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
+class TripWorkspace(Base):
+    __tablename__ = "trip_workspaces"
+    conversation_id: Mapped[str] = mapped_column(ForeignKey("ai_conversations.id", ondelete="CASCADE"), primary_key=True)
+    revision: Mapped[int] = mapped_column(Integer, default=1)
+    data: Mapped[dict] = mapped_column(JSON, default=dict)
+
+
+class TravelBook(Base):
+    __tablename__ = "travel_books"
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    conversation_id: Mapped[str] = mapped_column(ForeignKey("ai_conversations.id", ondelete="CASCADE"), index=True)
+    fingerprint: Mapped[str] = mapped_column(String(64))
+    snapshot: Mapped[dict] = mapped_column(JSON)
+    pdf: Mapped[bytes] = mapped_column(LargeBinary)
+    created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
 
 
 class AIMemory(Base):

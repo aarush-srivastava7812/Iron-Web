@@ -36,6 +36,9 @@ def run():
         db.flush()
         from seed_website import seed_website
         seed_website(db)
+        from app.destination_content import seed_kerala
+        seed_kerala(db)
+        db.flush()
         ds = db.query(Destination).all()
         for i, d in enumerate(ds):
             if not db.query(Stay).filter_by(destination_id=d.id).first():
@@ -60,6 +63,21 @@ def run():
                     TransportRoute(origin_id=second_origin.id, destination_id=d.id, mode="train", operator="Indian Railways (sample)", duration_min=420 + i * 55, price_inr=1150 + i * 140, seats_available=120),
                     TransportRoute(origin_id=first_origin.id, destination_id=d.id, mode="bus", operator="Local Routes (sample)", duration_min=540 + i * 65, price_inr=850 + i * 95, seats_available=32),
                 ])
+        # A small, explicitly fictional Goa scenario makes ranking, swapping
+        # and price deltas demonstrable; avoid expanding the whole marketplace.
+        goa = by_slug["goa"]
+        demo_choices = {
+            Stay: [dict(name="Demo Goa Garden Homestay", kind="homestay", price_inr=1850, rating=4.6, amenities=["wifi", "breakfast"]),
+                   dict(name="Demo Goa Coast Lodge", kind="hotel", price_inr=2800, rating=4.7, amenities=["wifi", "breakfast"])],
+            FoodPlace: [dict(name="Demo Goa Vegetarian Kitchen", kind="restaurant", cuisine="Goan vegetarian", diet="veg", price_inr=600, rating=4.5),
+                        dict(name="Demo Goa Market Cafe", kind="cafe", cuisine="Cafe", diet="veg", price_inr=400, rating=4.4)],
+            Guide: [dict(name="Demo Goa Heritage Walk", languages=["English", "Hindi"], specialties=["history", "culture"], price_inr=1200, rating=4.7),
+                    dict(name="Demo Goa Village Trail", languages=["English", "Hindi"], specialties=["nature", "culture"], price_inr=800, rating=4.6)],
+        }
+        for model, choices in demo_choices.items():
+            for choice in choices:
+                if not db.query(model).filter_by(destination_id=goa.id, name=choice["name"]).first():
+                    db.add(model(destination_id=goa.id, **choice))
         db.commit()
 
         OFFERS = [

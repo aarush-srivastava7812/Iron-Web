@@ -75,7 +75,7 @@ class BudgetBookingAgent:
                 food_total = sum(stop.est_cost_inr for day in itinerary.days for stop in day.stops
                                  if stop.kind == "food") * party_size
             lines.append(BudgetLine(category="food", amount_inr=food_total,
-                                    basis="estimate", note="one sit-down meal per day"))
+                                    basis="estimate", note="scheduled meals only" if itinerary else "one sit-down meal per day"))
 
             activity_per_person = sum(a.price_per_person_inr or 0 for a in attractions[:4])
             activity_total = activity_per_person * party_size
@@ -99,7 +99,7 @@ class BudgetBookingAgent:
                 price_checked_at=None,  # no provider price check performed
                 status="estimate",
                 warnings=["All figures are estimates from catalog data, not live prices.",
-                          "Includes the scheduled catalog activities and one meal per day; unverified transport and extra meals are excluded."],
+                          "Includes the listed catalog activities and meals; unverified transport and extra meals are excluded."],
             )
             if brief is not None:
                 validation = validate_budget(estimate, brief)

@@ -61,7 +61,7 @@ class StayAgent:
                     options.append(StayOption(
                         stay_id=row.get("id"),
                         name=row.get("name") or "Unnamed stay",
-                        location=destination_name,
+                        location=row.get("destination_name") or destination_name,
                         kind=row.get("kind"),
                         price_per_night_inr=price,
                         total_price_inr=stay_tool.estimate_stay_total(price, nights),

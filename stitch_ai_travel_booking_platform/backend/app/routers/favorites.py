@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import delete, select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from ..db import get_db
@@ -24,18 +25,25 @@ def add_favorite(body: FavoriteIn, user: User = Depends(current_user), db: Sessi
         raise HTTPException(422, "Unknown catalog type")
     if not db.get(_MODELS[body.item_type], body.item_id):
         raise HTTPException(404, "Catalog item not found")
-    existing = db.scalar(
-        select(Favorite).where(
-            Favorite.user_id == user.id,
-            Favorite.item_type == body.item_type,
-            Favorite.item_id == body.item_id,
-        )
+    lookup = select(Favorite).where(
+        Favorite.user_id == user.id,
+        Favorite.item_type == body.item_type,
+        Favorite.item_id == body.item_id,
     )
+    existing = db.scalar(lookup)
     if existing:
         return existing
     favorite = Favorite(user_id=user.id, item_type=body.item_type, item_id=body.item_id)
     db.add(favorite)
-    db.commit()
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        # Another request may have saved this same item after the lookup.
+        existing = db.scalar(lookup)
+        if existing is not None:
+            return existing
+        raise
     db.refresh(favorite)
     return favorite
 

@@ -4,7 +4,8 @@ from sqlalchemy.orm import Session
 
 from ..db import get_db
 from ..deps import current_user
-from ..models import AIMemory, User, UserProfile
+from ..models import AIConversation, AIMemory, User, UserProfile
+from ..plan_drafts import invalidate
 from ..schemas import ProfileOut, ProfilePatch
 from ..agent_runtime import get_agent_runtime
 
@@ -57,6 +58,8 @@ def _save_profile(body, user, db):
         db.add(AIMemory(user_id=user.id, category="travel_preferences", value=snapshot))
     else:
         memory.value = snapshot
+    for trip_id in db.scalars(select(AIConversation.id).where(AIConversation.user_id == user.id)):
+        invalidate(db, trip_id)
     db.commit()
     return profile
 

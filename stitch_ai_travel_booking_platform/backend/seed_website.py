@@ -4,7 +4,7 @@ from pathlib import Path
 
 from sqlalchemy import select
 
-from app.models import Destination, Experience, HolidayPackage, Stay, TransportRoute, WebsiteStay
+from app.models import Destination, Experience, Guide, HolidayPackage, Stay, TransportRoute, WebsiteStay
 
 LOCATIONS = {
     "Kashmir": ("kashmir", "Jammu and Kashmir", 34.08, 74.80),
@@ -49,6 +49,9 @@ def seed_website(db):
         if not db.scalar(select(Experience).where(Experience.name == entry["name"])):
             db.add(Experience(name=entry["name"], destination_id=by_name.get(entry["place"], by_name["Kerala"]).id,
                               price_inr=entry["price"], display=entry))
+        if not db.scalar(select(Guide).where(Guide.name == entry["name"])):
+            db.add(Guide(name=entry["name"],destination_id=by_name.get(entry["place"],by_name["Kerala"]).id,
+                         price_inr=entry["price"],languages=["English","Hindi"],specialties=["culture","nature"],rating=4.5))
     origins = [by_name[n] for n in ["New Delhi", "Mumbai", "Bengaluru", "Hyderabad", "Chennai"]]
     for i, origin in enumerate(origins):
         for j, target in enumerate([by_name[n] for n in ["Kashmir", "Goa", "Jaipur", "Kochi", "Varanasi"]]):

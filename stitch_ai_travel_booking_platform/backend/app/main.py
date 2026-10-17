@@ -8,6 +8,8 @@ from fastapi.staticfiles import StaticFiles
 
 from .config import settings
 from .db import create_schema
+from .routers import dashboard
+from .routers import journey
 from .routers import assistant, auth, bookings, catalog, favorites, itineraries, leads, offers, profile, google_auth, website
 
 
@@ -43,13 +45,20 @@ app.include_router(bookings.router, prefix="/api")
 app.include_router(profile.router, prefix="/api")
 app.include_router(itineraries.router, prefix="/api")
 app.include_router(assistant.router, prefix="/api")
+app.include_router(journey.router, prefix="/api")
 app.include_router(offers.router, prefix="/api")
 app.include_router(favorites.router, prefix="/api")
 app.include_router(leads.router, prefix="/api")
+app.include_router(dashboard.router, prefix="/api")
 app.include_router(catalog.router, prefix="/api")  # last: generic /{kind} routes
 frontend_dist = Path(__file__).resolve().parents[2] / "frontend" / "dist"
 if frontend_dist.exists():
     app.mount("/assets", StaticFiles(directory=frontend_dist / "assets"), name="assets")
+travel_assets=frontend_dist/"travel"
+if not travel_assets.exists():
+    travel_assets=frontend_dist.parent/"public"/"travel"
+if travel_assets.exists():
+    app.mount("/travel",StaticFiles(directory=travel_assets),name="travel-images")
 
 
 @app.get("/", include_in_schema=False)

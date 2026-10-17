@@ -80,8 +80,11 @@ travelers; it is not a many-user deployment design.
 
 ## Intake and model behavior
 
-The connected catalog specialists are deterministic Python agents. This path
-does not fabricate an LLM answer and needs no provider credential. Free-text
+The connected specialists now use bounded stochastic NVIDIA tool agents when a
+key is configured. They have distinct roles, sampling policies, work logs and
+tool-driven selections; the budget calculator and validation remain exact.
+See [the hackathon plan and provider setup](hackathon_travel_plan.md). Explicit
+offline mode is labelled in the UI and does not claim model execution. Free-text
 intake uses the core's conservative `TravelInterpreter`; unsupported wording asks
 for structured Trip details instead of silently accepting only part of a message.
 The existing standalone agents' optional NIM extraction is not used to override
@@ -97,10 +100,10 @@ Show stays
 Plan my trip
 ```
 
-The default context accounting is exact UTF-8 bytes for the deterministic Python
-consumer, identified as `voyara-deterministic-utf8-v1`; it is not an estimate of
-hosted model tokens. A future generating model must supply its own tokenizer and
-chat-template/tool accounting. Set `CONTEXT_TOKENIZER_PATH` and
+The existing memory packet accounting remains exact UTF-8 bytes for its structured
+consumer, identified as `voyara-deterministic-utf8-v1`; it does not account for
+the separate hosted agent prompts or model tokens. Exact hosted token accounting
+would need a matching tokenizer and chat-template/tool accounting. Set `CONTEXT_TOKENIZER_PATH` and
 `CONTEXT_TOKENIZER_ID` to configure an actual local tokenizer. Both must be set.
 
 Tier 1 still has equal bounded agent/traveler halves. Tier 2 uses the existing

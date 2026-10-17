@@ -22,6 +22,7 @@ router = APIRouter(prefix="/website", tags=["website"])
 
 @router.get("/catalog")
 def catalog(db: Session = Depends(get_db)):
+    from ..destination_content import KERALA
     packages = db.scalars(select(HolidayPackage).order_by(HolidayPackage.id)).all()
     stays = db.execute(select(Stay, WebsiteStay).join(WebsiteStay, Stay.id == WebsiteStay.stay_id)).all()
     experiences = db.scalars(select(Experience).order_by(Experience.id)).all()
@@ -36,6 +37,7 @@ def catalog(db: Session = Depends(get_db)):
                               price=e.price_inr) for e in experiences],
         "airports": [{"id": d.id, "name": d.name} for d in cities],
         "inventory_notice": "Illustrative catalog. Requests are saved by Voyara and require provider confirmation. No payment is collected.",
+        "destination_guides": {"Kerala": KERALA},
     }
 
 
