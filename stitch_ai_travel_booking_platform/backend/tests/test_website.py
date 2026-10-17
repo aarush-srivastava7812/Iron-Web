@@ -176,7 +176,10 @@ def test_contact_and_newsletter_persist_without_exposing_private_data(site):
     body=dict(name='A Traveller',email='TRAVELER@example.com',phone=None,topic='Planning',message='Tell me more about Kashmir')
     for _ in range(5):assert c.post('/api/website/enquiries',json=body).status_code==201
     assert c.post('/api/website/enquiries',json=body).status_code==429
-    for _ in range(2):assert c.post('/api/website/newsletter',json={'email':body['email']}).status_code==200
+    for _ in range(2):
+        subscribed = c.post('/api/website/newsletter',json={'email':body['email']})
+        assert subscribed.status_code==200
+        assert subscribed.json()['status']=='subscribed'
     assert c.post('/api/website/newsletter',json={'email':'bad'}).status_code==422
     assert c.get('/api/website/enquiries').status_code==404
     with sessions() as db:

@@ -181,9 +181,13 @@ def test_booking_and_cancel():
     assert c.get("/api/transport/1").json()["seats_available"] == route["seats_available"] + 2
     assert c.post("/api/bookings", json={"items": [{"item_type": "stay", "item_id": 1}]}, headers=h).status_code == 422
     legacy_food = c.post("/api/bookings", json={"items": [{"item_type": "food", "item_id": 1}]}, headers=h)
-    assert legacy_food.status_code == 201
-    assert legacy_food.json()["items"][0]["start_time"] is None
-    assert legacy_food.json()["items"][0]["duration_min"] is None
+    assert legacy_food.status_code == 422
+    dated_food = c.post("/api/bookings", json={"items": [{"item_type": "food", "item_id": 1,
+                       "start_date": "2026-12-01"}]}, headers=h)
+    assert dated_food.status_code == 201
+    assert dated_food.json()["status"] == "requested"
+    assert dated_food.json()["items"][0]["start_time"] is None
+    assert dated_food.json()["items"][0]["duration_min"] is None
 
 
 def test_profile_memory_and_recommendation_preferences():
