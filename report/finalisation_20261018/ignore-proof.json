@@ -1,0 +1,27 @@
+[
+  {
+    "path": ".scratch/private-session.json",
+    "ignored": true,
+    "tracked": false
+  },
+  {
+    "path": "agents/.env",
+    "ignored": true,
+    "tracked": false
+  },
+  {
+    "path": "dashboard/backend/.env",
+    "ignored": true,
+    "tracked": false
+  },
+  {
+    "path": "credentials.json",
+    "ignored": true,
+    "tracked": false
+  },
+  {
+    "path": "dashboard/frontend/storage-state.json",
+    "ignored": true,
+    "tracked": false
+  }
+]

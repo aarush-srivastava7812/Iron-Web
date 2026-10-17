@@ -1,0 +1,12 @@
+# The relay image needs only these files. Never send runtime credentials/data
+# or the repository history to the Docker build context.
+**
+!dashboard/
+!dashboard/__init__.py
+!dashboard/backend/
+!dashboard/backend/*.py
+!dashboard/backend/requirements.txt
+!dashboard/backend/Dockerfile
+!dashboard/inspection/
+!dashboard/inspection/index.html
+!dashboard/inspection/app.js

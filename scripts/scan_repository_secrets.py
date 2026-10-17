@@ -1,5 +1,5 @@
 """Redacted current-tree and reachable-Git-blob secret scan. Never emits matches."""
-import subprocess,pathlib,re,json,math,collections
+import subprocess,pathlib,re,json
 ROOT=pathlib.Path.cwd();G=['git','-c','safe.directory='+ROOT.as_posix()];OUT=ROOT/'.scratch/finalise-20261018'
 OUT.mkdir(parents=True, exist_ok=True)
 def git(*args):return subprocess.check_output(G+list(args))
