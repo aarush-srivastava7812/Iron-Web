@@ -69,6 +69,7 @@ function useFeed() {
     };
     const controller = new AbortController();
     fetch(API + "/api/dashboard/snapshot", {
+      credentials: "include",
       cache: "no-store",
       signal: controller.signal,
     })
@@ -84,7 +85,7 @@ function useFeed() {
           setStatus("disconnected");
         }
       });
-    const stream = new EventSource(API + "/api/dashboard/stream");
+    const stream = new EventSource(API + "/api/dashboard/stream", { withCredentials: true });
     stream.addEventListener("snapshot", (e) => {
       try {
         receive(JSON.parse(e.data));
@@ -109,6 +110,21 @@ function useFeed() {
 }
 export default function LiveApp() {
   const { data, status, error } = useFeed();
+  const [viewerError, setViewerError] = useState("");
+  async function unlock(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const secret = new FormData(form).get("secret");
+    form.reset();
+    try {
+      const response = await fetch(API + "/viewer/session", {
+        method: "POST", credentials: "include",
+        headers: { "Content-Type": "application/json" }, body: JSON.stringify({ secret }),
+      });
+      if (!response.ok) throw new Error((await response.json()).detail || "Viewer sign-in failed");
+      location.reload();
+    } catch (failure) { setViewerError(failure.message); }
+  }
   const [view, setView] = useState(
       VIEW_NAMES[initial.get("view")] ? initial.get("view") : "graph",
     ),
@@ -285,7 +301,14 @@ export default function LiveApp() {
           {error ||
             "Waiting for the website memory owner and read-only dashboard relay."}
         </p>
-        <button onClick={() => location.reload()}>Reconnect</button>
+        {error === "Viewer sign-in required." ? (
+          <form onSubmit={unlock} className="viewer-login">
+            <label htmlFor="viewer-secret">Dashboard viewer secret</label>
+            <input id="viewer-secret" name="secret" type="password" autoComplete="off" required maxLength={512} />
+            <button type="submit">Unlock dashboard</button>
+            {viewerError && <p role="alert">{viewerError}</p>}
+          </form>
+        ) : <button onClick={() => location.reload()}>Reconnect</button>}
         <span>No sample data is substituted.</span>
       </div>
     );

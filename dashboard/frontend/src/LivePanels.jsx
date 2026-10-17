@@ -610,7 +610,7 @@ export function Dialog({ name, data, onClose }) {
       );
       const response = await fetch(
         base + "/api/dashboard/vectors?include_values=true&limit=1",
-        { cache: "no-store" },
+        { cache: "no-store", credentials: "include" },
       );
       if (!response.ok) throw new Error("Vector inspection unavailable");
       setVector(await response.json());

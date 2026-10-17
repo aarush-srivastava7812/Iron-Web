@@ -1,6 +1,7 @@
 """Redacted current-tree and reachable-Git-blob secret scan. Never emits matches."""
 import subprocess,pathlib,re,json,math,collections
 ROOT=pathlib.Path.cwd();G=['git','-c','safe.directory='+ROOT.as_posix()];OUT=ROOT/'.scratch/finalise-20261018'
+OUT.mkdir(parents=True, exist_ok=True)
 def git(*args):return subprocess.check_output(G+list(args))
 patterns={
 'provider credential':re.compile(rb'(?:nvapi-[A-Za-z0-9_-]{20,}|sk-(?:proj-)?[A-Za-z0-9_-]{30,}|gh[pousr]_[A-Za-z0-9_]{25,}|github_pat_[A-Za-z0-9_]{25,}|AIza[A-Za-z0-9_-]{30,}|AKIA[A-Z0-9]{16})'),

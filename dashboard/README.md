@@ -42,6 +42,10 @@ backend origin. Set the dashboard origin in `DASHBOARD_CORS_ORIGINS`. Keep all
 publication grants and NVIDIA keys on the servers. The source grant selects one
 intended viewing account; this is not a cross-tenant administrator view.
 
+Remote relay reads also require the separate server-side `DASHBOARD_VIEWER_TOKEN`.
+The dashboard prompts for it and uses an HttpOnly viewer-session cookie; it is
+never a `VITE_` variable. See the backend guide for HTTPS, origin and cookie limits.
+
 ## What is shown
 
 - A 56px top bar, full-height explorer/stage/inspector, one replay dock, side

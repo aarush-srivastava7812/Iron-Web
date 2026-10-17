@@ -8,6 +8,27 @@
 
 ## How it connects
 
+### Viewer access (18 October 2026)
+
+`DASHBOARD_VIEWER_TOKEN` is a separate server-side secret of at least 32 random
+characters. Remote HTTP and SSE reads fail closed if it is absent. Only direct
+loopback peers with a loopback hostname and no forwarded headers may read without
+a configured viewer secret. If configured, it is required locally too.
+
+The React dashboard accepts the viewer secret through a password form and posts
+it to `/viewer/session`; the relay issues an eight-hour signed HttpOnly cookie.
+It never puts the secret in a URL, Vite variable, localStorage, or memory feed.
+API clients can use `Authorization: Bearer <viewer secret>` for HTTP/SSE.
+Stream authorization is rechecked before each snapshot, including after expiry
+or token rotation. The upstream publication grant remains separate and private.
+
+Use HTTPS for remote viewer sessions. Set exact dashboard origins in
+`DASHBOARD_CORS_ORIGINS`; CORS is not viewer authorization. Cross-site cookies can
+be blocked by browser privacy policy: prefer a same-site API origin or same-origin
+reverse proxy and verify it in the target browser. A deliberately sanitized demo
+traveler/trip can still be published using the existing scope settings; remote
+publication does not bypass the viewer gate. Do not publish real traveler data.
+
 ```mermaid
 flowchart LR
     Website[Travel website frontend] --> WebsiteAPI[Website backend and agents]

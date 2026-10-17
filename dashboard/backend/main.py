@@ -14,6 +14,7 @@ import httpx
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, StreamingResponse
+from .viewer import gate, sign_in
 
 
 class MemoryRelay:
@@ -88,6 +89,26 @@ async def lifespan(_):
 
 
 app = FastAPI(title="Iron Web Memory Dashboard", version="1.0.0", lifespan=lifespan)
+
+
+
+@app.middleware("http")
+async def headers(request, call_next):
+    # Preflights contain no memory; the same gate protects HTTP pages and SSE.
+    denied = gate(request) if request.url.path.startswith("/api/dashboard/") and request.method != "OPTIONS" else None
+    response = denied if denied is not None else await call_next(request)
+    response.headers["Cache-Control"] = "no-store"
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["Referrer-Policy"] = "no-referrer"
+    return response
+
+
+@app.post("/viewer/session", include_in_schema=False)
+async def viewer_session(request: Request):
+    return await sign_in(request)
+
+
+# CORS wraps gate errors too, so the configured frontend can display sign-in.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -97,18 +118,10 @@ app.add_middleware(
         ).split(",")
         if v.strip()
     ],
-    allow_methods=["GET"],
-    allow_headers=["Accept", "Last-Event-ID"],
+    allow_credentials=True,
+    allow_methods=["GET", "POST"],
+    allow_headers=["Accept", "Last-Event-ID", "Content-Type", "Authorization"],
 )
-
-
-@app.middleware("http")
-async def headers(request, call_next):
-    response = await call_next(request)
-    response.headers["Cache-Control"] = "no-store"
-    response.headers["X-Content-Type-Options"] = "nosniff"
-    response.headers["Referrer-Policy"] = "no-referrer"
-    return response
 
 
 @app.get("/health")
@@ -215,6 +228,9 @@ async def vectors(
 
 async def snapshot_events(request):
     while not await request.is_disconnected():
+        if gate(request) is not None:
+            yield 'event: feed_error\ndata: {"message":"Viewer session expired. Sign in again."}\n\n'
+            return
         try:
             payload = await relay.read()
             yield (

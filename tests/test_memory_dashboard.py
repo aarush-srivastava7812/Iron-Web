@@ -8,7 +8,7 @@ import pytest
 from fastapi import HTTPException
 from fastapi.testclient import TestClient
 
-from tests.test_application_integration import plan, requirements, trip, user
+from tests.test_application_integration import connected_app, plan, requirements, trip, user  # noqa: F401
 
 pytest_plugins = ["tests.test_application_integration"]
 
@@ -230,7 +230,7 @@ def test_dashboard_relay_caching_failure_and_no_write_surface(monkeypatch):
             assert "private upstream detail" not in failure.value.detail
 
     asyncio.run(check())
-    with TestClient(module.app) as client:
+    with TestClient(module.app, base_url="http://localhost", client=("127.0.0.1", 12345)) as client:
         assert client.get("/").status_code == 200
         assert client.get("/app.js").status_code == 200
         assert client.post("/api/dashboard/snapshot", json={}).status_code == 405
@@ -247,12 +247,15 @@ def test_dashboard_stream_reports_unavailable_and_event_cursor_reset(monkeypatch
 
     monkeypatch.setattr(module.relay, "read", unavailable)
 
-    class Request:
+    from starlette.requests import Request as HTTPRequest
+
+    class Request(HTTPRequest):
         async def is_disconnected(self):
             return False
 
     async def check():
-        stream = module.snapshot_events(Request())
+        stream = module.snapshot_events(Request({"type": "http", "scheme": "http", "path": "/api/dashboard/stream",
+            "headers": [(b"host", b"localhost")], "client": ("127.0.0.1", 12345)}))
         chunk = await anext(stream)
         assert chunk.startswith("event: feed_error\n")
         assert "Memory owner unavailable" in chunk
@@ -269,7 +272,7 @@ def test_dashboard_stream_reports_unavailable_and_event_cursor_reset(monkeypatch
         )
 
     monkeypatch.setattr(module.relay, "read", live)
-    with TestClient(module.app) as client:
+    with TestClient(module.app, base_url="http://localhost", client=("127.0.0.1", 12345)) as client:
         data = client.get("/api/dashboard/events?after=900&boot=oldboot").json()
         assert data["reset"] and len(data["events"]) == 2
         assert client.get("/api/dashboard/events?after=1&boot=newboot").json()[
@@ -298,7 +301,7 @@ def test_independent_backend_reads_real_website_memory(connected_app, monkeypatc
             relay.client = source
             async with httpx.AsyncClient(
                 transport=httpx.ASGITransport(app=module.app),
-                base_url="http://dashboard",
+                base_url="http://localhost",
             ) as dashboard:
                 for resource in [
                     "snapshot",

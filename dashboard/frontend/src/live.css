@@ -1441,3 +1441,5 @@
 .live-wiring path {
   vector-effect: non-scaling-stroke;
 }
+.viewer-login { display: grid; gap: 12px; width: min(360px, 90vw); text-align: left; }
+.viewer-login input { color: var(--ui-text); background: var(--ui-raised); border: 1px solid var(--ui-border); padding: 10px; font: inherit; }
