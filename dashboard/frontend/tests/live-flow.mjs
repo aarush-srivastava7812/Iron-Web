@@ -1,42 +1,24 @@
+// Explicit live acceptance: real NVIDIA calls and a synthetic booking request.
+// Run from the repository root. Does not reserve supplier inventory or pay.
 import { chromium } from "@playwright/test";
-import { mkdir, writeFile } from "node:fs/promises";
-import { resolve } from "node:path";
-const report=resolve(import.meta.dirname,"../../../report/dashboard_live");
-await mkdir(report,{recursive:true});
-const browser=await chromium.launch({channel:"msedge",headless:true});
-const context=await browser.newContext({viewport:{width:1440,height:900}});
-const page=await context.newPage(),dashboard=await context.newPage();
-const errors=[];
-for(const tab of [page,dashboard])tab.on("pageerror",e=>errors.push(e.message));
-await page.goto("http://127.0.0.1:8000/#login");
-console.log("website",(await page.locator("body").innerText()).slice(0,1200));
-const signIn=page.getByRole("button",{name:/Continue as Developer/});
-await signIn.waitFor({state:"visible",timeout:20000});await signIn.click();await page.waitForURL(url=>!url.hash.includes("login"),{timeout:20000});
-await page.goto("http://127.0.0.1:8000/#planner");
-await page.locator("#plannerForm").waitFor({timeout:20000});
-await page.locator('[name="place"]').selectOption({label:"Goa"});
-await page.locator('[name="date"]').fill("2026-12-01");
-await page.locator('[name="duration"]').selectOption("3");
-await page.locator('[name="group"]').selectOption("2");
-await page.locator('[name="budget"]').fill("100000");
-await page.locator('[name="pace"]').selectOption({label:"Relaxed & slow"});
-await dashboard.goto("http://127.0.0.1:5174/");
-await dashboard.screenshot({path:resolve(report,"before-trip.png")});
-const responsePromise=page.waitForResponse(r=>r.url().includes("/messages")&&r.request().method()==="POST",{timeout:300000});
-await page.locator("#plannerForm").getByRole("button",{name:/Create my trip outline/}).click();
-console.log("Trip submitted through website form; waiting for real agents.");
-const response=await responsePromise,body=await response.json();
-const match=response.url().match(/conversations\/([^/]+)\/messages/);
-const result={trip_id:match?.[1],http_status:response.status(),connection_status:body.connection_status,status:body.orchestration?.status,agents:body.orchestration?.agent_results?.map(a=>({agent:a.agent_id,status:a.status,mode:a.execution?.mode,latency_ms:a.latency_ms})),errors};
-console.log(JSON.stringify(result));
-await writeFile(resolve(report,"trip-result.json"),JSON.stringify(result,null,2));
-await page.screenshot({path:resolve(report,"trip-built.png"),fullPage:true});
-await dashboard.getByTestId("live-dashboard").waitFor({timeout:60000});
-await dashboard.waitForTimeout(2500);
-const snapshot=await (await dashboard.request.get("http://127.0.0.1:8200/api/dashboard/snapshot")).json();
-await writeFile(resolve(report,"snapshot.json"),JSON.stringify(snapshot,null,2));
-console.log("Observed dashboard",JSON.stringify({events:snapshot.observations.events.length,agents:snapshot.agents.observed,registered:snapshot.agents.registered,nodes:snapshot.graph.nodes.length,claims:snapshot.shared_memory.claims.length,provider:snapshot.credentials.provider,hosted_calls:snapshot.credentials.hosted_calls}));
-for(const viewport of [{width:1440,height:900},{width:1280,height:720}]){await dashboard.setViewportSize(viewport);for(const view of ["Memory graph","Agent wiring","Activity","Architecture","Resources"]){await dashboard.getByRole("tab",{name:view,exact:true}).click();await dashboard.screenshot({path:resolve(report,`${viewport.width}x${viewport.height}-${view.toLowerCase().replaceAll(" ","-")}.png`)});}}
-await writeFile(resolve(report,"page-errors.json"),JSON.stringify(errors,null,2));
-await browser.close();
-if(result.http_status!==200||result.status!=="ok")process.exitCode=1;
+import fs from "node:fs/promises";
+import assert from "node:assert/strict";
+import path from "node:path";
+const out=path.resolve(process.env.IRONWEB_ACCEPTANCE_REPORT_DIR || "report/dashboard_live");
+await fs.mkdir(out,{recursive:true});
+(async()=>{
+const browser=await chromium.launch({channel:'msedge',headless:true});const c=await browser.newContext({viewport:{width:1440,height:900},acceptDownloads:true});const p=await c.newPage(),d=await c.newPage();const errors=[];for(const t of [p,d])t.on('pageerror',e=>errors.push(e.message));
+let summary={checks:[],browser_errors:errors};
+async function request(method,url,data){const cookies=await c.cookies('http://127.0.0.1:8000');const csrf=cookies.find(x=>x.name==='voyara_csrf')?.value;return c.request.fetch('http://127.0.0.1:8000'+url,{method,data,timeout:300000,headers:csrf?{'X-CSRF-Token':csrf}:{}})}
+try{
+await p.goto('http://127.0.0.1:8000/#login');await p.locator('#developerSignIn').click();await p.waitForURL(u=>!u.hash.includes('login'));summary.checks.push('Local developer sign-in through website');
+await p.goto('http://127.0.0.1:8000/#planner');await p.locator('#plannerForm').waitFor();await p.locator('[name="place"]').selectOption({label:'Kerala'});await p.locator('[name="date"]').fill('2026-12-01');await p.locator('[name="duration"]').selectOption('3');await p.locator('[name="group"]').selectOption('2');await p.locator('[name="budget"]').fill('200000');await p.locator('[name="pace"]').selectOption({label:'Relaxed & slow'});
+await d.goto('http://127.0.0.1:5174/');await d.getByTestId('live-dashboard').waitFor();
+const waiting=p.waitForResponse(r=>r.url().includes('/messages')&&r.request().method()==='POST',{timeout:300000});await p.locator('#plannerForm').getByRole('button',{name:/Create my trip outline/}).click();console.log('Fresh Kerala trip submitted through planner.');const response=await waiting;const body=await response.json();const id=response.url().match(/conversations\/([^/]+)\/messages/)[1];summary.trip_id=id;summary.http_status=response.status();summary.connection_status=body.connection_status;summary.workflow_status=body.orchestration?.status;summary.agents=body.orchestration?.agent_results?.map(a=>({agent:a.agent_id,status:a.status,mode:a.execution?.mode,model:a.execution?.model}));await fs.writeFile(path.join(out,'acceptance.json'),JSON.stringify(summary,null,2));assert.equal(response.status(),200);assert.equal(summary.workflow_status,'ok');assert.equal(summary.agents.length,7);assert(summary.agents.every(a=>a.status==='ok'&&a.mode==='nvidia'));summary.checks.push('Seven hosted specialists completed for Kerala');
+const endpoint='/api/assistant/conversations/'+id;const plan=await request('GET',endpoint+'/plan');assert.equal(plan.status(),200);const saved=await plan.json();assert.equal(saved.stale,false);summary.checks.push('Current itinerary persisted');
+const book=await request('POST',endpoint+'/travel-books',{});assert.equal(book.status(),201,'Travel Book export HTTP '+book.status());const pdf=await request('GET',(await book.json()).download_url);assert.equal(pdf.status(),200);summary.pdf_bytes=(await pdf.body()).length;assert((await pdf.body()).subarray(0,5).toString()==='%PDF-');summary.checks.push('Authenticated Travel Book PDF export');
+for(const name of ['kashmir','kerala']){await p.goto('http://127.0.0.1:8000/catalog/'+name+'_trip/'+name+'_catalog.html');assert((await p.locator('body').innerText()).toLowerCase().includes(name));const shapes=await p.locator('svg').count();assert(shapes>0);summary.checks.push(name+' catalog loads with '+shapes+' SVG illustrations');await p.screenshot({path:path.join(out,name+'-catalog.png')});}
+await p.goto('http://127.0.0.1:8000/#booking?place=Kashmir');await p.locator('#bookingForm').waitFor();for(const [name,value] of Object.entries({first:'Finalisation',last:'Tester',email:'tester@example.com',phone:'+919999999999',date:'2026-12-01'}))await p.locator('#bookingForm [name="'+name+'"]').fill(value);await p.locator('#bookingForm [name="consent"]').check();await p.getByRole('button',{name:/Review trip request/}).click();await p.locator('.booking-review-catalog-card').waitFor({timeout:100000});summary.checks.push('Kashmir booking-review presentation rendered');await p.screenshot({path:path.join(out,'booking-review.png'),fullPage:true});const bookingWait=p.waitForResponse(r=>r.url().endsWith('/website/bookings')&&r.request().method()==='POST',{timeout:20000});await p.getByRole('button',{name:/Confirm booking request/}).click();const booking=await bookingWait;assert.equal(booking.status(),201);summary.booking_status=(await booking.json()).status;assert.equal(summary.booking_status,'requested');summary.checks.push('Booking request saved as requested; no payment');
+await d.reload();await d.getByTestId('live-dashboard').waitFor();await d.waitForTimeout(2300);const snap=await(await c.request.get('http://127.0.0.1:8200/api/dashboard/snapshot')).json();summary.dashboard={boot:snap.observations.boot,registered:snap.agents.registered,observed:snap.agents.observed,trip_events:snap.observations.events.filter(e=>e.trip_id===id).length,provider_model:summary.agents[0]?.model,provider_usage:snap.credentials.usage};assert(summary.dashboard.trip_events>0);assert.equal(errors.length,0);await d.screenshot({path:path.join(out,'fresh-dashboard.png')});console.log(JSON.stringify(summary));
+}catch(e){summary.error=e.message;console.log('Acceptance failed:',e.message);process.exitCode=1;}finally{await fs.writeFile(path.join(out,'acceptance.json'),JSON.stringify(summary,null,2));await fs.writeFile(path.join(out,'trip-result.json'),JSON.stringify(summary,null,2));await browser.close();}
+})();
