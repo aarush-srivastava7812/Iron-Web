@@ -52,7 +52,9 @@ def main():
         os.environ["COOKIE_SECURE"] = "false"
         if not os.environ.get("SECRET_KEY") or os.environ["SECRET_KEY"].startswith(("dev-only", "change-me")):
             os.environ["SECRET_KEY"] = values["LOCAL_SESSION_SECRET"]
-        os.environ.setdefault("DATABASE_URL", "sqlite:///" + (root / "data/voyara_app/travel.db").as_posix())
+        data = root / "data" / "voyara_app"
+        data.mkdir(parents=True, exist_ok=True)
+        os.environ.setdefault("DATABASE_URL", "sqlite:///" + (data / "travel.db").as_posix())
         from seed import run
         run()
         uvicorn.run("app.main:app", host="127.0.0.1", port=8000, workers=1)
