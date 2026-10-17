@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { mkdir, writeFile, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 const report = process.env.IRONWEB_LIVE_REPORT_DIR
-  ? resolve(process.env.IRONWEB_LIVE_REPORT_DIR)
+  ? resolve(import.meta.dirname, "../../..", process.env.IRONWEB_LIVE_REPORT_DIR)
   : resolve(import.meta.dirname, "../../../report/dashboard_live");
 test("real live feed synchronizes graph, inspector, replay, resources and layout", async ({
   page,
@@ -138,8 +138,17 @@ test("real live feed synchronizes graph, inspector, replay, resources and layout
   );
   await page.getByRole("button", { name: "Close dialog", exact: true }).click();
   await writeFile(
-    resolve(report, "verified-snapshot.json"),
-    JSON.stringify(data, null, 2),
+    resolve(report, "verified-summary.json"),
+    JSON.stringify({
+      trip_id: testedTrip,
+      registered_agents: data.agents.registered,
+      observed_events: data.observations.events.length,
+      tested_trip_events: data.observations.events.filter(e => e.trip_id === testedTrip).length,
+      captured_contexts: data.tiers.captured_contexts.length,
+      no_events_fixture_requested: !requests.some(url => url.includes("events.json")),
+      browser_errors: errors,
+      scope: "Counts only; no raw memory, context, vector or credential export",
+    }, null, 2),
   );
   await writeFile(
     resolve(report, "verified-errors.json"),
