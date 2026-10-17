@@ -8,7 +8,6 @@ from agents.schemas import (
     AgentResult,
     AgentStatus,
     DestinationIdea,
-    Evidence,
     MemoryContext,
     TripBrief,
 )

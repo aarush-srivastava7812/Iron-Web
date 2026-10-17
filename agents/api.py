@@ -17,7 +17,6 @@ from agents.config import settings
 from agents.schemas import OrchestrationRequest, OrchestrationResponse
 from agents.validation.result_validator import validate_results
 
-from .memory_gateway.gateway import MemoryGateway
 from .orchestrator import TravelOrchestrator
 from .resource_manager.resource_monitor import ResourceMonitor
 
