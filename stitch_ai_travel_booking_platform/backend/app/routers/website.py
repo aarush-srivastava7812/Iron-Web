@@ -190,7 +190,7 @@ class AgentReviewIn(BaseModel):
 
 
 @router.post("/agent-review")
-def agent_review(body: AgentReviewIn, db: Session = Depends(get_db)):
+def agent_review(body: AgentReviewIn, user: User = Depends(current_user), db: Session = Depends(get_db)):
     # 1. Resolve destination
     dest = None
     if body.destination_name:
@@ -223,6 +223,7 @@ def agent_review(body: AgentReviewIn, db: Session = Depends(get_db)):
     nim_client = get_nim_client()
     system_prompt = (
         "You are Voyara's Multi-Agent Travel Review Council. Generate a rigorous, systematic review for a trip request. "
+        "This is one hosted model review, not independently executed agents or supplier verification. All inventory is synthetic. Never claim verified amenities, availability, taxes or guaranteed savings. "
         "Return ONLY a JSON object with keys: trip_consultant, stay_agent, food_guide_agent, budget_booking_agent. "
         "Each key must map to an object with fields: verdict (1-2 sentences), score (e.g. '9.4/10'), and recommendation (concrete advice for this specific destination). "
         f"The destination is strictly {dest.name}, {dest.state}, India. "
@@ -246,51 +247,15 @@ def agent_review(body: AgentReviewIn, db: Session = Depends(get_db)):
     except Exception:
         ai_data = None
 
-    # Fallback multi-agent evaluation tailored directly to the destination
-    def _fallback_reviews():
-        food_names = [f.name for f in foods]
-        stay_names = [s.name for s in stays]
-        exp_names = [e.name for e in experiences]
-        
-        is_kashmir = "kashmir" in dest.name.lower()
-        is_goa = "goa" in dest.name.lower()
-
-        if is_kashmir:
-            consultant_v = f"Optimal Himalayan alpine timing. The {dest.name} valley is suited for unhurried exploration across Dal Lake, Shankaracharya Hill, and Gulmarg."
-            consultant_r = "Reserve a morning Shikara ride at sunrise to witness the floating market before visiting Mughal gardens."
-            stay_v = f"Matched with authentic valley accommodations ({', '.join(stay_names[:2]) or 'Snowline Lodge'}). Room heating and winterized amenities are verified."
-            stay_r = "Verify wood-panelled heating and panoramic mountain or lake views for crisp morning weather."
-            food_v = f"Curated authentic Kashmiri dining ({', '.join(food_names[:2]) or 'Kashmir Family Kitchen'}). Authentic Wazwan cuisine and Kahwa tea spots selected."
-            food_r = "Must experience: 7-course traditional Wazwan (Rogan Josh, Gushtaba, Rista) paired with saffron saffron Kahwa."
-            budget_v = f"Transparent package pricing for {party_size} travelers. Excellent value with zero surprise surcharges."
-            budget_r = "All local taxes and route inclusions are checked. No immediate deposit required until itinerary confirmation."
-        elif is_goa:
-            consultant_v = "Tropical coastal route. Ideal for balancing heritage Latin Quarter walks in Fontainhas with serene North/South Goa beach escapes."
-            consultant_r = "Plan evening sunset walks along coastal cliffs and keep afternoons relaxed."
-            stay_v = f"Heritage and coastal resort options matched ({', '.join(stay_names[:2]) or 'Goan coastal villas'})."
-            stay_r = "Select stays with pool access and proximity to uncrowded coastal villages."
-            food_v = f"Authentic Goan Saraswat and Portuguese-influenced cuisine ({', '.join(food_names[:2]) or 'Beachside shacks'})."
-            food_r = "Sample fresh catch Malvan/Goan fish curry thali, Poi bread, and Bebinca layered dessert."
-            budget_v = "Balanced coastal budget estimate with verified seasonal tariff protection."
-            budget_r = "Includes on-ground support and route reservations with full cancellation transparency."
-        else:
-            consultant_v = f"Well-structured route for {dest.name}. The itinerary balances regional highlights with comfortable transit pacing."
-            consultant_r = f"Enjoy {exp_names[0] if exp_names else 'local cultural walks'} during early morning hours for the best experience."
-            stay_v = f"Curated hospitality matched to {dest.name} ({', '.join(stay_names[:2]) or 'Selected stays'}). High verified guest ratings."
-            stay_r = "Comfort category verified with breakfast inclusions and flexible check-in."
-            food_v = f"Regional culinary options highlighted for {dest.name} ({', '.join(food_names[:2]) or 'Local dining'})."
-            food_r = "Sample authentic regional delicacies and traditional market eateries."
-            budget_v = f"Reliable pricing model for {party_size} guests with complete cost transparency."
-            budget_r = "All quotes are indicative and verified against the backend catalog."
-
-        return {
-            "trip_consultant": {"verdict": consultant_v, "score": "9.5/10", "recommendation": consultant_r},
-            "stay_agent": {"verdict": stay_v, "score": "9.3/10", "recommendation": stay_r},
-            "food_guide_agent": {"verdict": food_v, "score": "9.7/10", "recommendation": food_r},
-            "budget_booking_agent": {"verdict": budget_v, "score": "10/10", "recommendation": budget_r},
-        }
-
-    reviews = (ai_data if isinstance(ai_data, dict) and "trip_consultant" in ai_data else None) or _fallback_reviews()
+    expected = ("trip_consultant", "stay_agent", "food_guide_agent", "budget_booking_agent")
+    if not isinstance(ai_data, dict) or any(
+        not isinstance(ai_data.get(key), dict)
+        or not all(isinstance(ai_data[key].get(field), str) and ai_data[key][field].strip()
+                   for field in ("verdict", "score", "recommendation"))
+        for key in expected
+    ):
+        raise HTTPException(503, "Hosted booking review unavailable. Your quote is still available; no agent assessment was completed.")
+    reviews = ai_data
 
     def _agent_card(agent_id, name, badge, color, icon, key):
         info = reviews.get(key, {})
@@ -300,16 +265,16 @@ def agent_review(body: AgentReviewIn, db: Session = Depends(get_db)):
             "badge": badge,
             "color": color,
             "icon": icon,
-            "verdict": info.get("verdict", "Verified by multi-agent analysis."),
-            "score": info.get("score", "9.4/10"),
-            "recommendation": info.get("recommendation", f"Tailored for your {dest.name} journey.")
+            "verdict": info["verdict"],
+            "score": info["score"],
+            "recommendation": info["recommendation"]
         }
 
     agents_list = [
         _agent_card("trip_consultant", "Trip Consultant Agent", "Season & Pace Analysis", "sky", "compass", "trip_consultant"),
-        _agent_card("stay_agent", "Stay Specialist Agent", "Comfort & Heating Match", "peach", "bed", "stay_agent"),
+        _agent_card("stay_agent", "Stay Specialist Agent", "Catalog Stay Notes", "peach", "bed", "stay_agent"),
         _agent_card("food_guide_agent", "Food Guide Agent", f"{dest.name} Culinary Pairings", "orange", "sparkle", "food_guide_agent"),
-        _agent_card("budget_booking_agent", "Fare & Booking Agent", "Zero-Risk Pricing", "mint", "wallet", "budget_booking_agent")
+        _agent_card("budget_booking_agent", "Fare & Booking Agent", "Indicative Cost Notes", "mint", "wallet", "budget_booking_agent")
     ]
 
     return {

@@ -889,7 +889,7 @@ function bindForms(route, query) {
                   : {}),
             },
           ];
-    status.innerHTML = `<span style="color:var(--orange)">✦ Voyara Multi-Agent System is reviewing your trip request...</span>`;
+    status.innerHTML = `<span style="color:var(--orange)">✦ Loading an optional hosted review of the synthetic catalog...</span>`;
     const targetPlace = query.get("place") || (item ? item.place || item.name : "");
     const [quote, agentData] = await Promise.all([
       api("/website/quote", {
@@ -924,15 +924,15 @@ function bindForms(route, query) {
     const review = document.getElementById("bookingReview");
     const itemImg = item?.img ? views.photo(item.img) : "https://images.unsplash.com/photo-1709338573277-c161cbf8702c?auto=format&fit=crop&w=900&q=82";
     const itemTag = item?.tag || item?.type || (kind === "stay" ? "Hotel & Stay" : kind === "package" ? "Holiday Package" : "Travel Route");
-    const itemRating = item?.rating ? `★ ${escapeHTML(item.rating)} <small>(${escapeHTML(item.reviews || "verified")})</small>` : "★ 4.8 <small>(curated)</small>";
+    const itemRating = item?.rating ? `★ ${escapeHTML(item.rating)} <small>(${escapeHTML(item.reviews || "demo catalog")})</small>` : "★ 4.8 <small>(curated)</small>";
     const itemDuration = item?.nights ? `${item.nights} Nights / ${item.nights + 1} Days` : (kind === "stay" ? `${start} to ${f.get("end_date") || "check-out"}` : "Full Day Activity");
     const destName = agentData?.destination?.name || targetPlace || (item?.name || "India");
 
     const agentsHtml = agentData?.agents ? `
       <div class="review-agent-council">
         <div class="council-heading">
-          <h3><span>✦</span> AI Multi-Agent Council Evaluation</h3>
-          <span class="council-badge">Voyara Multi-Agent System</span>
+          <h3><span>✦</span> Hosted Catalog Review</h3>
+          <span class="council-badge">One model · not supplier verification</span>
         </div>
         <div class="council-grid">
           ${agentData.agents.map((a) => `
@@ -955,7 +955,7 @@ function bindForms(route, query) {
           `).join("")}
         </div>
       </div>
-    ` : "";
+    ` : `<p class="detail-block" role="status">Hosted booking review unavailable. The server quote remains available. No agent assessment was completed.</p>`;
 
     const curatedHtml = agentData ? `
       <div class="review-curated-section">
@@ -998,7 +998,7 @@ function bindForms(route, query) {
           <div class="review-catalog-main">
             <div class="eyebrow" style="color:var(--orange);letter-spacing:1px;font-weight:700">REVIEW YOUR TRIP REQUEST</div>
             <h2>${escapeHTML(item?.name || name)} ${kind === "package" ? "Holiday" : ""}</h2>
-            <p style="color:var(--muted);font-size:13px;line-height:1.5;margin-bottom:8px">${escapeHTML(agentData?.destination?.description || item?.desc || "Handcrafted itinerary with verified local stays, experiences, and on-trip support.")}</p>
+            <p style="color:var(--muted);font-size:13px;line-height:1.5;margin-bottom:8px">${escapeHTML(agentData?.destination?.description || item?.desc || "Illustrative catalog request; supplier details require confirmation.")}</p>
             <div class="review-details-grid">
               <div class="review-detail-cell">
                 <small>Travel Date / Duration</small>

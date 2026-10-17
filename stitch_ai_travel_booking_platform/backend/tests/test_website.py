@@ -209,3 +209,30 @@ def test_existing_sqlite_favorites_upgrade_preserves_records(tmp_path,monkeypatc
         assert connection.exec_driver_sql('SELECT user_id,item_type,item_id FROM favorites').all()==[(uid,'stay',1)]
         connection.exec_driver_sql("INSERT INTO favorites VALUES (?, 'package', 1, '2026-10-16 00:00:00')",(uid,))
     engine.dispose()
+
+
+def test_failed_hosted_review_is_unavailable_and_quote_still_works(site, monkeypatch):
+    from app.routers import website
+    c, h, _, _ = site
+    package, items = package_items(c)
+    class Unavailable:
+        def chat_json(self, *args, **kwargs):
+            return None
+    monkeypatch.setattr(website, 'get_nim_client', lambda: Unavailable())
+    assert c.post('/api/website/agent-review', json={'items':items}).status_code==401
+    response=c.post('/api/website/agent-review', headers=h, json={'items':items,'destination_name':'Kashmir'})
+    assert response.status_code==503
+    assert 'unavailable' in response.json()['detail']
+    assert '9.4' not in response.text and 'agents' not in response.json()
+    assert c.post('/api/website/quote', headers=h, json={'items':items}).status_code==200
+
+
+def test_partial_hosted_review_cannot_fill_missing_roles_with_fake_scores(site, monkeypatch):
+    from app.routers import website
+    c, h, _, _ = site
+    _, items = package_items(c)
+    class Partial:
+        def chat_json(self, *args, **kwargs):
+            return {'trip_consultant':{'verdict':'One observation'}}
+    monkeypatch.setattr(website, 'get_nim_client', lambda: Partial())
+    assert c.post('/api/website/agent-review', headers=h, json={'items':items}).status_code==503
