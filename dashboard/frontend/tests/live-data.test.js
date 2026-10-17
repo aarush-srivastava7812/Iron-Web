@@ -5,7 +5,17 @@ import {
   contextsAt,
   contextUnit,
   isConflict,
+  lastCapturedCardBytes,
 } from "../src/liveData.js";
+test("card allocation uses the latest capture without double counting or inventing zero", () => {
+  assert.equal(lastCapturedCardBytes([]), null);
+  assert.equal(lastCapturedCardBytes([{ event_id: 1 }]), null);
+  assert.equal(lastCapturedCardBytes([{ event_id: 1, residency: { resident_bytes: 0 } }]), 0);
+  assert.equal(lastCapturedCardBytes([
+    { event_id: 2, residency: { resident_bytes: 4096 } },
+    { event_id: 1, residency: { resident_bytes: 4096 } },
+  ]), 4096);
+});
 const context = {
   agent_id: "itinerary_planner",
   event_id: 2,

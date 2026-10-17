@@ -10,6 +10,14 @@ export const COLORS = {
   context: "var(--tier-context)",
   durable: "var(--tier-evidence)",
 };
+// Captures can refer to the same shared device allocation. Never sum them.
+export function lastCapturedCardBytes(contexts) {
+  const latest = [...contexts].sort((a, b) =>
+    (a.event_id ?? a.timestamp ?? 0) - (b.event_id ?? b.timestamp ?? 0)
+  ).at(-1);
+  const value = latest?.residency?.resident_bytes;
+  return Number.isFinite(value) ? value : null;
+}
 export const agentColor = (id) =>
   /planner|orchestrator/.test(id || "")
     ? "var(--agent-planner)"

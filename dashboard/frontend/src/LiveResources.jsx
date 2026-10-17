@@ -15,6 +15,7 @@ import {
   isConflict,
   contextUnit,
   eventLabel,
+  lastCapturedCardBytes,
 } from "./liveData.js";
 import { Badge, Json } from "./LivePanels.jsx";
 export function Resources({ data, graph, event, onSelect, events }) {
@@ -228,19 +229,15 @@ export function Resources({ data, graph, event, onSelect, events }) {
               }
             />
             <Metric
-              label="Captured CUDA card bytes"
-              value={bytes(
-                graph.contexts.reduce(
-                  (s, c) => s + (c.residency?.resident_bytes || 0),
-                  0,
-                ),
-              )}
+              label="Last captured CUDA card allocation"
+              value={bytes(lastCapturedCardBytes(graph.contexts))}
             />
           </div>
           <p className="truth-note">
             Snapshot observations, not a fabricated historical sparkline. CPU
             card matching uses no CUDA card allocation; device-wide VRAM may
-            belong to other processes.
+            belong to other processes. Captures can share an allocation; they
+            are not summed across agents. Missing captures are unavailable.
           </p>
           <details>
             <summary>Device and residency details</summary>
