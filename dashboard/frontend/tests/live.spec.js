@@ -1,7 +1,9 @@
 import { test, expect } from "@playwright/test";
 import { mkdir, writeFile, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
-const report = resolve(import.meta.dirname, "../../../report/dashboard_live");
+const report = process.env.IRONWEB_LIVE_REPORT_DIR
+  ? resolve(process.env.IRONWEB_LIVE_REPORT_DIR)
+  : resolve(import.meta.dirname, "../../../report/dashboard_live");
 test("real live feed synchronizes graph, inspector, replay, resources and layout", async ({
   page,
 }) => {
@@ -20,7 +22,7 @@ test("real live feed synchronizes graph, inspector, replay, resources and layout
   const data = await response.json();
   expect(data.agents.registered).toBe(9);
   expect(data.observations.events.length).toBeGreaterThan(0);
-  const testedTrip = JSON.parse(
+  const testedTrip = process.env.IRONWEB_TEST_TRIP_ID || JSON.parse(
     await readFile(resolve(report, "trip-result.json"), "utf8"),
   ).trip_id;
   expect(
@@ -34,7 +36,7 @@ test("real live feed synchronizes graph, inspector, replay, resources and layout
     data.shared_memory.claims.some(
       (c) =>
         c.properties.predicate === "destination" &&
-        c.properties.value_json.includes("Goa"),
+        c.properties.value_json.includes(process.env.IRONWEB_TEST_DESTINATION || "Goa"),
     ),
   ).toBeTruthy();
   await expect(
