@@ -1,16 +1,29 @@
-"""Run either local memory owner or read-only relay with one private shared grant."""
+"""Run the local website, memory relay, or configured dashboard frontend."""
 import argparse
 import os
 from pathlib import Path
 import secrets
+import shutil
+import subprocess
 import sys
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("service", choices=["website", "dashboard"])
+    parser.add_argument("service", choices=["website", "dashboard", "frontend"])
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
+    if args.service == "frontend":
+        frontend = root / "dashboard" / "frontend"
+        node = shutil.which("node")
+        vite = frontend / "node_modules" / "vite" / "bin" / "vite.js"
+        if not node or not vite.is_file():
+            parser.error("Install Node.js and run npm --prefix dashboard/frontend ci first.")
+        # Always load the React JSX plugin, even when launched from another directory.
+        raise SystemExit(subprocess.call([
+            node, str(vite), str(frontend), "--config", str(frontend / "vite.config.js"),
+            "--host", "127.0.0.1", "--port", "5174", "--strictPort", "--force",
+        ], cwd=frontend))
     sys.path.insert(0, str(root))
     backend = root / "stitch_ai_travel_booking_platform" / "backend"
     sys.path.insert(0, str(backend))
