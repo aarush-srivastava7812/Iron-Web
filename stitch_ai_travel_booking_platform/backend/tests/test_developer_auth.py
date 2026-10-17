@@ -88,3 +88,11 @@ def test_inactive_developer_cannot_sign_in(developer):
         db.get(User,first['id']).is_active=False
         db.commit()
     assert client.post('/api/auth/developer',headers=headers).status_code == 409
+
+
+@pytest.mark.parametrize('header', ['forwarded', 'x-forwarded-host'])
+def test_developer_login_refuses_other_proxy_headers(developer, header):
+    client, _ = developer
+    assert client.get('/api/auth/developer/config', headers={header:'remote.example'}).json()=={'enabled':False}
+    assert client.post('/api/auth/developer', headers={'Origin':'http://localhost:8088',
+        'X-Voyara-Developer':'1', header:'remote.example'}).status_code==404

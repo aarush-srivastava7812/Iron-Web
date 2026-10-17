@@ -20,7 +20,7 @@ def _developer_available(request: Request):
     return bool(settings.developer_login_enabled and not settings.cookie_secure
                 and request.client and request.client.host in {"127.0.0.1", "::1"}
                 and request.url.hostname in {"localhost", "127.0.0.1", "::1"}
-                and not request.headers.get("x-forwarded-for"))
+                and not any(key in request.headers for key in ("x-forwarded-for", "x-forwarded-host", "forwarded")))
 
 
 @router.get("/developer/config")
