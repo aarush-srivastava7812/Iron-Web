@@ -14,9 +14,15 @@ start each service in its own terminal:
 ```powershell
 .\.venv\Scripts\python.exe scripts/run_live_dashboard.py website
 .\.venv\Scripts\python.exe scripts/run_live_dashboard.py dashboard
-cd dashboard/frontend
-npm run dev
+.\.venv\Scripts\python.exe scripts/run_live_dashboard.py frontend
 ```
+
+The frontend launcher pins the project directory and Vite configuration and
+refreshes optimized dependencies. This ensures the React JSX plugin loads;
+an unconfigured development server can otherwise crash with `React is not defined`
+and leave a blank page. It fails if port 5174 is already occupied instead of
+silently moving to another port. From `dashboard/frontend`, `npm run dev` uses
+the same explicit configuration.
 
 - Website: http://127.0.0.1:8000
 - Dashboard React UI: http://127.0.0.1:5174
