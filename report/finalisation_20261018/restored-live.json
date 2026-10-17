@@ -1,0 +1,53 @@
+{
+  "trip_id": "a00621b6-bfc2-479a-953c-7a4207038d13",
+  "scope": "Restored original-root services after clean-source startup test; existing private runtime, actual NVIDIA execution",
+  "browser_errors": [],
+  "workflow_status": "ok",
+  "agents": [
+    {
+      "agent": "trip_consultant",
+      "status": "ok",
+      "mode": "nvidia",
+      "model": "openai/gpt-oss-20b"
+    },
+    {
+      "agent": "explore_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "model": "openai/gpt-oss-20b"
+    },
+    {
+      "agent": "food_guide_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "model": "openai/gpt-oss-20b"
+    },
+    {
+      "agent": "stay_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "model": "openai/gpt-oss-20b"
+    },
+    {
+      "agent": "tour_guide_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "model": "openai/gpt-oss-20b"
+    },
+    {
+      "agent": "itinerary_planner",
+      "status": "ok",
+      "mode": "nvidia",
+      "model": "openai/gpt-oss-20b"
+    },
+    {
+      "agent": "budget_booking_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "model": "openai/gpt-oss-20b"
+    }
+  ],
+  "budget": 80000,
+  "trip_events": 27,
+  "passed": true
+}

@@ -1,0 +1,10 @@
+{
+  "source_revision": "3091669",
+  "source": "fresh git archive; cached npm ci/build for both frontends",
+  "python_environment": "existing .venv reused; not a fresh dependency installation",
+  "provider_mode": "explicit offline test process only",
+  "graph": "separate disposable FalkorDB 6389; no live volume mounted",
+  "copied_private_runtime_files": false,
+  "browser_errors": [],
+  "error": "page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/#login\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:8000/#login\", waiting until \"load\"\u001b[22m\n"
+}

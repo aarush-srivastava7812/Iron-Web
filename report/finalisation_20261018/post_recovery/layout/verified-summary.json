@@ -1,0 +1,10 @@
+{
+  "trip_id": "a00621b6-bfc2-479a-953c-7a4207038d13",
+  "registered_agents": 9,
+  "observed_events": 27,
+  "tested_trip_events": 27,
+  "captured_contexts": 8,
+  "no_events_fixture_requested": true,
+  "browser_errors": [],
+  "scope": "Counts only; no raw memory, context, vector or credential export"
+}

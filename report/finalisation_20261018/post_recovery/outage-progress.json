@@ -1,0 +1,4 @@
+{
+  "stage": "complete",
+  "result": "outage.json; database restart and actual relay disconnect/reconnect passed"
+}

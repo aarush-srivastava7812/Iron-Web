@@ -7,6 +7,11 @@ The old fixture and replay helpers remain intact for compatibility tests only.
 
 ## Local run
 
+On the recovered 18 October workstation, start the database with
+`docker compose -f compose.yaml -f compose.recovery.yaml up -d --wait falkordb`.
+The override selects the approved activation volume; plain Compose still names
+the preserved failing original. See [recovery evidence](../report/finalisation_20261018/RECOVERY.md).
+
 Use the existing environment and running FalkorDB (`docker compose up -d`). Keep
 one website process per embedded Qdrant/journal directory. From repository root,
 start each service in its own terminal:
@@ -76,6 +81,12 @@ and Escape closes panels/clears selection. URL state uses `view`, `event`, `mem`
 The dock groups the nine agents into Planning/Research/Review workstreams; the
 Activity view shows every actual actor separately. Chapters target actual event
 kinds, rather than fabricated milestones.
+
+The relay emits snapshots every two seconds. If no snapshot/error heartbeat
+arrives for ten seconds, the UI marks retained data stale and reopens the stream,
+including when a proxy leaves a dead SSE connection open without an error event.
+The relay can cache a read for 1.5 seconds; allow the next feed refresh when
+checking a forget/update. Stale snapshots are not substituted with fixture data.
 
 Context history is captured per event and can be replayed. The graph/claim store
 and hardware/provider aggregates are latest snapshots, not a fabricated complete

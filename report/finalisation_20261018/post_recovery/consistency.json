@@ -1,0 +1,18 @@
+{
+  "checks": [
+    "Live budget lowering: website shows INR 80000, saved plan stale, dashboard current/superseded evidence",
+    "Live hard-rule conflict: actual planning API paused, reply visible on website and dashboard contains both scoped rules",
+    "Authenticated stranger denied private trip APIs (404) and publication source (401); relay remains deliberately published demo scope",
+    "Live UI Forget this event: 204, marker absent from dashboard claims and vectors after feed refresh; same-ID replay separately covered by isolated service test",
+    "Hosted revalidation rebuilt a current plan against INR 80000 after restoring test profile"
+  ],
+  "browser_errors": [],
+  "conflict_status": "needs_clarification",
+  "isolation_statuses": [
+    404,
+    404,
+    404,
+    404
+  ],
+  "passed": true
+}

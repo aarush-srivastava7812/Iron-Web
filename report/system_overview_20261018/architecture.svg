@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-label="Website owns agents and memory. Independent dashboard reads published memory over HTTP.">
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9" fill="#70818c"/></marker><style>text{font-family:Arial,sans-serif;fill:#24323e;font-size:16px}.title{font-weight:700;font-size:19px}.small{font-size:14px;fill:#53636e}.line{stroke:#70818c;stroke-width:2;fill:none;marker-end:url(#arrow)}.box{fill:#fff;stroke:#d1dce1;stroke-width:1.5}</style></defs>
+<rect width="1000" height="520" rx="20" fill="#f1f5f5"/>
+<rect x="26" y="25" width="588" height="470" rx="15" fill="#e8f0ef"/>
+<text x="48" y="55" class="small">WEBSITE AND MEMORY OWNER</text>
+<rect class="box" x="50" y="80" width="235" height="72" rx="10"/><text x="69" y="111" class="title">Voyara website</text><text x="69" y="135" class="small">Authenticated travel workflows</text>
+<path class="line" d="M285 116H330"/>
+<rect class="box" x="333" y="80" width="253" height="72" rx="10"/><text x="351" y="111" class="title">Backend + travel agents</text><text x="351" y="135" class="small">NVIDIA tools / exact validation</text>
+<path class="line" d="M460 153V195"/>
+<rect class="box" x="50" y="199" width="536" height="151" rx="10"/><text x="69" y="230" class="title">Iron Web memory runtime</text>
+<rect x="69" y="249" width="153" height="76" rx="8" fill="#fff0e3"/><text x="83" y="277" font-weight="700">T1 · Hot context</text><text x="83" y="302" class="small">Instructions + brief</text>
+<rect x="239" y="249" width="153" height="76" rx="8" fill="#f3f1d7"/><text x="253" y="277" font-weight="700">T2 · Context cards</text><text x="253" y="302" class="small">Task / mood views</text>
+<rect x="409" y="249" width="158" height="76" rx="8" fill="#e1e8ef"/><text x="423" y="277" font-weight="700">T3 · Evidence</text><text x="423" y="302" class="small">Durable authority</text>
+<path class="line" d="M318 351V385"/>
+<rect class="box" x="50" y="390" width="159" height="75" rx="10"/><text x="68" y="420" font-weight="700">FalkorDB</text><text x="68" y="445" class="small">Claims / graph</text>
+<rect class="box" x="228" y="390" width="169" height="75" rx="10"/><text x="244" y="420" font-weight="700">Embedded Qdrant</text><text x="244" y="445" class="small">Vectors / records</text>
+<rect class="box" x="416" y="390" width="170" height="75" rx="10"/><text x="432" y="420" font-weight="700">SQLite journal</text><text x="432" y="445" class="small">Receipts / recovery</text>
+<path d="M318 385H130V390M318 385H500V390" stroke="#70818c" fill="none" stroke-width="2"/>
+<rect x="641" y="25" width="333" height="470" rx="15" fill="#eaf2f7"/><text x="663" y="55" class="small">SEPARATE READ-ONLY MONITOR</text>
+<rect class="box" x="665" y="80" width="285" height="72" rx="10"/><text x="686" y="111" class="title">React dashboard</text><text x="686" y="135" class="small">Graph / activity / context / replay</text>
+<path class="line" d="M808 153V203"/><text x="828" y="183" class="small">HTTP / SSE</text>
+<rect class="box" x="665" y="209" width="285" height="94" rx="10"/><text x="686" y="241" class="title">Dashboard backend</text><text x="686" y="266" class="small">Server-held publication grant</text><text x="686" y="289" class="small">No embedded store writer</text>
+<path class="line" d="M665 276H590"/><text x="680" y="345" class="small">Reads an explicitly published</text><text x="680" y="366" class="small">traveler / optional trip scope.</text><text x="680" y="413" class="small">Inspection does not create</text><text x="680" y="434" class="small">new agent context or inference.</text>
+</svg>

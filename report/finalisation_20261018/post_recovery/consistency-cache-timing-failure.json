@@ -1,0 +1,16 @@
+{
+  "checks": [
+    "Live budget lowering: website shows INR 80000, saved plan stale, dashboard current/superseded evidence",
+    "Live hard-rule conflict: actual planning API paused, reply visible on website and dashboard contains both scoped rules",
+    "Authenticated stranger denied private trip APIs (404) and publication source (401); relay remains deliberately published demo scope"
+  ],
+  "browser_errors": [],
+  "conflict_status": "needs_clarification",
+  "isolation_statuses": [
+    404,
+    404,
+    404,
+    404
+  ],
+  "error": "The expression evaluated to a falsy value:\n\n  assert(!JSON.stringify(after.shared_memory.claims).includes(marker))\n"
+}

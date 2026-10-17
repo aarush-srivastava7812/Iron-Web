@@ -1,0 +1,12 @@
+{
+  "original_volume_untouched": true,
+  "recovered_live_volume": "iron_web_falkordb_recovered_live_20261018",
+  "database_down_visible": true,
+  "kept_dashboard": true,
+  "database_restart_recovered": true,
+  "current_budget_claim_preserved": true,
+  "relay_disconnect_visible": true,
+  "relay_reconnect_passed": true,
+  "passed": true,
+  "relay_restart_method": "Verified hidden launcher; child processes do not inherit captured output pipes"
+}

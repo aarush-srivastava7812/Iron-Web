@@ -1,0 +1,9 @@
+{
+  "database_down_visible": true,
+  "kept_dashboard": true,
+  "error": "page.waitForFunction: Timeout 30000ms exceeded.",
+  "recovery_blocker": "FalkorDB v4.20.7 container exits 139 during GRAPH.EFFECT AOF replay. Original volume preserved; no AOF truncation/deletion or live cutover authorized.",
+  "database_stopped_to_end_restart_loop": true,
+  "upstream_related_issue": "https://github.com/FalkorDB/FalkorDB/issues/2201",
+  "upstream_scope": "Similar crash class, not proof of identical trigger; local crash references a test_app graph. No LOAD CSV dependency was established locally."
+}

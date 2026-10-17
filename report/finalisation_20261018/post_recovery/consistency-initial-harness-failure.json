@@ -1,0 +1,7 @@
+{
+  "checks": [
+    "Live budget lowering: website shows INR 80000, saved plan stale, dashboard current/superseded evidence"
+  ],
+  "browser_errors": [],
+  "error": "page.waitForResponse: Timeout 30000ms exceeded while waiting for event \"response\""
+}

@@ -1,5 +1,14 @@
 # Iron Web memory
 
+Finalisation status, 18 October 2026: a persisted FalkorDB `GRAPH.EFFECT` replay
+crash required recovery. With explicit approval, a tested fixture-filtered copy
+is now active; the original and pristine backup are preserved. Fresh hosted
+planning, booking requests and consistency checks passed after cutover. Use the
+explicit recovery override on this workstation; plain Compose still names the
+failing original volume. Do not delete either volume or reset its AOF. See the dated
+[finalisation report](report/finalisation_20261018/README.md),
+[system report](report/system_overview_20261018/report.md), and [demo guide](DEMO.md).
+
 Text memory backed by embedded Qdrant and a FalkorDB graph service. The application saves, updates, deletes and retrieves memories, supports explicit validity intervals, and exposes a local dashboard and an in-process Python tool adapter.
 
 The supported application is in `memory/`, `server.py`, and `web/`. Optional experiments are in `research/`. Earlier designs, phase scripts, reports and unused source are preserved under `archive/2026-10-12/`; they describe the earlier implementation.
@@ -7,6 +16,10 @@ The supported application is in `memory/`, `server.py`, and `web/`. Optional exp
 ## Run
 
 Use Python 3.12 and Docker Desktop (or an existing FalkorDB service). For a new CPU environment:
+
+The following base Compose command is for a fresh installation. On the recovered
+workstation use `docker compose -f compose.yaml -f compose.recovery.yaml up -d --wait falkordb`
+instead, and keep the override on subsequent database operations.
 
 ```powershell
 py -3.12 -m venv .venv-cpu
@@ -65,6 +78,66 @@ The [reranker diagnosis](report/reranker_diagnosis_20261014/report.md) profiles 
 Optional profiling dependencies are in `requirements/profiling.txt`; legacy comparisons additionally use `requirements/migration.txt`. The full test command is `python scripts/full_graph_analysis.py --run-id NEW_RUN_ID --report report/NEW_REPORT`. Retained inputs and the recorded CUDA runtime are required. Do not reuse a completed run ID for different source/configuration settings.
 
 ## Connected travel application
+
+For the website and separate dashboard, install the application/relay requirements
+and both frontend dependency sets, then build the website:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements/application.txt -r dashboard/backend/requirements.txt
+npm --prefix stitch_ai_travel_booking_platform/frontend ci
+npm --prefix stitch_ai_travel_booking_platform/frontend run build
+npm --prefix dashboard/frontend ci
+```
+
+Python 3.12+ and Node 22.12+ are required. Configure `NVIDIA_API_KEY` privately
+in `stitch_ai_travel_booking_platform/backend/.env` for hosted execution. The
+unchanged default is NVIDIA NIM `openai/gpt-oss-20b`; `NIM_MODEL` and
+`NIM_AGENT_MODEL` override their respective model settings. Never put keys or
+publication grants in `VITE_` variables. Revoke any key exposed by the historical
+imported guide, even though the maintained file has been redacted.
+
+On the recovered workstation use these commands from the repository root;
+each launcher needs its own terminal. The external activation volume must already
+exist; the override does not reconstruct data in a fresh checkout:
+
+```powershell
+docker compose -f compose.yaml -f compose.recovery.yaml up -d --wait falkordb
+.\.venv\Scripts\python.exe scripts/preflight.py --mode start
+.\.venv\Scripts\python.exe scripts/run_live_dashboard.py website
+.\.venv\Scripts\python.exe scripts/run_live_dashboard.py dashboard
+.\.venv\Scripts\python.exe scripts/run_live_dashboard.py frontend
+```
+
+Then run `scripts/preflight.py --mode running`. Ports are website 8000,
+dashboard 5174, relay 8200, and FalkorDB 6379. Preflight checks dependencies,
+expected port states, the graph module, connectivity and configuration presence;
+it does not certify credential validity or successful agent execution. `--offline`
+only skips its hosted-key presence check. Local launchers create private grant
+and session values under ignored `.scratch/ironweb-live/`; do not export them.
+
+The website is the only embedded memory owner. Keep one worker/replica per
+Qdrant/journal directory. The relay reads the website over HTTP and never opens
+those stores. Remote relay HTTP/SSE requires `DASHBOARD_VIEWER_TOKEN`; only direct
+loopback can omit it. See [viewer/deployment configuration](dashboard/backend/README.md).
+The supplier catalog is synthetic, and checkout saves a booking **request**.
+
+Run integration tests against a separate disposable FalkorDB instance, not the
+demo database. The finalisation test instance uses port 6389 and no persistence:
+
+```powershell
+$env:FALKORDB_PORT='6389'
+$env:VOYARA_AGENT_MODE='offline'
+.\.venv\Scripts\python.exe -m pytest tests agents/tests -q
+$env:PYTHONPATH="$PWD\stitch_ai_travel_booking_platform\backend;$PWD"
+.\.venv\Scripts\python.exe -m pytest stitch_ai_travel_booking_platform/backend/tests -q
+npm --prefix dashboard/frontend test
+npm --prefix dashboard/frontend run build
+Remove-Item Env:FALKORDB_PORT, Env:VOYARA_AGENT_MODE, Env:PYTHONPATH
+```
+
+These environment overrides apply to the current shell only; use separate
+terminals for the hosted demo. The isolated offline smoke is
+`tests/test_offline_smoke.py`. Dataset/GPU/live-provider checks are separate.
 
 The Voyara application now uses the travel agents and three-tier memory through
 authenticated trip-scoped chat. See the [startup and integration guide](docs/application_memory_integration.md).

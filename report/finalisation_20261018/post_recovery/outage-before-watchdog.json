@@ -1,0 +1,9 @@
+{
+  "original_volume_untouched": true,
+  "recovered_live_volume": "iron_web_falkordb_recovered_live_20261018",
+  "database_down_visible": true,
+  "kept_dashboard": true,
+  "database_restart_recovered": true,
+  "current_budget_claim_preserved": true,
+  "error": "locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.feed-warning') to be visible\u001b[22m\n"
+}

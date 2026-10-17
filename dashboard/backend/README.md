@@ -4,7 +4,7 @@
 
 # Memory dashboard backend
 
-**Website** = Voyara travel application. **Dashboard** = this independent, read-only memory monitor. The dashboard does not run travel agents, book trips, generate replies, mutate memory, or host website pages. The supplied frontend is only a plain inspection page; the final UI is intentionally deferred.
+**Website** = Voyara travel application. **Dashboard** = this independent, read-only memory monitor. The dashboard does not run travel agents, book trips, generate replies, mutate memory, or host website pages. The React UI is in `dashboard/frontend`; the older plain inspection page is retained as a same-origin diagnostic interface. Use React for the viewer-session sign-in flow.
 
 ## How it connects
 

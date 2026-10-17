@@ -1,0 +1,80 @@
+{
+  "checks": [
+    "Local developer sign-in through website",
+    "Seven hosted specialists completed for Kerala",
+    "Current itinerary persisted",
+    "Authenticated Travel Book PDF export",
+    "kashmir catalog loads with 33 SVG illustrations",
+    "kerala catalog loads with 34 SVG illustrations",
+    "Kashmir booking-review presentation rendered",
+    "Booking request saved as requested; no payment"
+  ],
+  "browser_errors": [],
+  "trip_id": "a00621b6-bfc2-479a-953c-7a4207038d13",
+  "http_status": 200,
+  "connection_status": "agents_connected",
+  "workflow_status": "ok",
+  "agents": [
+    {
+      "agent": "trip_consultant",
+      "status": "ok",
+      "mode": "nvidia",
+      "model": "openai/gpt-oss-20b"
+    },
+    {
+      "agent": "explore_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "model": "openai/gpt-oss-20b"
+    },
+    {
+      "agent": "food_guide_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "model": "openai/gpt-oss-20b"
+    },
+    {
+      "agent": "stay_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "model": "openai/gpt-oss-20b"
+    },
+    {
+      "agent": "tour_guide_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "model": "openai/gpt-oss-20b"
+    },
+    {
+      "agent": "itinerary_planner",
+      "status": "ok",
+      "mode": "nvidia",
+      "model": "openai/gpt-oss-20b"
+    },
+    {
+      "agent": "budget_booking_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "model": "openai/gpt-oss-20b"
+    }
+  ],
+  "pdf_bytes": 553676,
+  "booking_status": "requested",
+  "dashboard": {
+    "boot": "b117b222d6924e18bb6712f124add128",
+    "registered": 9,
+    "observed": 8,
+    "trip_events": 29,
+    "provider_model": "openai/gpt-oss-20b",
+    "provider_usage": {
+      "requests": 17,
+      "successful": 17,
+      "input_tokens": 30480,
+      "output_tokens": 1816,
+      "usage_responses": 17,
+      "scope": "website process since start",
+      "source": "measured",
+      "provider": "NVIDIA NIM"
+    }
+  }
+}

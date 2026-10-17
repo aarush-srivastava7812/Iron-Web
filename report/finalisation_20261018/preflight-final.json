@@ -1,0 +1,147 @@
+{
+  "scope": "After approved live cutover and final outage checks; actual primary port 6379",
+  "passed": 28,
+  "failed": 0,
+  "checks": [
+    {
+      "check": "Python",
+      "ok": true,
+      "detail": "Python 3.12+ required"
+    },
+    {
+      "check": "dependency:fastapi",
+      "ok": true,
+      "detail": "Install requirements/application.txt and dashboard/backend/requirements.txt"
+    },
+    {
+      "check": "dependency:uvicorn",
+      "ok": true,
+      "detail": "Install requirements/application.txt and dashboard/backend/requirements.txt"
+    },
+    {
+      "check": "dependency:httpx",
+      "ok": true,
+      "detail": "Install requirements/application.txt and dashboard/backend/requirements.txt"
+    },
+    {
+      "check": "dependency:sqlalchemy",
+      "ok": true,
+      "detail": "Install requirements/application.txt and dashboard/backend/requirements.txt"
+    },
+    {
+      "check": "dependency:dotenv",
+      "ok": true,
+      "detail": "Install requirements/application.txt and dashboard/backend/requirements.txt"
+    },
+    {
+      "check": "dependency:falkordb",
+      "ok": true,
+      "detail": "Install requirements/application.txt and dashboard/backend/requirements.txt"
+    },
+    {
+      "check": "dependency:qdrant_client",
+      "ok": true,
+      "detail": "Install requirements/application.txt and dashboard/backend/requirements.txt"
+    },
+    {
+      "check": "dependency:langgraph",
+      "ok": true,
+      "detail": "Install requirements/application.txt and dashboard/backend/requirements.txt"
+    },
+    {
+      "check": "dependency:reportlab",
+      "ok": true,
+      "detail": "Install requirements/application.txt and dashboard/backend/requirements.txt"
+    },
+    {
+      "check": "dependency:numpy",
+      "ok": true,
+      "detail": "Install requirements/application.txt and dashboard/backend/requirements.txt"
+    },
+    {
+      "check": "dependency:yaml",
+      "ok": true,
+      "detail": "Install requirements/application.txt and dashboard/backend/requirements.txt"
+    },
+    {
+      "check": "dependency:fastembed",
+      "ok": true,
+      "detail": "Install requirements/application.txt and dashboard/backend/requirements.txt"
+    },
+    {
+      "check": "dependency:onnxruntime",
+      "ok": true,
+      "detail": "Install requirements/application.txt and dashboard/backend/requirements.txt"
+    },
+    {
+      "check": "dependency:argon2",
+      "ok": true,
+      "detail": "Install requirements/application.txt and dashboard/backend/requirements.txt"
+    },
+    {
+      "check": "dependency:jwt",
+      "ok": true,
+      "detail": "Install requirements/application.txt and dashboard/backend/requirements.txt"
+    },
+    {
+      "check": "Node",
+      "ok": true,
+      "detail": "Node >=22.12 required by dashboard"
+    },
+    {
+      "check": "dashboard\\frontend",
+      "ok": true,
+      "detail": "Run npm ci in this frontend"
+    },
+    {
+      "check": "stitch_ai_travel_booking_platform\\frontend",
+      "ok": true,
+      "detail": "Run npm ci in this frontend"
+    },
+    {
+      "check": "website build",
+      "ok": true,
+      "detail": "Run npm --prefix stitch_ai_travel_booking_platform/frontend run build"
+    },
+    {
+      "check": "port:8000",
+      "ok": true,
+      "detail": "must be listening"
+    },
+    {
+      "check": "port:5174",
+      "ok": true,
+      "detail": "must be listening"
+    },
+    {
+      "check": "port:8200",
+      "ok": true,
+      "detail": "must be listening"
+    },
+    {
+      "check": "port:6379",
+      "ok": true,
+      "detail": "must be listening"
+    },
+    {
+      "check": "FalkorDB PING",
+      "ok": true,
+      "detail": "Read-only authenticated connection"
+    },
+    {
+      "check": "FalkorDB graph module",
+      "ok": true,
+      "detail": "Endpoint must be FalkorDB, not plain Redis"
+    },
+    {
+      "check": "hosted credential configured",
+      "ok": true,
+      "detail": "NVIDIA_API_KEY must be supplied privately; this does not verify validity"
+    },
+    {
+      "check": "local publication/session setup",
+      "ok": true,
+      "detail": "Launcher creates private grants; existing files must contain strong publication and session secrets"
+    }
+  ]
+}

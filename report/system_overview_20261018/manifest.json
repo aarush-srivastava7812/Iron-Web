@@ -1,0 +1,31 @@
+{
+  "prepared_date": "2026-10-18",
+  "timezone": "Asia/Kolkata",
+  "source_revision": "245829251f5222fbabe0d1c25b00170e9edabd1c",
+  "finalisation_source": "Local finalise/2026-10-18 through eb3bf8e plus accompanying documentation/evidence; historical hyperlinks retain baseline revision",
+  "method": "Source review plus dated hosted acceptance, isolated offline regressions and approved recovery-copy diagnostics; no new performance benchmark; hashes describe local files at render time",
+  "report_words": 6321,
+  "source_sha256": {
+    "README.md": "4655d5871f2357c3b12580e713e8555bb21c2956d1c830150bd2315ced2e9c21",
+    "config.yaml": "c46a4aa832205635fae766a829f0ab5d7550c18b62e585aa85ce21b1d815b4e2",
+    "docs/architecture.md": "0b991e914d265983ffdfeba4d97022aa8faefef42cc73452c4d9cc76e2fc14e7",
+    "docs/specification.md": "f1aee026275d7eed94d51ec14e2f7fec007514bda804162ba11b6d90ddb19e6d",
+    "docs/application_memory_integration.md": "cb5b8bd942476e7fb55703cd1045b9ee36e1860cddbb3f0ee61b3fad2869d278",
+    "docs/three_tier_memory_usage.md": "2248e06ac51a4655c569b7bca5bb9e24cb479a7adbe17ed919cdec6f434c87d8",
+    "docs/memory_evolution.md": "3b6960e6c41644c14d60ce9b28f8df30ebed32a14b55e3f95b16a3a93edb2c12",
+    "docs/shared_memory_service.md": "0501f4347da002dcab202a60e927d676b5a37abb1cd42882377bedc61dced085",
+    "docs/travel_chat_catalog.md": "1954ff0d60ff96516167ea6eb3304e7a5c2c0c76866d405ee6990f362b45757c",
+    "dashboard/README.md": "6ecef82cac09cb7b0b68f3ce0c510f3fca70ae3f182380733cba321e59c61eb7",
+    "dashboard/backend/main.py": "3c7cf72aea74a219d2f8317400e2fba315f5bbb7a8a5501452e40621a0b3737c",
+    "memory/dashboard.py": "8e102849347d19809e431d4713e0e568992cac8b8634f0f732eb7e8221c2ba76",
+    "memory/observability.py": "11b8ecc7aa405c6297df4799a084eddc88ce9aa9ae9667e3cda08ae41916e7cb",
+    "agents/agentic.py": "decfd8b3178b70ed059af5a3f712fcbef7a296edda9e6298d13992d57dc79eef",
+    "agents/config.py": "5a6f827c11ad1fe8e81c00267231df25425ce767a0042b7df5f87be44e4db16b",
+    "agents/orchestration/graph.py": "a17d39ee69fe1ec72ee22bc98811de39b83713493353e7b1f30894a791c244f2",
+    "agents/orchestration/checkpointing.py": "907ef550d449a3277b5f5ded2672c87eaeb47d586d998dca5a4e2a10657fcb4a",
+    "stitch_ai_travel_booking_platform/backend/app/agent_runtime.py": "aa5e9336dffbb82aefec48085854ed249869764f0e29539f1ac25314ae5e1df7",
+    "stitch_ai_travel_booking_platform/backend/app/routers/bookings.py": "c11b18b10b2c9074d051172f6798b30c69f7e9d038282c2b3bd86cacecb758ec",
+    "report/dashboard_live/summary.json": "948b298efc37e3b871c8a61f9f8ee7dd9059631f3a3e17bdf2fd4447a7e88cd5",
+    "report/full20_graph_analysis_20261013/report.md": "1cb0886cec71e3ffc1b69c548032ddc5dfe6d5686392e4b890b82ca821ef7acd"
+  }
+}

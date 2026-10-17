@@ -1,0 +1,54 @@
+{
+  "baseline": {
+    "root_backend": {
+      "tests": 347,
+      "failures": 0,
+      "errors": 4,
+      "skipped": 2,
+      "passed": 341
+    },
+    "agents": {
+      "tests": 41,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 41
+    },
+    "website_corrected_import_path": {
+      "tests": 47,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 45
+    },
+    "frontend_passed": 12,
+    "real_feed_browser_passed": 2
+  },
+  "final": {
+    "root_and_agents": {
+      "tests": 399,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 2,
+      "passed": 397
+    },
+    "website": {
+      "tests": 51,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 51
+    },
+    "frontend_passed": 13,
+    "post-recovery-browser.log": {
+      "passed": 2
+    },
+    "post-recovery-browser-sanitized.log": {
+      "passed": 2
+    },
+    "final-browser-all.log": {
+      "passed": 3
+    }
+  },
+  "scope": "Offline provider and isolated stores for backend suites; final graph service is disposable port 6389, not the recovered live volume. Deselections: six root/agent tests."
+}

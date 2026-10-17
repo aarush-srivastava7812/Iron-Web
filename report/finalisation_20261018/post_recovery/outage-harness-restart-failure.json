@@ -1,0 +1,10 @@
+{
+  "original_volume_untouched": true,
+  "recovered_live_volume": "iron_web_falkordb_recovered_live_20261018",
+  "database_down_visible": true,
+  "kept_dashboard": true,
+  "database_restart_recovered": true,
+  "current_budget_claim_preserved": true,
+  "relay_disconnect_visible": true,
+  "error": "locator.waitFor: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.feed-warning') to be hidden\u001b[22m\n\u001b[2m    90 × locator resolved to visible <div role=\"status\" class=\"feed-warning\">No fresh memory snapshot for 10 seconds. Reconnec…</div>\u001b[22m\n"
+}

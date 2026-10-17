@@ -1,0 +1,7 @@
+{
+  "password_form": true,
+  "signed_http_only_cookie": true,
+  "after_auth_real_unconfigured_source_error": true,
+  "secret_not_in_dom": true,
+  "scope": "Browser routed to a separate actual relay gate on port 8212; no mock memory or real provider call."
+}

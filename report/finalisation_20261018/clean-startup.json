@@ -1,0 +1,18 @@
+{
+  "source_revision": "3091669",
+  "source": "fresh git archive; cached npm ci/build for both frontends",
+  "python_environment": "existing .venv reused; not a fresh dependency installation",
+  "provider_mode": "explicit offline test process only",
+  "graph": "separate disposable FalkorDB 6389; no live volume mounted",
+  "copied_private_runtime_files": false,
+  "browser_errors": [],
+  "local_developer_signin": true,
+  "relay_reads_actual_isolated_owner": true,
+  "registered_agents": 9,
+  "provider_requests": 0,
+  "dashboard_rendered": true,
+  "passed": true,
+  "source_patch_commit": "eb3bf8e",
+  "tested_launcher_sha256": "298c39d1a1dd5ffc7e9c2329fffe2d2500ae5fcfea2ef421a50862703842c0d5",
+  "tested_launcher_matches_committed_fix": true
+}

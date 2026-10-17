@@ -1,0 +1,27 @@
+{
+  "source_revision": "7d365499ce0fc97ede59e797cf8802809f73f473",
+  "method": "git archive into fresh ignored directory; npm ci --offline from cache, no runtime/env/session files copied",
+  "results": [
+    {
+      "component": "dashboard/frontend",
+      "command": "npm ci --offline",
+      "exit_code": 0
+    },
+    {
+      "component": "dashboard/frontend",
+      "command": "npm run build",
+      "exit_code": 0
+    },
+    {
+      "component": "stitch_ai_travel_booking_platform/frontend",
+      "command": "npm ci --offline",
+      "exit_code": 0
+    },
+    {
+      "component": "stitch_ai_travel_booking_platform/frontend",
+      "command": "npm run build",
+      "exit_code": 0
+    }
+  ],
+  "unverified": "Full three-service clean-checkout startup blocked by original persisted database recovery; existing Python environment reused, not freshly installed."
+}
