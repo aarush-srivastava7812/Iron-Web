@@ -114,7 +114,9 @@ test("real live feed synchronizes graph, inspector, replay, resources and layout
   await page.getByRole("button", { name: "Follow live", exact: true }).click();
   await page.getByRole("tab", { name: "Memory graph", exact: true }).click();
   const node = page.locator("[data-memory-id]").first();
-  await node.click();
+  // A force-layout node can keep moving between real source snapshots. Click
+  // its current position without Playwright's stationary-element prerequisite.
+  await node.click({ force: true });
   await expect(page).toHaveURL(/mem=/);
   await page.getByRole("tab", { name: "Links", exact: true }).click();
   await expect(page.locator(".inspector-scroll")).toContainText(
@@ -180,4 +182,22 @@ test("drawers and reduced motion work with the actual feed", async ({
   await page.getByRole("tab", { name: "Activity", exact: true }).click();
   expect(await page.locator(".live-heatmap-row").count()).toBe(10);
   await page.screenshot({ path: resolve(report, "1100x760-activity.png") });
+});
+
+test("a stalled SSE transport marks the real snapshot stale and reconnects", async ({ page }) => {
+  test.setTimeout(45000);
+  const held = [];
+  const stall = route => { held.push(route); };
+  // Only the stream transport is held. Initial HTTP and recovered snapshots
+  // still come from the actual memory owner; no mock memory is introduced.
+  await page.route("**/api/dashboard/stream", stall);
+  await page.goto("/");
+  await expect(page.getByTestId("live-dashboard")).toBeVisible();
+  await expect(page.locator(".feed-warning")).toContainText(
+    "No fresh memory snapshot", { timeout: 18000 },
+  );
+  await page.unroute("**/api/dashboard/stream", stall);
+  await Promise.all(held.map(route => route.abort("timedout").catch(() => {})));
+  await expect(page.locator(".feed-warning")).toBeHidden({ timeout: 18000 });
+  await expect(page.getByTestId("live-dashboard")).toBeVisible();
 });

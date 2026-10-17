@@ -57,11 +57,12 @@ function useFeed() {
     [status, setStatus] = useState("connecting"),
     [error, setError] = useState("");
   useEffect(() => {
-    let alive = true;
+    let alive = true, stream, lastMessageAt = null;
     const receive = (payload) => {
       if (payload.schema !== "iron_web_dashboard_v1")
         throw new Error("Unsupported memory feed schema");
       if (alive) {
+        lastMessageAt = performance.now();
         setData(payload);
         setStatus("live");
         setError("");
@@ -85,25 +86,45 @@ function useFeed() {
           setStatus("disconnected");
         }
       });
-    const stream = new EventSource(API + "/api/dashboard/stream", { withCredentials: true });
-    stream.addEventListener("snapshot", (e) => {
-      try {
-        receive(JSON.parse(e.data));
-      } catch (err) {
-        setError(err.message);
-        setStatus("disconnected");
-      }
-    });
-    stream.addEventListener("feed_error", (e) => {
-      setError(JSON.parse(e.data).message);
+    const connect = () => {
+      stream?.close();
+      const source = new EventSource(API + "/api/dashboard/stream", { withCredentials: true });
+      stream = source;
+      source.addEventListener("snapshot", (e) => {
+        if (!alive || stream !== source) return;
+        try {
+          receive(JSON.parse(e.data));
+        } catch (err) {
+          setError(err.message);
+          setStatus("disconnected");
+        }
+      });
+      source.addEventListener("feed_error", (e) => {
+        if (!alive || stream !== source) return;
+        lastMessageAt = performance.now();
+        setError(JSON.parse(e.data).message);
+        setStatus("stale");
+      });
+      source.onerror = () => {
+        if (alive && stream === source)
+          setStatus((s) => (s === "connecting" ? "connecting" : "reconnecting"));
+      };
+    };
+    connect();
+    // The relay emits every two seconds. A proxy can leave a dead SSE socket
+    // open without onerror; elapsed local time must still invalidate "live".
+    const watchdog = setInterval(() => {
+      if (lastMessageAt === null || performance.now() - lastMessageAt < 10000) return;
+      lastMessageAt = performance.now();
+      setError("No fresh memory snapshot for 10 seconds. Reconnecting…");
       setStatus("stale");
-    });
-    stream.onerror = () =>
-      setStatus((s) => (s === "connecting" ? "connecting" : "reconnecting"));
+      connect();
+    }, 2000);
     return () => {
       alive = false;
       controller.abort();
-      stream.close();
+      clearInterval(watchdog);
+      stream?.close();
     };
   }, []);
   return { data, status, error };
