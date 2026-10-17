@@ -60,7 +60,7 @@ class FoodGuideAgent:
                         name=row.get("name") or "Unnamed place",
                         cuisine=row.get("cuisine"),
                         approx_price_per_guest_inr=math.ceil(row["price_inr"] / 2) if row.get("price_inr") is not None else None,
-                        location=destination_name,
+                        location=row.get("destination_name") or destination_name,
                         diet=row_diet,
                         dietary_fit=dietary_fit,
                         hours_caveat="opening hours not verified against a live source",

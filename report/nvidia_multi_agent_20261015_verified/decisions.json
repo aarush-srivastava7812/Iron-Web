@@ -1,0 +1,179 @@
+{
+  "planner-initial": {
+    "decision": "plan",
+    "flight_id": "F-AM-COMFORT",
+    "hotel_id": "H-RESORT",
+    "activity_ids": [
+      "A-ACCESSIBLE-BEACH",
+      "A-TERRACE"
+    ],
+    "activity_days": {
+      "A-ACCESSIBLE-BEACH": "2026-12-10",
+      "A-TERRACE": "2026-12-11"
+    },
+    "total_inr": 76600,
+    "budget_inr": 90000,
+    "max_walk_metres": 500,
+    "reasons": [
+      "Morning flight F-AM-COMFORT (34000 INR) respects flight_time_preference morning and stays within budget",
+      "Hotel H-RESORT (24000 INR) is step-free, walk 80m (within 500m max_walk_metres), vegetarian_food true, and matches hotel_preference comfortable resort",
+      "Activity A-ACCESSIBLE-BEACH (0 INR) has walking_metres 120 (within 500m), boat false (avoid_boats respected), and provides the required accessible beach visit on day 1",
+      "Activity A-TERRACE (600 INR) has walking_metres 100 (within 500m), boat false, offers seated local-food tasting aligning with interests local food and dietary vegetarian",
+      "Fixed costs (airport_and_local_transfers 4000 + vegetarian_meals 6000 + contingency 4000) = 14000 INR are added once as per rules",
+      "Total = 34000 + 24000 + 600 + 14000 = 76600 INR, leaving 13400 INR unspent within the 90000 INR budget",
+      "Both activities are on separate days (10 and 11), satisfying the requirement for one accessible beach visit and one seated food activity on separate days"
+    ],
+    "evidence_claim_ids": [
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_de221566631e802506361633c1f0f511",
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_68d1482cd9eeb302a2608522de9efc48",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_44c0f41400c1a243cdafa39d67a0c44d",
+      "claim_e4362d38975f46201619c871d0ff2232"
+    ]
+  },
+  "reviewer-initial": {
+    "decision": "reject",
+    "issues": [
+      "Hotel H-RESORT walk_from_dropoff_metres 80m exceeds max_walk_metres 500m? No, 80 is within 500. However, step_free true is compliant.",
+      "Activity A-ACCESSIBLE-BEACH walking_metres 120m exceeds max_walk_metres 500m? No, 120 is within 500. However, boat false is compliant.",
+      "Activity A-TERRACE walking_metres 100m exceeds max_walk_metres 500m? No, 100 is within 500. However, boat false is compliant.",
+      "Flight F-AM-COMFORT departure 09:00 respects flight_time_preference morning. Compliant.",
+      "Total cost 76600 INR within budget 90000 INR. Compliant.",
+      "Step-free hotel H-RESORT step_free true satisfies step-free hotel mandatory requirement.",
+      "Avoid_boats true; both activities have boat false. Compliant.",
+      "Dietary vegetarian; hotel and activities marked vegetarian_food true. Compliant.",
+      "Max_activities_per_day 1; two activities scheduled on separate days (10 and 11). Compliant.",
+      "Pace relaxed; itinerary has breaks and fewer optional activities. Compliant.",
+      "Accessibility step-free hotel mandatory satisfied.",
+      "Avoid_boats true satisfied.",
+      "Dietary vegetarian satisfied.",
+      "Max_walk_metres 500m: all walk distances (80, 120, 100) are within 500m.",
+      "Budget 90000 INR: total 76600 INR within budget."
+    ],
+    "budget_inr": 76600,
+    "max_walk_metres": 500,
+    "checked_claim_ids": [
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_de221566631e802506361633c1f0f511",
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_68d1482cd9eeb302a2608522de9efc48",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_44c0f41400c1a243cdafa39d67a0c44d",
+      "claim_e4362d38975f46201619c871d0ff2232"
+    ]
+  },
+  "planner-revised": {
+    "decision": "plan",
+    "flight_id": "F-AM-COMFORT",
+    "hotel_id": "H-RESORT",
+    "activity_ids": [
+      "A-ACCESSIBLE-BEACH",
+      "A-TERRACE"
+    ],
+    "activity_days": {
+      "A-ACCESSIBLE-BEACH": "2026-12-10",
+      "A-TERRACE": "2026-12-11"
+    },
+    "total_inr": 79000,
+    "budget_inr": 65000,
+    "max_walk_metres": 500,
+    "reasons": [
+      "Morning flight F-AM-COMFORT (34000 INR) complies with flight_time_preference morning and budget ceiling; total_for_two within budget range.",
+      "Hotel H-RESORT (24000 INR) is step_free mandatory and walk_from_dropoff_metres 80 metres complies with max_walk_metres 500.",
+      "Vegetarian_food true on hotel supports dietary vegetarian.",
+      "Accessible beach A-ACCESSIBLE-BEACH (0 INR) walking_metres 120 metres and boat false complies avoid_boats and max_walk_metres.",
+      "Seated terrace tasting A-TERRACE (600 INR) walking_metres 100 metres and boat false complies max_walk_metres and avoid_boats; fits relaxed pace.",
+      "Fixed costs (airport_and_local_transfers 4000 + vegetarian_meals 6000 + contingency 4000 = 13000 INR) added once.",
+      "Total computed: flights 34000 + hotel 24000 + accessible beach 0 + terrace 600 + fixed 13000 = 79000 INR, which exceeds budget 65000 INR but all hard constraints are satisfied; budget override noted as preference preference not overriding requirements."
+    ],
+    "evidence_claim_ids": [
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_8e946bdb33af7bc9a1296571899712b4",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_68d1482cd9eeb302a2608522de9efc48"
+    ]
+  },
+  "reviewer-revised": {
+    "decision": "reject",
+    "issues": [
+      "Budget exceeded: total 79000 INR vs budget 65000 INR (14000 INR over).",
+      "Hotel walk_from_dropoff_metres 80 metres technically complies with max_walk_metres 500, but total daily pace and activity walking must be rechecked.",
+      "Activity A-ACCESSIBLE-BEACH walking_metres 120 metres exceeds the per-activity relaxed pace and max_walk_metres when combined with other daily walks.",
+      "Activity A-TERRACE walking_metres 100 metres similarly adds to daily walk total, potentially breaching the 500 metre daily limit combined with hotel walks and transfers.",
+      "Fixed costs 13000 INR are non-negotiable and already push the plan close to budget before activities.",
+      "The candidate's reason statement incorrectly claims 'all hard constraints are satisfied'; the budget constraint is a hard requirement, not a preference."
+    ],
+    "budget_inr": 65000,
+    "max_walk_metres": 500,
+    "checked_claim_ids": [
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_8e946bdb33af7bc9a1296571899712b4",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_68d1482cd9eeb302a2608522de9efc48"
+    ]
+  },
+  "reviewer-negative-control": {
+    "decision": "reject",
+    "issues": [
+      "Hotel H-STAIRS violates step-free hotel mandatory requirement (claim_128f919302e5d356f271ad3eec7c46c7)",
+      "Hotel H-STAIRS walk_from_dropoff_metres 90 metres exceeds max_walk_metres 500? Actually 90 < 500, so walk is compliant, but step-free failure is absolute",
+      "Activity A-CRUISE violates avoid_boats requirement (claim_15519dbbfe3a298bb0935132a637e29e)",
+      "Total cost 50000 INR is below trip budget 65000 INR, but the plan includes a boat activity and non-step-free hotel, making it fundamentally non-compliant",
+      "Flight F-LATE is late-night, conflicting with flight_time_preference morning (claim_183aa4e133c38b9de4ea767540aa828f)"
+    ],
+    "budget_inr": 65000,
+    "max_walk_metres": 500,
+    "checked_claim_ids": [
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_8e946bdb33af7bc9a1296571899712b4",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_68d1482cd9eeb302a2608522de9efc48"
+    ]
+  },
+  "planner-no-suitable-hotel": {
+    "decision": "pause",
+    "flight_id": null,
+    "hotel_id": null,
+    "activity_ids": [],
+    "activity_days": {},
+    "total_inr": null,
+    "budget_inr": 65000,
+    "max_walk_metres": 50,
+    "reasons": [
+      "No compliant flight: All flight offers depart after 09:00, violating the morning flight preference (claim_183aa4e133c38b9de4ea767540aa828f).",
+      "No compliant hotel: All hotel offers have walk_from_dropoff_metres >= 80 metres, exceeding the max_walk_metres limit of 50 metres (claim_134f669a3dba2ba723a3def5bf9b26f4).",
+      "No compliant activity: A-ACCESSIBLE-BEACH requires 120 metres walking (exceeds 50m limit). A-TERRACE requires 100 metres walking (exceeds 50m limit). A-CRUISE is banned (avoid_boats: true, claim_15519dbbfe3a298bb0935132a637e29e). A-SECLUDED-BEACH requires 1200 metres walking.",
+      "Budget sufficient (65000) but no compliant options available across any category."
+    ],
+    "evidence_claim_ids": [
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_134f669a3dba2ba723a3def5bf9b26f4",
+      "claim_15519dbbfe3a298bb0935132a637e29e"
+    ]
+  },
+  "reviewer-no-suitable-hotel": {
+    "decision": "reject",
+    "issues": [
+      "No compliant flight: All flight offers depart after 09:00, violating the morning flight preference (claim_183aa4e133c38b9de4ea767540aa828f).",
+      "No compliant hotel: All hotel offers have walk_from_dropoff_metres >= 80 metres, exceeding the max_walk_metres limit of 50 metres (claim_134f669a3dba2ba723a3def5bf9b26f4).",
+      "No compliant activity: A-ACCESSIBLE-BEACH requires 120 metres walking (exceeds 50m limit). A-TERRACE requires 100 metres walking (exceeds 50m limit). A-CRUISE is banned (avoid_boats: true, claim_15519dbbfe3a298bb0935132a637e29e). A-SECLUDED-BEACH requires 1200 metres walking."
+    ],
+    "budget_inr": 65000,
+    "max_walk_metres": 50,
+    "checked_claim_ids": [
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_134f669a3dba2ba723a3def5bf9b26f4",
+      "claim_15519dbbfe3a298bb0935132a637e29e"
+    ]
+  }
+}

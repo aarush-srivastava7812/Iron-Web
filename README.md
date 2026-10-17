@@ -68,3 +68,18 @@ Optional profiling dependencies are in `requirements/profiling.txt`; legacy comp
 
 The Voyara application now uses the travel agents and three-tier memory through
 authenticated trip-scoped chat. See the [startup and integration guide](docs/application_memory_integration.md).
+
+The [conversational catalog and Travel Book guide](docs/travel_chat_catalog.md)
+covers the NVIDIA chatbot, Kerala discovery, shared manual selections and private
+branded PDF export for the local hackathon demo.
+
+The [hackathon build plan](docs/hackathon_travel_plan.md) documents the report-based
+ROI decisions, stochastic NVIDIA specialists, editable plan versions and validation.
+
+## Separate memory dashboard
+
+The [memory dashboard](dashboard/README.md) connects the React visualizer to the
+website's actual memory through a separate read-only HTTP/SSE relay. It shows
+FalkorDB relationships, captured agent contexts, Qdrant inspection, receipt status,
+resources, masked provider identity, and event replay. The normal UI never loads
+mock events. See the [live browser verification](report/dashboard_live/README.md).

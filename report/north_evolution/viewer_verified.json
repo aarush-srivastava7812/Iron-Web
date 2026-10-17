@@ -1,0 +1,146 @@
+{
+  "url": "http://127.0.0.1:3350/index.html",
+  "checks": [
+    {
+      "name": "All 143 browser defaults match persisted scores",
+      "passed": true,
+      "evidence": {
+        "count": 143,
+        "maximum_delta": 4.2772228747711694e-07
+      }
+    },
+    {
+      "name": "Education confirms discipline without refreshing year",
+      "passed": true,
+      "evidence": "Earlier education recordBTech \u00b7 year 3 \u00b7 AI & Data ScienceHAS_FACETdegree: BTech0.868 \u00b7 not re-confirmedHAS_FACETyear: 30.783 \u00b7 not re-confirmedHAS_FACETdiscipline: AI & Data Science0.962 \u00b7 re-mentionedLater study statementsAI & Data Science \u00b7 no degree/yearCONFIRMS discipline onlyNo third-year replacementMissing detail does not negate it"
+    },
+    {
+      "name": "Older receipt stage has no later discipline support",
+      "passed": true,
+      "evidence": {
+        "before": 0.8683518302811921,
+        "after": 0.9622799999999998
+      }
+    },
+    {
+      "name": "Ordinary memory decays in the inspector",
+      "passed": true,
+      "evidence": {
+        "original": 0.7830154277222875,
+        "aged": 4.6355587368585974e-07
+      }
+    },
+    {
+      "name": "Protected memory remains exactly one despite age/conflict",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "Removing preview protection restores ordinary scoring",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "Earlier organization lens excludes the later internship",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "Organization match is unresolved before user confirmation",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "Confirmed alias preserves separate internship and employment",
+      "passed": true,
+      "evidence": "Inditech SystemsOriginal organization mentionInditech ElectrosystemsEarlier canonical organizationSAME_AS \u00b7 user-confirmedCompleted IT-IoT internshipHistorical episode \u00b7 dates unknownReported employmentCurrent status not newly confirmedorganization mentionemployer roleSame organization does not mean the same episode or employment state.Name similarity 0.811 is a candidate signal, not identity proof."
+    },
+    {
+      "name": "Project relationships remain unresolved",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "Earlier project lens excludes reports not yet received",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "Accepted address change preserves both nodes with supersession",
+      "passed": true,
+      "evidence": "Earlier claim retainedresponse.preferred_address = \"North\"Synthetic new claimresponse.preferred_address = \"Aarush\"SUPERSEDES0.000superseded \u00b7 protected true1.000active \u00b7 protected trueAccepted direct change/correction transfers protection.SEPARATE SYNTHETIC CONTROL DATABASE \u2014 not your incoming statements"
+    },
+    {
+      "name": "Address-change inspector shows the protected synthetic new node",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "Correction has both contradiction and supersession edges",
+      "passed": true,
+      "evidence": "Earlier claim retainededucation.year = 3Synthetic new claimeducation.year = 4CONTRADICTSSUPERSEDES0.000retracted \u00b7 protected true1.000active \u00b7 protected trueAccepted direct change/correction transfers protection.SEPARATE SYNTHETIC CONTROL DATABASE \u2014 not your incoming statements"
+    },
+    {
+      "name": "Correction inspector agrees with the protected replacement",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "Unaccepted contradiction remains disputed with no supersession",
+      "passed": true,
+      "evidence": "Earlier claim retainededucation.year = 3Synthetic new claimeducation.year = 4CONTRADICTS1.000disputed \u00b7 protected true0.178disputed \u00b7 protected falseUnaccepted contradiction remains disputed; score 1 does not resolve it.SEPARATE SYNTHETIC CONTROL DATABASE \u2014 not your incoming statements"
+    },
+    {
+      "name": "Unaccepted candidate has no protection in the inspector",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "All 91 records are available",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "All 14 graph behavior checks appear",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "Fuzzy engine parity includes conflict and state guards",
+      "passed": true,
+      "evidence": {
+        "browser": [
+          0.47519999999999996,
+          0.14530183194846574,
+          0.44154,
+          0.35001785668734103,
+          0.9668999999999999,
+          1,
+          0
+        ],
+        "python": [
+          0.4752,
+          0.145302,
+          0.44154,
+          0.350018,
+          0.9669,
+          1.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "Mobile layout avoids horizontal page overflow",
+      "passed": true,
+      "evidence": {
+        "viewport": 390,
+        "content": 390
+      }
+    },
+    {
+      "name": "No browser runtime errors",
+      "passed": true,
+      "evidence": []
+    }
+  ]
+}

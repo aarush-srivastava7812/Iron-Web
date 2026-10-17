@@ -17,7 +17,7 @@ from ..db import get_db
 from ..deps import current_user
 from ..models import GoogleIdentity, LoginChallenge, User
 from ..schemas import UserOut
-from ..security import create_token, hash_password
+from ..security import hash_password, set_session_cookies
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -108,11 +108,7 @@ def google_login(body: GoogleCredential, request: Request, response: Response, d
     except IntegrityError as error:
         db.rollback()
         raise HTTPException(409, "Sign-in changed in another tab. Reload and retry.") from error
-    ttl = settings.access_token_minutes * 60
-    response.set_cookie("voyara_session", create_token(user.id), max_age=ttl, httponly=True,
-                        secure=settings.cookie_secure, samesite="lax")
-    response.set_cookie("voyara_csrf", secrets.token_urlsafe(32), max_age=ttl,
-                        secure=settings.cookie_secure, samesite="lax")
+    set_session_cookies(response, user.id)
     response.delete_cookie("voyara_google_nonce", path="/api/auth")
     return user
 

@@ -1,0 +1,15 @@
+{
+  "label": "04-raw-blocks-planner",
+  "path": "/v1/context",
+  "body": {
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "raw-language-check"
+    },
+    "task_type": "itinerary",
+    "session_id": "call-1",
+    "query": "Plan the Goa family trip using my saved requirements."
+  },
+  "actor": "planner",
+  "tenant": "riya"
+}

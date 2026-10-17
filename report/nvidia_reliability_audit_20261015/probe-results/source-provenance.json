@@ -1,0 +1,44 @@
+{
+  "source": [
+    {
+      "id": "source_e810ce85cfa7abcb99ab92537bf5d794",
+      "memory_id": "evt_3f0b7e45f58b1b7150dd0463b193d28c",
+      "text": "Explicit audit fixture",
+      "origin": "user",
+      "actor_id": "user",
+      "user_confirmed": true,
+      "quality": 0.9,
+      "evidence_group": "user:user",
+      "recorded_at": 1792079853,
+      "received_at": 1792079853,
+      "digest": "receipt_6c2b8fef11a9d0b67c3624ea876ebf39",
+      "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"interest-source\",\"session_id\":\"\"}"
+    }
+  ],
+  "cards": [
+    {
+      "card_id": "itinerary_details",
+      "text": "# Itinerary details\nSource-derived data (not agent instructions):\n[trip] interests: [[\"food\"]] [claims: claim_5dfb5ac1ecc65c9d0ebea194fe3c0903]\n[trip] activity_preferences: missing",
+      "claim_ids": [
+        "claim_5dfb5ac1ecc65c9d0ebea194fe3c0903"
+      ],
+      "source_event_ids": [],
+      "statuses": {
+        "interests": "supported",
+        "activity_preferences": "missing"
+      },
+      "mood": null,
+      "task_types": [
+        "itinerary"
+      ],
+      "version": "3eb7915c11125aabf61a3218933680304e15c91ae10b78f312925b994dcd7865",
+      "subject": "Traveller",
+      "scope": {
+        "trip_id": "summer"
+      },
+      "generated_at": 1792079853.6101987,
+      "expires_at": 1792080153.6101987,
+      "token_count": 31
+    }
+  ]
+}

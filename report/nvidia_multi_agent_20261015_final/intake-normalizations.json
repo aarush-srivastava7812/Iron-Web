@@ -1,0 +1,13 @@
+[
+  {
+    "intake": 1,
+    "changes": [
+      {
+        "predicate": "dietary",
+        "reason": "Explicit usual preference is not a hard requirement",
+        "before": "rule",
+        "after": "preference"
+      }
+    ]
+  }
+]

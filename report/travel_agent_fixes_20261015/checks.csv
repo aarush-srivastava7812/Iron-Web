@@ -1,0 +1,25 @@
+name,outcome,evidence
+Distinct authenticated agent profiles,PASS,"['09-planner-itinerary', '11-reviewer-hotel']"
+RAM hit and actual CUDA residency,PASS,"['09-planner-itinerary', '12-itinerary-warm']"
+Durable hybrid discovery and exact walking recall,PASS,"['22b-hybrid-discovery', '15-recall-walking']"
+Original multi-part intake accepted with complete requirements,PASS,"['01-raw-intake', '03-raw-status', '04-raw-blocks-planner']"
+Ambiguous intake remains a blocking review item,PASS,"['67-ambiguous-intake', '70-ambiguous-blocks']"
+Every scenario-critical itinerary field reaches the brief,PASS,['09-planner-itinerary']
+"Flight includes departure city, party and morning requirement",PASS,['10-planner-flight']
+Trip mood inherits into an ordinary session,PASS,['09-planner-itinerary']
+Explicit session mood takes its own scope,PASS,['25-session-itinerary']
+Pending relevant budget blocks context and completion,PASS,"['30-pending-context', '31-pending-completion']"
+Accepted budget replaces the old brief and proof,PASS,"['33-stale-context-proof', '36-revised-context']"
+Budget change flags plan for review and refuses stale completion,PASS,"['34-reviewer-handoff', '35-stale-completion']"
+Roleplayed plans satisfy the then-current fixture requirements,PASS,"['agent_decisions_initial.json', 'agent_decisions_revised.json']"
+Completed work is not executed again,PASS,['40-completed-not-reclaimed']
+Walking update preserves completed history and requires review,PASS,['44-reviewed-handoff-after-walking']
+Brief-only dependency control now detects walking update,PASS,"['41-register-brief-only-control', '45-brief-only-handoff-after-walking']"
+Trip values remain separate,PASS,"['52-other-trip-context', '53-goa-after-other-trip']"
+Unrelated pending trip leaves Goa available,PASS,['50-goa-blocked-by-other-trip']
+Users and proof ownership remain isolated,PASS,"['55-riya-unblocked-by-other-user', '57-arjun-context', '59-cross-user-proof']"
+Budget deletion blocks and never resurrects either cap,PASS,"['61-deletion-pending-blocks-context', '63-after-deletion-context', '64-after-deletion-budget']"
+Hotel brief includes all scenario-critical fields,PASS,['11-reviewer-hotel']
+Fresh walking brief contains 50m and reviewer stops,PASS,"['46-fresh-context-after-walking', 'agent_decision_final.json']"
+Goa stays warm before and after unrelated trip processing,PASS,"['50-goa-blocked-by-other-trip', '53-goa-after-other-trip']"
+Every task's dependency list includes walking evidence,PASS,"['09-planner-itinerary', '10-planner-flight', '11-reviewer-hotel', '15-recall-walking']"

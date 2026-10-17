@@ -327,6 +327,18 @@ AgentId = Literal[
 AgentStatus = Literal["ok", "failed", "skipped", "needs_clarification"]
 
 
+class AgentExecution(StrictModel):
+    mode: Literal["nvidia", "offline"]
+    persona: str
+    goal: str
+    model: str | None = None
+    temperature: float | None = None
+    tool_calls: list[str] = Field(default_factory=list)
+    observations: list[str] = Field(default_factory=list)
+    decision: str = ""
+    completed: bool = False
+
+
 class AgentResult(StrictModel):
     agent_id: AgentId
     status: AgentStatus
@@ -343,6 +355,7 @@ class AgentResult(StrictModel):
     evidence: list[Evidence] = Field(default_factory=list)
     errors: list[str] = Field(default_factory=list)
     latency_ms: int | None = None
+    execution: AgentExecution | None = None
 
 
 class OrchestrationRequest(StrictModel):

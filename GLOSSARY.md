@@ -4,6 +4,16 @@ Language for the reusable memory system and the applications and evidence built 
 
 ## Language
 
+**Travel specialist**:
+A member of the travel team with a distinct planning responsibility, working style and evidence-backed contribution to the current trip.
+_Avoid_: Several names for the same chatbot
+
+**Indicative trip estimate**:
+The calculated cost of the listed draft selections and stated allowances, with omissions made explicit. It is neither a supplier quotation nor a confirmed reservation.
+
+**Plan version**:
+A saved state of one trip's schedule and selected stay that can be compared with or restored from an earlier state.
+
 **Memory core**:
 The reusable system that preserves knowledge across sessions, manages changes, and supports shared work between agents.
 _Avoid_: Travel application, chatbot

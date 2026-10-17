@@ -1,0 +1,87 @@
+{
+  "label": "54-arjun-trip-event",
+  "tenant": "arjun",
+  "actor": "user",
+  "path": "/v1/events",
+  "request": {
+    "event_id": "arjun-trip",
+    "subject": "Arjun",
+    "text": "Arjun: a separate Goa trip, budget INR 30000, vegan meals.",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "confirmed": true,
+    "claims": [
+      {
+        "subject": "Arjun",
+        "predicate": "destination",
+        "value": "Goa",
+        "kind": "fact",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Arjun",
+        "predicate": "dates",
+        "value": "2026-12-10 to 2026-12-14",
+        "kind": "fact",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Arjun",
+        "predicate": "budget",
+        "value": 30000,
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Arjun",
+        "predicate": "currency",
+        "value": "INR",
+        "kind": "fact",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Arjun",
+        "predicate": "dietary",
+        "value": "vegan",
+        "kind": "fact",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      },
+      {
+        "subject": "Arjun",
+        "predicate": "pace",
+        "value": "active",
+        "kind": "fact",
+        "scope": {
+          "trip_id": "goa-family"
+        }
+      }
+    ]
+  },
+  "http_status": 202,
+  "response": {
+    "id": "arjun-trip",
+    "status": "queued",
+    "submitted": 1792069749.7482398,
+    "started": null,
+    "ready": null,
+    "attempts": 0,
+    "memory_id": "evt_ef819e563e7d6ea8206e0d71b48397c5",
+    "error": null,
+    "blocks_work": 1,
+    "interpretation": null,
+    "claim_kinds": [],
+    "semantic_claim_count": 0
+  },
+  "elapsed_ms": 19.72760001081042
+}

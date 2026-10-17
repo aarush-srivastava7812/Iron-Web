@@ -1,0 +1,115 @@
+{
+  "checks": [
+    {
+      "name": "All concierge suggestions and Send: packages",
+      "status": "passed",
+      "detail": {
+        "real_agent_requests": 4
+      }
+    },
+    {
+      "name": "All concierge suggestions and Send: tours",
+      "status": "passed",
+      "detail": {
+        "real_agent_requests": 4
+      }
+    },
+    {
+      "name": "All concierge suggestions and Send: hotels",
+      "status": "passed",
+      "detail": {
+        "real_agent_requests": 4
+      }
+    },
+    {
+      "name": "All concierge suggestions and Send: destination/Darjeeling",
+      "status": "passed",
+      "detail": {
+        "real_agent_requests": 4
+      }
+    },
+    {
+      "name": "All concierge suggestions and Send: package/Kashmir",
+      "status": "passed",
+      "detail": {
+        "real_agent_requests": 4
+      }
+    },
+    {
+      "name": "All concierge suggestions and Send: planner",
+      "status": "passed",
+      "detail": {
+        "real_agent_requests": 4
+      }
+    },
+    {
+      "name": "All concierge suggestions and Send: flights",
+      "status": "passed",
+      "detail": {
+        "real_agent_requests": 4
+      }
+    },
+    {
+      "name": "All concierge suggestions and Send: about",
+      "status": "passed",
+      "detail": {
+        "real_agent_requests": 4
+      }
+    },
+    {
+      "name": "All concierge suggestions and Send: contact",
+      "status": "passed",
+      "detail": {
+        "real_agent_requests": 4
+      }
+    },
+    {
+      "name": "All concierge suggestions and Send: booking?place=Kashmir",
+      "status": "passed",
+      "detail": {
+        "real_agent_requests": 4
+      }
+    },
+    {
+      "name": "All concierge suggestions and Send: dashboard",
+      "status": "passed",
+      "detail": {
+        "real_agent_requests": 4
+      }
+    },
+    {
+      "name": "Concierge failure keeps draft and permits retry",
+      "status": "passed"
+    },
+    {
+      "name": "Start a new conversation preserves the previous one",
+      "status": "passed"
+    },
+    {
+      "name": "Planner repeated submissions create one itinerary",
+      "status": "passed"
+    },
+    {
+      "name": "Trip chat, saved memory panels and reload",
+      "status": "passed"
+    },
+    {
+      "name": "Trip chat failure and rapid retry",
+      "status": "passed"
+    },
+    {
+      "name": "Login account links and sign out button",
+      "status": "passed"
+    },
+    {
+      "name": "Isolated trip cleanup",
+      "status": "passed"
+    },
+    {
+      "name": "No uncaught chat/browser errors",
+      "status": "passed"
+    }
+  ],
+  "errors": [],
+  "scope": "Isolated test account, real memory/agent backend"
+}

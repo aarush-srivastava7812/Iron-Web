@@ -1,0 +1,159 @@
+{
+  "facts": [
+    [
+      "preferred_name",
+      "North prefers to be addressed as North.",
+      0,
+      9223372036854775807
+    ],
+    [
+      "response_style",
+      "North prefers concise and direct explanations without filler.",
+      0,
+      9223372036854775807
+    ],
+    [
+      "organization",
+      "Inditech Systems and Inditech Electrosystems are the same organization; user-confirmed alias.",
+      0,
+      9223372036854775807
+    ],
+    [
+      "employment",
+      "North works at Inditech Electrosystems.",
+      0,
+      9223372036854775807
+    ],
+    [
+      "budget_old",
+      "North's approved travel budget was 1000 units before the accepted correction.",
+      0,
+      199
+    ],
+    [
+      "budget_new",
+      "North's approved travel budget is now 600 units after the accepted correction.",
+      200,
+      9223372036854775807
+    ],
+    [
+      "hotel_quiet",
+      "An agent says North wants a quiet hotel. This claim is disputed.",
+      0,
+      9223372036854775807
+    ],
+    [
+      "hotel_lively",
+      "Another agent says North wants a lively hotel. This claim is disputed.",
+      0,
+      9223372036854775807
+    ],
+    [
+      "procedure",
+      "For international travel, check passport validity before selecting flights.",
+      0,
+      9223372036854775807
+    ]
+  ],
+  "questions": [
+    {
+      "id": "name",
+      "query": "What should North be called?",
+      "gold": [
+        "preferred_name"
+      ],
+      "mode": "now",
+      "at": 250
+    },
+    {
+      "id": "style",
+      "query": "How should North receive explanations?",
+      "gold": [
+        "response_style"
+      ],
+      "mode": "now",
+      "at": 250
+    },
+    {
+      "id": "alias",
+      "query": "Is Inditech Systems the same organization as Inditech Electrosystems?",
+      "gold": [
+        "organization"
+      ],
+      "mode": "now",
+      "at": 250
+    },
+    {
+      "id": "work",
+      "query": "Which organization does North work at?",
+      "gold": [
+        "employment"
+      ],
+      "mode": "now",
+      "at": 250
+    },
+    {
+      "id": "current_budget",
+      "query": "What is North's current approved travel budget?",
+      "gold": [
+        "budget_new"
+      ],
+      "mode": "now",
+      "at": 250,
+      "forbidden": [
+        "budget_old"
+      ]
+    },
+    {
+      "id": "past_budget",
+      "query": "What was North's earlier approved travel budget?",
+      "gold": [
+        "budget_old"
+      ],
+      "mode": "historical",
+      "at": 250,
+      "forbidden": [
+        "budget_new"
+      ]
+    },
+    {
+      "id": "before_change",
+      "query": "What was North's approved travel budget at time 150?",
+      "gold": [
+        "budget_old"
+      ],
+      "mode": "now",
+      "at": 150,
+      "forbidden": [
+        "budget_new"
+      ]
+    },
+    {
+      "id": "dispute",
+      "query": "Does North want a quiet hotel or a lively hotel?",
+      "gold": [
+        "hotel_quiet",
+        "hotel_lively"
+      ],
+      "mode": "now",
+      "at": 250
+    },
+    {
+      "id": "procedure",
+      "query": "What must be checked before choosing international flights?",
+      "gold": [
+        "procedure"
+      ],
+      "mode": "now",
+      "at": 250
+    },
+    {
+      "id": "missing_phone",
+      "query": "What is North's phone number?",
+      "gold": [],
+      "mode": "now",
+      "at": 250,
+      "answer_exists": false
+    }
+  ]
+}

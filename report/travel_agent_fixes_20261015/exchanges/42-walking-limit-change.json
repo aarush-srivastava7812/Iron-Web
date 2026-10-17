@@ -1,0 +1,44 @@
+{
+  "label": "42-walking-limit-change",
+  "tenant": "riya",
+  "actor": "user",
+  "path": "/v1/events",
+  "request": {
+    "event_id": "walking-limit-change",
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "text": "Change the maximum walking segment for this trip to 50 metres.",
+    "confirmed": true,
+    "claims": [
+      {
+        "subject": "Riya",
+        "predicate": "max_walk_metres",
+        "value": 50,
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "action": "supersede",
+        "reason": "User reduced maximum walking distance"
+      }
+    ]
+  },
+  "http_status": 202,
+  "response": {
+    "id": "walking-limit-change",
+    "status": "queued",
+    "submitted": 1792069745.3509252,
+    "started": null,
+    "ready": null,
+    "attempts": 0,
+    "memory_id": "evt_d262a0d5115a921582bf345e0e15cdfb",
+    "error": null,
+    "blocks_work": 1,
+    "interpretation": null,
+    "claim_kinds": [],
+    "semantic_claim_count": 0
+  },
+  "elapsed_ms": 7.080199997290038
+}

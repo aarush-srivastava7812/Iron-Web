@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-17",
+  "origin": "http://127.0.0.1:8088",
+  "browser_checks": 106,
+  "passed": 106,
+  "failed": [],
+  "backend_tests_passed": 47,
+  "inventory_snapshots": 42,
+  "rendered_control_entries": 1707,
+  "flight": {
+    "airport_pairs": 240,
+    "selected": 60,
+    "empty": 180
+  },
+  "local_load": {
+    "requests": 60,
+    "concurrency": 5,
+    "p95_ms": 32,
+    "max_ms": 33
+  },
+  "google_live_auth": "Awaiting client ID",
+  "external_services": "Provider reservations, payments and outbound email are unconfigured"
+}

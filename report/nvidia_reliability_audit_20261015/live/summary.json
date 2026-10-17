@@ -1,0 +1,148 @@
+{
+  "calls": 8,
+  "elapsed_seconds": 250.66047190000245,
+  "assessments": [
+    {
+      "label": "planner-initial-direct",
+      "checks": {
+        "known_offers": true,
+        "current_budget": true,
+        "current_walking": true,
+        "total_correct": false,
+        "within_budget": true,
+        "morning": true,
+        "step_free": true,
+        "vegetarian": true,
+        "hotel_walking": true,
+        "activity_walking": true,
+        "no_boats": true,
+        "required_activities": true,
+        "one_activity_per_day": true
+      }
+    },
+    {
+      "label": "planner-initial-thinking",
+      "checks": null
+    },
+    {
+      "label": "planner-revised-thinking",
+      "checks": null
+    },
+    {
+      "label": "planner-revised-direct",
+      "checks": {
+        "known_offers": true,
+        "current_budget": true,
+        "current_walking": true,
+        "total_correct": false,
+        "within_budget": false,
+        "morning": true,
+        "step_free": true,
+        "vegetarian": true,
+        "hotel_walking": true,
+        "activity_walking": true,
+        "no_boats": true,
+        "required_activities": true,
+        "one_activity_per_day": true
+      }
+    },
+    {
+      "label": "reviewer-initial-direct",
+      "checks": {
+        "rejects_incorrect_total": true,
+        "current_budget": false,
+        "current_walking": true,
+        "issues": [
+          "Hotel H-RESORT walk_from_dropoff_metres 80m exceeds max_walk_metres 500m? No, 80 is within 500. However, step_free true is correct.",
+          "Activity A-ACCESSIBLE-BEACH walking_metres 120m exceeds max_walk_metres 500m? No, 120 is within 500. However, boat false is correct.",
+          "Activity A-TERRACE walking_metres 100m exceeds max_walk_metres 500m? No, 100 is within 500. However, boat false is correct.",
+          "Flight F-AM-COMFORT departure 09:00 respects flight_time_preference morning. Correct.",
+          "Total cost 76600 INR within budget 90000 INR. Correct.",
+          "Step-free hotel mandatory claim_128f919302e5d356f271ad3eec7c46c7: H-RESORT step_free true satisfies.",
+          "Avoid boats claim_15519dbbfe3a298bb0935132a637e29e: A-ACCESSIBLE-BEACH boat false, A-TERRACE boat false satisfy.",
+          "Max activities per day claim_192491f492ee305ea4fc5ac601514823: Two activities scheduled across two days (A-ACCESSIBLE-BEACH on 12-10, A-TERRACE on 12-11). This satisfies max_activities_per_day 1 per day.",
+          "Dietary vegetarian claim_8e946bdb33af7bc9a1296571899712b4: H-RESORT vegetarian_food true, A-TERRACE local-food tasting aligns.",
+          "Budget 90000 INR, currency INR: Correct."
+        ]
+      }
+    },
+    {
+      "label": "reviewer-initial-thinking",
+      "checks": null
+    },
+    {
+      "label": "polite-change",
+      "source": "Please change my total trip budget to INR 65000.",
+      "normalized_claims": [
+        {
+          "predicate": "budget",
+          "value": 65000,
+          "action": "assert",
+          "reason": "user requested change to INR 65000",
+          "subject": "Riya",
+          "scope": {
+            "trip_id": "goa-family"
+          },
+          "kind": "rule"
+        }
+      ],
+      "normalizations": [
+        {
+          "intake": 1,
+          "changes": [
+            {
+              "predicate": "budget",
+              "reason": "Lifecycle action grounded in explicit source change",
+              "before": "supersede",
+              "after": "assert"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "two-changes",
+      "source": "Change my total trip budget to INR 65000 and my maximum walking distance to 50 metres.",
+      "normalized_claims": [
+        {
+          "predicate": "budget",
+          "value": 65000,
+          "action": "supersede",
+          "reason": "Change my total trip budget to INR 65000 and my maximum walking distance to 50 metres.",
+          "subject": "Riya",
+          "scope": {
+            "trip_id": "goa-family"
+          },
+          "kind": "rule"
+        },
+        {
+          "predicate": "max_walk_metres",
+          "value": 50,
+          "action": "assert",
+          "reason": "User explicitly set maximum walking distance to 50 metres",
+          "subject": "Riya",
+          "scope": {
+            "trip_id": "goa-family"
+          },
+          "kind": "rule"
+        }
+      ],
+      "normalizations": [
+        {
+          "intake": 1,
+          "changes": [
+            {
+              "predicate": "max_walk_metres",
+              "reason": "Lifecycle action grounded in explicit source change",
+              "before": "supersede",
+              "after": "assert"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "temperature": 0,
+  "top_p": 0.95,
+  "note": "Diagnostic n=1 per cell; paired cells use identical captured prompts and max_tokens=5000. Intake uses its existing 2800-token request. No thinking text is saved."
+}

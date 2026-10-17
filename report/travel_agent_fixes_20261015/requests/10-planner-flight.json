@@ -1,0 +1,15 @@
+{
+  "label": "10-planner-flight",
+  "path": "/v1/context",
+  "body": {
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "task_type": "flight",
+    "session_id": "call-1",
+    "query": "Prepare the Goa family trip from saved preferences and current requirements."
+  },
+  "actor": "planner",
+  "tenant": "riya"
+}

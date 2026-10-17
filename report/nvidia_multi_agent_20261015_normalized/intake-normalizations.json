@@ -1,0 +1,48 @@
+[
+  {
+    "intake": 1,
+    "changes": [
+      {
+        "predicate": "dietary",
+        "reason": "Explicit usual preference is not a hard requirement",
+        "before": "rule",
+        "after": "preference"
+      }
+    ]
+  },
+  {
+    "intake": 2,
+    "changes": [
+      {
+        "predicate": "dietary",
+        "reason": "Canonical label spelling",
+        "before": "Vegetarian",
+        "after": "vegetarian"
+      }
+    ]
+  },
+  {
+    "intake": 3,
+    "changes": []
+  },
+  {
+    "intake": 4,
+    "changes": []
+  },
+  {
+    "intake": 5,
+    "changes": []
+  },
+  {
+    "intake": 6,
+    "changes": []
+  },
+  {
+    "intake": 7,
+    "changes": []
+  },
+  {
+    "intake": 8,
+    "changes": []
+  }
+]

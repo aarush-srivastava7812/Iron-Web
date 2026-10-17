@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from datetime import date
 import json
+import time
 from threading import Lock
 
 from agents.schemas import (
@@ -83,9 +84,10 @@ class ThreeTierGateway:
 
     graph_live = True
 
-    def __init__(self, service, principals, user_id, trip_id):
+    def __init__(self, service, principals, user_id, trip_id, observer=None):
         self.service, self.principals = service, principals
         self.user_id, self.trip_id = user_id, trip_id
+        self.observer = observer
         self.packets = []
         self._lock = Lock()
 
@@ -94,19 +96,34 @@ class ThreeTierGateway:
             raise PermissionError(
                 "The gateway is bound to the authenticated traveler and trip."
             )
+        started = time.perf_counter()
+        if self.observer:
+            self.observer.emit(self.trip_id, "context_requested", agent_id=agent_id)
         task = {"stay_agent": "hotel", "budget_booking_agent": "flight"}.get(
             agent_id, "itinerary"
         )
-        packet = self.service.context(
-            self.principals[agent_id],
-            subject="Traveller",
-            scope={"trip_id": self.trip_id},
-            session_id=self.trip_id,
-            task_type=task,
-            query=query,
-        )
+        try:
+            packet = self.service.context(
+                self.principals[agent_id],
+                subject="Traveller",
+                scope={"trip_id": self.trip_id},
+                session_id=self.trip_id,
+                task_type=task,
+                query=query,
+            )
+        except Exception:
+            if self.observer:
+                self.observer.emit(self.trip_id, "context_failed", agent_id=agent_id,
+                    latency_ms=round((time.perf_counter() - started) * 1000, 2))
+            raise
         with self._lock:
             self.packets.append((agent_id, packet))
+        if self.observer:
+            self.observer.emit(self.trip_id, "context_assembled", agent_id=agent_id,
+                packet=packet, status=packet["status"], cache_hit=packet["cache_hit"],
+                latency_ms=round((time.perf_counter() - started) * 1000, 2),
+                claims=len(packet["claim_ids"]), cards=len(packet["cards"]),
+                tokens=packet["tokens"], residency=packet["residency"])
         if packet["status"] != "ready":
             raise MemoryNeedsInformation(packet["required_issues"])
         items = [
@@ -197,12 +214,16 @@ class ThreeTierGateway:
         return brief
 
     def validate_current(self):
-        return bool(self.packets) and all(
+        valid = bool(self.packets) and all(
             self.service.validate_context(
                 self.principals[actor], packet["context_token"]
             )["valid"]
             for actor, packet in self.packets
         )
+
+        if self.observer:
+            self.observer.emit(self.trip_id, "context_validated", valid=valid, packets=len(self.packets))
+        return valid
 
     def diagnostics(self):
         return [
@@ -218,6 +239,8 @@ class ThreeTierGateway:
         ]
 
     def propose_writes(self, proposals):
+        if self.observer:
+            self.observer.emit(self.trip_id, "inferred_writes_rejected", count=len(proposals))
         # The original workflow proposes inferred preferences. User changes now
         # enter through confirmed intake; generated repetitions are not sources.
         return [

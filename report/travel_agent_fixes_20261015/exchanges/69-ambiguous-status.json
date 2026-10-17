@@ -1,0 +1,14 @@
+{
+  "label": "69-ambiguous-status",
+  "tenant": "riya",
+  "actor": "user",
+  "path": "/v1/receipt",
+  "request": {
+    "eid": "ambiguous-intake"
+  },
+  "http_status": 404,
+  "response": {
+    "error": "Unknown endpoint"
+  },
+  "elapsed_ms": 1.890199986519292
+}

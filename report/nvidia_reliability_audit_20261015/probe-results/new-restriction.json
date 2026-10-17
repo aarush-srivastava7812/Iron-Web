@@ -1,0 +1,1156 @@
+{
+  "old_proof_valid": false,
+  "new_rule_in_fresh_context": true,
+  "handoff": {
+    "as_of": 1792079849,
+    "can_continue": true,
+    "work": [
+      {
+        "work": {
+          "id": "boat-plan",
+          "description": "An existing boat-trip plan",
+          "agent_id": "",
+          "status": "ready",
+          "created_at": 1792079848,
+          "validation_state": "current",
+          "fingerprint": "work_2f3779e10870ae6d587e59d32feb11f3",
+          "used_claim_ids": "[\"claim_49f402eb9ff1cfe69088db21584a7da9\",\"claim_7755603b51ed12a2546d1e949896f1ab\",\"claim_9ea2d5c25bbea3ca6340fc912c77209b\",\"claim_de6925cfd50a214fd8eb80951cce1b1d\"]",
+          "dependency_ids": "[]"
+        },
+        "used_versions": [
+          {
+            "claim_id": "claim_49f402eb9ff1cfe69088db21584a7da9",
+            "memory_id": "evt_f86d874801d2daaefe84f9a654136262",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "budget",
+            "value": 100000,
+            "kind": "rule",
+            "scope": {
+              "trip_id": "summer"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": true,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 1.0,
+            "fuzzy_explanation": {
+              "score": 1.0,
+              "hard_rule": "user_confirmed_protection",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_993cc03307b42aeb3b6bac503fcd00d1",
+                "memory_id": "evt_f86d874801d2daaefe84f9a654136262",
+                "text": "Budget 100000",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792079847,
+                "received_at": 1792079847,
+                "digest": "receipt_eb6991267a4cd387bbda35dc18d150ee",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"original\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792079847,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_49f402eb9ff1cfe69088db21584a7da9",
+              "SUPPORTED_BY",
+              "source_993cc03307b42aeb3b6bac503fcd00d1"
+            ]
+          },
+          {
+            "claim_id": "claim_7755603b51ed12a2546d1e949896f1ab",
+            "memory_id": "evt_4af79d30edf5a521695ac8879e141a15",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "dates",
+            "value": "2026-12-01 to 2026-12-05",
+            "kind": "fact",
+            "scope": {
+              "trip_id": "summer"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8468034043654443,
+            "fuzzy_explanation": {
+              "score": 0.8468034043654443,
+              "inputs": {
+                "freshness": 0.999999910860706,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 1.782785878923221e-07,
+                  "high": 0.9999998217214121
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_0ed56c5458f9097e42b868ae493ff5ad",
+                "memory_id": "evt_4af79d30edf5a521695ac8879e141a15",
+                "text": "Trip details",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792079848,
+                "received_at": 1792079848,
+                "digest": "receipt_88a98a0fd6ba1eae90cab2f63340bdf1",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792079848,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_7755603b51ed12a2546d1e949896f1ab",
+              "SUPPORTED_BY",
+              "source_0ed56c5458f9097e42b868ae493ff5ad"
+            ]
+          },
+          {
+            "claim_id": "claim_9ea2d5c25bbea3ca6340fc912c77209b",
+            "memory_id": "evt_4af79d30edf5a521695ac8879e141a15",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "currency",
+            "value": "INR",
+            "kind": "fact",
+            "scope": {
+              "trip_id": "summer"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8468034043654443,
+            "fuzzy_explanation": {
+              "score": 0.8468034043654443,
+              "inputs": {
+                "freshness": 0.999999910860706,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 1.782785878923221e-07,
+                  "high": 0.9999998217214121
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_0ed56c5458f9097e42b868ae493ff5ad",
+                "memory_id": "evt_4af79d30edf5a521695ac8879e141a15",
+                "text": "Trip details",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792079848,
+                "received_at": 1792079848,
+                "digest": "receipt_88a98a0fd6ba1eae90cab2f63340bdf1",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792079848,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_9ea2d5c25bbea3ca6340fc912c77209b",
+              "SUPPORTED_BY",
+              "source_0ed56c5458f9097e42b868ae493ff5ad"
+            ]
+          },
+          {
+            "claim_id": "claim_de6925cfd50a214fd8eb80951cce1b1d",
+            "memory_id": "evt_4af79d30edf5a521695ac8879e141a15",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "destination",
+            "value": "Goa",
+            "kind": "fact",
+            "scope": {
+              "trip_id": "summer"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8468034043654443,
+            "fuzzy_explanation": {
+              "score": 0.8468034043654443,
+              "inputs": {
+                "freshness": 0.999999910860706,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 1.782785878923221e-07,
+                  "high": 0.9999998217214121
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_0ed56c5458f9097e42b868ae493ff5ad",
+                "memory_id": "evt_4af79d30edf5a521695ac8879e141a15",
+                "text": "Trip details",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792079848,
+                "received_at": 1792079848,
+                "digest": "receipt_88a98a0fd6ba1eae90cab2f63340bdf1",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792079848,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_de6925cfd50a214fd8eb80951cce1b1d",
+              "SUPPORTED_BY",
+              "source_0ed56c5458f9097e42b868ae493ff5ad"
+            ]
+          }
+        ],
+        "current_evidence": [
+          {
+            "claim_id": "claim_49f402eb9ff1cfe69088db21584a7da9",
+            "memory_id": "evt_f86d874801d2daaefe84f9a654136262",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "budget",
+            "value": 100000,
+            "kind": "rule",
+            "scope": {
+              "trip_id": "summer"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": true,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 1.0,
+            "fuzzy_explanation": {
+              "score": 1.0,
+              "hard_rule": "user_confirmed_protection",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_993cc03307b42aeb3b6bac503fcd00d1",
+                "memory_id": "evt_f86d874801d2daaefe84f9a654136262",
+                "text": "Budget 100000",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792079847,
+                "received_at": 1792079847,
+                "digest": "receipt_eb6991267a4cd387bbda35dc18d150ee",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"original\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792079847,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_49f402eb9ff1cfe69088db21584a7da9",
+              "SUPPORTED_BY",
+              "source_993cc03307b42aeb3b6bac503fcd00d1"
+            ]
+          },
+          {
+            "claim_id": "claim_7755603b51ed12a2546d1e949896f1ab",
+            "memory_id": "evt_4af79d30edf5a521695ac8879e141a15",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "dates",
+            "value": "2026-12-01 to 2026-12-05",
+            "kind": "fact",
+            "scope": {
+              "trip_id": "summer"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8468034043654443,
+            "fuzzy_explanation": {
+              "score": 0.8468034043654443,
+              "inputs": {
+                "freshness": 0.999999910860706,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 1.782785878923221e-07,
+                  "high": 0.9999998217214121
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_0ed56c5458f9097e42b868ae493ff5ad",
+                "memory_id": "evt_4af79d30edf5a521695ac8879e141a15",
+                "text": "Trip details",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792079848,
+                "received_at": 1792079848,
+                "digest": "receipt_88a98a0fd6ba1eae90cab2f63340bdf1",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792079848,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_7755603b51ed12a2546d1e949896f1ab",
+              "SUPPORTED_BY",
+              "source_0ed56c5458f9097e42b868ae493ff5ad"
+            ]
+          },
+          {
+            "claim_id": "claim_9ea2d5c25bbea3ca6340fc912c77209b",
+            "memory_id": "evt_4af79d30edf5a521695ac8879e141a15",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "currency",
+            "value": "INR",
+            "kind": "fact",
+            "scope": {
+              "trip_id": "summer"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8468034043654443,
+            "fuzzy_explanation": {
+              "score": 0.8468034043654443,
+              "inputs": {
+                "freshness": 0.999999910860706,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 1.782785878923221e-07,
+                  "high": 0.9999998217214121
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_0ed56c5458f9097e42b868ae493ff5ad",
+                "memory_id": "evt_4af79d30edf5a521695ac8879e141a15",
+                "text": "Trip details",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792079848,
+                "received_at": 1792079848,
+                "digest": "receipt_88a98a0fd6ba1eae90cab2f63340bdf1",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792079848,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_9ea2d5c25bbea3ca6340fc912c77209b",
+              "SUPPORTED_BY",
+              "source_0ed56c5458f9097e42b868ae493ff5ad"
+            ]
+          },
+          {
+            "claim_id": "claim_de6925cfd50a214fd8eb80951cce1b1d",
+            "memory_id": "evt_4af79d30edf5a521695ac8879e141a15",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "destination",
+            "value": "Goa",
+            "kind": "fact",
+            "scope": {
+              "trip_id": "summer"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8468034043654443,
+            "fuzzy_explanation": {
+              "score": 0.8468034043654443,
+              "inputs": {
+                "freshness": 0.999999910860706,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 1.782785878923221e-07,
+                  "high": 0.9999998217214121
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.782785878923221e-07,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_0ed56c5458f9097e42b868ae493ff5ad",
+                "memory_id": "evt_4af79d30edf5a521695ac8879e141a15",
+                "text": "Trip details",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792079848,
+                "received_at": 1792079848,
+                "digest": "receipt_88a98a0fd6ba1eae90cab2f63340bdf1",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792079848,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_de6925cfd50a214fd8eb80951cce1b1d",
+              "SUPPORTED_BY",
+              "source_0ed56c5458f9097e42b868ae493ff5ad"
+            ]
+          }
+        ],
+        "prerequisites": [],
+        "awaiting_prerequisites": [],
+        "needs_review": false,
+        "warnings": []
+      }
+    ]
+  },
+  "completed_after_new_restriction": "completed"
+}

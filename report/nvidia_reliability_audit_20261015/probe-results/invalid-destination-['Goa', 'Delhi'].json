@@ -1,0 +1,18 @@
+{
+  "output": [
+    {
+      "predicate": "destination",
+      "value": [
+        "Goa",
+        "Delhi"
+      ],
+      "action": "assert",
+      "reason": "User requests change",
+      "subject": "Traveller",
+      "scope": {
+        "trip_id": "summer"
+      },
+      "kind": "fact"
+    }
+  ]
+}

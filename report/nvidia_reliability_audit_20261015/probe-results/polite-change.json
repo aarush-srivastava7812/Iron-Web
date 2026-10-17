@@ -1,0 +1,19 @@
+{
+  "input": "Please change my budget to INR 65000.",
+  "output": [
+    {
+      "predicate": "budget",
+      "value": 65000,
+      "action": "assert",
+      "reason": "User requests change",
+      "subject": "Traveller",
+      "scope": {
+        "trip_id": "summer"
+      },
+      "kind": "rule"
+    }
+  ],
+  "observed_actions": {
+    "budget": "assert"
+  }
+}

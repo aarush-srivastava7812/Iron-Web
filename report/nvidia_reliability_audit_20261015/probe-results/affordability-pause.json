@@ -1,0 +1,18 @@
+{
+  "plan": {
+    "decision": "pause",
+    "flight_id": null,
+    "hotel_id": null,
+    "activity_ids": [],
+    "total_inr": null,
+    "budget_inr": 100,
+    "max_walk_metres": 500
+  },
+  "oracle": {
+    "correct_pause": false,
+    "no_supplier_ids": true,
+    "current_budget": true,
+    "current_walking": true
+  },
+  "cheapest_flight": 22000
+}

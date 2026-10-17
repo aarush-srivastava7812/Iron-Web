@@ -1,0 +1,69 @@
+{
+  "trip_id": "553a7cb2-21c4-4873-9760-d0ebcd91dcdd",
+  "trip_status": "ok",
+  "browser_errors": [],
+  "hosted_agents": [
+    {
+      "agent": "trip_consultant",
+      "status": "ok",
+      "mode": "nvidia",
+      "latency_ms": 5911
+    },
+    {
+      "agent": "explore_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "latency_ms": 2961
+    },
+    {
+      "agent": "food_guide_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "latency_ms": 4859
+    },
+    {
+      "agent": "stay_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "latency_ms": 4186
+    },
+    {
+      "agent": "tour_guide_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "latency_ms": 2902
+    },
+    {
+      "agent": "itinerary_planner",
+      "status": "ok",
+      "mode": "nvidia",
+      "latency_ms": 10235
+    },
+    {
+      "agent": "budget_booking_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "latency_ms": 4415
+    }
+  ],
+  "events": 29,
+  "agents_registered": 9,
+  "agents_observed": 8,
+  "graph_nodes": 63,
+  "graph_edges": 150,
+  "claims": 36,
+  "qdrant_points_on_page": 6,
+  "contexts": 8,
+  "provider_usage": {
+    "requests": 18,
+    "successful": 18,
+    "input_tokens": 30739,
+    "output_tokens": 1418,
+    "usage_responses": 18,
+    "scope": "website process since start",
+    "source": "measured",
+    "provider": "NVIDIA NIM"
+  },
+  "provider_model": "openai/gpt-oss-20b",
+  "fixture_sha256": "9a2059a3c0fa5f5de5b778e5595caef3a0576a3bf761ea8ea6cbe7d968f44680"
+}

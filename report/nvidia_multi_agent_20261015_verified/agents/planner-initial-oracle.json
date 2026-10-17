@@ -1,0 +1,15 @@
+{
+  "known_offers": true,
+  "current_budget": true,
+  "current_walking": true,
+  "total_correct": false,
+  "within_budget": true,
+  "morning": true,
+  "step_free": true,
+  "vegetarian": true,
+  "hotel_walking": true,
+  "activity_walking": true,
+  "no_boats": true,
+  "required_activities": true,
+  "one_activity_per_day": true
+}

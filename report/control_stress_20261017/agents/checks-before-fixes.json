@@ -1,0 +1,93 @@
+{
+  "checks": [
+    {
+      "name": "All concierge suggestions and Send: packages",
+      "status": "failed",
+      "error": "Show one follow-up link after repeated replies\n\n4 !== 1\n"
+    },
+    {
+      "name": "All concierge suggestions and Send: tours",
+      "status": "failed",
+      "error": "Show one follow-up link after repeated replies\n\n4 !== 1\n"
+    },
+    {
+      "name": "All concierge suggestions and Send: hotels",
+      "status": "failed",
+      "error": "Show one follow-up link after repeated replies\n\n4 !== 1\n"
+    },
+    {
+      "name": "All concierge suggestions and Send: destination/Darjeeling",
+      "status": "failed",
+      "error": "Show one follow-up link after repeated replies\n\n4 !== 1\n"
+    },
+    {
+      "name": "All concierge suggestions and Send: package/Kashmir",
+      "status": "failed",
+      "error": "Show one follow-up link after repeated replies\n\n4 !== 1\n"
+    },
+    {
+      "name": "All concierge suggestions and Send: planner",
+      "status": "failed",
+      "error": "Show one follow-up link after repeated replies\n\n4 !== 1\n"
+    },
+    {
+      "name": "All concierge suggestions and Send: flights",
+      "status": "failed",
+      "error": "Show one follow-up link after repeated replies\n\n4 !== 1\n"
+    },
+    {
+      "name": "All concierge suggestions and Send: about",
+      "status": "failed",
+      "error": "Show one follow-up link after repeated replies\n\n4 !== 1\n"
+    },
+    {
+      "name": "All concierge suggestions and Send: contact",
+      "status": "failed",
+      "error": "Show one follow-up link after repeated replies\n\n4 !== 1\n"
+    },
+    {
+      "name": "All concierge suggestions and Send: booking?place=Kashmir",
+      "status": "failed",
+      "error": "Show one follow-up link after repeated replies\n\n4 !== 1\n"
+    },
+    {
+      "name": "All concierge suggestions and Send: dashboard",
+      "status": "failed",
+      "error": "Show one follow-up link after repeated replies\n\n4 !== 1\n"
+    },
+    {
+      "name": "Concierge failure keeps draft and permits retry",
+      "status": "passed"
+    },
+    {
+      "name": "Start a new conversation preserves the previous one",
+      "status": "passed"
+    },
+    {
+      "name": "Planner repeated submissions create one itinerary",
+      "status": "passed"
+    },
+    {
+      "name": "Trip chat, saved memory panels and reload",
+      "status": "passed"
+    },
+    {
+      "name": "Trip chat failure and rapid retry",
+      "status": "passed"
+    },
+    {
+      "name": "Login account links and sign out button",
+      "status": "passed"
+    },
+    {
+      "name": "Isolated trip cleanup",
+      "status": "passed"
+    },
+    {
+      "name": "No uncaught chat/browser errors",
+      "status": "passed"
+    }
+  ],
+  "errors": [],
+  "scope": "Isolated test account, real memory/agent backend"
+}

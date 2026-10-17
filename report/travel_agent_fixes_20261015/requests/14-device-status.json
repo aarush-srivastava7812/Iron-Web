@@ -1,0 +1,7 @@
+{
+  "label": "14-device-status",
+  "path": "/audit/status",
+  "body": {},
+  "actor": "planner",
+  "tenant": "riya"
+}

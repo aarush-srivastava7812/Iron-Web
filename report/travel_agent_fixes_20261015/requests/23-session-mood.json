@@ -1,0 +1,28 @@
+{
+  "label": "23-session-mood",
+  "path": "/v1/events",
+  "body": {
+    "event_id": "session-mood",
+    "text": "For this planning session I feel relaxed.",
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family",
+      "session_id": "call-1"
+    },
+    "confirmed": true,
+    "claims": [
+      {
+        "subject": "Riya",
+        "predicate": "mood",
+        "value": "relaxed",
+        "kind": "preference",
+        "scope": {
+          "trip_id": "goa-family",
+          "session_id": "call-1"
+        }
+      }
+    ]
+  },
+  "actor": "user",
+  "tenant": "riya"
+}

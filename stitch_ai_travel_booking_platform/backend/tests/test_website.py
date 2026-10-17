@@ -58,7 +58,8 @@ def test_catalog_is_seeded_and_idempotent(site):
     before=c.get('/api/website/catalog').json()
     seed.run()
     assert c.get('/api/website/catalog').json()==before
-    assert len(before['destinations'])==10 and len(before['hotels'])==6 and len(before['experiences'])==6
+    assert len(before['destinations'])==10 and len(before['hotels'])>=12 and len(before['experiences'])>=12
+    assert {c['name'] for c in before['destination_guides']['Kerala']['cities']} == {'Kochi','Munnar','Alleppey'}
     assert before['destinations'][0]['name']=='Kashmir'
     assert all(x['id'] and x['destination_id'] for k in ['destinations','hotels','experiences'] for x in before[k])
 
@@ -144,6 +145,30 @@ def test_same_numeric_package_and_stay_favorites_coexist(site):
     assert c.post('/api/favorites',headers=h,json={'item_type':'package','item_id':999999}).status_code==404
     c.delete('/api/favorites/package/1',headers=h)
     assert c.get('/api/favorites',headers=h).json()[0]['item_type']=='stay'
+
+
+def test_concurrent_favorite_saves_are_idempotent(site):
+    from concurrent.futures import ThreadPoolExecutor
+    from threading import Barrier
+    from sqlalchemy import event
+    from app.models import Favorite
+
+    client, headers, _, sessions = site
+    # Hold every insert until all requests have passed the initial lookup.
+    # This reliably exercises the unique-key race, rather than sequential retries.
+    ready = Barrier(5)
+    def before_insert(mapper, connection, target):
+        ready.wait(timeout=15)
+
+    event.listen(Favorite, 'before_insert', before_insert)
+    try:
+        with ThreadPoolExecutor(max_workers=5) as pool:
+            responses = list(pool.map(lambda _: client.post('/api/favorites', headers=headers,
+                json={'item_type': 'package', 'item_id': 1}), range(5)))
+    finally:
+        event.remove(Favorite, 'before_insert', before_insert)
+    assert all(response.status_code == 201 for response in responses)
+    assert len(client.get('/api/favorites', headers=headers).json()) == 1
 
 
 def test_contact_and_newsletter_persist_without_exposing_private_data(site):

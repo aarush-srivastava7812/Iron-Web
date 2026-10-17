@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Memory Dashboard — inspection</title>
+<style>
+:root{font:15px/1.5 system-ui,sans-serif;color:#202824;background:#f5f6f5}body{max-width:1200px;margin:32px auto;padding:0 20px}h1{font-size:26px;margin-bottom:4px}h2{font-size:18px}p{color:#526057}label{display:block;margin-top:12px}input,button,select{font:inherit;padding:8px;border:1px solid #b9c3bb;border-radius:4px}input{width:min(560px,90%)}button{cursor:pointer;background:white}button:disabled{cursor:wait;opacity:.6}button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #407559;outline-offset:2px}header,section{border-bottom:1px solid #d7ddd8;padding-bottom:20px;margin-bottom:20px}#status{padding:10px 14px;background:#e1e9e3;white-space:pre-wrap}#summary{display:flex;flex-wrap:wrap;gap:24px}#summary strong{display:block;font:24px ui-monospace,monospace}nav{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}pre{font:12px/1.6 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;max-height:520px;overflow:auto;background:white;padding:14px;border:1px solid #d7ddd8}details{margin-bottom:16px}summary{cursor:pointer;font-weight:600}#architecture{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}article{padding:14px;border:1px solid #d7ddd8;background:white}small{color:#526057}#error{color:#9a3428}@media(max-width:700px){#architecture{grid-template-columns:1fr}body{margin-top:16px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style></head><body>
+<header><small>IRON WEB / BACKEND INSPECTION</small><h1>Memory dashboard</h1><p>Minimal inspection UI. The presentation design will follow your UI plan.</p>
+<form id="connection"><label for="backend">Dashboard backend URL</label><input id="backend" type="url" placeholder="http://127.0.0.1:8200" aria-describedby="backend-help"> <button>Connect</button><br><small id="backend-help">Use the dashboard backend URL. Credentials stay on its server.</small></form>
+<p id="status" role="status" aria-live="polite">Connecting to the memory feed…</p><p id="error" role="alert"></p>
+<button id="pause" type="button">Pause live updates</button> <button id="refresh" type="button">Refresh snapshot</button> <span id="updated"></span></header>
+<section aria-label="Memory overview"><div id="summary"></div><p id="scope"></p></section>
+<section><h2>Three-tier memory architecture</h2><div id="architecture"><article>Tier 1: hot agent + traveler context in RAM</article><article>Tier 2: task/mood cards in CPU RAM or optional CUDA</article><article>Tier 3: durable shared memory in FalkorDB + Qdrant + receipt journal</article></div><p id="accounting"></p></section>
+<main>
+<details open><summary>Agents using memory</summary><pre id="agents">Waiting for actual usage…</pre></details>
+<details><summary>Shared memory — claims and lifecycle</summary><p>Claims include history and candidates. Captured agent fields show resolved support and conflicts.</p><button id="more-claims" type="button" disabled>Next claims page</button><pre id="shared-memory">Waiting for the memory store…</pre></details>
+<details><summary>FalkorDB knowledge graph</summary><button id="more-graph" type="button" disabled>Next graph page</button><pre id="graph">Waiting for FalkorDB…</pre></details>
+<details><summary>Qdrant vector records and payloads</summary><label><input id="vector-values" type="checkbox" style="width:auto"> Include actual vector values</label><button id="more-vectors" type="button" disabled>Next vector page</button><pre id="vectors">Waiting for Qdrant…</pre></details>
+<details><summary>Tier 1 / Tier 2 — actual captured contexts and cards</summary><pre id="tiers">No agent context has been observed yet.</pre></details>
+<details open><summary>Live memory activity and receipts</summary><pre id="events">Waiting for agents to use memory…</pre></details>
+<details><summary>Database, models, and cache diagnostics</summary><pre id="overview">Waiting for live diagnostics…</pre></details>
+<details><summary>API provider and masked credential status</summary><pre id="credentials">Waiting for the owning runtime…</pre></details>
+</main><footer><p>Read-only monitoring. Agent observations reset on backend restart; the databases remain durable. No sample data is presented as live.</p><a id="api-docs" href="/docs">Dashboard API documentation</a></footer>
+<script src="/config.js"></script><script type="module" src="/app.js"></script></body></html>

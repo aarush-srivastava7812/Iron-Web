@@ -1,0 +1,58 @@
+/* All UI color values live here. Semantic aliases keep existing utilities stable. */
+:root {
+  --ui-bg: #141416;
+  --ui-panel: #1b1b1e;
+  --ui-raised: #232327;
+  --ui-border: #2c2c31;
+  --ui-text: #ececec;
+  --ui-secondary: #a1a1aa;
+  --agent-planner: #60a5fa;
+  --agent-researcher: #5eead4;
+  --agent-reviewer: #c084fc;
+  --tier-hot: #fb923c;
+  --tier-context: #c7c25a;
+  --tier-evidence: #94a3b8;
+  --state-current: #f2ee6b;
+  --state-conflict: #f87171;
+  --state-dormant-opacity: 0.35;
+  --state-selection-dim-opacity: 0.2;
+  --diff-added: #4ade80;
+  --diff-removed: var(--state-conflict);
+  --diff-added-bg: color-mix(in srgb, var(--diff-added) 8%, transparent);
+  --diff-removed-bg: color-mix(in srgb, var(--diff-removed) 8%, transparent);
+  --state-current-glow: 0 0 0 3px
+    color-mix(in srgb, var(--state-current) 16%, transparent);
+}
+@theme {
+  --font-sans: "Geist", sans-serif;
+  --font-mono: "Geist Mono", monospace;
+  --color-base: var(--ui-bg);
+  --color-panel: var(--ui-panel);
+  --color-stage: var(--ui-bg);
+  --color-raised: var(--ui-raised);
+  --color-line: var(--ui-border);
+  --color-ink: var(--ui-text);
+  --color-muted: var(--ui-secondary);
+  --color-faint: var(--ui-secondary);
+  --color-memory: var(--state-current);
+  --color-mint: var(--agent-researcher);
+  --color-conflict: var(--state-conflict);
+}
+[data-agent="planner"] {
+  --agent-color: var(--agent-planner);
+}
+[data-agent="researcher"] {
+  --agent-color: var(--agent-researcher);
+}
+[data-agent="reviewer"] {
+  --agent-color: var(--agent-reviewer);
+}
+[data-tier="tier-1"] {
+  --tier-color: var(--tier-hot);
+}
+[data-tier="tier-2"] {
+  --tier-color: var(--tier-context);
+}
+[data-tier="tier-3"] {
+  --tier-color: var(--tier-evidence);
+}

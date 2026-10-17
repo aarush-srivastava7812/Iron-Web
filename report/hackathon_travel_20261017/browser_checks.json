@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "scope": "Isolated local database; retained live agent snapshot; real HTTP edit endpoints",
+  "checks": [
+    "Seven actual specialist traces render from retained live NVIDIA plan",
+    "Remove activity/meal reprices and persists across reload",
+    "Compare and restore reproduce the original estimate",
+    "Stay alternatives save and reprice through the server",
+    "Text export downloads successfully",
+    "No horizontal overflow at 1440, 768, 390 or 320 pixels"
+  ],
+  "errors": []
+}

@@ -1,0 +1,11 @@
+{
+  "syntax_files": 7,
+  "primary_scored_queries": 2980,
+  "all_five_round_ordered_results_equal": true,
+  "source_snapshots_verified": true,
+  "original_stores_unchanged": true,
+  "graph_controls_passed": true,
+  "local_links_valid": true,
+  "production_files_modified": false,
+  "contract_tests_passed": 6
+}

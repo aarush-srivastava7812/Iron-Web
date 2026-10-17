@@ -1,0 +1,134 @@
+{
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "run_id": "47e21745be",
+  "failure": {
+    "type": "RuntimeError",
+    "message": "Automatic intake did not satisfy the context field contract."
+  },
+  "checks": {
+    "initial_context_ready": false
+  },
+  "counts": {
+    "passed": 0,
+    "failed": 1
+  },
+  "elapsed_ms": 25135.716000004322,
+  "initialization_ms": 1073.1954999937443,
+  "model_calls": 3,
+  "model_latency": {
+    "n": 3,
+    "min_ms": 983.9652999944519,
+    "p50_ms": 3625.0003000022843,
+    "p95_ms": 12764.231019993895,
+    "max_ms": 13779.701099992963,
+    "mean_ms": 6129.555566663233
+  },
+  "sum_model_call_ms": 18388.6666999897,
+  "memory_benchmarks": {},
+  "local_http_latency": {
+    "/v1/events": {
+      "n": 3,
+      "min_ms": 4.177499999059364,
+      "p50_ms": 4.4815999863203615,
+      "p95_ms": 24.677329997939523,
+      "max_ms": 26.92129999923054,
+      "mean_ms": 11.860133328203423
+    },
+    "/v1/events/status": {
+      "n": 352,
+      "min_ms": 1.7198999994434416,
+      "p50_ms": 2.6305999999749474,
+      "p95_ms": 22.958889997244096,
+      "max_ms": 30.75170000374783,
+      "mean_ms": 5.634353409277537
+    },
+    "/v1/context": {
+      "n": 2,
+      "min_ms": 6.7202000063844025,
+      "p50_ms": 700.0138000003062,
+      "p95_ms": 1323.9780399948359,
+      "max_ms": 1393.307399994228,
+      "mean_ms": 700.0138000003062
+    }
+  },
+  "ingestion_events": 3,
+  "interpreted_claims": 21,
+  "ingested_source_utf8_bytes": 530,
+  "storage_final": null,
+  "gpu_requested": true,
+  "consumer_tokenizer": "NVIDIA-Nemotron-3.5-Lightning-30B-A3B:623c34567aebb18582765289fbe23d901c62704d6518d71866e0e58db892b5b7",
+  "versions": {
+    "openai": "1.60.0",
+    "tokenizers": "0.20.3",
+    "qdrant-client": "1.18.0",
+    "falkordb": "1.7.1"
+  },
+  "api_base": "https://integrate.api.nvidia.com/v1",
+  "source_commit": "69f45bd",
+  "physical_disk_after_close_bytes": 86545,
+  "api_usage": [
+    {
+      "label": "intake-1",
+      "usage": {
+        "completion_tokens": 191,
+        "prompt_tokens": 471,
+        "total_tokens": 662,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "intake-2",
+      "usage": {
+        "completion_tokens": 948,
+        "prompt_tokens": 560,
+        "total_tokens": 1508,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "intake-3",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 463,
+        "total_tokens": 524,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    }
+  ],
+  "limits": [
+    "One synthetic travel task; one run, no statistical answer-quality claim.",
+    "Same hosted model serves distinct planner/reviewer contexts; correlated errors remain possible.",
+    "Schema-guided intake and role/card definitions are application configuration; no autonomous persona invention.",
+    "Tier 1 and 2 are overlapping derivatives of tier 3, not disjoint source partitions.",
+    "Tier 2 CUDA stores card vectors; card text remains in host memory and is sent to the hosted model.",
+    "RAM bytes are cache-accounted payload, not all Python/model memory; GPU provider/context overhead is separate.",
+    "Local token counts cover the memory prompt; provider usage includes complete chat formatting and the fixture catalog."
+  ]
+}

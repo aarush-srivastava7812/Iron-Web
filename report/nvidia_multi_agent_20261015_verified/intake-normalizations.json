@@ -1,0 +1,39 @@
+[
+  {
+    "intake": 1,
+    "changes": []
+  },
+  {
+    "intake": 2,
+    "changes": []
+  },
+  {
+    "intake": 3,
+    "changes": []
+  },
+  {
+    "intake": 4,
+    "changes": [
+      {
+        "predicate": "budget",
+        "reason": "Numeric string converted to JSON number"
+      }
+    ]
+  },
+  {
+    "intake": 5,
+    "changes": []
+  },
+  {
+    "intake": 6,
+    "changes": []
+  },
+  {
+    "intake": 7,
+    "changes": []
+  },
+  {
+    "intake": 8,
+    "changes": []
+  }
+]

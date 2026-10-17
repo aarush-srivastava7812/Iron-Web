@@ -12,13 +12,13 @@ from datetime import date, timedelta
 
 from agents.schemas import (
     AgentResult,
-    AgentStatus,
     MemoryContext,
     MemoryWriteProposal,
     TripBrief,
 )
 
 from .resource_manager.model_registry import get_nim_client
+from .config import settings
 
 logger = logging.getLogger(__name__)
 
@@ -153,7 +153,7 @@ class TripConsultant:
     def _llm_refine(self, request: str, brief: TripBrief) -> TripBrief | None:
         """Optional structured LLM refinement; falls back silently."""
         client = get_nim_client()
-        if not client.available:
+        if settings.agent_mode == "offline" or not client.available:
             return None
         system = (
             "Extract travel requirements as JSON with keys destination, start_date "
@@ -223,7 +223,6 @@ class TripConsultant:
     def preference_writes(self, brief: TripBrief, user_id: str, session_id: str) -> list[MemoryWriteProposal]:
         """Only explicit, durable statements become preference memories."""
         proposals: list[MemoryWriteProposal] = []
-        now = int(time.time())
         for diet in brief.dietary_requirements:
             proposals.append(MemoryWriteProposal(
                 user_id=user_id, session_id=session_id, agent_id=self.agent_id,

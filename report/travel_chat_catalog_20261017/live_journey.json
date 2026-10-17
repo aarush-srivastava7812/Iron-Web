@@ -1,0 +1,2446 @@
+{
+  "scope": "Live NVIDIA chatbot and specialist decisions; synthetic catalog; offline embedding fixture with actual temporary memory stores",
+  "turns": [
+    {
+      "status": "ok",
+      "reply": "Hi! To craft your relaxed 5\u2011day Kerala getaway, I need a few details first:\n1. What dates are you planning to travel? (start and end)\n2. How many travellers will be joining?\n3. What\u2019s your approximate budget for the whole trip?\n\nOnce I have those, I can suggest stays, experiences and flights that fit your relaxed pace. Looking forward to hearing from you!",
+      "cards": [
+        {
+          "id": 11,
+          "name": "Kerala",
+          "kind": "destination",
+          "description": "Explore Kerala at your own pace.",
+          "price_inr": 25000
+        }
+      ],
+      "workspace": {
+        "conversation_id": "f3e978f1-3b33-46bb-a3bb-2092eae6ed97",
+        "revision": 2,
+        "draft": {
+          "destination": "Kerala",
+          "duration_days": 5,
+          "pace": "relaxed",
+          "interests": [],
+          "hard_requirements": []
+        },
+        "selections": {},
+        "missing_fields": [
+          "start_date",
+          "end_date",
+          "traveller_count",
+          "budget"
+        ],
+        "confirmed": false,
+        "plan_ready": false,
+        "saved_preferences": {},
+        "options": {
+          "destinations": [
+            {
+              "id": 1,
+              "name": "Goa",
+              "kind": "destination",
+              "description": "Salt air, later mornings and old Portuguese lanes. Find a quiet cove, a family-run kitchen or a village that still moves at its own pace.",
+              "price_inr": 28000
+            },
+            {
+              "id": 2,
+              "name": "Jaipur",
+              "kind": "destination",
+              "description": "Pink sandstone, courtyard cafes and lively bazaars. Jaipur brings royal architecture and everyday craft into the same afternoon.",
+              "price_inr": 22000
+            },
+            {
+              "id": 3,
+              "name": "Manali",
+              "kind": "destination",
+              "description": "Pine-scented walks, mountain mornings and winding roads into the valley. Come for the views; stay for the slower rhythm.",
+              "price_inr": 24000
+            },
+            {
+              "id": 4,
+              "name": "Munnar",
+              "kind": "destination",
+              "description": "Tea gardens fold into the hills around Munnar. Misty trails, small farms and unhurried mornings make this a place to take your time.",
+              "price_inr": 19000
+            },
+            {
+              "id": 5,
+              "name": "Varanasi",
+              "kind": "destination",
+              "description": "A city of morning boat rides, temple bells and lanes with stories in every turn. Best explored slowly, with a local guide.",
+              "price_inr": 16000
+            },
+            {
+              "id": 6,
+              "name": "Udaipur",
+              "kind": "destination",
+              "description": "Lakeside courtyards, hilltop palaces and dinner as the light leaves the water. A gentle, storybook escape in Rajasthan.",
+              "price_inr": 26000
+            },
+            {
+              "id": 7,
+              "name": "Rishikesh",
+              "kind": "destination",
+              "description": "River paths, forest air and quiet mornings beside the Ganga. A soft landing for yoga, day hikes and time outdoors.",
+              "price_inr": 18000
+            },
+            {
+              "id": 8,
+              "name": "Kochi",
+              "kind": "destination",
+              "description": "A harbor city layered with spice markets, art spaces and backwater day trips. Let the ferry set the pace.",
+              "price_inr": 21000
+            },
+            {
+              "id": 9,
+              "name": "Andaman Islands",
+              "kind": "destination",
+              "description": "Clear water, forest trails and long stretches of island quiet. Leave space for the sea to make the itinerary.",
+              "price_inr": 34000
+            },
+            {
+              "id": 10,
+              "name": "Kashmir",
+              "kind": "destination",
+              "description": "Explore Kashmir at your own pace.",
+              "price_inr": 25000
+            },
+            {
+              "id": 11,
+              "name": "Kerala",
+              "kind": "destination",
+              "description": "Explore Kerala at your own pace.",
+              "price_inr": 25000
+            },
+            {
+              "id": 12,
+              "name": "Darjeeling",
+              "kind": "destination",
+              "description": "Explore Darjeeling at your own pace.",
+              "price_inr": 25000
+            },
+            {
+              "id": 13,
+              "name": "New Delhi",
+              "kind": "destination",
+              "description": "Explore New Delhi at your own pace.",
+              "price_inr": 25000
+            },
+            {
+              "id": 14,
+              "name": "Mumbai",
+              "kind": "destination",
+              "description": "Explore Mumbai at your own pace.",
+              "price_inr": 25000
+            },
+            {
+              "id": 15,
+              "name": "Bengaluru",
+              "kind": "destination",
+              "description": "Explore Bengaluru at your own pace.",
+              "price_inr": 25000
+            },
+            {
+              "id": 16,
+              "name": "Hyderabad",
+              "kind": "destination",
+              "description": "Explore Hyderabad at your own pace.",
+              "price_inr": 25000
+            },
+            {
+              "id": 17,
+              "name": "Chennai",
+              "kind": "destination",
+              "description": "Explore Chennai at your own pace.",
+              "price_inr": 25000
+            },
+            {
+              "id": 18,
+              "name": "Alleppey",
+              "kind": "destination",
+              "description": "Palm-lined waterways, village life and quiet stretches beside the backwaters.",
+              "price_inr": 21000
+            }
+          ],
+          "stays": [
+            {
+              "id": 7,
+              "kind": "stay",
+              "name": "Voyara Demo Kochi Courtyard Stay",
+              "price_inr": 2400,
+              "location": "Kochi",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 9,
+              "kind": "stay",
+              "name": "Voyara Demo Munnar Courtyard Stay",
+              "price_inr": 2750,
+              "location": "Munnar",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 11,
+              "kind": "stay",
+              "name": "Voyara Demo Alleppey Courtyard Stay",
+              "price_inr": 3100,
+              "location": "Alleppey",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 8,
+              "kind": "stay",
+              "name": "Voyara Demo Kochi Garden Retreat",
+              "price_inr": 3900,
+              "location": "Kochi",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 10,
+              "kind": "stay",
+              "name": "Voyara Demo Munnar Garden Retreat",
+              "price_inr": 4350,
+              "location": "Munnar",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 12,
+              "kind": "stay",
+              "name": "Voyara Demo Alleppey Garden Retreat",
+              "price_inr": 4800,
+              "location": "Alleppey",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 3,
+              "kind": "stay",
+              "name": "Palm Grove Retreat",
+              "price_inr": 6999,
+              "location": "Kerala",
+              "image": "/travel/kerala.jpg"
+            }
+          ],
+          "experiences": [
+            {
+              "id": 3,
+              "kind": "experience",
+              "name": "Kerala backwater cruise",
+              "price_inr": 3499,
+              "location": "Alleppey",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 7,
+              "kind": "experience",
+              "name": "Demo Fort Kochi heritage walk",
+              "price_inr": 900,
+              "location": "Kochi",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 8,
+              "kind": "experience",
+              "name": "Demo Harbour sunset",
+              "price_inr": 600,
+              "location": "Kochi",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 9,
+              "kind": "experience",
+              "name": "Demo Tea garden walk",
+              "price_inr": 1500,
+              "location": "Munnar",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 10,
+              "kind": "experience",
+              "name": "Demo Scenic viewpoints",
+              "price_inr": 950,
+              "location": "Munnar",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 11,
+              "kind": "experience",
+              "name": "Demo Backwater cruise",
+              "price_inr": 2100,
+              "location": "Alleppey",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 12,
+              "kind": "experience",
+              "name": "Demo Village canoe trail",
+              "price_inr": 1300,
+              "location": "Alleppey",
+              "image": "/travel/kerala.jpg"
+            }
+          ],
+          "flights": []
+        },
+        "guide": {
+          "slug": "kerala",
+          "name": "Kerala",
+          "eyebrow": "Backwaters, hills & living traditions",
+          "description": "Trace a gentler route from Kochi's harbour lanes to Munnar's tea-covered hills and the palm-lined backwaters of Alleppey.",
+          "photo": "/travel/kerala.jpg",
+          "themes": [
+            "Nature & relaxation",
+            "Backwater experiences",
+            "Local cuisine",
+            "Culture & heritage"
+          ],
+          "season_note": "The demo guide suggests October\u2013March. Check conditions and opening times close to departure.",
+          "packing": "Light layers, comfortable shoes, a rain shell and sun protection; adjust to your dates and activities.",
+          "cuisine": "Appam, vegetable stew, Kerala sadya and regional seafood. Ask each venue about dietary suitability.",
+          "route_notice": "Illustrative route diagram; travel times and road conditions are not verified.",
+          "cities": [
+            {
+              "slug": "kochi",
+              "name": "Kochi",
+              "lat": 9.93,
+              "lng": 76.26,
+              "description": "Harbour-side lanes, trading stories, galleries and local kitchens.",
+              "experiences": [
+                "Fort Kochi heritage walk",
+                "Harbour sunset",
+                "Local food discovery"
+              ]
+            },
+            {
+              "slug": "munnar",
+              "name": "Munnar",
+              "lat": 10.09,
+              "lng": 77.06,
+              "description": "Tea gardens, misty hills and time to slow down in the highlands.",
+              "experiences": [
+                "Tea garden walk",
+                "Scenic viewpoints",
+                "Village trail"
+              ]
+            },
+            {
+              "slug": "alleppey",
+              "name": "Alleppey",
+              "lat": 9.5,
+              "lng": 76.34,
+              "description": "Palm-lined waterways, village life and quiet stretches beside the backwaters.",
+              "experiences": [
+                "Backwater cruise",
+                "Village canoe trail",
+                "Waterside sunset"
+              ]
+            }
+          ]
+        },
+        "notice": "Synthetic hackathon inventory. Selections are drafts; no seats, rooms or activities are reserved."
+      }
+    },
+    {
+      "status": "ok",
+      "reply": "Your draft is ready: 2 adults, 12\u201116\u202fDec\u202f2026, 5\u2011day relaxed Kerala holiday, budget\u202f\u20b9100\u202f000, vegetarian, nature & culture. I\u2019d like to know if you prefer a boutique stay or a more budget\u2011friendly option, and if you have a preferred city (Kochi, Munnar or Alleppey) or would like a mix. Once I have that, I\u2019ll suggest stays, flights and experiences that fit your budget. Please confirm or let me know your preferences.",
+      "cards": [
+        {
+          "id": 11,
+          "name": "Kerala",
+          "kind": "destination",
+          "description": "Explore Kerala at your own pace.",
+          "price_inr": 25000
+        },
+        {
+          "id": 7,
+          "kind": "stay",
+          "name": "Voyara Demo Kochi Courtyard Stay",
+          "price_inr": 2400,
+          "location": "Kochi",
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 8,
+          "kind": "stay",
+          "name": "Voyara Demo Kochi Garden Retreat",
+          "price_inr": 3900,
+          "location": "Kochi",
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 9,
+          "kind": "stay",
+          "name": "Voyara Demo Munnar Courtyard Stay",
+          "price_inr": 2750,
+          "location": "Munnar",
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 10,
+          "kind": "stay",
+          "name": "Voyara Demo Munnar Garden Retreat",
+          "price_inr": 4350,
+          "location": "Munnar",
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 11,
+          "kind": "stay",
+          "name": "Voyara Demo Alleppey Courtyard Stay",
+          "price_inr": 3100,
+          "location": "Alleppey",
+          "image": "/travel/kerala.jpg"
+        }
+      ],
+      "workspace": {
+        "conversation_id": "f3e978f1-3b33-46bb-a3bb-2092eae6ed97",
+        "revision": 3,
+        "draft": {
+          "destination": "Kerala",
+          "start_date": "2026-12-12",
+          "end_date": "2026-12-16",
+          "duration_days": 5,
+          "traveller_count": 2,
+          "budget": 100000,
+          "pace": "relaxed",
+          "dietary": "vegetarian",
+          "interests": [
+            "nature",
+            "culture"
+          ],
+          "origin": "New Delhi",
+          "hard_requirements": []
+        },
+        "selections": {},
+        "missing_fields": [],
+        "confirmed": false,
+        "plan_ready": false,
+        "saved_preferences": {},
+        "options": {
+          "destinations": [
+            {
+              "id": 1,
+              "name": "Goa",
+              "kind": "destination",
+              "description": "Salt air, later mornings and old Portuguese lanes. Find a quiet cove, a family-run kitchen or a village that still moves at its own pace.",
+              "price_inr": 28000
+            },
+            {
+              "id": 2,
+              "name": "Jaipur",
+              "kind": "destination",
+              "description": "Pink sandstone, courtyard cafes and lively bazaars. Jaipur brings royal architecture and everyday craft into the same afternoon.",
+              "price_inr": 22000
+            },
+            {
+              "id": 3,
+              "name": "Manali",
+              "kind": "destination",
+              "description": "Pine-scented walks, mountain mornings and winding roads into the valley. Come for the views; stay for the slower rhythm.",
+              "price_inr": 24000
+            },
+            {
+              "id": 4,
+              "name": "Munnar",
+              "kind": "destination",
+              "description": "Tea gardens fold into the hills around Munnar. Misty trails, small farms and unhurried mornings make this a place to take your time.",
+              "price_inr": 19000
+            },
+            {
+              "id": 5,
+              "name": "Varanasi",
+              "kind": "destination",
+              "description": "A city of morning boat rides, temple bells and lanes with stories in every turn. Best explored slowly, with a local guide.",
+              "price_inr": 16000
+            },
+            {
+              "id": 6,
+              "name": "Udaipur",
+              "kind": "destination",
+              "description": "Lakeside courtyards, hilltop palaces and dinner as the light leaves the water. A gentle, storybook escape in Rajasthan.",
+              "price_inr": 26000
+            },
+            {
+              "id": 7,
+              "name": "Rishikesh",
+              "kind": "destination",
+              "description": "River paths, forest air and quiet mornings beside the Ganga. A soft landing for yoga, day hikes and time outdoors.",
+              "price_inr": 18000
+            },
+            {
+              "id": 8,
+              "name": "Kochi",
+              "kind": "destination",
+              "description": "A harbor city layered with spice markets, art spaces and backwater day trips. Let the ferry set the pace.",
+              "price_inr": 21000
+            },
+            {
+              "id": 9,
+              "name": "Andaman Islands",
+              "kind": "destination",
+              "description": "Clear water, forest trails and long stretches of island quiet. Leave space for the sea to make the itinerary.",
+              "price_inr": 34000
+            },
+            {
+              "id": 10,
+              "name": "Kashmir",
+              "kind": "destination",
+              "description": "Explore Kashmir at your own pace.",
+              "price_inr": 25000
+            },
+            {
+              "id": 11,
+              "name": "Kerala",
+              "kind": "destination",
+              "description": "Explore Kerala at your own pace.",
+              "price_inr": 25000
+            },
+            {
+              "id": 12,
+              "name": "Darjeeling",
+              "kind": "destination",
+              "description": "Explore Darjeeling at your own pace.",
+              "price_inr": 25000
+            },
+            {
+              "id": 13,
+              "name": "New Delhi",
+              "kind": "destination",
+              "description": "Explore New Delhi at your own pace.",
+              "price_inr": 25000
+            },
+            {
+              "id": 14,
+              "name": "Mumbai",
+              "kind": "destination",
+              "description": "Explore Mumbai at your own pace.",
+              "price_inr": 25000
+            },
+            {
+              "id": 15,
+              "name": "Bengaluru",
+              "kind": "destination",
+              "description": "Explore Bengaluru at your own pace.",
+              "price_inr": 25000
+            },
+            {
+              "id": 16,
+              "name": "Hyderabad",
+              "kind": "destination",
+              "description": "Explore Hyderabad at your own pace.",
+              "price_inr": 25000
+            },
+            {
+              "id": 17,
+              "name": "Chennai",
+              "kind": "destination",
+              "description": "Explore Chennai at your own pace.",
+              "price_inr": 25000
+            },
+            {
+              "id": 18,
+              "name": "Alleppey",
+              "kind": "destination",
+              "description": "Palm-lined waterways, village life and quiet stretches beside the backwaters.",
+              "price_inr": 21000
+            }
+          ],
+          "stays": [
+            {
+              "id": 7,
+              "kind": "stay",
+              "name": "Voyara Demo Kochi Courtyard Stay",
+              "price_inr": 2400,
+              "location": "Kochi",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 9,
+              "kind": "stay",
+              "name": "Voyara Demo Munnar Courtyard Stay",
+              "price_inr": 2750,
+              "location": "Munnar",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 11,
+              "kind": "stay",
+              "name": "Voyara Demo Alleppey Courtyard Stay",
+              "price_inr": 3100,
+              "location": "Alleppey",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 8,
+              "kind": "stay",
+              "name": "Voyara Demo Kochi Garden Retreat",
+              "price_inr": 3900,
+              "location": "Kochi",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 10,
+              "kind": "stay",
+              "name": "Voyara Demo Munnar Garden Retreat",
+              "price_inr": 4350,
+              "location": "Munnar",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 12,
+              "kind": "stay",
+              "name": "Voyara Demo Alleppey Garden Retreat",
+              "price_inr": 4800,
+              "location": "Alleppey",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 3,
+              "kind": "stay",
+              "name": "Palm Grove Retreat",
+              "price_inr": 6999,
+              "location": "Kerala",
+              "image": "/travel/kerala.jpg"
+            }
+          ],
+          "experiences": [
+            {
+              "id": 3,
+              "kind": "experience",
+              "name": "Kerala backwater cruise",
+              "price_inr": 3499,
+              "location": "Alleppey",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 7,
+              "kind": "experience",
+              "name": "Demo Fort Kochi heritage walk",
+              "price_inr": 900,
+              "location": "Kochi",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 8,
+              "kind": "experience",
+              "name": "Demo Harbour sunset",
+              "price_inr": 600,
+              "location": "Kochi",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 9,
+              "kind": "experience",
+              "name": "Demo Tea garden walk",
+              "price_inr": 1500,
+              "location": "Munnar",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 10,
+              "kind": "experience",
+              "name": "Demo Scenic viewpoints",
+              "price_inr": 950,
+              "location": "Munnar",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 11,
+              "kind": "experience",
+              "name": "Demo Backwater cruise",
+              "price_inr": 2100,
+              "location": "Alleppey",
+              "image": "/travel/kerala.jpg"
+            },
+            {
+              "id": 12,
+              "kind": "experience",
+              "name": "Demo Village canoe trail",
+              "price_inr": 1300,
+              "location": "Alleppey",
+              "image": "/travel/kerala.jpg"
+            }
+          ],
+          "flights": [
+            {
+              "id": 7,
+              "kind": "flight",
+              "name": "Voyara sample flight",
+              "origin": "New Delhi",
+              "location": "Kochi",
+              "price_inr": 5800,
+              "duration_min": 165,
+              "date": "2026-12-12"
+            }
+          ]
+        },
+        "guide": {
+          "slug": "kerala",
+          "name": "Kerala",
+          "eyebrow": "Backwaters, hills & living traditions",
+          "description": "Trace a gentler route from Kochi's harbour lanes to Munnar's tea-covered hills and the palm-lined backwaters of Alleppey.",
+          "photo": "/travel/kerala.jpg",
+          "themes": [
+            "Nature & relaxation",
+            "Backwater experiences",
+            "Local cuisine",
+            "Culture & heritage"
+          ],
+          "season_note": "The demo guide suggests October\u2013March. Check conditions and opening times close to departure.",
+          "packing": "Light layers, comfortable shoes, a rain shell and sun protection; adjust to your dates and activities.",
+          "cuisine": "Appam, vegetable stew, Kerala sadya and regional seafood. Ask each venue about dietary suitability.",
+          "route_notice": "Illustrative route diagram; travel times and road conditions are not verified.",
+          "cities": [
+            {
+              "slug": "kochi",
+              "name": "Kochi",
+              "lat": 9.93,
+              "lng": 76.26,
+              "description": "Harbour-side lanes, trading stories, galleries and local kitchens.",
+              "experiences": [
+                "Fort Kochi heritage walk",
+                "Harbour sunset",
+                "Local food discovery"
+              ]
+            },
+            {
+              "slug": "munnar",
+              "name": "Munnar",
+              "lat": 10.09,
+              "lng": 77.06,
+              "description": "Tea gardens, misty hills and time to slow down in the highlands.",
+              "experiences": [
+                "Tea garden walk",
+                "Scenic viewpoints",
+                "Village trail"
+              ]
+            },
+            {
+              "slug": "alleppey",
+              "name": "Alleppey",
+              "lat": 9.5,
+              "lng": 76.34,
+              "description": "Palm-lined waterways, village life and quiet stretches beside the backwaters.",
+              "experiences": [
+                "Backwater cruise",
+                "Village canoe trail",
+                "Waterside sunset"
+              ]
+            }
+          ]
+        },
+        "notice": "Synthetic hackathon inventory. Selections are drafts; no seats, rooms or activities are reserved."
+      }
+    }
+  ],
+  "orchestration": {
+    "request_id": "a7866d3d0eab",
+    "status": "ok",
+    "response": "Trip Consultant: Trip brief: Kerala, 5 days, party of 2, ~\u20b950,000/person\nExplore Agent: 4 destination ideas\nSuggestions: Kerala\nFood Guide Agent: 4 food recommendations in Kerala\nSuggestions: Demo Kochi Vegetarian Kitchen; Demo Munnar Vegetarian Kitchen; Demo Alleppey Vegetarian Kitchen; Kerala Family Kitchen\nStay Agent: 5 stay options near Kerala\nSuggestions: Voyara Demo Kochi Courtyard Stay\nTour Guide Agent: 7 experience ideas in Kerala\nSuggestions: Kerala backwater cruise; Demo Fort Kochi heritage walk; Demo Tea garden walk; Demo Scenic viewpoints\nItinerary Planner: Drafted a 5-day itinerary with 15 stops\nSuggestions: Voyara Demo Kochi Courtyard Stay\nBudget Booking Agent: Estimated \u20b932,084 for 2 travellers\nSchedule:\nDay 1: Arrive by surface transport \u2192 Lunch at Demo Kochi Vegetarian Kitchen \u2192 Kerala backwater cruise\nDay 2: Demo Fort Kochi heritage walk \u2192 Lunch at Demo Munnar Vegetarian Kitchen \u2192 Demo Tea garden walk\nDay 3: Demo Scenic viewpoints \u2192 Lunch at Demo Alleppey Vegetarian Kitchen \u2192 Demo Village canoe trail\nDay 4: Free morning to wander \u2192 Lunch at Kerala Family Kitchen \u2192 Free afternoon for local exploration\nDay 5: Free morning to wander \u2192 Lunch at Demo Kochi Vegetarian Kitchen \u2192 Pack up and head home\nEstimated cost: \u20b932,084 total (estimates, not confirmed prices)\nAll figures are estimates from catalog data, not live prices.\nIncludes the listed catalog activities and meals; unverified transport and extra meals are excluded.",
+    "page": "plan",
+    "trip_brief": {
+      "destination": "Kerala",
+      "destination_flexible": false,
+      "start_date": "2026-12-12",
+      "end_date": "2026-12-16",
+      "duration_days": 5,
+      "party_size": 2,
+      "purpose": null,
+      "budget_total_inr": 100000,
+      "budget_per_person_inr": null,
+      "interests": [
+        "nature",
+        "culture"
+      ],
+      "pace": "relaxed",
+      "transport_preferences": [],
+      "dietary_requirements": [
+        "vegetarian"
+      ],
+      "accessibility_needs": [],
+      "hard_constraints": [],
+      "preferences": [],
+      "missing_fields": [],
+      "clarification_question": null,
+      "confidence": 0.5
+    },
+    "itinerary": {
+      "title": "5-day trip to Kerala",
+      "days": [
+        {
+          "day": 1,
+          "calendar_date": "2026-12-12",
+          "stops": [
+            {
+              "day": 1,
+              "start_time": "09:30",
+              "end_time": "11:30",
+              "title": "Arrive by surface transport",
+              "kind": "transport",
+              "location": "Kerala",
+              "est_cost_inr": 0,
+              "notes": "travel time assumed within the morning window",
+              "evidence": null
+            },
+            {
+              "day": 1,
+              "start_time": "13:00",
+              "end_time": "14:00",
+              "title": "Lunch at Demo Kochi Vegetarian Kitchen",
+              "kind": "food",
+              "location": "Kochi",
+              "est_cost_inr": 275,
+              "notes": "suits your stated dietary requirements",
+              "evidence": {
+                "source": "food.search",
+                "kind": "live",
+                "retrieved_at": 1792246788,
+                "ref": "1",
+                "note": null
+              }
+            },
+            {
+              "day": 1,
+              "start_time": "15:30",
+              "end_time": "17:30",
+              "title": "Kerala backwater cruise",
+              "kind": "attraction",
+              "location": "Alleppey",
+              "est_cost_inr": 3499,
+              "notes": null,
+              "evidence": {
+                "source": "guides.search",
+                "kind": "live",
+                "retrieved_at": 1792246791,
+                "ref": "3",
+                "note": null
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "calendar_date": "2026-12-13",
+          "stops": [
+            {
+              "day": 2,
+              "start_time": "09:30",
+              "end_time": "11:30",
+              "title": "Demo Fort Kochi heritage walk",
+              "kind": "attraction",
+              "location": "Kochi",
+              "est_cost_inr": 900,
+              "notes": "aligns with your interest in nature, culture",
+              "evidence": {
+                "source": "guides.search",
+                "kind": "live",
+                "retrieved_at": 1792246791,
+                "ref": "7",
+                "note": null
+              }
+            },
+            {
+              "day": 2,
+              "start_time": "13:00",
+              "end_time": "14:00",
+              "title": "Lunch at Demo Munnar Vegetarian Kitchen",
+              "kind": "food",
+              "location": "Munnar",
+              "est_cost_inr": 315,
+              "notes": "suits your stated dietary requirements",
+              "evidence": {
+                "source": "food.search",
+                "kind": "live",
+                "retrieved_at": 1792246788,
+                "ref": "2",
+                "note": null
+              }
+            },
+            {
+              "day": 2,
+              "start_time": "15:30",
+              "end_time": "17:30",
+              "title": "Demo Tea garden walk",
+              "kind": "attraction",
+              "location": "Munnar",
+              "est_cost_inr": 1500,
+              "notes": null,
+              "evidence": {
+                "source": "guides.search",
+                "kind": "live",
+                "retrieved_at": 1792246791,
+                "ref": "9",
+                "note": null
+              }
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "calendar_date": "2026-12-14",
+          "stops": [
+            {
+              "day": 3,
+              "start_time": "09:30",
+              "end_time": "11:30",
+              "title": "Demo Scenic viewpoints",
+              "kind": "attraction",
+              "location": "Munnar",
+              "est_cost_inr": 950,
+              "notes": "aligns with your interest in nature, culture",
+              "evidence": {
+                "source": "guides.search",
+                "kind": "live",
+                "retrieved_at": 1792246791,
+                "ref": "10",
+                "note": null
+              }
+            },
+            {
+              "day": 3,
+              "start_time": "13:00",
+              "end_time": "14:00",
+              "title": "Lunch at Demo Alleppey Vegetarian Kitchen",
+              "kind": "food",
+              "location": "Alleppey",
+              "est_cost_inr": 355,
+              "notes": "suits your stated dietary requirements",
+              "evidence": {
+                "source": "food.search",
+                "kind": "live",
+                "retrieved_at": 1792246788,
+                "ref": "3",
+                "note": null
+              }
+            },
+            {
+              "day": 3,
+              "start_time": "15:30",
+              "end_time": "17:30",
+              "title": "Demo Village canoe trail",
+              "kind": "attraction",
+              "location": "Alleppey",
+              "est_cost_inr": 1300,
+              "notes": null,
+              "evidence": {
+                "source": "guides.search",
+                "kind": "live",
+                "retrieved_at": 1792246791,
+                "ref": "12",
+                "note": null
+              }
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "calendar_date": "2026-12-15",
+          "stops": [
+            {
+              "day": 4,
+              "start_time": "09:30",
+              "end_time": "11:30",
+              "title": "Free morning to wander",
+              "kind": "buffer",
+              "location": "Kerala",
+              "est_cost_inr": 0,
+              "notes": "Unscheduled time; no additional catalog experience selected.",
+              "evidence": null
+            },
+            {
+              "day": 4,
+              "start_time": "13:00",
+              "end_time": "14:00",
+              "title": "Lunch at Kerala Family Kitchen",
+              "kind": "food",
+              "location": "Kerala",
+              "est_cost_inr": 415,
+              "notes": "suits your stated dietary requirements",
+              "evidence": {
+                "source": "food.search",
+                "kind": "live",
+                "retrieved_at": 1792246788,
+                "ref": "28",
+                "note": null
+              }
+            },
+            {
+              "day": 4,
+              "start_time": "15:30",
+              "end_time": "17:30",
+              "title": "Free afternoon for local exploration",
+              "kind": "buffer",
+              "location": "Kerala",
+              "est_cost_inr": 0,
+              "notes": "Unscheduled time; costs are not included.",
+              "evidence": null
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "calendar_date": "2026-12-16",
+          "stops": [
+            {
+              "day": 5,
+              "start_time": "09:30",
+              "end_time": "11:30",
+              "title": "Free morning to wander",
+              "kind": "buffer",
+              "location": "Kerala",
+              "est_cost_inr": 0,
+              "notes": "Unscheduled time; no additional catalog experience selected.",
+              "evidence": null
+            },
+            {
+              "day": 5,
+              "start_time": "13:00",
+              "end_time": "14:00",
+              "title": "Lunch at Demo Kochi Vegetarian Kitchen",
+              "kind": "food",
+              "location": "Kochi",
+              "est_cost_inr": 275,
+              "notes": "suits your stated dietary requirements",
+              "evidence": {
+                "source": "food.search",
+                "kind": "live",
+                "retrieved_at": 1792246788,
+                "ref": "1",
+                "note": null
+              }
+            },
+            {
+              "day": 5,
+              "start_time": "15:30",
+              "end_time": "17:30",
+              "title": "Pack up and head home",
+              "kind": "buffer",
+              "location": "Kerala",
+              "est_cost_inr": 0,
+              "notes": null,
+              "evidence": null
+            }
+          ]
+        }
+      ],
+      "total_est_cost_inr": 9784,
+      "assumptions": [
+        "Assumes a room at Voyara Demo Kochi Courtyard Stay for all nights (per-night \u20b92,400, availability unverified)."
+      ],
+      "alternatives": [
+        "Swap the afternoon activity for a food walk if the weather turns."
+      ],
+      "unresolved_conflicts": []
+    },
+    "budget": {
+      "currency": "INR",
+      "per_person": false,
+      "lines": [
+        {
+          "category": "stay",
+          "amount_inr": 9600,
+          "basis": "estimate",
+          "note": "per room; availability unverified"
+        },
+        {
+          "category": "food",
+          "amount_inr": 3270,
+          "basis": "estimate",
+          "note": "scheduled meals only"
+        },
+        {
+          "category": "activities",
+          "amount_inr": 16298,
+          "basis": "estimate",
+          "note": "guide/experience fees"
+        },
+        {
+          "category": "contingency",
+          "amount_inr": 2916,
+          "basis": "estimate",
+          "note": "10% buffer for local travel and extras"
+        }
+      ],
+      "total_inr": 32084,
+      "budget_delta_inr": null,
+      "price_checked_at": null,
+      "status": "estimate",
+      "warnings": [
+        "All figures are estimates from catalog data, not live prices.",
+        "Includes the listed catalog activities and meals; unverified transport and extra meals are excluded."
+      ]
+    },
+    "agent_results": [
+      {
+        "agent_id": "trip_consultant",
+        "status": "ok",
+        "summary": "Trip brief: Kerala, 5 days, party of 2, ~\u20b950,000/person",
+        "destination_ideas": [],
+        "stay_options": [],
+        "attractions": [],
+        "food_options": [],
+        "transport_options": [],
+        "itinerary": null,
+        "budget": null,
+        "guidance": null,
+        "trip_brief": {
+          "destination": "Kerala",
+          "destination_flexible": false,
+          "start_date": "2026-12-12",
+          "end_date": "2026-12-16",
+          "duration_days": 5,
+          "party_size": 2,
+          "purpose": null,
+          "budget_total_inr": 100000,
+          "budget_per_person_inr": null,
+          "interests": [
+            "nature",
+            "culture"
+          ],
+          "pace": "relaxed",
+          "transport_preferences": [],
+          "dietary_requirements": [
+            "vegetarian"
+          ],
+          "accessibility_needs": [],
+          "hard_constraints": [],
+          "preferences": [],
+          "missing_fields": [],
+          "clarification_question": null,
+          "confidence": 0.5
+        },
+        "evidence": [],
+        "errors": [],
+        "latency_ms": 5512,
+        "execution": {
+          "mode": "nvidia",
+          "persona": "Mira \u00b7 trip editor",
+          "goal": "Check the confirmed brief for gaps; never invent traveler facts.",
+          "model": "openai/gpt-oss-20b",
+          "temperature": 0.35,
+          "tool_calls": [
+            "inspect_brief",
+            "finish"
+          ],
+          "observations": [
+            "inspect_brief: ok; Trip brief: Kerala, 5 days, party of 2, ~\u20b950,000/person"
+          ],
+          "decision": "Confirmed brief covers destination, dates, party size, budget total, interests, pace, dietary. Missing budget per person, transport preferences, purpose, preferences, hard constraints. No itinerary or options available yet.",
+          "completed": true
+        }
+      },
+      {
+        "agent_id": "explore_agent",
+        "status": "ok",
+        "summary": "4 destination ideas",
+        "destination_ideas": [
+          {
+            "destination_id": 11,
+            "slug": "kerala",
+            "name": "Kerala",
+            "region": "Kerala, India",
+            "why_fit": "explored for its travel",
+            "suggested_duration_days": 5,
+            "best_season": null,
+            "cost_level": "mid",
+            "avg_cost_inr": 25000,
+            "tags": [
+              "travel"
+            ],
+            "seasonality_note": null,
+            "evidence": {
+              "source": "destinations.search",
+              "kind": "live",
+              "retrieved_at": 1792246790,
+              "ref": "11",
+              "note": null
+            }
+          }
+        ],
+        "stay_options": [],
+        "attractions": [],
+        "food_options": [],
+        "transport_options": [],
+        "itinerary": null,
+        "budget": null,
+        "guidance": null,
+        "trip_brief": null,
+        "evidence": [
+          {
+            "source": "destinations.search",
+            "kind": "live",
+            "retrieved_at": 1792246790,
+            "ref": null,
+            "note": null
+          }
+        ],
+        "errors": [],
+        "latency_ms": 5093,
+        "execution": {
+          "mode": "nvidia",
+          "persona": "Atlas \u00b7 curious scout",
+          "goal": "Discover destinations fitting the stated interests; prioritize the confirmed destination.",
+          "model": "openai/gpt-oss-20b",
+          "temperature": 0.85,
+          "tool_calls": [
+            "finish",
+            "discover_destinations",
+            "finish",
+            "finish"
+          ],
+          "observations": [
+            "A successful role tool result is required before finish",
+            "discover_destinations: ok; 4 destination ideas",
+            "Select zero-based indices from the observed candidates only"
+          ],
+          "decision": "Confirmed Kerala trip with 5 days, relaxed pace, nature and culture interests, vegetarian diet, 2 travelers, 100000 INR budget. No alternatives needed.",
+          "completed": true
+        }
+      },
+      {
+        "agent_id": "food_guide_agent",
+        "status": "ok",
+        "summary": "4 food recommendations in Kerala",
+        "destination_ideas": [],
+        "stay_options": [],
+        "attractions": [],
+        "food_options": [
+          {
+            "place_id": 1,
+            "name": "Demo Kochi Vegetarian Kitchen",
+            "cuisine": "Kerala vegetarian",
+            "approx_price_per_guest_inr": 275,
+            "location": "Kochi",
+            "diet": "veg",
+            "dietary_fit": "suits your stated dietary requirements",
+            "hours_caveat": "opening hours not verified against a live source",
+            "reservation_status": "unknown",
+            "evidence": {
+              "source": "food.search",
+              "kind": "live",
+              "retrieved_at": 1792246788,
+              "ref": "1",
+              "note": null
+            }
+          },
+          {
+            "place_id": 2,
+            "name": "Demo Munnar Vegetarian Kitchen",
+            "cuisine": "Kerala vegetarian",
+            "approx_price_per_guest_inr": 315,
+            "location": "Munnar",
+            "diet": "veg",
+            "dietary_fit": "suits your stated dietary requirements",
+            "hours_caveat": "opening hours not verified against a live source",
+            "reservation_status": "unknown",
+            "evidence": {
+              "source": "food.search",
+              "kind": "live",
+              "retrieved_at": 1792246788,
+              "ref": "2",
+              "note": null
+            }
+          },
+          {
+            "place_id": 3,
+            "name": "Demo Alleppey Vegetarian Kitchen",
+            "cuisine": "Kerala vegetarian",
+            "approx_price_per_guest_inr": 355,
+            "location": "Alleppey",
+            "diet": "veg",
+            "dietary_fit": "suits your stated dietary requirements",
+            "hours_caveat": "opening hours not verified against a live source",
+            "reservation_status": "unknown",
+            "evidence": {
+              "source": "food.search",
+              "kind": "live",
+              "retrieved_at": 1792246788,
+              "ref": "3",
+              "note": null
+            }
+          },
+          {
+            "place_id": 28,
+            "name": "Kerala Family Kitchen",
+            "cuisine": "Regional",
+            "approx_price_per_guest_inr": 415,
+            "location": "Kerala",
+            "diet": "veg",
+            "dietary_fit": "suits your stated dietary requirements",
+            "hours_caveat": "opening hours not verified against a live source",
+            "reservation_status": "unknown",
+            "evidence": {
+              "source": "food.search",
+              "kind": "live",
+              "retrieved_at": 1792246788,
+              "ref": "28",
+              "note": null
+            }
+          }
+        ],
+        "transport_options": [],
+        "itinerary": null,
+        "budget": null,
+        "guidance": null,
+        "trip_brief": null,
+        "evidence": [
+          {
+            "source": "food.search",
+            "kind": "live",
+            "retrieved_at": 1792246788,
+            "ref": null,
+            "note": null
+          }
+        ],
+        "errors": [],
+        "latency_ms": 2846,
+        "execution": {
+          "mode": "nvidia",
+          "persona": "Saffron \u00b7 food curator",
+          "goal": "Choose varied meals within the supported dietary requirement; unknown suitability remains unknown.",
+          "model": "openai/gpt-oss-20b",
+          "temperature": 0.75,
+          "tool_calls": [
+            "find_food",
+            "finish"
+          ],
+          "observations": [
+            "find_food: ok; 4 food recommendations in Kerala"
+          ],
+          "decision": "Selected vegetarian restaurants in Kerala: Demo Kochi Vegetarian Kitchen (Kochi), Demo Munnar Vegetarian Kitchen (Munnar), Demo Alleppey Vegetarian Kitchen (Alleppey), Kerala Family Kitchen (Kerala).",
+          "completed": true
+        }
+      },
+      {
+        "agent_id": "stay_agent",
+        "status": "ok",
+        "summary": "5 stay options near Kerala",
+        "destination_ideas": [],
+        "stay_options": [
+          {
+            "stay_id": 7,
+            "name": "Voyara Demo Kochi Courtyard Stay",
+            "location": "Kochi",
+            "kind": "hotel",
+            "price_per_night_inr": 2400,
+            "total_price_inr": 9600,
+            "rating": 4.5,
+            "amenities": [
+              "wifi",
+              "breakfast"
+            ],
+            "availability_status": "unknown",
+            "cancellation_note": null,
+            "pros": [
+              "highly rated (4.5)"
+            ],
+            "cons": [],
+            "evidence": {
+              "source": "stays.search",
+              "kind": "live",
+              "retrieved_at": 1792246797,
+              "ref": "7",
+              "note": "indicative listing; availability not verified"
+            }
+          }
+        ],
+        "attractions": [],
+        "food_options": [],
+        "transport_options": [],
+        "itinerary": null,
+        "budget": null,
+        "guidance": null,
+        "trip_brief": null,
+        "evidence": [
+          {
+            "source": "stays.search",
+            "kind": "live",
+            "retrieved_at": 1792246797,
+            "ref": null,
+            "note": null
+          }
+        ],
+        "errors": [],
+        "latency_ms": 15564,
+        "execution": {
+          "mode": "nvidia",
+          "persona": "Haven \u00b7 practical host",
+          "goal": "Compare lodging value, amenities and room cost; shortlist a preferred stay and alternatives.",
+          "model": "openai/gpt-oss-20b",
+          "temperature": 0.55,
+          "tool_calls": [
+            "compare_stays",
+            "finish",
+            "compare_stays",
+            "finish"
+          ],
+          "observations": [
+            "compare_stays: ok; 5 stay options near Kerala",
+            "Select zero-based indices from the observed candidates only",
+            "compare_stays: ok; 5 stay options near Kerala"
+          ],
+          "decision": "Shortlisted preferred stay: Voyara Demo Kochi Courtyard Stay (stay_id 7) \u2013 lowest nightly rate at INR 2400, 4\u2011night total INR 9600, 4.5 rating, basic amenities. Alternatives: 9 (Munnar Courtyard), 11 (Alleppey Courtyard), 8 (Kochi Garden Retreat), 10 (Munnar Garden Retreat).",
+          "completed": true
+        }
+      },
+      {
+        "agent_id": "tour_guide_agent",
+        "status": "ok",
+        "summary": "7 experience ideas in Kerala",
+        "destination_ideas": [],
+        "stay_options": [],
+        "attractions": [
+          {
+            "guide_id": 3,
+            "name": "Kerala backwater cruise",
+            "category": "culture, nature",
+            "why_fit": "aligns with your interest in culture, nature",
+            "approx_duration_min": 180,
+            "location": "Alleppey",
+            "price_per_person_inr": 3499,
+            "hours_caveat": "hours not verified against a live source",
+            "evidence": {
+              "source": "guides.search",
+              "kind": "live",
+              "retrieved_at": 1792246791,
+              "ref": "3",
+              "note": null
+            }
+          },
+          {
+            "guide_id": 7,
+            "name": "Demo Fort Kochi heritage walk",
+            "category": "nature, culture, history",
+            "why_fit": "aligns with your interest in nature, culture",
+            "approx_duration_min": 180,
+            "location": "Kochi",
+            "price_per_person_inr": 900,
+            "hours_caveat": "hours not verified against a live source",
+            "evidence": {
+              "source": "guides.search",
+              "kind": "live",
+              "retrieved_at": 1792246791,
+              "ref": "7",
+              "note": null
+            }
+          },
+          {
+            "guide_id": 9,
+            "name": "Demo Tea garden walk",
+            "category": "nature, culture, history",
+            "why_fit": "aligns with your interest in nature, culture",
+            "approx_duration_min": 180,
+            "location": "Munnar",
+            "price_per_person_inr": 1500,
+            "hours_caveat": "hours not verified against a live source",
+            "evidence": {
+              "source": "guides.search",
+              "kind": "live",
+              "retrieved_at": 1792246791,
+              "ref": "9",
+              "note": null
+            }
+          },
+          {
+            "guide_id": 10,
+            "name": "Demo Scenic viewpoints",
+            "category": "nature, culture, history",
+            "why_fit": "aligns with your interest in nature, culture",
+            "approx_duration_min": 180,
+            "location": "Munnar",
+            "price_per_person_inr": 950,
+            "hours_caveat": "hours not verified against a live source",
+            "evidence": {
+              "source": "guides.search",
+              "kind": "live",
+              "retrieved_at": 1792246791,
+              "ref": "10",
+              "note": null
+            }
+          },
+          {
+            "guide_id": 12,
+            "name": "Demo Village canoe trail",
+            "category": "nature, culture, history",
+            "why_fit": "aligns with your interest in nature, culture",
+            "approx_duration_min": 180,
+            "location": "Alleppey",
+            "price_per_person_inr": 1300,
+            "hours_caveat": "hours not verified against a live source",
+            "evidence": {
+              "source": "guides.search",
+              "kind": "live",
+              "retrieved_at": 1792246791,
+              "ref": "12",
+              "note": null
+            }
+          }
+        ],
+        "food_options": [],
+        "transport_options": [],
+        "itinerary": null,
+        "budget": null,
+        "guidance": null,
+        "trip_brief": null,
+        "evidence": [
+          {
+            "source": "guides.search",
+            "kind": "live",
+            "retrieved_at": 1792246791,
+            "ref": null,
+            "note": null
+          }
+        ],
+        "errors": [],
+        "latency_ms": 6688,
+        "execution": {
+          "mode": "nvidia",
+          "persona": "Roam \u00b7 culture scout",
+          "goal": "Choose experiences matching interests and pace; avoid repeating the same experience unnecessarily.",
+          "model": "openai/gpt-oss-20b",
+          "temperature": 0.8,
+          "tool_calls": [
+            "find_experiences",
+            "finish"
+          ],
+          "observations": [
+            "find_experiences: ok; 7 experience ideas in Kerala"
+          ],
+          "decision": "Selected 5 experiences covering nature and culture for a relaxed 5\u2011day Kerala trip within budget.",
+          "completed": true
+        }
+      },
+      {
+        "agent_id": "itinerary_planner",
+        "status": "ok",
+        "summary": "Drafted a 5-day itinerary with 15 stops",
+        "destination_ideas": [],
+        "stay_options": [
+          {
+            "stay_id": 7,
+            "name": "Voyara Demo Kochi Courtyard Stay",
+            "location": "Kochi",
+            "kind": "hotel",
+            "price_per_night_inr": 2400,
+            "total_price_inr": 9600,
+            "rating": 4.5,
+            "amenities": [
+              "wifi",
+              "breakfast"
+            ],
+            "availability_status": "unknown",
+            "cancellation_note": null,
+            "pros": [
+              "highly rated (4.5)"
+            ],
+            "cons": [],
+            "evidence": {
+              "source": "stays.search",
+              "kind": "live",
+              "retrieved_at": 1792246797,
+              "ref": "7",
+              "note": "indicative listing; availability not verified"
+            }
+          }
+        ],
+        "attractions": [
+          {
+            "guide_id": 3,
+            "name": "Kerala backwater cruise",
+            "category": "culture, nature",
+            "why_fit": "aligns with your interest in culture, nature",
+            "approx_duration_min": 180,
+            "location": "Alleppey",
+            "price_per_person_inr": 3499,
+            "hours_caveat": "hours not verified against a live source",
+            "evidence": {
+              "source": "guides.search",
+              "kind": "live",
+              "retrieved_at": 1792246791,
+              "ref": "3",
+              "note": null
+            }
+          },
+          {
+            "guide_id": 7,
+            "name": "Demo Fort Kochi heritage walk",
+            "category": "nature, culture, history",
+            "why_fit": "aligns with your interest in nature, culture",
+            "approx_duration_min": 180,
+            "location": "Kochi",
+            "price_per_person_inr": 900,
+            "hours_caveat": "hours not verified against a live source",
+            "evidence": {
+              "source": "guides.search",
+              "kind": "live",
+              "retrieved_at": 1792246791,
+              "ref": "7",
+              "note": null
+            }
+          },
+          {
+            "guide_id": 9,
+            "name": "Demo Tea garden walk",
+            "category": "nature, culture, history",
+            "why_fit": "aligns with your interest in nature, culture",
+            "approx_duration_min": 180,
+            "location": "Munnar",
+            "price_per_person_inr": 1500,
+            "hours_caveat": "hours not verified against a live source",
+            "evidence": {
+              "source": "guides.search",
+              "kind": "live",
+              "retrieved_at": 1792246791,
+              "ref": "9",
+              "note": null
+            }
+          },
+          {
+            "guide_id": 10,
+            "name": "Demo Scenic viewpoints",
+            "category": "nature, culture, history",
+            "why_fit": "aligns with your interest in nature, culture",
+            "approx_duration_min": 180,
+            "location": "Munnar",
+            "price_per_person_inr": 950,
+            "hours_caveat": "hours not verified against a live source",
+            "evidence": {
+              "source": "guides.search",
+              "kind": "live",
+              "retrieved_at": 1792246791,
+              "ref": "10",
+              "note": null
+            }
+          },
+          {
+            "guide_id": 12,
+            "name": "Demo Village canoe trail",
+            "category": "nature, culture, history",
+            "why_fit": "aligns with your interest in nature, culture",
+            "approx_duration_min": 180,
+            "location": "Alleppey",
+            "price_per_person_inr": 1300,
+            "hours_caveat": "hours not verified against a live source",
+            "evidence": {
+              "source": "guides.search",
+              "kind": "live",
+              "retrieved_at": 1792246791,
+              "ref": "12",
+              "note": null
+            }
+          }
+        ],
+        "food_options": [
+          {
+            "place_id": 1,
+            "name": "Demo Kochi Vegetarian Kitchen",
+            "cuisine": "Kerala vegetarian",
+            "approx_price_per_guest_inr": 275,
+            "location": "Kochi",
+            "diet": "veg",
+            "dietary_fit": "suits your stated dietary requirements",
+            "hours_caveat": "opening hours not verified against a live source",
+            "reservation_status": "unknown",
+            "evidence": {
+              "source": "food.search",
+              "kind": "live",
+              "retrieved_at": 1792246788,
+              "ref": "1",
+              "note": null
+            }
+          },
+          {
+            "place_id": 2,
+            "name": "Demo Munnar Vegetarian Kitchen",
+            "cuisine": "Kerala vegetarian",
+            "approx_price_per_guest_inr": 315,
+            "location": "Munnar",
+            "diet": "veg",
+            "dietary_fit": "suits your stated dietary requirements",
+            "hours_caveat": "opening hours not verified against a live source",
+            "reservation_status": "unknown",
+            "evidence": {
+              "source": "food.search",
+              "kind": "live",
+              "retrieved_at": 1792246788,
+              "ref": "2",
+              "note": null
+            }
+          },
+          {
+            "place_id": 3,
+            "name": "Demo Alleppey Vegetarian Kitchen",
+            "cuisine": "Kerala vegetarian",
+            "approx_price_per_guest_inr": 355,
+            "location": "Alleppey",
+            "diet": "veg",
+            "dietary_fit": "suits your stated dietary requirements",
+            "hours_caveat": "opening hours not verified against a live source",
+            "reservation_status": "unknown",
+            "evidence": {
+              "source": "food.search",
+              "kind": "live",
+              "retrieved_at": 1792246788,
+              "ref": "3",
+              "note": null
+            }
+          },
+          {
+            "place_id": 28,
+            "name": "Kerala Family Kitchen",
+            "cuisine": "Regional",
+            "approx_price_per_guest_inr": 415,
+            "location": "Kerala",
+            "diet": "veg",
+            "dietary_fit": "suits your stated dietary requirements",
+            "hours_caveat": "opening hours not verified against a live source",
+            "reservation_status": "unknown",
+            "evidence": {
+              "source": "food.search",
+              "kind": "live",
+              "retrieved_at": 1792246788,
+              "ref": "28",
+              "note": null
+            }
+          }
+        ],
+        "transport_options": [],
+        "itinerary": {
+          "title": "5-day trip to Kerala",
+          "days": [
+            {
+              "day": 1,
+              "calendar_date": "2026-12-12",
+              "stops": [
+                {
+                  "day": 1,
+                  "start_time": "09:30",
+                  "end_time": "11:30",
+                  "title": "Arrive by surface transport",
+                  "kind": "transport",
+                  "location": "Kerala",
+                  "est_cost_inr": 0,
+                  "notes": "travel time assumed within the morning window",
+                  "evidence": null
+                },
+                {
+                  "day": 1,
+                  "start_time": "13:00",
+                  "end_time": "14:00",
+                  "title": "Lunch at Demo Kochi Vegetarian Kitchen",
+                  "kind": "food",
+                  "location": "Kochi",
+                  "est_cost_inr": 275,
+                  "notes": "suits your stated dietary requirements",
+                  "evidence": {
+                    "source": "food.search",
+                    "kind": "live",
+                    "retrieved_at": 1792246788,
+                    "ref": "1",
+                    "note": null
+                  }
+                },
+                {
+                  "day": 1,
+                  "start_time": "15:30",
+                  "end_time": "17:30",
+                  "title": "Kerala backwater cruise",
+                  "kind": "attraction",
+                  "location": "Alleppey",
+                  "est_cost_inr": 3499,
+                  "notes": null,
+                  "evidence": {
+                    "source": "guides.search",
+                    "kind": "live",
+                    "retrieved_at": 1792246791,
+                    "ref": "3",
+                    "note": null
+                  }
+                }
+              ]
+            },
+            {
+              "day": 2,
+              "calendar_date": "2026-12-13",
+              "stops": [
+                {
+                  "day": 2,
+                  "start_time": "09:30",
+                  "end_time": "11:30",
+                  "title": "Demo Fort Kochi heritage walk",
+                  "kind": "attraction",
+                  "location": "Kochi",
+                  "est_cost_inr": 900,
+                  "notes": "aligns with your interest in nature, culture",
+                  "evidence": {
+                    "source": "guides.search",
+                    "kind": "live",
+                    "retrieved_at": 1792246791,
+                    "ref": "7",
+                    "note": null
+                  }
+                },
+                {
+                  "day": 2,
+                  "start_time": "13:00",
+                  "end_time": "14:00",
+                  "title": "Lunch at Demo Munnar Vegetarian Kitchen",
+                  "kind": "food",
+                  "location": "Munnar",
+                  "est_cost_inr": 315,
+                  "notes": "suits your stated dietary requirements",
+                  "evidence": {
+                    "source": "food.search",
+                    "kind": "live",
+                    "retrieved_at": 1792246788,
+                    "ref": "2",
+                    "note": null
+                  }
+                },
+                {
+                  "day": 2,
+                  "start_time": "15:30",
+                  "end_time": "17:30",
+                  "title": "Demo Tea garden walk",
+                  "kind": "attraction",
+                  "location": "Munnar",
+                  "est_cost_inr": 1500,
+                  "notes": null,
+                  "evidence": {
+                    "source": "guides.search",
+                    "kind": "live",
+                    "retrieved_at": 1792246791,
+                    "ref": "9",
+                    "note": null
+                  }
+                }
+              ]
+            },
+            {
+              "day": 3,
+              "calendar_date": "2026-12-14",
+              "stops": [
+                {
+                  "day": 3,
+                  "start_time": "09:30",
+                  "end_time": "11:30",
+                  "title": "Demo Scenic viewpoints",
+                  "kind": "attraction",
+                  "location": "Munnar",
+                  "est_cost_inr": 950,
+                  "notes": "aligns with your interest in nature, culture",
+                  "evidence": {
+                    "source": "guides.search",
+                    "kind": "live",
+                    "retrieved_at": 1792246791,
+                    "ref": "10",
+                    "note": null
+                  }
+                },
+                {
+                  "day": 3,
+                  "start_time": "13:00",
+                  "end_time": "14:00",
+                  "title": "Lunch at Demo Alleppey Vegetarian Kitchen",
+                  "kind": "food",
+                  "location": "Alleppey",
+                  "est_cost_inr": 355,
+                  "notes": "suits your stated dietary requirements",
+                  "evidence": {
+                    "source": "food.search",
+                    "kind": "live",
+                    "retrieved_at": 1792246788,
+                    "ref": "3",
+                    "note": null
+                  }
+                },
+                {
+                  "day": 3,
+                  "start_time": "15:30",
+                  "end_time": "17:30",
+                  "title": "Demo Village canoe trail",
+                  "kind": "attraction",
+                  "location": "Alleppey",
+                  "est_cost_inr": 1300,
+                  "notes": null,
+                  "evidence": {
+                    "source": "guides.search",
+                    "kind": "live",
+                    "retrieved_at": 1792246791,
+                    "ref": "12",
+                    "note": null
+                  }
+                }
+              ]
+            },
+            {
+              "day": 4,
+              "calendar_date": "2026-12-15",
+              "stops": [
+                {
+                  "day": 4,
+                  "start_time": "09:30",
+                  "end_time": "11:30",
+                  "title": "Free morning to wander",
+                  "kind": "buffer",
+                  "location": "Kerala",
+                  "est_cost_inr": 0,
+                  "notes": "Unscheduled time; no additional catalog experience selected.",
+                  "evidence": null
+                },
+                {
+                  "day": 4,
+                  "start_time": "13:00",
+                  "end_time": "14:00",
+                  "title": "Lunch at Kerala Family Kitchen",
+                  "kind": "food",
+                  "location": "Kerala",
+                  "est_cost_inr": 415,
+                  "notes": "suits your stated dietary requirements",
+                  "evidence": {
+                    "source": "food.search",
+                    "kind": "live",
+                    "retrieved_at": 1792246788,
+                    "ref": "28",
+                    "note": null
+                  }
+                },
+                {
+                  "day": 4,
+                  "start_time": "15:30",
+                  "end_time": "17:30",
+                  "title": "Free afternoon for local exploration",
+                  "kind": "buffer",
+                  "location": "Kerala",
+                  "est_cost_inr": 0,
+                  "notes": "Unscheduled time; costs are not included.",
+                  "evidence": null
+                }
+              ]
+            },
+            {
+              "day": 5,
+              "calendar_date": "2026-12-16",
+              "stops": [
+                {
+                  "day": 5,
+                  "start_time": "09:30",
+                  "end_time": "11:30",
+                  "title": "Free morning to wander",
+                  "kind": "buffer",
+                  "location": "Kerala",
+                  "est_cost_inr": 0,
+                  "notes": "Unscheduled time; no additional catalog experience selected.",
+                  "evidence": null
+                },
+                {
+                  "day": 5,
+                  "start_time": "13:00",
+                  "end_time": "14:00",
+                  "title": "Lunch at Demo Kochi Vegetarian Kitchen",
+                  "kind": "food",
+                  "location": "Kochi",
+                  "est_cost_inr": 275,
+                  "notes": "suits your stated dietary requirements",
+                  "evidence": {
+                    "source": "food.search",
+                    "kind": "live",
+                    "retrieved_at": 1792246788,
+                    "ref": "1",
+                    "note": null
+                  }
+                },
+                {
+                  "day": 5,
+                  "start_time": "15:30",
+                  "end_time": "17:30",
+                  "title": "Pack up and head home",
+                  "kind": "buffer",
+                  "location": "Kerala",
+                  "est_cost_inr": 0,
+                  "notes": null,
+                  "evidence": null
+                }
+              ]
+            }
+          ],
+          "total_est_cost_inr": 9784,
+          "assumptions": [
+            "Assumes a room at Voyara Demo Kochi Courtyard Stay for all nights (per-night \u20b92,400, availability unverified)."
+          ],
+          "alternatives": [
+            "Swap the afternoon activity for a food walk if the weather turns."
+          ],
+          "unresolved_conflicts": []
+        },
+        "budget": null,
+        "guidance": null,
+        "trip_brief": null,
+        "evidence": [
+          {
+            "source": "itinerary_planner",
+            "kind": "estimate",
+            "retrieved_at": 1792246805,
+            "ref": null,
+            "note": "schedule built from catalog data; opening hours unverified"
+          }
+        ],
+        "errors": [],
+        "latency_ms": 4534,
+        "execution": {
+          "mode": "nvidia",
+          "persona": "Weaver \u00b7 day planner",
+          "goal": "Compose the specialists' actual findings into a paced schedule; review and revise conflicts.",
+          "model": "openai/gpt-oss-20b",
+          "temperature": 0.65,
+          "tool_calls": [
+            "build_schedule",
+            "review_schedule",
+            "finish"
+          ],
+          "observations": [
+            "build_schedule: ok; Drafted a 5-day itinerary with 15 stops",
+            "Schedule review: 0 errors, 0 warnings"
+          ],
+          "decision": "Drafted a 5\u2011day relaxed Kerala itinerary for two veg\u2011only travelers within INR\u202f100k budget. Included 5 nights at Voyara Demo Kochi Courtyard Stay (\u20b92,400/night). Attractions: Kerala backwater cruise (Alleppey), Fort Kochi heritage walk, Tea garden walk, Scenic viewpoints, Village canoe trail. Food: Demo Kochi Vegetarian Kitchen, Demo Munnar Vegetarian Kitchen, Demo Alleppey Vegetarian Kitchen, Kerala Family Kitchen. All stops fit relaxed pace, no conflicts, cost ~\u20b99,784. Reviewed and no issues.",
+          "completed": true
+        }
+      },
+      {
+        "agent_id": "budget_booking_agent",
+        "status": "ok",
+        "summary": "Estimated \u20b932,084 for 2 travellers",
+        "destination_ideas": [],
+        "stay_options": [],
+        "attractions": [],
+        "food_options": [],
+        "transport_options": [],
+        "itinerary": null,
+        "budget": {
+          "currency": "INR",
+          "per_person": false,
+          "lines": [
+            {
+              "category": "stay",
+              "amount_inr": 9600,
+              "basis": "estimate",
+              "note": "per room; availability unverified"
+            },
+            {
+              "category": "food",
+              "amount_inr": 3270,
+              "basis": "estimate",
+              "note": "scheduled meals only"
+            },
+            {
+              "category": "activities",
+              "amount_inr": 16298,
+              "basis": "estimate",
+              "note": "guide/experience fees"
+            },
+            {
+              "category": "contingency",
+              "amount_inr": 2916,
+              "basis": "estimate",
+              "note": "10% buffer for local travel and extras"
+            }
+          ],
+          "total_inr": 32084,
+          "budget_delta_inr": null,
+          "price_checked_at": null,
+          "status": "estimate",
+          "warnings": [
+            "All figures are estimates from catalog data, not live prices.",
+            "Includes the listed catalog activities and meals; unverified transport and extra meals are excluded."
+          ]
+        },
+        "guidance": null,
+        "trip_brief": null,
+        "evidence": [
+          {
+            "source": "budget_calculator",
+            "kind": "estimate",
+            "retrieved_at": 1792246810,
+            "ref": null,
+            "note": "deterministic calculation from tool results"
+          }
+        ],
+        "errors": [],
+        "latency_ms": 3765,
+        "execution": {
+          "mode": "nvidia",
+          "persona": "Ledger \u00b7 skeptical reviewer",
+          "goal": "Run the exact cost calculator; check the budget and explain exclusions. Never book or pay.",
+          "model": "openai/gpt-oss-20b",
+          "temperature": 0.35,
+          "tool_calls": [
+            "calculate_budget",
+            "finish"
+          ],
+          "observations": [
+            "calculate_budget: ok; Estimated \u20b932,084 for 2 travellers"
+          ],
+          "decision": "Calculated budget estimate for 2 travellers to Kerala 5 days: stay \u20b99,600, food \u20b93,270, activities \u20b916,298, contingency \u20b92,916, total \u20b932,084. Excludes transport, unverified meals, and any additional extras. Budget well below INR 100,000 total. No booking performed.",
+          "completed": true
+        }
+      }
+    ],
+    "validation_issues": [
+      {
+        "severity": "info",
+        "code": "prices_unverified",
+        "message": "prices are estimates; no provider price check has been recorded",
+        "field": null
+      }
+    ],
+    "clarification_question": null,
+    "errors": []
+  },
+  "workspace": {
+    "conversation_id": "f3e978f1-3b33-46bb-a3bb-2092eae6ed97",
+    "revision": 6,
+    "draft": {
+      "destination": "Kerala",
+      "start_date": "2026-12-12",
+      "end_date": "2026-12-16",
+      "duration_days": 5,
+      "traveller_count": 2,
+      "budget": 100000,
+      "pace": "relaxed",
+      "dietary": "vegetarian",
+      "interests": [
+        "nature",
+        "culture"
+      ],
+      "origin": "New Delhi",
+      "hard_requirements": []
+    },
+    "selections": {
+      "flight": 7
+    },
+    "missing_fields": [],
+    "confirmed": true,
+    "plan_ready": true,
+    "saved_preferences": {
+      "pace": "relaxed",
+      "dietary": "vegetarian",
+      "interests": [
+        "nature",
+        "culture"
+      ],
+      "origin": "New Delhi"
+    },
+    "options": {
+      "destinations": [
+        {
+          "id": 1,
+          "name": "Goa",
+          "kind": "destination",
+          "description": "Salt air, later mornings and old Portuguese lanes. Find a quiet cove, a family-run kitchen or a village that still moves at its own pace.",
+          "price_inr": 28000
+        },
+        {
+          "id": 2,
+          "name": "Jaipur",
+          "kind": "destination",
+          "description": "Pink sandstone, courtyard cafes and lively bazaars. Jaipur brings royal architecture and everyday craft into the same afternoon.",
+          "price_inr": 22000
+        },
+        {
+          "id": 3,
+          "name": "Manali",
+          "kind": "destination",
+          "description": "Pine-scented walks, mountain mornings and winding roads into the valley. Come for the views; stay for the slower rhythm.",
+          "price_inr": 24000
+        },
+        {
+          "id": 4,
+          "name": "Munnar",
+          "kind": "destination",
+          "description": "Tea gardens fold into the hills around Munnar. Misty trails, small farms and unhurried mornings make this a place to take your time.",
+          "price_inr": 19000
+        },
+        {
+          "id": 5,
+          "name": "Varanasi",
+          "kind": "destination",
+          "description": "A city of morning boat rides, temple bells and lanes with stories in every turn. Best explored slowly, with a local guide.",
+          "price_inr": 16000
+        },
+        {
+          "id": 6,
+          "name": "Udaipur",
+          "kind": "destination",
+          "description": "Lakeside courtyards, hilltop palaces and dinner as the light leaves the water. A gentle, storybook escape in Rajasthan.",
+          "price_inr": 26000
+        },
+        {
+          "id": 7,
+          "name": "Rishikesh",
+          "kind": "destination",
+          "description": "River paths, forest air and quiet mornings beside the Ganga. A soft landing for yoga, day hikes and time outdoors.",
+          "price_inr": 18000
+        },
+        {
+          "id": 8,
+          "name": "Kochi",
+          "kind": "destination",
+          "description": "A harbor city layered with spice markets, art spaces and backwater day trips. Let the ferry set the pace.",
+          "price_inr": 21000
+        },
+        {
+          "id": 9,
+          "name": "Andaman Islands",
+          "kind": "destination",
+          "description": "Clear water, forest trails and long stretches of island quiet. Leave space for the sea to make the itinerary.",
+          "price_inr": 34000
+        },
+        {
+          "id": 10,
+          "name": "Kashmir",
+          "kind": "destination",
+          "description": "Explore Kashmir at your own pace.",
+          "price_inr": 25000
+        },
+        {
+          "id": 11,
+          "name": "Kerala",
+          "kind": "destination",
+          "description": "Explore Kerala at your own pace.",
+          "price_inr": 25000
+        },
+        {
+          "id": 12,
+          "name": "Darjeeling",
+          "kind": "destination",
+          "description": "Explore Darjeeling at your own pace.",
+          "price_inr": 25000
+        },
+        {
+          "id": 13,
+          "name": "New Delhi",
+          "kind": "destination",
+          "description": "Explore New Delhi at your own pace.",
+          "price_inr": 25000
+        },
+        {
+          "id": 14,
+          "name": "Mumbai",
+          "kind": "destination",
+          "description": "Explore Mumbai at your own pace.",
+          "price_inr": 25000
+        },
+        {
+          "id": 15,
+          "name": "Bengaluru",
+          "kind": "destination",
+          "description": "Explore Bengaluru at your own pace.",
+          "price_inr": 25000
+        },
+        {
+          "id": 16,
+          "name": "Hyderabad",
+          "kind": "destination",
+          "description": "Explore Hyderabad at your own pace.",
+          "price_inr": 25000
+        },
+        {
+          "id": 17,
+          "name": "Chennai",
+          "kind": "destination",
+          "description": "Explore Chennai at your own pace.",
+          "price_inr": 25000
+        },
+        {
+          "id": 18,
+          "name": "Alleppey",
+          "kind": "destination",
+          "description": "Palm-lined waterways, village life and quiet stretches beside the backwaters.",
+          "price_inr": 21000
+        }
+      ],
+      "stays": [
+        {
+          "id": 7,
+          "kind": "stay",
+          "name": "Voyara Demo Kochi Courtyard Stay",
+          "price_inr": 2400,
+          "location": "Kochi",
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 9,
+          "kind": "stay",
+          "name": "Voyara Demo Munnar Courtyard Stay",
+          "price_inr": 2750,
+          "location": "Munnar",
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 11,
+          "kind": "stay",
+          "name": "Voyara Demo Alleppey Courtyard Stay",
+          "price_inr": 3100,
+          "location": "Alleppey",
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 8,
+          "kind": "stay",
+          "name": "Voyara Demo Kochi Garden Retreat",
+          "price_inr": 3900,
+          "location": "Kochi",
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 10,
+          "kind": "stay",
+          "name": "Voyara Demo Munnar Garden Retreat",
+          "price_inr": 4350,
+          "location": "Munnar",
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 12,
+          "kind": "stay",
+          "name": "Voyara Demo Alleppey Garden Retreat",
+          "price_inr": 4800,
+          "location": "Alleppey",
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 3,
+          "kind": "stay",
+          "name": "Palm Grove Retreat",
+          "price_inr": 6999,
+          "location": "Kerala",
+          "image": "/travel/kerala.jpg"
+        }
+      ],
+      "experiences": [
+        {
+          "id": 3,
+          "kind": "experience",
+          "name": "Kerala backwater cruise",
+          "price_inr": 3499,
+          "location": "Alleppey",
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 7,
+          "kind": "experience",
+          "name": "Demo Fort Kochi heritage walk",
+          "price_inr": 900,
+          "location": "Kochi",
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 8,
+          "kind": "experience",
+          "name": "Demo Harbour sunset",
+          "price_inr": 600,
+          "location": "Kochi",
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 9,
+          "kind": "experience",
+          "name": "Demo Tea garden walk",
+          "price_inr": 1500,
+          "location": "Munnar",
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 10,
+          "kind": "experience",
+          "name": "Demo Scenic viewpoints",
+          "price_inr": 950,
+          "location": "Munnar",
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 11,
+          "kind": "experience",
+          "name": "Demo Backwater cruise",
+          "price_inr": 2100,
+          "location": "Alleppey",
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 12,
+          "kind": "experience",
+          "name": "Demo Village canoe trail",
+          "price_inr": 1300,
+          "location": "Alleppey",
+          "image": "/travel/kerala.jpg"
+        }
+      ],
+      "flights": [
+        {
+          "id": 7,
+          "kind": "flight",
+          "name": "Voyara sample flight",
+          "origin": "New Delhi",
+          "location": "Kochi",
+          "price_inr": 5800,
+          "duration_min": 165,
+          "date": "2026-12-12"
+        }
+      ]
+    },
+    "guide": {
+      "slug": "kerala",
+      "name": "Kerala",
+      "eyebrow": "Backwaters, hills & living traditions",
+      "description": "Trace a gentler route from Kochi's harbour lanes to Munnar's tea-covered hills and the palm-lined backwaters of Alleppey.",
+      "photo": "/travel/kerala.jpg",
+      "themes": [
+        "Nature & relaxation",
+        "Backwater experiences",
+        "Local cuisine",
+        "Culture & heritage"
+      ],
+      "season_note": "The demo guide suggests October\u2013March. Check conditions and opening times close to departure.",
+      "packing": "Light layers, comfortable shoes, a rain shell and sun protection; adjust to your dates and activities.",
+      "cuisine": "Appam, vegetable stew, Kerala sadya and regional seafood. Ask each venue about dietary suitability.",
+      "route_notice": "Illustrative route diagram; travel times and road conditions are not verified.",
+      "cities": [
+        {
+          "slug": "kochi",
+          "name": "Kochi",
+          "lat": 9.93,
+          "lng": 76.26,
+          "description": "Harbour-side lanes, trading stories, galleries and local kitchens.",
+          "experiences": [
+            "Fort Kochi heritage walk",
+            "Harbour sunset",
+            "Local food discovery"
+          ]
+        },
+        {
+          "slug": "munnar",
+          "name": "Munnar",
+          "lat": 10.09,
+          "lng": 77.06,
+          "description": "Tea gardens, misty hills and time to slow down in the highlands.",
+          "experiences": [
+            "Tea garden walk",
+            "Scenic viewpoints",
+            "Village trail"
+          ]
+        },
+        {
+          "slug": "alleppey",
+          "name": "Alleppey",
+          "lat": 9.5,
+          "lng": 76.34,
+          "description": "Palm-lined waterways, village life and quiet stretches beside the backwaters.",
+          "experiences": [
+            "Backwater cruise",
+            "Village canoe trail",
+            "Waterside sunset"
+          ]
+        }
+      ]
+    },
+    "notice": "Synthetic hackathon inventory. Selections are drafts; no seats, rooms or activities are reserved."
+  }
+}

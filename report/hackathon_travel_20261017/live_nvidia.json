@@ -1,0 +1,1070 @@
+{
+  "scope": "Live NVIDIA decisions, synthetic catalog, offline embedding fixture, real temporary memory stores",
+  "status": "ok",
+  "agents": [
+    {
+      "agent_id": "trip_consultant",
+      "status": "ok",
+      "summary": "Trip brief: Goa, 3 days, party of 2, ~\u20b950,000/person",
+      "destination_ideas": [],
+      "stay_options": [],
+      "attractions": [],
+      "food_options": [],
+      "transport_options": [],
+      "itinerary": null,
+      "budget": null,
+      "guidance": null,
+      "trip_brief": {
+        "destination": "Goa",
+        "destination_flexible": false,
+        "start_date": "2026-12-01",
+        "end_date": "2026-12-03",
+        "duration_days": 3,
+        "party_size": 2,
+        "purpose": null,
+        "budget_total_inr": 100000,
+        "budget_per_person_inr": null,
+        "interests": [],
+        "pace": "relaxed",
+        "transport_preferences": [],
+        "dietary_requirements": [
+          "vegetarian"
+        ],
+        "accessibility_needs": [],
+        "hard_constraints": [],
+        "preferences": [],
+        "missing_fields": [],
+        "clarification_question": null,
+        "confidence": 0.5
+      },
+      "evidence": [],
+      "errors": [],
+      "latency_ms": 10720,
+      "execution": {
+        "mode": "nvidia",
+        "persona": "Mira \u00b7 trip editor",
+        "goal": "Check the confirmed brief for gaps; never invent traveler facts.",
+        "model": "openai/gpt-oss-20b",
+        "temperature": 0.35,
+        "tool_calls": [
+          "inspect_brief",
+          "finish"
+        ],
+        "observations": [
+          "inspect_brief: ok; Trip brief: Goa, 3 days, party of 2, ~\u20b950,000/person"
+        ],
+        "decision": "Confirmed brief: Goa, 3 days (Dec 1-3, 2026), 2 travelers, relaxed pace, vegetarian diet, INR 100,000 total budget (~\u20b950,000 per person). Gaps: interests, transport preferences, purpose, preferences, hard constraints, accessibility needs. Need clarification on these fields before proceeding.",
+        "completed": true
+      }
+    },
+    {
+      "agent_id": "explore_agent",
+      "status": "ok",
+      "summary": "1 destination ideas",
+      "destination_ideas": [
+        {
+          "destination_id": 1,
+          "slug": "goa",
+          "name": "Goa",
+          "region": "Goa, India",
+          "why_fit": "explored for its beach, nightlife",
+          "suggested_duration_days": 3,
+          "best_season": "Nov-Feb",
+          "cost_level": "mid",
+          "avg_cost_inr": 28000,
+          "tags": [
+            "beach",
+            "nightlife",
+            "slow travel"
+          ],
+          "seasonality_note": "Verify the season fits your dates; best listed as Nov-Feb",
+          "evidence": {
+            "source": "destinations.search",
+            "kind": "live",
+            "retrieved_at": 1792243709,
+            "ref": "1",
+            "note": null
+          }
+        }
+      ],
+      "stay_options": [],
+      "attractions": [],
+      "food_options": [],
+      "transport_options": [],
+      "itinerary": null,
+      "budget": null,
+      "guidance": null,
+      "trip_brief": null,
+      "evidence": [
+        {
+          "source": "destinations.search",
+          "kind": "live",
+          "retrieved_at": 1792243709,
+          "ref": null,
+          "note": null
+        }
+      ],
+      "errors": [],
+      "latency_ms": 3099,
+      "execution": {
+        "mode": "nvidia",
+        "persona": "Atlas \u00b7 curious scout",
+        "goal": "Discover destinations fitting the stated interests; prioritize the confirmed destination.",
+        "model": "openai/gpt-oss-20b",
+        "temperature": 0.85,
+        "tool_calls": [
+          "discover_destinations",
+          "finish"
+        ],
+        "observations": [
+          "discover_destinations: ok; 1 destination ideas"
+        ],
+        "decision": "Confirmed destination: Goa, India. 3\u2011day relaxed trip for 2 vegetarian travelers within INR\u202f100,000 total budget.",
+        "completed": true
+      }
+    },
+    {
+      "agent_id": "food_guide_agent",
+      "status": "ok",
+      "summary": "3 food recommendations in Goa",
+      "destination_ideas": [],
+      "stay_options": [],
+      "attractions": [],
+      "food_options": [
+        {
+          "place_id": 1,
+          "name": "Goa Family Kitchen",
+          "cuisine": "Regional",
+          "approx_price_per_guest_inr": 240,
+          "location": "Goa",
+          "diet": "veg",
+          "dietary_fit": "suits your stated dietary requirements",
+          "hours_caveat": "opening hours not verified against a live source",
+          "reservation_status": "unknown",
+          "evidence": {
+            "source": "food.search",
+            "kind": "live",
+            "retrieved_at": 1792243710,
+            "ref": "1",
+            "note": null
+          }
+        },
+        {
+          "place_id": 52,
+          "name": "Demo Goa Vegetarian Kitchen",
+          "cuisine": "Goan vegetarian",
+          "approx_price_per_guest_inr": 300,
+          "location": "Goa",
+          "diet": "veg",
+          "dietary_fit": "suits your stated dietary requirements",
+          "hours_caveat": "opening hours not verified against a live source",
+          "reservation_status": "unknown",
+          "evidence": {
+            "source": "food.search",
+            "kind": "live",
+            "retrieved_at": 1792243710,
+            "ref": "52",
+            "note": null
+          }
+        },
+        {
+          "place_id": 53,
+          "name": "Demo Goa Market Cafe",
+          "cuisine": "Cafe",
+          "approx_price_per_guest_inr": 200,
+          "location": "Goa",
+          "diet": "veg",
+          "dietary_fit": "suits your stated dietary requirements",
+          "hours_caveat": "opening hours not verified against a live source",
+          "reservation_status": "unknown",
+          "evidence": {
+            "source": "food.search",
+            "kind": "live",
+            "retrieved_at": 1792243710,
+            "ref": "53",
+            "note": null
+          }
+        }
+      ],
+      "transport_options": [],
+      "itinerary": null,
+      "budget": null,
+      "guidance": null,
+      "trip_brief": null,
+      "evidence": [
+        {
+          "source": "food.search",
+          "kind": "live",
+          "retrieved_at": 1792243710,
+          "ref": null,
+          "note": null
+        }
+      ],
+      "errors": [],
+      "latency_ms": 3980,
+      "execution": {
+        "mode": "nvidia",
+        "persona": "Saffron \u00b7 food curator",
+        "goal": "Choose varied meals within the supported dietary requirement; unknown suitability remains unknown.",
+        "model": "openai/gpt-oss-20b",
+        "temperature": 0.75,
+        "tool_calls": [
+          "find_food",
+          "finish"
+        ],
+        "observations": [
+          "find_food: ok; 3 food recommendations in Goa"
+        ],
+        "decision": "Selected three vegetarian food options in Goa: 1) Goa Family Kitchen (\u20b9240 per guest), 2) Demo Goa Vegetarian Kitchen (\u20b9300 per guest), 3) Demo Goa Market Cafe (\u20b9200 per guest).",
+        "completed": true
+      }
+    },
+    {
+      "agent_id": "stay_agent",
+      "status": "ok",
+      "summary": "3 stay options near Goa",
+      "destination_ideas": [],
+      "stay_options": [
+        {
+          "stay_id": 40,
+          "name": "Demo Goa Garden Homestay",
+          "location": "Goa",
+          "kind": "homestay",
+          "price_per_night_inr": 1850,
+          "total_price_inr": 3700,
+          "rating": 4.6,
+          "amenities": [
+            "wifi",
+            "breakfast"
+          ],
+          "availability_status": "unknown",
+          "cancellation_note": null,
+          "pros": [
+            "highly rated (4.6)",
+            "local homestay character"
+          ],
+          "cons": [],
+          "evidence": {
+            "source": "stays.search",
+            "kind": "live",
+            "retrieved_at": 1792243714,
+            "ref": "40",
+            "note": "indicative listing; availability not verified"
+          }
+        },
+        {
+          "stay_id": 41,
+          "name": "Demo Goa Coast Lodge",
+          "location": "Goa",
+          "kind": "hotel",
+          "price_per_night_inr": 2800,
+          "total_price_inr": 5600,
+          "rating": 4.7,
+          "amenities": [
+            "wifi",
+            "breakfast"
+          ],
+          "availability_status": "unknown",
+          "cancellation_note": null,
+          "pros": [
+            "highly rated (4.7)"
+          ],
+          "cons": [],
+          "evidence": {
+            "source": "stays.search",
+            "kind": "live",
+            "retrieved_at": 1792243714,
+            "ref": "41",
+            "note": "indicative listing; availability not verified"
+          }
+        },
+        {
+          "stay_id": 4,
+          "name": "Coast & Cove",
+          "location": "Goa",
+          "kind": "hotel",
+          "price_per_night_inr": 4799,
+          "total_price_inr": 9598,
+          "rating": 4.6,
+          "amenities": [
+            "Pool",
+            "Beach access",
+            "Caf\u00e9"
+          ],
+          "availability_status": "unknown",
+          "cancellation_note": null,
+          "pros": [
+            "highly rated (4.6)"
+          ],
+          "cons": [],
+          "evidence": {
+            "source": "stays.search",
+            "kind": "live",
+            "retrieved_at": 1792243714,
+            "ref": "4",
+            "note": "indicative listing; availability not verified"
+          }
+        }
+      ],
+      "attractions": [],
+      "food_options": [],
+      "transport_options": [],
+      "itinerary": null,
+      "budget": null,
+      "guidance": null,
+      "trip_brief": null,
+      "evidence": [
+        {
+          "source": "stays.search",
+          "kind": "live",
+          "retrieved_at": 1792243714,
+          "ref": null,
+          "note": null
+        }
+      ],
+      "errors": [],
+      "latency_ms": 6313,
+      "execution": {
+        "mode": "nvidia",
+        "persona": "Haven \u00b7 practical host",
+        "goal": "Compare lodging value, amenities and room cost; shortlist a preferred stay and alternatives.",
+        "model": "openai/gpt-oss-20b",
+        "temperature": 0.55,
+        "tool_calls": [
+          "compare_stays",
+          "finish"
+        ],
+        "observations": [
+          "compare_stays: ok; 3 stay options near Goa"
+        ],
+        "decision": "Shortlisted 3 stays: Demo Goa Garden Homestay (id 40), Demo Goa Coast Lodge (id 41), Coast & Cove (id 4).",
+        "completed": true
+      }
+    },
+    {
+      "agent_id": "tour_guide_agent",
+      "status": "ok",
+      "summary": "3 experience ideas in Goa",
+      "destination_ideas": [],
+      "stay_options": [],
+      "attractions": [
+        {
+          "guide_id": 1,
+          "name": "Goa Story Walk",
+          "category": "history, food walks",
+          "why_fit": "a well-reviewed local experience",
+          "approx_duration_min": 180,
+          "location": "Goa",
+          "price_per_person_inr": 1800,
+          "hours_caveat": "hours not verified against a live source",
+          "evidence": {
+            "source": "guides.search",
+            "kind": "live",
+            "retrieved_at": 1792243714,
+            "ref": "1",
+            "note": null
+          }
+        },
+        {
+          "guide_id": 18,
+          "name": "Demo Goa Heritage Walk",
+          "category": "history, culture",
+          "why_fit": "a well-reviewed local experience",
+          "approx_duration_min": 180,
+          "location": "Goa",
+          "price_per_person_inr": 1200,
+          "hours_caveat": "hours not verified against a live source",
+          "evidence": {
+            "source": "guides.search",
+            "kind": "live",
+            "retrieved_at": 1792243714,
+            "ref": "18",
+            "note": null
+          }
+        }
+      ],
+      "food_options": [],
+      "transport_options": [],
+      "itinerary": null,
+      "budget": null,
+      "guidance": null,
+      "trip_brief": null,
+      "evidence": [
+        {
+          "source": "guides.search",
+          "kind": "live",
+          "retrieved_at": 1792243714,
+          "ref": null,
+          "note": null
+        }
+      ],
+      "errors": [],
+      "latency_ms": 6714,
+      "execution": {
+        "mode": "nvidia",
+        "persona": "Roam \u00b7 culture scout",
+        "goal": "Choose experiences matching interests and pace; avoid repeating the same experience unnecessarily.",
+        "model": "openai/gpt-oss-20b",
+        "temperature": 0.8,
+        "tool_calls": [
+          "find_experiences",
+          "finish"
+        ],
+        "observations": [
+          "find_experiences: ok; 3 experience ideas in Goa"
+        ],
+        "decision": "Selected two relaxed experiences in Goa that fit vegetarian diet and budget: \"Goa Story Walk\" (guide_id 1) and \"Demo Goa Heritage Walk\" (guide_id 18).",
+        "completed": true
+      }
+    },
+    {
+      "agent_id": "itinerary_planner",
+      "status": "ok",
+      "summary": "Drafted a 3-day itinerary with 9 stops",
+      "destination_ideas": [],
+      "stay_options": [
+        {
+          "stay_id": 40,
+          "name": "Demo Goa Garden Homestay",
+          "location": "Goa",
+          "kind": "homestay",
+          "price_per_night_inr": 1850,
+          "total_price_inr": 3700,
+          "rating": 4.6,
+          "amenities": [
+            "wifi",
+            "breakfast"
+          ],
+          "availability_status": "unknown",
+          "cancellation_note": null,
+          "pros": [
+            "highly rated (4.6)",
+            "local homestay character"
+          ],
+          "cons": [],
+          "evidence": {
+            "source": "stays.search",
+            "kind": "live",
+            "retrieved_at": 1792243714,
+            "ref": "40",
+            "note": "indicative listing; availability not verified"
+          }
+        },
+        {
+          "stay_id": 41,
+          "name": "Demo Goa Coast Lodge",
+          "location": "Goa",
+          "kind": "hotel",
+          "price_per_night_inr": 2800,
+          "total_price_inr": 5600,
+          "rating": 4.7,
+          "amenities": [
+            "wifi",
+            "breakfast"
+          ],
+          "availability_status": "unknown",
+          "cancellation_note": null,
+          "pros": [
+            "highly rated (4.7)"
+          ],
+          "cons": [],
+          "evidence": {
+            "source": "stays.search",
+            "kind": "live",
+            "retrieved_at": 1792243714,
+            "ref": "41",
+            "note": "indicative listing; availability not verified"
+          }
+        },
+        {
+          "stay_id": 4,
+          "name": "Coast & Cove",
+          "location": "Goa",
+          "kind": "hotel",
+          "price_per_night_inr": 4799,
+          "total_price_inr": 9598,
+          "rating": 4.6,
+          "amenities": [
+            "Pool",
+            "Beach access",
+            "Caf\u00e9"
+          ],
+          "availability_status": "unknown",
+          "cancellation_note": null,
+          "pros": [
+            "highly rated (4.6)"
+          ],
+          "cons": [],
+          "evidence": {
+            "source": "stays.search",
+            "kind": "live",
+            "retrieved_at": 1792243714,
+            "ref": "4",
+            "note": "indicative listing; availability not verified"
+          }
+        }
+      ],
+      "attractions": [
+        {
+          "guide_id": 1,
+          "name": "Goa Story Walk",
+          "category": "history, food walks",
+          "why_fit": "a well-reviewed local experience",
+          "approx_duration_min": 180,
+          "location": "Goa",
+          "price_per_person_inr": 1800,
+          "hours_caveat": "hours not verified against a live source",
+          "evidence": {
+            "source": "guides.search",
+            "kind": "live",
+            "retrieved_at": 1792243714,
+            "ref": "1",
+            "note": null
+          }
+        },
+        {
+          "guide_id": 18,
+          "name": "Demo Goa Heritage Walk",
+          "category": "history, culture",
+          "why_fit": "a well-reviewed local experience",
+          "approx_duration_min": 180,
+          "location": "Goa",
+          "price_per_person_inr": 1200,
+          "hours_caveat": "hours not verified against a live source",
+          "evidence": {
+            "source": "guides.search",
+            "kind": "live",
+            "retrieved_at": 1792243714,
+            "ref": "18",
+            "note": null
+          }
+        }
+      ],
+      "food_options": [
+        {
+          "place_id": 1,
+          "name": "Goa Family Kitchen",
+          "cuisine": "Regional",
+          "approx_price_per_guest_inr": 240,
+          "location": "Goa",
+          "diet": "veg",
+          "dietary_fit": "suits your stated dietary requirements",
+          "hours_caveat": "opening hours not verified against a live source",
+          "reservation_status": "unknown",
+          "evidence": {
+            "source": "food.search",
+            "kind": "live",
+            "retrieved_at": 1792243710,
+            "ref": "1",
+            "note": null
+          }
+        },
+        {
+          "place_id": 52,
+          "name": "Demo Goa Vegetarian Kitchen",
+          "cuisine": "Goan vegetarian",
+          "approx_price_per_guest_inr": 300,
+          "location": "Goa",
+          "diet": "veg",
+          "dietary_fit": "suits your stated dietary requirements",
+          "hours_caveat": "opening hours not verified against a live source",
+          "reservation_status": "unknown",
+          "evidence": {
+            "source": "food.search",
+            "kind": "live",
+            "retrieved_at": 1792243710,
+            "ref": "52",
+            "note": null
+          }
+        },
+        {
+          "place_id": 53,
+          "name": "Demo Goa Market Cafe",
+          "cuisine": "Cafe",
+          "approx_price_per_guest_inr": 200,
+          "location": "Goa",
+          "diet": "veg",
+          "dietary_fit": "suits your stated dietary requirements",
+          "hours_caveat": "opening hours not verified against a live source",
+          "reservation_status": "unknown",
+          "evidence": {
+            "source": "food.search",
+            "kind": "live",
+            "retrieved_at": 1792243710,
+            "ref": "53",
+            "note": null
+          }
+        }
+      ],
+      "transport_options": [],
+      "itinerary": {
+        "title": "3-day trip to Goa",
+        "days": [
+          {
+            "day": 1,
+            "calendar_date": "2026-12-01",
+            "stops": [
+              {
+                "day": 1,
+                "start_time": "09:30",
+                "end_time": "11:30",
+                "title": "Arrive by surface transport",
+                "kind": "transport",
+                "location": "Goa",
+                "est_cost_inr": 0,
+                "notes": "travel time assumed within the morning window",
+                "evidence": null
+              },
+              {
+                "day": 1,
+                "start_time": "13:00",
+                "end_time": "14:00",
+                "title": "Lunch at Goa Family Kitchen",
+                "kind": "food",
+                "location": "Goa",
+                "est_cost_inr": 240,
+                "notes": "suits your stated dietary requirements",
+                "evidence": {
+                  "source": "food.search",
+                  "kind": "live",
+                  "retrieved_at": 1792243710,
+                  "ref": "1",
+                  "note": null
+                }
+              },
+              {
+                "day": 1,
+                "start_time": "15:30",
+                "end_time": "17:30",
+                "title": "Goa Story Walk",
+                "kind": "attraction",
+                "location": "Goa",
+                "est_cost_inr": 1800,
+                "notes": null,
+                "evidence": {
+                  "source": "guides.search",
+                  "kind": "live",
+                  "retrieved_at": 1792243714,
+                  "ref": "1",
+                  "note": null
+                }
+              }
+            ]
+          },
+          {
+            "day": 2,
+            "calendar_date": "2026-12-02",
+            "stops": [
+              {
+                "day": 2,
+                "start_time": "09:30",
+                "end_time": "11:30",
+                "title": "Demo Goa Heritage Walk",
+                "kind": "attraction",
+                "location": "Goa",
+                "est_cost_inr": 1200,
+                "notes": "a well-reviewed local experience",
+                "evidence": {
+                  "source": "guides.search",
+                  "kind": "live",
+                  "retrieved_at": 1792243714,
+                  "ref": "18",
+                  "note": null
+                }
+              },
+              {
+                "day": 2,
+                "start_time": "13:00",
+                "end_time": "14:00",
+                "title": "Lunch at Demo Goa Vegetarian Kitchen",
+                "kind": "food",
+                "location": "Goa",
+                "est_cost_inr": 300,
+                "notes": "suits your stated dietary requirements",
+                "evidence": {
+                  "source": "food.search",
+                  "kind": "live",
+                  "retrieved_at": 1792243710,
+                  "ref": "52",
+                  "note": null
+                }
+              },
+              {
+                "day": 2,
+                "start_time": "15:30",
+                "end_time": "17:30",
+                "title": "Free afternoon for local exploration",
+                "kind": "buffer",
+                "location": "Goa",
+                "est_cost_inr": 0,
+                "notes": "Unscheduled time; costs are not included.",
+                "evidence": null
+              }
+            ]
+          },
+          {
+            "day": 3,
+            "calendar_date": "2026-12-03",
+            "stops": [
+              {
+                "day": 3,
+                "start_time": "09:30",
+                "end_time": "11:30",
+                "title": "Free morning to wander",
+                "kind": "buffer",
+                "location": "Goa",
+                "est_cost_inr": 0,
+                "notes": "Unscheduled time; no additional catalog experience selected.",
+                "evidence": null
+              },
+              {
+                "day": 3,
+                "start_time": "13:00",
+                "end_time": "14:00",
+                "title": "Lunch at Demo Goa Market Cafe",
+                "kind": "food",
+                "location": "Goa",
+                "est_cost_inr": 200,
+                "notes": "suits your stated dietary requirements",
+                "evidence": {
+                  "source": "food.search",
+                  "kind": "live",
+                  "retrieved_at": 1792243710,
+                  "ref": "53",
+                  "note": null
+                }
+              },
+              {
+                "day": 3,
+                "start_time": "15:30",
+                "end_time": "17:30",
+                "title": "Pack up and head home",
+                "kind": "buffer",
+                "location": "Goa",
+                "est_cost_inr": 0,
+                "notes": null,
+                "evidence": null
+              }
+            ]
+          }
+        ],
+        "total_est_cost_inr": 3740,
+        "assumptions": [
+          "Assumes a room at Demo Goa Garden Homestay for all nights (per-night \u20b91,850, availability unverified)."
+        ],
+        "alternatives": [
+          "Swap the afternoon activity for a food walk if the weather turns."
+        ],
+        "unresolved_conflicts": []
+      },
+      "budget": null,
+      "guidance": null,
+      "trip_brief": null,
+      "evidence": [
+        {
+          "source": "itinerary_planner",
+          "kind": "estimate",
+          "retrieved_at": 1792243718,
+          "ref": null,
+          "note": "schedule built from catalog data; opening hours unverified"
+        }
+      ],
+      "errors": [],
+      "latency_ms": 3578,
+      "execution": {
+        "mode": "nvidia",
+        "persona": "Weaver \u00b7 day planner",
+        "goal": "Compose the specialists' actual findings into a paced schedule; review and revise conflicts.",
+        "model": "openai/gpt-oss-20b",
+        "temperature": 0.65,
+        "tool_calls": [
+          "build_schedule",
+          "review_schedule",
+          "finish"
+        ],
+        "observations": [
+          "build_schedule: ok; Drafted a 3-day itinerary with 9 stops",
+          "Schedule review: 0 errors, 0 warnings"
+        ],
+        "decision": "Drafted a 3-day relaxed Goa itinerary within INR 100,000 budget, featuring two heritage walks, three vegetarian meals, and a homestay stay. All activities fit the party of 2, no conflicts detected.",
+        "completed": true
+      }
+    },
+    {
+      "agent_id": "budget_booking_agent",
+      "status": "ok",
+      "summary": "Estimated \u20b912,298 for 2 travellers",
+      "destination_ideas": [],
+      "stay_options": [],
+      "attractions": [],
+      "food_options": [],
+      "transport_options": [],
+      "itinerary": null,
+      "budget": {
+        "currency": "INR",
+        "per_person": false,
+        "lines": [
+          {
+            "category": "stay",
+            "amount_inr": 3700,
+            "basis": "estimate",
+            "note": "per room; availability unverified"
+          },
+          {
+            "category": "food",
+            "amount_inr": 1480,
+            "basis": "estimate",
+            "note": "one sit-down meal per day"
+          },
+          {
+            "category": "activities",
+            "amount_inr": 6000,
+            "basis": "estimate",
+            "note": "guide/experience fees"
+          },
+          {
+            "category": "contingency",
+            "amount_inr": 1118,
+            "basis": "estimate",
+            "note": "10% buffer for local travel and extras"
+          }
+        ],
+        "total_inr": 12298,
+        "budget_delta_inr": null,
+        "price_checked_at": null,
+        "status": "estimate",
+        "warnings": [
+          "All figures are estimates from catalog data, not live prices.",
+          "Includes the scheduled catalog activities and one meal per day; unverified transport and extra meals are excluded."
+        ]
+      },
+      "guidance": null,
+      "trip_brief": null,
+      "evidence": [
+        {
+          "source": "budget_calculator",
+          "kind": "estimate",
+          "retrieved_at": 1792243722,
+          "ref": null,
+          "note": "deterministic calculation from tool results"
+        }
+      ],
+      "errors": [],
+      "latency_ms": 3823,
+      "execution": {
+        "mode": "nvidia",
+        "persona": "Ledger \u00b7 skeptical reviewer",
+        "goal": "Run the exact cost calculator; check the budget and explain exclusions. Never book or pay.",
+        "model": "openai/gpt-oss-20b",
+        "temperature": 0.35,
+        "tool_calls": [
+          "calculate_budget",
+          "finish"
+        ],
+        "observations": [
+          "calculate_budget: ok; Estimated \u20b912,298 for 2 travellers"
+        ],
+        "decision": "Budget estimate shows INR 12,298 for 2 travellers, well below the INR 100,000 budget. Exclusions: transport, additional meals, unverified availability, and any optional extras are not included. The estimate is a catalog-based calculation and not a live booking. No booking or payment performed.",
+        "completed": true
+      }
+    }
+  ],
+  "itinerary": {
+    "title": "3-day trip to Goa",
+    "days": [
+      {
+        "day": 1,
+        "calendar_date": "2026-12-01",
+        "stops": [
+          {
+            "day": 1,
+            "start_time": "09:30",
+            "end_time": "11:30",
+            "title": "Arrive by surface transport",
+            "kind": "transport",
+            "location": "Goa",
+            "est_cost_inr": 0,
+            "notes": "travel time assumed within the morning window",
+            "evidence": null
+          },
+          {
+            "day": 1,
+            "start_time": "13:00",
+            "end_time": "14:00",
+            "title": "Lunch at Goa Family Kitchen",
+            "kind": "food",
+            "location": "Goa",
+            "est_cost_inr": 240,
+            "notes": "suits your stated dietary requirements",
+            "evidence": {
+              "source": "food.search",
+              "kind": "live",
+              "retrieved_at": 1792243710,
+              "ref": "1",
+              "note": null
+            }
+          },
+          {
+            "day": 1,
+            "start_time": "15:30",
+            "end_time": "17:30",
+            "title": "Goa Story Walk",
+            "kind": "attraction",
+            "location": "Goa",
+            "est_cost_inr": 1800,
+            "notes": null,
+            "evidence": {
+              "source": "guides.search",
+              "kind": "live",
+              "retrieved_at": 1792243714,
+              "ref": "1",
+              "note": null
+            }
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "calendar_date": "2026-12-02",
+        "stops": [
+          {
+            "day": 2,
+            "start_time": "09:30",
+            "end_time": "11:30",
+            "title": "Demo Goa Heritage Walk",
+            "kind": "attraction",
+            "location": "Goa",
+            "est_cost_inr": 1200,
+            "notes": "a well-reviewed local experience",
+            "evidence": {
+              "source": "guides.search",
+              "kind": "live",
+              "retrieved_at": 1792243714,
+              "ref": "18",
+              "note": null
+            }
+          },
+          {
+            "day": 2,
+            "start_time": "13:00",
+            "end_time": "14:00",
+            "title": "Lunch at Demo Goa Vegetarian Kitchen",
+            "kind": "food",
+            "location": "Goa",
+            "est_cost_inr": 300,
+            "notes": "suits your stated dietary requirements",
+            "evidence": {
+              "source": "food.search",
+              "kind": "live",
+              "retrieved_at": 1792243710,
+              "ref": "52",
+              "note": null
+            }
+          },
+          {
+            "day": 2,
+            "start_time": "15:30",
+            "end_time": "17:30",
+            "title": "Free afternoon for local exploration",
+            "kind": "buffer",
+            "location": "Goa",
+            "est_cost_inr": 0,
+            "notes": "Unscheduled time; costs are not included.",
+            "evidence": null
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "calendar_date": "2026-12-03",
+        "stops": [
+          {
+            "day": 3,
+            "start_time": "09:30",
+            "end_time": "11:30",
+            "title": "Free morning to wander",
+            "kind": "buffer",
+            "location": "Goa",
+            "est_cost_inr": 0,
+            "notes": "Unscheduled time; no additional catalog experience selected.",
+            "evidence": null
+          },
+          {
+            "day": 3,
+            "start_time": "13:00",
+            "end_time": "14:00",
+            "title": "Lunch at Demo Goa Market Cafe",
+            "kind": "food",
+            "location": "Goa",
+            "est_cost_inr": 200,
+            "notes": "suits your stated dietary requirements",
+            "evidence": {
+              "source": "food.search",
+              "kind": "live",
+              "retrieved_at": 1792243710,
+              "ref": "53",
+              "note": null
+            }
+          },
+          {
+            "day": 3,
+            "start_time": "15:30",
+            "end_time": "17:30",
+            "title": "Pack up and head home",
+            "kind": "buffer",
+            "location": "Goa",
+            "est_cost_inr": 0,
+            "notes": null,
+            "evidence": null
+          }
+        ]
+      }
+    ],
+    "total_est_cost_inr": 3740,
+    "assumptions": [
+      "Assumes a room at Demo Goa Garden Homestay for all nights (per-night \u20b91,850, availability unverified)."
+    ],
+    "alternatives": [
+      "Swap the afternoon activity for a food walk if the weather turns."
+    ],
+    "unresolved_conflicts": []
+  },
+  "budget": {
+    "currency": "INR",
+    "per_person": false,
+    "lines": [
+      {
+        "category": "stay",
+        "amount_inr": 3700,
+        "basis": "estimate",
+        "note": "per room; availability unverified"
+      },
+      {
+        "category": "food",
+        "amount_inr": 1480,
+        "basis": "estimate",
+        "note": "one sit-down meal per day"
+      },
+      {
+        "category": "activities",
+        "amount_inr": 6000,
+        "basis": "estimate",
+        "note": "guide/experience fees"
+      },
+      {
+        "category": "contingency",
+        "amount_inr": 1118,
+        "basis": "estimate",
+        "note": "10% buffer for local travel and extras"
+      }
+    ],
+    "total_inr": 12298,
+    "budget_delta_inr": null,
+    "price_checked_at": null,
+    "status": "estimate",
+    "warnings": [
+      "All figures are estimates from catalog data, not live prices.",
+      "Includes the scheduled catalog activities and one meal per day; unverified transport and extra meals are excluded."
+    ]
+  }
+}

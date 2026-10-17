@@ -1,0 +1,14 @@
+{
+  "label": "16-recall-boats",
+  "path": "/v1/recall",
+  "body": {
+    "query": "avoid_boats",
+    "subject": "Riya",
+    "predicate": "avoid_boats",
+    "scope": {
+      "trip_id": "goa-family"
+    }
+  },
+  "actor": "reviewer",
+  "tenant": "riya"
+}

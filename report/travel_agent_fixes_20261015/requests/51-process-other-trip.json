@@ -1,0 +1,7 @@
+{
+  "label": "51-process-other-trip",
+  "path": "/audit/drain",
+  "body": {},
+  "actor": "planner",
+  "tenant": "riya"
+}

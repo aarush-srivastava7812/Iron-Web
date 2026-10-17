@@ -1,0 +1,9 @@
+{
+  "label": "33-stale-context-proof",
+  "path": "/v1/context/validate",
+  "body": {
+    "context_token": "[REDACTED context token]"
+  },
+  "actor": "planner",
+  "tenant": "riya"
+}

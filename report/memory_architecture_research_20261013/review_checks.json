@@ -1,0 +1,18 @@
+{
+  "research_notes": [
+    "README.md",
+    "mem0.md",
+    "mempalace.md",
+    "zep.md",
+    "migration_audit.md"
+  ],
+  "snapshot_files": 14,
+  "source_changed_since_snapshot": [
+    "memory/graph/falkordb_store.py",
+    "memory/tool_adapter.py",
+    "memory/schema.py"
+  ],
+  "runtime_latency_benchmark": false,
+  "cache_research": false,
+  "delta_review": "Native ID constraints added; core synchronization and graph/vector connection unchanged in reviewed delta"
+}

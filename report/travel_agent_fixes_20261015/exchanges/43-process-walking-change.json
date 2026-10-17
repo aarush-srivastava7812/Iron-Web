@@ -1,0 +1,12 @@
+{
+  "label": "43-process-walking-change",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/audit/drain",
+  "request": {},
+  "http_status": 200,
+  "response": {
+    "processed": 1
+  },
+  "elapsed_ms": 252.06639998941682
+}

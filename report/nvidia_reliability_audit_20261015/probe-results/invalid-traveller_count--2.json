@@ -1,0 +1,15 @@
+{
+  "output": [
+    {
+      "predicate": "traveller_count",
+      "value": -2,
+      "action": "assert",
+      "reason": "User requests change",
+      "subject": "Traveller",
+      "scope": {
+        "trip_id": "summer"
+      },
+      "kind": "rule"
+    }
+  ]
+}

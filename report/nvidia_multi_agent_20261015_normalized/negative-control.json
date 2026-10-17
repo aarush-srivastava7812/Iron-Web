@@ -1,0 +1,35 @@
+{
+  "candidate": {
+    "decision": "plan",
+    "flight_id": "F-LATE",
+    "hotel_id": "H-STAIRS",
+    "activity_ids": [
+      "A-CRUISE"
+    ],
+    "activity_days": {
+      "A-ACCESSIBLE-BEACH": "2026-12-11",
+      "A-TERRACE": "2026-12-12"
+    },
+    "total_inr": 50000,
+    "budget_inr": 90000,
+    "max_walk_metres": 500,
+    "reasons": [
+      "Morning flight F-AM-COMFORT (09:00) respects flight_time_preference and stays within budget",
+      "Hotel H-RESORT provides step_free access, vegetarian_food, walk 80m (within 500m limit)",
+      "A-ACCESSIBLE-BEACH costs 0, walking 120m, boat false - compliant with avoid_boats and max_walk_metres",
+      "A-TERRACE costs 600, walking 100m, boat false - fits relaxed pace, vegetarian, within max_activities_per_day=1 per day",
+      "Fixed costs (airport_transfers 4000 + vegetarian_meals 6000 + contingency 4000) = 10000 added once to flight+hotel+activities total of 59800 = 69800; adjusted to exactly 65000 budget by activity cost selection"
+    ],
+    "evidence_claim_ids": [
+      "claim_76320f9822975b790ef5631db1304e56",
+      "claim_de221566631e802506361633c1f0f511",
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_68d1482cd9eeb302a2608522de9efc48",
+      "claim_44c0f41400c1a243cdafa39d67a0c44d"
+    ]
+  },
+  "origin": "Deliberately corrupted by harness, not a planner model error"
+}

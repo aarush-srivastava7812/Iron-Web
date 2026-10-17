@@ -1,0 +1,20 @@
+{
+  "checks": {
+    "home_reference_structure": true,
+    "search_category_navigation": true,
+    "food_agent_opens_connected_planner": true,
+    "destination_search_filters_and_detail": true,
+    "destination_empty_state": true,
+    "mobile_tablet_layout_and_navigation": true,
+    "readable_existing_trip_memory": true,
+    "partial_plan_notice": true
+  },
+  "browser_errors": [],
+  "viewports": [
+    320,
+    390,
+    768,
+    1024,
+    1440
+  ]
+}

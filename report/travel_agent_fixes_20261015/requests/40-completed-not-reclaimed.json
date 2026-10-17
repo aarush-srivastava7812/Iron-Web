@@ -1,0 +1,9 @@
+{
+  "label": "40-completed-not-reclaimed",
+  "path": "/v1/work/claim",
+  "body": {
+    "work_id": "goa-reviewed-v2"
+  },
+  "actor": "reviewer",
+  "tenant": "riya"
+}

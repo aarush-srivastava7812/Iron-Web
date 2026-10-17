@@ -1,0 +1,65 @@
+--- snapshot memory/graph/falkordb_store.py
++++ reviewed memory/graph/falkordb_store.py
+@@ -67,6 +67,7 @@
+         self.revision_key = "{" + graph_name + "}:revision"
+         self.write_lock = GraphLease(self.redis, self.lock_key)
+         self.query_timeout_ms = query_timeout_ms
++        self.socket_timeout = socket_timeout
+         self._entity_name_index = None
+         self._index_revision = None
+         self._staging = None
+@@ -96,8 +97,8 @@
+         return self._entity_name_index
+ 
+     def _create_schema(self):
+-        # Explicit ID indexes replace embedded node-table primary keys. The
+-        # shared graph lease serializes read-before-create operations.
++        # Native ID constraints retain primary-key uniqueness/non-null behavior.
++        # Shared graph leases also serialize compound read/modify operations.
+         existing = {
+             (row[0], property_name)
+             for row in self.graph.query(
+@@ -116,6 +117,41 @@
+                     f"CREATE INDEX FOR (n:{label}) ON (n.{property_name})",
+                     timeout=self.query_timeout_ms,
+                 )
++        existing_constraints = {
++            (row[0], row[1], tuple(row[2]), row[3])
++            for row in self.graph.query("CALL db.constraints()").result_set
++        }
++        for label in ("Entity", "Observation"):
++            for kind in ("UNIQUE", "MANDATORY"):
++                if (kind, label, ("id",), "NODE") not in existing_constraints:
++                    method = (
++                        self.graph.create_node_unique_constraint
++                        if kind == "UNIQUE"
++                        else self.graph.create_node_mandatory_constraint
++                    )
++                    method(label, "id")
++        import time
++
++        deadline = time.monotonic() + self.socket_timeout
++        while True:
++            constraints = self.graph.query("CALL db.constraints()").result_set
++            required = [
++                row
++                for row in constraints
++                if row[1] in {"Entity", "Observation"}
++                and row[2] == ["id"]
++                and row[0] in {"UNIQUE", "MANDATORY"}
++            ]
++            if len(required) == 4 and all(row[4] == "OPERATIONAL" for row in required):
++                break
++            if (
++                any(row[4] == "FAILED" for row in required)
++                or time.monotonic() >= deadline
++            ):
++                raise RuntimeError(
++                    "FalkorDB identifier constraints could not be verified."
++                )
++            time.sleep(0.01)
+ 
+     # === Entity Operations ===
+ 
+
+

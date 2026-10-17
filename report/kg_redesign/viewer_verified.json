@@ -1,0 +1,11 @@
+{
+  "stage_changes": true,
+  "current_and_historical": true,
+  "claims_and_sources": true,
+  "composed_premises": true,
+  "unsupported_inferences_blocked": true,
+  "unknown_dates": true,
+  "storage_records": true,
+  "mobile_no_overflow": true,
+  "browser_errors": []
+}

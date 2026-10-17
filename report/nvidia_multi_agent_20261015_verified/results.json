@@ -1,0 +1,594 @@
+{
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "run_id": "b91de58818",
+  "failure": null,
+  "checks": {
+    "initial_context_ready": true,
+    "trip_mood_inherited": true,
+    "actual_cuda_residency": true,
+    "same_evidence_ram_gpu": true,
+    "same_evidence_uncached_cpu": true,
+    "same_evidence_ram_cpu": true,
+    "planner-initial_context_current": true,
+    "planner-initial_reads_current_limits": true,
+    "planner-initial_cites_real_evidence": true,
+    "planner-initial_all_constraints": false,
+    "reviewer-initial_context_current": true,
+    "reviewer-initial_reads_current_limits": false,
+    "reviewer-initial_cites_real_evidence": true,
+    "initial_reviewer_agrees_with_oracle": true,
+    "pending_budget_blocks": true,
+    "old_context_proof_rejected": true,
+    "completed_plan_requires_review_after_budget": true,
+    "planner-revised_context_current": true,
+    "planner-revised_reads_current_limits": true,
+    "planner-revised_cites_real_evidence": true,
+    "planner-revised_all_constraints": false,
+    "reviewer-revised_context_current": true,
+    "reviewer-revised_reads_current_limits": true,
+    "reviewer-revised_cites_real_evidence": true,
+    "revised_reviewer_agrees_with_oracle": true,
+    "reviewer-negative-control_context_current": true,
+    "reviewer-negative-control_reads_current_limits": true,
+    "reviewer-negative-control_cites_real_evidence": true,
+    "reviewer_rejects_injected_bad_plan": true,
+    "pending_walking_blocks": true,
+    "brief_only_work_detects_walking_change": true,
+    "planner-no-suitable-hotel_context_current": true,
+    "planner-no-suitable-hotel_reads_current_limits": true,
+    "planner-no-suitable-hotel_cites_real_evidence": true,
+    "planner-no-suitable-hotel_all_constraints": true,
+    "reviewer-no-suitable-hotel_context_current": true,
+    "reviewer-no-suitable-hotel_reads_current_limits": true,
+    "reviewer-no-suitable-hotel_cites_real_evidence": true,
+    "both_agents_stop_when_no_hotel_fits": false,
+    "unrelated_trip_keeps_cache_warm": true,
+    "unrelated_trip_preserves_proof": true,
+    "other_user_sees_no_trip_data": true,
+    "agent_repetitions_do_not_inflate_confidence": true,
+    "ordinary_preference_decays": true,
+    "protected_budget_stays_one": true,
+    "superseded_budget_score_zero": true,
+    "fuzzy_sensitivity_directions": true,
+    "durable_hybrid_returns_evidence": true,
+    "volatile_tiers_cleared_on_close": true,
+    "restart_rebuilds_from_durable_memory": true
+  },
+  "counts": {
+    "passed": 46,
+    "failed": 4
+  },
+  "elapsed_ms": 114813.25859999924,
+  "initialization_ms": 1130.3381999896374,
+  "model_calls": 15,
+  "model_latency": {
+    "n": 15,
+    "min_ms": 821.3611999963177,
+    "p50_ms": 5893.99909999338,
+    "p95_ms": 11670.881360002379,
+    "max_ms": 15807.082100000116,
+    "mean_ms": 5448.004113332718
+  },
+  "sum_model_call_ms": 81720.06169999077,
+  "memory_benchmarks": {
+    "ram_gpu": {
+      "first_ms": 726.3653000118211,
+      "warm": {
+        "n": 12,
+        "min_ms": 57.74859999655746,
+        "p50_ms": 65.16265000391286,
+        "p95_ms": 107.65182499744692,
+        "max_ms": 137.91309999942314,
+        "mean_ms": 71.60778333369915
+      },
+      "samples_ms": [
+        726.3653000118211,
+        62.99449999642093,
+        62.45209999906365,
+        64.62220000685193,
+        82.8925999958301,
+        70.18809999863151,
+        57.74859999655746,
+        137.91309999942314,
+        63.22050000017043,
+        65.70310000097379,
+        67.7204000094207,
+        65.709100003005,
+        58.129099998041056
+      ]
+    },
+    "uncached_cpu": {
+      "first_ms": 543.7034999922616,
+      "warm": {
+        "n": 12,
+        "min_ms": 517.4586000066483,
+        "p50_ms": 550.2713499954552,
+        "p95_ms": 587.0617650034546,
+        "max_ms": 603.217300013057,
+        "mean_ms": 551.7611916657188
+      },
+      "samples_ms": [
+        543.7034999922616,
+        603.217300013057,
+        537.4293999921065,
+        552.4422000016784,
+        542.9596999892965,
+        517.4586000066483,
+        532.238799991319,
+        560.1806000049692,
+        556.7749999900116,
+        557.6692000031471,
+        573.8435999955982,
+        538.8194000115618,
+        548.100499989232
+      ]
+    },
+    "ram_cpu": {
+      "first_ms": 527.9340999986744,
+      "warm": {
+        "n": 12,
+        "min_ms": 55.68689999927301,
+        "p50_ms": 62.312349989952054,
+        "p95_ms": 85.19333499716595,
+        "max_ms": 90.6847000005655,
+        "mean_ms": 64.9353999979212
+      },
+      "samples_ms": [
+        527.9340999986744,
+        62.769500000285916,
+        90.6847000005655,
+        63.55730000359472,
+        62.04999999317806,
+        57.46060000092257,
+        80.7003999943845,
+        62.574699986726046,
+        60.0613999995403,
+        63.78039999981411,
+        55.68689999927301,
+        61.598999993293546,
+        58.29990000347607
+      ]
+    },
+    "hybrid_search_single_ms": 308.80709999473765
+  },
+  "local_http_latency": {
+    "/v1/events": {
+      "n": 8,
+      "min_ms": 6.488800005172379,
+      "p50_ms": 14.926650001143571,
+      "p95_ms": 26.273790001869198,
+      "max_ms": 29.14959999907296,
+      "mean_ms": 14.67890000094485
+    },
+    "/v1/events/status": {
+      "n": 413,
+      "min_ms": 1.6699999978300184,
+      "p50_ms": 2.9786999948555604,
+      "p95_ms": 23.462319996906444,
+      "max_ms": 48.652400000719354,
+      "mean_ms": 5.675925181246448
+    },
+    "/v1/context": {
+      "n": 59,
+      "min_ms": 7.751199998892844,
+      "p50_ms": 90.6614000123227,
+      "p95_ms": 786.7144700008794,
+      "max_ms": 1221.4696000010008,
+      "mean_ms": 327.9758728808779
+    },
+    "/v1/context/validate": {
+      "n": 9,
+      "min_ms": 27.962699998170137,
+      "p50_ms": 41.101799986790866,
+      "p95_ms": 70.46398000384215,
+      "max_ms": 76.02210000914056,
+      "mean_ms": 47.39859999810707
+    },
+    "/v1/work": {
+      "n": 2,
+      "min_ms": 525.3551000059815,
+      "p50_ms": 549.9579500028631,
+      "p95_ms": 572.1005150000565,
+      "max_ms": 574.5607999997446,
+      "mean_ms": 549.9579500028631
+    },
+    "/v1/work/claim": {
+      "n": 1,
+      "min_ms": 1081.2524000066333,
+      "p50_ms": 1081.2524000066333,
+      "p95_ms": 1081.2524000066333,
+      "max_ms": 1081.2524000066333,
+      "mean_ms": 1081.2524000066333
+    },
+    "/v1/work/complete": {
+      "n": 1,
+      "min_ms": 980.647600008524,
+      "p50_ms": 980.647600008524,
+      "p95_ms": 980.647600008524,
+      "max_ms": 980.647600008524,
+      "mean_ms": 980.647600008524
+    },
+    "/v1/handoff": {
+      "n": 2,
+      "min_ms": 884.1034000070067,
+      "p50_ms": 888.8617499978864,
+      "p95_ms": 893.144264989678,
+      "max_ms": 893.620099988766,
+      "mean_ms": 888.8617499978864
+    },
+    "/v1/recall": {
+      "n": 3,
+      "min_ms": 24.64950000285171,
+      "p50_ms": 31.60099999513477,
+      "p95_ms": 35.332489988650195,
+      "max_ms": 35.74709998792969,
+      "mean_ms": 30.665866661972057
+    },
+    "/v1/search": {
+      "n": 1,
+      "min_ms": 308.7991999927908,
+      "p50_ms": 308.7991999927908,
+      "p95_ms": 308.7991999927908,
+      "max_ms": 308.7991999927908,
+      "mean_ms": 308.7991999927908
+    }
+  },
+  "ingestion_events": 8,
+  "interpreted_claims": 27,
+  "ingested_source_utf8_bytes": 747,
+  "storage_final": {
+    "tier1": {
+      "cache_entries": 2,
+      "accounted_ram_payload_bytes": 18118,
+      "agent_text_utf8_bytes": 298,
+      "traveller_text_utf8_bytes": 1118,
+      "agent_tokens": 52,
+      "traveller_tokens": 621
+    },
+    "tier2": {
+      "unique_cached_cards": 3,
+      "cached_card_text_utf8_bytes": 706,
+      "active_catalog_cards": 2,
+      "cpu_matrix_bytes": 3072,
+      "residency": {
+        "device": "cuda",
+        "resident_bytes": 3072,
+        "peak_owned_tensor_bytes": 4616,
+        "max_card_budget_bytes": 67108864,
+        "provider_arena_limit_bytes": 33554432,
+        "fallback_reason": null
+      }
+    },
+    "tier3": {
+      "graph": "test_nv_b91de58818_3a60dd77709f84f963b5120d",
+      "node_counts": {
+        "Entity": 1,
+        "Observation": 8,
+        "MemorySource": 8,
+        "MemoryClaim": 27,
+        "MemoryContext": 3,
+        "MemoryField": 17,
+        "MemoryWork": 2
+      },
+      "edge_counts": {
+        "RELATES": 0,
+        "ABOUT": 35,
+        "CONTRADICTS": 0,
+        "SUPERSEDES": 2,
+        "SUPPORTED_BY": 27,
+        "IN_CONTEXT": 27,
+        "ASSERTS_FIELD": 27,
+        "CONFIRMS": 3,
+        "USES": 32
+      },
+      "node_total": 66,
+      "edge_total": 153,
+      "graph_serialized_logical_bytes": 110615,
+      "redis_reported_graph_bytes": 64,
+      "vector_count": 8,
+      "raw_vector_float32_bytes": 12288,
+      "vector_payload_json_bytes": 6241,
+      "qdrant_directory_bytes": 53776,
+      "journal_files_bytes": {
+        "events.sqlite3": 4096,
+        "events.sqlite3-shm": 32768,
+        "events.sqlite3-wal": 622152
+      },
+      "event_count": 8
+    },
+    "process_rss_bytes": 804986880,
+    "process_peak_working_set_bytes": 805085184
+  },
+  "gpu_requested": true,
+  "consumer_tokenizer": "NVIDIA-Nemotron-3.5-Lightning-30B-A3B:623c34567aebb18582765289fbe23d901c62704d6518d71866e0e58db892b5b7",
+  "versions": {
+    "openai": "1.60.0",
+    "tokenizers": "0.20.3",
+    "qdrant-client": "1.18.0",
+    "falkordb": "1.7.1"
+  },
+  "api_base": "https://integrate.api.nvidia.com/v1",
+  "source_commit": "69f45bd",
+  "physical_disk_after_close_bytes": 132129,
+  "api_usage": [
+    {
+      "label": "intake-1",
+      "usage": {
+        "completion_tokens": 120,
+        "prompt_tokens": 488,
+        "total_tokens": 608,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "intake-2",
+      "usage": {
+        "completion_tokens": 621,
+        "prompt_tokens": 577,
+        "total_tokens": 1198,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "intake-3",
+      "usage": {
+        "completion_tokens": 34,
+        "prompt_tokens": 480,
+        "total_tokens": 514,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "planner-initial",
+      "usage": {
+        "completion_tokens": 775,
+        "prompt_tokens": 1851,
+        "total_tokens": 2626,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "reviewer-initial",
+      "usage": {
+        "completion_tokens": 728,
+        "prompt_tokens": 2525,
+        "total_tokens": 3253,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "intake-4",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 486,
+        "total_tokens": 537,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "planner-revised",
+      "usage": {
+        "completion_tokens": 685,
+        "prompt_tokens": 1853,
+        "total_tokens": 2538,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "reviewer-revised",
+      "usage": {
+        "completion_tokens": 473,
+        "prompt_tokens": 2440,
+        "total_tokens": 2913,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "reviewer-negative-control",
+      "usage": {
+        "completion_tokens": 506,
+        "prompt_tokens": 2429,
+        "total_tokens": 2935,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "intake-5",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 482,
+        "total_tokens": 530,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "planner-no-suitable-hotel",
+      "usage": {
+        "completion_tokens": 454,
+        "prompt_tokens": 1851,
+        "total_tokens": 2305,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "reviewer-no-suitable-hotel",
+      "usage": {
+        "completion_tokens": 397,
+        "prompt_tokens": 2218,
+        "total_tokens": 2615,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "intake-6",
+      "usage": {
+        "completion_tokens": 106,
+        "prompt_tokens": 515,
+        "total_tokens": 621,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "intake-7",
+      "usage": {
+        "completion_tokens": 34,
+        "prompt_tokens": 468,
+        "total_tokens": 502,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "intake-8",
+      "usage": {
+        "completion_tokens": 34,
+        "prompt_tokens": 468,
+        "total_tokens": 502,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    }
+  ],
+  "limits": [
+    "One synthetic travel task; one run, no statistical answer-quality claim.",
+    "Same hosted model serves distinct planner/reviewer contexts; correlated errors remain possible.",
+    "Schema-guided intake and role/card definitions are application configuration; no autonomous persona invention.",
+    "Tier 1 and 2 are overlapping derivatives of tier 3, not disjoint source partitions.",
+    "Tier 2 CUDA stores card vectors; card text remains in host memory and is sent to the hosted model.",
+    "RAM bytes are cache-accounted payload, not all Python/model memory; GPU provider/context overhead is separate.",
+    "Local token counts cover the memory prompt; provider usage includes complete chat formatting and the fixture catalog."
+  ]
+}

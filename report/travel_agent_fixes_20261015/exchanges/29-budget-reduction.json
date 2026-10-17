@@ -1,0 +1,44 @@
+{
+  "label": "29-budget-reduction",
+  "tenant": "riya",
+  "actor": "user",
+  "path": "/v1/events",
+  "request": {
+    "event_id": "budget-reduction",
+    "subject": "Riya",
+    "text": "Reduce the total trip budget to INR 65000.",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "confirmed": true,
+    "claims": [
+      {
+        "subject": "Riya",
+        "predicate": "budget",
+        "value": 65000,
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "action": "supersede",
+        "reason": "User reduced total trip budget"
+      }
+    ]
+  },
+  "http_status": 202,
+  "response": {
+    "id": "budget-reduction",
+    "status": "queued",
+    "submitted": 1792069738.7161837,
+    "started": null,
+    "ready": null,
+    "attempts": 0,
+    "memory_id": "evt_d6f1da667f7fbda5fa55e6fd75271051",
+    "error": null,
+    "blocks_work": 1,
+    "interpretation": null,
+    "claim_kinds": [],
+    "semantic_claim_count": 0
+  },
+  "elapsed_ms": 22.831499998574145
+}

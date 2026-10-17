@@ -1,0 +1,52 @@
+{
+  "created_utc": "2026-10-13T17:26:46Z",
+  "packages": {
+    "falkordb": "1.7.1",
+    "redis": "8.1.0",
+    "qdrant-client": "1.18.0",
+    "fastembed": "0.8.0",
+    "numpy": "1.26.4",
+    "kuzu": "0.11.3"
+  },
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "rounds": 5,
+  "workers": 4,
+  "dataset_slice": "retained p5; full histories; previously evaluated, not held out",
+  "tolerance_provisional": 0.05,
+  "threshold_confirmed": false,
+  "index_options": {
+    "dimension": 384,
+    "similarityFunction": "cosine",
+    "M": 16,
+    "efConstruction": 200,
+    "efRuntime": 100
+  },
+  "native_distance_to_similarity": "1.0 - cosine_distance, verified with identical/orthogonal/opposite vectors",
+  "generation_tested": false,
+  "production_backend_modified": false,
+  "cache_research": false,
+  "source_revision": "2035c7ece628d777aed0a184ffe73865a59acf2e",
+  "source_hashes": {
+    "memory\\engine.py": "7bc2387fbfa74f22e288436e5c78c6b9dc0514a1c83aaea23021f0d188ec80d2",
+    "memory\\retrieval\\hybrid.py": "12c7c13521452ed8f63e9a783e21694497396697398440f8adef82e9974cef10",
+    "memory\\vector_store\\qdrant_store.py": "0388e4ad3e0febbab085388511cb0850ba87ba5421c6d231a17376c8d3ed97b0",
+    "memory\\graph\\falkordb_store.py": "83499734a32964dc9f5a2f416c47202ba59f63be279f1e64218f25b461999ad6",
+    "config.yaml": "c46a4aa832205635fae766a829f0ab5d7550c18b62e585aa85ce21b1d815b4e2",
+    "scripts\\benchmark_vector_placement.py": "0f158257abe83c2744fdb467579ee5b9bbb5378e50284eab02f4a815e85a3964",
+    "scripts\\vector_placement\\falkor_vector.py": "87ef7a6676bfd2c64ad621495e09ebe3a3213d421601ec9a8b815fb8fce138ba"
+  },
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "providers": [
+    "CPUExecutionProvider"
+  ],
+  "source_unchanged_at_finish": {
+    "memory\\engine.py": true,
+    "memory\\retrieval\\hybrid.py": true,
+    "memory\\vector_store\\qdrant_store.py": true,
+    "memory\\graph\\falkordb_store.py": true,
+    "config.yaml": true,
+    "scripts\\benchmark_vector_placement.py": true,
+    "scripts\\vector_placement\\falkor_vector.py": true
+  }
+}

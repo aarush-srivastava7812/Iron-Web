@@ -10,6 +10,7 @@ from ..models import AIConversation, AIMemory, AIMessage, User
 from ..schemas import ConversationIn, MemoryIn, MessageIn, TripRequirementsIn
 from ..agent_runtime import CatalogSnapshot, get_agent_runtime
 from memory.shared.service import PendingMemory
+from .. import plan_drafts
 
 logger = logging.getLogger(__name__)
 
@@ -72,22 +73,35 @@ def save_message(
     if not body.content.strip():
         raise HTTPException(422, "Message must not be blank")
     # Persist the user's original message even if a model/store is unavailable.
+    plan_drafts.invalidate(db, conversation_id)
     db.commit()
     try:
         traveler = runtime.for_user(user.id)
         with traveler.lock:
+            traveler.observations.emit(conversation.id, "workflow_started")
             traveler.sync_profile(db)
             def refresh_profile():
                 db.expire_all()
                 traveler.sync_profile(db)
             result = traveler.reply(conversation.id, body.content.strip(), body.page, CatalogSnapshot(db),
                                     before_validate=refresh_profile)
+            plan_drafts.save_generated(db, conversation.id, result)
+            db.commit()
+        traveler.observations.emit(conversation.id, "workflow_finished",
+            status=result["status"], agents=[r["agent_id"] for r in result.get("agent_results", [])])
         status = "agents_connected"
         detail = "Uses your confirmed trip requirements and saved preferences. Prices and availability need provider confirmation."
+        if result["status"] == "failed":
+            status, detail = "agent_incomplete", "A specialist could not complete its work. No complete plan was saved."
     except PendingMemory:
+        if "traveler" in locals():
+            traveler.observations.emit(conversation.id, "workflow_paused", status="pending_memory")
         result = dict(status="pending_memory", response="A memory update needs review before planning can continue. Confirm your Trip details or retry once the memory service is ready.", memory=[], agent_results=[])
         status, detail = "memory_pending", "Your message was saved; a current plan could not be returned."
     except Exception:
+        db.rollback()
+        if "traveler" in locals():
+            traveler.observations.emit(conversation.id, "workflow_failed", status="unavailable")
         logger.exception("Connected travel assistant unavailable")
         result = dict(status="unavailable", response="Your message is saved. The memory and agent service is unavailable; please retry. You can still browse the catalog.", memory=[], agent_results=[])
         status, detail = "unavailable", "No plan was generated."
@@ -103,6 +117,22 @@ def save_message(
         "detail": detail,
         "orchestration": result,
     }
+
+
+@router.get("/conversations/{conversation_id}/plan")
+def get_plan(conversation_id: str, user: User = Depends(current_user), db: Session = Depends(get_db)):
+    _owned_conversation(db, user, conversation_id)
+    rows = plan_drafts.versions(db, conversation_id)
+    return plan_drafts.view(rows[0], rows) if rows else None
+
+
+@router.post("/conversations/{conversation_id}/plan/edits")
+def edit_plan(conversation_id: str, body: plan_drafts.PlanEdit,
+              user: User = Depends(current_user), db: Session = Depends(get_db),
+              runtime = Depends(get_agent_runtime)):
+    _owned_conversation(db, user, conversation_id)
+    with runtime.for_user(user.id).lock:
+        return plan_drafts.edit(db, conversation_id, body)
 
 
 def _owned_conversation(db, user, conversation_id):
@@ -121,6 +151,8 @@ def save_requirements(conversation_id: str, body: TripRequirementsIn,
     try:
         traveler = runtime.for_user(user.id)
         with traveler.lock:
+            plan_drafts.invalidate(db, conversation_id)
+            db.commit()
             receipt = traveler.save_requirements(conversation_id, body)
         return {"status": "ready", "event_id": receipt["id"], "trip_id": conversation_id}
     except PendingMemory as error:
@@ -155,6 +187,8 @@ def delete_requirement(conversation_id: str, predicate: str, user: User = Depend
     try:
         traveler = runtime.for_user(user.id)
         with traveler.lock:
+            plan_drafts.invalidate(db, conversation_id)
+            db.commit()
             traveler.delete_field(conversation_id, predicate)
     except ValueError as error:
         raise HTTPException(422, str(error)) from error
@@ -178,6 +212,8 @@ def forget_event(conversation_id: str, event_id: str, user: User = Depends(curre
     try:
         traveler = runtime.for_user(user.id)
         with traveler.lock:
+            plan_drafts.invalidate(db, conversation_id)
+            db.commit()
             traveler.forget_event(conversation_id, event_id)
     except ValueError as error:
         raise HTTPException(404, str(error)) from error
@@ -240,6 +276,8 @@ def _save_memory(body, user, db):
         source_conversation_id=body.source_conversation_id,
     )
     db.add(snapshot)
+    for trip_id in db.scalars(select(AIConversation.id).where(AIConversation.user_id == user.id)):
+        plan_drafts.invalidate(db, trip_id)
     db.commit()
     return snapshot
 
@@ -260,4 +298,6 @@ def _delete_memory(memory_id, user, db):
     if snapshot is None:
         raise HTTPException(404, "Memory snapshot not found")
     db.delete(snapshot)
+    for trip_id in db.scalars(select(AIConversation.id).where(AIConversation.user_id == user.id)):
+        plan_drafts.invalidate(db, trip_id)
     db.commit()

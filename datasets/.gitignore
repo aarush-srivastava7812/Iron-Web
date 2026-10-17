@@ -1,0 +1,6 @@
+# Ignore all dataset files - these are downloaded from official sources
+*
+!.gitignore
+!acquire_datasets.py
+!README.md
+!provenance.json

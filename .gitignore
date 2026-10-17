@@ -29,6 +29,8 @@ report/*_dispositions.json
 report/*_validation.json
 report/spec_verification.json
 logs/
+.scratch/hackathon-travel/browser/
+.scratch/hackathon-travel/journey-browser/
 archive/**/external-checkouts/
 archive/**/run-records/
 archive/**/data/
@@ -36,3 +38,25 @@ report/*_temp/
 report/schema_probe.db*
 report/runtime_verification.json
 report/reevaluation_*/run*.log
+
+.scratch/ironweb-live/
+
+.scratch/ironweb-live-*.log
+
+# Local experiments, services, databases, and generated dependencies.
+.scratch/
+node_modules/
+dist/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.log
+# Browser auth state and process control files are local only.
+**/storage-state*.json
+**/storageState*.json
+**/browser-session*.json
+report/**/server.json
+test-results/
+playwright-report/

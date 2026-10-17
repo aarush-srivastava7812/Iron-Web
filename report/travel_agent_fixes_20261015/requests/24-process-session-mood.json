@@ -1,0 +1,7 @@
+{
+  "label": "24-process-session-mood",
+  "path": "/audit/drain",
+  "body": {},
+  "actor": "planner",
+  "tenant": "riya"
+}

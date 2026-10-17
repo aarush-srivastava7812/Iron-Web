@@ -1,0 +1,15 @@
+{
+  "output": [
+    {
+      "predicate": "dates",
+      "value": "not a date",
+      "action": "assert",
+      "reason": "User requests change",
+      "subject": "Traveller",
+      "scope": {
+        "trip_id": "summer"
+      },
+      "kind": "fact"
+    }
+  ]
+}

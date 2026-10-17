@@ -1,0 +1,9 @@
+{
+  "label": "60-forget-revised-budget",
+  "path": "/v1/events/forget",
+  "body": {
+    "eid": "budget-reduction"
+  },
+  "actor": "user",
+  "tenant": "riya"
+}

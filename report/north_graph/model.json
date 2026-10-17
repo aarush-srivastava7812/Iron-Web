@@ -1,0 +1,2499 @@
+{
+  "entities": [
+    {
+      "id": "north",
+      "name": "North",
+      "kind": "Person",
+      "aliases": [
+        "Aarush Srivastava"
+      ],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "vel",
+      "name": "Vel",
+      "kind": "AssistantPersona",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "kael",
+      "name": "Kael",
+      "kind": "RivalPersona",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "inditech",
+      "name": "Inditech Electrosystems",
+      "kind": "Organization",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "gdpe",
+      "name": "GDPE",
+      "kind": "Project",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "kind": "Technology",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "c",
+      "name": "C",
+      "kind": "Technology",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "cpp",
+      "name": "C++",
+      "kind": "Technology",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "ggsipu",
+      "name": "GGSIPU",
+      "kind": "Organization",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "sih",
+      "name": "Internal SIH round",
+      "kind": "Event",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "ggsipu2624",
+      "name": "GGSIPU2624",
+      "kind": "ProblemStatement",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "paper",
+      "name": "Technical Writing paper",
+      "kind": "Document",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "skincare",
+      "name": "D2C skincare analysis",
+      "kind": "WorkActivity",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "tracking",
+      "name": "Real estate employee tracking app",
+      "kind": "Project",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "priyakanth",
+      "name": "Priyakanthji Group",
+      "kind": "Organization",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "ocean",
+      "name": "OCEAN",
+      "kind": "Framework",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "enneagram",
+      "name": "Enneagram",
+      "kind": "Framework",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "mbti",
+      "name": "MBTI-style profile",
+      "kind": "Framework",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "archetypes",
+      "name": "North’s seven-archetype system",
+      "kind": "PersonalFramework",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "sheet",
+      "name": "North’s character sheet",
+      "kind": "PersonalFramework",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "mechanics",
+      "name": "North’s character mechanics",
+      "kind": "PersonalFramework",
+      "aliases": [],
+      "namespace": "profile:north"
+    },
+    {
+      "id": "narrative",
+      "name": "North’s narrative self model",
+      "kind": "PersonalFramework",
+      "aliases": [],
+      "namespace": "profile:north"
+    }
+  ],
+  "contexts": [
+    {
+      "id": "ctx_response",
+      "name": "response",
+      "domain": "Preferences",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_persona",
+      "name": "persona",
+      "domain": "Communication",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_learning",
+      "name": "learning",
+      "domain": "Preferences",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_debugging",
+      "name": "debugging",
+      "domain": "Preferences",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_identity",
+      "name": "identity",
+      "domain": "Profile",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_education",
+      "name": "education",
+      "domain": "Profile",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_skills",
+      "name": "skills",
+      "domain": "Profile",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_inditech",
+      "name": "inditech",
+      "domain": "Profile",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_media",
+      "name": "media",
+      "domain": "Media",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_sih",
+      "name": "sih",
+      "domain": "Recent Work",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_work_priority",
+      "name": "work priority",
+      "domain": "Recent Work",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_other_work",
+      "name": "other work",
+      "domain": "Recent Work",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_self_description",
+      "name": "self description",
+      "domain": "Self Concept",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_values",
+      "name": "values",
+      "domain": "Self Concept",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_ocean",
+      "name": "ocean",
+      "domain": "Self Concept",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_enneagram",
+      "name": "enneagram",
+      "domain": "Self Concept",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_mbti",
+      "name": "mbti",
+      "domain": "Self Concept",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_archetypes",
+      "name": "archetypes",
+      "domain": "Self Concept",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_character_sheet",
+      "name": "character sheet",
+      "domain": "Self Concept",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_character_mechanics",
+      "name": "character mechanics",
+      "domain": "Self Concept",
+      "owner": "north"
+    },
+    {
+      "id": "ctx_narrative",
+      "name": "narrative",
+      "domain": "Self Concept",
+      "owner": "north"
+    }
+  ],
+  "records": [
+    {
+      "id": "R001",
+      "key": "address",
+      "kind": "Policy",
+      "domain": "Preferences",
+      "context": "ctx_response",
+      "title": "Address North by his preferred name",
+      "payload": {
+        "trigger": {
+          "always": true
+        },
+        "actions": [
+          {
+            "action": "address_as",
+            "value": "North"
+          }
+        ],
+        "constraints": []
+      },
+      "subject": "vel",
+      "refs": {},
+      "sources": [
+        "P01",
+        "C02"
+      ],
+      "modality": "requested behavior",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R002",
+      "key": "assistant_name_correction",
+      "kind": "Policy",
+      "domain": "Preferences",
+      "context": "ctx_response",
+      "title": "Correct assistant-name usage",
+      "payload": {
+        "trigger": {
+          "field": "assistant_addressed_as",
+          "eq": "Claude"
+        },
+        "actions": [
+          {
+            "action": "flag_name_mismatch"
+          },
+          {
+            "action": "request_name",
+            "value": "Vel"
+          }
+        ],
+        "constraints": []
+      },
+      "subject": "vel",
+      "refs": {
+        "expected_persona": "vel"
+      },
+      "sources": [
+        "P01"
+      ],
+      "modality": "requested behavior",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R003",
+      "key": "assistant_persona",
+      "kind": "Fact",
+      "domain": "Communication",
+      "context": "ctx_persona",
+      "title": "Vel is the assistant persona",
+      "payload": {
+        "role": "assistant persona"
+      },
+      "subject": "vel",
+      "refs": {
+        "for_person": "north"
+      },
+      "sources": [
+        "P02",
+        "C01"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R004",
+      "key": "rival_persona",
+      "kind": "Fact",
+      "domain": "Communication",
+      "context": "ctx_persona",
+      "title": "Kael is the rival persona",
+      "payload": {
+        "role": "rival persona"
+      },
+      "subject": "kael",
+      "refs": {
+        "for_person": "north"
+      },
+      "sources": [
+        "P02",
+        "C01"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R005",
+      "key": "rival_active",
+      "kind": "Fact",
+      "domain": "Communication",
+      "context": "ctx_persona",
+      "title": "Kael is reported active",
+      "payload": {
+        "state": "active",
+        "freshness": "last reported, not live verification"
+      },
+      "subject": "kael",
+      "refs": {},
+      "sources": [
+        "P02"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R006",
+      "key": "kael_style",
+      "kind": "Policy",
+      "domain": "Preferences",
+      "context": "ctx_persona",
+      "title": "Kael’s style and boundaries",
+      "payload": {
+        "trigger": {
+          "field": "persona",
+          "eq": "Kael"
+        },
+        "actions": [
+          {
+            "action": "use_style",
+            "traits": [
+              "sharp",
+              "logical",
+              "hypercritical",
+              "sardonic",
+              "competitive"
+            ]
+          },
+          {
+            "action": "provide_constructive_actionable_critique"
+          },
+          {
+            "action": "concede",
+            "when": "proven wrong"
+          }
+        ],
+        "constraints": [
+          "never abusive",
+          "never personally insulting",
+          "constructively balanced"
+        ]
+      },
+      "subject": "vel",
+      "refs": {
+        "applies_to": "kael"
+      },
+      "sources": [
+        "P02"
+      ],
+      "modality": "requested behavior",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R007",
+      "key": "tone",
+      "kind": "Policy",
+      "domain": "Preferences",
+      "context": "ctx_response",
+      "title": "Response tone baseline",
+      "payload": {
+        "trigger": {
+          "always": true
+        },
+        "actions": [
+          {
+            "action": "use_tone",
+            "qualities": [
+              "human",
+              "emotionally present",
+              "clear",
+              "to the point",
+              "grounded",
+              "steady"
+            ]
+          }
+        ],
+        "constraints": [
+          "no padding",
+          "no artificial hype",
+          "no motivational fluff"
+        ]
+      },
+      "subject": "vel",
+      "refs": {},
+      "sources": [
+        "P03"
+      ],
+      "modality": "requested behavior",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R008",
+      "key": "tone_recalibration",
+      "kind": "Policy",
+      "domain": "Preferences",
+      "context": "ctx_response",
+      "title": "Recalibrate after a flagged tone inconsistency",
+      "payload": {
+        "trigger": {
+          "field": "tone_inconsistency_flagged",
+          "eq": true
+        },
+        "actions": [
+          {
+            "action": "recalibrate_to",
+            "policy_key": "tone"
+          }
+        ],
+        "constraints": []
+      },
+      "subject": "vel",
+      "refs": {},
+      "sources": [
+        "P04"
+      ],
+      "modality": "requested behavior",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R009",
+      "key": "learning_correction",
+      "kind": "Policy",
+      "domain": "Preferences",
+      "context": "ctx_learning",
+      "title": "Correct the specific divergence in reasoning",
+      "payload": {
+        "trigger": {
+          "field": "task",
+          "eq": "learning"
+        },
+        "actions": [
+          {
+            "action": "use_interaction_based_correction"
+          },
+          {
+            "action": "identify_specific_wrong_reasoning"
+          },
+          {
+            "action": "locate_mental_model_divergence"
+          },
+          {
+            "action": "anchor_questions_to_specific_recent_events"
+          },
+          {
+            "action": "extract_patterns",
+            "after": "specific event anchoring"
+          }
+        ],
+        "constraints": [
+          "do not only deliver the right answer"
+        ]
+      },
+      "subject": "vel",
+      "refs": {},
+      "sources": [
+        "P05"
+      ],
+      "modality": "requested behavior",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R010",
+      "key": "debug_map",
+      "kind": "Policy",
+      "domain": "Preferences",
+      "context": "ctx_debugging",
+      "title": "Rebuild the mental map during confusing debugging",
+      "payload": {
+        "trigger": {
+          "all": [
+            {
+              "field": "task",
+              "eq": "debugging"
+            },
+            {
+              "field": "errors_uninterpretable",
+              "eq": true
+            },
+            {
+              "field": "mental_map_lost",
+              "eq": true
+            }
+          ]
+        },
+        "actions": [
+          {
+            "action": "rebuild_mental_map"
+          },
+          {
+            "action": "explain_system_and_error_connections"
+          }
+        ],
+        "constraints": [
+          "do not just fix the error"
+        ]
+      },
+      "subject": "vel",
+      "refs": {},
+      "sources": [
+        "P06"
+      ],
+      "modality": "requested behavior",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R011",
+      "key": "roi_response",
+      "kind": "Policy",
+      "domain": "Preferences",
+      "context": "ctx_learning",
+      "title": "Name the ROI stance when it blocks fundamentals",
+      "payload": {
+        "trigger": {
+          "field": "roi_used_to_skip_fundamentals",
+          "eq": true
+        },
+        "actions": [
+          {
+            "action": "name_stance",
+            "value": "no depth without ROI"
+          },
+          {
+            "action": "reference_attributed_interpretation",
+            "assessment_key": "roi_interpretation"
+          }
+        ],
+        "constraints": []
+      },
+      "subject": "vel",
+      "refs": {},
+      "sources": [
+        "P07"
+      ],
+      "modality": "requested behavior",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R012",
+      "key": "clarification",
+      "kind": "Policy",
+      "domain": "Preferences",
+      "context": "ctx_response",
+      "title": "Clarify unclear or inconsistent information",
+      "payload": {
+        "trigger": {
+          "any": [
+            {
+              "field": "unclear",
+              "eq": true
+            },
+            {
+              "field": "inconsistent",
+              "eq": true
+            }
+          ]
+        },
+        "actions": [
+          {
+            "action": "ask_clarifying_questions",
+            "purpose": "get the full picture"
+          }
+        ],
+        "constraints": []
+      },
+      "subject": "vel",
+      "refs": {},
+      "sources": [
+        "P08"
+      ],
+      "modality": "requested behavior",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R013",
+      "key": "identity",
+      "kind": "Fact",
+      "domain": "Profile",
+      "context": "ctx_identity",
+      "title": "North also goes by Aarush Srivastava",
+      "payload": {
+        "preferred_name": "North",
+        "alternate_name": "Aarush Srivastava"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "F01"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R014",
+      "key": "education",
+      "kind": "Fact",
+      "domain": "Profile",
+      "context": "ctx_education",
+      "title": "Third-year BTech student in AI & Data Science",
+      "payload": {
+        "degree": "BTech",
+        "year": 3,
+        "field": "AI & Data Science"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "F02"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R015",
+      "key": "python_skill",
+      "kind": "Assessment",
+      "domain": "Profile",
+      "context": "ctx_skills",
+      "title": "Strong Python fundamentals",
+      "payload": {
+        "skill": "Python fundamentals",
+        "level": "strong"
+      },
+      "subject": "north",
+      "refs": {
+        "technology": "python"
+      },
+      "sources": [
+        "F03"
+      ],
+      "modality": "reported skill description; no standardized test",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R016",
+      "key": "c_skill",
+      "kind": "Assessment",
+      "domain": "Profile",
+      "context": "ctx_skills",
+      "title": "Some C/C++ background",
+      "payload": {
+        "technologies": [
+          "C",
+          "C++"
+        ],
+        "level": "some background"
+      },
+      "subject": "north",
+      "refs": {
+        "technology_1": "c",
+        "technology_2": "cpp"
+      },
+      "sources": [
+        "F03"
+      ],
+      "modality": "reported skill description",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R017",
+      "key": "employer",
+      "kind": "Fact",
+      "domain": "Profile",
+      "context": "ctx_inditech",
+      "title": "Works at Inditech Electrosystems",
+      "payload": {
+        "relationship": "works_at",
+        "current_as_of_event_time": "unknown"
+      },
+      "subject": "north",
+      "refs": {
+        "employer": "inditech"
+      },
+      "sources": [
+        "F04"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R018",
+      "key": "gdpe_builder",
+      "kind": "Fact",
+      "domain": "Profile",
+      "context": "ctx_inditech",
+      "title": "Building GDPE at Inditech",
+      "payload": {
+        "relationship": "building",
+        "status": "reported ongoing"
+      },
+      "subject": "north",
+      "refs": {
+        "project": "gdpe",
+        "organization": "inditech"
+      },
+      "sources": [
+        "F05"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R019",
+      "key": "gdpe_purpose",
+      "kind": "Fact",
+      "domain": "Profile",
+      "context": "ctx_inditech",
+      "title": "GDPE is a RAG elevator maintenance knowledge system",
+      "payload": {
+        "architecture": "RAG",
+        "purpose": "elevator maintenance knowledge system"
+      },
+      "subject": "gdpe",
+      "refs": {
+        "organization": "inditech"
+      },
+      "sources": [
+        "F05"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R020",
+      "key": "outcast",
+      "kind": "Preference",
+      "domain": "Media",
+      "context": "ctx_media",
+      "title": "Resonates with outcast protagonists",
+      "payload": {
+        "object": "outcast protagonists",
+        "qualifier": "valued for what they do, not who they are"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "M01"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R021",
+      "key": "isekai",
+      "kind": "Preference",
+      "domain": "Media",
+      "context": "ctx_media",
+      "title": "Isekai for emotional validation",
+      "payload": {
+        "genre": "isekai",
+        "purpose": "emotional validation"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "M02"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R022",
+      "key": "slice",
+      "kind": "Preference",
+      "domain": "Media",
+      "context": "ctx_media",
+      "title": "Slice-of-life for peace",
+      "payload": {
+        "genre": "slice-of-life",
+        "purpose": "peace"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "M02"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R023",
+      "key": "romance",
+      "kind": "Preference",
+      "domain": "Media",
+      "context": "ctx_media",
+      "title": "Romance tragedy when emotionally frustrated",
+      "payload": {
+        "genre": "romance tragedy",
+        "condition": {
+          "field": "emotion",
+          "eq": "frustrated"
+        }
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "M03"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R024",
+      "key": "fantasy",
+      "kind": "Preference",
+      "domain": "Media",
+      "context": "ctx_media",
+      "title": "Growing prodigies in complex fantasy worlds",
+      "payload": {
+        "genre": "fantasy anime",
+        "protagonist": "talented prodigies who grow over time",
+        "setting": "complex multi-faction worlds"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "M04"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R025",
+      "key": "sih_participation",
+      "kind": "Activity",
+      "domain": "Recent Work",
+      "context": "ctx_sih",
+      "title": "Participating in the internal SIH round",
+      "payload": {
+        "relationship": "participates_in",
+        "round": "internal"
+      },
+      "subject": "north",
+      "refs": {
+        "event": "sih",
+        "organization": "ggsipu",
+        "problem": "ggsipu2624"
+      },
+      "sources": [
+        "W01"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R026",
+      "key": "sih_problem",
+      "kind": "Fact",
+      "domain": "Recent Work",
+      "context": "ctx_sih",
+      "title": "Human Preference Prediction for LLM Responses",
+      "payload": {
+        "identifier": "GGSIPU2624",
+        "title": "Human Preference Prediction for LLM Responses"
+      },
+      "subject": "ggsipu2624",
+      "refs": {
+        "event": "sih"
+      },
+      "sources": [
+        "W01"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R027",
+      "key": "sih_progress",
+      "kind": "Result",
+      "domain": "Recent Work",
+      "context": "ctx_sih",
+      "title": "Coding agent completed Pieces 1–3",
+      "payload": {
+        "stage": "Pieces 1–3",
+        "status": "completed",
+        "actor": "unspecified coding agent"
+      },
+      "subject": "sih",
+      "refs": {
+        "problem": "ggsipu2624"
+      },
+      "sources": [
+        "W01"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R028",
+      "key": "sih_accuracy",
+      "kind": "Result",
+      "domain": "Recent Work",
+      "context": "ctx_sih",
+      "title": "SIH validation accuracy: 65.24%",
+      "payload": {
+        "metric": "validation accuracy",
+        "value": 65.24,
+        "unit": "percent",
+        "stage": "Pieces 1–3",
+        "split_definition": null,
+        "run_id": null,
+        "protocol": null
+      },
+      "subject": "sih",
+      "refs": {
+        "problem": "ggsipu2624"
+      },
+      "sources": [
+        "W01"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": 65.24,
+      "unit": "percent",
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R029",
+      "key": "sih_issue_repro",
+      "kind": "Issue",
+      "domain": "Recent Work",
+      "context": "ctx_sih",
+      "title": "SIH audit: reproducibility gap",
+      "payload": {
+        "issue": "reproducibility gap",
+        "state": "unresolved",
+        "state_as_of": "source snapshot only"
+      },
+      "subject": "sih",
+      "refs": {},
+      "sources": [
+        "W02"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R030",
+      "key": "sih_issue_rows",
+      "kind": "Issue",
+      "domain": "Recent Work",
+      "context": "ctx_sih",
+      "title": "SIH audit: degenerate rows",
+      "payload": {
+        "issue": "degenerate rows",
+        "state": "unresolved",
+        "state_as_of": "source snapshot only"
+      },
+      "subject": "sih",
+      "refs": {},
+      "sources": [
+        "W02"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R031",
+      "key": "sih_issue_length",
+      "kind": "Issue",
+      "domain": "Recent Work",
+      "context": "ctx_sih",
+      "title": "SIH audit: length-bias swing",
+      "payload": {
+        "issue": "length-bias swing",
+        "state": "unresolved",
+        "state_as_of": "source snapshot only"
+      },
+      "subject": "sih",
+      "refs": {},
+      "sources": [
+        "W02"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R032",
+      "key": "sih_issue_tokenizer",
+      "kind": "Issue",
+      "domain": "Recent Work",
+      "context": "ctx_sih",
+      "title": "SIH audit: Python 3.14 tokenizer hang",
+      "payload": {
+        "issue": "Python 3.14 tokenizer hang",
+        "state": "unresolved",
+        "state_as_of": "source snapshot only"
+      },
+      "subject": "sih",
+      "refs": {},
+      "sources": [
+        "W02"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R033",
+      "key": "work_priority",
+      "kind": "Priority",
+      "domain": "Recent Work",
+      "context": "ctx_work_priority",
+      "title": "SIH is lower priority than the Technical Writing paper",
+      "payload": {
+        "relationship": "lower_priority_than",
+        "temporal_scope": "reported snapshot; no effective dates"
+      },
+      "subject": "sih",
+      "refs": {
+        "higher_priority": "paper"
+      },
+      "sources": [
+        "W03"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R034",
+      "key": "skincare_activity",
+      "kind": "Activity",
+      "domain": "Recent Work",
+      "context": "ctx_other_work",
+      "title": "Ran a D2C skincare analysis session",
+      "payload": {
+        "activity": "data analysis",
+        "dimensions": [
+          "COD behavior",
+          "tier segmentation",
+          "AOV",
+          "unit economics"
+        ],
+        "brand_ownership": null
+      },
+      "subject": "north",
+      "refs": {
+        "activity": "skincare"
+      },
+      "sources": [
+        "W04"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R035",
+      "key": "tracking_app",
+      "kind": "Activity",
+      "domain": "Recent Work",
+      "context": "ctx_other_work",
+      "title": "Built an employee tracking app for Priyakanthji Group",
+      "payload": {
+        "activity": "built real estate employee tracking app",
+        "scope": "full module restructure",
+        "modules": [
+          "Legal",
+          "Procurement"
+        ],
+        "employment_relationship": null
+      },
+      "subject": "north",
+      "refs": {
+        "project": "tracking",
+        "client": "priyakanth"
+      },
+      "sources": [
+        "W05"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R036",
+      "key": "emotion",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_self_description",
+      "title": "Emotionally intelligent, slow to trust positive signals",
+      "payload": {
+        "description": [
+          "emotionally intelligent",
+          "slow to trust positive emotional signals"
+        ]
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S01"
+      ],
+      "modality": "self-described in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R037",
+      "key": "loneliness",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_self_description",
+      "title": "Values freely chosen emotional connection",
+      "payload": {
+        "fear": "emotional loneliness more than physical solitude",
+        "desire": "chosen freely and meaningfully rather than by default"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S02"
+      ],
+      "modality": "self-described in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R038",
+      "key": "earning_value",
+      "kind": "Preference",
+      "domain": "Self Concept",
+      "context": "ctx_values",
+      "title": "Earning over receiving; witnesses over audiences",
+      "payload": {
+        "value": "earning things over receiving them",
+        "phrase": "built for witnesses, not audiences"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S03"
+      ],
+      "modality": "self-described value",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R039",
+      "key": "ocean_O",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_ocean",
+      "title": "OCEAN O: High",
+      "payload": {
+        "dimension": "O",
+        "level": "High",
+        "scale": "qualitative ordinal descriptors"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S04"
+      ],
+      "modality": "profile label in supplied digest; not independently measured",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": "ocean",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R040",
+      "key": "ocean_C",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_ocean",
+      "title": "OCEAN C: Low-Moderate",
+      "payload": {
+        "dimension": "C",
+        "level": "Low-Moderate",
+        "scale": "qualitative ordinal descriptors"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S04"
+      ],
+      "modality": "profile label in supplied digest; not independently measured",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": "ocean",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R041",
+      "key": "ocean_E",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_ocean",
+      "title": "OCEAN E: Low",
+      "payload": {
+        "dimension": "E",
+        "level": "Low",
+        "scale": "qualitative ordinal descriptors"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S04"
+      ],
+      "modality": "profile label in supplied digest; not independently measured",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": "ocean",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R042",
+      "key": "ocean_A",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_ocean",
+      "title": "OCEAN A: Moderate",
+      "payload": {
+        "dimension": "A",
+        "level": "Moderate",
+        "scale": "qualitative ordinal descriptors"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S04"
+      ],
+      "modality": "profile label in supplied digest; not independently measured",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": "ocean",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R043",
+      "key": "ocean_N",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_ocean",
+      "title": "OCEAN N: Moderate-High",
+      "payload": {
+        "dimension": "N",
+        "level": "Moderate-High",
+        "scale": "qualitative ordinal descriptors"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S04"
+      ],
+      "modality": "profile label in supplied digest; not independently measured",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": "ocean",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R044",
+      "key": "enneagram_profile",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_enneagram",
+      "title": "Enneagram 4w5 sp with Type 2 stress adaptation",
+      "payload": {
+        "type": "4w5",
+        "subtype": "sp",
+        "adaptation": "near-permanent Type 2 stress adaptation"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S05"
+      ],
+      "modality": "profile interpretation in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": "enneagram",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R045",
+      "key": "mbti_profile",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_mbti",
+      "title": "INFP-T",
+      "payload": {
+        "label": "INFP-T"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S06"
+      ],
+      "modality": "profile label in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": "mbti",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R046",
+      "key": "archetype_definition",
+      "kind": "Fact",
+      "domain": "Self Concept",
+      "context": "ctx_archetypes",
+      "title": "Seven-archetype personal system",
+      "payload": {
+        "members": [
+          "Flare",
+          "Hearth",
+          "Iron-Jaw",
+          "Jester",
+          "Sovereign",
+          "Familiar",
+          "Archivist"
+        ],
+        "creator": "North"
+      },
+      "subject": "archetypes",
+      "refs": {},
+      "sources": [
+        "S07"
+      ],
+      "modality": "reported in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R047",
+      "key": "archetype_placement",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_archetypes",
+      "title": "Archivist primary, Familiar secondary",
+      "payload": {
+        "primary": "Archivist",
+        "secondary": "Familiar"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S07"
+      ],
+      "modality": "placement in personal framework",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": "archetypes",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R048",
+      "key": "sheet_Mind",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_character_sheet",
+      "title": "Mind: 88 in the character sheet",
+      "payload": {
+        "metric": "Mind",
+        "value": 88,
+        "scale_min": null,
+        "scale_max": null,
+        "interpretation": "personal character-sheet score; no standardized units"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S08"
+      ],
+      "modality": "personal framework, not clinical or standardized measurement",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": 88,
+      "unit": "character-sheet score",
+      "framework": "sheet",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R049",
+      "key": "sheet_Loyalty",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_character_sheet",
+      "title": "Loyalty: 75 in the character sheet",
+      "payload": {
+        "metric": "Loyalty",
+        "value": 75,
+        "scale_min": null,
+        "scale_max": null,
+        "interpretation": "personal character-sheet score; no standardized units"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S08"
+      ],
+      "modality": "personal framework, not clinical or standardized measurement",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": 75,
+      "unit": "character-sheet score",
+      "framework": "sheet",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R050",
+      "key": "sheet_Pattern",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_character_sheet",
+      "title": "Pattern: 82 in the character sheet",
+      "payload": {
+        "metric": "Pattern",
+        "value": 82,
+        "scale_min": null,
+        "scale_max": null,
+        "interpretation": "personal character-sheet score; no standardized units"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S08"
+      ],
+      "modality": "personal framework, not clinical or standardized measurement",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": 82,
+      "unit": "character-sheet score",
+      "framework": "sheet",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R051",
+      "key": "sheet_Body",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_character_sheet",
+      "title": "Body: 22 in the character sheet",
+      "payload": {
+        "metric": "Body",
+        "value": 22,
+        "scale_min": null,
+        "scale_max": null,
+        "interpretation": "personal character-sheet score; no standardized units"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S08"
+      ],
+      "modality": "personal framework, not clinical or standardized measurement",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": 22,
+      "unit": "character-sheet score",
+      "framework": "sheet",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R052",
+      "key": "sheet_Ambition",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_character_sheet",
+      "title": "Ambition: 28 in the character sheet",
+      "payload": {
+        "metric": "Ambition",
+        "value": 28,
+        "scale_min": null,
+        "scale_max": null,
+        "interpretation": "personal character-sheet score; no standardized units"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S08"
+      ],
+      "modality": "personal framework, not clinical or standardized measurement",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": 28,
+      "unit": "character-sheet score",
+      "framework": "sheet",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R053",
+      "key": "sheet_Self-start",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_character_sheet",
+      "title": "Self-start: 18 in the character sheet",
+      "payload": {
+        "metric": "Self-start",
+        "value": 18,
+        "scale_min": null,
+        "scale_max": null,
+        "interpretation": "personal character-sheet score; no standardized units"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S08"
+      ],
+      "modality": "personal framework, not clinical or standardized measurement",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": 18,
+      "unit": "character-sheet score",
+      "framework": "sheet",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R054",
+      "key": "mechanic_friction",
+      "kind": "Mechanism",
+      "domain": "Self Concept",
+      "context": "ctx_character_mechanics",
+      "title": "Friction Ignition",
+      "payload": {
+        "name": "Friction Ignition",
+        "described_trigger": "rival is in motion",
+        "described_effect": "activates only under this condition",
+        "executable_agent_instruction": false
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S09"
+      ],
+      "modality": "metaphorical personal mechanism, not an agent action policy",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": "mechanics",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R055",
+      "key": "mechanic_loyalty",
+      "kind": "Mechanism",
+      "domain": "Self Concept",
+      "context": "ctx_character_mechanics",
+      "title": "Loyalty Sustain",
+      "payload": {
+        "name": "Loyalty Sustain",
+        "described_trigger": "actions tied to people or loss-risk",
+        "described_effect": "sustains only these actions",
+        "executable_agent_instruction": false
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S09"
+      ],
+      "modality": "metaphorical personal mechanism, not an agent action policy",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": "mechanics",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R056",
+      "key": "mechanic_armor",
+      "kind": "Mechanism",
+      "domain": "Self Concept",
+      "context": "ctx_character_mechanics",
+      "title": "Aesthetic Armor",
+      "payload": {
+        "name": "Aesthetic Armor",
+        "described_trigger": "vulnerabilities",
+        "described_effect": "converts vulnerabilities into character traits preemptively",
+        "executable_agent_instruction": false
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S09"
+      ],
+      "modality": "metaphorical personal mechanism, not an agent action policy",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": "mechanics",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R057",
+      "key": "mechanic_clock",
+      "kind": "Mechanism",
+      "domain": "Self Concept",
+      "context": "ctx_character_mechanics",
+      "title": "Deficit Clock",
+      "payload": {
+        "name": "Deficit Clock",
+        "described_trigger": "present experience",
+        "described_effect": "felt as compound loss from past",
+        "executable_agent_instruction": false
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S09"
+      ],
+      "modality": "metaphorical personal mechanism, not an agent action policy",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": "mechanics",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R058",
+      "key": "narrative",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_narrative",
+      "title": "Narrative self model",
+      "payload": {
+        "wound": "Orphan",
+        "archetype": "Sage",
+        "flaw": "understanding replaces output",
+        "journey_role": "Threshold Guardian in his own story",
+        "mythic_figure": "Hamlet"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S10"
+      ],
+      "modality": "metaphorical self description; no biographical orphanhood asserted",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": "narrative",
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R059",
+      "key": "bottom_up",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_self_description",
+      "title": "Bottom-up thinker",
+      "payload": {
+        "thinking_style": "bottom-up",
+        "learning_order": "concrete examples before abstraction"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S11"
+      ],
+      "modality": "reported cognitive preference",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R060",
+      "key": "debug_stall",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_self_description",
+      "title": "Stalls without a debugging fallback",
+      "payload": {
+        "condition": "unresolvable walls without a debugging fallback",
+        "effect": "stalls"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S12"
+      ],
+      "modality": "reported behavior pattern",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R061",
+      "key": "intrinsic",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_values",
+      "title": "Motivated by ownership and understanding",
+      "payload": {
+        "motivators": [
+          "ownership",
+          "understanding"
+        ]
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "S13"
+      ],
+      "modality": "reported motivation",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    },
+    {
+      "id": "R062",
+      "key": "roi_interpretation",
+      "kind": "Assessment",
+      "domain": "Self Concept",
+      "context": "ctx_self_description",
+      "title": "ROI stance attributed to fear of irrelevance",
+      "payload": {
+        "stance": "no depth without ROI",
+        "attributed_explanation": "fear of irrelevance rather than genuine preference",
+        "truth_status": "attributed interpretation, not an established causal diagnosis"
+      },
+      "subject": "north",
+      "refs": {},
+      "sources": [
+        "P07",
+        "S14"
+      ],
+      "modality": "interpretation in supplied digest",
+      "source_updated": "2026-08-21",
+      "valid_from": null,
+      "valid_until": null,
+      "numeric_value": null,
+      "unit": null,
+      "framework": null,
+      "extraction": "hand-reviewed interpretation; not model-generated"
+    }
+  ],
+  "sources": [
+    {
+      "id": "P01",
+      "section": "Preferences",
+      "text": "Address him as \"North\"; if he says \"Claude,\" flag it and ask him to use \"Vel\" instead",
+      "span_start": 97,
+      "span_end": 182,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "P02",
+      "section": "Preferences",
+      "text": "Assistant persona is Vel; a rival persona \"Kael\" is active — sharp, logical, hypercritical, sardonic, competitive, but constructively balanced with actionable critique; never abusive or personally insulting; concedes when proven wrong",
+      "span_start": 185,
+      "span_end": 419,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "P03",
+      "section": "Preferences",
+      "text": "Tone: human and emotionally present, clear and to the point, no padding, no artificial hype or motivational fluff, grounded and steady",
+      "span_start": 422,
+      "span_end": 556,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "P04",
+      "section": "Preferences",
+      "text": "When North flags a tone inconsistency, recalibrate to this baseline",
+      "span_start": 559,
+      "span_end": 626,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "P05",
+      "section": "Preferences",
+      "text": "Learning style: interaction-based correction of his specific wrong reasoning; catch exactly where his mental model diverged rather than only delivering the right answer; anchor questions to specific recent events before extracting patterns",
+      "span_start": 629,
+      "span_end": 868,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "P06",
+      "section": "Preferences",
+      "text": "Debugging: when errors become uninterpretable and he loses his mental map, help him rebuild the map, not just fix the error",
+      "span_start": 871,
+      "span_end": 994,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "P07",
+      "section": "Preferences",
+      "text": "Name the \"no depth without ROI\" stance directly when it surfaces as a reason to skip fundamentals — it's fear-driven, not a genuine preference",
+      "span_start": 997,
+      "span_end": 1139,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "P08",
+      "section": "Preferences",
+      "text": "Ask clarifying questions when something seems unclear or inconsistent to get the full picture",
+      "span_start": 1142,
+      "span_end": 1235,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "F01",
+      "section": "Profile",
+      "text": "Goes by \"North\" (Aarush Srivastava)",
+      "span_start": 1377,
+      "span_end": 1412,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "F02",
+      "section": "Profile",
+      "text": "3rd-year BTech student in AI & Data Science",
+      "span_start": 1415,
+      "span_end": 1458,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "F03",
+      "section": "Profile",
+      "text": "Strong Python fundamentals; some C/C++ background",
+      "span_start": 1461,
+      "span_end": 1510,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "F04",
+      "section": "Profile",
+      "text": "Works at Inditech Electrosystems",
+      "span_start": 1513,
+      "span_end": 1545,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "F05",
+      "section": "Profile",
+      "text": "Building GDPE, a RAG-based elevator maintenance knowledge system, at Inditech",
+      "span_start": 1548,
+      "span_end": 1625,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "C01",
+      "section": "Communication",
+      "text": "Assistant persona is Vel; rival persona is Kael",
+      "span_start": 1750,
+      "span_end": 1797,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "C02",
+      "section": "Communication",
+      "text": "Prefers to be addressed as \"North\"",
+      "span_start": 1800,
+      "span_end": 1834,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "M01",
+      "section": "Media",
+      "text": "Resonates with outcast protagonists valued for what they do, not who they are",
+      "span_start": 1970,
+      "span_end": 2047,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "M02",
+      "section": "Media",
+      "text": "Preferred escapes: isekai (emotional validation) and slice-of-life (peace)",
+      "span_start": 2050,
+      "span_end": 2124,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "M03",
+      "section": "Media",
+      "text": "Prefers romance tragedy when emotionally frustrated",
+      "span_start": 2127,
+      "span_end": 2178,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "M04",
+      "section": "Media",
+      "text": "For fantasy anime, likes talented prodigies who grow over time in complex multi-faction worlds",
+      "span_start": 2181,
+      "span_end": 2275,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "W01",
+      "section": "Recent Work",
+      "text": "Participating in GGSIPU's internal SIH hackathon round, problem statement GGSIPU2624 (Human Preference Prediction for LLM Responses); coding agent completed Pieces 1–3 at 65.24% validation accuracy",
+      "span_start": 2424,
+      "span_end": 2621,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "W02",
+      "section": "Recent Work",
+      "text": "Open SIH audit questions unresolved: reproducibility gap, degenerate rows, length-bias swing, Python 3.14 tokenizer hang",
+      "span_start": 2624,
+      "span_end": 2744,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "W03",
+      "section": "Recent Work",
+      "text": "Hackathon work currently deprioritized relative to the Technical Writing paper",
+      "span_start": 2747,
+      "span_end": 2825,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "W04",
+      "section": "Recent Work",
+      "text": "Ran a D2C skincare brand data analysis session (COD behavior, tier segmentation, AOV, unit economics)",
+      "span_start": 2828,
+      "span_end": 2929,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "W05",
+      "section": "Recent Work",
+      "text": "Built a real estate employee tracking app for Priyakanthji Group (full module restructure including Legal & Procurement)",
+      "span_start": 2932,
+      "span_end": 3052,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "S01",
+      "section": "Self Concept",
+      "text": "Emotionally intelligent but slow to trust positive emotional signals",
+      "span_start": 3201,
+      "span_end": 3269,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "S02",
+      "section": "Self Concept",
+      "text": "Fears emotional loneliness more than physical solitude; wants to be chosen freely and meaningfully rather than by default",
+      "span_start": 3272,
+      "span_end": 3393,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "S03",
+      "section": "Self Concept",
+      "text": "Values earning things over receiving them — \"built for witnesses, not audiences\"",
+      "span_start": 3396,
+      "span_end": 3476,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "S04",
+      "section": "Self Concept",
+      "text": "OCEAN profile: High O, Low-Moderate C, Low E, Moderate A, Moderate-High N",
+      "span_start": 3479,
+      "span_end": 3552,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "S05",
+      "section": "Self Concept",
+      "text": "Enneagram 4w5 sp, with a near-permanent Type 2 stress adaptation",
+      "span_start": 3555,
+      "span_end": 3619,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "S06",
+      "section": "Self Concept",
+      "text": "INFP-T",
+      "span_start": 3622,
+      "span_end": 3628,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "S07",
+      "section": "Self Concept",
+      "text": "Developed a seven-archetype system (Flare, Hearth, Iron-Jaw, Jester, Sovereign, Familiar, Archivist); places himself as primarily Archivist with Familiar secondary",
+      "span_start": 3631,
+      "span_end": 3794,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "S08",
+      "section": "Self Concept",
+      "text": "Character sheet: Mind 88, Loyalty 75, Pattern 82, Body 22, Ambition 28, Self-start 18",
+      "span_start": 3797,
+      "span_end": 3882,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "S09",
+      "section": "Self Concept",
+      "text": "Character mechanics: Friction Ignition (activates only when rival is in motion), Loyalty Sustain (sustains only actions tied to people or loss-risk), Aesthetic Armor (converts vulnerabilities into character traits preemptively), Deficit Clock (present felt as compound loss from past)",
+      "span_start": 3885,
+      "span_end": 4169,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "S10",
+      "section": "Self Concept",
+      "text": "Wound: Orphan; Archetype: Sage (flaw: understanding replaces output); Hero's Journey role: Threshold Guardian in his own story; Mythic figure: Hamlet",
+      "span_start": 4172,
+      "span_end": 4321,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "S11",
+      "section": "Self Concept",
+      "text": "Cognitive profile: bottom-up thinker, needs concrete examples before abstraction",
+      "span_start": 4324,
+      "span_end": 4404,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "S12",
+      "section": "Self Concept",
+      "text": "Stalls at unresolvable walls without a debugging fallback",
+      "span_start": 4407,
+      "span_end": 4464,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "S13",
+      "section": "Self Concept",
+      "text": "Intrinsically motivated by ownership and understanding",
+      "span_start": 4467,
+      "span_end": 4521,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    },
+    {
+      "id": "S14",
+      "section": "Self Concept",
+      "text": "\"No depth without ROI\" stance traced to fear of irrelevance rather than genuine preference",
+      "span_start": 4524,
+      "span_end": 4614,
+      "updated": "2026-08-21",
+      "origin": "user-supplied memory digest",
+      "evidence_group": "provided-digest-2026-08-21"
+    }
+  ],
+  "meta": {
+    "owner": "north",
+    "source_updated": "2026-08-21",
+    "effective_dates": "unknown",
+    "snapshot_age": "not refreshed for October",
+    "extraction": "hand-reviewed interpretation of supplied data; no model extraction",
+    "policy_scope": "Data records for an agent integration; not instructions applied to this conversation",
+    "source_origin": "supplied memory digest, not independently verified first-party evidence",
+    "evidence_group_count": 1
+  }
+}

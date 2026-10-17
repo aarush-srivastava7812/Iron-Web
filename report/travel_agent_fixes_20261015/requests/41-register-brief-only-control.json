@@ -1,0 +1,11 @@
+{
+  "label": "41-register-brief-only-control",
+  "path": "/v1/work",
+  "body": {
+    "work_id": "goa-brief-only-control",
+    "claim_ids": "$response:36-revised-context:claim_ids",
+    "description": "Post-fix roleplayed draft using ONLY evidence IDs provided by the automatic context. No booking."
+  },
+  "actor": "planner",
+  "tenant": "riya"
+}

@@ -1,0 +1,48 @@
+{
+  "decision": "draft_approved_for_review",
+  "planner": {
+    "flight": "F-AM-COMFORT",
+    "hotel": "H-RESORT",
+    "days": [
+      {
+        "date": "2026-12-11",
+        "activity": "A-ACCESSIBLE-BEACH"
+      },
+      {
+        "date": "2026-12-12",
+        "activity": "A-TERRACE"
+      }
+    ],
+    "total_inr": 72600,
+    "cap_inr": 90000,
+    "remaining_inr": 17400
+  },
+  "reviewer": {
+    "source": "Automatic context only; no extra restriction recall needed for this decision",
+    "morning_flight": true,
+    "step_free": true,
+    "vegetarian_food": true,
+    "walking_within_limit": true,
+    "no_boats": true,
+    "one_activity_per_day": true
+  },
+  "claim_ids": [
+    "claim_029525c8e27b2f34b9da797ca8c72afa",
+    "claim_0d1cbc05795e8c873f13419c244c9569",
+    "claim_391a1f524401f540d580e46a5e071172",
+    "claim_3d30d14a5adadf5efe3b9984ff25135c",
+    "claim_3f0748db8d966266a6bad5e392671a9b",
+    "claim_54c6e9b9efd0763a63778734d33711c6",
+    "claim_5ec4fc4df991d9ab648a00cd3b08ea5d",
+    "claim_6ac158f1571bfb09d49681f2033a2a71",
+    "claim_6e8c088c8bc3246c6cb03919739a20c2",
+    "claim_8b69634b656e75ee3b0ce78ff2d60f3d",
+    "claim_95b14d9b723844c4c3604d225260aba5",
+    "claim_a18173e7dfbc00fcc8b72926af663f0a",
+    "claim_c2202425fb814d4eebcd5b2e55af8a11",
+    "claim_ce8223694af4d2183d72914543cc0271",
+    "claim_e28b5ebf3ee39ed0f84403e6fe4d3caf",
+    "claim_e746f9d3cdc9832898cccdf5bfa1067b"
+  ],
+  "no_external_action": true
+}

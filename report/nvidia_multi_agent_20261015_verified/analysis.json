@@ -1,0 +1,61 @@
+{
+  "memory_checks": {
+    "passed": 22,
+    "total": 22
+  },
+  "agent_checks": {
+    "passed": 24,
+    "total": 28
+  },
+  "failed_checks": [
+    "planner-initial_all_constraints",
+    "reviewer-initial_reads_current_limits",
+    "planner-revised_all_constraints",
+    "both_agents_stop_when_no_hotel_fits"
+  ],
+  "provider_ttft_p50_ms": 421.6887000075076,
+  "provider_usage": {
+    "prompt_tokens": 19131,
+    "completion_tokens": 5066,
+    "total_tokens": 24197
+  },
+  "provider_cached_prompt_tokens": 0,
+  "all_attempts": [
+    {
+      "folder": "nvidia_multi_agent_20261015",
+      "note": "Stopped: preference/rule and capitalization conflict",
+      "elapsed_s": 25.135716000004322,
+      "calls": 3
+    },
+    {
+      "folder": "nvidia_multi_agent_20261015_normalized",
+      "note": "Completed diagnostic; catalog accidentally exposed future budget, excluded from final agent assessment",
+      "elapsed_s": 139.568737900001,
+      "calls": 15
+    },
+    {
+      "folder": "nvidia_multi_agent_20261015_final",
+      "note": "Stopped: model emitted description text in kind enum",
+      "elapsed_s": 24.06107820000034,
+      "calls": 2
+    },
+    {
+      "folder": "nvidia_multi_agent_20261015_evaluated",
+      "note": "Stopped: model invented a hotel supersession with no target",
+      "elapsed_s": 16.48745330001111,
+      "calls": 2
+    },
+    {
+      "folder": "nvidia_multi_agent_20261015_verified",
+      "note": "Completed supplier-only, schema-guarded controlled run",
+      "elapsed_s": 114.81325859999924,
+      "calls": 15
+    }
+  ],
+  "all_attempts_elapsed_s": 320.066244000016,
+  "all_attempts_model_calls": 37,
+  "card_source_event_ids_empty": true,
+  "corrected_oracle_note": "Arrival-day activity is allowed; corrected inclusive date boundary. Model responses unchanged; all four aggregate failures unchanged.",
+  "actual_cost_of_selected_initial_and_revised_offers_inr": 72600,
+  "compliant_alternative_cost_inr": 58600
+}

@@ -1,0 +1,5898 @@
+{
+  "scope": "Active application source inventory; archive, generated bundles, dependencies and secret configuration excluded",
+  "files": 180,
+  "lines": 36325,
+  "fixture": {
+    "path": "dashboard/frontend/public/events.json",
+    "sha256": "9a2059a3c0fa5f5de5b778e5595caef3a0576a3bf761ea8ea6cbe7d968f44680",
+    "count": 40,
+    "agents": [
+      "planner",
+      "researcher",
+      "reviewer"
+    ],
+    "actions": {
+      "forget": 1,
+      "read": 11,
+      "update": 7,
+      "write": 21
+    },
+    "fields": [
+      "action",
+      "after",
+      "agent",
+      "before",
+      "memoryPath",
+      "timestamp"
+    ]
+  },
+  "modules": [
+    {
+      "file": "memory/__init__.py",
+      "lines": 36,
+      "sha256": "9bddaf7f53840004ad2e3269e231451e2e606dc90a9e0b4d67f41308b2969065",
+      "definitions": [
+        {
+          "name": "__getattr__",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "file": "memory/cache/__init__.py",
+      "lines": 1,
+      "sha256": "6a7eb17cda6acbf9379cd645ac224a9d3e798622d0d638adbc0360bf59e8665b",
+      "definitions": []
+    },
+    {
+      "file": "memory/cache/cards.py",
+      "lines": 271,
+      "sha256": "72300a0b9fc6b24f3e71137fc539484c524ebb6c25831bf9eea1af0aaa7f6a57",
+      "definitions": [
+        {
+          "name": "normalized",
+          "line": 9
+        },
+        {
+          "name": "CardIndex",
+          "line": 17
+        },
+        {
+          "name": "CardRouter",
+          "line": 234
+        },
+        {
+          "name": "__init__",
+          "line": 18
+        },
+        {
+          "name": "_free_bytes",
+          "line": 41
+        },
+        {
+          "name": "_cuda_session",
+          "line": 47
+        },
+        {
+          "name": "replace",
+          "line": 94
+        },
+        {
+          "name": "rank",
+          "line": 146
+        },
+        {
+          "name": "_clear_device",
+          "line": 202
+        },
+        {
+          "name": "clear",
+          "line": 210
+        },
+        {
+          "name": "invalidate",
+          "line": 215
+        },
+        {
+          "name": "status",
+          "line": 220
+        },
+        {
+          "name": "__init__",
+          "line": 235
+        },
+        {
+          "name": "select",
+          "line": 239
+        },
+        {
+          "name": "invalidate",
+          "line": 262
+        },
+        {
+          "name": "clear",
+          "line": 268
+        }
+      ]
+    },
+    {
+      "file": "memory/cache/ram.py",
+      "lines": 53,
+      "sha256": "0d735453255af20ec2855eb3ce2d6779d2e28fae38af04070aa8ca70fd2d354f",
+      "definitions": [
+        {
+          "name": "PayloadCache",
+          "line": 9
+        },
+        {
+          "name": "__init__",
+          "line": 10
+        },
+        {
+          "name": "_remove",
+          "line": 16
+        },
+        {
+          "name": "get",
+          "line": 20
+        },
+        {
+          "name": "put",
+          "line": 31
+        },
+        {
+          "name": "invalidate",
+          "line": 49
+        }
+      ]
+    },
+    {
+      "file": "memory/config.py",
+      "lines": 73,
+      "sha256": "70094fce2177c355bdb0a74eea442d555562083ef7ce4847e2ece4c8e2d4518c",
+      "definitions": [
+        {
+          "name": "Settings",
+          "line": 8
+        },
+        {
+          "name": "VectorSettings",
+          "line": 12
+        },
+        {
+          "name": "GraphSettings",
+          "line": 18
+        },
+        {
+          "name": "EmbeddingSettings",
+          "line": 27
+        },
+        {
+          "name": "RerankerSettings",
+          "line": 33
+        },
+        {
+          "name": "RetrievalSettings",
+          "line": 41
+        },
+        {
+          "name": "NIMSettings",
+          "line": 50
+        },
+        {
+          "name": "LifecycleSettings",
+          "line": 56
+        },
+        {
+          "name": "EngineSettings",
+          "line": 64
+        }
+      ]
+    },
+    {
+      "file": "memory/context/__init__.py",
+      "lines": 1,
+      "sha256": "dfb3585869e4f29144801b1e4ff0bfc9988fb34455ca2e9f5d2b7e6043083bd1",
+      "definitions": []
+    },
+    {
+      "file": "memory/context/access.py",
+      "lines": 311,
+      "sha256": "83db5997caa683fd0141858b88bc89cf1056f0f3eeb1a1cb7d07626f9cc59a7f",
+      "definitions": [
+        {
+          "name": "ContextAccess",
+          "line": 15
+        },
+        {
+          "name": "__init__",
+          "line": 16
+        },
+        {
+          "name": "purge",
+          "line": 22
+        },
+        {
+          "name": "_allowed",
+          "line": 32
+        },
+        {
+          "name": "source_rows",
+          "line": 39
+        },
+        {
+          "name": "_stamp",
+          "line": 59
+        },
+        {
+          "name": "trip_rules",
+          "line": 81
+        },
+        {
+          "name": "next_boundary",
+          "line": 132
+        },
+        {
+          "name": "_encode",
+          "line": 148
+        },
+        {
+          "name": "_decode",
+          "line": 156
+        },
+        {
+          "name": "context",
+          "line": 173
+        },
+        {
+          "name": "validate",
+          "line": 293
+        },
+        {
+          "name": "matches",
+          "line": 23
+        },
+        {
+          "name": "read",
+          "line": 203
+        }
+      ]
+    },
+    {
+      "file": "memory/context/compiler.py",
+      "lines": 73,
+      "sha256": "14f056fe34231a357c1e7d67438fdacf8bb45914d89aeb1d0f2c7653837b4fb0",
+      "definitions": [
+        {
+          "name": "compile_field",
+          "line": 9
+        },
+        {
+          "name": "render_card",
+          "line": 57
+        }
+      ]
+    },
+    {
+      "file": "memory/context/contracts.py",
+      "lines": 91,
+      "sha256": "ada2efdd9e40825c990a9a54d0c4017012befb9452c17fd51cef3abb818cdfc9",
+      "definitions": [
+        {
+          "name": "Contract",
+          "line": 6
+        },
+        {
+          "name": "AgentProfile",
+          "line": 10
+        },
+        {
+          "name": "FieldRule",
+          "line": 23
+        },
+        {
+          "name": "CardTemplate",
+          "line": 41
+        },
+        {
+          "name": "ContextPolicy",
+          "line": 50
+        },
+        {
+          "name": "ContextRequest",
+          "line": 70
+        },
+        {
+          "name": "nonempty",
+          "line": 17
+        },
+        {
+          "name": "safe_fallback",
+          "line": 33
+        },
+        {
+          "name": "output_fits",
+          "line": 64
+        },
+        {
+          "name": "explicit_trip",
+          "line": 78
+        }
+      ]
+    },
+    {
+      "file": "memory/context/runtime.py",
+      "lines": 361,
+      "sha256": "5003d694ac14509c53386120bcc3afb05958c3384c2b494f50951d8202f0948a",
+      "definitions": [
+        {
+          "name": "task_fields",
+          "line": 22
+        },
+        {
+          "name": "ContextRuntime",
+          "line": 52
+        },
+        {
+          "name": "RuntimeConfiguration",
+          "line": 326
+        },
+        {
+          "name": "runtime_from_config",
+          "line": 337
+        },
+        {
+          "name": "__init__",
+          "line": 53
+        },
+        {
+          "name": "compile",
+          "line": 115
+        },
+        {
+          "name": "assemble",
+          "line": 230
+        }
+      ]
+    },
+    {
+      "file": "memory/context/tokens.py",
+      "lines": 51,
+      "sha256": "f43bcc16cbb9d4283209240a7a9c17e44336c126c190ec1dc0163c339eb19d77",
+      "definitions": [
+        {
+          "name": "ContextCapacity",
+          "line": 4
+        },
+        {
+          "name": "TokenBudget",
+          "line": 8
+        },
+        {
+          "name": "__init__",
+          "line": 9
+        },
+        {
+          "name": "from_file",
+          "line": 25
+        },
+        {
+          "name": "wrap",
+          "line": 35
+        },
+        {
+          "name": "count",
+          "line": 38
+        },
+        {
+          "name": "require",
+          "line": 42
+        },
+        {
+          "name": "prompt",
+          "line": 50
+        }
+      ]
+    },
+    {
+      "file": "memory/contradiction/detector.py",
+      "lines": 356,
+      "sha256": "2c182d525882313442e15800be58a653cc00a5e7b330b96d1e5be2e30e50249b",
+      "definitions": [
+        {
+          "name": "ContradictionDetector",
+          "line": 12
+        },
+        {
+          "name": "SupersessionResolver",
+          "line": 317
+        },
+        {
+          "name": "__init__",
+          "line": 20
+        },
+        {
+          "name": "detect_contradictions",
+          "line": 38
+        },
+        {
+          "name": "_compute_similarity",
+          "line": 106
+        },
+        {
+          "name": "_get_observation",
+          "line": 115
+        },
+        {
+          "name": "_llm_judge_contradiction",
+          "line": 125
+        },
+        {
+          "name": "_llm_judge_supersession",
+          "line": 134
+        },
+        {
+          "name": "store_contradiction",
+          "line": 141
+        },
+        {
+          "name": "detect_all_contradictions",
+          "line": 157
+        },
+        {
+          "name": "detect_all_supersessions",
+          "line": 236
+        },
+        {
+          "name": "__init__",
+          "line": 322
+        },
+        {
+          "name": "get_current_version",
+          "line": 325
+        },
+        {
+          "name": "get_version_chain",
+          "line": 354
+        }
+      ]
+    },
+    {
+      "file": "memory/dashboard.py",
+      "lines": 420,
+      "sha256": "97c60f105fb1a9469305e6ebf65be040f8f8fc642909e79235fadaca1b53da97",
+      "definitions": [
+        {
+          "name": "credential_status",
+          "line": 52
+        },
+        {
+          "name": "scopes_for",
+          "line": 86
+        },
+        {
+          "name": "claim_status",
+          "line": 94
+        },
+        {
+          "name": "graph_snapshot",
+          "line": 108
+        },
+        {
+          "name": "shared_memory_snapshot",
+          "line": 210
+        },
+        {
+          "name": "vector_snapshot",
+          "line": 224
+        },
+        {
+          "name": "agent_summary",
+          "line": 263
+        },
+        {
+          "name": "tier_snapshot",
+          "line": 301
+        },
+        {
+          "name": "build_snapshot",
+          "line": 342
+        }
+      ]
+    },
+    {
+      "file": "memory/device.py",
+      "lines": 202,
+      "sha256": "5070c0e8b7a726b15bbceec6117e82a5c00060000228491f7d024551993ba104",
+      "definitions": [
+        {
+          "name": "ensure_cuda_dlls_loaded",
+          "line": 17
+        },
+        {
+          "name": "configure_tensorrt_cache",
+          "line": 67
+        },
+        {
+          "name": "query_vram_telemetry",
+          "line": 88
+        },
+        {
+          "name": "get_available_onnx_providers",
+          "line": 116
+        },
+        {
+          "name": "inspect_device_status",
+          "line": 126
+        },
+        {
+          "name": "active_component_provider",
+          "line": 140
+        }
+      ]
+    },
+    {
+      "file": "memory/embeddings/embedder.py",
+      "lines": 166,
+      "sha256": "c5f2e8db533157920e47a3611f6c59cf5cad31fc3664beeedd58e61b92b78765",
+      "definitions": [
+        {
+          "name": "Embedder",
+          "line": 17
+        },
+        {
+          "name": "get_embedder",
+          "line": 143
+        },
+        {
+          "name": "__init__",
+          "line": 25
+        },
+        {
+          "name": "_get_providers",
+          "line": 70
+        },
+        {
+          "name": "_init_model",
+          "line": 89
+        },
+        {
+          "name": "embed",
+          "line": 117
+        },
+        {
+          "name": "embed_single",
+          "line": 134
+        },
+        {
+          "name": "__call__",
+          "line": 138
+        }
+      ]
+    },
+    {
+      "file": "memory/engine.py",
+      "lines": 1192,
+      "sha256": "783a25ead57ad24d97e8ae49591e283fb21ca19937f400b8ec47461a3e34ecc4",
+      "definitions": [
+        {
+          "name": "serialized",
+          "line": 53
+        },
+        {
+          "name": "MemoryEngine",
+          "line": 64
+        },
+        {
+          "name": "call",
+          "line": 55
+        },
+        {
+          "name": "__init__",
+          "line": 91
+        },
+        {
+          "name": "lifecycle",
+          "line": 177
+        },
+        {
+          "name": "_load_config",
+          "line": 186
+        },
+        {
+          "name": "embedder",
+          "line": 226
+        },
+        {
+          "name": "reranker",
+          "line": 242
+        },
+        {
+          "name": "extractor",
+          "line": 258
+        },
+        {
+          "name": "_init_vector_store",
+          "line": 275
+        },
+        {
+          "name": "_init_graph_store",
+          "line": 289
+        },
+        {
+          "name": "add",
+          "line": 302
+        },
+        {
+          "name": "add_batch",
+          "line": 552
+        },
+        {
+          "name": "_validate_id",
+          "line": 618
+        },
+        {
+          "name": "get",
+          "line": 623
+        },
+        {
+          "name": "search",
+          "line": 693
+        },
+        {
+          "name": "_search_result",
+          "line": 771
+        },
+        {
+          "name": "update",
+          "line": 793
+        },
+        {
+          "name": "delete",
+          "line": 939
+        },
+        {
+          "name": "inspect_claim",
+          "line": 972
+        },
+        {
+          "name": "recall",
+          "line": 994
+        },
+        {
+          "name": "recall_path",
+          "line": 1009
+        },
+        {
+          "name": "record_work",
+          "line": 1015
+        },
+        {
+          "name": "handoff",
+          "line": 1035
+        },
+        {
+          "name": "complete_work",
+          "line": 1039
+        },
+        {
+          "name": "decay_memories",
+          "line": 1048
+        },
+        {
+          "name": "deduplicate_memories",
+          "line": 1072
+        },
+        {
+          "name": "consolidate_memories",
+          "line": 1091
+        },
+        {
+          "name": "run_maintenance",
+          "line": 1120
+        },
+        {
+          "name": "get_device_status",
+          "line": 1142
+        },
+        {
+          "name": "storage_status",
+          "line": 1153
+        },
+        {
+          "name": "memory_ids",
+          "line": 1161
+        },
+        {
+          "name": "close",
+          "line": 1171
+        },
+        {
+          "name": "__enter__",
+          "line": 1188
+        },
+        {
+          "name": "__exit__",
+          "line": 1191
+        }
+      ]
+    },
+    {
+      "file": "memory/evaluation/harness/__init__.py",
+      "lines": 39,
+      "sha256": "f42ee98f652300b75cb8931d1dbfa3759ae589014fd5bf0052a2a0e628634181",
+      "definitions": []
+    },
+    {
+      "file": "memory/evaluation/harness/base.py",
+      "lines": 198,
+      "sha256": "c3a92ef8d98d7317853a9481fe0236f73e019f59c8c7f24c91367f0e969ba0ca",
+      "definitions": [
+        {
+          "name": "BenchmarkDocument",
+          "line": 15
+        },
+        {
+          "name": "BenchmarkExample",
+          "line": 28
+        },
+        {
+          "name": "EvaluationResult",
+          "line": 42
+        },
+        {
+          "name": "normalize_answer",
+          "line": 71
+        },
+        {
+          "name": "compute_exact_match",
+          "line": 92
+        },
+        {
+          "name": "compute_token_f1",
+          "line": 99
+        },
+        {
+          "name": "compute_substring_match",
+          "line": 123
+        },
+        {
+          "name": "BenchmarkAdapter",
+          "line": 150
+        },
+        {
+          "name": "to_dict",
+          "line": 62
+        },
+        {
+          "name": "remove_articles",
+          "line": 76
+        },
+        {
+          "name": "white_space_fix",
+          "line": 79
+        },
+        {
+          "name": "remove_punc",
+          "line": 82
+        },
+        {
+          "name": "lower",
+          "line": 86
+        },
+        {
+          "name": "__init__",
+          "line": 156
+        },
+        {
+          "name": "benchmark_name",
+          "line": 161
+        },
+        {
+          "name": "load_documents",
+          "line": 166
+        },
+        {
+          "name": "load_examples",
+          "line": 171
+        },
+        {
+          "name": "evaluate_answer",
+          "line": 175
+        }
+      ]
+    },
+    {
+      "file": "memory/evaluation/harness/dates.py",
+      "lines": 34,
+      "sha256": "1fa9bf212d3dbdf990bc796f5fa16725522f19abef27f249d6bd1558aeafcdd2",
+      "definitions": [
+        {
+          "name": "parse_timestamp",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "file": "memory/evaluation/harness/dmr_adapter.py",
+      "lines": 91,
+      "sha256": "733c841d90d2d591ae49898353aa2ebf0d31faa5e7f6192c8d2bee74f3f970f6",
+      "definitions": [
+        {
+          "name": "DMRAdapter",
+          "line": 19
+        },
+        {
+          "name": "__init__",
+          "line": 25
+        },
+        {
+          "name": "benchmark_name",
+          "line": 30
+        },
+        {
+          "name": "_resolve_path",
+          "line": 33
+        },
+        {
+          "name": "load_documents",
+          "line": 49
+        },
+        {
+          "name": "load_examples",
+          "line": 71
+        }
+      ]
+    },
+    {
+      "file": "memory/evaluation/harness/evaluator.py",
+      "lines": 351,
+      "sha256": "b3025df68572a862c0ae358d8306c31e7cdf1a6115599da12e48f444f7f5af89",
+      "definitions": [
+        {
+          "name": "BenchmarkEvaluator",
+          "line": 29
+        },
+        {
+          "name": "__init__",
+          "line": 34
+        },
+        {
+          "name": "ingest_documents",
+          "line": 52
+        },
+        {
+          "name": "retrieve_for_example",
+          "line": 131
+        },
+        {
+          "name": "generate_answer",
+          "line": 166
+        },
+        {
+          "name": "_default_extractive_generator",
+          "line": 177
+        },
+        {
+          "name": "evaluate_example",
+          "line": 207
+        },
+        {
+          "name": "aggregate_results",
+          "line": 257
+        }
+      ]
+    },
+    {
+      "file": "memory/evaluation/harness/locomo_adapter.py",
+      "lines": 233,
+      "sha256": "26d4bfad9650f0c8b850cc6c3cae9afe5dd9b7fe9a7cf545f09564976e6ee6bc",
+      "definitions": [
+        {
+          "name": "LoCoMoAdapter",
+          "line": 30
+        },
+        {
+          "name": "__init__",
+          "line": 36
+        },
+        {
+          "name": "benchmark_name",
+          "line": 41
+        },
+        {
+          "name": "_resolve_path",
+          "line": 44
+        },
+        {
+          "name": "_read_data",
+          "line": 63
+        },
+        {
+          "name": "_official_format",
+          "line": 71
+        },
+        {
+          "name": "_parse_date_to_timestamp",
+          "line": 75
+        },
+        {
+          "name": "load_documents",
+          "line": 78
+        },
+        {
+          "name": "load_examples",
+          "line": 144
+        }
+      ]
+    },
+    {
+      "file": "memory/evaluation/harness/longmemeval_adapter.py",
+      "lines": 202,
+      "sha256": "1518279c3ac163879d9a2fde81066690320c39ad8c4113d0f7ce38c1c56c670e",
+      "definitions": [
+        {
+          "name": "LongMemEvalAdapter",
+          "line": 21
+        },
+        {
+          "name": "__init__",
+          "line": 27
+        },
+        {
+          "name": "benchmark_name",
+          "line": 32
+        },
+        {
+          "name": "_resolve_path",
+          "line": 35
+        },
+        {
+          "name": "_read_data",
+          "line": 54
+        },
+        {
+          "name": "_official_format",
+          "line": 62
+        },
+        {
+          "name": "_parse_date_to_timestamp",
+          "line": 66
+        },
+        {
+          "name": "load_documents",
+          "line": 69
+        },
+        {
+          "name": "load_examples",
+          "line": 140
+        }
+      ]
+    },
+    {
+      "file": "memory/evaluation/harness/persistence.py",
+      "lines": 51,
+      "sha256": "968453911c112e1706d6fec057c5eab29c85f39ffc56d1873de041089e162b00",
+      "definitions": [
+        {
+          "name": "fingerprint",
+          "line": 10
+        },
+        {
+          "name": "source_fingerprint",
+          "line": 16
+        },
+        {
+          "name": "write_atomic",
+          "line": 32
+        }
+      ]
+    },
+    {
+      "file": "memory/evaluation/harness/runner.py",
+      "lines": 240,
+      "sha256": "f036f5ca16360c0f4835048aedb183b48afe3e5ba204c97b72016fbfda1d6fe7",
+      "definitions": [
+        {
+          "name": "BenchmarkRunner",
+          "line": 24
+        },
+        {
+          "name": "__init__",
+          "line": 31
+        },
+        {
+          "name": "run_benchmark",
+          "line": 38
+        }
+      ]
+    },
+    {
+      "file": "memory/evaluation/metrics.py",
+      "lines": 117,
+      "sha256": "5e6a9605713925e8cd160e67bd81dfe21435903a1d30cf20d6b70e6a2b39e950",
+      "definitions": [
+        {
+          "name": "map_score",
+          "line": 18
+        },
+        {
+          "name": "compute_all_metrics",
+          "line": 29
+        },
+        {
+          "name": "evaluate_retrieval",
+          "line": 47
+        },
+        {
+          "name": "aggregate_metrics",
+          "line": 104
+        }
+      ]
+    },
+    {
+      "file": "memory/evaluation/official_corpora.py",
+      "lines": 44,
+      "sha256": "962731b98fa0932476a805897424b09c3dc20b9dafd9d4b181651a88a194f5b7",
+      "definitions": [
+        {
+          "name": "_convert",
+          "line": 7
+        },
+        {
+          "name": "load_official_locomo",
+          "line": 30
+        },
+        {
+          "name": "load_official_longmemeval",
+          "line": 35
+        }
+      ]
+    },
+    {
+      "file": "memory/evaluation/retrieval_metrics.py",
+      "lines": 60,
+      "sha256": "7975e4011590de4109d25f7ccc04452c0d087f6cb557d5076d95b684eab207b4",
+      "definitions": [
+        {
+          "name": "recall_at_k",
+          "line": 6
+        },
+        {
+          "name": "precision_at_k",
+          "line": 11
+        },
+        {
+          "name": "mrr",
+          "line": 15
+        },
+        {
+          "name": "ndcg_at_k",
+          "line": 26
+        },
+        {
+          "name": "average_precision",
+          "line": 38
+        },
+        {
+          "name": "compute_retrieval_metrics",
+          "line": 48
+        }
+      ]
+    },
+    {
+      "file": "memory/evaluation/slices.py",
+      "lines": 118,
+      "sha256": "ae468a768cda9dcc70cc87cb1e97365ce3d3b1dd05203a9c892e543258422ec0",
+      "definitions": [
+        {
+          "name": "FrozenSliceAdapter",
+          "line": 15
+        },
+        {
+          "name": "validate_slice",
+          "line": 32
+        },
+        {
+          "name": "export_slice",
+          "line": 60
+        },
+        {
+          "name": "load_slice",
+          "line": 108
+        },
+        {
+          "name": "__init__",
+          "line": 16
+        },
+        {
+          "name": "benchmark_name",
+          "line": 22
+        },
+        {
+          "name": "load_documents",
+          "line": 25
+        },
+        {
+          "name": "load_examples",
+          "line": 28
+        }
+      ]
+    },
+    {
+      "file": "memory/graph/__init__.py",
+      "lines": 5,
+      "sha256": "a92efab5a39f12276bc8d02b4b2ca2fc6b236d5a95fdcb5a412c9314556303b7",
+      "definitions": []
+    },
+    {
+      "file": "memory/graph/connection.py",
+      "lines": 150,
+      "sha256": "b4d19c7a796dfea9c7816f33d13c352053cdc7c0948d285686be1c01cd5f71bb",
+      "definitions": [
+        {
+          "name": "cypher_value",
+          "line": 8
+        },
+        {
+          "name": "parameterized",
+          "line": 37
+        },
+        {
+          "name": "GraphResult",
+          "line": 52
+        },
+        {
+          "name": "GraphConnection",
+          "line": 72
+        },
+        {
+          "name": "GraphLease",
+          "line": 80
+        },
+        {
+          "name": "__init__",
+          "line": 53
+        },
+        {
+          "name": "has_next",
+          "line": 58
+        },
+        {
+          "name": "get_next",
+          "line": 61
+        },
+        {
+          "name": "get_column_names",
+          "line": 68
+        },
+        {
+          "name": "__init__",
+          "line": 73
+        },
+        {
+          "name": "execute",
+          "line": 76
+        },
+        {
+          "name": "__init__",
+          "line": 87
+        },
+        {
+          "name": "_renew",
+          "line": 101
+        },
+        {
+          "name": "assert_owned",
+          "line": 109
+        },
+        {
+          "name": "token",
+          "line": 116
+        },
+        {
+          "name": "__enter__",
+          "line": 120
+        },
+        {
+          "name": "__exit__",
+          "line": 138
+        }
+      ]
+    },
+    {
+      "file": "memory/graph/falkordb_store.py",
+      "lines": 1351,
+      "sha256": "1af9f997ce9a9c55152fbcbe53835212f1b3b17b71eb8fd17a0aa91e331f695a",
+      "definitions": [
+        {
+          "name": "synchronized",
+          "line": 11
+        },
+        {
+          "name": "FalkorDBGraphStore",
+          "line": 20
+        },
+        {
+          "name": "RelationType",
+          "line": 1342
+        },
+        {
+          "name": "call",
+          "line": 13
+        },
+        {
+          "name": "__init__",
+          "line": 26
+        },
+        {
+          "name": "invalidate_entity_name_index",
+          "line": 87
+        },
+        {
+          "name": "get_entity_name_index",
+          "line": 94
+        },
+        {
+          "name": "_create_schema",
+          "line": 104
+        },
+        {
+          "name": "upsert_entity",
+          "line": 164
+        },
+        {
+          "name": "get_entity",
+          "line": 224
+        },
+        {
+          "name": "get_entities",
+          "line": 244
+        },
+        {
+          "name": "find_entities_by_name",
+          "line": 268
+        },
+        {
+          "name": "delete_entity",
+          "line": 298
+        },
+        {
+          "name": "upsert_relation",
+          "line": 334
+        },
+        {
+          "name": "get_relations",
+          "line": 402
+        },
+        {
+          "name": "upsert_observation",
+          "line": 461
+        },
+        {
+          "name": "get_observations",
+          "line": 568
+        },
+        {
+          "name": "get_observation",
+          "line": 636
+        },
+        {
+          "name": "delete_observation",
+          "line": 680
+        },
+        {
+          "name": "get_memory_observations",
+          "line": 702
+        },
+        {
+          "name": "get_memory_relations",
+          "line": 721
+        },
+        {
+          "name": "delete_memory",
+          "line": 754
+        },
+        {
+          "name": "expand_graph",
+          "line": 818
+        },
+        {
+          "name": "observation_memory_id",
+          "line": 912
+        },
+        {
+          "name": "_resolve_obs_id",
+          "line": 922
+        },
+        {
+          "name": "get_relationship_conflicts_batch",
+          "line": 931
+        },
+        {
+          "name": "add_contradiction",
+          "line": 989
+        },
+        {
+          "name": "add_supersession",
+          "line": 1024
+        },
+        {
+          "name": "get_contradictions",
+          "line": 1055
+        },
+        {
+          "name": "get_supersessions",
+          "line": 1082
+        },
+        {
+          "name": "get_node_counts",
+          "line": 1117
+        },
+        {
+          "name": "get_edge_counts",
+          "line": 1136
+        },
+        {
+          "name": "execute",
+          "line": 1163
+        },
+        {
+          "name": "begin",
+          "line": 1187
+        },
+        {
+          "name": "commit",
+          "line": 1219
+        },
+        {
+          "name": "rollback",
+          "line": 1261
+        },
+        {
+          "name": "finish",
+          "line": 1304
+        },
+        {
+          "name": "close",
+          "line": 1322
+        },
+        {
+          "name": "__enter__",
+          "line": 1334
+        },
+        {
+          "name": "__exit__",
+          "line": 1337
+        }
+      ]
+    },
+    {
+      "file": "memory/ingestion/__init__.py",
+      "lines": 28,
+      "sha256": "c9d03635ef987607912ac217c61f30278ae1e4f7b9336b1fc61f6f50eb07fe66",
+      "definitions": [
+        {
+          "name": "__getattr__",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "file": "memory/ingestion/cached_nim_extractor.py",
+      "lines": 104,
+      "sha256": "d55aa6c34ff5bd9776ffc1f6dab510f0dc3b9ed49b12a5c823c245edf83eaf22",
+      "definitions": [
+        {
+          "name": "CachedNIMExtractor",
+          "line": 16
+        },
+        {
+          "name": "__init__",
+          "line": 17
+        },
+        {
+          "name": "is_mock",
+          "line": 27
+        },
+        {
+          "name": "_cache_path",
+          "line": 30
+        },
+        {
+          "name": "_validated",
+          "line": 41
+        },
+        {
+          "name": "_write",
+          "line": 52
+        },
+        {
+          "name": "extract_entities_and_relations",
+          "line": 72
+        },
+        {
+          "name": "judge_answer_quality",
+          "line": 94
+        },
+        {
+          "name": "detect_contradiction",
+          "line": 97
+        },
+        {
+          "name": "detect_supersession",
+          "line": 100
+        },
+        {
+          "name": "extract_skills",
+          "line": 103
+        }
+      ]
+    },
+    {
+      "file": "memory/ingestion/extractor.py",
+      "lines": 224,
+      "sha256": "4c258275fd91cb4bfd7caf5f0047cac93e46b09fc9a1610f83f811061381aa98",
+      "definitions": [
+        {
+          "name": "canonicalize_entities",
+          "line": 13
+        },
+        {
+          "name": "ExtractedEntity",
+          "line": 44
+        },
+        {
+          "name": "ExtractedRelation",
+          "line": 59
+        },
+        {
+          "name": "ExtractedTemporal",
+          "line": 68
+        },
+        {
+          "name": "ExtractionResult",
+          "line": 82
+        },
+        {
+          "name": "validate_extraction",
+          "line": 118
+        },
+        {
+          "name": "BaseExtractor",
+          "line": 193
+        },
+        {
+          "name": "clean_id",
+          "line": 54
+        },
+        {
+          "name": "check_bounds",
+          "line": 76
+        },
+        {
+          "name": "to_dict",
+          "line": 95
+        },
+        {
+          "name": "is_mock",
+          "line": 198
+        },
+        {
+          "name": "extract_entities_and_relations",
+          "line": 203
+        },
+        {
+          "name": "detect_contradiction",
+          "line": 210
+        },
+        {
+          "name": "detect_supersession",
+          "line": 215
+        },
+        {
+          "name": "judge_answer_quality",
+          "line": 220
+        }
+      ]
+    },
+    {
+      "file": "memory/ingestion/nim_extractor.py",
+      "lines": 271,
+      "sha256": "ef20b81112f39a503fe1e0bcd8b55b7d881a5b97a85d12de2869a962f661e006",
+      "definitions": [
+        {
+          "name": "NIMExtractor",
+          "line": 21
+        },
+        {
+          "name": "__init__",
+          "line": 28
+        },
+        {
+          "name": "is_mock",
+          "line": 58
+        },
+        {
+          "name": "extract_entities_and_relations",
+          "line": 64
+        },
+        {
+          "name": "_build_extraction_prompt",
+          "line": 97
+        },
+        {
+          "name": "_parse_json_from_response",
+          "line": 124
+        },
+        {
+          "name": "_normalize_extraction",
+          "line": 152
+        },
+        {
+          "name": "judge_answer_quality",
+          "line": 159
+        },
+        {
+          "name": "detect_contradiction",
+          "line": 200
+        },
+        {
+          "name": "detect_supersession",
+          "line": 225
+        },
+        {
+          "name": "extract_skills",
+          "line": 251
+        }
+      ]
+    },
+    {
+      "file": "memory/ingestion/pipeline.py",
+      "lines": 86,
+      "sha256": "472badd1fc78ef95569f49a2e01416d7bf4d8496938dbca3878bfbc1d42ff79d",
+      "definitions": [
+        {
+          "name": "IngestionPipeline",
+          "line": 6
+        },
+        {
+          "name": "__init__",
+          "line": 7
+        },
+        {
+          "name": "ingest_text",
+          "line": 26
+        },
+        {
+          "name": "ingest_text_with_extraction",
+          "line": 29
+        },
+        {
+          "name": "ingest_batch",
+          "line": 57
+        },
+        {
+          "name": "ingest_from_file",
+          "line": 64
+        },
+        {
+          "name": "_chunk_text",
+          "line": 72
+        },
+        {
+          "name": "enrich",
+          "line": 32
+        }
+      ]
+    },
+    {
+      "file": "memory/lifecycle/__init__.py",
+      "lines": 5,
+      "sha256": "c511ec4a83159cce11cccd74075d853f5d789c8ad8a7e4a205a95ee00e788df7",
+      "definitions": []
+    },
+    {
+      "file": "memory/lifecycle/fuzzy.py",
+      "lines": 80,
+      "sha256": "a5a8f3311aef85eed4d9fc959e47591d82765b3a2d789104ed13c047d3e1783a",
+      "definitions": [
+        {
+          "name": "memberships",
+          "line": 13
+        },
+        {
+          "name": "score_memory",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "file": "memory/lifecycle/models.py",
+      "lines": 112,
+      "sha256": "50192623f605fba1bfb853c8b1dd861bd8813a7cc1913b83ddeb08332ca5b0de",
+      "definitions": [
+        {
+          "name": "canonical_json",
+          "line": 8
+        },
+        {
+          "name": "SourceInput",
+          "line": 27
+        },
+        {
+          "name": "ClaimInput",
+          "line": 54
+        },
+        {
+          "name": "normalize",
+          "line": 9
+        },
+        {
+          "name": "authority",
+          "line": 38
+        },
+        {
+          "name": "support_group",
+          "line": 45
+        },
+        {
+          "name": "nonempty",
+          "line": 79
+        },
+        {
+          "name": "validate_claim",
+          "line": 85
+        }
+      ]
+    },
+    {
+      "file": "memory/lifecycle/service.py",
+      "lines": 1586,
+      "sha256": "6608cb7494e3917802f6752bd978a955d1538c6be52d695baccb610a8988d443",
+      "definitions": [
+        {
+          "name": "identifier",
+          "line": 22
+        },
+        {
+          "name": "subject_id",
+          "line": 26
+        },
+        {
+          "name": "MemoryLifecycle",
+          "line": 30
+        },
+        {
+          "name": "__init__",
+          "line": 31
+        },
+        {
+          "name": "_rows",
+          "line": 37
+        },
+        {
+          "name": "_bounded",
+          "line": 40
+        },
+        {
+          "name": "ensure_schema",
+          "line": 47
+        },
+        {
+          "name": "prepare",
+          "line": 105
+        },
+        {
+          "name": "_canonical_subject",
+          "line": 203
+        },
+        {
+          "name": "equivalent_subjects",
+          "line": 222
+        },
+        {
+          "name": "group",
+          "line": 241
+        },
+        {
+          "name": "active",
+          "line": 271
+        },
+        {
+          "name": "overlaps",
+          "line": 285
+        },
+        {
+          "name": "ingest",
+          "line": 290
+        },
+        {
+          "name": "link",
+          "line": 548
+        },
+        {
+          "name": "claim",
+          "line": 560
+        },
+        {
+          "name": "views",
+          "line": 566
+        },
+        {
+          "name": "view",
+          "line": 654
+        },
+        {
+          "name": "selected",
+          "line": 819
+        },
+        {
+          "name": "infer_predicate",
+          "line": 835
+        },
+        {
+          "name": "fetch_field",
+          "line": 864
+        },
+        {
+          "name": "recall",
+          "line": 885
+        },
+        {
+          "name": "recall_path",
+          "line": 975
+        },
+        {
+          "name": "reconcile",
+          "line": 1029
+        },
+        {
+          "name": "graph_candidates",
+          "line": 1213
+        },
+        {
+          "name": "_work_watches",
+          "line": 1253
+        },
+        {
+          "name": "_work_requirements",
+          "line": 1264
+        },
+        {
+          "name": "register_work",
+          "line": 1303
+        },
+        {
+          "name": "work",
+          "line": 1401
+        },
+        {
+          "name": "complete_work",
+          "line": 1407
+        },
+        {
+          "name": "invalidate_work",
+          "line": 1426
+        },
+        {
+          "name": "handoff",
+          "line": 1458
+        },
+        {
+          "name": "remove_source",
+          "line": 1556
+        },
+        {
+          "name": "counts",
+          "line": 1576
+        },
+        {
+          "name": "evaluate",
+          "line": 1468
+        }
+      ]
+    },
+    {
+      "file": "memory/maintenance/maintenance.py",
+      "lines": 648,
+      "sha256": "763b89f31adec2b9c582dc57cb841c5d4350c93e350fb5929ac7f47ccd45052f",
+      "definitions": [
+        {
+          "name": "MemoryDecay",
+          "line": 22
+        },
+        {
+          "name": "MemoryDeduplication",
+          "line": 182
+        },
+        {
+          "name": "MemoryConsolidation",
+          "line": 438
+        },
+        {
+          "name": "MaintenanceScheduler",
+          "line": 607
+        },
+        {
+          "name": "__init__",
+          "line": 29
+        },
+        {
+          "name": "compute_decayed_importance",
+          "line": 43
+        },
+        {
+          "name": "apply_decay",
+          "line": 63
+        },
+        {
+          "name": "__init__",
+          "line": 187
+        },
+        {
+          "name": "find_duplicates",
+          "line": 201
+        },
+        {
+          "name": "merge_duplicates",
+          "line": 259
+        },
+        {
+          "name": "run_deduplication",
+          "line": 382
+        },
+        {
+          "name": "__init__",
+          "line": 444
+        },
+        {
+          "name": "consolidate_window",
+          "line": 460
+        },
+        {
+          "name": "extract_skill_patterns",
+          "line": 525
+        },
+        {
+          "name": "_skill_id",
+          "line": 542
+        },
+        {
+          "name": "store_skill",
+          "line": 556
+        },
+        {
+          "name": "__init__",
+          "line": 610
+        },
+        {
+          "name": "run_all",
+          "line": 623
+        }
+      ]
+    },
+    {
+      "file": "memory/models.py",
+      "lines": 75,
+      "sha256": "d36ea797f5af4422a7087194714aaa7dbda152f34b3ff7924b60d34f3856fb66",
+      "definitions": [
+        {
+          "name": "MemoryRecord",
+          "line": 11
+        },
+        {
+          "name": "MemorySearchResult",
+          "line": 29
+        },
+        {
+          "name": "DeviceStatus",
+          "line": 49
+        },
+        {
+          "name": "EngineStorageError",
+          "line": 69
+        },
+        {
+          "name": "__init__",
+          "line": 72
+        }
+      ]
+    },
+    {
+      "file": "memory/observability.py",
+      "lines": 127,
+      "sha256": "a6aa13f5d896e6fbd6252119b46207552b0410f65c97081cc2da27b65fec240d",
+      "definitions": [
+        {
+          "name": "public_value",
+          "line": 41
+        },
+        {
+          "name": "ObservationLog",
+          "line": 62
+        },
+        {
+          "name": "__init__",
+          "line": 63
+        },
+        {
+          "name": "emit",
+          "line": 71
+        },
+        {
+          "name": "invalidate",
+          "line": 101
+        },
+        {
+          "name": "snapshot",
+          "line": 107
+        }
+      ]
+    },
+    {
+      "file": "memory/ranking/reranker.py",
+      "lines": 203,
+      "sha256": "f9d76638b0b52cbaa2c17c70e6d007a20c44269668d2a180614833dd60ed6018",
+      "definitions": [
+        {
+          "name": "Reranker",
+          "line": 17
+        },
+        {
+          "name": "get_reranker",
+          "line": 176
+        },
+        {
+          "name": "__init__",
+          "line": 25
+        },
+        {
+          "name": "_get_providers",
+          "line": 70
+        },
+        {
+          "name": "accelerated",
+          "line": 93
+        },
+        {
+          "name": "_init_model",
+          "line": 105
+        },
+        {
+          "name": "rerank",
+          "line": 138
+        }
+      ]
+    },
+    {
+      "file": "memory/ranking/scorer.py",
+      "lines": 98,
+      "sha256": "5bc8b6fbcdb3ca314e2c78a5262f1c886cbcd6f1d1907d46fa446666172bee9b",
+      "definitions": [
+        {
+          "name": "ScoringWeights",
+          "line": 9
+        },
+        {
+          "name": "RetrievalConfig",
+          "line": 35
+        },
+        {
+          "name": "HybridScorer",
+          "line": 55
+        },
+        {
+          "name": "__post_init__",
+          "line": 18
+        },
+        {
+          "name": "to_dict",
+          "line": 22
+        },
+        {
+          "name": "uniform",
+          "line": 26
+        },
+        {
+          "name": "defaults",
+          "line": 30
+        },
+        {
+          "name": "__post_init__",
+          "line": 48
+        },
+        {
+          "name": "__init__",
+          "line": 56
+        },
+        {
+          "name": "score",
+          "line": 59
+        },
+        {
+          "name": "score_batch",
+          "line": 85
+        }
+      ]
+    },
+    {
+      "file": "memory/retrieval/hybrid.py",
+      "lines": 293,
+      "sha256": "c07558197c3494c88e03dcd6c7dc0cca1873245486067dd9ee19dde2bc051d4b",
+      "definitions": [
+        {
+          "name": "HybridRetriever",
+          "line": 11
+        },
+        {
+          "name": "__init__",
+          "line": 12
+        },
+        {
+          "name": "retrieve",
+          "line": 31
+        },
+        {
+          "name": "_extract_entities",
+          "line": 131
+        },
+        {
+          "name": "_graph_expansion",
+          "line": 158
+        },
+        {
+          "name": "_combine_candidates",
+          "line": 246
+        },
+        {
+          "name": "_resolve_contradictions",
+          "line": 265
+        },
+        {
+          "name": "normalize",
+          "line": 132
+        }
+      ]
+    },
+    {
+      "file": "memory/retrieval/vector.py",
+      "lines": 185,
+      "sha256": "34c739b6afaf5dcec1578d530254301bceaf3296891636a995e2ed3256ee6e1e",
+      "definitions": [
+        {
+          "name": "VectorRetriever",
+          "line": 16
+        },
+        {
+          "name": "BaselineA_Retriever",
+          "line": 182
+        },
+        {
+          "name": "__init__",
+          "line": 22
+        },
+        {
+          "name": "retrieve",
+          "line": 45
+        },
+        {
+          "name": "retrieve_with_embedding",
+          "line": 126
+        }
+      ]
+    },
+    {
+      "file": "memory/schema.py",
+      "lines": 21,
+      "sha256": "9f4ec9613b91268d62634961dff6450907ff7ccf0b243b38cbbff11897b1b859",
+      "definitions": [
+        {
+          "name": "validate_metadata",
+          "line": 14
+        }
+      ]
+    },
+    {
+      "file": "memory/shared/__init__.py",
+      "lines": 5,
+      "sha256": "3263d8b44f4af3a0b4bbbea7d0c5f4365c85e7a1f95df6b607bcbe629bf4d944",
+      "definitions": []
+    },
+    {
+      "file": "memory/shared/client.py",
+      "lines": 99,
+      "sha256": "454c9b597e98cd3dc42b31a49cce0078a210b8a8a35448e7f7943fdc67d8cc6f",
+      "definitions": [
+        {
+          "name": "SharedRequestError",
+          "line": 10
+        },
+        {
+          "name": "SharedMemoryClient",
+          "line": 16
+        },
+        {
+          "name": "__init__",
+          "line": 11
+        },
+        {
+          "name": "__init__",
+          "line": 17
+        },
+        {
+          "name": "call",
+          "line": 30
+        },
+        {
+          "name": "add_event",
+          "line": 49
+        },
+        {
+          "name": "wait_ready",
+          "line": 52
+        },
+        {
+          "name": "recall",
+          "line": 66
+        },
+        {
+          "name": "handoff",
+          "line": 75
+        },
+        {
+          "name": "context",
+          "line": 78
+        },
+        {
+          "name": "validate_context",
+          "line": 81
+        },
+        {
+          "name": "generate_current",
+          "line": 84
+        }
+      ]
+    },
+    {
+      "file": "memory/shared/interpreter.py",
+      "lines": 271,
+      "sha256": "9fb99c7469a02223d9b4ebe888bf5255fc4a46ded3571f0bcb5c4f49281495da",
+      "definitions": [
+        {
+          "name": "TravelInterpreter",
+          "line": 13
+        },
+        {
+          "name": "HostedClaimInterpreter",
+          "line": 238
+        },
+        {
+          "name": "__call__",
+          "line": 16
+        },
+        {
+          "name": "_clause",
+          "line": 44
+        },
+        {
+          "name": "_single",
+          "line": 141
+        },
+        {
+          "name": "__init__",
+          "line": 241
+        },
+        {
+          "name": "__call__",
+          "line": 245
+        },
+        {
+          "name": "claim",
+          "line": 45
+        }
+      ]
+    },
+    {
+      "file": "memory/shared/journal.py",
+      "lines": 336,
+      "sha256": "1d61f8b59b0fdb91c6e55c61cc9228e5a60e1002b530c2db955107f9b56a2072",
+      "definitions": [
+        {
+          "name": "EventJournal",
+          "line": 14
+        },
+        {
+          "name": "__init__",
+          "line": 15
+        },
+        {
+          "name": "generation",
+          "line": 62
+        },
+        {
+          "name": "public",
+          "line": 71
+        },
+        {
+          "name": "get",
+          "line": 97
+        },
+        {
+          "name": "submit",
+          "line": 103
+        },
+        {
+          "name": "take",
+          "line": 127
+        },
+        {
+          "name": "prepared",
+          "line": 142
+        },
+        {
+          "name": "finish",
+          "line": 149
+        },
+        {
+          "name": "fail",
+          "line": 166
+        },
+        {
+          "name": "affects_scope",
+          "line": 174
+        },
+        {
+          "name": "scope_fingerprint",
+          "line": 195
+        },
+        {
+          "name": "pending",
+          "line": 215
+        },
+        {
+          "name": "retry",
+          "line": 226
+        },
+        {
+          "name": "notices",
+          "line": 237
+        },
+        {
+          "name": "acknowledge",
+          "line": 252
+        },
+        {
+          "name": "export",
+          "line": 263
+        },
+        {
+          "name": "close",
+          "line": 272
+        },
+        {
+          "name": "history",
+          "line": 276
+        },
+        {
+          "name": "redact",
+          "line": 314
+        }
+      ]
+    },
+    {
+      "file": "memory/shared/service.py",
+      "lines": 740,
+      "sha256": "91c0579b63572d773e335da97d2c1f6f9b416632b215530942618a0bda23d10f",
+      "definitions": [
+        {
+          "name": "Principal",
+          "line": 22
+        },
+        {
+          "name": "EventInput",
+          "line": 35
+        },
+        {
+          "name": "PendingMemory",
+          "line": 46
+        },
+        {
+          "name": "RuntimeLock",
+          "line": 54
+        },
+        {
+          "name": "SharedMemoryService",
+          "line": 83
+        },
+        {
+          "name": "__post_init__",
+          "line": 27
+        },
+        {
+          "name": "__init__",
+          "line": 47
+        },
+        {
+          "name": "__init__",
+          "line": 57
+        },
+        {
+          "name": "close",
+          "line": 79
+        },
+        {
+          "name": "__init__",
+          "line": 84
+        },
+        {
+          "name": "authenticate",
+          "line": 156
+        },
+        {
+          "name": "_gate",
+          "line": 165
+        },
+        {
+          "name": "engine",
+          "line": 170
+        },
+        {
+          "name": "submit",
+          "line": 185
+        },
+        {
+          "name": "receipt",
+          "line": 234
+        },
+        {
+          "name": "_ready",
+          "line": 240
+        },
+        {
+          "name": "_invalidate_context",
+          "line": 248
+        },
+        {
+          "name": "_ready_for_claims",
+          "line": 252
+        },
+        {
+          "name": "_ready_for_work",
+          "line": 278
+        },
+        {
+          "name": "context",
+          "line": 303
+        },
+        {
+          "name": "validate_context",
+          "line": 310
+        },
+        {
+          "name": "_loop",
+          "line": 315
+        },
+        {
+          "name": "process_one",
+          "line": 321
+        },
+        {
+          "name": "_repair_orphan",
+          "line": 438
+        },
+        {
+          "name": "_affected",
+          "line": 490
+        },
+        {
+          "name": "recall",
+          "line": 502
+        },
+        {
+          "name": "recall_path",
+          "line": 507
+        },
+        {
+          "name": "search",
+          "line": 512
+        },
+        {
+          "name": "record_work",
+          "line": 519
+        },
+        {
+          "name": "claim_work",
+          "line": 568
+        },
+        {
+          "name": "complete_work",
+          "line": 613
+        },
+        {
+          "name": "handoff",
+          "line": 637
+        },
+        {
+          "name": "retry",
+          "line": 649
+        },
+        {
+          "name": "history",
+          "line": 659
+        },
+        {
+          "name": "identity",
+          "line": 662
+        },
+        {
+          "name": "work_list",
+          "line": 665
+        },
+        {
+          "name": "forget",
+          "line": 684
+        },
+        {
+          "name": "withdraw",
+          "line": 707
+        },
+        {
+          "name": "close",
+          "line": 724
+        }
+      ]
+    },
+    {
+      "file": "memory/shared/snapshot.py",
+      "lines": 216,
+      "sha256": "c58067f4f7227093e0306baae1b73933c051bc901ca2776df72adcabe6b7b319",
+      "definitions": [
+        {
+          "name": "tenant_key",
+          "line": 19
+        },
+        {
+          "name": "cold_backup",
+          "line": 25
+        },
+        {
+          "name": "restore_fresh",
+          "line": 92
+        }
+      ]
+    },
+    {
+      "file": "memory/storage.py",
+      "lines": 44,
+      "sha256": "d0643833027b916edebeb967953e01bcf551a5b3e6e465f46c5b8230f72c188d",
+      "definitions": [
+        {
+          "name": "coordinated_write",
+          "line": 12
+        }
+      ]
+    },
+    {
+      "file": "memory/temporal/filter.py",
+      "lines": 139,
+      "sha256": "4f7338b73b0e0b37865937525080ce16d45f2536e67dcd4b3d90454e72ce351a",
+      "definitions": [
+        {
+          "name": "filter_by_time",
+          "line": 9
+        },
+        {
+          "name": "get_temporal_weight",
+          "line": 46
+        },
+        {
+          "name": "get_historical_relevance",
+          "line": 67
+        },
+        {
+          "name": "resolve_temporal_conflicts",
+          "line": 92
+        },
+        {
+          "name": "TemporalFilter",
+          "line": 109
+        },
+        {
+          "name": "__init__",
+          "line": 115
+        },
+        {
+          "name": "filter",
+          "line": 119
+        },
+        {
+          "name": "weight",
+          "line": 125
+        },
+        {
+          "name": "historical_relevance",
+          "line": 129
+        },
+        {
+          "name": "resolve_conflicts",
+          "line": 135
+        }
+      ]
+    },
+    {
+      "file": "memory/tool_adapter.py",
+      "lines": 208,
+      "sha256": "2fc0d9d4b1aa4a8996155a493ab41dfa1279a0ba353cbfe9689a589bb8d09d1b",
+      "definitions": [
+        {
+          "name": "MemoryToolAdapter",
+          "line": 7
+        },
+        {
+          "name": "__init__",
+          "line": 8
+        },
+        {
+          "name": "get_tool_definitions",
+          "line": 14
+        },
+        {
+          "name": "call_tool",
+          "line": 140
+        }
+      ]
+    },
+    {
+      "file": "memory/validation.py",
+      "lines": 70,
+      "sha256": "9bb09802eb9bc68b45351acf6fbeb69a9c2bf4cf87c782b31c1cc4efbf84dce2",
+      "definitions": [
+        {
+          "name": "MemoryInput",
+          "line": 9
+        },
+        {
+          "name": "nonempty",
+          "line": 24
+        },
+        {
+          "name": "entity_identifiers",
+          "line": 31
+        },
+        {
+          "name": "check_record",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "file": "memory/vector_store/qdrant_store.py",
+      "lines": 364,
+      "sha256": "0a486715f9bb9808993c5bacf364bf664c3a984a538e04a670a234aa3943bc72",
+      "definitions": [
+        {
+          "name": "QdrantVectorStore",
+          "line": 28
+        },
+        {
+          "name": "create_temporal_filter",
+          "line": 312
+        },
+        {
+          "name": "create_search_filter",
+          "line": 343
+        },
+        {
+          "name": "__init__",
+          "line": 34
+        },
+        {
+          "name": "embedder",
+          "line": 72
+        },
+        {
+          "name": "_create_collection",
+          "line": 77
+        },
+        {
+          "name": "_memory_id_to_uuid",
+          "line": 100
+        },
+        {
+          "name": "upsert_memory",
+          "line": 104
+        },
+        {
+          "name": "search",
+          "line": 178
+        },
+        {
+          "name": "search_with_text",
+          "line": 218
+        },
+        {
+          "name": "delete_memory",
+          "line": 229
+        },
+        {
+          "name": "restore_memory",
+          "line": 238
+        },
+        {
+          "name": "get_memory",
+          "line": 267
+        },
+        {
+          "name": "count",
+          "line": 280
+        },
+        {
+          "name": "scroll",
+          "line": 285
+        },
+        {
+          "name": "close",
+          "line": 301
+        },
+        {
+          "name": "__enter__",
+          "line": 305
+        },
+        {
+          "name": "__exit__",
+          "line": 308
+        }
+      ]
+    },
+    {
+      "file": "agents/__init__.py",
+      "lines": 7,
+      "sha256": "7f002a7bcab1a2f2ebe8594899f7a725211caa6560952c4d949759db97392016",
+      "definitions": []
+    },
+    {
+      "file": "agents/agentic.py",
+      "lines": 187,
+      "sha256": "355596e8f3507f182a34975ddda4e435a08876e2bc306980858d39872ef08bf4",
+      "definitions": [
+        {
+          "name": "enabled",
+          "line": 31
+        },
+        {
+          "name": "_schema",
+          "line": 37
+        },
+        {
+          "name": "_order",
+          "line": 43
+        },
+        {
+          "name": "ToolAgent",
+          "line": 55
+        },
+        {
+          "name": "AgenticWorkflowMixin",
+          "line": 168
+        },
+        {
+          "name": "__init__",
+          "line": 56
+        },
+        {
+          "name": "run",
+          "line": 60
+        },
+        {
+          "name": "_agent_operation",
+          "line": 171
+        }
+      ]
+    },
+    {
+      "file": "agents/api.py",
+      "lines": 100,
+      "sha256": "614d2f6e6262261ae1f012ea733b617840678d727b1e133552ae1a89c314016a",
+      "definitions": [
+        {
+          "name": "get_orchestrator",
+          "line": 31
+        },
+        {
+          "name": "QueryBody",
+          "line": 38
+        },
+        {
+          "name": "health",
+          "line": 48
+        },
+        {
+          "name": "query",
+          "line": 58
+        },
+        {
+          "name": "memory",
+          "line": 74
+        },
+        {
+          "name": "resources",
+          "line": 85
+        },
+        {
+          "name": "validate",
+          "line": 91
+        }
+      ]
+    },
+    {
+      "file": "agents/budget_booking_agent.py",
+      "lines": 174,
+      "sha256": "ab9a8ff967b74e771a6445e98a3d30e7acb85920ef356c14fedef6a52840a2c6",
+      "definitions": [
+        {
+          "name": "BudgetBookingAgent",
+          "line": 32
+        },
+        {
+          "name": "estimate",
+          "line": 35
+        },
+        {
+          "name": "attempt_booking",
+          "line": 123
+        },
+        {
+          "name": "refresh_routes",
+          "line": 169
+        },
+        {
+          "name": "memory_queries",
+          "line": 173
+        }
+      ]
+    },
+    {
+      "file": "agents/config.py",
+      "lines": 65,
+      "sha256": "5a6f827c11ad1fe8e81c00267231df25425ce767a0042b7df5f87be44e4db16b",
+      "definitions": [
+        {
+          "name": "_load_dotenv",
+          "line": 10
+        },
+        {
+          "name": "_get",
+          "line": 27
+        },
+        {
+          "name": "AgentSettings",
+          "line": 31
+        },
+        {
+          "name": "has_llm",
+          "line": 61
+        }
+      ]
+    },
+    {
+      "file": "agents/explore_agent.py",
+      "lines": 116,
+      "sha256": "046ee463cb32f1f325acc1e5ae1f047fee0da290b60c73669c4bb1f54e34ed96",
+      "definitions": [
+        {
+          "name": "_cost_level",
+          "line": 23
+        },
+        {
+          "name": "ExploreAgent",
+          "line": 32
+        },
+        {
+          "name": "discover",
+          "line": 35
+        },
+        {
+          "name": "_why_fit",
+          "line": 93
+        },
+        {
+          "name": "_suggested_days",
+          "line": 102
+        },
+        {
+          "name": "memory_queries",
+          "line": 107
+        },
+        {
+          "name": "wish_writes",
+          "line": 113
+        }
+      ]
+    },
+    {
+      "file": "agents/food_guide_agent.py",
+      "lines": 95,
+      "sha256": "2c7b106fd9b3fdac5be505726dea72b2889603574338433d5cc192ceb2b041e9",
+      "definitions": [
+        {
+          "name": "FoodGuideAgent",
+          "line": 21
+        },
+        {
+          "name": "recommend",
+          "line": 24
+        },
+        {
+          "name": "_dietary_fit",
+          "line": 87
+        },
+        {
+          "name": "memory_queries",
+          "line": 94
+        }
+      ]
+    },
+    {
+      "file": "agents/itinerary_planner.py",
+      "lines": 157,
+      "sha256": "00536e5638b73efc688dd14d0dc2eef456a23de97d7c0400d376a3046d2d35b5",
+      "definitions": [
+        {
+          "name": "_add_minutes",
+          "line": 25
+        },
+        {
+          "name": "ItineraryPlanner",
+          "line": 31
+        },
+        {
+          "name": "draft",
+          "line": 34
+        },
+        {
+          "name": "memory_queries",
+          "line": 156
+        }
+      ]
+    },
+    {
+      "file": "agents/memory_gateway/__init__.py",
+      "lines": 1,
+      "sha256": "5ec6240b793ee7543cd57d7906d6f3e939259b017695e6867cdd1ac90420d73b",
+      "definitions": []
+    },
+    {
+      "file": "agents/memory_gateway/context_builder.py",
+      "lines": 64,
+      "sha256": "9ffb8a30f80f9c5a8bcde17edc5f0d8e88d73b1e3cf8f874ee2f6434b1a4fee9",
+      "definitions": [
+        {
+          "name": "_field",
+          "line": 12
+        },
+        {
+          "name": "build_context",
+          "line": 18
+        }
+      ]
+    },
+    {
+      "file": "agents/memory_gateway/engine_factory.py",
+      "lines": 144,
+      "sha256": "861ff0d6612444e46db4e55cb8ad45ec3c29198c4ef5584d05c45cc7caa575a3",
+      "definitions": [
+        {
+          "name": "_NullLock",
+          "line": 16
+        },
+        {
+          "name": "StubGraphStore",
+          "line": 24
+        },
+        {
+          "name": "build_engine",
+          "line": 101
+        },
+        {
+          "name": "get_shared_engine",
+          "line": 120
+        },
+        {
+          "name": "reset_shared_engine",
+          "line": 134
+        },
+        {
+          "name": "__enter__",
+          "line": 17
+        },
+        {
+          "name": "__exit__",
+          "line": 20
+        },
+        {
+          "name": "__init__",
+          "line": 32
+        },
+        {
+          "name": "upsert_entity",
+          "line": 37
+        },
+        {
+          "name": "upsert_relation",
+          "line": 40
+        },
+        {
+          "name": "upsert_observation",
+          "line": 43
+        },
+        {
+          "name": "get_memory_observations",
+          "line": 51
+        },
+        {
+          "name": "get_memory_relations",
+          "line": 54
+        },
+        {
+          "name": "expand_graph",
+          "line": 57
+        },
+        {
+          "name": "get_relationship_conflicts_batch",
+          "line": 60
+        },
+        {
+          "name": "find_entities_by_name",
+          "line": 63
+        },
+        {
+          "name": "get_entity",
+          "line": 66
+        },
+        {
+          "name": "get_contradictions",
+          "line": 69
+        },
+        {
+          "name": "get_supersessions",
+          "line": 72
+        },
+        {
+          "name": "add_contradiction",
+          "line": 75
+        },
+        {
+          "name": "add_supersession",
+          "line": 78
+        },
+        {
+          "name": "delete_memory",
+          "line": 82
+        },
+        {
+          "name": "get_node_counts",
+          "line": 86
+        },
+        {
+          "name": "get_edge_counts",
+          "line": 89
+        },
+        {
+          "name": "close",
+          "line": 92
+        }
+      ]
+    },
+    {
+      "file": "agents/memory_gateway/gateway.py",
+      "lines": 120,
+      "sha256": "ec9dc2110fb7a24ea9d2e99159fc608923aa15e8a0f05733099c2af4d4fffe51",
+      "definitions": [
+        {
+          "name": "MemoryGateway",
+          "line": 27
+        },
+        {
+          "name": "__init__",
+          "line": 28
+        },
+        {
+          "name": "retrieve",
+          "line": 42
+        },
+        {
+          "name": "propose_write",
+          "line": 93
+        },
+        {
+          "name": "propose_writes",
+          "line": 98
+        },
+        {
+          "name": "device_status",
+          "line": 110
+        },
+        {
+          "name": "close",
+          "line": 116
+        }
+      ]
+    },
+    {
+      "file": "agents/memory_gateway/policies.py",
+      "lines": 60,
+      "sha256": "0d62bad5f0b075b6f66a48c7b988a5759ee913030a737d5b42f494b7805e7256",
+      "definitions": [
+        {
+          "name": "can_access",
+          "line": 15
+        },
+        {
+          "name": "retrieval_mode_for",
+          "line": 20
+        },
+        {
+          "name": "is_noise",
+          "line": 28
+        },
+        {
+          "name": "write_worthy",
+          "line": 39
+        },
+        {
+          "name": "scope_metadata",
+          "line": 51
+        }
+      ]
+    },
+    {
+      "file": "agents/memory_gateway/three_tier.py",
+      "lines": 252,
+      "sha256": "1d49d8a16d3963f6b7f58c7d99e8d4e3447cf7fac90d3022338807844722eefb",
+      "definitions": [
+        {
+          "name": "_BytesConsumer",
+          "line": 35
+        },
+        {
+          "name": "application_context_runtime",
+          "line": 42
+        },
+        {
+          "name": "MemoryNeedsInformation",
+          "line": 69
+        },
+        {
+          "name": "ThreeTierGateway",
+          "line": 82
+        },
+        {
+          "name": "encode",
+          "line": 38
+        },
+        {
+          "name": "__init__",
+          "line": 70
+        },
+        {
+          "name": "__init__",
+          "line": 87
+        },
+        {
+          "name": "retrieve",
+          "line": 94
+        },
+        {
+          "name": "trip_brief",
+          "line": 151
+        },
+        {
+          "name": "validate_current",
+          "line": 216
+        },
+        {
+          "name": "diagnostics",
+          "line": 228
+        },
+        {
+          "name": "propose_writes",
+          "line": 241
+        }
+      ]
+    },
+    {
+      "file": "agents/memory_gateway/write_manager.py",
+      "lines": 106,
+      "sha256": "85cb3def769a2242f6a3ef237f47ecd86113a8d49705fac57b6b1383654bd30b",
+      "definitions": [
+        {
+          "name": "_dedupe_key",
+          "line": 14
+        },
+        {
+          "name": "WriteManager",
+          "line": 21
+        },
+        {
+          "name": "_similarity",
+          "line": 100
+        },
+        {
+          "name": "__init__",
+          "line": 28
+        },
+        {
+          "name": "propose_write",
+          "line": 31
+        },
+        {
+          "name": "_get_existing",
+          "line": 52
+        },
+        {
+          "name": "_near_duplicate",
+          "line": 58
+        },
+        {
+          "name": "_store",
+          "line": 81
+        }
+      ]
+    },
+    {
+      "file": "agents/orchestration/__init__.py",
+      "lines": 1,
+      "sha256": "7e6c211975895a98924aff5d51b561785503162a6fe7698951f5083f85f64895",
+      "definitions": []
+    },
+    {
+      "file": "agents/orchestration/checkpointing.py",
+      "lines": 75,
+      "sha256": "907ef550d449a3277b5f5ded2672c87eaeb47d586d998dca5a4e2a10657fcb4a",
+      "definitions": [
+        {
+          "name": "_MemorySaver",
+          "line": 13
+        },
+        {
+          "name": "get_saver",
+          "line": 44
+        },
+        {
+          "name": "set_saver",
+          "line": 68
+        },
+        {
+          "name": "_MemorySaverCompat",
+          "line": 74
+        },
+        {
+          "name": "__init__",
+          "line": 16
+        },
+        {
+          "name": "put",
+          "line": 20
+        },
+        {
+          "name": "get",
+          "line": 25
+        },
+        {
+          "name": "_key",
+          "line": 31
+        },
+        {
+          "name": "clear",
+          "line": 35
+        }
+      ]
+    },
+    {
+      "file": "agents/orchestration/graph.py",
+      "lines": 541,
+      "sha256": "329484fd8a10b1bb0f132f362ddbea68e8b7d7406ca11547ca396e0e71ac814c",
+      "definitions": [
+        {
+          "name": "TravelWorkflow",
+          "line": 46
+        },
+        {
+          "name": "__init__",
+          "line": 49
+        },
+        {
+          "name": "_parse_request",
+          "line": 67
+        },
+        {
+          "name": "_retrieve_context",
+          "line": 93
+        },
+        {
+          "name": "_understand_requirements",
+          "line": 102
+        },
+        {
+          "name": "_clarify_or_continue",
+          "line": 132
+        },
+        {
+          "name": "_apply_answers",
+          "line": 162
+        },
+        {
+          "name": "_resolve_destination",
+          "line": 181
+        },
+        {
+          "name": "_run_explore",
+          "line": 202
+        },
+        {
+          "name": "_run_stay",
+          "line": 213
+        },
+        {
+          "name": "_run_tour_guide",
+          "line": 229
+        },
+        {
+          "name": "_run_food_guide",
+          "line": 244
+        },
+        {
+          "name": "_run_support",
+          "line": 259
+        },
+        {
+          "name": "_collect_results",
+          "line": 273
+        },
+        {
+          "name": "_run_itinerary",
+          "line": 286
+        },
+        {
+          "name": "_run_budget",
+          "line": 310
+        },
+        {
+          "name": "_cart_from_itinerary",
+          "line": 347
+        },
+        {
+          "name": "_validate_results",
+          "line": 359
+        },
+        {
+          "name": "_revise_or_continue",
+          "line": 374
+        },
+        {
+          "name": "_revise",
+          "line": 381
+        },
+        {
+          "name": "_synthesize",
+          "line": 406
+        },
+        {
+          "name": "_clarify",
+          "line": 442
+        },
+        {
+          "name": "_propose_writes",
+          "line": 446
+        },
+        {
+          "name": "_persist_writes",
+          "line": 465
+        },
+        {
+          "name": "_build_graph",
+          "line": 476
+        },
+        {
+          "name": "run",
+          "line": 530
+        },
+        {
+          "name": "pick",
+          "line": 319
+        }
+      ]
+    },
+    {
+      "file": "agents/orchestration/routing.py",
+      "lines": 78,
+      "sha256": "db9166374af8238954f50d04ffdc6c88b1617242494478226644618d2ed753d3",
+      "definitions": [
+        {
+          "name": "parse_intent",
+          "line": 33
+        },
+        {
+          "name": "plan_tasks",
+          "line": 47
+        },
+        {
+          "name": "add",
+          "line": 52
+        }
+      ]
+    },
+    {
+      "file": "agents/orchestration/state.py",
+      "lines": 62,
+      "sha256": "99235cb27303f753bef61eafab758b9e77893a483cf138563bea46c715fe2786",
+      "definitions": [
+        {
+          "name": "_merge_results",
+          "line": 22
+        },
+        {
+          "name": "AgentState",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "file": "agents/orchestrator.py",
+      "lines": 63,
+      "sha256": "dfe373842e2117345b2e1e3608186b5a026d68f5f88df396ec1e77c6c9d130a9",
+      "definitions": [
+        {
+          "name": "TravelOrchestrator",
+          "line": 21
+        },
+        {
+          "name": "__init__",
+          "line": 22
+        },
+        {
+          "name": "gateway",
+          "line": 27
+        },
+        {
+          "name": "handle",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "file": "agents/resource_manager/__init__.py",
+      "lines": 1,
+      "sha256": "50f53e676391d2c2b5a5364b228cacc4836c6c4bce4014be7a1707cd3a0fdd5d",
+      "definitions": []
+    },
+    {
+      "file": "agents/resource_manager/model_registry.py",
+      "lines": 185,
+      "sha256": "dfcf1f0fbb5df8ea422f8233609855dd5fbf236d051f67f3fd919e1b94fdd413",
+      "definitions": [
+        {
+          "name": "NimClient",
+          "line": 24
+        },
+        {
+          "name": "get_nim_client",
+          "line": 181
+        },
+        {
+          "name": "__init__",
+          "line": 27
+        },
+        {
+          "name": "available",
+          "line": 32
+        },
+        {
+          "name": "_get_client",
+          "line": 35
+        },
+        {
+          "name": "chat",
+          "line": 49
+        },
+        {
+          "name": "chat_json",
+          "line": 95
+        },
+        {
+          "name": "tool_turn",
+          "line": 111
+        },
+        {
+          "name": "close",
+          "line": 171
+        }
+      ]
+    },
+    {
+      "file": "agents/resource_manager/resource_monitor.py",
+      "lines": 65,
+      "sha256": "9f0c199647035168fc7c6f4cfa98db5c4bef25d3941a1c1dff8177baa863a1e3",
+      "definitions": [
+        {
+          "name": "ResourceMonitor",
+          "line": 12
+        },
+        {
+          "name": "_process_rss_mb",
+          "line": 34
+        },
+        {
+          "name": "__init__",
+          "line": 13
+        },
+        {
+          "name": "snapshot",
+          "line": 16
+        },
+        {
+          "name": "_PROCESS_MEMORY_COUNTERS",
+          "line": 44
+        }
+      ]
+    },
+    {
+      "file": "agents/resource_manager/scheduler.py",
+      "lines": 27,
+      "sha256": "4e061b2cd50731003dc65709b53f3efd0a4937bec6f97b9f782be1a85172ed0e",
+      "definitions": [
+        {
+          "name": "inference_semaphore",
+          "line": 14
+        },
+        {
+          "name": "model_load_lock",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "file": "agents/schemas.py",
+      "lines": 382,
+      "sha256": "40cff011aeba5c3f22a5de330c1d6bacd2609b1b0307143626f3bc172ea0fbc9",
+      "definitions": [
+        {
+          "name": "StrictModel",
+          "line": 14
+        },
+        {
+          "name": "MemoryProvenance",
+          "line": 23
+        },
+        {
+          "name": "MemoryItem",
+          "line": 35
+        },
+        {
+          "name": "MemoryContext",
+          "line": 40
+        },
+        {
+          "name": "MemoryWriteProposal",
+          "line": 69
+        },
+        {
+          "name": "WriteResult",
+          "line": 81
+        },
+        {
+          "name": "TripBrief",
+          "line": 92
+        },
+        {
+          "name": "Evidence",
+          "line": 133
+        },
+        {
+          "name": "StayOption",
+          "line": 146
+        },
+        {
+          "name": "Attraction",
+          "line": 162
+        },
+        {
+          "name": "FoodOption",
+          "line": 174
+        },
+        {
+          "name": "DestinationIdea",
+          "line": 187
+        },
+        {
+          "name": "TransportOption",
+          "line": 202
+        },
+        {
+          "name": "WeatherNote",
+          "line": 214
+        },
+        {
+          "name": "ItineraryStop",
+          "line": 228
+        },
+        {
+          "name": "ItineraryDay",
+          "line": 240
+        },
+        {
+          "name": "DraftItinerary",
+          "line": 246
+        },
+        {
+          "name": "BudgetLine",
+          "line": 255
+        },
+        {
+          "name": "BudgetEstimate",
+          "line": 265
+        },
+        {
+          "name": "SupportGuidance",
+          "line": 276
+        },
+        {
+          "name": "ValidationIssue",
+          "line": 291
+        },
+        {
+          "name": "ValidationResult",
+          "line": 298
+        },
+        {
+          "name": "AgentExecution",
+          "line": 330
+        },
+        {
+          "name": "AgentResult",
+          "line": 342
+        },
+        {
+          "name": "OrchestrationRequest",
+          "line": 361
+        },
+        {
+          "name": "OrchestrationResponse",
+          "line": 370
+        },
+        {
+          "name": "as_prompt_lines",
+          "line": 52
+        },
+        {
+          "name": "has_dates",
+          "line": 115
+        },
+        {
+          "name": "effective_budget_per_person",
+          "line": 118
+        },
+        {
+          "name": "errors",
+          "line": 303
+        },
+        {
+          "name": "warnings",
+          "line": 307
+        }
+      ]
+    },
+    {
+      "file": "agents/scripts/cleanup_shared_graph.py",
+      "lines": 47,
+      "sha256": "6ba1ad923c20712a0e4809f89da3406f39de4ab349cbeccf25b5a58d4a5557b5",
+      "definitions": [
+        {
+          "name": "main",
+          "line": 20
+        }
+      ]
+    },
+    {
+      "file": "agents/scripts/run_sessions.py",
+      "lines": 91,
+      "sha256": "baceed8d5f802e74aabc8b301b3eb3e5a7ae644d34fbddb8bd01ef834aa35fc3",
+      "definitions": [
+        {
+          "name": "post",
+          "line": 28
+        },
+        {
+          "name": "main",
+          "line": 35
+        }
+      ]
+    },
+    {
+      "file": "agents/scripts/session_results.json",
+      "lines": 178,
+      "sha256": "8635beff893dca838d022b8430f818bf02640f0e620c0c82fbfb31fb01601265"
+    },
+    {
+      "file": "agents/stay_agent.py",
+      "lines": 127,
+      "sha256": "b6104773c0646f0832214111d069c7b55f887b6210a0e8922d215dfc997a6486",
+      "definitions": [
+        {
+          "name": "StayAgent",
+          "line": 23
+        },
+        {
+          "name": "search",
+          "line": 26
+        },
+        {
+          "name": "_pros",
+          "line": 97
+        },
+        {
+          "name": "_cons",
+          "line": 110
+        },
+        {
+          "name": "_rank_key",
+          "line": 119
+        },
+        {
+          "name": "memory_queries",
+          "line": 126
+        }
+      ]
+    },
+    {
+      "file": "agents/tests/conftest.py",
+      "lines": 55,
+      "sha256": "39b01122d0dcb2d4b51bfb1820e937714688306b7b03b2123c1c4c57fcf58b9b",
+      "definitions": [
+        {
+          "name": "engine",
+          "line": 23
+        },
+        {
+          "name": "gateway",
+          "line": 43
+        },
+        {
+          "name": "mock_backend",
+          "line": 48
+        }
+      ]
+    },
+    {
+      "file": "agents/tests/test_agents.py",
+      "lines": 133,
+      "sha256": "604c02eb41010432ce75d6de618a89f7741953038b7e39a85991a0d8b4faf427",
+      "definitions": [
+        {
+          "name": "test_consultant_extracts_constraints_not_inventions",
+          "line": 14
+        },
+        {
+          "name": "test_consultant_flags_missing_fields_and_asks",
+          "line": 29
+        },
+        {
+          "name": "test_consultant_memory_fills_only_soft_fields",
+          "line": 39
+        },
+        {
+          "name": "test_explore_returns_diverse_relevant_ideas",
+          "line": 53
+        },
+        {
+          "name": "test_stay_agent_ranks_and_labels_availability",
+          "line": 62
+        },
+        {
+          "name": "test_stay_agent_respects_dietary_memory_for_food",
+          "line": 74
+        },
+        {
+          "name": "test_tour_guide_matches_interests_and_flags_hours",
+          "line": 78
+        },
+        {
+          "name": "test_food_guide_applies_dietary_requirements",
+          "line": 86
+        },
+        {
+          "name": "test_itinerary_no_overlaps_and_matches_duration",
+          "line": 95
+        },
+        {
+          "name": "test_support_agent_packing_replan_and_emergency",
+          "line": 118
+        }
+      ]
+    },
+    {
+      "file": "agents/tests/test_memory_gateway.py",
+      "lines": 108,
+      "sha256": "89f1576e2e07401a742abca892efd23cc9126dd9bbe3c2bdaa825a8e61010926",
+      "definitions": [
+        {
+          "name": "_proposal",
+          "line": 9
+        },
+        {
+          "name": "test_write_then_retrieve_roundtrip",
+          "line": 18
+        },
+        {
+          "name": "test_user_isolation",
+          "line": 34
+        },
+        {
+          "name": "test_duplicate_writes_are_safe",
+          "line": 45
+        },
+        {
+          "name": "test_policy_rejects_noise_and_secrets",
+          "line": 53
+        },
+        {
+          "name": "test_temporal_retrieval_expires_memories",
+          "line": 65
+        },
+        {
+          "name": "test_retrieval_cache_avoids_repeat_queries",
+          "line": 90
+        },
+        {
+          "name": "counting",
+          "line": 96
+        }
+      ]
+    },
+    {
+      "file": "agents/tests/test_orchestration.py",
+      "lines": 85,
+      "sha256": "0f2189c23822aa59141baf07eeb22951d6752b42c4cad35a754914b75083ce74",
+      "definitions": [
+        {
+          "name": "_run",
+          "line": 11
+        },
+        {
+          "name": "test_clarification_for_vague_request",
+          "line": 25
+        },
+        {
+          "name": "test_stays_page_runs_only_needed_agents",
+          "line": 31
+        },
+        {
+          "name": "test_food_page_runs_food_agent_only",
+          "line": 39
+        },
+        {
+          "name": "test_plan_page_end_to_end_produces_itinerary_and_budget",
+          "line": 48
+        },
+        {
+          "name": "test_plan_workflow_persists_decision_memory",
+          "line": 62
+        },
+        {
+          "name": "test_confirmed_booking_reports_pending_not_confirmed",
+          "line": 73
+        },
+        {
+          "name": "test_parallel_results_merge_without_duplicates",
+          "line": 82
+        }
+      ]
+    },
+    {
+      "file": "agents/tests/test_routing.py",
+      "lines": 49,
+      "sha256": "4ae5f9dfddb0932c5daadb166f78d21e30c1a29b2523a7a90b4bcb0bb33eb027",
+      "definitions": [
+        {
+          "name": "_req",
+          "line": 8
+        },
+        {
+          "name": "test_page_base_tasks_match_architecture_mapping",
+          "line": 12
+        },
+        {
+          "name": "test_plan_page_runs_full_pipeline_with_dependencies",
+          "line": 26
+        },
+        {
+          "name": "test_intent_adds_only_relevant_specialists",
+          "line": 33
+        },
+        {
+          "name": "test_itinerary_adds_research_dependencies",
+          "line": 40
+        },
+        {
+          "name": "test_intent_flags",
+          "line": 46
+        }
+      ]
+    },
+    {
+      "file": "agents/tests/test_tools.py",
+      "lines": 41,
+      "sha256": "9945dd32112db4bce1491f3e96053946fa992454b5cfe34cfbdea1a61db2657f",
+      "definitions": [
+        {
+          "name": "test_mock_backend_labels_data_as_mock",
+          "line": 8
+        },
+        {
+          "name": "test_booking_requires_explicit_confirmation",
+          "line": 17
+        },
+        {
+          "name": "test_booking_idempotency_key_is_stable",
+          "line": 24
+        },
+        {
+          "name": "test_mock_booking_is_simulated_not_confirmed",
+          "line": 31
+        },
+        {
+          "name": "test_backend_selection_prefers_live_when_configured",
+          "line": 38
+        }
+      ]
+    },
+    {
+      "file": "agents/tests/test_validators.py",
+      "lines": 96,
+      "sha256": "d5b5633904137a5fd283962b60294e015aef7c5acef053a18c4c1634f3ffaded",
+      "definitions": [
+        {
+          "name": "_stop",
+          "line": 17
+        },
+        {
+          "name": "test_budget_total_mismatch_is_error",
+          "line": 26
+        },
+        {
+          "name": "test_budget_over_budget_warning_and_delta",
+          "line": 35
+        },
+        {
+          "name": "test_itinerary_overlap_detected",
+          "line": 47
+        },
+        {
+          "name": "test_itinerary_tight_transfer_warning",
+          "line": 60
+        },
+        {
+          "name": "test_itinerary_trip_length_mismatch",
+          "line": 73
+        },
+        {
+          "name": "test_result_validator_flags_mock_and_stale_sources",
+          "line": 84
+        }
+      ]
+    },
+    {
+      "file": "agents/tour_guide_agent.py",
+      "lines": 92,
+      "sha256": "54c5fc98a3a9411451a567709a0cd4d4edff761ae420ba59e6836b2f4d0e6eca",
+      "definitions": [
+        {
+          "name": "TourGuideAgent",
+          "line": 22
+        },
+        {
+          "name": "recommend",
+          "line": 25
+        },
+        {
+          "name": "memory_queries",
+          "line": 91
+        }
+      ]
+    },
+    {
+      "file": "agents/travel_support_agent.py",
+      "lines": 123,
+      "sha256": "ee6bd08515869fc63cb078b1164a3b0199af10c08108f64573dafef6b7543af5",
+      "definitions": [
+        {
+          "name": "TravelSupportAgent",
+          "line": 27
+        },
+        {
+          "name": "support",
+          "line": 30
+        },
+        {
+          "name": "memory_queries",
+          "line": 122
+        }
+      ]
+    },
+    {
+      "file": "agents/travel_tools/__init__.py",
+      "lines": 10,
+      "sha256": "6e2f9aa6fd9974f046d50b14791d91f36e256ca3329f7e93d6cbf51e6ce1ab72",
+      "definitions": []
+    },
+    {
+      "file": "agents/travel_tools/accommodation.py",
+      "lines": 43,
+      "sha256": "767cea331fd60167b6a36d396f506fefbbb0d2c8989fd377c428443e284a80df",
+      "definitions": [
+        {
+          "name": "search_stays",
+          "line": 10
+        },
+        {
+          "name": "estimate_stay_total",
+          "line": 38
+        }
+      ]
+    },
+    {
+      "file": "agents/travel_tools/base.py",
+      "lines": 232,
+      "sha256": "f41ea1b9461c38a956408b639db3bdd9f2728cbcf3df452020a2b44d19dc9b9b",
+      "definitions": [
+        {
+          "name": "ToolResponse",
+          "line": 19
+        },
+        {
+          "name": "TravelApiBackend",
+          "line": 40
+        },
+        {
+          "name": "MockTravelBackend",
+          "line": 88
+        },
+        {
+          "name": "using_backend",
+          "line": 201
+        },
+        {
+          "name": "_get_backend",
+          "line": 210
+        },
+        {
+          "name": "set_backend",
+          "line": 219
+        },
+        {
+          "name": "reset_backend",
+          "line": 225
+        },
+        {
+          "name": "get_tools",
+          "line": 229
+        },
+        {
+          "name": "ok",
+          "line": 27
+        },
+        {
+          "name": "evidence",
+          "line": 30
+        },
+        {
+          "name": "__init__",
+          "line": 43
+        },
+        {
+          "name": "_headers",
+          "line": 47
+        },
+        {
+          "name": "get",
+          "line": 53
+        },
+        {
+          "name": "post",
+          "line": 70
+        },
+        {
+          "name": "get",
+          "line": 121
+        },
+        {
+          "name": "post",
+          "line": 137
+        },
+        {
+          "name": "_destinations",
+          "line": 146
+        },
+        {
+          "name": "_stays",
+          "line": 153
+        },
+        {
+          "name": "_food",
+          "line": 164
+        },
+        {
+          "name": "_guides",
+          "line": 179
+        },
+        {
+          "name": "_transport",
+          "line": 186
+        }
+      ]
+    },
+    {
+      "file": "agents/travel_tools/booking.py",
+      "lines": 68,
+      "sha256": "87b983feecf155318d80f28e68aeeb28924568823aad241ed598b101602cfa98",
+      "definitions": [
+        {
+          "name": "make_idempotency_key",
+          "line": 17
+        },
+        {
+          "name": "request_booking",
+          "line": 22
+        },
+        {
+          "name": "booking_summary",
+          "line": 52
+        }
+      ]
+    },
+    {
+      "file": "agents/travel_tools/destinations.py",
+      "lines": 36,
+      "sha256": "9cf86a9c5996d666f6112604cd7d46fe7ea29e7e70cb2af32cdc81407f58c37c",
+      "definitions": [
+        {
+          "name": "search_destinations",
+          "line": 9
+        },
+        {
+          "name": "get_destination",
+          "line": 23
+        },
+        {
+          "name": "destination_name_map",
+          "line": 28
+        },
+        {
+          "name": "season_note",
+          "line": 32
+        }
+      ]
+    },
+    {
+      "file": "agents/travel_tools/maps.py",
+      "lines": 25,
+      "sha256": "4fbb9ac9844a34a6b0c1c6cf9eeea8ddc197c5a60777fcbddb8198faebc38e2f",
+      "definitions": [
+        {
+          "name": "search_guides",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "file": "agents/travel_tools/restaurants.py",
+      "lines": 28,
+      "sha256": "b82e5183fd39f4fbe72af68dd94bb64b308f8e30f49aea254797e62b43c56d6d",
+      "definitions": [
+        {
+          "name": "search_food",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "file": "agents/travel_tools/transport.py",
+      "lines": 25,
+      "sha256": "7efedd78aefb480db8249e13a40e74c5eafdc9c2504518adc5e1edf2a7e76c6b",
+      "definitions": [
+        {
+          "name": "search_routes",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "file": "agents/travel_tools/weather.py",
+      "lines": 28,
+      "sha256": "b2c96507abe201128834946a51d9c2de832a6d2e5d3543fb6a90d8956eb06e82",
+      "definitions": [
+        {
+          "name": "weather_note",
+          "line": 16
+        }
+      ]
+    },
+    {
+      "file": "agents/trip_consultant.py",
+      "lines": 270,
+      "sha256": "7b4d3781f53a3faf9ca82b5a2209de1088c1f0afdea5759a3be10c638bb5dc0c",
+      "definitions": [
+        {
+          "name": "TripConsultant",
+          "line": 47
+        },
+        {
+          "name": "extract",
+          "line": 50
+        },
+        {
+          "name": "_apply_memory",
+          "line": 142
+        },
+        {
+          "name": "_llm_refine",
+          "line": 153
+        },
+        {
+          "name": "_finalize",
+          "line": 193
+        },
+        {
+          "name": "memory_queries",
+          "line": 217
+        },
+        {
+          "name": "preference_writes",
+          "line": 223
+        },
+        {
+          "name": "run",
+          "line": 240
+        },
+        {
+          "name": "_summary",
+          "line": 257
+        }
+      ]
+    },
+    {
+      "file": "agents/validation/__init__.py",
+      "lines": 1,
+      "sha256": "dbf0aecced0b528619d2a90daf15c7468b2be102143f6d8d44723d28ce6a5be2",
+      "definitions": []
+    },
+    {
+      "file": "agents/validation/budget_validator.py",
+      "lines": 52,
+      "sha256": "3aa93c47d77b1351ef5a41daaed16dba75ef1c457d9d7b0ee5c7821d27ada7df",
+      "definitions": [
+        {
+          "name": "validate_budget",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "file": "agents/validation/itinerary_validator.py",
+      "lines": 83,
+      "sha256": "4729be491e24f6f91db77cd72beb4168fb5e8d8bbf23eee021df41b4b5bc6739",
+      "definitions": [
+        {
+          "name": "_minutes",
+          "line": 7
+        },
+        {
+          "name": "validate_itinerary",
+          "line": 15
+        }
+      ]
+    },
+    {
+      "file": "agents/validation/result_validator.py",
+      "lines": 39,
+      "sha256": "340bf3c9082e33dd992418b9769f5174fe5156232fbfef3ea233b510601adf6b",
+      "definitions": [
+        {
+          "name": "validate_results",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "file": "dashboard/backend/__init__.py",
+      "lines": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "definitions": []
+    },
+    {
+      "file": "dashboard/backend/main.py",
+      "lines": 260,
+      "sha256": "750765d9546078744bc33943c1a1ab6195837346972cae7962d062c552ff2bff",
+      "definitions": [
+        {
+          "name": "MemoryRelay",
+          "line": 19
+        },
+        {
+          "name": "lifespan",
+          "line": 80
+        },
+        {
+          "name": "headers",
+          "line": 106
+        },
+        {
+          "name": "health",
+          "line": 115
+        },
+        {
+          "name": "snapshot",
+          "line": 124
+        },
+        {
+          "name": "overview",
+          "line": 129
+        },
+        {
+          "name": "agents",
+          "line": 149
+        },
+        {
+          "name": "tiers",
+          "line": 154
+        },
+        {
+          "name": "credentials",
+          "line": 159
+        },
+        {
+          "name": "events",
+          "line": 164
+        },
+        {
+          "name": "graph",
+          "line": 189
+        },
+        {
+          "name": "shared_memory",
+          "line": 197
+        },
+        {
+          "name": "vectors",
+          "line": 205
+        },
+        {
+          "name": "snapshot_events",
+          "line": 216
+        },
+        {
+          "name": "stream",
+          "line": 235
+        },
+        {
+          "name": "inspection_ui",
+          "line": 247
+        },
+        {
+          "name": "inspection_script",
+          "line": 252
+        },
+        {
+          "name": "inspection_config",
+          "line": 257
+        },
+        {
+          "name": "__init__",
+          "line": 20
+        },
+        {
+          "name": "read",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "file": "dashboard/frontend/src/App.jsx",
+      "lines": 457,
+      "sha256": "264fea06f7cce6233be0af03a416fbcd88750868eae5599608bb2d9b8cd89497"
+    },
+    {
+      "file": "dashboard/frontend/src/components/ActivityHeatmap.jsx",
+      "lines": 146,
+      "sha256": "7f13cac11b9e8c6d7ae4339a7ebad98e744bc43f112326498089411a1b0cee8b"
+    },
+    {
+      "file": "dashboard/frontend/src/components/AgentWiring.jsx",
+      "lines": 224,
+      "sha256": "bb89b3cb1b2ad0d7f151bec26ccb8178d1e98a40333678cb119b9c662ba0601e"
+    },
+    {
+      "file": "dashboard/frontend/src/components/Architecture.jsx",
+      "lines": 105,
+      "sha256": "85f91c3522218f5eb99c15fd51840c2117084a07d907f3c77bfe94090113244f"
+    },
+    {
+      "file": "dashboard/frontend/src/components/DashboardControls.jsx",
+      "lines": 223,
+      "sha256": "73b59c6eda26b8a6c2b0faea3a393681ad4b4be3bd53a65f9257deb666373a3e"
+    },
+    {
+      "file": "dashboard/frontend/src/components/Explorer.jsx",
+      "lines": 180,
+      "sha256": "01f3219028cd690fecc61aa8316c8a9cc3b5298b0ed1b0c0596787bbb44eca02"
+    },
+    {
+      "file": "dashboard/frontend/src/components/Inspector.jsx",
+      "lines": 303,
+      "sha256": "9f1994c5d5d03e254df7388be65f1edb4bece0a51a3275b8db381b5e7e9749eb"
+    },
+    {
+      "file": "dashboard/frontend/src/components/MemoryGraph.jsx",
+      "lines": 505,
+      "sha256": "b4eea2fa29b331d781b452b0fcd5385310bc61164bbac0dcf03d5fdaa9a782e4"
+    },
+    {
+      "file": "dashboard/frontend/src/components/SidebarDetails.jsx",
+      "lines": 133,
+      "sha256": "91ae2e7f3503864b3b964d406c8b8dd4168233db9b0f30e9ec1e02cdf97f11be"
+    },
+    {
+      "file": "dashboard/frontend/src/components/Timeline.jsx",
+      "lines": 193,
+      "sha256": "4085a76cb490e8c343b074efa4964b2eeae9f8b27545dd9d217faf5354894cad"
+    },
+    {
+      "file": "dashboard/frontend/src/graphLayout.js",
+      "lines": 180,
+      "sha256": "0274d3534a65090380ce32fa96cc6d753cf0d1731412232dba5be5b4e56133e2"
+    },
+    {
+      "file": "dashboard/frontend/src/main.jsx",
+      "lines": 15,
+      "sha256": "6bd980e0ce7538c001ba873f141dd2590b0e7d6b355c7cc01228d99b06515e70"
+    },
+    {
+      "file": "dashboard/frontend/src/memory.js",
+      "lines": 233,
+      "sha256": "5617d684390da0ceb24db2573410efa8dd605e11babbca4537462708a08c7d21"
+    },
+    {
+      "file": "dashboard/frontend/src/styles.css",
+      "lines": 1487,
+      "sha256": "80421179177fba2a417dc2f3e8ce88d0b1003bd2a52261db12a045efa3b64ad4"
+    },
+    {
+      "file": "dashboard/frontend/src/tokens.css",
+      "lines": 58,
+      "sha256": "c1763d4645c7eb470e7d8e8aff5275ac33d986c015231059123742b7768cdb66"
+    },
+    {
+      "file": "dashboard/frontend/src/workspace.css",
+      "lines": 934,
+      "sha256": "ab407ae9cad994cb69432dd9f79a81886b9f9c749a404a97142be21edf8d636e"
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/__init__.py",
+      "lines": 7,
+      "sha256": "a887c4a4fb628fe46dcf30270e74029dff560a671797cf0206214b63e4bcabd0",
+      "definitions": []
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/agent_runtime.py",
+      "lines": 500,
+      "sha256": "bfdd1612d6f1823e33c020841a13865116276b9ce20efc01dd2afdd244791616",
+      "definitions": [
+        {
+          "name": "CatalogSnapshot",
+          "line": 51
+        },
+        {
+          "name": "TravelerMemory",
+          "line": 122
+        },
+        {
+          "name": "AgentRuntime",
+          "line": 452
+        },
+        {
+          "name": "get_agent_runtime",
+          "line": 499
+        },
+        {
+          "name": "__init__",
+          "line": 54
+        },
+        {
+          "name": "get",
+          "line": 76
+        },
+        {
+          "name": "post",
+          "line": 115
+        },
+        {
+          "name": "__init__",
+          "line": 123
+        },
+        {
+          "name": "submit",
+          "line": 154
+        },
+        {
+          "name": "save_requirements",
+          "line": 192
+        },
+        {
+          "name": "sync_profile",
+          "line": 218
+        },
+        {
+          "name": "events",
+          "line": 296
+        },
+        {
+          "name": "forget_event",
+          "line": 301
+        },
+        {
+          "name": "forget_trip",
+          "line": 319
+        },
+        {
+          "name": "delete_field",
+          "line": 339
+        },
+        {
+          "name": "reply",
+          "line": 376
+        },
+        {
+          "name": "__init__",
+          "line": 453
+        },
+        {
+          "name": "for_user",
+          "line": 466
+        },
+        {
+          "name": "close",
+          "line": 489
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/config.py",
+      "lines": 25,
+      "sha256": "af59cd466d24548150e9a187036a45ce4078d50d4a577ff69a8734ee8d16f33e",
+      "definitions": [
+        {
+          "name": "Settings",
+          "line": 9
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/db.py",
+      "lines": 57,
+      "sha256": "0107498a7900a543724a6bbd899798b50d05dea5a7643c5e0214e16eb4ffde7f",
+      "definitions": [
+        {
+          "name": "Base",
+          "line": 20
+        },
+        {
+          "name": "create_schema",
+          "line": 24
+        },
+        {
+          "name": "get_db",
+          "line": 52
+        },
+        {
+          "name": "_pragmas",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/deps.py",
+      "lines": 55,
+      "sha256": "9a309ce9ac5c491b5e47cb5217dcdc00b72a37472053c6eb63efe4259924c330",
+      "definitions": [
+        {
+          "name": "_scope_user",
+          "line": 15
+        },
+        {
+          "name": "current_user",
+          "line": 20
+        },
+        {
+          "name": "optional_current_user",
+          "line": 32
+        },
+        {
+          "name": "_identity",
+          "line": 46
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/destination_content.py",
+      "lines": 81,
+      "sha256": "fb5473d4140dcad1a45f32379c0b4b4e75065946451721a4f4650fc444426ca0",
+      "definitions": [
+        {
+          "name": "destination_ids",
+          "line": 25
+        },
+        {
+          "name": "seed_kerala",
+          "line": 33
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/journey.py",
+      "lines": 348,
+      "sha256": "e4a60e72d2525ca168b27949cada25c3068e46d20b2361efdcbc5684134bbcb1",
+      "definitions": [
+        {
+          "name": "JourneyDraft",
+          "line": 22
+        },
+        {
+          "name": "DraftUpdate",
+          "line": 40
+        },
+        {
+          "name": "SelectionIn",
+          "line": 46
+        },
+        {
+          "name": "ConfirmIn",
+          "line": 54
+        },
+        {
+          "name": "fingerprint",
+          "line": 61
+        },
+        {
+          "name": "_from_brief",
+          "line": 65
+        },
+        {
+          "name": "workspace",
+          "line": 72
+        },
+        {
+          "name": "normalize",
+          "line": 86
+        },
+        {
+          "name": "update_draft",
+          "line": 116
+        },
+        {
+          "name": "preferences",
+          "line": 134
+        },
+        {
+          "name": "options",
+          "line": 145
+        },
+        {
+          "name": "present",
+          "line": 166
+        },
+        {
+          "name": "select_item",
+          "line": 179
+        },
+        {
+          "name": "chat_turn",
+          "line": 200
+        },
+        {
+          "name": "confirm",
+          "line": 310
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/main.py",
+      "lines": 96,
+      "sha256": "42320702125db3057abd7dff9b25410a726f440026d75f7b2422f20134c39947",
+      "definitions": [
+        {
+          "name": "lifespan",
+          "line": 17
+        },
+        {
+          "name": "browser_headers",
+          "line": 28
+        },
+        {
+          "name": "homepage",
+          "line": 65
+        },
+        {
+          "name": "transition_script",
+          "line": 73
+        },
+        {
+          "name": "transition_styles",
+          "line": 79
+        },
+        {
+          "name": "health",
+          "line": 85
+        },
+        {
+          "name": "spa_fallback",
+          "line": 90
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/memory_provider.py",
+      "lines": 20,
+      "sha256": "15fa056d1c258dbff6acb2f480884493a475b2c436bc56664aee1766f6f7c0c5",
+      "definitions": [
+        {
+          "name": "MemoryProvider",
+          "line": 9
+        },
+        {
+          "name": "NullMemoryProvider",
+          "line": 16
+        },
+        {
+          "name": "append",
+          "line": 10
+        },
+        {
+          "name": "recall",
+          "line": 11
+        },
+        {
+          "name": "profile",
+          "line": 12
+        },
+        {
+          "name": "forget",
+          "line": 13
+        },
+        {
+          "name": "append",
+          "line": 17
+        },
+        {
+          "name": "recall",
+          "line": 18
+        },
+        {
+          "name": "profile",
+          "line": 19
+        },
+        {
+          "name": "forget",
+          "line": 20
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/models.py",
+      "lines": 306,
+      "sha256": "960bd36f9bb9c66f68eb417222af48df7ce927f72cb4880cb382ce6136a04fa0",
+      "definitions": [
+        {
+          "name": "_now",
+          "line": 10
+        },
+        {
+          "name": "_uuid",
+          "line": 14
+        },
+        {
+          "name": "User",
+          "line": 18
+        },
+        {
+          "name": "Destination",
+          "line": 33
+        },
+        {
+          "name": "_PlaceMixin",
+          "line": 49
+        },
+        {
+          "name": "Stay",
+          "line": 55
+        },
+        {
+          "name": "FoodPlace",
+          "line": 63
+        },
+        {
+          "name": "TransportRoute",
+          "line": 72
+        },
+        {
+          "name": "Guide",
+          "line": 84
+        },
+        {
+          "name": "Booking",
+          "line": 95
+        },
+        {
+          "name": "BookingItem",
+          "line": 106
+        },
+        {
+          "name": "UserProfile",
+          "line": 122
+        },
+        {
+          "name": "Itinerary",
+          "line": 136
+        },
+        {
+          "name": "AIConversation",
+          "line": 149
+        },
+        {
+          "name": "AIMessage",
+          "line": 161
+        },
+        {
+          "name": "PlanVersion",
+          "line": 173
+        },
+        {
+          "name": "TripWorkspace",
+          "line": 184
+        },
+        {
+          "name": "TravelBook",
+          "line": 191
+        },
+        {
+          "name": "AIMemory",
+          "line": 201
+        },
+        {
+          "name": "Offer",
+          "line": 213
+        },
+        {
+          "name": "Favorite",
+          "line": 227
+        },
+        {
+          "name": "Lead",
+          "line": 235
+        },
+        {
+          "name": "GoogleIdentity",
+          "line": 246
+        },
+        {
+          "name": "LoginChallenge",
+          "line": 252
+        },
+        {
+          "name": "HolidayPackage",
+          "line": 258
+        },
+        {
+          "name": "Experience",
+          "line": 268
+        },
+        {
+          "name": "WebsiteStay",
+          "line": 277
+        },
+        {
+          "name": "ContactEnquiry",
+          "line": 283
+        },
+        {
+          "name": "NewsletterSubscription",
+          "line": 294
+        },
+        {
+          "name": "BookingRequestDetails",
+          "line": 300
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/plan_drafts.py",
+      "lines": 151,
+      "sha256": "d46d825f91268c2b635e4b6d2b4bb407b12e53742227e3572d8422f4d6eb6a31",
+      "definitions": [
+        {
+          "name": "PlanEdit",
+          "line": 16
+        },
+        {
+          "name": "versions",
+          "line": 25
+        },
+        {
+          "name": "invalidate",
+          "line": 30
+        },
+        {
+          "name": "save_generated",
+          "line": 34
+        },
+        {
+          "name": "view",
+          "line": 58
+        },
+        {
+          "name": "edit",
+          "line": 64
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/routers/__init__.py",
+      "lines": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "definitions": []
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/routers/assistant.py",
+      "lines": 303,
+      "sha256": "29240aba25f0a6fc7271021f7dd67e809e1fd7cb598e375581c4f153ae03b435",
+      "definitions": [
+        {
+          "name": "list_conversations",
+          "line": 20
+        },
+        {
+          "name": "create_conversation",
+          "line": 29
+        },
+        {
+          "name": "get_conversation",
+          "line": 41
+        },
+        {
+          "name": "save_message",
+          "line": 55
+        },
+        {
+          "name": "get_plan",
+          "line": 123
+        },
+        {
+          "name": "edit_plan",
+          "line": 130
+        },
+        {
+          "name": "_owned_conversation",
+          "line": 138
+        },
+        {
+          "name": "save_requirements",
+          "line": 147
+        },
+        {
+          "name": "get_requirements",
+          "line": 166
+        },
+        {
+          "name": "delete_requirement",
+          "line": 184
+        },
+        {
+          "name": "memory_events",
+          "line": 200
+        },
+        {
+          "name": "forget_event",
+          "line": 209
+        },
+        {
+          "name": "delete_conversation",
+          "line": 225
+        },
+        {
+          "name": "list_memory",
+          "line": 247
+        },
+        {
+          "name": "save_memory",
+          "line": 254
+        },
+        {
+          "name": "_save_memory",
+          "line": 262
+        },
+        {
+          "name": "delete_memory",
+          "line": 286
+        },
+        {
+          "name": "_delete_memory",
+          "line": 294
+        },
+        {
+          "name": "refresh_profile",
+          "line": 83
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/routers/auth.py",
+      "lines": 85,
+      "sha256": "cb541f371ff5c2f542399b6c5dd3b327e73e1b6f45329065c1d707e093b0ae7e",
+      "definitions": [
+        {
+          "name": "_developer_available",
+          "line": 19
+        },
+        {
+          "name": "developer_config",
+          "line": 27
+        },
+        {
+          "name": "developer_login",
+          "line": 32
+        },
+        {
+          "name": "register",
+          "line": 55
+        },
+        {
+          "name": "login",
+          "line": 67
+        },
+        {
+          "name": "me",
+          "line": 76
+        },
+        {
+          "name": "update_me",
+          "line": 81
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/routers/bookings.py",
+      "lines": 135,
+      "sha256": "9204a0e6793fb4e470ccd6855aff4ad8e53e751009e4404bc7aeed827e63c9ff",
+      "definitions": [
+        {
+          "name": "_price",
+          "line": 15
+        },
+        {
+          "name": "_minute",
+          "line": 41
+        },
+        {
+          "name": "_validate_conflicts",
+          "line": 47
+        },
+        {
+          "name": "_apply_coupon",
+          "line": 66
+        },
+        {
+          "name": "create",
+          "line": 88
+        },
+        {
+          "name": "build_booking",
+          "line": 92
+        },
+        {
+          "name": "mine",
+          "line": 117
+        },
+        {
+          "name": "cancel",
+          "line": 122
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/routers/catalog.py",
+      "lines": 145,
+      "sha256": "6b6faca538bc75e5150448469620f007ab0a8677f38c5c4c5b3cdb46ff023eb2",
+      "definitions": [
+        {
+          "name": "_dict",
+          "line": 24
+        },
+        {
+          "name": "get_image_catalog",
+          "line": 29
+        },
+        {
+          "name": "list_items",
+          "line": 35
+        },
+        {
+          "name": "get_item",
+          "line": 140
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/routers/dashboard.py",
+      "lines": 133,
+      "sha256": "a1650c5a88af8652f2be885751238321c0e6b894b5c23ebaf1a2c60ed1cb8be8",
+      "definitions": [
+        {
+          "name": "owned_target",
+          "line": 28
+        },
+        {
+          "name": "published_target",
+          "line": 43
+        },
+        {
+          "name": "inspect",
+          "line": 67
+        },
+        {
+          "name": "published_snapshot",
+          "line": 88
+        },
+        {
+          "name": "graph",
+          "line": 93
+        },
+        {
+          "name": "vectors",
+          "line": 102
+        },
+        {
+          "name": "owner_snapshot",
+          "line": 118
+        },
+        {
+          "name": "shared_memory",
+          "line": 128
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/routers/favorites.py",
+      "lines": 58,
+      "sha256": "f573b706846d4be39af15d84c43761aac69af44c66855258c9fb3ebc00e67a0b",
+      "definitions": [
+        {
+          "name": "list_favorites",
+          "line": 16
+        },
+        {
+          "name": "add_favorite",
+          "line": 23
+        },
+        {
+          "name": "remove_favorite",
+          "line": 52
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/routers/google_auth.py",
+      "lines": 119,
+      "sha256": "48f6dffbdd2eafd96346220c5c67a5cb07b94d105d97c560ecd14451d259c110",
+      "definitions": [
+        {
+          "name": "configured",
+          "line": 25
+        },
+        {
+          "name": "digest",
+          "line": 31
+        },
+        {
+          "name": "google_config",
+          "line": 36
+        },
+        {
+          "name": "GoogleCredential",
+          "line": 50
+        },
+        {
+          "name": "verify_google",
+          "line": 55
+        },
+        {
+          "name": "google_login",
+          "line": 61
+        },
+        {
+          "name": "logout",
+          "line": 117
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/routers/itineraries.py",
+      "lines": 77,
+      "sha256": "76e527228ac5bdc14ac932f79500ac77a802494b4d5578ed1e6f4b4e6fdca42e",
+      "definitions": [
+        {
+          "name": "_validate_refs",
+          "line": 13
+        },
+        {
+          "name": "list_itineraries",
+          "line": 31
+        },
+        {
+          "name": "create_itinerary",
+          "line": 38
+        },
+        {
+          "name": "update_itinerary",
+          "line": 49
+        },
+        {
+          "name": "delete_itinerary",
+          "line": 68
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/routers/journey.py",
+      "lines": 114,
+      "sha256": "ec749a6d77cd1742c88ba3f578b2d93d303a2ff58e62d286cd4e3d809d773824",
+      "definitions": [
+        {
+          "name": "get_workspace",
+          "line": 20
+        },
+        {
+          "name": "update_workspace",
+          "line": 28
+        },
+        {
+          "name": "chat",
+          "line": 38
+        },
+        {
+          "name": "select_choice",
+          "line": 63
+        },
+        {
+          "name": "confirm_trip",
+          "line": 73
+        },
+        {
+          "name": "book_preview",
+          "line": 89
+        },
+        {
+          "name": "create_book",
+          "line": 95
+        },
+        {
+          "name": "download_book",
+          "line": 109
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/routers/leads.py",
+      "lines": 39,
+      "sha256": "78f588bfb813769cae5119fda8e7786d2202db4af0f658025fd4601b1950021a",
+      "definitions": [
+        {
+          "name": "create_lead",
+          "line": 20
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/routers/offers.py",
+      "lines": 54,
+      "sha256": "d93b05149c747551565ba32eb89dd7758c8e027b3698f99b9e9e3cd6bb573463",
+      "definitions": [
+        {
+          "name": "_live",
+          "line": 14
+        },
+        {
+          "name": "discount_for",
+          "line": 19
+        },
+        {
+          "name": "list_offers",
+          "line": 38
+        },
+        {
+          "name": "validate",
+          "line": 49
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/routers/profile.py",
+      "lines": 73,
+      "sha256": "90e93b1592d73e9a99e835d721729257a2411976b8e13a3d2113b7b5b83a878d",
+      "definitions": [
+        {
+          "name": "get_profile",
+          "line": 25
+        },
+        {
+          "name": "update_profile",
+          "line": 35
+        },
+        {
+          "name": "_save_profile",
+          "line": 45
+        },
+        {
+          "name": "booking_history",
+          "line": 68
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/routers/website.py",
+      "lines": 187,
+      "sha256": "48ad25aea83ef13354e90732e62510241f97907435f8a3aef28e37c9ddf22e64",
+      "definitions": [
+        {
+          "name": "catalog",
+          "line": 24
+        },
+        {
+          "name": "flights",
+          "line": 45
+        },
+        {
+          "name": "TravelerDetails",
+          "line": 62
+        },
+        {
+          "name": "QuoteIn",
+          "line": 72
+        },
+        {
+          "name": "RequestIn",
+          "line": 87
+        },
+        {
+          "name": "price_quote",
+          "line": 93
+        },
+        {
+          "name": "quote",
+          "line": 110
+        },
+        {
+          "name": "request_booking",
+          "line": 115
+        },
+        {
+          "name": "EnquiryIn",
+          "line": 145
+        },
+        {
+          "name": "enquiry",
+          "line": 155
+        },
+        {
+          "name": "SubscribeIn",
+          "line": 168
+        },
+        {
+          "name": "newsletter",
+          "line": 173
+        },
+        {
+          "name": "unavailable_route",
+          "line": 185
+        },
+        {
+          "name": "routes",
+          "line": 50
+        },
+        {
+          "name": "dated",
+          "line": 76
+        },
+        {
+          "name": "existing",
+          "line": 117
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/schemas.py",
+      "lines": 204,
+      "sha256": "94948be1876a363bc302f4bbf1ec3ee4aa41f40b7408a537365519753a9e8c4b",
+      "definitions": [
+        {
+          "name": "RegisterIn",
+          "line": 7
+        },
+        {
+          "name": "LoginIn",
+          "line": 15
+        },
+        {
+          "name": "UserPatch",
+          "line": 20
+        },
+        {
+          "name": "UserOut",
+          "line": 25
+        },
+        {
+          "name": "TokenOut",
+          "line": 35
+        },
+        {
+          "name": "BookingItemIn",
+          "line": 41
+        },
+        {
+          "name": "BookingIn",
+          "line": 51
+        },
+        {
+          "name": "BookingItemOut",
+          "line": 56
+        },
+        {
+          "name": "BookingOut",
+          "line": 68
+        },
+        {
+          "name": "ProfilePatch",
+          "line": 77
+        },
+        {
+          "name": "ProfileOut",
+          "line": 87
+        },
+        {
+          "name": "ItineraryIn",
+          "line": 92
+        },
+        {
+          "name": "ItineraryOut",
+          "line": 101
+        },
+        {
+          "name": "ConversationIn",
+          "line": 108
+        },
+        {
+          "name": "MessageIn",
+          "line": 112
+        },
+        {
+          "name": "TripRequirementsIn",
+          "line": 118
+        },
+        {
+          "name": "MemoryIn",
+          "line": 145
+        },
+        {
+          "name": "OfferOut",
+          "line": 151
+        },
+        {
+          "name": "OfferValidateIn",
+          "line": 165
+        },
+        {
+          "name": "OfferValidateOut",
+          "line": 170
+        },
+        {
+          "name": "FavoriteIn",
+          "line": 177
+        },
+        {
+          "name": "FavoriteOut",
+          "line": 182
+        },
+        {
+          "name": "LeadIn",
+          "line": 188
+        },
+        {
+          "name": "LeadOut",
+          "line": 196
+        },
+        {
+          "name": "coherent",
+          "line": 131
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/security.py",
+      "lines": 40,
+      "sha256": "461188df8c6792d2599a648a186015da2e184f6d38e67356b36ddb6536bb61a2",
+      "definitions": [
+        {
+          "name": "hash_password",
+          "line": 12
+        },
+        {
+          "name": "verify_password",
+          "line": 16
+        },
+        {
+          "name": "create_token",
+          "line": 23
+        },
+        {
+          "name": "decode_token",
+          "line": 28
+        },
+        {
+          "name": "set_session_cookies",
+          "line": 35
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/app/travel_book.py",
+      "lines": 213,
+      "sha256": "f20cd96b4364746e874cf313b3f7391a98933e8208cd6397adeea8d89aab6617",
+      "definitions": [
+        {
+          "name": "snapshot",
+          "line": 14
+        },
+        {
+          "name": "render_pdf",
+          "line": 54
+        },
+        {
+          "name": "edit_link",
+          "line": 79
+        },
+        {
+          "name": "chapter",
+          "line": 82
+        },
+        {
+          "name": "table",
+          "line": 84
+        },
+        {
+          "name": "page_frame",
+          "line": 201
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/memory_adapter.py",
+      "lines": 166,
+      "sha256": "47b8ef9c20103865870ad9f9d6c58244081b7025827774e85a965e047050b36b",
+      "definitions": [
+        {
+          "name": "MemoryServiceError",
+          "line": 12
+        },
+        {
+          "name": "CustomMemoryBridge",
+          "line": 16
+        },
+        {
+          "name": "__init__",
+          "line": 17
+        },
+        {
+          "name": "get_user_long_term_preferences",
+          "line": 25
+        },
+        {
+          "name": "filter_inventory_by_memory",
+          "line": 51
+        },
+        {
+          "name": "filter_inventory_by_preferences",
+          "line": 57
+        },
+        {
+          "name": "_string_set",
+          "line": 75
+        },
+        {
+          "name": "_score",
+          "line": 86
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/seed.py",
+      "lines": 101,
+      "sha256": "5c3899e282c48743eb8104fad213de047592803df6fa8ad95760d56012f7c3d0",
+      "definitions": [
+        {
+          "name": "run",
+          "line": 20
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/seed_website.py",
+      "lines": 65,
+      "sha256": "205b1bd474d718d64ca882fc76608fc42ab39dcb9c4c5023e61e5e5378a2cde0",
+      "definitions": [
+        {
+          "name": "seed_website",
+          "line": 21
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/tests/test_api.py",
+      "lines": 325,
+      "sha256": "0b6452bdbe94419022acc640f2ccc1366ce51a24dde8c0563ff928f87904f312",
+      "definitions": [
+        {
+          "name": "auth",
+          "line": 17
+        },
+        {
+          "name": "test_auth_flow",
+          "line": 22
+        },
+        {
+          "name": "test_catalog_filters",
+          "line": 30
+        },
+        {
+          "name": "test_voyara_homepage",
+          "line": 41
+        },
+        {
+          "name": "test_voyara_transition_assets",
+          "line": 47
+        },
+        {
+          "name": "test_voyara_image_catalog",
+          "line": 56
+        },
+        {
+          "name": "test_memory_preferences_rerank_catalog_for_authenticated_user",
+          "line": 65
+        },
+        {
+          "name": "test_memory_service_failure_keeps_catalog_available",
+          "line": 95
+        },
+        {
+          "name": "test_memory_bridge_fetches_external_preferences",
+          "line": 116
+        },
+        {
+          "name": "test_booking_and_cancel",
+          "line": 160
+        },
+        {
+          "name": "test_profile_memory_and_recommendation_preferences",
+          "line": 189
+        },
+        {
+          "name": "test_itineraries_and_assistant_data_are_user_scoped",
+          "line": 215
+        },
+        {
+          "name": "test_offers_and_coupon_booking",
+          "line": 268
+        },
+        {
+          "name": "test_booking_server_side_conflict_rejection",
+          "line": 293
+        },
+        {
+          "name": "test_favorites_flow",
+          "line": 304
+        },
+        {
+          "name": "test_lead_capture",
+          "line": 318
+        },
+        {
+          "name": "Response",
+          "line": 123
+        },
+        {
+          "name": "AsyncClient",
+          "line": 130
+        },
+        {
+          "name": "unavailable",
+          "line": 217
+        },
+        {
+          "name": "raise_for_status",
+          "line": 124
+        },
+        {
+          "name": "json",
+          "line": 127
+        },
+        {
+          "name": "__init__",
+          "line": 131
+        },
+        {
+          "name": "__aenter__",
+          "line": 134
+        },
+        {
+          "name": "__aexit__",
+          "line": 137
+        },
+        {
+          "name": "get",
+          "line": 140
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/tests/test_developer_auth.py",
+      "lines": 90,
+      "sha256": "238ae583c3051c2e38497bc2c040dfda5b32e9874d309b622ff76745d112bc70",
+      "definitions": [
+        {
+          "name": "developer",
+          "line": 14
+        },
+        {
+          "name": "test_developer_session_persists_and_uses_csrf",
+          "line": 24
+        },
+        {
+          "name": "test_developer_disabled_and_cross_origin_rejected",
+          "line": 46
+        },
+        {
+          "name": "test_local_only_guard",
+          "line": 62
+        },
+        {
+          "name": "test_existing_account_cannot_be_impersonated",
+          "line": 72
+        },
+        {
+          "name": "test_inactive_developer_cannot_sign_in",
+          "line": 83
+        },
+        {
+          "name": "local_app",
+          "line": 18
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/tests/test_google_auth.py",
+      "lines": 141,
+      "sha256": "3a7362a3d7dccd07a2246a6693a55740050ad80a22e7dd486f7cffd518198229",
+      "definitions": [
+        {
+          "name": "google",
+          "line": 13
+        },
+        {
+          "name": "test_placeholder_is_explicitly_unconfigured",
+          "line": 34
+        },
+        {
+          "name": "test_google_session_is_httponly_csrf_protected_and_logs_out",
+          "line": 41
+        },
+        {
+          "name": "test_sub_is_stable_identity_even_if_google_email_changes",
+          "line": 58
+        },
+        {
+          "name": "test_linking_existing_account_requires_google_authoritative_email",
+          "line": 72
+        },
+        {
+          "name": "test_different_google_identity_cannot_relink_same_account",
+          "line": 82
+        },
+        {
+          "name": "test_unverified_or_missing_identity_is_rejected",
+          "line": 90
+        },
+        {
+          "name": "test_wrong_nonce_invalid_token_and_expiry_are_rejected",
+          "line": 96
+        },
+        {
+          "name": "test_cookie_binding_is_required",
+          "line": 112
+        },
+        {
+          "name": "test_google_auth_verifier_receives_exact_configured_audience",
+          "line": 119
+        },
+        {
+          "name": "test_inactive_user_and_insecure_server_key_cannot_sign_in",
+          "line": 133
+        },
+        {
+          "name": "verified",
+          "line": 20
+        },
+        {
+          "name": "challenge",
+          "line": 24
+        },
+        {
+          "name": "invalid",
+          "line": 102
+        },
+        {
+          "name": "verify",
+          "line": 123
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/tests/test_website.py",
+      "lines": 208,
+      "sha256": "26069497a83872980e888727cdbb6067cdccd18e6c34c1ca10ea79f4aeb34747",
+      "definitions": [
+        {
+          "name": "site",
+          "line": 16
+        },
+        {
+          "name": "tomorrow",
+          "line": 39
+        },
+        {
+          "name": "package_items",
+          "line": 43
+        },
+        {
+          "name": "booking_request",
+          "line": 50
+        },
+        {
+          "name": "test_catalog_is_seeded_and_idempotent",
+          "line": 56
+        },
+        {
+          "name": "test_package_quote_confirm_replay_and_owner_isolation",
+          "line": 67
+        },
+        {
+          "name": "test_price_tampering_and_invalid_package_dates",
+          "line": 89
+        },
+        {
+          "name": "test_stay_and_experience_requests_use_server_prices",
+          "line": 102
+        },
+        {
+          "name": "test_flight_search_round_trip_and_cancel_restore_inventory",
+          "line": 114
+        },
+        {
+          "name": "test_same_numeric_package_and_stay_favorites_coexist",
+          "line": 138
+        },
+        {
+          "name": "test_concurrent_favorite_saves_are_idempotent",
+          "line": 150
+        },
+        {
+          "name": "test_contact_and_newsletter_persist_without_exposing_private_data",
+          "line": 174
+        },
+        {
+          "name": "test_existing_sqlite_favorites_upgrade_preserves_records",
+          "line": 187
+        },
+        {
+          "name": "db",
+          "line": 23
+        },
+        {
+          "name": "register",
+          "line": 28
+        },
+        {
+          "name": "before_insert",
+          "line": 160
+        }
+      ]
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/backend/website_catalog.json",
+      "lines": 220,
+      "sha256": "014603cb284b2d6b6dc21666faed79800011c5f7cb52f6c6959a922e52983380"
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/frontend/app.js",
+      "lines": 1198,
+      "sha256": "4b7380c43b53ea8c6d9c0c4bc27b4fb56d39d60da56e49a53138155405fae721"
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/frontend/connected.css",
+      "lines": 126,
+      "sha256": "ff002ab96c6e4cbc950e41940339950c46e08a062f91bf8286943563fbb3ac68"
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/frontend/interior-design.css",
+      "lines": 213,
+      "sha256": "5074235f7d2f5a60b6e53c12199d4ea8d5f4c58efaef7a3820adefb62b382e79"
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/frontend/journey-ui.js",
+      "lines": 169,
+      "sha256": "c5bd78b6d53635b0d929dfd270ad79e587cb66be37b6485d21513f752429e5ab"
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/frontend/journey.css",
+      "lines": 1,
+      "sha256": "149581a9814f1b915ab56931b1bba8b90bc047533b7e75840bc9ec4c2c0e6b4a"
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/frontend/package-lock.json",
+      "lines": 1153,
+      "sha256": "fe5eecd83538f948bb3479c37be24bff6c7856d856dc477fc515e62825b689c6"
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/frontend/package.json",
+      "lines": 14,
+      "sha256": "a195adf052cf52f76161142f7823524aa12ac4fa5746f0d6f97da43ee0bd5022"
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/frontend/plan-editor.css",
+      "lines": 1,
+      "sha256": "7fe368e246e6cebbf16c66403f6a0c0dce62141e12ee7d372944e040b769ac59"
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/frontend/plan-editor.js",
+      "lines": 78,
+      "sha256": "5c360537cf55305a2c0186215bf6c44330af67d69d41221823a99b4a476d9117"
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/frontend/reference-design.css",
+      "lines": 1918,
+      "sha256": "b2bc6fd9af449af54c96aae1703062c42ff2f21f26317a5ff55d47aec1904bf0"
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/frontend/reference-design.js",
+      "lines": 134,
+      "sha256": "1ca5f94b0feb85b6914757797fb2308418227b64ef9b625ea266d992edb03f4a"
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/frontend/styles.css",
+      "lines": 1661,
+      "sha256": "aa005a721e4567033045645540e9f590cfac117bcbdde55048e2cac3f9f1f523"
+    },
+    {
+      "file": "stitch_ai_travel_booking_platform/frontend/templates.js",
+      "lines": 209,
+      "sha256": "c6bd2362e431f313b0a805b9887d68f0fd5e902fd65dbc3f71389d4c6e51bb13"
+    }
+  ]
+}
