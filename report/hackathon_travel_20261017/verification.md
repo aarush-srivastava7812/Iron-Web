@@ -1,0 +1,12 @@
+# Hackathon travel verification — 17 October 2026
+
+- Broad regression run: **77 passed** across specialist/orchestration/validation tests, connected application memory, plan editing, catalog, booking, authentication and developer-session endpoints.
+- Final hosted-agent and agent-contract run: **7 passed** (one complete live team test plus six focused contract tests). The live test completed all seven distinct specialists through NVIDIA with nonzero role temperatures; each executed its actual role tool. Weaver built and reviewed the schedule. Retained details: [live_nvidia.json](live_nvidia.json).
+- After the last scheduling and revision changes, affected connected/planner regressions: **34 passed**. Final budget/specialist validation subset: **16 passed**. Counts overlap; they are separate runs, not additive totals.
+- Browser verification: **passed**, including real HTTP plan edits, persisted repricing/reload, version comparison/restore, stay swaps, text export, seven rendered agent traces and no horizontal overflow at widths 1440, 768, 390 and 320. [Browser evidence](browser_checks.json), [desktop](editor-1440.png), [mobile](editor-390.png), [export](exported_itinerary.txt).
+- Frontend production build, Python unused-name checks, JavaScript syntax checks and Git whitespace validation: **passed**.
+- Restarted the existing local application on port **8088** with agent mode auto. Health returned ok; homepage returned HTTP 200; OpenAPI exposes both new plan endpoints. The existing database was retained. The isolated browser server on port 8092 was stopped. No public deployment or publication occurred.
+
+The live inference test uses an explicitly synthetic catalog and the test suite's declared offline embeddings with actual temporary FalkorDB/Qdrant memory stores. Browser verification uses a retained live-agent plan in an isolated SQL fixture and the real edit endpoints. It does not establish live supplier availability, real-world route feasibility or hosted-model quality across all possible prompts. Existing library deprecation warnings remain non-failing.
+
+Native gpt-oss tool parsing was observed to produce malformed channel-suffixed tool names and empty follow-up content. The completed implementation uses validated JSON actions with a bounded work log. Both completed full-team runs using that protocol passed. Nonzero sampling and absence of a fixed seed are checked at the request boundary; stochastic runs can still make the same valid choice.

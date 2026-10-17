@@ -1,0 +1,14 @@
+{
+  "label": "15-recall-walking",
+  "path": "/v1/recall",
+  "body": {
+    "query": "max_walk_metres",
+    "subject": "Riya",
+    "predicate": "max_walk_metres",
+    "scope": {
+      "trip_id": "goa-family"
+    }
+  },
+  "actor": "reviewer",
+  "tenant": "riya"
+}

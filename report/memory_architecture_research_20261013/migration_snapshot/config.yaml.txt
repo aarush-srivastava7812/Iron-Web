@@ -1,0 +1,40 @@
+# Effective settings only. Choose nim explicitly to enable hosted extraction.
+USE_GPU: false
+extraction_policy: none
+qdrant:
+  path: ./data/qdrant
+  collection_name: semantic_memory
+  vector_size: 384
+falkordb:
+  host: 127.0.0.1
+  port: 6379
+  graph_name: iron_web
+  tls: false
+  socket_timeout: 10
+  query_timeout_ms: 10000
+embeddings:
+  model: BAAI/bge-small-en-v1.5
+  batch_size: 32
+reranker:
+  model: BAAI/bge-reranker-base
+  batch_size: 16
+  prefer_tensorrt: false
+  tensorrt_cache_path: ./data/tensorrt_cache
+retrieval:
+  reranker_enabled: false
+  vector_candidates: 100
+  graph_hops: 2
+  graph_max_nodes: 50
+  entity_lookup_cache: true
+  weights:
+    alpha_semantic: 1.0
+    beta_graph: 0.5
+    gamma_recency: 0.3
+    delta_importance: 0.2
+    epsilon_entity: 0.4
+    eta_historical: 0.2
+    theta_contradiction: 0.5
+nim:
+  base_url: https://integrate.api.nvidia.com/v1
+  extractor_model: meta/llama-3.2-11b-vision-instruct
+  cache_dir: ./data/extraction_cache

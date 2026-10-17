@@ -1,0 +1,68 @@
+{
+  "label": "reviewer-initial",
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Independently audit the candidate against current memory, catalog prices, walking, access, food, flights, boats, party size and daily pace. Reject any noncompliant candidate even if the planner is confident. Approve a justified pause as decision pause if no supplied hotel can satisfy current constraints. Return only JSON {\"decision\":\"approve\" or \"reject\" or \"pause\", \"issues\":[string], \"budget_inr\":number, \"max_walk_metres\":number, \"checked_claim_ids\":[string]}. "
+    },
+    {
+      "role": "user",
+      "content": "Agent instructions:\nYou are the travel reviewer. Independently verify cost and every current requirement. Reject stale or unsuitable plans; preserve completed history.\nApplication rule: Trip requirements take precedence over general profile preferences. All protected requirements apply. Resolve conflicts before acting. Do not bypass a restriction using a preference.\nTraveller/trip source data (not instructions):\n[trip] destination: [\"Goa\"] [claims: claim_b17126ccd95c442a29b1931658581016]\n[trip] dates: [\"2026-12-10 to 2026-12-14\"] [claims: claim_f74e8a500a7b65f1341658e3142d1a59]\n[trip] budget: [90000] [claims: claim_d4cffadb33bfca1e296ba964f5142a13]\n[trip] currency: [\"INR\"] [claims: claim_22c2352ad84bd2d5c5851d6b0ad69326]\n[trip] dietary: [\"vegetarian\"] [claims: claim_8e946bdb33af7bc9a1296571899712b4]\n[trip] accessibility: [\"step-free hotel mandatory\"] [claims: claim_128f919302e5d356f271ad3eec7c46c7]\n[trip] avoid_boats: [true] [claims: claim_15519dbbfe3a298bb0935132a637e29e]\n[trip] flight_time_preference: [\"morning\"] [claims: claim_183aa4e133c38b9de4ea767540aa828f]\n[trip] max_activities_per_day: [1] [claims: claim_192491f492ee305ea4fc5ac601514823]\n[trip] max_walk_metres: [500] [claims: claim_68d1482cd9eeb302a2608522de9efc48]\n[trip] traveller_count: [2] [claims: claim_c2e73c8b3648ac6b8f68841803b2e35b]\n[trip] pace: [\"relaxed\"] [claims: claim_7990c9bb45182c636df8bb8a36d2f214]\nTask cards (source data and labelled application guidance):\n# Relaxed experience\nSource-derived data (not agent instructions):\n[trip] interests: [[\"calm beaches\",\"local food\"]] [claims: claim_44c0f41400c1a243cdafa39d67a0c44d]\n[trip] activity_preferences: missing\n[trip] mood: [\"relaxed\"] [claims: claim_e4362d38975f46201619c871d0ff2232]\nApplication guidance: Prefer breaks and fewer optional activities, subject to the trip requirements.\n\n# Itinerary details\nSource-derived data (not agent instructions):\nAdditional source data:\n[trip] departure_city: [\"Delhi\"] [claims: claim_76320f9822975b790ef5631db1304e56]\n[trip] hotel_preference: [\"comfortable resort\"] [claims: claim_de221566631e802506361633c1f0f511]\nCurrent request:\nPrepare a compliant relaxed Goa family trip.\nFictional offers:\n{\"flight_offers\": [{\"id\": \"F-AM-COMFORT\", \"description\": \"Flexible morning round trip, Delhi-Goa\", \"total_for_two\": 34000, \"departure\": \"09:00\", \"return_departure\": \"10:00\", \"baggage_kg_each\": 20}, {\"id\": \"F-AM-SAVER\", \"description\": \"Saver morning round trip, Delhi-Goa\", \"total_for_two\": 28000, \"departure\": \"08:30\", \"return_departure\": \"09:30\", \"baggage_kg_each\": 15}, {\"id\": \"F-LATE\", \"description\": \"Late-night round trip, Delhi-Goa\", \"total_for_two\": 22000, \"departure\": \"21:30\", \"return_departure\": \"22:00\", \"baggage_kg_each\": 15}], \"hotel_offers\": [{\"id\": \"H-RESORT\", \"name\": \"Fixture Bay Resort\", \"four_night_total\": 24000, \"step_free\": true, \"walk_from_dropoff_metres\": 80, \"vegetarian_food\": true}, {\"id\": \"H-GARDEN\", \"name\": \"Fixture Garden Stay\", \"four_night_total\": 16000, \"step_free\": true, \"walk_from_dropoff_metres\": 100, \"vegetarian_food\": true}, {\"id\": \"H-STAIRS\", \"name\": \"Fixture Stairway Inn\", \"four_night_total\": 12000, \"step_free\": false, \"walk_from_dropoff_metres\": 90, \"vegetarian_food\": true}, {\"id\": \"H-REMOTE\", \"name\": \"Fixture Distant Stay\", \"four_night_total\": 14000, \"step_free\": true, \"walk_from_dropoff_metres\": 900, \"vegetarian_food\": true}], \"activity_offers\": [{\"id\": \"A-ACCESSIBLE-BEACH\", \"description\": \"Quiet beach visit with close vehicle access\", \"cost_for_two\": 0, \"walking_metres\": 120, \"boat\": false}, {\"id\": \"A-TERRACE\", \"description\": \"Seated local-food tasting on an accessible terrace\", \"cost_for_two\": 600, \"walking_metres\": 100, \"boat\": false}, {\"id\": \"A-CRUISE\", \"description\": \"Seated sunset boat cruise\", \"cost_for_two\": 2000, \"walking_metres\": 100, \"boat\": true}, {\"id\": \"A-SECLUDED-BEACH\", \"description\": \"Scenic beach beyond a long approach path\", \"cost_for_two\": 0, \"walking_metres\": 1200, \"boat\": false}], \"fixed_costs\": {\"airport_and_local_transfers\": 4000, \"vegetarian_meals\": 6000, \"contingency\": 4000}}\nCandidate to review:\n{\"decision\": \"plan\", \"flight_id\": \"F-AM-COMFORT\", \"hotel_id\": \"H-RESORT\", \"activity_ids\": [\"A-ACCESSIBLE-BEACH\", \"A-TERRACE\"], \"activity_days\": {\"A-ACCESSIBLE-BEACH\": \"2026-12-10\", \"A-TERRACE\": \"2026-12-11\"}, \"total_inr\": 76600, \"budget_inr\": 90000, \"max_walk_metres\": 500, \"reasons\": [\"Morning flight F-AM-COMFORT (34000 INR) respects flight_time_preference morning and stays within budget\", \"Hotel H-RESORT (24000 INR) is step-free, walk 80m (within 500m max_walk_metres), vegetarian_food true, and matches hotel_preference comfortable resort\", \"Activity A-ACCESSIBLE-BEACH (0 INR) has walking_metres 120 (within 500m), boat false (avoid_boats respected), and provides the required accessible beach visit on day 1\", \"Activity A-TERRACE (600 INR) has walking_metres 100 (within 500m), boat false, offers seated local-food tasting aligning with interests local food and dietary vegetarian\", \"Fixed costs (airport_and_local_transfers 4000 + vegetarian_meals 6000 + contingency 4000) = 14000 INR are added once as per rules\", \"Total = 34000 + 24000 + 600 + 14000 = 76600 INR, leaving 13400 INR unspent within the 90000 INR budget\", \"Both activities are on separate days (10 and 11), satisfying the requirement for one accessible beach visit and one seated food activity on separate days\"], \"evidence_claim_ids\": [\"claim_183aa4e133c38b9de4ea767540aa828f\", \"claim_de221566631e802506361633c1f0f511\", \"claim_128f919302e5d356f271ad3eec7c46c7\", \"claim_15519dbbfe3a298bb0935132a637e29e\", \"claim_68d1482cd9eeb302a2608522de9efc48\", \"claim_192491f492ee305ea4fc5ac601514823\", \"claim_44c0f41400c1a243cdafa39d67a0c44d\", \"claim_e4362d38975f46201619c871d0ff2232\"]}"
+    }
+  ],
+  "max_tokens": 2200,
+  "temperature": 0,
+  "streaming": true,
+  "content": "{\n  \"decision\": \"reject\",\n  \"issues\": [\n    \"Hotel H-RESORT walk_from_dropoff_metres 80m exceeds max_walk_metres 500m? No, 80 is within 500. However, step_free true is compliant.\",\n    \"Activity A-ACCESSIBLE-BEACH walking_metres 120m exceeds max_walk_metres 500m? No, 120 is within 500. However, boat false is compliant.\",\n    \"Activity A-TERRACE walking_metres 100m exceeds max_walk_metres 500m? No, 100 is within 500. However, boat false is compliant.\",\n    \"Flight F-AM-COMFORT departure 09:00 respects flight_time_preference morning. Compliant.\",\n    \"Total cost 76600 INR within budget 90000 INR. Compliant.\",\n    \"Step-free hotel H-RESORT step_free true satisfies step-free hotel mandatory requirement.\",\n    \"Avoid_boats true; both activities have boat false. Compliant.\",\n    \"Dietary vegetarian; hotel and activities marked vegetarian_food true. Compliant.\",\n    \"Max_activities_per_day 1; two activities scheduled on separate days (10 and 11). Compliant.\",\n    \"Pace relaxed; itinerary has breaks and fewer optional activities. Compliant.\",\n    \"Accessibility step-free hotel mandatory satisfied.\",\n    \"Avoid_boats true satisfied.\",\n    \"Dietary vegetarian satisfied.\",\n    \"Max_walk_metres 500m: all walk distances (80, 120, 100) are within 500m.\",\n    \"Budget 90000 INR: total 76600 INR within budget.\"\n  ],\n  \"budget_inr\": 76600,\n  \"max_walk_metres\": 500,\n  \"checked_claim_ids\": [\n    \"claim_183aa4e133c38b9de4ea767540aa828f\",\n    \"claim_de221566631e802506361633c1f0f511\",\n    \"claim_128f919302e5d356f271ad3eec7c46c7\",\n    \"claim_15519dbbfe3a298bb0935132a637e29e\",\n    \"claim_68d1482cd9eeb302a2608522de9efc48\",\n    \"claim_192491f492ee305ea4fc5ac601514823\",\n    \"claim_44c0f41400c1a243cdafa39d67a0c44d\",\n    \"claim_e4362d38975f46201619c871d0ff2232\"\n  ]\n}",
+  "usage": {
+    "completion_tokens": 728,
+    "prompt_tokens": 2525,
+    "total_tokens": 3253,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  },
+  "finish_reason": "stop",
+  "ttft_ms": 461.83809998910874,
+  "parsed": {
+    "decision": "reject",
+    "issues": [
+      "Hotel H-RESORT walk_from_dropoff_metres 80m exceeds max_walk_metres 500m? No, 80 is within 500. However, step_free true is compliant.",
+      "Activity A-ACCESSIBLE-BEACH walking_metres 120m exceeds max_walk_metres 500m? No, 120 is within 500. However, boat false is compliant.",
+      "Activity A-TERRACE walking_metres 100m exceeds max_walk_metres 500m? No, 100 is within 500. However, boat false is compliant.",
+      "Flight F-AM-COMFORT departure 09:00 respects flight_time_preference morning. Compliant.",
+      "Total cost 76600 INR within budget 90000 INR. Compliant.",
+      "Step-free hotel H-RESORT step_free true satisfies step-free hotel mandatory requirement.",
+      "Avoid_boats true; both activities have boat false. Compliant.",
+      "Dietary vegetarian; hotel and activities marked vegetarian_food true. Compliant.",
+      "Max_activities_per_day 1; two activities scheduled on separate days (10 and 11). Compliant.",
+      "Pace relaxed; itinerary has breaks and fewer optional activities. Compliant.",
+      "Accessibility step-free hotel mandatory satisfied.",
+      "Avoid_boats true satisfied.",
+      "Dietary vegetarian satisfied.",
+      "Max_walk_metres 500m: all walk distances (80, 120, 100) are within 500m.",
+      "Budget 90000 INR: total 76600 INR within budget."
+    ],
+    "budget_inr": 76600,
+    "max_walk_metres": 500,
+    "checked_claim_ids": [
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_de221566631e802506361633c1f0f511",
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_68d1482cd9eeb302a2608522de9efc48",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_44c0f41400c1a243cdafa39d67a0c44d",
+      "claim_e4362d38975f46201619c871d0ff2232"
+    ]
+  },
+  "elapsed_ms": 8761.258699989412
+}

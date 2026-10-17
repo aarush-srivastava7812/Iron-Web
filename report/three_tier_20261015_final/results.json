@@ -1,0 +1,671 @@
+{
+  "run_id": "ac6319ac5ce0",
+  "fixture": true,
+  "real_embeddings": true,
+  "generation_measured": false,
+  "tokenizer": "Mistral-7B-Instruct-v0.1-local-tokenizer-plain-contract:11c08db21487c885d8c792180f0be237f6a261b89a46f128a6a80a3aa4bd1720",
+  "runtime": "D:\\Opencode_\\reserchpaper\\data\\three_tier_checks\\ac6319ac5ce0",
+  "namespace": "test_tiers_ac6319ac5ce0",
+  "checks": {
+    "same_prompt_and_evidence_all_modes": true,
+    "pending_change_blocks_warm_cache": true,
+    "accepted_change_rebuilds_and_rejects_old_snapshot": true,
+    "private_user_isolation": true,
+    "context_dependencies_reach_handoff": true,
+    "redaction_does_not_resurrect_old_budget": true,
+    "all_declared_checks_pass": true
+  },
+  "timings": {
+    "uncached_equivalent": {
+      "cold_ms": 246.04129999352153,
+      "p50_ms": 223.43650000402704,
+      "p95_ms": 244.3001499981619,
+      "samples": [
+        {
+          "ms": 233.43300000124145,
+          "cache_hit": false,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 220.33659998851363,
+          "cache_hit": false,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 221.23399999691173,
+          "cache_hit": false,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 223.96019998996053,
+          "cache_hit": false,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 239.39109999628272,
+          "cache_hit": false,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 223.43650000402704,
+          "cache_hit": false,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 235.31499999808148,
+          "cache_hit": false,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 213.14999999594875,
+          "cache_hit": false,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 221.82010000688024,
+          "cache_hit": false,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 214.5267000014428,
+          "cache_hit": false,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 211.8690999923274,
+          "cache_hit": false,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 222.8871999977855,
+          "cache_hit": false,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 226.80010000476614,
+          "cache_hit": false,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 255.7546000025468,
+          "cache_hit": false,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 231.28239999641664,
+          "cache_hit": false,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        }
+      ]
+    },
+    "ram_cpu": {
+      "cold_ms": 237.10719999508,
+      "p50_ms": 14.503600003081374,
+      "p95_ms": 18.908059998648234,
+      "samples": [
+        {
+          "ms": 17.187799996463582,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 14.951999997720122,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 14.011299994308501,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 14.203799990355037,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 14.503600003081374,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 13.326100000995211,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 13.743099989369512,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 13.347899992368184,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 13.36260000243783,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 14.672200006316416,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 15.450900013092905,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 15.619199999491684,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 14.072000005398877,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 14.82560001022648,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        },
+        {
+          "ms": 22.92200000374578,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          }
+        }
+      ]
+    },
+    "ram_gpu": {
+      "cold_ms": 813.983800006099,
+      "p50_ms": 17.936000003828667,
+      "p95_ms": 21.290490003593728,
+      "samples": [
+        {
+          "ms": 17.46149999962654,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cuda",
+            "resident_bytes": 1536,
+            "peak_owned_tensor_bytes": 3076,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 33554432,
+            "fallback_reason": null
+          }
+        },
+        {
+          "ms": 18.244000006234273,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cuda",
+            "resident_bytes": 1536,
+            "peak_owned_tensor_bytes": 3076,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 33554432,
+            "fallback_reason": null
+          }
+        },
+        {
+          "ms": 17.887100009829737,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cuda",
+            "resident_bytes": 1536,
+            "peak_owned_tensor_bytes": 3076,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 33554432,
+            "fallback_reason": null
+          }
+        },
+        {
+          "ms": 18.236000003525987,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cuda",
+            "resident_bytes": 1536,
+            "peak_owned_tensor_bytes": 3076,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 33554432,
+            "fallback_reason": null
+          }
+        },
+        {
+          "ms": 17.936000003828667,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cuda",
+            "resident_bytes": 1536,
+            "peak_owned_tensor_bytes": 3076,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 33554432,
+            "fallback_reason": null
+          }
+        },
+        {
+          "ms": 20.235000003594905,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cuda",
+            "resident_bytes": 1536,
+            "peak_owned_tensor_bytes": 3076,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 33554432,
+            "fallback_reason": null
+          }
+        },
+        {
+          "ms": 23.753300003590994,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cuda",
+            "resident_bytes": 1536,
+            "peak_owned_tensor_bytes": 3076,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 33554432,
+            "fallback_reason": null
+          }
+        },
+        {
+          "ms": 18.073499988531694,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cuda",
+            "resident_bytes": 1536,
+            "peak_owned_tensor_bytes": 3076,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 33554432,
+            "fallback_reason": null
+          }
+        },
+        {
+          "ms": 17.861899992567487,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cuda",
+            "resident_bytes": 1536,
+            "peak_owned_tensor_bytes": 3076,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 33554432,
+            "fallback_reason": null
+          }
+        },
+        {
+          "ms": 18.520300000091083,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cuda",
+            "resident_bytes": 1536,
+            "peak_owned_tensor_bytes": 3076,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 33554432,
+            "fallback_reason": null
+          }
+        },
+        {
+          "ms": 16.998899998725392,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cuda",
+            "resident_bytes": 1536,
+            "peak_owned_tensor_bytes": 3076,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 33554432,
+            "fallback_reason": null
+          }
+        },
+        {
+          "ms": 17.172100007883273,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cuda",
+            "resident_bytes": 1536,
+            "peak_owned_tensor_bytes": 3076,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 33554432,
+            "fallback_reason": null
+          }
+        },
+        {
+          "ms": 16.345199997886084,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cuda",
+            "resident_bytes": 1536,
+            "peak_owned_tensor_bytes": 3076,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 33554432,
+            "fallback_reason": null
+          }
+        },
+        {
+          "ms": 19.028899987461045,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cuda",
+            "resident_bytes": 1536,
+            "peak_owned_tensor_bytes": 3076,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 33554432,
+            "fallback_reason": null
+          }
+        },
+        {
+          "ms": 17.525500006740913,
+          "cache_hit": true,
+          "prompt_tokens": 488,
+          "residency": {
+            "device": "cuda",
+            "resident_bytes": 1536,
+            "peak_owned_tensor_bytes": 3076,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 33554432,
+            "fallback_reason": null
+          }
+        }
+      ]
+    }
+  },
+  "graphs": {
+    "A": "test_tiers_ac6319ac5ce0_8abfd4052efb4f900e9a11df",
+    "B": "test_tiers_ac6319ac5ce0_134d9d7b907c7bcdcacee1d9"
+  },
+  "versions": {
+    "onnxruntime-gpu": "1.23.2",
+    "qdrant-client": "1.18.0",
+    "falkordb": "1.7.1",
+    "tokenizers": "0.20.3",
+    "fastembed-gpu": null,
+    "fastembed": "0.8.0"
+  },
+  "loaded_onnxruntime": {
+    "version": "1.23.2",
+    "module_path": "D:\\Opencode_\\reserchpaper\\data\\evaluation_runtime\\cuda12_ort1232\\onnxruntime\\__init__.py",
+    "providers": [
+      "TensorrtExecutionProvider",
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+    ]
+  },
+  "source_sha256": {
+    "memory\\context\\access.py": "c3b5d2e47db708e5e71d8fe5fd61c07371d4b49cef235315c2b880924ebd964b",
+    "memory\\context\\compiler.py": "7c0a54ccb40dde03f54e2336ec1993c5ff3404432505473f2db7a0f5c2da21bd",
+    "memory\\context\\contracts.py": "ada2efdd9e40825c990a9a54d0c4017012befb9452c17fd51cef3abb818cdfc9",
+    "memory\\context\\runtime.py": "387a3f76cc44c82794d5565720d98170c0d2c2401a805e67dc2395b9f37903fa",
+    "memory\\context\\tokens.py": "f43bcc16cbb9d4283209240a7a9c17e44336c126c190ec1dc0163c339eb19d77",
+    "memory\\context\\__init__.py": "dfb3585869e4f29144801b1e4ff0bfc9988fb34455ca2e9f5d2b7e6043083bd1",
+    "memory\\cache\\cards.py": "b484c23ecb447f86596481a24eed9cff4a52c2a906a4c0fa0eb4068ee4875672",
+    "memory\\cache\\ram.py": "0d735453255af20ec2855eb3ce2d6779d2e28fae38af04070aa8ca70fd2d354f",
+    "memory\\cache\\__init__.py": "6a7eb17cda6acbf9379cd645ac224a9d3e798622d0d638adbc0360bf59e8665b",
+    "memory\\shared\\client.py": "454c9b597e98cd3dc42b31a49cce0078a210b8a8a35448e7f7943fdc67d8cc6f",
+    "memory\\shared\\interpreter.py": "60fc3dedf6c72d65d74d1289326f94363cfb85d2a9c7cccda8d9847fd3f7690f",
+    "memory\\shared\\journal.py": "1bc62f35f27a2be03b0272f894922bd20b80d851ca0f0665b26735f6789414f8",
+    "memory\\shared\\service.py": "8ca04ba4cac54ad31ca3fa8b286f39f901b951c94b3be823baf248a24e7578dd",
+    "memory\\shared\\snapshot.py": "c58067f4f7227093e0306baae1b73933c051bc901ca2776df72adcabe6b7b319",
+    "memory\\shared\\__init__.py": "3263d8b44f4af3a0b4bbbea7d0c5f4365c85e7a1f95df6b607bcbe629bf4d944"
+  },
+  "limits": [
+    "Synthetic travel fixture; no held-out study or generated-answer evaluation.",
+    "15 same-query samples per mode; timings describe this local run, not general latency guarantees.",
+    "Uncached equivalent uses the same assembler and card information; this is not an old-system final-answer benchmark.",
+    "GPU path checks CPU scores for parity and tie handling; no claim of purely GPU execution or speedup.",
+    "GPU tensor/arena accounting excludes CUDA context, library workspace and other processes."
+  ]
+}

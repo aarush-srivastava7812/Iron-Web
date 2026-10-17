@@ -1,0 +1,25 @@
+{
+  "label": "60-forget-revised-budget",
+  "tenant": "riya",
+  "actor": "user",
+  "path": "/v1/events/forget",
+  "request": {
+    "eid": "budget-reduction"
+  },
+  "http_status": 200,
+  "response": {
+    "id": "budget-reduction",
+    "status": "queued",
+    "submitted": 1792069738.7161837,
+    "started": 1792069738.9260473,
+    "ready": 1792069739.119277,
+    "attempts": 1,
+    "memory_id": "evt_d6f1da667f7fbda5fa55e6fd75271051",
+    "error": null,
+    "blocks_work": 1,
+    "interpretation": null,
+    "claim_kinds": [],
+    "semantic_claim_count": 0
+  },
+  "elapsed_ms": 21.551700003328733
+}

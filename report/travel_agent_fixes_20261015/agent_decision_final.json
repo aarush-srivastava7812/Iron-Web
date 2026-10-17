@@ -1,0 +1,6 @@
+{
+  "decision": "pause",
+  "reason": "No fixture hotel satisfies the current walking/access requirements",
+  "max_walk_metres": 50,
+  "suitable_hotels": []
+}

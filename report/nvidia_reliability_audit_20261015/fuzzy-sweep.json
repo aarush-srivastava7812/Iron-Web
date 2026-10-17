@@ -1,0 +1,1586 @@
+{
+  "evaluations": 3636,
+  "direction": "source_quality increased by 0.01 with other inputs fixed",
+  "violation_count": 8,
+  "violations": [
+    {
+      "previous": {
+        "inputs": {
+          "age_seconds": 2592000,
+          "half_life_days": 90,
+          "source_quality": 0.25,
+          "independent_groups": 1,
+          "conflicts": 3
+        },
+        "score": 0.3685163220385569
+      },
+      "current": {
+        "inputs": {
+          "age_seconds": 2592000,
+          "half_life_days": 90,
+          "source_quality": 0.26,
+          "independent_groups": 1,
+          "conflicts": 3
+        },
+        "score": 0.3685050126905018
+      }
+    },
+    {
+      "previous": {
+        "inputs": {
+          "age_seconds": 2592000,
+          "half_life_days": 90,
+          "source_quality": 0.26,
+          "independent_groups": 1,
+          "conflicts": 3
+        },
+        "score": 0.3685050126905018
+      },
+      "current": {
+        "inputs": {
+          "age_seconds": 2592000,
+          "half_life_days": 90,
+          "source_quality": 0.27,
+          "independent_groups": 1,
+          "conflicts": 3
+        },
+        "score": 0.3684935582825166
+      }
+    },
+    {
+      "previous": {
+        "inputs": {
+          "age_seconds": 2592000,
+          "half_life_days": 90,
+          "source_quality": 0.27,
+          "independent_groups": 1,
+          "conflicts": 3
+        },
+        "score": 0.3684935582825166
+      },
+      "current": {
+        "inputs": {
+          "age_seconds": 2592000,
+          "half_life_days": 90,
+          "source_quality": 0.28,
+          "independent_groups": 1,
+          "conflicts": 3
+        },
+        "score": 0.36848195600565886
+      }
+    },
+    {
+      "previous": {
+        "inputs": {
+          "age_seconds": 2592000,
+          "half_life_days": 90,
+          "source_quality": 0.28,
+          "independent_groups": 1,
+          "conflicts": 3
+        },
+        "score": 0.36848195600565886
+      },
+      "current": {
+        "inputs": {
+          "age_seconds": 2592000,
+          "half_life_days": 90,
+          "source_quality": 0.29,
+          "independent_groups": 1,
+          "conflicts": 3
+        },
+        "score": 0.3684702029779918
+      }
+    },
+    {
+      "previous": {
+        "inputs": {
+          "age_seconds": 2592000,
+          "half_life_days": 90,
+          "source_quality": 0.75,
+          "independent_groups": 1,
+          "conflicts": 3
+        },
+        "score": 0.5099537557689234
+      },
+      "current": {
+        "inputs": {
+          "age_seconds": 2592000,
+          "half_life_days": 90,
+          "source_quality": 0.76,
+          "independent_groups": 1,
+          "conflicts": 3
+        },
+        "score": 0.5099424464208684
+      }
+    },
+    {
+      "previous": {
+        "inputs": {
+          "age_seconds": 2592000,
+          "half_life_days": 90,
+          "source_quality": 0.76,
+          "independent_groups": 1,
+          "conflicts": 3
+        },
+        "score": 0.5099424464208684
+      },
+      "current": {
+        "inputs": {
+          "age_seconds": 2592000,
+          "half_life_days": 90,
+          "source_quality": 0.77,
+          "independent_groups": 1,
+          "conflicts": 3
+        },
+        "score": 0.5099309920128833
+      }
+    },
+    {
+      "previous": {
+        "inputs": {
+          "age_seconds": 2592000,
+          "half_life_days": 90,
+          "source_quality": 0.77,
+          "independent_groups": 1,
+          "conflicts": 3
+        },
+        "score": 0.5099309920128833
+      },
+      "current": {
+        "inputs": {
+          "age_seconds": 2592000,
+          "half_life_days": 90,
+          "source_quality": 0.78,
+          "independent_groups": 1,
+          "conflicts": 3
+        },
+        "score": 0.5099193897360255
+      }
+    },
+    {
+      "previous": {
+        "inputs": {
+          "age_seconds": 2592000,
+          "half_life_days": 90,
+          "source_quality": 0.78,
+          "independent_groups": 1,
+          "conflicts": 3
+        },
+        "score": 0.5099193897360255
+      },
+      "current": {
+        "inputs": {
+          "age_seconds": 2592000,
+          "half_life_days": 90,
+          "source_quality": 0.79,
+          "independent_groups": 1,
+          "conflicts": 3
+        },
+        "score": 0.5099076367083584
+      }
+    }
+  ],
+  "limitation": "Finite grid diagnostic; no statistical calibration or causal inference.",
+  "age": {
+    "evaluations": 16470,
+    "violation_count": 0,
+    "violations": []
+  },
+  "support": {
+    "evaluations": 240,
+    "violation_count": 0,
+    "violations": []
+  },
+  "conflict": {
+    "evaluations": 1260,
+    "violation_count": 63,
+    "violations": [
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 0,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 5
+          },
+          "score": 0.4909195945945946
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 0,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 6
+          },
+          "score": 0.49189879518072294
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 0,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 6
+          },
+          "score": 0.49189879518072294
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 0,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 7
+          },
+          "score": 0.49268641304347827
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 0,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 7
+          },
+          "score": 0.49268641304347827
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 0,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 8
+          },
+          "score": 0.49333366336633655
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 0,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 8
+          },
+          "score": 0.49333366336633655
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 0,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 9
+          },
+          "score": 0.493875
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 0,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 5
+          },
+          "score": 0.5487141891891891
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 0,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 6
+          },
+          "score": 0.5493307228915664
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 0,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 6
+          },
+          "score": 0.5493307228915664
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 0,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 7
+          },
+          "score": 0.5498266304347826
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 0,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 7
+          },
+          "score": 0.5498266304347826
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 0,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 8
+          },
+          "score": 0.5502341584158416
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 0,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 8
+          },
+          "score": 0.5502341584158416
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 0,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 9
+          },
+          "score": 0.550575
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 5
+          },
+          "score": 0.3419436394811005
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 6
+          },
+          "score": 0.343010232050806
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 6
+          },
+          "score": 0.343010232050806
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 7
+          },
+          "score": 0.3438726721364662
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 7
+          },
+          "score": 0.3438726721364662
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 8
+          },
+          "score": 0.3445844542392483
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 8
+          },
+          "score": 0.3445844542392483
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 9
+          },
+          "score": 0.3451818844632226
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 4
+          },
+          "score": 0.389804966399415
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 5
+          },
+          "score": 0.39113926860470627
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 5
+          },
+          "score": 0.39113926860470627
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 6
+          },
+          "score": 0.3920398392078769
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 6
+          },
+          "score": 0.3920398392078769
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 7
+          },
+          "score": 0.39276803496903445
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 7
+          },
+          "score": 0.39276803496903445
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 8
+          },
+          "score": 0.3933690236275298
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 8
+          },
+          "score": 0.3933690236275298
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 9
+          },
+          "score": 0.3938734600097423
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 3,
+            "conflicts": 4
+          },
+          "score": 0.4153362047533039
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 3,
+            "conflicts": 5
+          },
+          "score": 0.41633758998506354
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 3,
+            "conflicts": 5
+          },
+          "score": 0.41633758998506354
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 3,
+            "conflicts": 6
+          },
+          "score": 0.41712180733523674
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 3,
+            "conflicts": 6
+          },
+          "score": 0.41712180733523674
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 3,
+            "conflicts": 7
+          },
+          "score": 0.4177525908560282
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 3,
+            "conflicts": 7
+          },
+          "score": 0.4177525908560282
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 3,
+            "conflicts": 8
+          },
+          "score": 0.41827095751172805
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 3,
+            "conflicts": 8
+          },
+          "score": 0.41827095751172805
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 3,
+            "conflicts": 9
+          },
+          "score": 0.41870450053285896
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 7776000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 5
+          },
+          "score": 0.17863479729729734
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 7776000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 6
+          },
+          "score": 0.17912439759036147
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 7776000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 6
+          },
+          "score": 0.17912439759036147
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 7776000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 7
+          },
+          "score": 0.17951820652173914
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 7776000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 7
+          },
+          "score": 0.17951820652173914
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 7776000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 8
+          },
+          "score": 0.1798418316831683
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 7776000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 8
+          },
+          "score": 0.1798418316831683
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 7776000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 9
+          },
+          "score": 0.1801125
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 7776000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 5
+          },
+          "score": 0.20753209459459462
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 7776000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 6
+          },
+          "score": 0.20784036144578316
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 7776000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 6
+          },
+          "score": 0.20784036144578316
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 7776000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 7
+          },
+          "score": 0.2080883152173913
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 7776000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 7
+          },
+          "score": 0.2080883152173913
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 7776000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 8
+          },
+          "score": 0.20829207920792078
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 7776000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 8
+          },
+          "score": 0.20829207920792078
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 7776000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 9
+          },
+          "score": 0.20846250000000002
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 5
+          },
+          "score": 0.0162321023140333
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 6
+          },
+          "score": 0.01635352384362085
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 6
+          },
+          "score": 0.01635352384362085
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 7
+          },
+          "score": 0.016449242550524545
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 7
+          },
+          "score": 0.016449242550524545
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 8
+          },
+          "score": 0.016526638571308143
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 8
+          },
+          "score": 0.016526638571308143
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 1,
+            "conflicts": 9
+          },
+          "score": 0.016590513402921333
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 5
+          },
+          "score": 0.01986021116639974
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 6
+          },
+          "score": 0.01997047150318134
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 6
+          },
+          "score": 0.01997047150318134
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 7
+          },
+          "score": 0.020057391647371182
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 7
+          },
+          "score": 0.020057391647371182
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 8
+          },
+          "score": 0.020127673345733437
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 8
+          },
+          "score": 0.020127673345733437
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.1,
+            "independent_groups": 2,
+            "conflicts": 9
+          },
+          "score": 0.02018567673664328
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.25,
+            "independent_groups": 1,
+            "conflicts": 2
+          },
+          "score": 0.367521289436962
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.25,
+            "independent_groups": 1,
+            "conflicts": 3
+          },
+          "score": 0.3685163220385569
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.25,
+            "independent_groups": 2,
+            "conflicts": 3
+          },
+          "score": 0.020838316432562193
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.25,
+            "independent_groups": 2,
+            "conflicts": 4
+          },
+          "score": 0.020911009665773066
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.25,
+            "independent_groups": 2,
+            "conflicts": 4
+          },
+          "score": 0.020911009665773066
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.25,
+            "independent_groups": 2,
+            "conflicts": 5
+          },
+          "score": 0.020963548837712887
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.75,
+            "independent_groups": 1,
+            "conflicts": 2
+          },
+          "score": 0.5089587231673285
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.75,
+            "independent_groups": 1,
+            "conflicts": 3
+          },
+          "score": 0.5099537557689234
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.75,
+            "independent_groups": 2,
+            "conflicts": 3
+          },
+          "score": 0.03155508441597074
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.75,
+            "independent_groups": 2,
+            "conflicts": 4
+          },
+          "score": 0.03162777764918161
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.75,
+            "independent_groups": 2,
+            "conflicts": 4
+          },
+          "score": 0.03162777764918161
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.75,
+            "independent_groups": 2,
+            "conflicts": 5
+          },
+          "score": 0.031680316821121435
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 1,
+            "conflicts": 2
+          },
+          "score": 0.530270657219904
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 2592000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 1,
+            "conflicts": 3
+          },
+          "score": 0.530740246381315
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 1,
+            "conflicts": 9
+          },
+          "score": 0.029340679754599898
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 1,
+            "conflicts": 10
+          },
+          "score": 0.029370895581827358
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 1,
+            "conflicts": 10
+          },
+          "score": 0.029370895581827358
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 1,
+            "conflicts": 11
+          },
+          "score": 0.029397183868192133
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 1,
+            "conflicts": 11
+          },
+          "score": 0.029397183868192133
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 1,
+            "conflicts": 12
+          },
+          "score": 0.02942026365207646
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 1,
+            "conflicts": 12
+          },
+          "score": 0.02942026365207646
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 1,
+            "conflicts": 13
+          },
+          "score": 0.029440688548661196
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 1,
+            "conflicts": 13
+          },
+          "score": 0.029440688548661196
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 1,
+            "conflicts": 14
+          },
+          "score": 0.029458891734547226
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 1,
+            "conflicts": 14
+          },
+          "score": 0.029458891734547226
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 1,
+            "conflicts": 15
+          },
+          "score": 0.02947521701001911
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 2,
+            "conflicts": 9
+          },
+          "score": 0.03293584308832185
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 2,
+            "conflicts": 10
+          },
+          "score": 0.03295608671925583
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 2,
+            "conflicts": 10
+          },
+          "score": 0.03295608671925583
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 2,
+            "conflicts": 11
+          },
+          "score": 0.03297369902432526
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 2,
+            "conflicts": 11
+          },
+          "score": 0.03297369902432526
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 2,
+            "conflicts": 12
+          },
+          "score": 0.03298916173608467
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 2,
+            "conflicts": 12
+          },
+          "score": 0.03298916173608467
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 2,
+            "conflicts": 13
+          },
+          "score": 0.03300284575887225
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 2,
+            "conflicts": 13
+          },
+          "score": 0.03300284575887225
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 2,
+            "conflicts": 14
+          },
+          "score": 0.03301504130705715
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 2,
+            "conflicts": 14
+          },
+          "score": 0.03301504130705715
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 2,
+            "conflicts": 15
+          },
+          "score": 0.033025978715755605
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 3,
+            "conflicts": 9
+          },
+          "score": 0.03519976179092878
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 3,
+            "conflicts": 10
+          },
+          "score": 0.03522173051064316
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 3,
+            "conflicts": 10
+          },
+          "score": 0.03522173051064316
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 3,
+            "conflicts": 11
+          },
+          "score": 0.03524071042587584
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 3,
+            "conflicts": 11
+          },
+          "score": 0.03524071042587584
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 3,
+            "conflicts": 12
+          },
+          "score": 0.03525727262125784
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 3,
+            "conflicts": 12
+          },
+          "score": 0.03525727262125784
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 3,
+            "conflicts": 13
+          },
+          "score": 0.035271851400200165
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 3,
+            "conflicts": 13
+          },
+          "score": 0.035271851400200165
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 3,
+            "conflicts": 14
+          },
+          "score": 0.03528478292218581
+        }
+      },
+      {
+        "previous": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 3,
+            "conflicts": 14
+          },
+          "score": 0.03528478292218581
+        },
+        "current": {
+          "inputs": {
+            "age_seconds": 31536000,
+            "half_life_days": 90,
+            "source_quality": 0.9,
+            "independent_groups": 3,
+            "conflicts": 15
+          },
+          "score": 0.03529633144351645
+        }
+      }
+    ]
+  }
+}

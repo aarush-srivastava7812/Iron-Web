@@ -1,0 +1,93 @@
+[
+  {
+    "event_id": "usual-preferences",
+    "text": "Usually I prefer vegetarian food, an active pace, an aisle seat, and interests in hiking, boat rides and local food.",
+    "subject": "Riya",
+    "scope": {},
+    "actor": "user",
+    "confirmed": true,
+    "source_utf8_bytes": 116,
+    "receipt_status": "queued",
+    "receipt_ms": 29.05589999863878,
+    "ready_ms": 3460.325100008049,
+    "interpreted_claims": [
+      {
+        "subject": "Riya",
+        "predicate": "dietary",
+        "value": "vegetarian",
+        "kind": "preference",
+        "scope": {},
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": ""
+      },
+      {
+        "subject": "Riya",
+        "predicate": "pace",
+        "value": "active",
+        "kind": "preference",
+        "scope": {},
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": ""
+      },
+      {
+        "subject": "Riya",
+        "predicate": "seat_preference",
+        "value": "aisle",
+        "kind": "preference",
+        "scope": {},
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": ""
+      },
+      {
+        "subject": "Riya",
+        "predicate": "interests",
+        "value": [
+          "hiking",
+          "boat rides",
+          "local food"
+        ],
+        "kind": "preference",
+        "scope": {},
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": ""
+      }
+    ],
+    "pending_blocked": null
+  }
+]

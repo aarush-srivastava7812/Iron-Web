@@ -1,0 +1,86 @@
+{
+  "label": "17-recall-activity-limit",
+  "tenant": "riya",
+  "actor": "reviewer",
+  "path": "/v1/recall",
+  "request": {
+    "query": "max_activities_per_day",
+    "subject": "Riya",
+    "predicate": "max_activities_per_day",
+    "scope": {
+      "trip_id": "goa-family"
+    }
+  },
+  "http_status": 200,
+  "response": {
+    "answer_status": "supported",
+    "subject": "Riya",
+    "requested_predicate": "max_activities_per_day",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "temporal_mode": "now",
+    "evidence": [
+      {
+        "claim_id": "claim_e28b5ebf3ee39ed0f84403e6fe4d3caf",
+        "memory_id": "evt_b1243d88062c0e7d79a55d37a00d8003",
+        "subject": "Riya",
+        "subject_id": "subject_360fa6f577843e5a8388898b87bc228a",
+        "predicate": "max_activities_per_day",
+        "value": 1,
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "status": "accepted",
+        "accepted": true,
+        "current_eligible": true,
+        "protected": true,
+        "accepted_for_current_use": true,
+        "correction_known": false,
+        "protected_at_creation": true,
+        "fuzzy_score": 1.0,
+        "fuzzy_explanation": {
+          "score": 1.0,
+          "hard_rule": "user_confirmed_protection",
+          "fired_rules": []
+        },
+        "previous_score": null,
+        "changed_by": null,
+        "change_reason": null,
+        "conflicting_claim_ids": [],
+        "sources": [
+          {
+            "id": "source_48156925eac232c455215d5a0bfe49dd",
+            "memory_id": "evt_b1243d88062c0e7d79a55d37a00d8003",
+            "text": "Please plan Goa from 10 to 14 December 2026 for me and my mother. Budget is INR 90000 total. Vegetarian food, morning flights from Delhi, step-free hotel, maximum walking 500 metres, no boats, at most one activity a day. Make it relaxed. These are reviewed structured requirements. Activities: calm beaches and local food; current trip mood relaxed.",
+            "origin": "user",
+            "actor_id": "user",
+            "user_confirmed": true,
+            "quality": 0.9,
+            "evidence_group": "user:user",
+            "recorded_at": 1792069731,
+            "received_at": 1792069731,
+            "digest": "receipt_bd4f1d6286ef5534c91720a596731421",
+            "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"confirmed-trip\",\"session_id\":\"\"}"
+          }
+        ],
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "accepted_at": 1792069731,
+        "ended_at": null,
+        "reason": "",
+        "historical_meaning": "source assertion; effective dates unspecified",
+        "references": [],
+        "identity_evidence": [],
+        "evidence_path": [
+          "claim_e28b5ebf3ee39ed0f84403e6fe4d3caf",
+          "SUPPORTED_BY",
+          "source_48156925eac232c455215d5a0bfe49dd"
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "elapsed_ms": 49.58089999854565
+}

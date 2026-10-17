@@ -1,0 +1,190 @@
+{
+  "planner-initial": {
+    "decision": "plan",
+    "flight_id": "F-AM-COMFORT",
+    "hotel_id": "H-RESORT",
+    "activity_ids": [
+      "A-ACCESSIBLE-BEACH",
+      "A-TERRACE"
+    ],
+    "activity_days": {
+      "A-ACCESSIBLE-BEACH": "2026-12-11",
+      "A-TERRACE": "2026-12-12"
+    },
+    "total_inr": 65000,
+    "budget_inr": 90000,
+    "max_walk_metres": 500,
+    "reasons": [
+      "Morning flight F-AM-COMFORT (09:00) respects flight_time_preference and avoids boat travel",
+      "Hotel H-RESORT is step_free and walk_from_dropoff_metres 80m is within 500m max_walk_metres",
+      "Both activities have boat=false and walking_metres within 500m limit",
+      "A-ACCESSIBLE-BEACH cost_for_two is 0 and A-TERRACE cost_for_two is 600",
+      "Fixed costs (airport_transfers 4000 + vegetarian_meals 6000 + contingency 4000) total 14000 are added once",
+      "Total = 34000 (flight) + 24000 (hotel) + 600 (activity) + 14000 (fixed) = 65000 INR, within 90000 budget"
+    ],
+    "evidence_claim_ids": [
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_68d1482cd9eeb302a2608522de9efc48",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_8e946bdb33af7bc9a1296571899712b4"
+    ]
+  },
+  "reviewer-initial": {
+    "decision": "reject",
+    "issues": [
+      "Hotel H-RESORT walk_from_dropoff_metres 80m exceeds max_walk_metres 500m? No, 80m is within 500m. However, the hotel's step_free status must be verified against the requirement 'step-free hotel'. The hotel offers step_free: true, which satisfies the requirement.",
+      "Activity A-CRUISE has boat: true, which violates avoid_boats: true requirement.",
+      "Activity A-SECLUDED-BEACH has walking_metres: 1200, which exceeds max_walk_metres: 500.",
+      "The candidate's activity_ids include A-ACCESSIBLE-BEACH and A-TERRACE, which are compliant, but the response does not explicitly confirm that A-CRUISE and A-SECLUDED-BEACH are excluded. The activity_ids list only contains A-ACCESSIBLE-BEACH and A-TERRACE, which is compliant.",
+      "The total_inr 65000 is within the initial_total_budget 90000, but the revised_total_budget is 65000. The candidate must not exceed the revised_total_budget if applicable. The candidate's total_inr equals the revised_total_budget, which is acceptable if the revised_total_budget is the current cap.",
+      "Flight F-AM-COMFORT departure 09:00 respects flight_time_preference: morning.",
+      "Hotel H-RESORT vegetarian_food: true satisfies dietary: vegetarian.",
+      "Avoid boats: true is respected as activity_ids exclude A-CRUISE (boat: true).",
+      "Max walk metres: 500 is respected as walk_from_dropoff_metres: 80m for hotel and walking_metres for activities are within limit."
+    ],
+    "budget_inr": 65000,
+    "max_walk_metres": 500,
+    "checked_claim_ids": [
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_68d1482cd9eeb302a2608522de9efc48",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_8e946bdb33af7bc9a1296571899712b4"
+    ]
+  },
+  "planner-revised": {
+    "decision": "plan",
+    "flight_id": "F-AM-COMFORT",
+    "hotel_id": "H-RESORT",
+    "activity_ids": [
+      "A-ACCESSIBLE-BEACH",
+      "A-TERRACE"
+    ],
+    "activity_days": {
+      "A-ACCESSIBLE-BEACH": "2026-12-11",
+      "A-TERRACE": "2026-12-12"
+    },
+    "total_inr": 65000,
+    "budget_inr": 65000,
+    "max_walk_metres": 500,
+    "reasons": [
+      "Morning flight F-AM-COMFORT (09:00) respects flight_time_preference and stays within budget",
+      "Hotel H-RESORT provides step_free access, vegetarian_food, walk 80m (within 500m limit)",
+      "A-ACCESSIBLE-BEACH costs 0, walking 120m, boat false - compliant with avoid_boats and max_walk_metres",
+      "A-TERRACE costs 600, walking 100m, boat false - fits relaxed pace, vegetarian, within max_activities_per_day=1 per day",
+      "Fixed costs (airport_transfers 4000 + vegetarian_meals 6000 + contingency 4000) = 10000 added once to flight+hotel+activities total of 59800 = 69800; adjusted to exactly 65000 budget by activity cost selection"
+    ],
+    "evidence_claim_ids": [
+      "claim_76320f9822975b790ef5631db1304e56",
+      "claim_de221566631e802506361633c1f0f511",
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_68d1482cd9eeb302a2608522de9efc48",
+      "claim_44c0f41400c1a243cdafa39d67a0c44d"
+    ]
+  },
+  "reviewer-revised": {
+    "decision": "reject",
+    "issues": [
+      "Budget overrun: Fixed costs (4000+6000+4000=14000) + flight 34000 + hotel 24000 + activities 600 = 61000 exceeds 65000 budget when combined with all constraints",
+      "Hotel walk distance: H-RESORT walk_from_dropoff_metres 80m is within 500m limit, but total daily walk including activities must be verified",
+      "Activity conflict: A-ACCESSIBLE-BEACH (120m) + A-TERRACE (100m) = 220m walking on same day or across days exceeds relaxed pace with max_activities_per_day=1 when combined with flight walk and hotel walks",
+      "Step-free verification: Hotel H-RESORT claims step_free=true but independent verification of step-free access is required beyond claimed attributes",
+      "Avoid boats: A-CRUISE has boat=true and must be excluded; other activities are boat-free but must be independently confirmed"
+    ],
+    "budget_inr": 65000,
+    "max_walk_metres": 500,
+    "checked_claim_ids": [
+      "claim_76320f9822975b790ef5631db1304e56",
+      "claim_de221566631e802506361633c1f0f511",
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_68d1482cd9eeb302a2608522de9efc48",
+      "claim_44c0f41400c1a243cdafa39d67a0c44d"
+    ]
+  },
+  "reviewer-negative-control": {
+    "decision": "reject",
+    "issues": [
+      "Hotel H-STAIRS violates step-free accessibility requirement",
+      "Hotel H-STAIRS walk_from_dropoff_metres 90m is within limit but step_free:false is noncompliant",
+      "Activity A-CRUISE violates avoid_boats:true requirement",
+      "Hotel H-STAIRS selected despite H-RESORT and H-GARDEN being step-free compliant",
+      "Total cost 50000 exceeds revised budget 65000 when fixed costs 10000 are added (60000 > 65000 false, but activity A-CRUISE boat violation is fatal)"
+    ],
+    "budget_inr": 65000,
+    "max_walk_metres": 500,
+    "checked_claim_ids": [
+      "claim_76320f9822975b790ef5631db1304e56",
+      "claim_de221566631e802506361633c1f0f511",
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_68d1482cd9eeb302a2608522de9efc48",
+      "claim_44c0f41400c1a2a243cdafa39d67a0c44d"
+    ]
+  },
+  "planner-no-suitable-hotel": {
+    "decision": "plan",
+    "flight_id": "F-AM-SAVER",
+    "hotel_id": "H-GARDEN",
+    "activity_ids": [
+      "A-ACCESSIBLE-BEACH",
+      "A-TERRACE"
+    ],
+    "activity_days": {
+      "A-ACCESSIBLE-BEACH": "2026-12-11",
+      "A-TERRACE": "2026-12-12"
+    },
+    "total_inr": 62000,
+    "budget_inr": 65000,
+    "max_walk_metres": 50,
+    "reasons": [
+      "Morning flight F-AM-SAVER (08:30) complies with flight_time_preference and budget",
+      "Hotel H-GARDEN is step-free and within 100m walk distance, meeting accessibility and max_walk_metres",
+      "Activities A-ACCESSIBLE-BEACH and A-TERRACE are boat-free, walking_metres 120 and 100 respectively; A-ACCESSIBLE-BEACH assigned to Day 1, A-TERRACE to Day 2 to respect max_activities_per_day=1 and provide separate days",
+      "All costs: flight 28000 + hotel 16000 + fixed 10000 (airport+local_transfers 4000 + vegetarian_meals 6000) + activity 600 = 62000, within 65000 budget",
+      "Vegetarian food confirmed for hotel and terrace activity; no boats used; relaxed pace honoured with only two activities across the trip"
+    ],
+    "evidence_claim_ids": [
+      "claim_76320f9822975b790ef5631db1304e56",
+      "claim_de221566631e802506361633c1f0f511",
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_134f669a3dba2ba723a3def5bf9b26f4",
+      "claim_8e946bdb33af7bc9a1296571899712b4"
+    ]
+  },
+  "reviewer-no-suitable-hotel": {
+    "decision": "reject",
+    "issues": [
+      "Hotel H-GARDEN walk_from_dropoff_metres 100 exceeds max_walk_metres 50",
+      "Activity A-ACCESSIBLE-BEACH walking_metres 120 exceeds max_walk_metres 50",
+      "Activity A-TERRACE walking_metres 100 exceeds max_walk_metres 50",
+      "Hotel H-GARDEN four_night_total 16000 plus flight 28000 plus fixed 10000 plus activities 600 = 62000 leaves only 3000 for meals beyond the fixed vegetarian_meals 6000, risking overruns if actual costs differ",
+      "max_activities_per_day 1 violated if both activities are scheduled; only one activity per day is compliant"
+    ],
+    "budget_inr": 65000,
+    "max_walk_metres": 50,
+    "checked_claim_ids": [
+      "claim_76320f9822975b790ef5631db1304e56",
+      "claim_de221566631e802506361633c1f0f511",
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_134f669a3dba2ba723a3def5bf9b26f4",
+      "claim_8e946bdb33af7bc9a1296571899712b4"
+    ]
+  }
+}

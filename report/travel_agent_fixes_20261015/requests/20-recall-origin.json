@@ -1,0 +1,14 @@
+{
+  "label": "20-recall-origin",
+  "path": "/v1/recall",
+  "body": {
+    "query": "departure_city",
+    "subject": "Riya",
+    "predicate": "departure_city",
+    "scope": {
+      "trip_id": "goa-family"
+    }
+  },
+  "actor": "reviewer",
+  "tenant": "riya"
+}

@@ -1,0 +1,352 @@
+[
+  {
+    "example_id": "dmr:0000:qa",
+    "query": "Hey, remember that time we talked about music? What was the artist you mentioned you could get into?",
+    "ground_truth_ids": [
+      "dmr:0000:session:4"
+    ],
+    "gold_answer": "Taylor Swift!",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0001:qa",
+    "query": "Hey, remember that time we talked about our jobs and expenses? What was that one thing you said you did to save money?",
+    "ground_truth_ids": [
+      "dmr:0001:session:4"
+    ],
+    "gold_answer": "I eat a fresh and raw diet to save on groceries.",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0002:qa",
+    "query": "Hey, remember that time we talked about our work lives? What was that field you said you used to work in?",
+    "ground_truth_ids": [
+      "dmr:0002:session:4"
+    ],
+    "gold_answer": "I used to work in the human services field.",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0003:qa",
+    "query": "Hey, remember that time we talked about our studies and working part-time? What was the fast food place you said you're working at?",
+    "ground_truth_ids": [
+      "dmr:0003:session:4"
+    ],
+    "gold_answer": "Burger King!",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0004:qa",
+    "query": "Hey, remember that time we talked about our favorite ways to relax? What was the distance you mentioned you liked to walk for a small workout?",
+    "ground_truth_ids": [
+      "dmr:0004:session:4"
+    ],
+    "gold_answer": "Three miles!",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0005:qa",
+    "query": "Hey, remember that time we talked about our pets? What kind of pet do you have?",
+    "ground_truth_ids": [
+      "dmr:0005:session:4"
+    ],
+    "gold_answer": "I have a cat.",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0006:qa",
+    "query": "Hey, remember that time we talked about our favorite movies? What was yours?",
+    "ground_truth_ids": [
+      "dmr:0006:session:4"
+    ],
+    "gold_answer": "Clueless!",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0007:qa",
+    "query": "Hey, remember that time we talked about your pet? What kind of animal is it?",
+    "ground_truth_ids": [
+      "dmr:0007:session:4"
+    ],
+    "gold_answer": "It's a cow!",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0008:qa",
+    "query": "Hey, remember that time we talked about your hobbies? How old were you when you first learned to play guitar?",
+    "ground_truth_ids": [
+      "dmr:0008:session:4"
+    ],
+    "gold_answer": "I was three!",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0009:qa",
+    "query": "Hey, remember that time we talked about our post-retirement plans? What did I tell you I wanted to learn in my free time?",
+    "ground_truth_ids": [
+      "dmr:0009:session:4"
+    ],
+    "gold_answer": "You mentioned you'd like to go to culinary school!",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0010:qa",
+    "query": "Hey, remember that time we talked about our jobs? What was it you said you did for a living?",
+    "ground_truth_ids": [
+      "dmr:0010:session:4"
+    ],
+    "gold_answer": "Construction, like my dad.",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0011:qa",
+    "query": "Hey, remember that time we talked about your dad's outdoor show? What was it called again?",
+    "ground_truth_ids": [
+      "dmr:0011:session:4"
+    ],
+    "gold_answer": "Jim Shockey!",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0012:qa",
+    "query": "Hey, remember that time we talked about your concerts? What was that specific color of the hat you mentioned you later on?",
+    "ground_truth_ids": [
+      "dmr:0012:session:4"
+    ],
+    "gold_answer": "Yellow!",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0013:qa",
+    "query": "Hey, remember that time we talked about our parents? What did you tell me your dad does for a living?",
+    "ground_truth_ids": [
+      "dmr:0013:session:4"
+    ],
+    "gold_answer": "He's an army soldier.",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0014:qa",
+    "query": "Hey, remember that time we talked about your family? What line of work was your father in?",
+    "ground_truth_ids": [
+      "dmr:0014:session:4"
+    ],
+    "gold_answer": "He was a manager at Home Depot.",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0015:qa",
+    "query": "Hey, remember that time we talked about our childhood fears? Can you recall what used to scare you when your grandfather told stories?",
+    "ground_truth_ids": [
+      "dmr:0015:session:4"
+    ],
+    "gold_answer": "Yeah, he used to tell World War II stories that absolutely scared me!",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0016:qa",
+    "query": "Hey, remember that time we talked about our music preferences? What was that one band you said you were into apart from Metallica?",
+    "ground_truth_ids": [
+      "dmr:0016:session:4"
+    ],
+    "gold_answer": "Aerosmith!",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0017:qa",
+    "query": "Hey, remember that time we talked about our pets? What is the name of your dog again?",
+    "ground_truth_ids": [
+      "dmr:0017:session:4"
+    ],
+    "gold_answer": "Trooper!",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0018:qa",
+    "query": "Hey, remember that time we talked about your sons and their peculiar interests? What's the favorite play area of your fifth son in the house?",
+    "ground_truth_ids": [
+      "dmr:0018:session:4"
+    ],
+    "gold_answer": "The attic!",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0019:qa",
+    "query": "Hey, remember that time we talked about our hobbies? You mentioned you enjoy doing something outdoors on sunny days, what was it?",
+    "ground_truth_ids": [
+      "dmr:0019:session:4"
+    ],
+    "gold_answer": "Lawn mowing!",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0020:qa",
+    "query": "Hey, remember that time we talked about your birthday? How old did you say you were turning?",
+    "ground_truth_ids": [
+      "dmr:0020:session:4"
+    ],
+    "gold_answer": "I said I was turning 83.",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0021:qa",
+    "query": "Hey, remember that time we talked about our favorite music? What type of music did I mention I listen to all the time in my big truck?",
+    "ground_truth_ids": [
+      "dmr:0021:session:4"
+    ],
+    "gold_answer": "Country music!",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0022:qa",
+    "query": "Hey, remember that time we talked about my job? Do you happen to recall how much I told you I make annually?",
+    "ground_truth_ids": [
+      "dmr:0022:session:4"
+    ],
+    "gold_answer": "About 15k.",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0023:qa",
+    "query": "Hey, remember that one time we talked about me working out on your farm? How many acres did you say your farm was again?",
+    "ground_truth_ids": [
+      "dmr:0023:session:4"
+    ],
+    "gold_answer": "I didn't mention the exact amount, but I did say that it was quite a few acres!",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  },
+  {
+    "example_id": "dmr:0024:qa",
+    "query": "Hey, remember that time we talked about our likes and our backgrounds, you had mentioned something that scares you. What was that again?",
+    "ground_truth_ids": [
+      "dmr:0024:session:4"
+    ],
+    "gold_answer": "Scorpions!",
+    "category": "msc_dialogue",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "benchmark": "dmr"
+    }
+  }
+]

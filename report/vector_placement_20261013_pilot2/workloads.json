@@ -1,0 +1,3202 @@
+{
+  "dmr": [
+    {
+      "backend": "qdrant",
+      "workers": 4,
+      "mixed": false,
+      "reads": {
+        "samples": 48,
+        "errors": 0,
+        "p50_ms": 108.34390000673011,
+        "p95_ms": 128.8175050067366,
+        "mean_ms": 106.23035208360913
+      },
+      "write_samples": [],
+      "wall_seconds": 1.3450984999944922,
+      "reads_per_second": 35.68511897098729,
+      "raw_reads": [
+        {
+          "ms": 62.97269999049604,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0008:session:2",
+            "dmr:0022:session:3",
+            "dmr:0008:session:1",
+            "dmr:0016:session:0",
+            "dmr:0008:session:3",
+            "dmr:0012:session:0",
+            "dmr:0012:session:3",
+            "dmr:0016:session:1",
+            "dmr:0010:session:4"
+          ],
+          "error": null
+        },
+        {
+          "ms": 118.24589999741875,
+          "ids": [
+            "dmr:0001:session:3",
+            "dmr:0001:session:1",
+            "dmr:0014:session:0",
+            "dmr:0001:session:2",
+            "dmr:0003:session:3",
+            "dmr:0019:session:4",
+            "dmr:0002:session:0",
+            "dmr:0001:session:0",
+            "dmr:0005:session:3",
+            "dmr:0022:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 100.24659999180585,
+          "ids": [
+            "dmr:0003:session:3",
+            "dmr:0001:session:3",
+            "dmr:0001:session:2",
+            "dmr:0019:session:1",
+            "dmr:0021:session:0",
+            "dmr:0015:session:1",
+            "dmr:0002:session:0",
+            "dmr:0010:session:0",
+            "dmr:0014:session:1",
+            "dmr:0017:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 113.1009999953676,
+          "ids": [
+            "dmr:0003:session:1",
+            "dmr:0003:session:3",
+            "dmr:0016:session:1",
+            "dmr:0019:session:1",
+            "dmr:0016:session:3",
+            "dmr:0016:session:0",
+            "dmr:0003:session:2",
+            "dmr:0007:session:0",
+            "dmr:0005:session:3",
+            "dmr:0015:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 100.7042000128422,
+          "ids": [
+            "dmr:0023:session:2",
+            "dmr:0010:session:1",
+            "dmr:0018:session:4",
+            "dmr:0000:session:0",
+            "dmr:0023:session:4",
+            "dmr:0010:session:0",
+            "dmr:0000:session:3",
+            "dmr:0023:session:3",
+            "dmr:0023:session:1",
+            "dmr:0004:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 101.31910000927746,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0018:session:2",
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0007:session:1",
+            "dmr:0005:session:0",
+            "dmr:0006:session:0",
+            "dmr:0017:session:1",
+            "dmr:0021:session:3",
+            "dmr:0023:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 112.22780001116917,
+          "ids": [
+            "dmr:0006:session:4",
+            "dmr:0002:session:0",
+            "dmr:0006:session:0",
+            "dmr:0002:session:2",
+            "dmr:0006:session:2",
+            "dmr:0002:session:3",
+            "dmr:0008:session:0",
+            "dmr:0024:session:0",
+            "dmr:0015:session:4",
+            "dmr:0013:session:4"
+          ],
+          "error": null
+        },
+        {
+          "ms": 103.91139998682775,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0007:session:3",
+            "dmr:0018:session:2",
+            "dmr:0007:session:1",
+            "dmr:0005:session:4",
+            "dmr:0017:session:1",
+            "dmr:0021:session:3",
+            "dmr:0006:session:0",
+            "dmr:0017:session:0",
+            "dmr:0021:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 106.56980000203475,
+          "ids": [
+            "dmr:0008:session:2",
+            "dmr:0008:session:3",
+            "dmr:0008:session:0",
+            "dmr:0010:session:0",
+            "dmr:0010:session:1",
+            "dmr:0008:session:4",
+            "dmr:0010:session:3",
+            "dmr:0010:session:2",
+            "dmr:0014:session:1",
+            "dmr:0004:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 129.04070000513457,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0014:session:1",
+            "dmr:0020:session:1",
+            "dmr:0001:session:3",
+            "dmr:0015:session:1",
+            "dmr:0001:session:1",
+            "dmr:0005:session:0",
+            "dmr:0001:session:0",
+            "dmr:0011:session:0",
+            "dmr:0003:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 120.65450000227429,
+          "ids": [
+            "dmr:0003:session:3",
+            "dmr:0001:session:3",
+            "dmr:0001:session:2",
+            "dmr:0010:session:0",
+            "dmr:0002:session:0",
+            "dmr:0014:session:0",
+            "dmr:0019:session:0",
+            "dmr:0019:session:1",
+            "dmr:0014:session:1",
+            "dmr:0019:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 112.67750000115484,
+          "ids": [
+            "dmr:0011:session:0",
+            "dmr:0010:session:1",
+            "dmr:0013:session:0",
+            "dmr:0024:session:0",
+            "dmr:0024:session:3",
+            "dmr:0012:session:4",
+            "dmr:0017:session:0",
+            "dmr:0008:session:1",
+            "dmr:0010:session:0",
+            "dmr:0014:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 94.00349998031743,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0012:session:0",
+            "dmr:0012:session:3",
+            "dmr:0022:session:3",
+            "dmr:0002:session:2",
+            "dmr:0022:session:0",
+            "dmr:0016:session:1",
+            "dmr:0008:session:1",
+            "dmr:0010:session:4",
+            "dmr:0005:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 111.5812000061851,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0003:session:0",
+            "dmr:0002:session:0",
+            "dmr:0013:session:0",
+            "dmr:0014:session:1",
+            "dmr:0011:session:0",
+            "dmr:0010:session:0",
+            "dmr:0001:session:2",
+            "dmr:0001:session:0",
+            "dmr:0019:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 102.13910002494231,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0002:session:0",
+            "dmr:0013:session:0",
+            "dmr:0014:session:1",
+            "dmr:0018:session:1",
+            "dmr:0001:session:2",
+            "dmr:0003:session:0",
+            "dmr:0012:session:0",
+            "dmr:0020:session:0",
+            "dmr:0011:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 29.24100001109764,
+          "ids": [
+            "dmr:0014:session:1",
+            "dmr:0015:session:0",
+            "dmr:0002:session:0",
+            "dmr:0002:session:2",
+            "dmr:0014:session:0",
+            "dmr:0008:session:0",
+            "dmr:0009:session:4",
+            "dmr:0011:session:0",
+            "dmr:0005:session:0",
+            "dmr:0024:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 107.47699998319149,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0008:session:2",
+            "dmr:0012:session:0",
+            "dmr:0022:session:3",
+            "dmr:0016:session:0",
+            "dmr:0016:session:1",
+            "dmr:0008:session:1",
+            "dmr:0012:session:3",
+            "dmr:0023:session:3",
+            "dmr:0008:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 100.58769999886863,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0018:session:2",
+            "dmr:0007:session:1",
+            "dmr:0006:session:0",
+            "dmr:0017:session:1",
+            "dmr:0023:session:1",
+            "dmr:0007:session:4",
+            "dmr:0013:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 107.77689999667928,
+          "ids": [
+            "dmr:0018:session:3",
+            "dmr:0008:session:0",
+            "dmr:0014:session:1",
+            "dmr:0018:session:0",
+            "dmr:0018:session:4",
+            "dmr:0002:session:2",
+            "dmr:0002:session:0",
+            "dmr:0014:session:2",
+            "dmr:0014:session:0",
+            "dmr:0018:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 109.1117000032682,
+          "ids": [
+            "dmr:0010:session:0",
+            "dmr:0010:session:1",
+            "dmr:0019:session:0",
+            "dmr:0005:session:0",
+            "dmr:0011:session:0",
+            "dmr:0004:session:0",
+            "dmr:0024:session:0",
+            "dmr:0017:session:0",
+            "dmr:0010:session:2",
+            "dmr:0021:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 100.93980000237934,
+          "ids": [
+            "dmr:0004:session:0",
+            "dmr:0014:session:0",
+            "dmr:0014:session:1",
+            "dmr:0005:session:0",
+            "dmr:0013:session:0",
+            "dmr:0001:session:2",
+            "dmr:0008:session:0",
+            "dmr:0003:session:0",
+            "dmr:0010:session:0",
+            "dmr:0010:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 116.31869999109767,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0012:session:0",
+            "dmr:0021:session:1",
+            "dmr:0008:session:2",
+            "dmr:0008:session:1",
+            "dmr:0022:session:3",
+            "dmr:0010:session:2",
+            "dmr:0021:session:3",
+            "dmr:0016:session:0",
+            "dmr:0016:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 126.89630000386387,
+          "ids": [
+            "dmr:0001:session:3",
+            "dmr:0003:session:3",
+            "dmr:0001:session:2",
+            "dmr:0001:session:1",
+            "dmr:0015:session:1",
+            "dmr:0019:session:4",
+            "dmr:0007:session:0",
+            "dmr:0002:session:0",
+            "dmr:0014:session:0",
+            "dmr:0019:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 116.31650000344962,
+          "ids": [
+            "dmr:0017:session:0",
+            "dmr:0017:session:3",
+            "dmr:0017:session:2",
+            "dmr:0017:session:1",
+            "dmr:0023:session:0",
+            "dmr:0021:session:4",
+            "dmr:0000:session:0",
+            "dmr:0019:session:3",
+            "dmr:0019:session:4",
+            "dmr:0021:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 121.89920002128929,
+          "ids": [
+            "dmr:0015:session:0",
+            "dmr:0002:session:0",
+            "dmr:0005:session:0",
+            "dmr:0022:session:0",
+            "dmr:0001:session:2",
+            "dmr:0005:session:1",
+            "dmr:0024:session:0",
+            "dmr:0006:session:0",
+            "dmr:0019:session:0",
+            "dmr:0003:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 107.09099998348393,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0008:session:2",
+            "dmr:0022:session:3",
+            "dmr:0008:session:1",
+            "dmr:0016:session:0",
+            "dmr:0008:session:3",
+            "dmr:0012:session:0",
+            "dmr:0012:session:3",
+            "dmr:0016:session:1",
+            "dmr:0010:session:4"
+          ],
+          "error": null
+        },
+        {
+          "ms": 190.1627000188455,
+          "ids": [
+            "dmr:0001:session:3",
+            "dmr:0001:session:1",
+            "dmr:0014:session:0",
+            "dmr:0001:session:2",
+            "dmr:0003:session:3",
+            "dmr:0019:session:4",
+            "dmr:0002:session:0",
+            "dmr:0001:session:0",
+            "dmr:0005:session:3",
+            "dmr:0022:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 101.63659998215735,
+          "ids": [
+            "dmr:0003:session:3",
+            "dmr:0001:session:3",
+            "dmr:0001:session:2",
+            "dmr:0019:session:1",
+            "dmr:0021:session:0",
+            "dmr:0015:session:1",
+            "dmr:0002:session:0",
+            "dmr:0010:session:0",
+            "dmr:0014:session:1",
+            "dmr:0017:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 105.56520000682212,
+          "ids": [
+            "dmr:0003:session:1",
+            "dmr:0003:session:3",
+            "dmr:0016:session:1",
+            "dmr:0019:session:1",
+            "dmr:0016:session:3",
+            "dmr:0016:session:0",
+            "dmr:0003:session:2",
+            "dmr:0007:session:0",
+            "dmr:0005:session:3",
+            "dmr:0015:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 110.01329999999143,
+          "ids": [
+            "dmr:0023:session:2",
+            "dmr:0010:session:1",
+            "dmr:0018:session:4",
+            "dmr:0000:session:0",
+            "dmr:0023:session:4",
+            "dmr:0010:session:0",
+            "dmr:0000:session:3",
+            "dmr:0023:session:3",
+            "dmr:0023:session:1",
+            "dmr:0004:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 100.04579997621477,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0018:session:2",
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0007:session:1",
+            "dmr:0005:session:0",
+            "dmr:0006:session:0",
+            "dmr:0017:session:1",
+            "dmr:0021:session:3",
+            "dmr:0023:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 110.44799999217503,
+          "ids": [
+            "dmr:0006:session:4",
+            "dmr:0002:session:0",
+            "dmr:0006:session:0",
+            "dmr:0002:session:2",
+            "dmr:0006:session:2",
+            "dmr:0002:session:3",
+            "dmr:0008:session:0",
+            "dmr:0024:session:0",
+            "dmr:0015:session:4",
+            "dmr:0013:session:4"
+          ],
+          "error": null
+        },
+        {
+          "ms": 132.43220001459122,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0007:session:3",
+            "dmr:0018:session:2",
+            "dmr:0007:session:1",
+            "dmr:0005:session:4",
+            "dmr:0017:session:1",
+            "dmr:0021:session:3",
+            "dmr:0006:session:0",
+            "dmr:0017:session:0",
+            "dmr:0021:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 116.81189999217167,
+          "ids": [
+            "dmr:0008:session:2",
+            "dmr:0008:session:3",
+            "dmr:0008:session:0",
+            "dmr:0010:session:0",
+            "dmr:0010:session:1",
+            "dmr:0008:session:4",
+            "dmr:0010:session:3",
+            "dmr:0010:session:2",
+            "dmr:0014:session:1",
+            "dmr:0004:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 115.98760000197217,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0014:session:1",
+            "dmr:0020:session:1",
+            "dmr:0001:session:3",
+            "dmr:0015:session:1",
+            "dmr:0001:session:1",
+            "dmr:0005:session:0",
+            "dmr:0001:session:0",
+            "dmr:0011:session:0",
+            "dmr:0003:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 31.019899994134903,
+          "ids": [
+            "dmr:0003:session:3",
+            "dmr:0001:session:3",
+            "dmr:0001:session:2",
+            "dmr:0010:session:0",
+            "dmr:0002:session:0",
+            "dmr:0014:session:0",
+            "dmr:0019:session:0",
+            "dmr:0019:session:1",
+            "dmr:0014:session:1",
+            "dmr:0019:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 28.821200015954673,
+          "ids": [
+            "dmr:0011:session:0",
+            "dmr:0010:session:1",
+            "dmr:0013:session:0",
+            "dmr:0024:session:0",
+            "dmr:0024:session:3",
+            "dmr:0012:session:4",
+            "dmr:0017:session:0",
+            "dmr:0008:session:1",
+            "dmr:0010:session:0",
+            "dmr:0014:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 123.0974999780301,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0012:session:0",
+            "dmr:0012:session:3",
+            "dmr:0022:session:3",
+            "dmr:0002:session:2",
+            "dmr:0022:session:0",
+            "dmr:0016:session:1",
+            "dmr:0008:session:1",
+            "dmr:0010:session:4",
+            "dmr:0005:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 104.04279999784194,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0003:session:0",
+            "dmr:0002:session:0",
+            "dmr:0013:session:0",
+            "dmr:0014:session:1",
+            "dmr:0011:session:0",
+            "dmr:0010:session:0",
+            "dmr:0001:session:2",
+            "dmr:0001:session:0",
+            "dmr:0019:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 112.54480000934564,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0002:session:0",
+            "dmr:0013:session:0",
+            "dmr:0014:session:1",
+            "dmr:0018:session:1",
+            "dmr:0001:session:2",
+            "dmr:0003:session:0",
+            "dmr:0012:session:0",
+            "dmr:0020:session:0",
+            "dmr:0011:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 100.34299999824725,
+          "ids": [
+            "dmr:0014:session:1",
+            "dmr:0015:session:0",
+            "dmr:0002:session:0",
+            "dmr:0002:session:2",
+            "dmr:0014:session:0",
+            "dmr:0008:session:0",
+            "dmr:0009:session:4",
+            "dmr:0011:session:0",
+            "dmr:0005:session:0",
+            "dmr:0024:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 102.69450000487268,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0008:session:2",
+            "dmr:0012:session:0",
+            "dmr:0022:session:3",
+            "dmr:0016:session:0",
+            "dmr:0016:session:1",
+            "dmr:0008:session:1",
+            "dmr:0012:session:3",
+            "dmr:0023:session:3",
+            "dmr:0008:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 108.91090001678094,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0018:session:2",
+            "dmr:0007:session:1",
+            "dmr:0006:session:0",
+            "dmr:0017:session:1",
+            "dmr:0023:session:1",
+            "dmr:0007:session:4",
+            "dmr:0013:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 105.69659998873249,
+          "ids": [
+            "dmr:0018:session:3",
+            "dmr:0008:session:0",
+            "dmr:0014:session:1",
+            "dmr:0018:session:0",
+            "dmr:0018:session:4",
+            "dmr:0002:session:2",
+            "dmr:0002:session:0",
+            "dmr:0014:session:2",
+            "dmr:0014:session:0",
+            "dmr:0018:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 107.68539999844506,
+          "ids": [
+            "dmr:0010:session:0",
+            "dmr:0010:session:1",
+            "dmr:0019:session:0",
+            "dmr:0005:session:0",
+            "dmr:0011:session:0",
+            "dmr:0004:session:0",
+            "dmr:0024:session:0",
+            "dmr:0017:session:0",
+            "dmr:0010:session:2",
+            "dmr:0021:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 118.06080001406372,
+          "ids": [
+            "dmr:0004:session:0",
+            "dmr:0014:session:0",
+            "dmr:0014:session:1",
+            "dmr:0005:session:0",
+            "dmr:0013:session:0",
+            "dmr:0001:session:2",
+            "dmr:0008:session:0",
+            "dmr:0003:session:0",
+            "dmr:0010:session:0",
+            "dmr:0010:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 128.40300000971183,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0012:session:0",
+            "dmr:0021:session:1",
+            "dmr:0008:session:2",
+            "dmr:0008:session:1",
+            "dmr:0022:session:3",
+            "dmr:0010:session:2",
+            "dmr:0021:session:3",
+            "dmr:0016:session:0",
+            "dmr:0016:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 111.58239998621866,
+          "ids": [
+            "dmr:0001:session:3",
+            "dmr:0003:session:3",
+            "dmr:0001:session:2",
+            "dmr:0001:session:1",
+            "dmr:0015:session:1",
+            "dmr:0019:session:4",
+            "dmr:0007:session:0",
+            "dmr:0002:session:0",
+            "dmr:0014:session:0",
+            "dmr:0019:session:1"
+          ],
+          "error": null
+        }
+      ],
+      "receipt_ack_separate": false,
+      "readiness": "synchronous engine.add commit; no async ingestion claim"
+    },
+    {
+      "backend": "falkor",
+      "workers": 4,
+      "mixed": false,
+      "reads": {
+        "samples": 48,
+        "errors": 0,
+        "p50_ms": 239.7845499945106,
+        "p95_ms": 390.7748000041464,
+        "mean_ms": 239.21642291497847
+      },
+      "write_samples": [],
+      "wall_seconds": 2.9997293999767862,
+      "reads_per_second": 16.001443330312213,
+      "raw_reads": [
+        {
+          "ms": 75.92259999364614,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0008:session:2",
+            "dmr:0022:session:3",
+            "dmr:0008:session:1",
+            "dmr:0016:session:0",
+            "dmr:0008:session:3",
+            "dmr:0012:session:0",
+            "dmr:0012:session:3",
+            "dmr:0016:session:1",
+            "dmr:0010:session:4"
+          ],
+          "error": null
+        },
+        {
+          "ms": 157.9792999837082,
+          "ids": [
+            "dmr:0001:session:3",
+            "dmr:0001:session:1",
+            "dmr:0014:session:0",
+            "dmr:0001:session:2",
+            "dmr:0003:session:3",
+            "dmr:0019:session:4",
+            "dmr:0002:session:0",
+            "dmr:0001:session:0",
+            "dmr:0005:session:3",
+            "dmr:0022:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 215.79129999736324,
+          "ids": [
+            "dmr:0003:session:3",
+            "dmr:0001:session:3",
+            "dmr:0001:session:2",
+            "dmr:0019:session:1",
+            "dmr:0021:session:0",
+            "dmr:0015:session:1",
+            "dmr:0002:session:0",
+            "dmr:0010:session:0",
+            "dmr:0014:session:1",
+            "dmr:0017:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 235.20429999916814,
+          "ids": [
+            "dmr:0003:session:1",
+            "dmr:0003:session:3",
+            "dmr:0016:session:1",
+            "dmr:0019:session:1",
+            "dmr:0016:session:3",
+            "dmr:0016:session:0",
+            "dmr:0003:session:2",
+            "dmr:0007:session:0",
+            "dmr:0005:session:3",
+            "dmr:0015:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 318.985399993835,
+          "ids": [
+            "dmr:0023:session:2",
+            "dmr:0010:session:1",
+            "dmr:0018:session:4",
+            "dmr:0000:session:0",
+            "dmr:0023:session:4",
+            "dmr:0010:session:0",
+            "dmr:0000:session:3",
+            "dmr:0023:session:3",
+            "dmr:0023:session:1",
+            "dmr:0004:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 239.15219999616966,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0018:session:2",
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0007:session:1",
+            "dmr:0005:session:0",
+            "dmr:0006:session:0",
+            "dmr:0017:session:1",
+            "dmr:0021:session:3",
+            "dmr:0023:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 248.21059999521822,
+          "ids": [
+            "dmr:0006:session:4",
+            "dmr:0002:session:0",
+            "dmr:0006:session:0",
+            "dmr:0002:session:2",
+            "dmr:0006:session:2",
+            "dmr:0002:session:3",
+            "dmr:0008:session:0",
+            "dmr:0024:session:0",
+            "dmr:0015:session:4",
+            "dmr:0013:session:4"
+          ],
+          "error": null
+        },
+        {
+          "ms": 284.18930000043474,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0007:session:3",
+            "dmr:0018:session:2",
+            "dmr:0007:session:1",
+            "dmr:0005:session:4",
+            "dmr:0017:session:1",
+            "dmr:0021:session:3",
+            "dmr:0006:session:0",
+            "dmr:0017:session:0",
+            "dmr:0021:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 226.80080001009628,
+          "ids": [
+            "dmr:0008:session:2",
+            "dmr:0008:session:3",
+            "dmr:0008:session:0",
+            "dmr:0010:session:0",
+            "dmr:0010:session:1",
+            "dmr:0008:session:4",
+            "dmr:0010:session:3",
+            "dmr:0010:session:2",
+            "dmr:0014:session:1",
+            "dmr:0004:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 240.35670000012033,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0014:session:1",
+            "dmr:0020:session:1",
+            "dmr:0001:session:3",
+            "dmr:0015:session:1",
+            "dmr:0001:session:1",
+            "dmr:0005:session:0",
+            "dmr:0001:session:0",
+            "dmr:0011:session:0",
+            "dmr:0003:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 293.8317999942228,
+          "ids": [
+            "dmr:0003:session:3",
+            "dmr:0001:session:3",
+            "dmr:0001:session:2",
+            "dmr:0010:session:0",
+            "dmr:0002:session:0",
+            "dmr:0014:session:0",
+            "dmr:0019:session:0",
+            "dmr:0019:session:1",
+            "dmr:0014:session:1",
+            "dmr:0019:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 280.05030000349507,
+          "ids": [
+            "dmr:0011:session:0",
+            "dmr:0010:session:1",
+            "dmr:0013:session:0",
+            "dmr:0024:session:0",
+            "dmr:0024:session:3",
+            "dmr:0012:session:4",
+            "dmr:0017:session:0",
+            "dmr:0008:session:1",
+            "dmr:0010:session:0",
+            "dmr:0014:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 163.5888999735471,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0012:session:0",
+            "dmr:0012:session:3",
+            "dmr:0022:session:3",
+            "dmr:0002:session:2",
+            "dmr:0022:session:0",
+            "dmr:0016:session:1",
+            "dmr:0008:session:1",
+            "dmr:0010:session:4",
+            "dmr:0005:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 179.15950002497993,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0003:session:0",
+            "dmr:0002:session:0",
+            "dmr:0013:session:0",
+            "dmr:0014:session:1",
+            "dmr:0011:session:0",
+            "dmr:0010:session:0",
+            "dmr:0001:session:2",
+            "dmr:0001:session:0",
+            "dmr:0019:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 219.89080001367256,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0002:session:0",
+            "dmr:0013:session:0",
+            "dmr:0014:session:1",
+            "dmr:0018:session:1",
+            "dmr:0001:session:2",
+            "dmr:0003:session:0",
+            "dmr:0012:session:0",
+            "dmr:0020:session:0",
+            "dmr:0011:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 339.2050999973435,
+          "ids": [
+            "dmr:0014:session:1",
+            "dmr:0015:session:0",
+            "dmr:0002:session:0",
+            "dmr:0002:session:2",
+            "dmr:0014:session:0",
+            "dmr:0008:session:0",
+            "dmr:0009:session:4",
+            "dmr:0011:session:0",
+            "dmr:0005:session:0",
+            "dmr:0024:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 252.3153999936767,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0008:session:2",
+            "dmr:0012:session:0",
+            "dmr:0022:session:3",
+            "dmr:0016:session:0",
+            "dmr:0016:session:1",
+            "dmr:0008:session:1",
+            "dmr:0012:session:3",
+            "dmr:0023:session:3",
+            "dmr:0008:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 239.21239998890087,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0018:session:2",
+            "dmr:0007:session:1",
+            "dmr:0006:session:0",
+            "dmr:0017:session:1",
+            "dmr:0023:session:1",
+            "dmr:0007:session:4",
+            "dmr:0013:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 458.89700000407174,
+          "ids": [
+            "dmr:0018:session:3",
+            "dmr:0008:session:0",
+            "dmr:0014:session:1",
+            "dmr:0018:session:0",
+            "dmr:0018:session:4",
+            "dmr:0002:session:2",
+            "dmr:0002:session:0",
+            "dmr:0014:session:2",
+            "dmr:0014:session:0",
+            "dmr:0018:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 224.59849997540005,
+          "ids": [
+            "dmr:0010:session:0",
+            "dmr:0010:session:1",
+            "dmr:0019:session:0",
+            "dmr:0005:session:0",
+            "dmr:0011:session:0",
+            "dmr:0004:session:0",
+            "dmr:0024:session:0",
+            "dmr:0017:session:0",
+            "dmr:0010:session:2",
+            "dmr:0021:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 53.18799999076873,
+          "ids": [
+            "dmr:0004:session:0",
+            "dmr:0014:session:0",
+            "dmr:0014:session:1",
+            "dmr:0005:session:0",
+            "dmr:0013:session:0",
+            "dmr:0001:session:2",
+            "dmr:0008:session:0",
+            "dmr:0003:session:0",
+            "dmr:0010:session:0",
+            "dmr:0010:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 266.8238000187557,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0012:session:0",
+            "dmr:0021:session:1",
+            "dmr:0008:session:2",
+            "dmr:0008:session:1",
+            "dmr:0022:session:3",
+            "dmr:0010:session:2",
+            "dmr:0021:session:3",
+            "dmr:0016:session:0",
+            "dmr:0016:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 78.652800002601,
+          "ids": [
+            "dmr:0001:session:3",
+            "dmr:0003:session:3",
+            "dmr:0001:session:2",
+            "dmr:0001:session:1",
+            "dmr:0015:session:1",
+            "dmr:0019:session:4",
+            "dmr:0007:session:0",
+            "dmr:0002:session:0",
+            "dmr:0014:session:0",
+            "dmr:0019:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 269.89190001040697,
+          "ids": [
+            "dmr:0017:session:0",
+            "dmr:0017:session:3",
+            "dmr:0017:session:2",
+            "dmr:0017:session:1",
+            "dmr:0023:session:0",
+            "dmr:0021:session:4",
+            "dmr:0000:session:0",
+            "dmr:0019:session:3",
+            "dmr:0019:session:4",
+            "dmr:0021:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 113.50780000793748,
+          "ids": [
+            "dmr:0015:session:0",
+            "dmr:0002:session:0",
+            "dmr:0005:session:0",
+            "dmr:0022:session:0",
+            "dmr:0001:session:2",
+            "dmr:0005:session:1",
+            "dmr:0024:session:0",
+            "dmr:0006:session:0",
+            "dmr:0019:session:0",
+            "dmr:0003:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 163.474100001622,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0008:session:2",
+            "dmr:0022:session:3",
+            "dmr:0008:session:1",
+            "dmr:0016:session:0",
+            "dmr:0008:session:3",
+            "dmr:0012:session:0",
+            "dmr:0012:session:3",
+            "dmr:0016:session:1",
+            "dmr:0010:session:4"
+          ],
+          "error": null
+        },
+        {
+          "ms": 216.5652000112459,
+          "ids": [
+            "dmr:0001:session:3",
+            "dmr:0001:session:1",
+            "dmr:0014:session:0",
+            "dmr:0001:session:2",
+            "dmr:0003:session:3",
+            "dmr:0019:session:4",
+            "dmr:0002:session:0",
+            "dmr:0001:session:0",
+            "dmr:0005:session:3",
+            "dmr:0022:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 290.8498999895528,
+          "ids": [
+            "dmr:0003:session:3",
+            "dmr:0001:session:3",
+            "dmr:0001:session:2",
+            "dmr:0019:session:1",
+            "dmr:0021:session:0",
+            "dmr:0015:session:1",
+            "dmr:0002:session:0",
+            "dmr:0010:session:0",
+            "dmr:0014:session:1",
+            "dmr:0017:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 309.0688999800477,
+          "ids": [
+            "dmr:0003:session:1",
+            "dmr:0003:session:3",
+            "dmr:0016:session:1",
+            "dmr:0019:session:1",
+            "dmr:0016:session:3",
+            "dmr:0016:session:0",
+            "dmr:0003:session:2",
+            "dmr:0007:session:0",
+            "dmr:0005:session:3",
+            "dmr:0015:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 226.5315999975428,
+          "ids": [
+            "dmr:0023:session:2",
+            "dmr:0010:session:1",
+            "dmr:0018:session:4",
+            "dmr:0000:session:0",
+            "dmr:0023:session:4",
+            "dmr:0010:session:0",
+            "dmr:0000:session:3",
+            "dmr:0023:session:3",
+            "dmr:0023:session:1",
+            "dmr:0004:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 236.71780002769083,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0018:session:2",
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0007:session:1",
+            "dmr:0005:session:0",
+            "dmr:0006:session:0",
+            "dmr:0017:session:1",
+            "dmr:0021:session:3",
+            "dmr:0023:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 85.122099990258,
+          "ids": [
+            "dmr:0006:session:4",
+            "dmr:0002:session:0",
+            "dmr:0006:session:0",
+            "dmr:0002:session:2",
+            "dmr:0006:session:2",
+            "dmr:0002:session:3",
+            "dmr:0008:session:0",
+            "dmr:0024:session:0",
+            "dmr:0015:session:4",
+            "dmr:0013:session:4"
+          ],
+          "error": null
+        },
+        {
+          "ms": 260.9130999771878,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0007:session:3",
+            "dmr:0018:session:2",
+            "dmr:0007:session:1",
+            "dmr:0005:session:4",
+            "dmr:0017:session:1",
+            "dmr:0021:session:3",
+            "dmr:0006:session:0",
+            "dmr:0017:session:0",
+            "dmr:0021:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 418.5431000078097,
+          "ids": [
+            "dmr:0008:session:2",
+            "dmr:0008:session:3",
+            "dmr:0008:session:0",
+            "dmr:0010:session:0",
+            "dmr:0010:session:1",
+            "dmr:0008:session:4",
+            "dmr:0010:session:3",
+            "dmr:0010:session:2",
+            "dmr:0014:session:1",
+            "dmr:0004:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 278.4479999972973,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0014:session:1",
+            "dmr:0020:session:1",
+            "dmr:0001:session:3",
+            "dmr:0015:session:1",
+            "dmr:0001:session:1",
+            "dmr:0005:session:0",
+            "dmr:0001:session:0",
+            "dmr:0011:session:0",
+            "dmr:0003:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 324.4113999826368,
+          "ids": [
+            "dmr:0003:session:3",
+            "dmr:0001:session:3",
+            "dmr:0001:session:2",
+            "dmr:0010:session:0",
+            "dmr:0002:session:0",
+            "dmr:0014:session:0",
+            "dmr:0019:session:0",
+            "dmr:0019:session:1",
+            "dmr:0014:session:1",
+            "dmr:0019:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 37.79900001245551,
+          "ids": [
+            "dmr:0011:session:0",
+            "dmr:0010:session:1",
+            "dmr:0013:session:0",
+            "dmr:0024:session:0",
+            "dmr:0024:session:3",
+            "dmr:0012:session:4",
+            "dmr:0017:session:0",
+            "dmr:0008:session:1",
+            "dmr:0010:session:0",
+            "dmr:0014:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 162.07430002395995,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0012:session:0",
+            "dmr:0012:session:3",
+            "dmr:0022:session:3",
+            "dmr:0002:session:2",
+            "dmr:0022:session:0",
+            "dmr:0016:session:1",
+            "dmr:0008:session:1",
+            "dmr:0010:session:4",
+            "dmr:0005:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 207.25410000886768,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0003:session:0",
+            "dmr:0002:session:0",
+            "dmr:0013:session:0",
+            "dmr:0014:session:1",
+            "dmr:0011:session:0",
+            "dmr:0010:session:0",
+            "dmr:0001:session:2",
+            "dmr:0001:session:0",
+            "dmr:0019:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 205.733999988297,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0002:session:0",
+            "dmr:0013:session:0",
+            "dmr:0014:session:1",
+            "dmr:0018:session:1",
+            "dmr:0001:session:2",
+            "dmr:0003:session:0",
+            "dmr:0012:session:0",
+            "dmr:0020:session:0",
+            "dmr:0011:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 331.410999991931,
+          "ids": [
+            "dmr:0014:session:1",
+            "dmr:0015:session:0",
+            "dmr:0002:session:0",
+            "dmr:0002:session:2",
+            "dmr:0014:session:0",
+            "dmr:0008:session:0",
+            "dmr:0009:session:4",
+            "dmr:0011:session:0",
+            "dmr:0005:session:0",
+            "dmr:0024:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 252.5335999962408,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0008:session:2",
+            "dmr:0012:session:0",
+            "dmr:0022:session:3",
+            "dmr:0016:session:0",
+            "dmr:0016:session:1",
+            "dmr:0008:session:1",
+            "dmr:0012:session:3",
+            "dmr:0023:session:3",
+            "dmr:0008:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 251.38820000574924,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0018:session:2",
+            "dmr:0007:session:1",
+            "dmr:0006:session:0",
+            "dmr:0017:session:1",
+            "dmr:0023:session:1",
+            "dmr:0007:session:4",
+            "dmr:0013:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 258.6592999869026,
+          "ids": [
+            "dmr:0018:session:3",
+            "dmr:0008:session:0",
+            "dmr:0014:session:1",
+            "dmr:0018:session:0",
+            "dmr:0018:session:4",
+            "dmr:0002:session:2",
+            "dmr:0002:session:0",
+            "dmr:0014:session:2",
+            "dmr:0014:session:0",
+            "dmr:0018:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 247.76769999880344,
+          "ids": [
+            "dmr:0010:session:0",
+            "dmr:0010:session:1",
+            "dmr:0019:session:0",
+            "dmr:0005:session:0",
+            "dmr:0011:session:0",
+            "dmr:0004:session:0",
+            "dmr:0024:session:0",
+            "dmr:0017:session:0",
+            "dmr:0010:session:2",
+            "dmr:0021:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 220.1999999815598,
+          "ids": [
+            "dmr:0004:session:0",
+            "dmr:0014:session:0",
+            "dmr:0014:session:1",
+            "dmr:0005:session:0",
+            "dmr:0013:session:0",
+            "dmr:0001:session:2",
+            "dmr:0008:session:0",
+            "dmr:0003:session:0",
+            "dmr:0010:session:0",
+            "dmr:0010:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 499.5280000148341,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0012:session:0",
+            "dmr:0021:session:1",
+            "dmr:0008:session:2",
+            "dmr:0008:session:1",
+            "dmr:0022:session:3",
+            "dmr:0010:session:2",
+            "dmr:0021:session:3",
+            "dmr:0016:session:0",
+            "dmr:0016:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 321.9873999769334,
+          "ids": [
+            "dmr:0001:session:3",
+            "dmr:0003:session:3",
+            "dmr:0001:session:2",
+            "dmr:0001:session:1",
+            "dmr:0015:session:1",
+            "dmr:0019:session:4",
+            "dmr:0007:session:0",
+            "dmr:0002:session:0",
+            "dmr:0014:session:0",
+            "dmr:0019:session:1"
+          ],
+          "error": null
+        }
+      ],
+      "receipt_ack_separate": false,
+      "readiness": "synchronous engine.add commit; no async ingestion claim"
+    },
+    {
+      "backend": "falkor",
+      "workers": 4,
+      "mixed": true,
+      "reads": {
+        "samples": 48,
+        "errors": 0,
+        "p50_ms": 256.83319999370724,
+        "p95_ms": 602.7031950172384,
+        "mean_ms": 310.1437937493756
+      },
+      "write_samples": [
+        {
+          "ms": 208.50639999844134,
+          "first_visible_check_ms": 320.1878999825567,
+          "visible": true,
+          "error": null
+        },
+        {
+          "ms": 483.25600000680424,
+          "first_visible_check_ms": 319.4798000040464,
+          "visible": true,
+          "error": null
+        },
+        {
+          "ms": 496.79470001137815,
+          "first_visible_check_ms": 270.2605999947991,
+          "visible": true,
+          "error": null
+        },
+        {
+          "ms": 445.96549999550916,
+          "first_visible_check_ms": 28.72810000553727,
+          "visible": true,
+          "error": null
+        }
+      ],
+      "wall_seconds": 3.9371855999925174,
+      "reads_per_second": 12.191449648726548,
+      "raw_reads": [
+        {
+          "ms": 282.00809998088516,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0008:session:2",
+            "dmr:0022:session:3",
+            "dmr:0008:session:1",
+            "dmr:0016:session:0",
+            "dmr:0008:session:3",
+            "dmr:0012:session:0",
+            "dmr:0012:session:3",
+            "dmr:0016:session:1",
+            "dmr:0010:session:4"
+          ],
+          "error": null
+        },
+        {
+          "ms": 313.27990000136197,
+          "ids": [
+            "dmr:0001:session:3",
+            "dmr:0001:session:1",
+            "dmr:0014:session:0",
+            "dmr:0001:session:2",
+            "dmr:0003:session:3",
+            "dmr:0019:session:4",
+            "dmr:0002:session:0",
+            "dmr:0001:session:0",
+            "dmr:0005:session:3",
+            "dmr:0022:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 488.5509999876376,
+          "ids": [
+            "dmr:0003:session:3",
+            "dmr:0001:session:3",
+            "dmr:0001:session:2",
+            "dmr:0019:session:1",
+            "dmr:0021:session:0",
+            "dmr:0015:session:1",
+            "dmr:0002:session:0",
+            "dmr:0010:session:0",
+            "dmr:0014:session:1",
+            "dmr:0017:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 345.1344999775756,
+          "ids": [
+            "dmr:0003:session:1",
+            "dmr:0003:session:3",
+            "dmr:0016:session:1",
+            "dmr:0019:session:1",
+            "dmr:0016:session:3",
+            "dmr:0016:session:0",
+            "dmr:0003:session:2",
+            "dmr:0007:session:0",
+            "dmr:0005:session:3",
+            "dmr:0015:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 491.1318000231404,
+          "ids": [
+            "dmr:0023:session:2",
+            "dmr:0010:session:1",
+            "dmr:0018:session:4",
+            "dmr:0000:session:0",
+            "dmr:0023:session:4",
+            "dmr:0010:session:0",
+            "dmr:0000:session:3",
+            "dmr:0023:session:3",
+            "dmr:0023:session:1",
+            "dmr:0004:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 229.98390000429936,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0018:session:2",
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0007:session:1",
+            "dmr:0005:session:0",
+            "dmr:0006:session:0",
+            "dmr:0017:session:1",
+            "dmr:0021:session:3",
+            "dmr:0023:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 681.3757000199985,
+          "ids": [
+            "dmr:0006:session:4",
+            "dmr:0002:session:0",
+            "dmr:0006:session:0",
+            "dmr:0002:session:2",
+            "dmr:0006:session:2",
+            "dmr:0002:session:3",
+            "dmr:0008:session:0",
+            "dmr:0024:session:0",
+            "dmr:0015:session:4",
+            "dmr:0013:session:4"
+          ],
+          "error": null
+        },
+        {
+          "ms": 235.53250002441928,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0007:session:3",
+            "dmr:0018:session:2",
+            "dmr:0007:session:1",
+            "dmr:0005:session:4",
+            "dmr:0017:session:1",
+            "dmr:0021:session:3",
+            "dmr:0006:session:0",
+            "dmr:0017:session:0",
+            "dmr:0021:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 209.53819999704137,
+          "ids": [
+            "dmr:0008:session:2",
+            "dmr:0008:session:3",
+            "dmr:0008:session:0",
+            "dmr:0010:session:0",
+            "dmr:0010:session:1",
+            "dmr:0008:session:4",
+            "dmr:0010:session:3",
+            "dmr:0010:session:2",
+            "dmr:0014:session:1",
+            "dmr:0004:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 195.0827999971807,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0014:session:1",
+            "dmr:0020:session:1",
+            "dmr:0001:session:3",
+            "dmr:0015:session:1",
+            "dmr:0001:session:1",
+            "dmr:0005:session:0",
+            "dmr:0001:session:0",
+            "dmr:0011:session:0",
+            "dmr:0003:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 161.78530000615865,
+          "ids": [
+            "dmr:0003:session:3",
+            "dmr:0001:session:3",
+            "dmr:0001:session:2",
+            "dmr:0010:session:0",
+            "dmr:0002:session:0",
+            "dmr:0014:session:0",
+            "dmr:0019:session:0",
+            "dmr:0019:session:1",
+            "dmr:0014:session:1",
+            "dmr:0019:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 169.91239998606034,
+          "ids": [
+            "dmr:0011:session:0",
+            "dmr:0010:session:1",
+            "dmr:0013:session:0",
+            "dmr:0024:session:0",
+            "dmr:0024:session:3",
+            "dmr:0012:session:4",
+            "dmr:0017:session:0",
+            "dmr:0008:session:1",
+            "dmr:0010:session:0",
+            "dmr:0014:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 330.7732999965083,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0012:session:0",
+            "dmr:0012:session:3",
+            "dmr:0022:session:3",
+            "dmr:0002:session:2",
+            "dmr:0022:session:0",
+            "dmr:0016:session:1",
+            "dmr:0008:session:1",
+            "dmr:0010:session:4",
+            "dmr:0005:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 73.5761999967508,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0003:session:0",
+            "dmr:0002:session:0",
+            "dmr:0013:session:0",
+            "dmr:0014:session:1",
+            "dmr:0011:session:0",
+            "dmr:0010:session:0",
+            "dmr:0001:session:2",
+            "dmr:0001:session:0",
+            "dmr:0019:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 309.99370000790805,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0002:session:0",
+            "dmr:0013:session:0",
+            "dmr:0014:session:1",
+            "dmr:0018:session:1",
+            "dmr:0001:session:2",
+            "dmr:0003:session:0",
+            "dmr:0012:session:0",
+            "dmr:0020:session:0",
+            "dmr:0011:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 82.62559998547658,
+          "ids": [
+            "dmr:0014:session:1",
+            "dmr:0015:session:0",
+            "dmr:0002:session:0",
+            "dmr:0002:session:2",
+            "dmr:0014:session:0",
+            "dmr:0008:session:0",
+            "dmr:0009:session:4",
+            "dmr:0011:session:0",
+            "dmr:0005:session:0",
+            "dmr:0024:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 488.3984999905806,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0008:session:2",
+            "dmr:0012:session:0",
+            "dmr:0022:session:3",
+            "dmr:0016:session:0",
+            "dmr:0016:session:1",
+            "dmr:0008:session:1",
+            "dmr:0012:session:3",
+            "dmr:0023:session:3",
+            "dmr:0008:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 343.1441000138875,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0018:session:2",
+            "dmr:0007:session:1",
+            "dmr:0006:session:0",
+            "dmr:0017:session:1",
+            "dmr:0023:session:1",
+            "dmr:0007:session:4",
+            "dmr:0013:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 439.2307999951299,
+          "ids": [
+            "dmr:0018:session:3",
+            "dmr:0008:session:0",
+            "dmr:0014:session:1",
+            "dmr:0018:session:0",
+            "dmr:0018:session:4",
+            "dmr:0002:session:2",
+            "dmr:0002:session:0",
+            "dmr:0014:session:2",
+            "dmr:0014:session:0",
+            "dmr:0018:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 257.3580999742262,
+          "ids": [
+            "dmr:0010:session:0",
+            "dmr:0010:session:1",
+            "dmr:0019:session:0",
+            "dmr:0005:session:0",
+            "dmr:0011:session:0",
+            "dmr:0004:session:0",
+            "dmr:0024:session:0",
+            "dmr:0017:session:0",
+            "dmr:0010:session:2",
+            "dmr:0021:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 450.9603999904357,
+          "ids": [
+            "dmr:0004:session:0",
+            "dmr:0014:session:0",
+            "dmr:0014:session:1",
+            "dmr:0005:session:0",
+            "dmr:0013:session:0",
+            "dmr:0001:session:2",
+            "dmr:0008:session:0",
+            "dmr:0003:session:0",
+            "dmr:0010:session:0",
+            "dmr:0010:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 234.30939999525435,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0012:session:0",
+            "dmr:0021:session:1",
+            "dmr:0008:session:2",
+            "dmr:0008:session:1",
+            "dmr:0022:session:3",
+            "dmr:0010:session:2",
+            "dmr:0021:session:3",
+            "dmr:0016:session:0",
+            "dmr:0016:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 217.9883999924641,
+          "ids": [
+            "dmr:0001:session:3",
+            "dmr:0003:session:3",
+            "dmr:0001:session:2",
+            "dmr:0001:session:1",
+            "dmr:0015:session:1",
+            "dmr:0019:session:4",
+            "dmr:0007:session:0",
+            "dmr:0002:session:0",
+            "dmr:0014:session:0",
+            "dmr:0019:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 195.83589999820106,
+          "ids": [
+            "dmr:0017:session:0",
+            "dmr:0017:session:3",
+            "dmr:0017:session:2",
+            "dmr:0017:session:1",
+            "dmr:0023:session:0",
+            "dmr:0021:session:4",
+            "dmr:0000:session:0",
+            "dmr:0019:session:3",
+            "dmr:0019:session:4",
+            "dmr:0021:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 662.7801000140607,
+          "ids": [
+            "dmr:0015:session:0",
+            "dmr:0002:session:0",
+            "dmr:0005:session:0",
+            "dmr:0022:session:0",
+            "dmr:0001:session:2",
+            "dmr:0005:session:1",
+            "dmr:0024:session:0",
+            "dmr:0006:session:0",
+            "dmr:0019:session:0",
+            "dmr:0003:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 468.07790000457317,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0008:session:2",
+            "dmr:0022:session:3",
+            "dmr:0008:session:1",
+            "dmr:0016:session:0",
+            "dmr:0008:session:3",
+            "dmr:0012:session:0",
+            "dmr:0012:session:3",
+            "dmr:0016:session:1",
+            "dmr:0010:session:4"
+          ],
+          "error": null
+        },
+        {
+          "ms": 360.57289998279884,
+          "ids": [
+            "dmr:0001:session:3",
+            "dmr:0001:session:1",
+            "dmr:0014:session:0",
+            "dmr:0001:session:2",
+            "dmr:0003:session:3",
+            "dmr:0019:session:4",
+            "dmr:0002:session:0",
+            "dmr:0001:session:0",
+            "dmr:0005:session:3",
+            "dmr:0022:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 471.32139999303035,
+          "ids": [
+            "dmr:0003:session:3",
+            "dmr:0001:session:3",
+            "dmr:0001:session:2",
+            "dmr:0019:session:1",
+            "dmr:0021:session:0",
+            "dmr:0015:session:1",
+            "dmr:0002:session:0",
+            "dmr:0010:session:0",
+            "dmr:0014:session:1",
+            "dmr:0017:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 256.3083000131883,
+          "ids": [
+            "dmr:0003:session:1",
+            "dmr:0003:session:3",
+            "dmr:0016:session:1",
+            "dmr:0019:session:1",
+            "dmr:0016:session:3",
+            "dmr:0016:session:0",
+            "dmr:0003:session:2",
+            "dmr:0007:session:0",
+            "dmr:0005:session:3",
+            "dmr:0015:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 440.9604000102263,
+          "ids": [
+            "dmr:0023:session:2",
+            "dmr:0010:session:1",
+            "dmr:0018:session:4",
+            "dmr:0000:session:0",
+            "dmr:0023:session:4",
+            "dmr:0010:session:0",
+            "dmr:0000:session:3",
+            "dmr:0023:session:3",
+            "dmr:0023:session:1",
+            "dmr:0004:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 218.51090001291595,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0018:session:2",
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0007:session:1",
+            "dmr:0005:session:0",
+            "dmr:0006:session:0",
+            "dmr:0017:session:1",
+            "dmr:0021:session:3",
+            "dmr:0023:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 248.96430000080727,
+          "ids": [
+            "dmr:0006:session:4",
+            "dmr:0002:session:0",
+            "dmr:0006:session:0",
+            "dmr:0002:session:2",
+            "dmr:0006:session:2",
+            "dmr:0002:session:3",
+            "dmr:0008:session:0",
+            "dmr:0024:session:0",
+            "dmr:0015:session:4",
+            "dmr:0013:session:4"
+          ],
+          "error": null
+        },
+        {
+          "ms": 52.2365000215359,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0007:session:3",
+            "dmr:0018:session:2",
+            "dmr:0007:session:1",
+            "dmr:0005:session:4",
+            "dmr:0017:session:1",
+            "dmr:0021:session:3",
+            "dmr:0006:session:0",
+            "dmr:0017:session:0",
+            "dmr:0021:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 194.24939999589697,
+          "ids": [
+            "dmr:0008:session:2",
+            "dmr:0008:session:3",
+            "dmr:0008:session:0",
+            "dmr:0010:session:0",
+            "dmr:0010:session:1",
+            "dmr:0008:session:4",
+            "dmr:0010:session:3",
+            "dmr:0010:session:2",
+            "dmr:0014:session:1",
+            "dmr:0004:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 204.39189998432994,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0014:session:1",
+            "dmr:0020:session:1",
+            "dmr:0001:session:3",
+            "dmr:0015:session:1",
+            "dmr:0001:session:1",
+            "dmr:0005:session:0",
+            "dmr:0001:session:0",
+            "dmr:0011:session:0",
+            "dmr:0003:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 163.62000000663102,
+          "ids": [
+            "dmr:0003:session:3",
+            "dmr:0001:session:3",
+            "dmr:0001:session:2",
+            "dmr:0010:session:0",
+            "dmr:0002:session:0",
+            "dmr:0014:session:0",
+            "dmr:0019:session:0",
+            "dmr:0019:session:1",
+            "dmr:0014:session:1",
+            "dmr:0019:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 473.13120000762865,
+          "ids": [
+            "dmr:0011:session:0",
+            "dmr:0010:session:1",
+            "dmr:0013:session:0",
+            "dmr:0024:session:0",
+            "dmr:0024:session:3",
+            "dmr:0012:session:4",
+            "dmr:0017:session:0",
+            "dmr:0008:session:1",
+            "dmr:0010:session:0",
+            "dmr:0014:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 739.1949000011664,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0012:session:0",
+            "dmr:0012:session:3",
+            "dmr:0022:session:3",
+            "dmr:0002:session:2",
+            "dmr:0022:session:0",
+            "dmr:0016:session:1",
+            "dmr:0008:session:1",
+            "dmr:0010:session:4",
+            "dmr:0005:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 364.91030000615865,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0003:session:0",
+            "dmr:0002:session:0",
+            "dmr:0013:session:0",
+            "dmr:0014:session:1",
+            "dmr:0011:session:0",
+            "dmr:0010:session:0",
+            "dmr:0001:session:2",
+            "dmr:0001:session:0",
+            "dmr:0019:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 437.7325999957975,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0002:session:0",
+            "dmr:0013:session:0",
+            "dmr:0014:session:1",
+            "dmr:0018:session:1",
+            "dmr:0001:session:2",
+            "dmr:0003:session:0",
+            "dmr:0012:session:0",
+            "dmr:0020:session:0",
+            "dmr:0011:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 254.4867999968119,
+          "ids": [
+            "dmr:0014:session:1",
+            "dmr:0015:session:0",
+            "dmr:0002:session:0",
+            "dmr:0002:session:2",
+            "dmr:0014:session:0",
+            "dmr:0008:session:0",
+            "dmr:0009:session:4",
+            "dmr:0011:session:0",
+            "dmr:0005:session:0",
+            "dmr:0024:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 458.17169998190366,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0008:session:2",
+            "dmr:0012:session:0",
+            "dmr:0022:session:3",
+            "dmr:0016:session:0",
+            "dmr:0016:session:1",
+            "dmr:0008:session:1",
+            "dmr:0012:session:3",
+            "dmr:0023:session:3",
+            "dmr:0008:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 224.50360000948422,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0018:session:2",
+            "dmr:0007:session:1",
+            "dmr:0006:session:0",
+            "dmr:0017:session:1",
+            "dmr:0023:session:1",
+            "dmr:0007:session:4",
+            "dmr:0013:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 378.35010001435876,
+          "ids": [
+            "dmr:0018:session:3",
+            "dmr:0008:session:0",
+            "dmr:0014:session:1",
+            "dmr:0018:session:0",
+            "dmr:0018:session:4",
+            "dmr:0002:session:2",
+            "dmr:0002:session:0",
+            "dmr:0014:session:2",
+            "dmr:0014:session:0",
+            "dmr:0018:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 197.36659998307005,
+          "ids": [
+            "dmr:0010:session:0",
+            "dmr:0010:session:1",
+            "dmr:0019:session:0",
+            "dmr:0005:session:0",
+            "dmr:0011:session:0",
+            "dmr:0004:session:0",
+            "dmr:0024:session:0",
+            "dmr:0017:session:0",
+            "dmr:0010:session:2",
+            "dmr:0021:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 158.41219999128953,
+          "ids": [
+            "dmr:0004:session:0",
+            "dmr:0014:session:0",
+            "dmr:0014:session:1",
+            "dmr:0005:session:0",
+            "dmr:0013:session:0",
+            "dmr:0001:session:2",
+            "dmr:0008:session:0",
+            "dmr:0003:session:0",
+            "dmr:0010:session:0",
+            "dmr:0010:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 174.48280000826344,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0012:session:0",
+            "dmr:0021:session:1",
+            "dmr:0008:session:2",
+            "dmr:0008:session:1",
+            "dmr:0022:session:3",
+            "dmr:0010:session:2",
+            "dmr:0021:session:3",
+            "dmr:0016:session:0",
+            "dmr:0016:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 56.65479999152012,
+          "ids": [
+            "dmr:0001:session:3",
+            "dmr:0003:session:3",
+            "dmr:0001:session:2",
+            "dmr:0001:session:1",
+            "dmr:0015:session:1",
+            "dmr:0019:session:4",
+            "dmr:0007:session:0",
+            "dmr:0002:session:0",
+            "dmr:0014:session:0",
+            "dmr:0019:session:1"
+          ],
+          "error": null
+        }
+      ],
+      "receipt_ack_separate": false,
+      "readiness": "synchronous engine.add commit; no async ingestion claim"
+    },
+    {
+      "backend": "qdrant",
+      "workers": 4,
+      "mixed": true,
+      "reads": {
+        "samples": 48,
+        "errors": 0,
+        "p50_ms": 234.15109999768902,
+        "p95_ms": 641.3281450193606,
+        "mean_ms": 275.2382208345807
+      },
+      "write_samples": [
+        {
+          "ms": 148.07230001315475,
+          "first_visible_check_ms": 36.674999981187284,
+          "visible": true,
+          "error": null
+        },
+        {
+          "ms": 473.41410000808537,
+          "first_visible_check_ms": 32.81420000712387,
+          "visible": true,
+          "error": null
+        },
+        {
+          "ms": 163.42290001921356,
+          "first_visible_check_ms": 232.4773999862373,
+          "visible": true,
+          "error": null
+        },
+        {
+          "ms": 370.5683999869507,
+          "first_visible_check_ms": 296.1618000117596,
+          "visible": true,
+          "error": null
+        }
+      ],
+      "wall_seconds": 3.570639300014591,
+      "reads_per_second": 13.442970842729439,
+      "raw_reads": [
+        {
+          "ms": 434.8734999948647,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0008:session:2",
+            "dmr:0022:session:3",
+            "dmr:0008:session:1",
+            "dmr:0016:session:0",
+            "dmr:0008:session:3",
+            "dmr:0012:session:0",
+            "dmr:0012:session:3",
+            "dmr:0016:session:1",
+            "dmr:0010:session:4"
+          ],
+          "error": null
+        },
+        {
+          "ms": 703.6979000258725,
+          "ids": [
+            "dmr:0001:session:3",
+            "dmr:0001:session:1",
+            "dmr:0014:session:0",
+            "dmr:0001:session:2",
+            "dmr:0003:session:3",
+            "dmr:0019:session:4",
+            "dmr:0002:session:0",
+            "dmr:0001:session:0",
+            "dmr:0005:session:3",
+            "dmr:0022:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 389.34160000644624,
+          "ids": [
+            "dmr:0003:session:3",
+            "dmr:0001:session:3",
+            "dmr:0001:session:2",
+            "dmr:0019:session:1",
+            "dmr:0021:session:0",
+            "dmr:0015:session:1",
+            "dmr:0002:session:0",
+            "dmr:0010:session:0",
+            "dmr:0014:session:1",
+            "dmr:0017:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 274.23589999671094,
+          "ids": [
+            "dmr:0003:session:1",
+            "dmr:0003:session:3",
+            "dmr:0016:session:1",
+            "dmr:0019:session:1",
+            "dmr:0016:session:3",
+            "dmr:0016:session:0",
+            "dmr:0003:session:2",
+            "dmr:0007:session:0",
+            "dmr:0005:session:3",
+            "dmr:0015:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 207.2506999829784,
+          "ids": [
+            "dmr:0023:session:2",
+            "dmr:0010:session:1",
+            "dmr:0018:session:4",
+            "dmr:0000:session:0",
+            "dmr:0023:session:4",
+            "dmr:0010:session:0",
+            "dmr:0000:session:3",
+            "dmr:0023:session:3",
+            "dmr:0023:session:1",
+            "dmr:0004:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 285.13679999741726,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0018:session:2",
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0007:session:1",
+            "dmr:0005:session:0",
+            "dmr:0006:session:0",
+            "dmr:0017:session:1",
+            "dmr:0021:session:3",
+            "dmr:0023:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 245.495299983304,
+          "ids": [
+            "dmr:0006:session:4",
+            "dmr:0002:session:0",
+            "dmr:0006:session:0",
+            "dmr:0002:session:2",
+            "dmr:0006:session:2",
+            "dmr:0002:session:3",
+            "dmr:0008:session:0",
+            "dmr:0024:session:0",
+            "dmr:0015:session:4",
+            "dmr:0013:session:4"
+          ],
+          "error": null
+        },
+        {
+          "ms": 204.00540000991896,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0007:session:3",
+            "dmr:0018:session:2",
+            "dmr:0007:session:1",
+            "dmr:0005:session:4",
+            "dmr:0017:session:1",
+            "dmr:0021:session:3",
+            "dmr:0006:session:0",
+            "dmr:0017:session:0",
+            "dmr:0021:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 218.15710002556443,
+          "ids": [
+            "dmr:0008:session:2",
+            "dmr:0008:session:3",
+            "dmr:0008:session:0",
+            "dmr:0010:session:0",
+            "dmr:0010:session:1",
+            "dmr:0008:session:4",
+            "dmr:0010:session:3",
+            "dmr:0010:session:2",
+            "dmr:0014:session:1",
+            "dmr:0004:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 179.07270000432618,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0014:session:1",
+            "dmr:0020:session:1",
+            "dmr:0001:session:3",
+            "dmr:0015:session:1",
+            "dmr:0001:session:1",
+            "dmr:0005:session:0",
+            "dmr:0001:session:0",
+            "dmr:0011:session:0",
+            "dmr:0003:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 141.86040000640787,
+          "ids": [
+            "dmr:0003:session:3",
+            "dmr:0001:session:3",
+            "dmr:0001:session:2",
+            "dmr:0010:session:0",
+            "dmr:0002:session:0",
+            "dmr:0014:session:0",
+            "dmr:0019:session:0",
+            "dmr:0019:session:1",
+            "dmr:0014:session:1",
+            "dmr:0019:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 164.3426999798976,
+          "ids": [
+            "dmr:0011:session:0",
+            "dmr:0010:session:1",
+            "dmr:0013:session:0",
+            "dmr:0024:session:0",
+            "dmr:0024:session:3",
+            "dmr:0012:session:4",
+            "dmr:0017:session:0",
+            "dmr:0008:session:1",
+            "dmr:0010:session:0",
+            "dmr:0014:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 278.8445000187494,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0012:session:0",
+            "dmr:0012:session:3",
+            "dmr:0022:session:3",
+            "dmr:0002:session:2",
+            "dmr:0022:session:0",
+            "dmr:0016:session:1",
+            "dmr:0008:session:1",
+            "dmr:0010:session:4",
+            "dmr:0005:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 60.16630001249723,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0003:session:0",
+            "dmr:0002:session:0",
+            "dmr:0013:session:0",
+            "dmr:0014:session:1",
+            "dmr:0011:session:0",
+            "dmr:0010:session:0",
+            "dmr:0001:session:2",
+            "dmr:0001:session:0",
+            "dmr:0019:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 58.29859999357723,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0002:session:0",
+            "dmr:0013:session:0",
+            "dmr:0014:session:1",
+            "dmr:0018:session:1",
+            "dmr:0001:session:2",
+            "dmr:0003:session:0",
+            "dmr:0012:session:0",
+            "dmr:0020:session:0",
+            "dmr:0011:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 525.4986000072677,
+          "ids": [
+            "dmr:0014:session:1",
+            "dmr:0015:session:0",
+            "dmr:0002:session:0",
+            "dmr:0002:session:2",
+            "dmr:0014:session:0",
+            "dmr:0008:session:0",
+            "dmr:0009:session:4",
+            "dmr:0011:session:0",
+            "dmr:0005:session:0",
+            "dmr:0024:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 41.64229999878444,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0008:session:2",
+            "dmr:0012:session:0",
+            "dmr:0022:session:3",
+            "dmr:0016:session:0",
+            "dmr:0016:session:1",
+            "dmr:0008:session:1",
+            "dmr:0012:session:3",
+            "dmr:0023:session:3",
+            "dmr:0008:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 218.84509999654256,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0018:session:2",
+            "dmr:0007:session:1",
+            "dmr:0006:session:0",
+            "dmr:0017:session:1",
+            "dmr:0023:session:1",
+            "dmr:0007:session:4",
+            "dmr:0013:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 395.34710001316853,
+          "ids": [
+            "dmr:0018:session:3",
+            "dmr:0008:session:0",
+            "dmr:0014:session:1",
+            "dmr:0018:session:0",
+            "dmr:0018:session:4",
+            "dmr:0002:session:2",
+            "dmr:0002:session:0",
+            "dmr:0014:session:2",
+            "dmr:0014:session:0",
+            "dmr:0018:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 275.90159999090247,
+          "ids": [
+            "dmr:0010:session:0",
+            "dmr:0010:session:1",
+            "dmr:0019:session:0",
+            "dmr:0005:session:0",
+            "dmr:0011:session:0",
+            "dmr:0004:session:0",
+            "dmr:0024:session:0",
+            "dmr:0017:session:0",
+            "dmr:0010:session:2",
+            "dmr:0021:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 211.12110000103712,
+          "ids": [
+            "dmr:0004:session:0",
+            "dmr:0014:session:0",
+            "dmr:0014:session:1",
+            "dmr:0005:session:0",
+            "dmr:0013:session:0",
+            "dmr:0001:session:2",
+            "dmr:0008:session:0",
+            "dmr:0003:session:0",
+            "dmr:0010:session:0",
+            "dmr:0010:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 287.9098000121303,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0012:session:0",
+            "dmr:0021:session:1",
+            "dmr:0008:session:2",
+            "dmr:0008:session:1",
+            "dmr:0022:session:3",
+            "dmr:0010:session:2",
+            "dmr:0021:session:3",
+            "dmr:0016:session:0",
+            "dmr:0016:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 221.51999999186955,
+          "ids": [
+            "dmr:0001:session:3",
+            "dmr:0003:session:3",
+            "dmr:0001:session:2",
+            "dmr:0001:session:1",
+            "dmr:0015:session:1",
+            "dmr:0019:session:4",
+            "dmr:0007:session:0",
+            "dmr:0002:session:0",
+            "dmr:0014:session:0",
+            "dmr:0019:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 222.7339000091888,
+          "ids": [
+            "dmr:0017:session:0",
+            "dmr:0017:session:3",
+            "dmr:0017:session:2",
+            "dmr:0017:session:1",
+            "dmr:0023:session:0",
+            "dmr:0021:session:4",
+            "dmr:0000:session:0",
+            "dmr:0019:session:3",
+            "dmr:0019:session:4",
+            "dmr:0021:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 1015.7874000142328,
+          "ids": [
+            "dmr:0015:session:0",
+            "dmr:0002:session:0",
+            "dmr:0005:session:0",
+            "dmr:0022:session:0",
+            "dmr:0001:session:2",
+            "dmr:0005:session:1",
+            "dmr:0024:session:0",
+            "dmr:0006:session:0",
+            "dmr:0019:session:0",
+            "dmr:0003:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 218.33100001094863,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0008:session:2",
+            "dmr:0022:session:3",
+            "dmr:0008:session:1",
+            "dmr:0016:session:0",
+            "dmr:0008:session:3",
+            "dmr:0012:session:0",
+            "dmr:0012:session:3",
+            "dmr:0016:session:1",
+            "dmr:0010:session:4"
+          ],
+          "error": null
+        },
+        {
+          "ms": 404.36489999410696,
+          "ids": [
+            "dmr:0001:session:3",
+            "dmr:0001:session:1",
+            "dmr:0014:session:0",
+            "dmr:0001:session:2",
+            "dmr:0003:session:3",
+            "dmr:0019:session:4",
+            "dmr:0002:session:0",
+            "dmr:0001:session:0",
+            "dmr:0005:session:3",
+            "dmr:0022:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 266.82759998948313,
+          "ids": [
+            "dmr:0003:session:3",
+            "dmr:0001:session:3",
+            "dmr:0001:session:2",
+            "dmr:0019:session:1",
+            "dmr:0021:session:0",
+            "dmr:0015:session:1",
+            "dmr:0002:session:0",
+            "dmr:0010:session:0",
+            "dmr:0014:session:1",
+            "dmr:0017:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 264.77650000015274,
+          "ids": [
+            "dmr:0003:session:1",
+            "dmr:0003:session:3",
+            "dmr:0016:session:1",
+            "dmr:0019:session:1",
+            "dmr:0016:session:3",
+            "dmr:0016:session:0",
+            "dmr:0003:session:2",
+            "dmr:0007:session:0",
+            "dmr:0005:session:3",
+            "dmr:0015:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 265.4556999914348,
+          "ids": [
+            "dmr:0023:session:2",
+            "dmr:0010:session:1",
+            "dmr:0018:session:4",
+            "dmr:0000:session:0",
+            "dmr:0023:session:4",
+            "dmr:0010:session:0",
+            "dmr:0000:session:3",
+            "dmr:0023:session:3",
+            "dmr:0023:session:1",
+            "dmr:0004:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 198.74600000912324,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0018:session:2",
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0007:session:1",
+            "dmr:0005:session:0",
+            "dmr:0006:session:0",
+            "dmr:0017:session:1",
+            "dmr:0021:session:3",
+            "dmr:0023:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 225.32840000349097,
+          "ids": [
+            "dmr:0006:session:4",
+            "dmr:0002:session:0",
+            "dmr:0006:session:0",
+            "dmr:0002:session:2",
+            "dmr:0006:session:2",
+            "dmr:0002:session:3",
+            "dmr:0008:session:0",
+            "dmr:0024:session:0",
+            "dmr:0015:session:4",
+            "dmr:0013:session:4"
+          ],
+          "error": null
+        },
+        {
+          "ms": 45.27440000674687,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0007:session:3",
+            "dmr:0018:session:2",
+            "dmr:0007:session:1",
+            "dmr:0005:session:4",
+            "dmr:0017:session:1",
+            "dmr:0021:session:3",
+            "dmr:0006:session:0",
+            "dmr:0017:session:0",
+            "dmr:0021:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 280.43119999347255,
+          "ids": [
+            "dmr:0008:session:2",
+            "dmr:0008:session:3",
+            "dmr:0008:session:0",
+            "dmr:0010:session:0",
+            "dmr:0010:session:1",
+            "dmr:0008:session:4",
+            "dmr:0010:session:3",
+            "dmr:0010:session:2",
+            "dmr:0014:session:1",
+            "dmr:0004:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 53.92289999872446,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0014:session:1",
+            "dmr:0020:session:1",
+            "dmr:0001:session:3",
+            "dmr:0015:session:1",
+            "dmr:0001:session:1",
+            "dmr:0005:session:0",
+            "dmr:0001:session:0",
+            "dmr:0011:session:0",
+            "dmr:0003:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 164.44049999699928,
+          "ids": [
+            "dmr:0003:session:3",
+            "dmr:0001:session:3",
+            "dmr:0001:session:2",
+            "dmr:0010:session:0",
+            "dmr:0002:session:0",
+            "dmr:0014:session:0",
+            "dmr:0019:session:0",
+            "dmr:0019:session:1",
+            "dmr:0014:session:1",
+            "dmr:0019:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 1063.7743000115734,
+          "ids": [
+            "dmr:0011:session:0",
+            "dmr:0010:session:1",
+            "dmr:0013:session:0",
+            "dmr:0024:session:0",
+            "dmr:0024:session:3",
+            "dmr:0012:session:4",
+            "dmr:0017:session:0",
+            "dmr:0008:session:1",
+            "dmr:0010:session:0",
+            "dmr:0014:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 214.29640002315864,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0012:session:0",
+            "dmr:0012:session:3",
+            "dmr:0022:session:3",
+            "dmr:0002:session:2",
+            "dmr:0022:session:0",
+            "dmr:0016:session:1",
+            "dmr:0008:session:1",
+            "dmr:0010:session:4",
+            "dmr:0005:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 431.9367999851238,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0003:session:0",
+            "dmr:0002:session:0",
+            "dmr:0013:session:0",
+            "dmr:0014:session:1",
+            "dmr:0011:session:0",
+            "dmr:0010:session:0",
+            "dmr:0001:session:2",
+            "dmr:0001:session:0",
+            "dmr:0019:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 246.5000000083819,
+          "ids": [
+            "dmr:0014:session:0",
+            "dmr:0002:session:0",
+            "dmr:0013:session:0",
+            "dmr:0014:session:1",
+            "dmr:0018:session:1",
+            "dmr:0001:session:2",
+            "dmr:0003:session:0",
+            "dmr:0012:session:0",
+            "dmr:0020:session:0",
+            "dmr:0011:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 292.6042999897618,
+          "ids": [
+            "dmr:0014:session:1",
+            "dmr:0015:session:0",
+            "dmr:0002:session:0",
+            "dmr:0002:session:2",
+            "dmr:0014:session:0",
+            "dmr:0008:session:0",
+            "dmr:0009:session:4",
+            "dmr:0011:session:0",
+            "dmr:0005:session:0",
+            "dmr:0024:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 242.97379999188706,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0008:session:2",
+            "dmr:0012:session:0",
+            "dmr:0022:session:3",
+            "dmr:0016:session:0",
+            "dmr:0016:session:1",
+            "dmr:0008:session:1",
+            "dmr:0012:session:3",
+            "dmr:0023:session:3",
+            "dmr:0008:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 202.52190000610426,
+          "ids": [
+            "dmr:0000:session:1",
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0018:session:2",
+            "dmr:0007:session:1",
+            "dmr:0006:session:0",
+            "dmr:0017:session:1",
+            "dmr:0023:session:1",
+            "dmr:0007:session:4",
+            "dmr:0013:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 341.6952999832574,
+          "ids": [
+            "dmr:0018:session:3",
+            "dmr:0008:session:0",
+            "dmr:0014:session:1",
+            "dmr:0018:session:0",
+            "dmr:0018:session:4",
+            "dmr:0002:session:2",
+            "dmr:0002:session:0",
+            "dmr:0014:session:2",
+            "dmr:0014:session:0",
+            "dmr:0018:session:2"
+          ],
+          "error": null
+        },
+        {
+          "ms": 59.01420000009239,
+          "ids": [
+            "dmr:0010:session:0",
+            "dmr:0010:session:1",
+            "dmr:0019:session:0",
+            "dmr:0005:session:0",
+            "dmr:0011:session:0",
+            "dmr:0004:session:0",
+            "dmr:0024:session:0",
+            "dmr:0017:session:0",
+            "dmr:0010:session:2",
+            "dmr:0021:session:0"
+          ],
+          "error": null
+        },
+        {
+          "ms": 252.75220000185072,
+          "ids": [
+            "dmr:0004:session:0",
+            "dmr:0014:session:0",
+            "dmr:0014:session:1",
+            "dmr:0005:session:0",
+            "dmr:0013:session:0",
+            "dmr:0001:session:2",
+            "dmr:0008:session:0",
+            "dmr:0003:session:0",
+            "dmr:0010:session:0",
+            "dmr:0010:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 154.4620000058785,
+          "ids": [
+            "dmr:0010:session:1",
+            "dmr:0012:session:0",
+            "dmr:0021:session:1",
+            "dmr:0008:session:2",
+            "dmr:0008:session:1",
+            "dmr:0022:session:3",
+            "dmr:0010:session:2",
+            "dmr:0021:session:3",
+            "dmr:0016:session:0",
+            "dmr:0016:session:1"
+          ],
+          "error": null
+        },
+        {
+          "ms": 59.91799998446368,
+          "ids": [
+            "dmr:0001:session:3",
+            "dmr:0003:session:3",
+            "dmr:0001:session:2",
+            "dmr:0001:session:1",
+            "dmr:0015:session:1",
+            "dmr:0019:session:4",
+            "dmr:0007:session:0",
+            "dmr:0002:session:0",
+            "dmr:0014:session:0",
+            "dmr:0019:session:1"
+          ],
+          "error": null
+        }
+      ],
+      "receipt_ack_separate": false,
+      "readiness": "synchronous engine.add commit; no async ingestion claim"
+    }
+  ]
+}

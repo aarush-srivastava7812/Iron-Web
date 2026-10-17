@@ -1,0 +1,11 @@
+{
+  "label": "44-reviewed-handoff-after-walking",
+  "path": "/v1/handoff",
+  "body": {
+    "work_ids": [
+      "goa-reviewed-v2"
+    ]
+  },
+  "actor": "reviewer",
+  "tenant": "riya"
+}

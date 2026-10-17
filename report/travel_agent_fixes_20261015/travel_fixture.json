@@ -1,0 +1,44 @@
+{
+  "provenance": "Entirely synthetic travel test data. These are not live supplier quotes, real businesses, availability claims or travel recommendations.",
+  "traveller": "Riya",
+  "trip_id": "goa-family",
+  "dates": "2026-12-10 to 2026-12-14",
+  "nights": 4,
+  "party": "Riya and her mother; two adults",
+  "currency": "INR",
+  "initial_total_budget": 90000,
+  "revised_total_budget": 65000,
+  "requirements": {
+    "destination": "Goa",
+    "departure_city": "Delhi",
+    "traveller_count": 2,
+    "dietary": "vegetarian",
+    "pace": "relaxed",
+    "accessibility": "A step-free entrance or lift is mandatory",
+    "max_walk_metres": 500,
+    "avoid_boats": true,
+    "max_activities_per_day": 1,
+    "flight_time_preference": "morning",
+    "activity_preferences": "Calm beaches and local food"
+  },
+  "flight_offers": [
+    {"id": "F-AM-COMFORT", "description": "Flexible morning round trip, Delhi-Goa", "total_for_two": 34000, "departure": "09:00", "return_departure": "10:00", "baggage_kg_each": 20},
+    {"id": "F-AM-SAVER", "description": "Saver morning round trip, Delhi-Goa", "total_for_two": 28000, "departure": "08:30", "return_departure": "09:30", "baggage_kg_each": 15},
+    {"id": "F-LATE", "description": "Late-night round trip, Delhi-Goa", "total_for_two": 22000, "departure": "21:30", "return_departure": "22:00", "baggage_kg_each": 15}
+  ],
+  "hotel_offers": [
+    {"id": "H-RESORT", "name": "Fixture Bay Resort", "four_night_total": 24000, "step_free": true, "walk_from_dropoff_metres": 80, "vegetarian_food": true},
+    {"id": "H-GARDEN", "name": "Fixture Garden Stay", "four_night_total": 16000, "step_free": true, "walk_from_dropoff_metres": 100, "vegetarian_food": true},
+    {"id": "H-STAIRS", "name": "Fixture Stairway Inn", "four_night_total": 12000, "step_free": false, "walk_from_dropoff_metres": 90, "vegetarian_food": true},
+    {"id": "H-REMOTE", "name": "Fixture Distant Stay", "four_night_total": 14000, "step_free": true, "walk_from_dropoff_metres": 900, "vegetarian_food": true}
+  ],
+  "activity_offers": [
+    {"id": "A-ACCESSIBLE-BEACH", "description": "Quiet beach visit with close vehicle access", "cost_for_two": 0, "walking_metres": 120, "boat": false},
+    {"id": "A-TERRACE", "description": "Seated local-food tasting on an accessible terrace", "cost_for_two": 600, "walking_metres": 100, "boat": false},
+    {"id": "A-CRUISE", "description": "Seated sunset boat cruise", "cost_for_two": 2000, "walking_metres": 100, "boat": true},
+    {"id": "A-SECLUDED-BEACH", "description": "Scenic beach beyond a long approach path", "cost_for_two": 0, "walking_metres": 1200, "boat": false}
+  ],
+  "fixed_costs": {"airport_and_local_transfers": 4000, "vegetarian_meals": 6000, "contingency": 4000},
+  "check_in": "14:00",
+  "check_out": "11:00"
+}

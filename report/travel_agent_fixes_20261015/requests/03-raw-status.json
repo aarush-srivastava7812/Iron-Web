@@ -1,0 +1,9 @@
+{
+  "label": "03-raw-status",
+  "path": "/v1/events/status",
+  "body": {
+    "eid": "raw-intake"
+  },
+  "actor": "user",
+  "tenant": "riya"
+}

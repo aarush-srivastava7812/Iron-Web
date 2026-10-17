@@ -1,0 +1,11 @@
+{
+  "raw_timings_changed": false,
+  "raw_evidence_ids_changed": false,
+  "changes": [
+    "Reference-free questions labelled unscorable rather than unavailable",
+    "Failed queries remain zero-score observations rather than being removed from quality",
+    "Intervals wholly outside the provisional tolerance labelled fail rather than inconclusive"
+  ],
+  "measured_source": "source_snapshot",
+  "analysis_source_sha256": "d8ada0f0a989439795c6b5edc269c9f8839794048561febc9309cec4c308e7dc"
+}

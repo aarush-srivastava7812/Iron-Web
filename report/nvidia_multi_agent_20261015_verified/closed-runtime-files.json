@@ -1,0 +1,10 @@
+{
+  "events.sqlite3": 65536,
+  "owner.lock": 1,
+  "tenants\\3a60dd77709f84f963b5120d\\vectors\\.lock": 13,
+  "tenants\\3a60dd77709f84f963b5120d\\vectors\\meta.json": 515,
+  "tenants\\3a60dd77709f84f963b5120d\\vectors\\collection\\semantic_memory\\storage.sqlite": 53248,
+  "tenants\\bcd60589bba43e5dd123a86e\\vectors\\.lock": 13,
+  "tenants\\bcd60589bba43e5dd123a86e\\vectors\\meta.json": 515,
+  "tenants\\bcd60589bba43e5dd123a86e\\vectors\\collection\\semantic_memory\\storage.sqlite": 12288
+}

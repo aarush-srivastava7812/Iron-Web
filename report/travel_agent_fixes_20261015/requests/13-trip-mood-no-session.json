@@ -1,0 +1,15 @@
+{
+  "label": "13-trip-mood-no-session",
+  "path": "/v1/context",
+  "body": {
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "task_type": "itinerary",
+    "session_id": "",
+    "query": "Prepare the Goa family trip from saved preferences and current requirements."
+  },
+  "actor": "planner",
+  "tenant": "riya"
+}

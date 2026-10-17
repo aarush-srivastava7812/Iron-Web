@@ -1,0 +1,73 @@
+{
+  "input": "My total budget is INR 65000.",
+  "recall": {
+    "answer_status": "supported",
+    "subject": "Traveller",
+    "requested_predicate": "budget",
+    "scope": {
+      "trip_id": "summer"
+    },
+    "temporal_mode": "now",
+    "evidence": [
+      {
+        "claim_id": "claim_c85c7c1ddb7879869d81ea32c78414fb",
+        "memory_id": "evt_e0d43cee6ea39b6b8f169c6b4c34068d",
+        "subject": "Traveller",
+        "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+        "predicate": "budget",
+        "value": 90000,
+        "kind": "rule",
+        "scope": {
+          "trip_id": "summer"
+        },
+        "status": "accepted",
+        "accepted": true,
+        "current_eligible": true,
+        "protected": true,
+        "accepted_for_current_use": true,
+        "correction_known": false,
+        "protected_at_creation": true,
+        "fuzzy_score": 1.0,
+        "fuzzy_explanation": {
+          "score": 1.0,
+          "hard_rule": "user_confirmed_protection",
+          "fired_rules": []
+        },
+        "previous_score": null,
+        "changed_by": null,
+        "change_reason": null,
+        "conflicting_claim_ids": [],
+        "sources": [
+          {
+            "id": "source_e70b5c02e92285f1ba7f73ff9fe042f3",
+            "memory_id": "evt_e0d43cee6ea39b6b8f169c6b4c34068d",
+            "text": "My total budget is INR 65000.",
+            "origin": "user",
+            "actor_id": "user",
+            "user_confirmed": true,
+            "quality": 0.9,
+            "evidence_group": "user:user",
+            "recorded_at": 1792079851,
+            "received_at": 1792079851,
+            "digest": "receipt_ca86c83447639e2db9e29e17ad622d64",
+            "metadata_json": "{\"interpretation\":\"nvidia_evaluation_travel_intake_v3\",\"service_receipt\":\"wrong-number\",\"session_id\":\"\"}"
+          }
+        ],
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "accepted_at": 1792079851,
+        "ended_at": null,
+        "reason": "",
+        "historical_meaning": "source assertion; effective dates unspecified",
+        "references": [],
+        "identity_evidence": [],
+        "evidence_path": [
+          "claim_c85c7c1ddb7879869d81ea32c78414fb",
+          "SUPPORTED_BY",
+          "source_e70b5c02e92285f1ba7f73ff9fe042f3"
+        ]
+      }
+    ],
+    "warnings": []
+  }
+}

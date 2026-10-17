@@ -1,0 +1,12 @@
+[
+ {"id":"H01","group":"holdout","question":"Which local multiplayer game uses abilities, natures and moves?","gold":[["pokemon_project"],["pokemon_features"]],"answer":"The local multiplayer Pokemon project; these are feature goals."},
+ {"id":"H02","group":"holdout","question":"Where was the Inditech internship located?","gold":[["internship"]],"answer":"Pune, as reported in the later summary."},
+ {"id":"H03","group":"holdout","question":"What is the laptop's GPU memory capacity?","gold":[["hardware"]],"answer":"6 GB VRAM, separate from 40 GB system RAM."},
+ {"id":"H04","group":"holdout","question":"When I flag response inconsistency, what baseline do you restore?","gold":[["tone_recalibration"],["tone"]],"answer":"Restore the recorded tone baseline after the inconsistency flag."},
+ {"id":"H05","group":"holdout","question":"Is the elevator maintenance RAG work definitely the renamed universal industrial platform?","gold":[["gdpe_purpose","gdpe_builder"],["primary_platform"]],"answer":"That identity or rename is not established; the possible relationship is unresolved."},
+ {"id":"H06","group":"holdout_missing","question":"What is the installed FastAPI version?","gold":[],"answer":"The exact installed version is not provided."},
+ {"id":"H07","group":"holdout","question":"What qualification label and discipline does the earlier profile contain?","gold":[["education"]],"answer":"BTech and AI & Data Science; the earlier source also reports third year."},
+ {"id":"H08","group":"holdout","question":"Which anime escape gives emotional validation, and which gives peace?","gold":[["isekai"],["slice"]],"answer":"Isekai for emotional validation; slice-of-life for peace."},
+ {"id":"H09","group":"holdout","question":"Has designing the Pokemon game proved that the UI and battles have already shipped?","gold":[["pokemon_project"],["pokemon_improvements"]],"answer":"No. Designing and improvement work do not establish that those features shipped."},
+ {"id":"H10","group":"holdout","question":"What mechanism makes a rival's movement trigger activity?","gold":[["mechanic_friction"]],"answer":"Friction Ignition in the supplied character-mechanics framework."}
+]

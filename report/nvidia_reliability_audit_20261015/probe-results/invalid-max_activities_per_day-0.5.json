@@ -1,0 +1,15 @@
+{
+  "output": [
+    {
+      "predicate": "max_activities_per_day",
+      "value": 0.5,
+      "action": "assert",
+      "reason": "User requests change",
+      "subject": "Traveller",
+      "scope": {
+        "trip_id": "summer"
+      },
+      "kind": "rule"
+    }
+  ]
+}

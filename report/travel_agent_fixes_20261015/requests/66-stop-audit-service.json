@@ -1,0 +1,7 @@
+{
+  "label": "66-stop-audit-service",
+  "path": "/audit/stop",
+  "body": {},
+  "actor": "planner",
+  "tenant": "riya"
+}

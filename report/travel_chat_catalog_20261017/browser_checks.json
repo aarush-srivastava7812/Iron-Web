@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "scope": "Isolated local app and real HTTP endpoints, live NVIDIA chat, manual memory-backed planning; hosted specialist generation tested separately",
+  "checks": [
+    "Kerala guide, real local photograph and regional discovery sketch render",
+    "Live NVIDIA chat replies with current trip context and grounded catalog choices",
+    "Provider error keeps the input and allows a live retry with the exact server-owned saved estimate",
+    "Chat history resumes after reload and minimizes by keyboard-accessible controls",
+    "Trip-specific hotel edit link opens matched stays; selecting one updates the same trip",
+    "Flight edit link prefills the trip; selecting a sample outbound flight updates its draft and estimate",
+    "Personalized branded PDF downloads from the authenticated backend",
+    "Travel Book and chat have no horizontal overflow at 320, 390, 768 or 1440 pixels",
+    "Signing out clears private chat content"
+  ],
+  "errors": []
+}

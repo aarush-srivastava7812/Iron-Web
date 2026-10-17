@@ -1,0 +1,292 @@
+{
+  "indexes": [
+    [
+      "MemoryVector",
+      [
+        "id",
+        "embedding"
+      ],
+      {
+        "id": [
+          "RANGE"
+        ],
+        "embedding": [
+          "VECTOR"
+        ]
+      },
+      {
+        "id": {},
+        "embedding": {
+          "dimension": 384,
+          "similarityFunction": "cosine",
+          "M": 16,
+          "efConstruction": 200,
+          "efRuntime": 100
+        }
+      },
+      "english",
+      [],
+      "NODE",
+      "OPERATIONAL",
+      {
+        "gcPolicy": 0,
+        "score": 1.0,
+        "lang": "english",
+        "fields": [
+          {
+            "path": "range:id",
+            "name": "range:id",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": true
+          },
+          {
+            "path": "range:id:numeric:arr",
+            "name": "range:id:numeric:arr",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": false
+          },
+          {
+            "path": "range:id:string:arr",
+            "name": "range:id:string:arr",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": true
+          },
+          {
+            "path": "vector:embedding",
+            "name": "vector:embedding",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": false
+          },
+          {
+            "path": "NONE_INDEXABLE_FIELDS",
+            "name": "NONE_INDEXABLE_FIELDS",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": true
+          }
+        ],
+        "numDocuments": 1213,
+        "maxDocId": 1213,
+        "docTableSize": 89762,
+        "sortablesSize": 0,
+        "docTrieSize": 42601,
+        "numTerms": 0,
+        "numRecords": 2426,
+        "invertedSize": 1213,
+        "invertedCap": 0,
+        "skipIndexesSize": 0,
+        "scoreIndexesSize": 0,
+        "offsetVecsSize": 0,
+        "offsetVecRecords": 0,
+        "termsSize": 0,
+        "indexingFailures": 0,
+        "totalCollected": 0,
+        "numCycles": 0,
+        "totalMSRun": 0,
+        "lastRunTimeMs": 0
+      }
+    ],
+    [
+      "Observation",
+      [
+        "id",
+        "source_memory_id"
+      ],
+      {
+        "id": [
+          "RANGE"
+        ],
+        "source_memory_id": [
+          "RANGE"
+        ]
+      },
+      {
+        "id": {},
+        "source_memory_id": {}
+      },
+      "english",
+      [],
+      "NODE",
+      "OPERATIONAL",
+      {
+        "gcPolicy": 0,
+        "score": 1.0,
+        "lang": "english",
+        "fields": [
+          {
+            "path": "range:id",
+            "name": "range:id",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": true
+          },
+          {
+            "path": "range:id:numeric:arr",
+            "name": "range:id:numeric:arr",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": false
+          },
+          {
+            "path": "range:id:string:arr",
+            "name": "range:id:string:arr",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": true
+          },
+          {
+            "path": "range:source_memory_id",
+            "name": "range:source_memory_id",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": true
+          },
+          {
+            "path": "range:source_memory_id:numeric:arr",
+            "name": "range:source_memory_id:numeric:arr",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": false
+          },
+          {
+            "path": "range:source_memory_id:string:arr",
+            "name": "range:source_memory_id:string:arr",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": true
+          },
+          {
+            "path": "NONE_INDEXABLE_FIELDS",
+            "name": "NONE_INDEXABLE_FIELDS",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": true
+          }
+        ],
+        "numDocuments": 1213,
+        "maxDocId": 2426,
+        "docTableSize": 89762,
+        "sortablesSize": 0,
+        "docTrieSize": 42601,
+        "numTerms": 0,
+        "numRecords": 3639,
+        "invertedSize": 3919,
+        "invertedCap": 0,
+        "skipIndexesSize": 0,
+        "scoreIndexesSize": 0,
+        "offsetVecsSize": 0,
+        "offsetVecRecords": 0,
+        "termsSize": 0,
+        "indexingFailures": 0,
+        "totalCollected": 0,
+        "numCycles": 0,
+        "totalMSRun": 0,
+        "lastRunTimeMs": 0
+      }
+    ],
+    [
+      "Entity",
+      [
+        "id",
+        "name"
+      ],
+      {
+        "id": [
+          "RANGE"
+        ],
+        "name": [
+          "RANGE"
+        ]
+      },
+      {
+        "id": {},
+        "name": {}
+      },
+      "english",
+      [],
+      "NODE",
+      "OPERATIONAL",
+      {
+        "gcPolicy": 0,
+        "score": 1.0,
+        "lang": "english",
+        "fields": [
+          {
+            "path": "range:id",
+            "name": "range:id",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": true
+          },
+          {
+            "path": "range:id:numeric:arr",
+            "name": "range:id:numeric:arr",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": false
+          },
+          {
+            "path": "range:id:string:arr",
+            "name": "range:id:string:arr",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": true
+          },
+          {
+            "path": "range:name",
+            "name": "range:name",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": true
+          },
+          {
+            "path": "range:name:numeric:arr",
+            "name": "range:name:numeric:arr",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": false
+          },
+          {
+            "path": "range:name:string:arr",
+            "name": "range:name:string:arr",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": true
+          },
+          {
+            "path": "NONE_INDEXABLE_FIELDS",
+            "name": "NONE_INDEXABLE_FIELDS",
+            "options": 0,
+            "textWeight": 0.0,
+            "tagCaseSensitive": true
+          }
+        ],
+        "numDocuments": 0,
+        "maxDocId": 0,
+        "docTableSize": 0,
+        "sortablesSize": 0,
+        "docTrieSize": 0,
+        "numTerms": 0,
+        "numRecords": 0,
+        "invertedSize": 0,
+        "invertedCap": 0,
+        "skipIndexesSize": 0,
+        "scoreIndexesSize": 0,
+        "offsetVecsSize": 0,
+        "offsetVecRecords": 0,
+        "termsSize": 0,
+        "indexingFailures": 0,
+        "totalCollected": 0,
+        "numCycles": 0,
+        "totalMSRun": 0,
+        "lastRunTimeMs": 0
+      }
+    ]
+  ],
+  "query": "CALL db.idx.vector.queryNodes('MemoryVector','embedding',100,vecf32($vector)) YIELD node,score RETURN node.id,score",
+  "explain": "Results\n    Project\n        ProcedureCall"
+}

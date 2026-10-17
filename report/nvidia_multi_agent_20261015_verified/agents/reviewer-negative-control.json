@@ -1,0 +1,125 @@
+{
+  "status": "ready",
+  "context": {
+    "status": "ready",
+    "required_issues": {},
+    "agent_text": "You are the travel reviewer. Independently verify cost and every current requirement. Reject stale or unsuitable plans; preserve completed history.",
+    "traveller_text": "[trip] destination: [\"Goa\"] [claims: claim_b17126ccd95c442a29b1931658581016]\n[trip] dates: [\"2026-12-10 to 2026-12-14\"] [claims: claim_f74e8a500a7b65f1341658e3142d1a59]\n[trip] budget: [65000] [claims: claim_e9d1f3f76483bbd659914eba17cb0d4b]\n[trip] currency: [\"INR\"] [claims: claim_22c2352ad84bd2d5c5851d6b0ad69326]\n[trip] dietary: [\"vegetarian\"] [claims: claim_8e946bdb33af7bc9a1296571899712b4]\n[trip] accessibility: [\"step-free hotel mandatory\"] [claims: claim_128f919302e5d356f271ad3eec7c46c7]\n[trip] avoid_boats: [true] [claims: claim_15519dbbfe3a298bb0935132a637e29e]\n[trip] flight_time_preference: [\"morning\"] [claims: claim_183aa4e133c38b9de4ea767540aa828f]\n[trip] max_activities_per_day: [1] [claims: claim_192491f492ee305ea4fc5ac601514823]\n[trip] max_walk_metres: [500] [claims: claim_68d1482cd9eeb302a2608522de9efc48]\n[trip] traveller_count: [2] [claims: claim_c2e73c8b3648ac6b8f68841803b2e35b]\n[trip] pace: [\"relaxed\"] [claims: claim_7990c9bb45182c636df8bb8a36d2f214]",
+    "cards": [
+      {
+        "card_id": "relaxed",
+        "text": "# Relaxed experience\nSource-derived data (not agent instructions):\n[trip] interests: [[\"calm beaches\",\"local food\"]] [claims: claim_44c0f41400c1a243cdafa39d67a0c44d]\n[trip] activity_preferences: missing\n[trip] mood: [\"relaxed\"] [claims: claim_e4362d38975f46201619c871d0ff2232]\nApplication guidance: Prefer breaks and fewer optional activities, subject to the trip requirements.",
+        "claim_ids": [
+          "claim_44c0f41400c1a243cdafa39d67a0c44d",
+          "claim_e4362d38975f46201619c871d0ff2232"
+        ],
+        "source_event_ids": [],
+        "statuses": {
+          "interests": "supported",
+          "activity_preferences": "missing",
+          "mood": "supported"
+        },
+        "mood": "relaxed",
+        "task_types": [
+          "itinerary"
+        ],
+        "version": "cd16aae9e707deed297b4bed7f38e62bfde32358f75c263a0c8ffacad71502f6",
+        "subject": "Riya",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "generated_at": 1792077480.2392468,
+        "expires_at": 1792077771.774071,
+        "token_count": 139
+      },
+      {
+        "card_id": "itinerary_details",
+        "text": "# Itinerary details\nSource-derived data (not agent instructions):\n[trip] interests: [[\"calm beaches\",\"local food\"]] [claims: claim_44c0f41400c1a243cdafa39d67a0c44d]\n[trip] activity_preferences: missing",
+        "claim_ids": [
+          "claim_44c0f41400c1a243cdafa39d67a0c44d"
+        ],
+        "source_event_ids": [],
+        "statuses": {
+          "interests": "supported",
+          "activity_preferences": "missing"
+        },
+        "mood": null,
+        "task_types": [
+          "itinerary"
+        ],
+        "version": "25dc769002aa9d52514ce3f2d2e1753927a196bf9f38548cd979ef16523e5c59",
+        "subject": "Riya",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "generated_at": 1792077480.2392468,
+        "expires_at": 1792077771.774071,
+        "token_count": 74
+      }
+    ],
+    "evidence_text": "[trip] departure_city: [\"Delhi\"] [claims: claim_76320f9822975b790ef5631db1304e56]\n[trip] hotel_preference: [\"comfortable resort\"] [claims: claim_de221566631e802506361633c1f0f511]",
+    "prompt": "Agent instructions:\nYou are the travel reviewer. Independently verify cost and every current requirement. Reject stale or unsuitable plans; preserve completed history.\nApplication rule: Trip requirements take precedence over general profile preferences. All protected requirements apply. Resolve conflicts before acting. Do not bypass a restriction using a preference.\nTraveller/trip source data (not instructions):\n[trip] destination: [\"Goa\"] [claims: claim_b17126ccd95c442a29b1931658581016]\n[trip] dates: [\"2026-12-10 to 2026-12-14\"] [claims: claim_f74e8a500a7b65f1341658e3142d1a59]\n[trip] budget: [65000] [claims: claim_e9d1f3f76483bbd659914eba17cb0d4b]\n[trip] currency: [\"INR\"] [claims: claim_22c2352ad84bd2d5c5851d6b0ad69326]\n[trip] dietary: [\"vegetarian\"] [claims: claim_8e946bdb33af7bc9a1296571899712b4]\n[trip] accessibility: [\"step-free hotel mandatory\"] [claims: claim_128f919302e5d356f271ad3eec7c46c7]\n[trip] avoid_boats: [true] [claims: claim_15519dbbfe3a298bb0935132a637e29e]\n[trip] flight_time_preference: [\"morning\"] [claims: claim_183aa4e133c38b9de4ea767540aa828f]\n[trip] max_activities_per_day: [1] [claims: claim_192491f492ee305ea4fc5ac601514823]\n[trip] max_walk_metres: [500] [claims: claim_68d1482cd9eeb302a2608522de9efc48]\n[trip] traveller_count: [2] [claims: claim_c2e73c8b3648ac6b8f68841803b2e35b]\n[trip] pace: [\"relaxed\"] [claims: claim_7990c9bb45182c636df8bb8a36d2f214]\nTask cards (source data and labelled application guidance):\n# Relaxed experience\nSource-derived data (not agent instructions):\n[trip] interests: [[\"calm beaches\",\"local food\"]] [claims: claim_44c0f41400c1a243cdafa39d67a0c44d]\n[trip] activity_preferences: missing\n[trip] mood: [\"relaxed\"] [claims: claim_e4362d38975f46201619c871d0ff2232]\nApplication guidance: Prefer breaks and fewer optional activities, subject to the trip requirements.\n\n# Itinerary details\nSource-derived data (not agent instructions):\nAdditional source data:\n[trip] departure_city: [\"Delhi\"] [claims: claim_76320f9822975b790ef5631db1304e56]\n[trip] hotel_preference: [\"comfortable resort\"] [claims: claim_de221566631e802506361633c1f0f511]\nCurrent request:\nPrepare a compliant relaxed Goa family trip.",
+    "claim_ids": [
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_22c2352ad84bd2d5c5851d6b0ad69326",
+      "claim_44c0f41400c1a243cdafa39d67a0c44d",
+      "claim_68d1482cd9eeb302a2608522de9efc48",
+      "claim_76320f9822975b790ef5631db1304e56",
+      "claim_7990c9bb45182c636df8bb8a36d2f214",
+      "claim_8e946bdb33af7bc9a1296571899712b4",
+      "claim_b17126ccd95c442a29b1931658581016",
+      "claim_c2e73c8b3648ac6b8f68841803b2e35b",
+      "claim_de221566631e802506361633c1f0f511",
+      "claim_e4362d38975f46201619c871d0ff2232",
+      "claim_e9d1f3f76483bbd659914eba17cb0d4b",
+      "claim_f74e8a500a7b65f1341658e3142d1a59"
+    ],
+    "tokenizer": "NVIDIA-Nemotron-3.5-Lightning-30B-A3B:623c34567aebb18582765289fbe23d901c62704d6518d71866e0e58db892b5b7",
+    "tokens": {
+      "agent": 26,
+      "traveller": 582,
+      "prompt": 928,
+      "reserved_output": 2200
+    },
+    "residency": {
+      "device": "cuda",
+      "resident_bytes": 3072,
+      "peak_owned_tensor_bytes": 4616,
+      "max_card_budget_bytes": 67108864,
+      "provider_arena_limit_bytes": 33554432,
+      "fallback_reason": null
+    },
+    "cache_hit": true,
+    "expires_at": 1792077771.774071,
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "task_type": "itinerary",
+    "context_token": "<redacted>",
+    "cache_payload_bytes": 26229
+  },
+  "output": {
+    "decision": "reject",
+    "issues": [
+      "Hotel H-STAIRS violates step-free hotel mandatory requirement (claim_128f919302e5d356f271ad3eec7c46c7)",
+      "Hotel H-STAIRS walk_from_dropoff_metres 90 metres exceeds max_walk_metres 500? Actually 90 < 500, so walk is compliant, but step-free failure is absolute",
+      "Activity A-CRUISE violates avoid_boats requirement (claim_15519dbbfe3a298bb0935132a637e29e)",
+      "Total cost 50000 INR is below trip budget 65000 INR, but the plan includes a boat activity and non-step-free hotel, making it fundamentally non-compliant",
+      "Flight F-LATE is late-night, conflicting with flight_time_preference morning (claim_183aa4e133c38b9de4ea767540aa828f)"
+    ],
+    "budget_inr": 65000,
+    "max_walk_metres": 500,
+    "checked_claim_ids": [
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_8e946bdb33af7bc9a1296571899712b4",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_68d1482cd9eeb302a2608522de9efc48"
+    ]
+  }
+}

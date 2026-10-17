@@ -1,0 +1,45 @@
+{
+  "checks": [
+    {
+      "name": "Every stored flight route Select button",
+      "status": "passed",
+      "detail": {
+        "airport_pairs": 240,
+        "selected": 60,
+        "empty": 180
+      }
+    },
+    {
+      "name": "Every saved-preference option and persistence",
+      "status": "passed",
+      "detail": {
+        "combinations": 10
+      }
+    },
+    {
+      "name": "Newsletter failure, retry and repeated submit",
+      "status": "passed"
+    },
+    {
+      "name": "Contact failure, retry and repeat-submit guard",
+      "status": "passed"
+    },
+    {
+      "name": "Booking cannot be edited while confirmation is in flight",
+      "status": "passed"
+    },
+    {
+      "name": "Expired session clears account and returns to sign-in",
+      "status": "passed"
+    },
+    {
+      "name": "Local developer sign-in and logout",
+      "status": "passed"
+    },
+    {
+      "name": "No uncaught edge-case exceptions",
+      "status": "passed"
+    }
+  ],
+  "errors": []
+}

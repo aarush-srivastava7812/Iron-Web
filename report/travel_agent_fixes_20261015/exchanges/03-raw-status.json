@@ -1,0 +1,29 @@
+{
+  "label": "03-raw-status",
+  "tenant": "riya",
+  "actor": "user",
+  "path": "/v1/events/status",
+  "request": {
+    "eid": "raw-intake"
+  },
+  "http_status": 200,
+  "response": {
+    "id": "raw-intake",
+    "status": "ready",
+    "submitted": 1792069727.9029224,
+    "started": 1792069727.9416487,
+    "ready": 1792069729.7503347,
+    "attempts": 1,
+    "memory_id": "evt_150220ee5780e58409b92d01eba6958d",
+    "error": null,
+    "blocks_work": 1,
+    "interpretation": "travel_grammar_v2",
+    "claim_kinds": [
+      "fact",
+      "preference",
+      "rule"
+    ],
+    "semantic_claim_count": 14
+  },
+  "elapsed_ms": 2.1183000062592328
+}

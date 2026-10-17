@@ -1,0 +1,139 @@
+{
+  "initial": {
+    "answer_status": "supported",
+    "subject": "DemoLift17",
+    "requested_predicate": "inspection_interval_days",
+    "scope": {
+      "site_id": "synthetic-site"
+    },
+    "temporal_mode": "now",
+    "evidence": [
+      {
+        "claim_id": "claim_cf8cd8411beabbf55cdcad69f4c15af5",
+        "memory_id": "evt_5e056803a3591cea229b6cc5191c406b",
+        "subject": "DemoLift17",
+        "subject_id": "subject_084bfdf4a4f9bfef4a2e384f13b6d429",
+        "predicate": "inspection_interval_days",
+        "value": 7,
+        "kind": "rule",
+        "scope": {
+          "site_id": "synthetic-site"
+        },
+        "status": "accepted",
+        "accepted": true,
+        "current_eligible": true,
+        "protected": true,
+        "accepted_for_current_use": true,
+        "correction_known": false,
+        "protected_at_creation": true,
+        "fuzzy_score": 1.0,
+        "fuzzy_explanation": {
+          "score": 1.0,
+          "hard_rule": "user_confirmed_protection",
+          "fired_rules": []
+        },
+        "previous_score": null,
+        "conflicting_claim_ids": [],
+        "sources": [
+          {
+            "id": "source_e0bc0359c36393ab3671470fbb4c2e46",
+            "memory_id": "evt_5e056803a3591cea229b6cc5191c406b",
+            "text": "The approved inspection interval is seven days.",
+            "origin": "user",
+            "actor_id": "traveller",
+            "user_confirmed": true,
+            "quality": 0.9,
+            "evidence_group": "user:traveller",
+            "recorded_at": 1791936082,
+            "received_at": 1791936082,
+            "digest": "receipt_6003f9ff136818fea9245d86cbb1980c",
+            "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"second-domain-proof-initial\",\"session_id\":\"\"}"
+          }
+        ],
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "accepted_at": 1791936082,
+        "ended_at": null,
+        "reason": "",
+        "historical_meaning": "source assertion; effective dates unspecified",
+        "references": [],
+        "identity_evidence": [],
+        "evidence_path": [
+          "claim_cf8cd8411beabbf55cdcad69f4c15af5",
+          "SUPPORTED_BY",
+          "source_e0bc0359c36393ab3671470fbb4c2e46"
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "current": {
+    "answer_status": "supported",
+    "subject": "DemoLift17",
+    "requested_predicate": "inspection_interval_days",
+    "scope": {
+      "site_id": "synthetic-site"
+    },
+    "temporal_mode": "now",
+    "evidence": [
+      {
+        "claim_id": "claim_81351fbe8368fa08f39bd2cffaf3830e",
+        "memory_id": "evt_a9ee3f2b8a2b4ea4117af1d8a37086aa",
+        "subject": "DemoLift17",
+        "subject_id": "subject_084bfdf4a4f9bfef4a2e384f13b6d429",
+        "predicate": "inspection_interval_days",
+        "value": 3,
+        "kind": "rule",
+        "scope": {
+          "site_id": "synthetic-site"
+        },
+        "status": "accepted",
+        "accepted": true,
+        "current_eligible": true,
+        "protected": true,
+        "accepted_for_current_use": true,
+        "correction_known": false,
+        "protected_at_creation": true,
+        "fuzzy_score": 1.0,
+        "fuzzy_explanation": {
+          "score": 1.0,
+          "hard_rule": "user_confirmed_protection",
+          "fired_rules": []
+        },
+        "previous_score": null,
+        "conflicting_claim_ids": [],
+        "sources": [
+          {
+            "id": "source_c145c23df0ee43bc978e6963af1dfe1e",
+            "memory_id": "evt_a9ee3f2b8a2b4ea4117af1d8a37086aa",
+            "text": "The operator reduced the inspection interval to three days.",
+            "origin": "user",
+            "actor_id": "traveller",
+            "user_confirmed": true,
+            "quality": 0.9,
+            "evidence_group": "user:traveller",
+            "recorded_at": 1791936082,
+            "received_at": 1791936082,
+            "digest": "receipt_f627b509fb5680e0163e63c815faa86d",
+            "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"second-domain-proof-changed\",\"session_id\":\"\"}"
+          }
+        ],
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "accepted_at": 1791936082,
+        "ended_at": null,
+        "reason": "Explicit operator procedure change",
+        "historical_meaning": "source assertion; effective dates unspecified",
+        "references": [],
+        "identity_evidence": [],
+        "evidence_path": [
+          "claim_81351fbe8368fa08f39bd2cffaf3830e",
+          "SUPPORTED_BY",
+          "source_c145c23df0ee43bc978e6963af1dfe1e"
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "scope": "Synthetic second-domain reuse proof, not a real company pilot or maintenance advice."
+}

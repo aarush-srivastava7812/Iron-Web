@@ -1,0 +1,14 @@
+{
+  "tokenizer.json": {
+    "bytes": 17077484,
+    "sha256": "623c34567aebb18582765289fbe23d901c62704d6518d71866e0e58db892b5b7",
+    "revision": null,
+    "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16/resolve/main/tokenizer.json"
+  },
+  "tokenizer_config.json": {
+    "bytes": 177209,
+    "sha256": "10f93eabcb9b1602fbb991d6308e787ce1df28ee9cd7a1c6d1e8c3f338b957bc",
+    "revision": "a9904d24bcc1d289a1950fa9d2b978c47cf903b9",
+    "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16/resolve/main/tokenizer_config.json"
+  }
+}

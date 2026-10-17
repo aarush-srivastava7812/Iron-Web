@@ -1,0 +1,31 @@
+{
+  "input": "Change my budget to INR 65000 and walking limit to 50 metres.",
+  "output": [
+    {
+      "predicate": "budget",
+      "value": 65000,
+      "action": "supersede",
+      "reason": "Change my budget to INR 65000 and walking limit to 50 metres.",
+      "subject": "Traveller",
+      "scope": {
+        "trip_id": "summer"
+      },
+      "kind": "rule"
+    },
+    {
+      "predicate": "max_walk_metres",
+      "value": 50,
+      "action": "assert",
+      "reason": "User requests change",
+      "subject": "Traveller",
+      "scope": {
+        "trip_id": "summer"
+      },
+      "kind": "rule"
+    }
+  ],
+  "observed_actions": {
+    "budget": "supersede",
+    "max_walk_metres": "assert"
+  }
+}

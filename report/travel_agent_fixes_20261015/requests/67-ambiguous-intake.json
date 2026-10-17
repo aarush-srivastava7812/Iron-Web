@@ -1,0 +1,15 @@
+{
+  "tenant": "riya",
+  "actor": "user",
+  "label": "67-ambiguous-intake",
+  "path": "/v1/events",
+  "body": {
+    "event_id": "ambiguous-intake",
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "confirmed": true,
+    "text": "Budget is INR 65000 total. Wheelchair assistance at the airport, only if needed."
+  }
+}

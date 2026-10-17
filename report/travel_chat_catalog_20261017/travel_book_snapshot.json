@@ -1,0 +1,586 @@
+{
+  "trip_id": "f3e978f1-3b33-46bb-a3bb-2092eae6ed97",
+  "version": 1,
+  "traveler": "journey_live",
+  "title": "5-day trip to Kerala",
+  "brief": {
+    "destination": "Kerala",
+    "destination_flexible": false,
+    "start_date": "2026-12-12",
+    "end_date": "2026-12-16",
+    "duration_days": 5,
+    "party_size": 2,
+    "purpose": null,
+    "budget_total_inr": 100000,
+    "budget_per_person_inr": null,
+    "interests": [
+      "nature",
+      "culture"
+    ],
+    "pace": "relaxed",
+    "transport_preferences": [],
+    "dietary_requirements": [
+      "vegetarian"
+    ],
+    "accessibility_needs": [],
+    "hard_constraints": [],
+    "preferences": [],
+    "missing_fields": [],
+    "clarification_question": null,
+    "confidence": 0.5
+  },
+  "preferences": {
+    "destination": "Kerala",
+    "start_date": "2026-12-12",
+    "end_date": "2026-12-16",
+    "duration_days": 5,
+    "traveller_count": 2,
+    "budget": 100000,
+    "pace": "relaxed",
+    "dietary": "vegetarian",
+    "interests": [
+      "nature",
+      "culture"
+    ],
+    "origin": "New Delhi",
+    "hard_requirements": []
+  },
+  "route": [
+    "Alleppey",
+    "Kochi",
+    "Munnar"
+  ],
+  "guide": {
+    "slug": "kerala",
+    "name": "Kerala",
+    "eyebrow": "Backwaters, hills & living traditions",
+    "description": "Trace a gentler route from Kochi's harbour lanes to Munnar's tea-covered hills and the palm-lined backwaters of Alleppey.",
+    "photo": "/travel/kerala.jpg",
+    "themes": [
+      "Nature & relaxation",
+      "Backwater experiences",
+      "Local cuisine",
+      "Culture & heritage"
+    ],
+    "season_note": "The demo guide suggests October\u2013March. Check conditions and opening times close to departure.",
+    "packing": "Light layers, comfortable shoes, a rain shell and sun protection; adjust to your dates and activities.",
+    "cuisine": "Appam, vegetable stew, Kerala sadya and regional seafood. Ask each venue about dietary suitability.",
+    "route_notice": "Illustrative route diagram; travel times and road conditions are not verified.",
+    "cities": [
+      {
+        "slug": "kochi",
+        "name": "Kochi",
+        "lat": 9.93,
+        "lng": 76.26,
+        "description": "Harbour-side lanes, trading stories, galleries and local kitchens.",
+        "experiences": [
+          "Fort Kochi heritage walk",
+          "Harbour sunset",
+          "Local food discovery"
+        ]
+      },
+      {
+        "slug": "munnar",
+        "name": "Munnar",
+        "lat": 10.09,
+        "lng": 77.06,
+        "description": "Tea gardens, misty hills and time to slow down in the highlands.",
+        "experiences": [
+          "Tea garden walk",
+          "Scenic viewpoints",
+          "Village trail"
+        ]
+      },
+      {
+        "slug": "alleppey",
+        "name": "Alleppey",
+        "lat": 9.5,
+        "lng": 76.34,
+        "description": "Palm-lined waterways, village life and quiet stretches beside the backwaters.",
+        "experiences": [
+          "Backwater cruise",
+          "Village canoe trail",
+          "Waterside sunset"
+        ]
+      }
+    ]
+  },
+  "itinerary": {
+    "title": "5-day trip to Kerala",
+    "days": [
+      {
+        "day": 1,
+        "calendar_date": "2026-12-12",
+        "stops": [
+          {
+            "day": 1,
+            "start_time": "09:30",
+            "end_time": "11:30",
+            "title": "Arrive by surface transport",
+            "kind": "transport",
+            "location": "Kerala",
+            "est_cost_inr": 0,
+            "notes": "travel time assumed within the morning window",
+            "evidence": null
+          },
+          {
+            "day": 1,
+            "start_time": "13:00",
+            "end_time": "14:00",
+            "title": "Lunch at Demo Kochi Vegetarian Kitchen",
+            "kind": "food",
+            "location": "Kochi",
+            "est_cost_inr": 275,
+            "notes": "suits your stated dietary requirements",
+            "evidence": {
+              "source": "food.search",
+              "kind": "live",
+              "retrieved_at": 1792246788,
+              "ref": "1",
+              "note": null
+            }
+          },
+          {
+            "day": 1,
+            "start_time": "15:30",
+            "end_time": "17:30",
+            "title": "Kerala backwater cruise",
+            "kind": "attraction",
+            "location": "Alleppey",
+            "est_cost_inr": 3499,
+            "notes": null,
+            "evidence": {
+              "source": "guides.search",
+              "kind": "live",
+              "retrieved_at": 1792246791,
+              "ref": "3",
+              "note": null
+            }
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "calendar_date": "2026-12-13",
+        "stops": [
+          {
+            "day": 2,
+            "start_time": "09:30",
+            "end_time": "11:30",
+            "title": "Demo Fort Kochi heritage walk",
+            "kind": "attraction",
+            "location": "Kochi",
+            "est_cost_inr": 900,
+            "notes": "aligns with your interest in nature, culture",
+            "evidence": {
+              "source": "guides.search",
+              "kind": "live",
+              "retrieved_at": 1792246791,
+              "ref": "7",
+              "note": null
+            }
+          },
+          {
+            "day": 2,
+            "start_time": "13:00",
+            "end_time": "14:00",
+            "title": "Lunch at Demo Munnar Vegetarian Kitchen",
+            "kind": "food",
+            "location": "Munnar",
+            "est_cost_inr": 315,
+            "notes": "suits your stated dietary requirements",
+            "evidence": {
+              "source": "food.search",
+              "kind": "live",
+              "retrieved_at": 1792246788,
+              "ref": "2",
+              "note": null
+            }
+          },
+          {
+            "day": 2,
+            "start_time": "15:30",
+            "end_time": "17:30",
+            "title": "Demo Tea garden walk",
+            "kind": "attraction",
+            "location": "Munnar",
+            "est_cost_inr": 1500,
+            "notes": null,
+            "evidence": {
+              "source": "guides.search",
+              "kind": "live",
+              "retrieved_at": 1792246791,
+              "ref": "9",
+              "note": null
+            }
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "calendar_date": "2026-12-14",
+        "stops": [
+          {
+            "day": 3,
+            "start_time": "09:30",
+            "end_time": "11:30",
+            "title": "Demo Scenic viewpoints",
+            "kind": "attraction",
+            "location": "Munnar",
+            "est_cost_inr": 950,
+            "notes": "aligns with your interest in nature, culture",
+            "evidence": {
+              "source": "guides.search",
+              "kind": "live",
+              "retrieved_at": 1792246791,
+              "ref": "10",
+              "note": null
+            }
+          },
+          {
+            "day": 3,
+            "start_time": "13:00",
+            "end_time": "14:00",
+            "title": "Lunch at Demo Alleppey Vegetarian Kitchen",
+            "kind": "food",
+            "location": "Alleppey",
+            "est_cost_inr": 355,
+            "notes": "suits your stated dietary requirements",
+            "evidence": {
+              "source": "food.search",
+              "kind": "live",
+              "retrieved_at": 1792246788,
+              "ref": "3",
+              "note": null
+            }
+          },
+          {
+            "day": 3,
+            "start_time": "15:30",
+            "end_time": "17:30",
+            "title": "Demo Village canoe trail",
+            "kind": "attraction",
+            "location": "Alleppey",
+            "est_cost_inr": 1300,
+            "notes": null,
+            "evidence": {
+              "source": "guides.search",
+              "kind": "live",
+              "retrieved_at": 1792246791,
+              "ref": "12",
+              "note": null
+            }
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "calendar_date": "2026-12-15",
+        "stops": [
+          {
+            "day": 4,
+            "start_time": "09:30",
+            "end_time": "11:30",
+            "title": "Free morning to wander",
+            "kind": "buffer",
+            "location": "Kerala",
+            "est_cost_inr": 0,
+            "notes": "Unscheduled time; no additional catalog experience selected.",
+            "evidence": null
+          },
+          {
+            "day": 4,
+            "start_time": "13:00",
+            "end_time": "14:00",
+            "title": "Lunch at Kerala Family Kitchen",
+            "kind": "food",
+            "location": "Kerala",
+            "est_cost_inr": 415,
+            "notes": "suits your stated dietary requirements",
+            "evidence": {
+              "source": "food.search",
+              "kind": "live",
+              "retrieved_at": 1792246788,
+              "ref": "28",
+              "note": null
+            }
+          },
+          {
+            "day": 4,
+            "start_time": "15:30",
+            "end_time": "17:30",
+            "title": "Free afternoon for local exploration",
+            "kind": "buffer",
+            "location": "Kerala",
+            "est_cost_inr": 0,
+            "notes": "Unscheduled time; costs are not included.",
+            "evidence": null
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "calendar_date": "2026-12-16",
+        "stops": [
+          {
+            "day": 5,
+            "start_time": "09:30",
+            "end_time": "11:30",
+            "title": "Free morning to wander",
+            "kind": "buffer",
+            "location": "Kerala",
+            "est_cost_inr": 0,
+            "notes": "Unscheduled time; no additional catalog experience selected.",
+            "evidence": null
+          },
+          {
+            "day": 5,
+            "start_time": "13:00",
+            "end_time": "14:00",
+            "title": "Lunch at Demo Kochi Vegetarian Kitchen",
+            "kind": "food",
+            "location": "Kochi",
+            "est_cost_inr": 275,
+            "notes": "suits your stated dietary requirements",
+            "evidence": {
+              "source": "food.search",
+              "kind": "live",
+              "retrieved_at": 1792246788,
+              "ref": "1",
+              "note": null
+            }
+          },
+          {
+            "day": 5,
+            "start_time": "15:30",
+            "end_time": "17:30",
+            "title": "Pack up and head home",
+            "kind": "buffer",
+            "location": "Kerala",
+            "est_cost_inr": 0,
+            "notes": null,
+            "evidence": null
+          }
+        ]
+      }
+    ],
+    "total_est_cost_inr": 9784,
+    "assumptions": [
+      "Assumes a room at Voyara Demo Kochi Courtyard Stay for all nights (per-night \u20b92,400, availability unverified)."
+    ],
+    "alternatives": [
+      "Swap the afternoon activity for a food walk if the weather turns."
+    ],
+    "unresolved_conflicts": []
+  },
+  "stay": {
+    "id": 7,
+    "name": "Voyara Demo Kochi Courtyard Stay",
+    "location": "Kochi",
+    "price_per_night_inr": 2400,
+    "nights": 4,
+    "status": "Selected \u00b7 availability unverified"
+  },
+  "flight": {
+    "id": 7,
+    "kind": "flight",
+    "name": "Voyara sample flight",
+    "origin": "New Delhi",
+    "location": "Kochi",
+    "price_inr": 5800,
+    "duration_min": 165,
+    "date": "2026-12-12"
+  },
+  "budget": {
+    "currency": "INR",
+    "per_person": false,
+    "lines": [
+      {
+        "category": "stay",
+        "amount_inr": 9600,
+        "basis": "estimate",
+        "note": "per room; availability unverified"
+      },
+      {
+        "category": "food",
+        "amount_inr": 3270,
+        "basis": "estimate",
+        "note": "scheduled meals only"
+      },
+      {
+        "category": "activities",
+        "amount_inr": 16298,
+        "basis": "estimate",
+        "note": "guide/experience fees"
+      },
+      {
+        "category": "contingency",
+        "amount_inr": 2916,
+        "basis": "estimate",
+        "note": "10% buffer for local travel and extras"
+      },
+      {
+        "category": "outbound flight",
+        "amount_inr": 11600,
+        "basis": "estimate",
+        "note": "2 guests; one way, demo fare; taxes/baggage unverified"
+      }
+    ],
+    "total_inr": 43684,
+    "budget_delta_inr": null,
+    "price_checked_at": null,
+    "status": "estimate",
+    "warnings": [
+      "All figures are estimates from catalog data, not live prices.",
+      "Includes the listed catalog activities and meals; unverified transport and extra meals are excluded."
+    ]
+  },
+  "agents": [
+    {
+      "agent": "trip_consultant",
+      "execution": {
+        "mode": "nvidia",
+        "persona": "Mira \u00b7 trip editor",
+        "goal": "Check the confirmed brief for gaps; never invent traveler facts.",
+        "model": "openai/gpt-oss-20b",
+        "temperature": 0.35,
+        "tool_calls": [
+          "inspect_brief",
+          "finish"
+        ],
+        "observations": [
+          "inspect_brief: ok; Trip brief: Kerala, 5 days, party of 2, ~\u20b950,000/person"
+        ],
+        "decision": "Confirmed brief covers destination, dates, party size, budget total, interests, pace, dietary. Missing budget per person, transport preferences, purpose, preferences, hard constraints. No itinerary or options available yet.",
+        "completed": true
+      }
+    },
+    {
+      "agent": "explore_agent",
+      "execution": {
+        "mode": "nvidia",
+        "persona": "Atlas \u00b7 curious scout",
+        "goal": "Discover destinations fitting the stated interests; prioritize the confirmed destination.",
+        "model": "openai/gpt-oss-20b",
+        "temperature": 0.85,
+        "tool_calls": [
+          "finish",
+          "discover_destinations",
+          "finish",
+          "finish"
+        ],
+        "observations": [
+          "A successful role tool result is required before finish",
+          "discover_destinations: ok; 4 destination ideas",
+          "Select zero-based indices from the observed candidates only"
+        ],
+        "decision": "Confirmed Kerala trip with 5 days, relaxed pace, nature and culture interests, vegetarian diet, 2 travelers, 100000 INR budget. No alternatives needed.",
+        "completed": true
+      }
+    },
+    {
+      "agent": "food_guide_agent",
+      "execution": {
+        "mode": "nvidia",
+        "persona": "Saffron \u00b7 food curator",
+        "goal": "Choose varied meals within the supported dietary requirement; unknown suitability remains unknown.",
+        "model": "openai/gpt-oss-20b",
+        "temperature": 0.75,
+        "tool_calls": [
+          "find_food",
+          "finish"
+        ],
+        "observations": [
+          "find_food: ok; 4 food recommendations in Kerala"
+        ],
+        "decision": "Selected vegetarian restaurants in Kerala: Demo Kochi Vegetarian Kitchen (Kochi), Demo Munnar Vegetarian Kitchen (Munnar), Demo Alleppey Vegetarian Kitchen (Alleppey), Kerala Family Kitchen (Kerala).",
+        "completed": true
+      }
+    },
+    {
+      "agent": "stay_agent",
+      "execution": {
+        "mode": "nvidia",
+        "persona": "Haven \u00b7 practical host",
+        "goal": "Compare lodging value, amenities and room cost; shortlist a preferred stay and alternatives.",
+        "model": "openai/gpt-oss-20b",
+        "temperature": 0.55,
+        "tool_calls": [
+          "compare_stays",
+          "finish",
+          "compare_stays",
+          "finish"
+        ],
+        "observations": [
+          "compare_stays: ok; 5 stay options near Kerala",
+          "Select zero-based indices from the observed candidates only",
+          "compare_stays: ok; 5 stay options near Kerala"
+        ],
+        "decision": "Shortlisted preferred stay: Voyara Demo Kochi Courtyard Stay (stay_id 7) \u2013 lowest nightly rate at INR 2400, 4\u2011night total INR 9600, 4.5 rating, basic amenities. Alternatives: 9 (Munnar Courtyard), 11 (Alleppey Courtyard), 8 (Kochi Garden Retreat), 10 (Munnar Garden Retreat).",
+        "completed": true
+      }
+    },
+    {
+      "agent": "tour_guide_agent",
+      "execution": {
+        "mode": "nvidia",
+        "persona": "Roam \u00b7 culture scout",
+        "goal": "Choose experiences matching interests and pace; avoid repeating the same experience unnecessarily.",
+        "model": "openai/gpt-oss-20b",
+        "temperature": 0.8,
+        "tool_calls": [
+          "find_experiences",
+          "finish"
+        ],
+        "observations": [
+          "find_experiences: ok; 7 experience ideas in Kerala"
+        ],
+        "decision": "Selected 5 experiences covering nature and culture for a relaxed 5\u2011day Kerala trip within budget.",
+        "completed": true
+      }
+    },
+    {
+      "agent": "itinerary_planner",
+      "execution": {
+        "mode": "nvidia",
+        "persona": "Weaver \u00b7 day planner",
+        "goal": "Compose the specialists' actual findings into a paced schedule; review and revise conflicts.",
+        "model": "openai/gpt-oss-20b",
+        "temperature": 0.65,
+        "tool_calls": [
+          "build_schedule",
+          "review_schedule",
+          "finish"
+        ],
+        "observations": [
+          "build_schedule: ok; Drafted a 5-day itinerary with 15 stops",
+          "Schedule review: 0 errors, 0 warnings"
+        ],
+        "decision": "Drafted a 5\u2011day relaxed Kerala itinerary for two veg\u2011only travelers within INR\u202f100k budget. Included 5 nights at Voyara Demo Kochi Courtyard Stay (\u20b92,400/night). Attractions: Kerala backwater cruise (Alleppey), Fort Kochi heritage walk, Tea garden walk, Scenic viewpoints, Village canoe trail. Food: Demo Kochi Vegetarian Kitchen, Demo Munnar Vegetarian Kitchen, Demo Alleppey Vegetarian Kitchen, Kerala Family Kitchen. All stops fit relaxed pace, no conflicts, cost ~\u20b99,784. Reviewed and no issues.",
+        "completed": true
+      }
+    },
+    {
+      "agent": "budget_booking_agent",
+      "execution": {
+        "mode": "nvidia",
+        "persona": "Ledger \u00b7 skeptical reviewer",
+        "goal": "Run the exact cost calculator; check the budget and explain exclusions. Never book or pay.",
+        "model": "openai/gpt-oss-20b",
+        "temperature": 0.35,
+        "tool_calls": [
+          "calculate_budget",
+          "finish"
+        ],
+        "observations": [
+          "calculate_budget: ok; Estimated \u20b932,084 for 2 travellers"
+        ],
+        "decision": "Calculated budget estimate for 2 travellers to Kerala 5 days: stay \u20b99,600, food \u20b93,270, activities \u20b916,298, contingency \u20b92,916, total \u20b932,084. Excludes transport, unverified meals, and any additional extras. Budget well below INR 100,000 total. No booking performed.",
+        "completed": true
+      }
+    }
+  ],
+  "status": "Draft \u00b7 no supplier reservations",
+  "notice": "Personal hackathon travel draft. All catalog inventory and prices are illustrative.",
+  "photo_attribution": "Kerala photograph: Unsplash, photo-1602216056096-3b40cc0c9944. Editorial content: Voyara demo catalog."
+}

@@ -1,0 +1,468 @@
+{
+  "as_of": 1792079951,
+  "prerequisite": {
+    "as_of": 1792079951,
+    "can_continue": false,
+    "work": [
+      {
+        "work": {
+          "id": "access-check",
+          "description": "",
+          "agent_id": "planner",
+          "status": "completed",
+          "created_at": 1792079850,
+          "validation_state": "current",
+          "fingerprint": "work_dec7df8bce7653b57ee03940881448ca",
+          "used_claim_ids": "[\"claim_d09cde70a2706630cf6159489ed464da\"]",
+          "dependency_ids": "[]",
+          "lease_until": 1792080151.14163,
+          "owner_version": 1,
+          "completed_at": 1792079851
+        },
+        "used_versions": [
+          {
+            "claim_id": "claim_d09cde70a2706630cf6159489ed464da",
+            "memory_id": "evt_5c2e8e821b61cfd4e0b8b4b5bf8f172b",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "audit_access",
+            "value": "step-free",
+            "kind": "rule",
+            "scope": {
+              "trip_id": "summer"
+            },
+            "status": "expired",
+            "accepted": true,
+            "current_eligible": false,
+            "protected": false,
+            "accepted_for_current_use": false,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 0.0,
+            "fuzzy_explanation": {
+              "score": 0.0,
+              "hard_rule": "not_current",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_73968e9873878fd61fe0a3dac0780c47",
+                "memory_id": "evt_5c2e8e821b61cfd4e0b8b4b5bf8f172b",
+                "text": "Explicit audit fixture",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792079850,
+                "received_at": 1792079850,
+                "digest": "receipt_d353099d96af1a6aad0492ba4cd1fe85",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"expiring-field\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 1792079950,
+            "accepted_at": 1792079850,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion with declared validity",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_d09cde70a2706630cf6159489ed464da",
+              "SUPPORTED_BY",
+              "source_73968e9873878fd61fe0a3dac0780c47"
+            ]
+          }
+        ],
+        "current_evidence": [],
+        "prerequisites": [],
+        "awaiting_prerequisites": [],
+        "needs_review": true,
+        "warnings": []
+      }
+    ]
+  },
+  "dependent": {
+    "as_of": 1792079951,
+    "can_continue": true,
+    "work": [
+      {
+        "work": {
+          "id": "dependent-plan",
+          "description": "",
+          "agent_id": "",
+          "status": "ready",
+          "created_at": 1792079851,
+          "validation_state": "current",
+          "fingerprint": "work_92f6f1821718c5846ccbada6654c0a2a",
+          "used_claim_ids": "[\"claim_de6925cfd50a214fd8eb80951cce1b1d\"]",
+          "dependency_ids": "[\"access-check\"]"
+        },
+        "used_versions": [
+          {
+            "claim_id": "claim_de6925cfd50a214fd8eb80951cce1b1d",
+            "memory_id": "evt_b86c24256da63ff49129e1f9f59f3053",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "destination",
+            "value": "Goa",
+            "kind": "fact",
+            "scope": {
+              "trip_id": "summer"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8467866986814905,
+            "fuzzy_explanation": {
+              "score": 0.8467866986814905,
+              "inputs": {
+                "freshness": 0.9999909969714385,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 1.8006057123098884e-05,
+                  "high": 0.9999819939428769
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.8006057123098884e-05,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.8006057123098884e-05,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.8006057123098884e-05,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.8006057123098884e-05,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_0ed56c5458f9097e42b868ae493ff5ad",
+                "memory_id": "evt_b86c24256da63ff49129e1f9f59f3053",
+                "text": "Trip details",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792079850,
+                "received_at": 1792079850,
+                "digest": "receipt_317dbfd294b210712a0875dccbcf3cfd",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792079850,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_de6925cfd50a214fd8eb80951cce1b1d",
+              "SUPPORTED_BY",
+              "source_0ed56c5458f9097e42b868ae493ff5ad"
+            ]
+          }
+        ],
+        "current_evidence": [
+          {
+            "claim_id": "claim_de6925cfd50a214fd8eb80951cce1b1d",
+            "memory_id": "evt_b86c24256da63ff49129e1f9f59f3053",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "destination",
+            "value": "Goa",
+            "kind": "fact",
+            "scope": {
+              "trip_id": "summer"
+            },
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8467866986814905,
+            "fuzzy_explanation": {
+              "score": 0.8467866986814905,
+              "inputs": {
+                "freshness": 0.9999909969714385,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 1.8006057123098884e-05,
+                  "high": 0.9999819939428769
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.8006057123098884e-05,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.8006057123098884e-05,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.8006057123098884e-05,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.8006057123098884e-05,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.19999999999999996,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.33333333333333337,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.6666666666666666,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno; min conjunction; weighted rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_0ed56c5458f9097e42b868ae493ff5ad",
+                "memory_id": "evt_b86c24256da63ff49129e1f9f59f3053",
+                "text": "Trip details",
+                "origin": "user",
+                "actor_id": "user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:user",
+                "recorded_at": 1792079850,
+                "received_at": 1792079850,
+                "digest": "receipt_317dbfd294b210712a0875dccbcf3cfd",
+                "metadata_json": "{\"interpretation\":\"structured\",\"service_receipt\":\"trip\",\"session_id\":\"\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792079850,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_de6925cfd50a214fd8eb80951cce1b1d",
+              "SUPPORTED_BY",
+              "source_0ed56c5458f9097e42b868ae493ff5ad"
+            ]
+          }
+        ],
+        "prerequisites": [
+          {
+            "id": "access-check",
+            "description": "",
+            "agent_id": "planner",
+            "status": "completed",
+            "created_at": 1792079850,
+            "validation_state": "current",
+            "fingerprint": "work_dec7df8bce7653b57ee03940881448ca",
+            "used_claim_ids": "[\"claim_d09cde70a2706630cf6159489ed464da\"]",
+            "dependency_ids": "[]",
+            "lease_until": 1792080151.14163,
+            "owner_version": 1,
+            "completed_at": 1792079851
+          }
+        ],
+        "awaiting_prerequisites": [],
+        "needs_review": false,
+        "warnings": []
+      }
+    ]
+  }
+}

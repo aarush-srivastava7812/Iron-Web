@@ -1,0 +1,14 @@
+{
+  "label": "18-recall-party",
+  "path": "/v1/recall",
+  "body": {
+    "query": "traveller_count",
+    "subject": "Riya",
+    "predicate": "traveller_count",
+    "scope": {
+      "trip_id": "goa-family"
+    }
+  },
+  "actor": "reviewer",
+  "tenant": "riya"
+}

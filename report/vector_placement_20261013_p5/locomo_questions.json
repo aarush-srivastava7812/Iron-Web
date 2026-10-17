@@ -1,0 +1,4047 @@
+[
+  {
+    "example_id": "locomo:conv-26:qa:0",
+    "query": "When did Caroline go to the LGBTQ support group?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_1"
+    ],
+    "gold_answer": "7 May 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D1:3"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:1",
+    "query": "When did Melanie paint a sunrise?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_1"
+    ],
+    "gold_answer": "2022",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D1:12"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:2",
+    "query": "What fields would Caroline be likely to pursue in her educaton?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_1"
+    ],
+    "gold_answer": "Psychology, counseling certification",
+    "category": "factual",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 3,
+      "raw_evidence": [
+        "D1:9",
+        "D1:11"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:3",
+    "query": "What did Caroline research?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_2"
+    ],
+    "gold_answer": "Adoption agencies",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D2:8"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:4",
+    "query": "What is Caroline's identity?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_1"
+    ],
+    "gold_answer": "Transgender woman",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D1:5"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:5",
+    "query": "When did Melanie run a charity race?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_2"
+    ],
+    "gold_answer": "The sunday before 25 May 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D2:1"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:6",
+    "query": "When is Melanie planning on going camping?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_2"
+    ],
+    "gold_answer": "June 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D2:7"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:7",
+    "query": "What is Caroline's relationship status?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_2",
+      "locomo:conv-26:session_3"
+    ],
+    "gold_answer": "Single",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D3:13",
+        "D2:14"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:8",
+    "query": "When did Caroline give a speech at a school?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_3"
+    ],
+    "gold_answer": "The week before 9 June 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D3:1"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:9",
+    "query": "When did Caroline meet up with her friends, family, and mentors?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_3"
+    ],
+    "gold_answer": "The week before 9 June 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D3:11"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:10",
+    "query": "How long has Caroline had her current group of friends for?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_3"
+    ],
+    "gold_answer": "4 years",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D3:13"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:11",
+    "query": "Where did Caroline move from 4 years ago?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_3",
+      "locomo:conv-26:session_4"
+    ],
+    "gold_answer": "Sweden",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D3:13",
+        "D4:3"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:12",
+    "query": "How long ago was Caroline's 18th birthday?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_4"
+    ],
+    "gold_answer": "10 years ago",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D4:5"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:13",
+    "query": "What career path has Caroline decided to persue?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_1",
+      "locomo:conv-26:session_4"
+    ],
+    "gold_answer": "counseling or mental health for Transgender people",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D4:13",
+        "D1:11"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:14",
+    "query": "Would Caroline still want to pursue counseling as a career if she hadn't received support growing up?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_3",
+      "locomo:conv-26:session_4"
+    ],
+    "gold_answer": "Likely no",
+    "category": "factual",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 3,
+      "raw_evidence": [
+        "D4:15",
+        "D3:5"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:15",
+    "query": "What activities does Melanie partake in?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_1",
+      "locomo:conv-26:session_5",
+      "locomo:conv-26:session_9"
+    ],
+    "gold_answer": "pottery, camping, painting, swimming",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D5:4",
+        "D9:1",
+        "D1:12",
+        "D1:18"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:16",
+    "query": "When did Melanie sign up for a pottery class?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_5"
+    ],
+    "gold_answer": "2 July 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D5:4"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:17",
+    "query": "When is Caroline going to the transgender conference?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_5"
+    ],
+    "gold_answer": "July 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D5:13"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:18",
+    "query": "Where has Melanie camped?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_4",
+      "locomo:conv-26:session_6",
+      "locomo:conv-26:session_8"
+    ],
+    "gold_answer": "beach, mountains, forest",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D6:16",
+        "D4:6",
+        "D8:32"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:19",
+    "query": "What do Melanie's kids like?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_4",
+      "locomo:conv-26:session_6"
+    ],
+    "gold_answer": "dinosaurs, nature",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D6:6",
+        "D4:8"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:20",
+    "query": "When did Melanie go to the museum?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_6"
+    ],
+    "gold_answer": "5 July 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D6:4"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:21",
+    "query": "When did Caroline have a picnic?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_6"
+    ],
+    "gold_answer": "The week before 6 July 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D6:11"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:22",
+    "query": "Would Caroline likely have Dr. Seuss books on her bookshelf?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_6"
+    ],
+    "gold_answer": "Yes, since she collects classic children's books",
+    "category": "factual",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 3,
+      "raw_evidence": [
+        "D6:9"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:23",
+    "query": "What books has Melanie read?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_6",
+      "locomo:conv-26:session_7"
+    ],
+    "gold_answer": "\"Nothing is Impossible\", \"Charlotte's Web\"",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D7:8",
+        "D6:10"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:24",
+    "query": "What does Melanie do to destress?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_5",
+      "locomo:conv-26:session_7"
+    ],
+    "gold_answer": "Running, pottery",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D7:22",
+        "D5:4"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:25",
+    "query": "When did Caroline go to the LGBTQ conference?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_7"
+    ],
+    "gold_answer": "10 July 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D7:1"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:26",
+    "query": "When did Melanie read the book \"nothing is impossible\"?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_7"
+    ],
+    "gold_answer": "2022",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D7:8"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:27",
+    "query": "Would Caroline pursue writing as a career option?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_7"
+    ],
+    "gold_answer": "LIkely no; though she likes reading, she wants to be a counselor",
+    "category": "factual",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 3,
+      "raw_evidence": [
+        "D7:5",
+        "D7:9"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:28",
+    "query": "When did Caroline go to the adoption meeting?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_8"
+    ],
+    "gold_answer": "The friday before 15 July 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D8:9"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:29",
+    "query": "When did Melanie go to the pottery workshop?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_8"
+    ],
+    "gold_answer": "The Friday before 15 July 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D8:2"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:30",
+    "query": "Would Melanie be considered a member of the LGBTQ community?",
+    "ground_truth_ids": [],
+    "gold_answer": "Likely no, she does not refer to herself as part of it",
+    "category": "factual",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 3,
+      "raw_evidence": [],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:31",
+    "query": "When did Melanie go camping in June?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_4"
+    ],
+    "gold_answer": "The week before 27 June 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D4:8"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:32",
+    "query": "What LGBTQ+ events has Caroline participated in?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_1",
+      "locomo:conv-26:session_3",
+      "locomo:conv-26:session_5",
+      "locomo:conv-26:session_8"
+    ],
+    "gold_answer": "Pride parade, school speech, support group",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D5:1",
+        "D8:17",
+        "D3:1",
+        "D1:3"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:33",
+    "query": "When did Caroline go to a pride parade during the summer?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_5"
+    ],
+    "gold_answer": "The week before 3 July 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D5:1"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:34",
+    "query": "What events has Caroline participated in to help children?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_3",
+      "locomo:conv-26:session_9"
+    ],
+    "gold_answer": "Mentoring program, school speech",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D9:2",
+        "D3:3"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:35",
+    "query": "When did Melanie go camping in July?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_9"
+    ],
+    "gold_answer": "two weekends before 17 July 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D9:1"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:36",
+    "query": "When did Caroline join a mentorship program?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_9"
+    ],
+    "gold_answer": "The weekend before 17 July 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D9:2"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:37",
+    "query": "What did Melanie paint recently?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_8",
+      "locomo:conv-26:session_9"
+    ],
+    "gold_answer": "sunset",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D8:6; D9:17"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:38",
+    "query": "What activities has Melanie done with her family?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_1",
+      "locomo:conv-26:session_3",
+      "locomo:conv-26:session_6",
+      "locomo:conv-26:session_8",
+      "locomo:conv-26:session_9"
+    ],
+    "gold_answer": "Pottery, painting, camping, museum, swimming, hiking",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D8:4",
+        "D8:6",
+        "D9:1",
+        "D6:4",
+        "D1:18",
+        "D3:14"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:39",
+    "query": "In what ways is Caroline participating in the LGBTQ community?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_10",
+      "locomo:conv-26:session_5",
+      "locomo:conv-26:session_9"
+    ],
+    "gold_answer": "Joining activist group, going to pride parades, participating in an art show, mentoring program",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D10:3",
+        "D5:1",
+        "D9:12",
+        "D9:2"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:40",
+    "query": "How many times has Melanie gone to the beach in 2023?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_10",
+      "locomo:conv-26:session_6"
+    ],
+    "gold_answer": "2",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D10:8",
+        "D6:16"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:41",
+    "query": "When did Caroline join a new activist group?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_10"
+    ],
+    "gold_answer": "The Tuesday before 20 July 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D10:3"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:42",
+    "query": "Would Melanie be more interested in going to a national park or a theme park?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_10"
+    ],
+    "gold_answer": "National park; she likes the outdoors",
+    "category": "factual",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 3,
+      "raw_evidence": [
+        "D10:12",
+        "D10:14"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:43",
+    "query": "What kind of art does Caroline make?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_11",
+      "locomo:conv-26:session_9"
+    ],
+    "gold_answer": "abstract art",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D11:12",
+        "D11:8",
+        "D9:14"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:44",
+    "query": "When is Melanie's daughter's birthday?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_11"
+    ],
+    "gold_answer": "13 August",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D11:1"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:45",
+    "query": "When did Caroline attend a pride parade in August?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_11"
+    ],
+    "gold_answer": "The Friday before 14 August 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D11:4"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:46",
+    "query": "Would Melanie be considered an ally to the transgender community?",
+    "ground_truth_ids": [],
+    "gold_answer": "Yes, she is supportive",
+    "category": "factual",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 3,
+      "raw_evidence": [],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:47",
+    "query": "Who supports Caroline when she has a negative experience?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_12",
+      "locomo:conv-26:session_3"
+    ],
+    "gold_answer": "Her mentors, family, and friends",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D12:1",
+        "D3:11"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:48",
+    "query": "What types of pottery have Melanie and her kids made?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_12",
+      "locomo:conv-26:session_5",
+      "locomo:conv-26:session_8"
+    ],
+    "gold_answer": "bowls, cup",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D12:14",
+        "D8:4",
+        "D5:6"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:49",
+    "query": "When did Caroline and Melanie go to a pride fesetival together?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_12"
+    ],
+    "gold_answer": "2022",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D12:15"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:50",
+    "query": "What would Caroline's political leaning likely be?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_12"
+    ],
+    "gold_answer": "Liberal",
+    "category": "factual",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 3,
+      "raw_evidence": [
+        "D12:1"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:51",
+    "query": "What has Melanie painted?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_1",
+      "locomo:conv-26:session_13",
+      "locomo:conv-26:session_8"
+    ],
+    "gold_answer": "Horse, sunset, sunrise",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D13:8",
+        "D8:6",
+        "D1:12"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:52",
+    "query": "What are Melanie's pets' names?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_13",
+      "locomo:conv-26:session_7"
+    ],
+    "gold_answer": "Oliver, Luna, Bailey",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D13:4",
+        "D7:18"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:53",
+    "query": "When did Caroline apply to adoption agencies?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_13"
+    ],
+    "gold_answer": "The week of 23 August 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D13:1"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:54",
+    "query": "When did Caroline draw a self-portrait?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_13"
+    ],
+    "gold_answer": "The week before 23 August 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D13:11"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:55",
+    "query": "What subject have Caroline and Melanie both painted?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_14",
+      "locomo:conv-26:session_8"
+    ],
+    "gold_answer": "Sunsets",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D14:5",
+        "D8:6"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:56",
+    "query": "What symbols are important to Caroline?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_14",
+      "locomo:conv-26:session_4"
+    ],
+    "gold_answer": "Rainbow flag, transgender symbol",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D14:15",
+        "D4:1"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:57",
+    "query": "When did Caroline encounter people on a hike and have a negative experience?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_14"
+    ],
+    "gold_answer": "The week before 25 August 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D14:1"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:58",
+    "query": "When did Melanie make a plate in pottery class?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_14"
+    ],
+    "gold_answer": "24 August 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D14:4"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:59",
+    "query": "Would Caroline be considered religious?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_12",
+      "locomo:conv-26:session_14"
+    ],
+    "gold_answer": "Somewhat, but not extremely religious",
+    "category": "factual",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 3,
+      "raw_evidence": [
+        "D14:19",
+        "D12:1"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:60",
+    "query": "What instruments does Melanie play?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_15",
+      "locomo:conv-26:session_2"
+    ],
+    "gold_answer": "clarinet and violin",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D15:26",
+        "D2:5"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:61",
+    "query": "What musical artists/bands has Melanie seen?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_11",
+      "locomo:conv-26:session_15"
+    ],
+    "gold_answer": "Summer Sounds, Matt Patterson",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D15:16",
+        "D11:3"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:62",
+    "query": "When did Melanie go to the park?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_15"
+    ],
+    "gold_answer": "27 August 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D15:2"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:63",
+    "query": "When is Caroline's youth center putting on a talent show?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_15"
+    ],
+    "gold_answer": "September 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D15:11"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:64",
+    "query": "Would Melanie likely enjoy the song \"The Four Seasons\" by Vivaldi?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_15"
+    ],
+    "gold_answer": "Yes; it's classical music",
+    "category": "factual",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 3,
+      "raw_evidence": [
+        "D15:28"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:65",
+    "query": "What are some changes Caroline has faced during her transition journey?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_11",
+      "locomo:conv-26:session_16"
+    ],
+    "gold_answer": "Changes to her body, losing unsupportive friends",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D16:15",
+        "D11:14"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:66",
+    "query": "What does Melanie do with her family on hikes?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_10",
+      "locomo:conv-26:session_16"
+    ],
+    "gold_answer": "Roast marshmallows, tell stories",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D16:4",
+        "D10:12"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:67",
+    "query": "When did Caroline go biking with friends?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_16"
+    ],
+    "gold_answer": "The weekend before 13 September 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D16:1"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:68",
+    "query": "How long has Melanie been practicing art?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_16"
+    ],
+    "gold_answer": "Since 2016",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D16:8"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:69",
+    "query": "What personality traits might Melanie say Caroline has?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_13",
+      "locomo:conv-26:session_16",
+      "locomo:conv-26:session_7"
+    ],
+    "gold_answer": "Thoughtful, authentic, driven",
+    "category": "factual",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 3,
+      "raw_evidence": [
+        "D16:18",
+        "D13:16",
+        "D7:4"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:70",
+    "query": "What transgender-specific events has Caroline attended?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_15",
+      "locomo:conv-26:session_17"
+    ],
+    "gold_answer": "Poetry reading, conference",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D17:19",
+        "D15:13"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:71",
+    "query": "What book did Melanie read from Caroline's suggestion?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_17",
+      "locomo:conv-26:session_7"
+    ],
+    "gold_answer": "\"Becoming Nicole\"",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D7:11",
+        "D17:10"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:72",
+    "query": "When did Melanie's friend adopt a child?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_17"
+    ],
+    "gold_answer": "2022",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D17:3"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:73",
+    "query": "When did Melanie get hurt?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_17"
+    ],
+    "gold_answer": "September 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D17:8"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:74",
+    "query": "When did Melanie's family go on a roadtrip?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_18"
+    ],
+    "gold_answer": "The weekend before 20 October 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D18:1"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:75",
+    "query": "How many children does Melanie have?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_18"
+    ],
+    "gold_answer": "3",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D18:1",
+        "D18:7"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:76",
+    "query": "When did Melanie go on a hike after the roadtrip?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_18"
+    ],
+    "gold_answer": "19 October 2023",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D18:17"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:77",
+    "query": "Would Melanie go on another roadtrip soon?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_18"
+    ],
+    "gold_answer": "Likely no; since this one went badly",
+    "category": "factual",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 3,
+      "raw_evidence": [
+        "D18:3",
+        "D18:1"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:78",
+    "query": "What items has Melanie bought?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_19",
+      "locomo:conv-26:session_7"
+    ],
+    "gold_answer": "Figurines, shoes",
+    "category": "multi_hop_reasoning",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 1,
+      "raw_evidence": [
+        "D19:2",
+        "D7:18"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:79",
+    "query": "When did Caroline pass the adoption interview?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_19"
+    ],
+    "gold_answer": "The Friday before 22 October 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D19:1"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:80",
+    "query": "When did Melanie buy the figurines?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_19"
+    ],
+    "gold_answer": "21 October 2023",
+    "category": "temporal",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 2,
+      "raw_evidence": [
+        "D19:2"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:81",
+    "query": "Would Caroline want to move back to her home country soon?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_19"
+    ],
+    "gold_answer": "No; she's in the process of adopting children.",
+    "category": "factual",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 3,
+      "raw_evidence": [
+        "D19:1",
+        "D19:3"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:82",
+    "query": "What did the charity race raise awareness for?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_2"
+    ],
+    "gold_answer": "mental health",
+    "category": "open_domain",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 4,
+      "raw_evidence": [
+        "D2:2"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:83",
+    "query": "What did Melanie realize after the charity race?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_2"
+    ],
+    "gold_answer": "self-care is important",
+    "category": "open_domain",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 4,
+      "raw_evidence": [
+        "D2:3"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:84",
+    "query": "How does Melanie prioritize self-care?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_2"
+    ],
+    "gold_answer": "by carving out some me-time each day for activities like running, reading, or playing the violin",
+    "category": "open_domain",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 4,
+      "raw_evidence": [
+        "D2:5"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:85",
+    "query": "What are Caroline's plans for the summer?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_2"
+    ],
+    "gold_answer": "researching adoption agencies",
+    "category": "open_domain",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 4,
+      "raw_evidence": [
+        "D2:8"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:86",
+    "query": "What type of individuals does the adoption agency Caroline is considering support?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_2"
+    ],
+    "gold_answer": "LGBTQ+ individuals",
+    "category": "open_domain",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 4,
+      "raw_evidence": [
+        "D2:12"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:87",
+    "query": "Why did Caroline choose the adoption agency?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_2"
+    ],
+    "gold_answer": "because of their inclusivity and support for LGBTQ+ individuals",
+    "category": "open_domain",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 4,
+      "raw_evidence": [
+        "D2:12"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:88",
+    "query": "What is Caroline excited about in the adoption process?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_2"
+    ],
+    "gold_answer": "creating a family for kids who need one",
+    "category": "open_domain",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 4,
+      "raw_evidence": [
+        "D2:14"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:89",
+    "query": "What does Melanie think about Caroline's decision to adopt?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_2"
+    ],
+    "gold_answer": "she thinks Caroline is doing something amazing and will be an awesome mom",
+    "category": "open_domain",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 4,
+      "raw_evidence": [
+        "D2:15"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:90",
+    "query": "How long have Mel and her husband been married?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_3"
+    ],
+    "gold_answer": "Mel and her husband have been married for 5 years.",
+    "category": "open_domain",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 4,
+      "raw_evidence": [
+        "D3:16"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:91",
+    "query": "What does Caroline's necklace symbolize?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_4"
+    ],
+    "gold_answer": "love, faith, and strength",
+    "category": "open_domain",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 4,
+      "raw_evidence": [
+        "D4:3"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:92",
+    "query": "What country is Caroline's grandma from?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_4"
+    ],
+    "gold_answer": "Sweden",
+    "category": "open_domain",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 4,
+      "raw_evidence": [
+        "D4:3"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:93",
+    "query": "What was grandma's gift to Caroline?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_4"
+    ],
+    "gold_answer": "necklace",
+    "category": "open_domain",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 4,
+      "raw_evidence": [
+        "D4:3"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:94",
+    "query": "What is Melanie's hand-painted bowl a reminder of?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_4"
+    ],
+    "gold_answer": "art and self-expression",
+    "category": "open_domain",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 4,
+      "raw_evidence": [
+        "D4:5"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:95",
+    "query": "What did Melanie and her family do while camping?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_4"
+    ],
+    "gold_answer": "explored nature, roasted marshmallows, and went on a hike",
+    "category": "open_domain",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 4,
+      "raw_evidence": [
+        "D4:8"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:96",
+    "query": "What kind of counseling and mental health services is Caroline interested in pursuing?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_4"
+    ],
+    "gold_answer": "working with trans people, helping them accept themselves and supporting their mental health",
+    "category": "open_domain",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 4,
+      "raw_evidence": [
+        "D4:13"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:97",
+    "query": "What workshop did Caroline attend recently?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_4"
+    ],
+    "gold_answer": "LGBTQ+ counseling workshop",
+    "category": "open_domain",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 4,
+      "raw_evidence": [
+        "D4:13"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  },
+  {
+    "example_id": "locomo:conv-26:qa:98",
+    "query": "What was discussed in the LGBTQ+ counseling workshop?",
+    "ground_truth_ids": [
+      "locomo:conv-26:session_4"
+    ],
+    "gold_answer": "therapeutic methods and how to best work with trans people",
+    "category": "open_domain",
+    "target_date": null,
+    "query_time": null,
+    "metadata": {
+      "sample_id": "conv-26",
+      "category_num": 4,
+      "raw_evidence": [
+        "D4:13"
+      ],
+      "unmapped_evidence": [],
+      "corpus_ids": [
+        "locomo:conv-26:session_1",
+        "locomo:conv-26:session_2",
+        "locomo:conv-26:session_3",
+        "locomo:conv-26:session_4",
+        "locomo:conv-26:session_5",
+        "locomo:conv-26:session_6",
+        "locomo:conv-26:session_7",
+        "locomo:conv-26:session_8",
+        "locomo:conv-26:session_9",
+        "locomo:conv-26:session_10",
+        "locomo:conv-26:session_11",
+        "locomo:conv-26:session_12",
+        "locomo:conv-26:session_13",
+        "locomo:conv-26:session_14",
+        "locomo:conv-26:session_15",
+        "locomo:conv-26:session_16",
+        "locomo:conv-26:session_17",
+        "locomo:conv-26:session_18",
+        "locomo:conv-26:session_19"
+      ]
+    }
+  }
+]

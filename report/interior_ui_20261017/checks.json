@@ -1,0 +1,266 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "route": "packages",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "hotels",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "tours",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "destination/Darjeeling",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "package/Kashmir",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "planner",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "flights",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "about",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "contact",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "privacy",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "login",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "dashboard",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "booking?kind=package&id=1",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "packages",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "hotels",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "tours",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "destination/Darjeeling",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "package/Kashmir",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "planner",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "flights",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "about",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "contact",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "privacy",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "login",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "dashboard",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "booking?kind=package&id=1",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "packages",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "hotels",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "tours",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "destination/Darjeeling",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "package/Kashmir",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "planner",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "flights",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "about",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "contact",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "privacy",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "login",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "dashboard",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "booking?kind=package&id=1",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "packages",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "hotels",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "tours",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "destination/Darjeeling",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "package/Kashmir",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "planner",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "flights",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "about",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "contact",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "privacy",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "login",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "dashboard",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "booking?kind=package&id=1",
+      "width": 320,
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

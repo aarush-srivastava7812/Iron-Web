@@ -1,0 +1,11 @@
+{
+  "label": "26-register-reviewed-plan-v1",
+  "path": "/v1/work",
+  "body": {
+    "work_id": "goa-plan-v1",
+    "claim_ids": "$response:25-session-itinerary:claim_ids",
+    "description": "Post-fix roleplayed draft using ONLY evidence IDs provided by the automatic context. No booking."
+  },
+  "actor": "planner",
+  "tenant": "riya"
+}

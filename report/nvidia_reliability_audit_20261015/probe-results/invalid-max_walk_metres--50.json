@@ -1,0 +1,15 @@
+{
+  "output": [
+    {
+      "predicate": "max_walk_metres",
+      "value": -50,
+      "action": "assert",
+      "reason": "User requests change",
+      "subject": "Traveller",
+      "scope": {
+        "trip_id": "summer"
+      },
+      "kind": "rule"
+    }
+  ]
+}

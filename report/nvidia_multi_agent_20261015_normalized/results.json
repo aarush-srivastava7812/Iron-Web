@@ -1,0 +1,580 @@
+{
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "run_id": "27ced444fe",
+  "failure": null,
+  "checks": {
+    "initial_context_ready": true,
+    "trip_mood_inherited": true,
+    "actual_cuda_residency": true,
+    "same_evidence_ram_gpu": true,
+    "same_evidence_uncached_cpu": true,
+    "same_evidence_ram_cpu": true,
+    "planner-initial_context_current": true,
+    "planner-initial_all_constraints": false,
+    "reviewer-initial_context_current": true,
+    "initial_reviewer_agrees_with_oracle": true,
+    "pending_budget_blocks": true,
+    "old_context_proof_rejected": true,
+    "completed_plan_requires_review_after_budget": true,
+    "planner-revised_context_current": true,
+    "planner-revised_all_constraints": false,
+    "reviewer-revised_context_current": true,
+    "revised_reviewer_agrees_with_oracle": true,
+    "reviewer-negative-control_context_current": true,
+    "reviewer_rejects_injected_bad_plan": true,
+    "pending_walking_blocks": true,
+    "brief_only_work_detects_walking_change": true,
+    "planner-no-suitable-hotel_context_current": true,
+    "planner-no-suitable-hotel_all_constraints": false,
+    "reviewer-no-suitable-hotel_context_current": true,
+    "both_agents_stop_when_no_hotel_fits": false,
+    "unrelated_trip_keeps_cache_warm": true,
+    "unrelated_trip_preserves_proof": true,
+    "other_user_sees_no_trip_data": true,
+    "agent_repetitions_do_not_inflate_confidence": true,
+    "ordinary_preference_decays": true,
+    "protected_budget_stays_one": true,
+    "superseded_budget_score_zero": true,
+    "fuzzy_sensitivity_directions": true,
+    "durable_hybrid_returns_evidence": true,
+    "volatile_tiers_cleared_on_close": true,
+    "restart_rebuilds_from_durable_memory": true
+  },
+  "counts": {
+    "passed": 32,
+    "failed": 4
+  },
+  "elapsed_ms": 139568.737900001,
+  "initialization_ms": 1084.9671000032686,
+  "model_calls": 15,
+  "model_latency": {
+    "n": 15,
+    "min_ms": 801.774799998384,
+    "p50_ms": 8144.806900003459,
+    "p95_ms": 15533.244949998327,
+    "max_ms": 20565.444499996374,
+    "mean_ms": 7211.184286667655
+  },
+  "sum_model_call_ms": 108167.76430001482,
+  "memory_benchmarks": {
+    "ram_gpu": {
+      "first_ms": 715.7901000027778,
+      "warm": {
+        "n": 12,
+        "min_ms": 53.03290000301786,
+        "p50_ms": 59.6412499944563,
+        "p95_ms": 96.87172000631105,
+        "max_ms": 124.08330000471324,
+        "mean_ms": 66.43852500322585
+      },
+      "samples_ms": [
+        715.7901000027778,
+        74.6077000076184,
+        61.371100004180335,
+        60.20379999245051,
+        58.166900009382516,
+        55.13259999861475,
+        124.08330000471324,
+        62.416200002189726,
+        59.07869999646209,
+        53.03290000301786,
+        56.60500000522006,
+        58.16140001115855,
+        74.4027000037022
+      ]
+    },
+    "uncached_cpu": {
+      "first_ms": 509.4781999941915,
+      "warm": {
+        "n": 12,
+        "min_ms": 478.0306000029668,
+        "p50_ms": 510.9179000064614,
+        "p95_ms": 552.2924749951926,
+        "max_ms": 565.7022999948822,
+        "mean_ms": 513.2864000006521
+      },
+      "samples_ms": [
+        509.4781999941915,
+        478.0306000029668,
+        509.38370000221767,
+        530.233199999202,
+        496.9329000014113,
+        491.2618999951519,
+        565.7022999948822,
+        541.3207999954466,
+        499.26150000828784,
+        512.4521000107052,
+        515.3095999994548,
+        503.81860000197776,
+        515.7295999961207
+      ]
+    },
+    "ram_cpu": {
+      "first_ms": 506.7585999931907,
+      "warm": {
+        "n": 12,
+        "min_ms": 50.40230001031887,
+        "p50_ms": 57.73204999422887,
+        "p95_ms": 69.35752999852411,
+        "max_ms": 70.12720000057016,
+        "mean_ms": 58.2593666658795
+      },
+      "samples_ms": [
+        506.7585999931907,
+        62.048899999354035,
+        64.15439999545924,
+        57.63329999172129,
+        68.72779999685008,
+        61.196900001959875,
+        50.975299993297085,
+        50.40230001031887,
+        50.863500000559725,
+        70.12720000057016,
+        52.05880000721663,
+        53.09319999651052,
+        57.83079999673646
+      ]
+    },
+    "hybrid_search_single_ms": 343.433100002585
+  },
+  "local_http_latency": {
+    "/v1/events": {
+      "n": 8,
+      "min_ms": 4.377299992484041,
+      "p50_ms": 5.980550005915575,
+      "p95_ms": 27.75387000583578,
+      "max_ms": 28.30750000430271,
+      "mean_ms": 13.61920000272221
+    },
+    "/v1/events/status": {
+      "n": 541,
+      "min_ms": 1.5137000009417534,
+      "p50_ms": 2.5976000033551827,
+      "p95_ms": 23.677899996982887,
+      "max_ms": 53.97120000270661,
+      "mean_ms": 5.616104066313388
+    },
+    "/v1/context": {
+      "n": 59,
+      "min_ms": 7.1629000012762845,
+      "p50_ms": 75.6013000063831,
+      "p95_ms": 727.8560399994601,
+      "max_ms": 1126.6368000069633,
+      "mean_ms": 310.1858254226114
+    },
+    "/v1/context/validate": {
+      "n": 9,
+      "min_ms": 24.22429999569431,
+      "p50_ms": 39.13319999992382,
+      "p95_ms": 56.8587599962484,
+      "max_ms": 61.708199995337054,
+      "mean_ms": 38.69764444567004
+    },
+    "/v1/work": {
+      "n": 2,
+      "min_ms": 480.349200006458,
+      "p50_ms": 547.5312000053236,
+      "p95_ms": 607.9950000043027,
+      "max_ms": 614.7132000041893,
+      "mean_ms": 547.5312000053236
+    },
+    "/v1/work/claim": {
+      "n": 1,
+      "min_ms": 935.1065000082599,
+      "p50_ms": 935.1065000082599,
+      "p95_ms": 935.1065000082599,
+      "max_ms": 935.1065000082599,
+      "mean_ms": 935.1065000082599
+    },
+    "/v1/work/complete": {
+      "n": 1,
+      "min_ms": 957.6900000101887,
+      "p50_ms": 957.6900000101887,
+      "p95_ms": 957.6900000101887,
+      "max_ms": 957.6900000101887,
+      "mean_ms": 957.6900000101887
+    },
+    "/v1/handoff": {
+      "n": 2,
+      "min_ms": 809.6471999888308,
+      "p50_ms": 816.3852499928907,
+      "p95_ms": 822.4494949965447,
+      "max_ms": 823.1232999969507,
+      "mean_ms": 816.3852499928907
+    },
+    "/v1/recall": {
+      "n": 3,
+      "min_ms": 26.143399998545647,
+      "p50_ms": 26.728800003184006,
+      "p95_ms": 29.136480001034215,
+      "max_ms": 29.40400000079535,
+      "mean_ms": 27.425400000841666
+    },
+    "/v1/search": {
+      "n": 1,
+      "min_ms": 343.42089999699965,
+      "p50_ms": 343.42089999699965,
+      "p95_ms": 343.42089999699965,
+      "max_ms": 343.42089999699965,
+      "mean_ms": 343.42089999699965
+    }
+  },
+  "ingestion_events": 8,
+  "interpreted_claims": 27,
+  "ingested_source_utf8_bytes": 747,
+  "storage_final": {
+    "tier1": {
+      "cache_entries": 2,
+      "accounted_ram_payload_bytes": 18097,
+      "agent_text_utf8_bytes": 298,
+      "traveller_text_utf8_bytes": 1110,
+      "agent_tokens": 52,
+      "traveller_tokens": 620
+    },
+    "tier2": {
+      "unique_cached_cards": 3,
+      "cached_card_text_utf8_bytes": 706,
+      "active_catalog_cards": 2,
+      "cpu_matrix_bytes": 3072,
+      "residency": {
+        "device": "cuda",
+        "resident_bytes": 3072,
+        "peak_owned_tensor_bytes": 4616,
+        "max_card_budget_bytes": 67108864,
+        "provider_arena_limit_bytes": 33554432,
+        "fallback_reason": null
+      }
+    },
+    "tier3": {
+      "graph": "test_nv_27ced444fe_e0e527034362c7b7990920ec",
+      "node_counts": {
+        "Entity": 1,
+        "Observation": 8,
+        "MemorySource": 8,
+        "MemoryClaim": 27,
+        "MemoryContext": 3,
+        "MemoryField": 17,
+        "MemoryWork": 2
+      },
+      "edge_counts": {
+        "RELATES": 0,
+        "ABOUT": 35,
+        "CONTRADICTS": 0,
+        "SUPERSEDES": 2,
+        "SUPPORTED_BY": 27,
+        "IN_CONTEXT": 27,
+        "ASSERTS_FIELD": 27,
+        "CONFIRMS": 3,
+        "USES": 32
+      },
+      "node_total": 66,
+      "edge_total": 153,
+      "graph_serialized_logical_bytes": 109904,
+      "redis_reported_graph_bytes": 64,
+      "vector_count": 8,
+      "raw_vector_float32_bytes": 12288,
+      "vector_payload_json_bytes": 6241,
+      "qdrant_directory_bytes": 53776,
+      "journal_files_bytes": {
+        "events.sqlite3": 4096,
+        "events.sqlite3-shm": 32768,
+        "events.sqlite3-wal": 622152
+      },
+      "event_count": 8
+    },
+    "process_rss_bytes": 804114432,
+    "process_peak_working_set_bytes": 804347904
+  },
+  "gpu_requested": true,
+  "consumer_tokenizer": "NVIDIA-Nemotron-3.5-Lightning-30B-A3B:623c34567aebb18582765289fbe23d901c62704d6518d71866e0e58db892b5b7",
+  "versions": {
+    "openai": "1.60.0",
+    "tokenizers": "0.20.3",
+    "qdrant-client": "1.18.0",
+    "falkordb": "1.7.1"
+  },
+  "api_base": "https://integrate.api.nvidia.com/v1",
+  "source_commit": "69f45bd",
+  "physical_disk_after_close_bytes": 132129,
+  "api_usage": [
+    {
+      "label": "intake-1",
+      "usage": {
+        "completion_tokens": 241,
+        "prompt_tokens": 471,
+        "total_tokens": 712,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "intake-2",
+      "usage": {
+        "completion_tokens": 1051,
+        "prompt_tokens": 560,
+        "total_tokens": 1611,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "intake-3",
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 463,
+        "total_tokens": 510,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "planner-initial",
+      "usage": {
+        "completion_tokens": 589,
+        "prompt_tokens": 2119,
+        "total_tokens": 2708,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "reviewer-initial",
+      "usage": {
+        "completion_tokens": 657,
+        "prompt_tokens": 2610,
+        "total_tokens": 3267,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "intake-4",
+      "usage": {
+        "completion_tokens": 77,
+        "prompt_tokens": 469,
+        "total_tokens": 546,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "planner-revised",
+      "usage": {
+        "completion_tokens": 655,
+        "prompt_tokens": 2121,
+        "total_tokens": 2776,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "reviewer-revised",
+      "usage": {
+        "completion_tokens": 564,
+        "prompt_tokens": 2677,
+        "total_tokens": 3241,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "reviewer-negative-control",
+      "usage": {
+        "completion_tokens": 480,
+        "prompt_tokens": 2666,
+        "total_tokens": 3146,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "intake-5",
+      "usage": {
+        "completion_tokens": 92,
+        "prompt_tokens": 465,
+        "total_tokens": 557,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "planner-no-suitable-hotel",
+      "usage": {
+        "completion_tokens": 669,
+        "prompt_tokens": 2119,
+        "total_tokens": 2788,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "reviewer-no-suitable-hotel",
+      "usage": {
+        "completion_tokens": 513,
+        "prompt_tokens": 2689,
+        "total_tokens": 3202,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "intake-6",
+      "usage": {
+        "completion_tokens": 147,
+        "prompt_tokens": 498,
+        "total_tokens": 645,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "intake-7",
+      "usage": {
+        "completion_tokens": 40,
+        "prompt_tokens": 451,
+        "total_tokens": 491,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "label": "intake-8",
+      "usage": {
+        "completion_tokens": 40,
+        "prompt_tokens": 451,
+        "total_tokens": 491,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 0
+        }
+      }
+    }
+  ],
+  "limits": [
+    "One synthetic travel task; one run, no statistical answer-quality claim.",
+    "Same hosted model serves distinct planner/reviewer contexts; correlated errors remain possible.",
+    "Schema-guided intake and role/card definitions are application configuration; no autonomous persona invention.",
+    "Tier 1 and 2 are overlapping derivatives of tier 3, not disjoint source partitions.",
+    "Tier 2 CUDA stores card vectors; card text remains in host memory and is sent to the hosted model.",
+    "RAM bytes are cache-accounted payload, not all Python/model memory; GPU provider/context overhead is separate.",
+    "Local token counts cover the memory prompt; provider usage includes complete chat formatting and the fixture catalog."
+  ]
+}

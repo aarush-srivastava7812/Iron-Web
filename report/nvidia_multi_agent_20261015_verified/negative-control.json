@@ -1,0 +1,35 @@
+{
+  "candidate": {
+    "decision": "plan",
+    "flight_id": "F-LATE",
+    "hotel_id": "H-STAIRS",
+    "activity_ids": [
+      "A-CRUISE"
+    ],
+    "activity_days": {
+      "A-ACCESSIBLE-BEACH": "2026-12-10",
+      "A-TERRACE": "2026-12-11"
+    },
+    "total_inr": 50000,
+    "budget_inr": 90000,
+    "max_walk_metres": 500,
+    "reasons": [
+      "Morning flight F-AM-COMFORT (34000 INR) complies with flight_time_preference morning and budget ceiling; total_for_two within budget range.",
+      "Hotel H-RESORT (24000 INR) is step_free mandatory and walk_from_dropoff_metres 80 metres complies with max_walk_metres 500.",
+      "Vegetarian_food true on hotel supports dietary vegetarian.",
+      "Accessible beach A-ACCESSIBLE-BEACH (0 INR) walking_metres 120 metres and boat false complies avoid_boats and max_walk_metres.",
+      "Seated terrace tasting A-TERRACE (600 INR) walking_metres 100 metres and boat false complies max_walk_metres and avoid_boats; fits relaxed pace.",
+      "Fixed costs (airport_and_local_transfers 4000 + vegetarian_meals 6000 + contingency 4000 = 13000 INR) added once.",
+      "Total computed: flights 34000 + hotel 24000 + accessible beach 0 + terrace 600 + fixed 13000 = 79000 INR, which exceeds budget 65000 INR but all hard constraints are satisfied; budget override noted as preference preference not overriding requirements."
+    ],
+    "evidence_claim_ids": [
+      "claim_183aa4e133c38b9de4ea767540aa828f",
+      "claim_128f919302e5d356f271ad3eec7c46c7",
+      "claim_8e946bdb33af7bc9a1296571899712b4",
+      "claim_15519dbbfe3a298bb0935132a637e29e",
+      "claim_192491f492ee305ea4fc5ac601514823",
+      "claim_68d1482cd9eeb302a2608522de9efc48"
+    ]
+  },
+  "origin": "Deliberately corrupted by harness, not a planner model error"
+}

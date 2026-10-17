@@ -1,0 +1,9 @@
+{
+  "tenant": "riya",
+  "actor": "user",
+  "label": "71-resolve-ambiguous",
+  "path": "/v1/events/withdraw",
+  "body": {
+    "eid": "ambiguous-intake"
+  }
+}

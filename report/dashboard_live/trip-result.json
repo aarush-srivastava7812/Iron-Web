@@ -1,0 +1,51 @@
+{
+  "trip_id": "553a7cb2-21c4-4873-9760-d0ebcd91dcdd",
+  "http_status": 200,
+  "connection_status": "agents_connected",
+  "status": "ok",
+  "agents": [
+    {
+      "agent": "trip_consultant",
+      "status": "ok",
+      "mode": "nvidia",
+      "latency_ms": 5911
+    },
+    {
+      "agent": "explore_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "latency_ms": 2961
+    },
+    {
+      "agent": "food_guide_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "latency_ms": 4859
+    },
+    {
+      "agent": "stay_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "latency_ms": 4186
+    },
+    {
+      "agent": "tour_guide_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "latency_ms": 2902
+    },
+    {
+      "agent": "itinerary_planner",
+      "status": "ok",
+      "mode": "nvidia",
+      "latency_ms": 10235
+    },
+    {
+      "agent": "budget_booking_agent",
+      "status": "ok",
+      "mode": "nvidia",
+      "latency_ms": 4415
+    }
+  ],
+  "errors": []
+}

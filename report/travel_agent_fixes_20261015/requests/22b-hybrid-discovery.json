@@ -1,0 +1,11 @@
+{
+  "label": "22b-hybrid-discovery",
+  "path": "/v1/search",
+  "body": {
+    "query": "Riya Goa mother walking accessibility no boats morning flights one activity per day",
+    "k": 5,
+    "retrieval_mode": "hybrid"
+  },
+  "actor": "reviewer",
+  "tenant": "riya"
+}

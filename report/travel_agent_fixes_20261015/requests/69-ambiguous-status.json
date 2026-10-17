@@ -1,0 +1,8 @@
+{
+  "label": "69-ambiguous-status",
+  "path": "/v1/receipt",
+  "actor": "user",
+  "body": {
+    "eid": "ambiguous-intake"
+  }
+}

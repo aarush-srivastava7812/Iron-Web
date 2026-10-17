@@ -1,0 +1,12 @@
+{
+  "label": "66-stop-audit-service",
+  "tenant": "riya",
+  "actor": "planner",
+  "path": "/audit/stop",
+  "request": {},
+  "http_status": 200,
+  "response": {
+    "stopped": true
+  },
+  "elapsed_ms": 2.300599997397512
+}

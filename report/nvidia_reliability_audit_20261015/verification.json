@@ -1,0 +1,360 @@
+{
+  "head": "69f45bde6028ab3f0a49bb1e021ad0753415cf3d",
+  "implementation_hash_checks": {
+    "source-hashes.json": [
+      {
+        "path": "memory\\config.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\device.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\engine.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\models.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\schema.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\storage.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\tool_adapter.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\validation.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\__init__.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\cache\\cards.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\cache\\ram.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\cache\\__init__.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\context\\access.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\context\\compiler.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\context\\contracts.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\context\\runtime.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\context\\tokens.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\context\\__init__.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\contradiction\\detector.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\embeddings\\embedder.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\evaluation\\metrics.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\evaluation\\official_corpora.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\evaluation\\retrieval_metrics.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\evaluation\\slices.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\graph\\connection.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\graph\\falkordb_store.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\graph\\__init__.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\ingestion\\cached_nim_extractor.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\ingestion\\extractor.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\ingestion\\nim_extractor.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\ingestion\\pipeline.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\ingestion\\__init__.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\lifecycle\\fuzzy.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\lifecycle\\models.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\lifecycle\\service.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\lifecycle\\__init__.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\maintenance\\maintenance.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\ranking\\reranker.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\ranking\\scorer.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\retrieval\\hybrid.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\retrieval\\vector.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\shared\\client.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\shared\\interpreter.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\shared\\journal.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\shared\\service.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\shared\\snapshot.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\shared\\__init__.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\temporal\\filter.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\vector_store\\qdrant_store.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\evaluation\\harness\\base.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\evaluation\\harness\\dates.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\evaluation\\harness\\dmr_adapter.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\evaluation\\harness\\evaluator.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\evaluation\\harness\\locomo_adapter.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\evaluation\\harness\\longmemeval_adapter.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\evaluation\\harness\\persistence.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\evaluation\\harness\\runner.py",
+        "unchanged": true
+      },
+      {
+        "path": "memory\\evaluation\\harness\\__init__.py",
+        "unchanged": true
+      }
+    ],
+    "runner-hashes.json": [
+      {
+        "path": "examples/nvidia_memory_agents.py",
+        "unchanged": true
+      },
+      {
+        "path": "scripts/evaluate_nvidia_memory.py",
+        "unchanged": true
+      },
+      {
+        "path": "tests/test_nvidia_memory_evaluation.py",
+        "unchanged": true
+      }
+    ]
+  },
+  "pytest": {
+    "existing-suite.xml": [
+      {
+        "tests": "241",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "time": "107.447"
+      }
+    ],
+    "gpu-tests.xml": [
+      {
+        "tests": "2",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "time": "4.182"
+      }
+    ],
+    "probes.xml": [
+      {
+        "tests": "23",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "time": "7.830"
+      }
+    ]
+  },
+  "paired_input_checks": {
+    "planner-initial": {
+      "identical_messages": true,
+      "identical_token_cap": true,
+      "identical_temperature": true,
+      "identical_top_p": true,
+      "thinking_flags": [
+        false,
+        true
+      ]
+    },
+    "planner-revised": {
+      "identical_messages": true,
+      "identical_token_cap": true,
+      "identical_temperature": true,
+      "identical_top_p": true,
+      "thinking_flags": [
+        false,
+        true
+      ]
+    },
+    "reviewer-initial": {
+      "identical_messages": true,
+      "identical_token_cap": true,
+      "identical_temperature": true,
+      "identical_top_p": true,
+      "thinking_flags": [
+        false,
+        true
+      ]
+    }
+  },
+  "secret_scan_hits": [],
+  "plaintext_key_file_exists": false,
+  "audit_files": {
+    "existing-suite.xml": "ab38a4f78b9378c1655421572ec7d325cfe93abc3e255f06d24312202775611a",
+    "fuzzy-sweep.json": "575941bfbc335eaaccfd34400ce75474304410a2a3eadab5785828112ebf8235",
+    "fuzzy_sweep.py": "26bd29c5384a7b6bd527a1f6cabc839eccd0a8e500234a6bd56ef1afb0b91101",
+    "gpu-tests.xml": "bd5936720dcee47a17cf15d6f3884d92caa847a846518645f9a25a8beaa26313",
+    "live\\intake-audit-7.json": "19feee11c693e8a137aa7e6dce14bf5ed50bea31ecd81834cf10cfb3d93dd76f",
+    "live\\intake-audit-8.json": "2add57a67ed1d56c98dad42b3e332a4dc2081bfd59446b54dfe8f669b9b9559b",
+    "live\\planner-initial-direct.json": "99a62e64473ded8a6f9280f77b77eba222cac9c7a06de563a6c5e4bea0bc1c18",
+    "live\\planner-initial-thinking.json": "893730ae94a72f4763e13e483e3c341a5b8e66449fc7763014cc6e3a20a306fb",
+    "live\\planner-revised-direct.json": "651d88bf1c129640e6894934502c43fab799e9f8bc7e9f8319023f169dc2b57d",
+    "live\\planner-revised-thinking.json": "7a00eafa4ad392679e82a036034bcb72965c64c64b67ddc747fc01d7f7d28fe5",
+    "live\\reviewer-initial-direct.json": "d06e3013462fdb7407ee4df21c866c45028c3cb8efc5290fe57c52cb0c9d6614",
+    "live\\reviewer-initial-thinking.json": "09bda925c9dd99468426a9c35cde1f4a626fffc26ae6630eb7e9850ad59a6bd8",
+    "live\\summary.json": "42cc31028ff97d75c29b977cace45d86f5c3062cc0c78dd5dd48fcef25dff3f5",
+    "live_comparison.py": "09b2513f059ae8d16880268064a685dd230f3ff4de146ebcb816d1d2db00c87e",
+    "primary-source-research.md": "0e5ac4923e7dd42e9560428a26b8e7d449c26fdc14dde0bf03f44d155cfc038a",
+    "probe-results\\affordability-pause.json": "7363d3c8e462a06cdcd5f11a37ebef6a946269f1fa375a27d1122f566bb42f50",
+    "probe-results\\diet-change.json": "b1f128ad22ad780bd8174f50a6562005ded4c5ea2034b8b08c542b98d29c6428",
+    "probe-results\\expired-prerequisite.json": "e7d85328de202647e2efa68bbc5d1f49bf74f795b4616b25a19ea279a447271b",
+    "probe-results\\extraction-grounding.json": "fcd3a04c7ed50e74831b9cb5cb0eff0989816af51c2560f7ebcdd8a5aaaa76e5",
+    "probe-results\\fuzzy-conflict-reversal.json": "8a3d49de8f0828230b6c475ceccfe6f189c5648899fc9e205d1f907c75cd867d",
+    "probe-results\\impossible-date.json": "5cde96937592fae3737f2ed085581112dec5b6779bf1234f0ccc324f89403fe7",
+    "probe-results\\invalid-budget--65000.json": "7a46c2c64c431d0d46a05ac2673b91f402c60bfa45daecc914940f6dd06593f1",
+    "probe-results\\invalid-dates-not a date.json": "5bb2e829e16bc7d07da1a984cacff03a960549822418b2b1c27c7443001655a7",
+    "probe-results\\invalid-decision.json": "52bf76d2e84d83e4f39312bb9e2f63370d55b1c362fd6c7d0847ad2f2042aed1",
+    "probe-results\\invalid-destination-['Goa', 'Delhi'].json": "bae23b4926fc8f399fafa839375b741819d169c2cfa480811ce7cdd2a8bae485",
+    "probe-results\\invalid-interests-food.json": "7e1c2ba34b1400428d00fa92006012e9672409ad734ec6d82099f8ac70ce8515",
+    "probe-results\\invalid-max_activities_per_day-0.5.json": "08a7790a5fd49e2ae682340d41d46a7e8250b6f50424590f4a856e8d6d729ac7",
+    "probe-results\\invalid-max_walk_metres--50.json": "3872e73f285f7c5e3e08ff11d8f56bee77f119c5ac2f265e1e0634efb5de7662",
+    "probe-results\\invalid-traveller_count--2.json": "2ca69240c19f9cdefbcf9025957ff92ee4359b7b62fdc34e99084ddc79ce9106",
+    "probe-results\\invalid-traveller_count-1.5.json": "a000783abe88207e648447256a72e079387634e69174a9deac409a44ebfed4d6",
+    "probe-results\\new-restriction.json": "d057865b1bfce7e71f3dda2c65b31c84ba196b9ea154d841c4a6f18a2841e93a",
+    "probe-results\\nonfinite-json.json": "20d4ea24b9cca60073e86751e502590e3e393b6e245ca5008c02a1f80ce8ff91",
+    "probe-results\\partial-extraction.json": "babac1f898a8381b780180939e3d5ee709f715bee0f36dc4020e5fac9a552d83",
+    "probe-results\\pause-with-bookings.json": "a9a3e0f66008eb2c88f022dba5a65423d48b89a99b7e2c6876d48f8e48784e91",
+    "probe-results\\polite-change-integration.json": "8ad114a932c29854ea77b85696cc2a0ed4cbd074d13357749dc9ac4171092e88",
+    "probe-results\\polite-change.json": "3f2cbf0f1c170796bb833f9401ee5055d691e61fb397b9236cfd081698857dc6",
+    "probe-results\\source-provenance.json": "13b0cfb3ac7ecff4245ef9ed183570becb96ef67647890b137488177607facb3",
+    "probe-results\\two-changes.json": "f474b8552a4d7fefc68dff0dc4f36e2fe694b649f142be29d471cf5b3757cdc0",
+    "probes.py": "5e41a01bbb070ff813f066aea90780a7afc2f40db88a5c3dbfb87f48538f8249",
+    "probes.xml": "605431b7998aecd35c4d9050ebd6a674b482d1ef672af27bf4ce93766c631e92",
+    "README.md": "236dbc4b853763f346e0d6e254245b2bd8904dfcafc65b9169537cb809976595",
+    "verify_artifacts.py": "d65fd92f2fbea7de3d125b477aaa499b98f8f1d5d6408a10016fd221b04a123e"
+  }
+}

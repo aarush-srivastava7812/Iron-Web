@@ -1,0 +1,19 @@
+{
+  "input": "Change my dietary requirement to vegan.",
+  "output": [
+    {
+      "predicate": "dietary",
+      "value": "vegan",
+      "action": "assert",
+      "reason": "User requests change",
+      "subject": "Traveller",
+      "scope": {
+        "trip_id": "summer"
+      },
+      "kind": "rule"
+    }
+  ],
+  "observed_actions": {
+    "dietary": "assert"
+  }
+}

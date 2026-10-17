@@ -1,0 +1,354 @@
+{
+  "entities": [
+    {
+      "id": "atlas",
+      "name": "Project Atlas",
+      "kind": "Project",
+      "namespace": "isolated-demo"
+    },
+    {
+      "id": "maya",
+      "name": "Maya",
+      "kind": "Person",
+      "namespace": "isolated-demo"
+    },
+    {
+      "id": "postgres",
+      "name": "PostgreSQL",
+      "kind": "DatabaseTechnology",
+      "namespace": "isolated-demo"
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "kind": "ProgrammingLanguage",
+      "namespace": "isolated-demo"
+    },
+    {
+      "id": "sqlite",
+      "name": "SQLite",
+      "kind": "DatabaseTechnology",
+      "namespace": "isolated-demo"
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "text": "Maya maintains Project Atlas.",
+      "sequence": 1,
+      "origin": "fictional demonstration sentence"
+    },
+    {
+      "id": "S2",
+      "text": "Project Atlas uses Python and PostgreSQL.",
+      "sequence": 2,
+      "origin": "fictional demonstration sentence"
+    },
+    {
+      "id": "S3",
+      "text": "Project Atlas now uses SQLite instead of PostgreSQL.",
+      "sequence": 3,
+      "origin": "fictional demonstration sentence"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "subject": "maya",
+      "subject_name": "Maya",
+      "predicate": "maintains",
+      "object": "atlas",
+      "object_name": "Project Atlas",
+      "polarity": "positive",
+      "sequence": 1,
+      "context": "Atlas, described use; environment unspecified",
+      "valid_from": null,
+      "valid_until": null,
+      "extraction_kind": "explicit hand-encoded interpretation",
+      "note": "Maintenance is asserted. Ownership, employment, and skill are not asserted.",
+      "source": "S1",
+      "quote": "Maya maintains Project Atlas.",
+      "span_start": 0,
+      "span_end": 29
+    },
+    {
+      "id": "C2",
+      "subject": "atlas",
+      "subject_name": "Project Atlas",
+      "predicate": "uses",
+      "object": "python",
+      "object_name": "Python",
+      "polarity": "positive",
+      "sequence": 2,
+      "context": "Atlas, described use; environment unspecified",
+      "valid_from": null,
+      "valid_until": null,
+      "extraction_kind": "explicit hand-encoded interpretation",
+      "note": "Python is last reported in S2. S3 supplies no withdrawal and does not freshly confirm Python.",
+      "source": "S2",
+      "quote": "Project Atlas uses Python and PostgreSQL.",
+      "span_start": 0,
+      "span_end": 41
+    },
+    {
+      "id": "C3",
+      "subject": "atlas",
+      "subject_name": "Project Atlas",
+      "predicate": "uses",
+      "object": "postgres",
+      "object_name": "PostgreSQL",
+      "polarity": "positive",
+      "sequence": 2,
+      "context": "Atlas, described use; environment unspecified",
+      "valid_from": null,
+      "valid_until": null,
+      "extraction_kind": "explicit hand-encoded interpretation",
+      "note": "Reported in S2; later replaced in the described use by the explicit change in S3. Historically retained.",
+      "source": "S2",
+      "quote": "Project Atlas uses Python and PostgreSQL.",
+      "span_start": 0,
+      "span_end": 41
+    },
+    {
+      "id": "C4",
+      "subject": "atlas",
+      "subject_name": "Project Atlas",
+      "predicate": "uses",
+      "object": "sqlite",
+      "object_name": "SQLite",
+      "polarity": "positive",
+      "sequence": 3,
+      "context": "Atlas, described use; environment unspecified",
+      "valid_from": null,
+      "valid_until": null,
+      "extraction_kind": "explicit hand-encoded interpretation",
+      "note": "Latest reported database in the described use. No production/test environment is specified.",
+      "source": "S3",
+      "quote": "Project Atlas now uses SQLite instead of PostgreSQL.",
+      "span_start": 0,
+      "span_end": 52
+    },
+    {
+      "id": "C5",
+      "subject": "atlas",
+      "subject_name": "Project Atlas",
+      "predicate": "uses",
+      "object": "postgres",
+      "object_name": "PostgreSQL",
+      "polarity": "negative",
+      "sequence": 3,
+      "context": "Atlas, described use; environment unspecified",
+      "valid_from": null,
+      "valid_until": null,
+      "extraction_kind": "explicit hand-encoded interpretation",
+      "note": "Explicit replacement implies cessation in the described use; not avoidance, dislike, or a universal ban.",
+      "source": "S3",
+      "quote": "instead of PostgreSQL",
+      "span_start": 30,
+      "span_end": 51
+    }
+  ],
+  "changes": [
+    {
+      "id": "X1",
+      "type": "TechnologyReplacement",
+      "summary": "Atlas changes from PostgreSQL to SQLite in the described use",
+      "sequence": 3,
+      "effective_at": null,
+      "reason": null,
+      "subject": "atlas",
+      "previous": "C3",
+      "replacement": "C4",
+      "cessation": "C5",
+      "source": "S3",
+      "quote": "now uses SQLite instead of PostgreSQL"
+    }
+  ],
+  "claim_links": [
+    {
+      "source": "C4",
+      "target": "C3",
+      "type": "SUPERSEDES",
+      "rule": "Explicit instead-of replacement in S3, same project and described use",
+      "context": "Atlas, described use; environment unspecified"
+    },
+    {
+      "source": "C5",
+      "target": "C3",
+      "type": "ENDS_CURRENT_APPLICABILITY",
+      "rule": "Cessation at an undated change, not historical falsity"
+    }
+  ],
+  "meta": {
+    "proposal": true,
+    "production_schema_changed": false,
+    "extraction": "hand-encoded sample interpretation; not model-generated",
+    "persistence_verified": true,
+    "database": "D:\\Opencode_\\reserchpaper\\report\\kg_redesign\\claims_v2.db",
+    "counts": {
+      "Entity": 5,
+      "Source": 3,
+      "Claim": 5,
+      "Change": 1
+    },
+    "edge_counts": {
+      "SUBJECT": 5,
+      "OBJECT": 5,
+      "SUPPORTED_BY": 5,
+      "SUPERSEDES": 1,
+      "ENDS_CURRENT_APPLICABILITY": 1,
+      "CHANGE_SUBJECT": 1,
+      "PREVIOUS": 1,
+      "REPLACEMENT": 1,
+      "CESSATION": 1,
+      "EVIDENCED_BY": 1
+    },
+    "type_origin": "Small explicitly supplied technology taxonomy; not asserted by the three sentences",
+    "temporal_policy": "relative statement order only; real effective dates unknown",
+    "inference_policy": "Explainable composition and explicit replacement; no skill, motivation or global single-database inference"
+  },
+  "verification": {
+    "persisted_counts_and_edges": true,
+    "source_spans_exact": true,
+    "replacement_scoped_to_database": true,
+    "python_and_maintainer_preserved": true,
+    "unsupported_skill_inference_blocked": true,
+    "unknown_time_and_reason_preserved": true
+  },
+  "answers": {
+    "1": {
+      "maintainer": {
+        "answer": "Maya is the last reported maintainer of Project Atlas.",
+        "claims": [
+          "C1"
+        ]
+      },
+      "database": {
+        "answer": "No database has been reported.",
+        "claims": [],
+        "type_source": "explicitly supplied technology taxonomy"
+      },
+      "change": {
+        "answer": "No replacement has been reported yet.",
+        "claims": [],
+        "changes": []
+      },
+      "context": {
+        "answer": "The maintained project's technologies have not been reported.",
+        "claims": [
+          "C1"
+        ],
+        "rule": "maintains(person,project) AND uses(project,technology) => maintained-project technology context; no HAS_SKILL conclusion"
+      },
+      "skill": {
+        "answer": "Unknown. Maintaining a project does not establish expertise in its technologies.",
+        "claims": [],
+        "blocked_rule": "No rule converts project maintenance into personal expertise."
+      },
+      "why": {
+        "answer": "Unknown. No sentence supplies a motivation for the change.",
+        "claims": [],
+        "missing_field": "Change.reason"
+      },
+      "when": {
+        "answer": "Exact date unknown. 'Now' establishes a reported change, not a calendar timestamp in these samples.",
+        "claims": [],
+        "missing_field": "Change.effective_at"
+      }
+    },
+    "2": {
+      "maintainer": {
+        "answer": "Maya is the last reported maintainer of Project Atlas.",
+        "claims": [
+          "C1"
+        ]
+      },
+      "database": {
+        "answer": "Latest reported database in the described use: PostgreSQL. Environment and exact effective date are unspecified.",
+        "claims": [
+          "C3"
+        ],
+        "type_source": "explicitly supplied technology taxonomy"
+      },
+      "change": {
+        "answer": "No replacement has been reported yet.",
+        "claims": [],
+        "changes": []
+      },
+      "context": {
+        "answer": "Maya maintains Atlas; that project's reported technologies are Python, PostgreSQL. This is project context, not evidence of Maya's personal skills. Python is last known from S2, not freshly confirmed by S3.",
+        "claims": [
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "rule": "maintains(person,project) AND uses(project,technology) => maintained-project technology context; no HAS_SKILL conclusion"
+      },
+      "skill": {
+        "answer": "Unknown. Maintaining a project does not establish expertise in its technologies.",
+        "claims": [],
+        "blocked_rule": "No rule converts project maintenance into personal expertise."
+      },
+      "why": {
+        "answer": "Unknown. No sentence supplies a motivation for the change.",
+        "claims": [],
+        "missing_field": "Change.reason"
+      },
+      "when": {
+        "answer": "Exact date unknown. 'Now' establishes a reported change, not a calendar timestamp in these samples.",
+        "claims": [],
+        "missing_field": "Change.effective_at"
+      }
+    },
+    "3": {
+      "maintainer": {
+        "answer": "Maya is the last reported maintainer of Project Atlas.",
+        "claims": [
+          "C1"
+        ]
+      },
+      "database": {
+        "answer": "Latest reported database in the described use: SQLite. Environment and exact effective date are unspecified.",
+        "claims": [
+          "C4"
+        ],
+        "type_source": "explicitly supplied technology taxonomy"
+      },
+      "change": {
+        "answer": "PostgreSQL was replaced by SQLite in the described use; reason and exact date are unknown.",
+        "claims": [
+          "C3",
+          "C4",
+          "C5"
+        ],
+        "changes": [
+          "X1"
+        ]
+      },
+      "context": {
+        "answer": "Maya maintains Atlas; that project's reported technologies are Python, SQLite. This is project context, not evidence of Maya's personal skills. Python is last known from S2, not freshly confirmed by S3.",
+        "claims": [
+          "C1",
+          "C2",
+          "C4"
+        ],
+        "rule": "maintains(person,project) AND uses(project,technology) => maintained-project technology context; no HAS_SKILL conclusion"
+      },
+      "skill": {
+        "answer": "Unknown. Maintaining a project does not establish expertise in its technologies.",
+        "claims": [],
+        "blocked_rule": "No rule converts project maintenance into personal expertise."
+      },
+      "why": {
+        "answer": "Unknown. No sentence supplies a motivation for the change.",
+        "claims": [],
+        "missing_field": "Change.reason"
+      },
+      "when": {
+        "answer": "Exact date unknown. 'Now' establishes a reported change, not a calendar timestamp in these samples.",
+        "claims": [],
+        "missing_field": "Change.effective_at"
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+name: iron-web
+
+services:
+  falkordb:
+    image: falkordb/falkordb:v4.20.7
+    container_name: iron-web-falkordb
+    ports:
+      - "127.0.0.1:6379:6379"
+    command:
+      - redis-server
+      - --loadmodule
+      - /var/lib/falkordb/bin/falkordb.so
+      - --dir
+      - /data
+      - --appendonly
+      - "yes"
+      - --appendfsync
+      - everysec
+      - --protected-mode
+      - "no"
+    volumes:
+      - falkordb_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    restart: unless-stopped
+
+volumes:
+  falkordb_data:
+    name: iron_web_falkordb_data

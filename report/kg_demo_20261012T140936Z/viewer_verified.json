@@ -1,0 +1,10 @@
+{
+  "entity_nodes": 5,
+  "observation_nodes": 8,
+  "edges": 13,
+  "default_observations": 3,
+  "default_edges": 0,
+  "node_inspection": true,
+  "observation_toggle": true,
+  "browser_errors": []
+}

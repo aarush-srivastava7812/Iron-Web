@@ -1,0 +1,14 @@
+{
+  "label": "21-recall-trip-mood",
+  "path": "/v1/recall",
+  "body": {
+    "query": "mood",
+    "subject": "Riya",
+    "predicate": "mood",
+    "scope": {
+      "trip_id": "goa-family"
+    }
+  },
+  "actor": "reviewer",
+  "tenant": "riya"
+}

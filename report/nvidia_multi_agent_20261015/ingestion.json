@@ -1,0 +1,470 @@
+[
+  {
+    "event_id": "usual-preferences",
+    "text": "Usually I prefer vegetarian food, an active pace, an aisle seat, and interests in hiking, boat rides and local food.",
+    "subject": "Riya",
+    "scope": {},
+    "actor": "user",
+    "confirmed": true,
+    "source_utf8_bytes": 116,
+    "receipt_status": "queued",
+    "receipt_ms": 26.933599991025403,
+    "ready_ms": 4067.72269999783,
+    "interpreted_claims": [
+      {
+        "subject": "Riya",
+        "predicate": "dietary",
+        "value": "vegetarian",
+        "kind": "rule",
+        "scope": {},
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": ""
+      },
+      {
+        "subject": "Riya",
+        "predicate": "pace",
+        "value": "active",
+        "kind": "preference",
+        "scope": {},
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": ""
+      },
+      {
+        "subject": "Riya",
+        "predicate": "seat_preference",
+        "value": "aisle",
+        "kind": "preference",
+        "scope": {},
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": ""
+      },
+      {
+        "subject": "Riya",
+        "predicate": "interests",
+        "value": [
+          "hiking",
+          "boat rides",
+          "local food"
+        ],
+        "kind": "preference",
+        "scope": {},
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": ""
+      }
+    ],
+    "pending_blocked": null
+  },
+  {
+    "event_id": "goa-intake",
+    "text": "Plan Goa from 2026-12-10 to 2026-12-14 for two adults, departing Delhi. My total budget is INR 90000. Vegetarian food and morning flights are required. A step-free hotel is mandatory. Maximum walking is 500 metres. No boats. At most one activity per day. For this trip I want a relaxed pace, calm beaches and local food. Prefer a comfortable resort when the budget permits.",
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "actor": "user",
+    "confirmed": true,
+    "source_utf8_bytes": 373,
+    "receipt_status": "queued",
+    "receipt_ms": 4.495500004850328,
+    "ready_ms": 14343.696299998555,
+    "interpreted_claims": [
+      {
+        "subject": "Riya",
+        "predicate": "destination",
+        "value": "Goa",
+        "kind": "fact",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": ""
+      },
+      {
+        "subject": "Riya",
+        "predicate": "dates",
+        "value": "2026-12-10 to 2026-12-14",
+        "kind": "fact",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": ""
+      },
+      {
+        "subject": "Riya",
+        "predicate": "traveller_count",
+        "value": 2,
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": "two adults"
+      },
+      {
+        "subject": "Riya",
+        "predicate": "departure_city",
+        "value": "Delhi",
+        "kind": "fact",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": ""
+      },
+      {
+        "subject": "Riya",
+        "predicate": "budget",
+        "value": 90000,
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": "total budget INR 90000"
+      },
+      {
+        "subject": "Riya",
+        "predicate": "currency",
+        "value": "INR",
+        "kind": "fact",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": ""
+      },
+      {
+        "subject": "Riya",
+        "predicate": "dietary",
+        "value": "Vegetarian",
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": "Vegetarian food required"
+      },
+      {
+        "subject": "Riya",
+        "predicate": "flight_time_preference",
+        "value": "morning",
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": "morning flights required"
+      },
+      {
+        "subject": "Riya",
+        "predicate": "accessibility",
+        "value": "step-free hotel",
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": "step-free hotel mandatory"
+      },
+      {
+        "subject": "Riya",
+        "predicate": "max_walk_metres",
+        "value": 500,
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": "maximum walking 500 metres"
+      },
+      {
+        "subject": "Riya",
+        "predicate": "avoid_boats",
+        "value": true,
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": "No boats"
+      },
+      {
+        "subject": "Riya",
+        "predicate": "max_activities_per_day",
+        "value": 1,
+        "kind": "rule",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": "at most one activity per day"
+      },
+      {
+        "subject": "Riya",
+        "predicate": "pace",
+        "value": "relaxed",
+        "kind": "preference",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": "relaxed pace explicitly stated"
+      },
+      {
+        "subject": "Riya",
+        "predicate": "interests",
+        "value": [
+          "calm beaches",
+          "local food"
+        ],
+        "kind": "preference",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": "explicitly stated interests"
+      },
+      {
+        "subject": "Riya",
+        "predicate": "hotel_preference",
+        "value": "comfortable resort",
+        "kind": "preference",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": "prefer comfortable resort when budget permits"
+      },
+      {
+        "subject": "Riya",
+        "predicate": "activity_preferences",
+        "value": [],
+        "kind": "preference",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": "no explicit activity choices provided"
+      }
+    ],
+    "pending_blocked": true
+  },
+  {
+    "event_id": "trip-mood",
+    "text": "My current mood for this trip is relaxed.",
+    "subject": "Riya",
+    "scope": {
+      "trip_id": "goa-family"
+    },
+    "actor": "user",
+    "confirmed": true,
+    "source_utf8_bytes": 41,
+    "receipt_status": "queued",
+    "receipt_ms": 4.184700010227971,
+    "ready_ms": 1223.0046000040602,
+    "interpreted_claims": [
+      {
+        "subject": "Riya",
+        "predicate": "mood",
+        "value": "relaxed",
+        "kind": "preference",
+        "scope": {
+          "trip_id": "goa-family"
+        },
+        "cardinality": "single",
+        "action": "assert",
+        "targets": null,
+        "protected": null,
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "effective_at": null,
+        "half_life_days": null,
+        "aliases": [],
+        "references": [],
+        "reason": ""
+      }
+    ],
+    "pending_blocked": null
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "label": "64-after-deletion-budget",
+  "path": "/v1/recall",
+  "body": {
+    "query": "budget",
+    "subject": "Riya",
+    "predicate": "budget",
+    "scope": {
+      "trip_id": "goa-family"
+    }
+  },
+  "actor": "reviewer",
+  "tenant": "riya"
+}

@@ -1,0 +1,33 @@
+{
+  "plan": {
+    "decision": "plan",
+    "flight_id": "F-AM-SAVER",
+    "hotel_id": "H-GARDEN",
+    "activity_ids": [
+      "A-ACCESSIBLE-BEACH",
+      "A-TERRACE"
+    ],
+    "activity_days": {
+      "A-ACCESSIBLE-BEACH": "2026-12-110",
+      "A-TERRACE": "2026-12-11"
+    },
+    "total_inr": 58600,
+    "budget_inr": 65000,
+    "max_walk_metres": 500
+  },
+  "oracle": {
+    "known_offers": true,
+    "current_budget": true,
+    "current_walking": true,
+    "total_correct": true,
+    "within_budget": true,
+    "morning": true,
+    "step_free": true,
+    "vegetarian": true,
+    "hotel_walking": true,
+    "activity_walking": true,
+    "no_boats": true,
+    "required_activities": true,
+    "one_activity_per_day": true
+  }
+}
