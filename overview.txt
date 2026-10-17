@@ -1,0 +1,526 @@
+TRAVEL ORCHESTRATOR — FULL OVERVIEW
+====================================
+
+1. WHAT IT IS
+-------------
+agents/orchestrator.py defines TravelOrchestrator — the single entry point
+every page talks to. It's a thin wrapper: the real logic lives in
+TravelWorkflow (agents/orchestration/graph.py), a LangGraph state machine.
+
+    TravelOrchestrator.handle(OrchestrationRequest)
+            └── TravelWorkflow.run()  →  LangGraph graph.invoke()
+
+
+2. PUBLIC API (THE WRAPPER)
+---------------------------
+__init__(gateway?, workflow?)
+    Injects optional MemoryGateway / TravelWorkflow; builds a default
+    TravelWorkflow otherwise.
+
+gateway (property)
+    Exposes the workflow's gateway.
+
+handle(request)
+    Runs the graph, converts the final dict into a typed
+    OrchestrationResponse.
+
+handle() behavior:
+- Catches ANY exception from workflow.run() → returns status="failed"
+  with a friendly message ("Something went wrong coordinating your
+  request..."), never invents data.
+- Coerces status to one of: ok / needs_clarification / failed
+  (anything else → ok).
+- Passes through: request_id, response, page, trip_brief, itinerary,
+  budget, agent_results, validation_issues, memory_write_proposals,
+  clarification_question, errors.
+
+
+3. WORKFLOW PIPELINE (GRAPH NODES)
+----------------------------------
+Flow:
+
+    parse_request → retrieve_context → understand_requirements
+            ├── (clarify)  → clarify → propose_writes → persist_writes → END
+            └── (continue) → resolve_destination
+                         ├─→ run_explore     ─┐
+                         ├─→ run_stay        ├─→ collect_results
+                         ├─→ run_tour_guide  ├─→ run_itinerary → run_budget
+                         ├─→ run_food_guide  ├─→ validate_results ⇄ revise
+                         └─→ run_support     ─┘        ↓
+                                            synthesize → propose_writes
+                                                       → persist_writes → END
+
+Stage details:
+
+1. parse_request
+   Normalizes the request, generates request_id (uuid4.hex[:12]), and
+   calls plan_tasks() from agents/orchestration/routing.py.
+
+2. retrieve_context
+   Memory retrieval via the MemoryGateway (memory layer being reworked).
+
+3. understand_requirements
+   Runs TripConsultant → produces a TripBrief (destination, dates,
+   party size, budget, pace...). Previous-round "answers" are merged
+   back in via _apply_answers.
+
+4. _clarify_or_continue (conditional edge)
+   Asks a clarifying question only when it MATERIALLY matters:
+   - No destination & not flexible → clarify
+   - No actionable signals at all → clarify
+   - Missing CRITICAL fields (destination, dates_or_duration) AND the
+     request needs a full brief (plan page, itinerary, or confirmed
+     booking) → clarify
+   - Otherwise → continue with partial info
+
+5. resolve_destination
+   Looks up the destination via the travel_tools.destinations tool
+   (top-1 match) → sets destination_id / destination_name.
+
+6. Specialist nodes (parallel fan-out)
+   run_explore, run_stay, run_tour_guide, run_food_guide, run_support.
+   Each CHECKS tasks first and returns {} (skipped) if not planned —
+   never runs "just in case". Each retrieves its own memory slice then
+   calls its agent.
+
+7. collect_results
+   Merge point; if the brief named no known destination, falls back to
+   the top explore destination_idea.
+
+8. run_itinerary
+   Only if planned. Picks each specialist's outputs by agent_id
+   (attractions, food_options, stay_options, transport_options) and has
+   ItineraryPlanner.draft() assemble a day-by-day plan.
+
+9. run_budget
+   Only if planned. BudgetBookingAgent estimates cost (or, if
+   confirmed_booking, builds a cart from itinerary stops of kind
+   stay/food/transport and attempts booking).
+
+10. validate_results
+    Runs 3 validators: validate_results (per-agent), validate_itinerary,
+    validate_budget → collects ValidationIssues.
+
+11. _revise_or_continue (conditional edge)
+    If there are error-severity issues AND revision_count <
+    settings.max_revision_loops → revise; else synthesize.
+
+12. revise
+    Bounded revision: drops the failing itinerary and re-drafts once,
+    appending errors. Guarantees loop termination.
+
+13. synthesize
+    Builds the final text response from agent summaries + day-by-day
+    schedule lines + budget line (Rs X,XXX per person/total, estimates
+    not confirmed) + up to 3 unique warnings + list of failed agents.
+
+14. propose_writes / persist_writes
+    Memory writes (memory layer being reworked).
+
+15. run()
+    Invokes the graph with thread_id = session_id, measures and
+    attaches _elapsed_ms.
+
+
+4. ROUTING / TASK PLANNING (routing.py)
+---------------------------------------
+Base tasks per PAGE:
+
+    stays       → consultant, stay
+    tour_guide  → consultant, tour_guide
+    food_guide  → consultant, food_guide
+    explore     → consultant, explore
+    plan        → all 7 (consultant, explore, stay, tour_guide,
+                  food_guide, itinerary, budget)
+    support     → consultant, travel_support
+    home        → consultant, explore
+
+On top, 8 REGEX INTENT PATTERNS add specialists from free text:
+    budget/cost/price/how much       → budget_booking_agent
+    book/reserve/confirm             → budget_booking_agent
+    hotel/stay/hostel                → stay_agent
+    eat/food/restaurant              → food_guide_agent
+    see/visit/attractions            → tour_guide_agent
+    suggest/ideas/recommend          → explore_agent
+    itinerary/day-by-day             → budget_booking_agent
+                                       + itinerary_planner
+    pack/weather/cancel              → travel_support_agent
+
+Dependency rule: if itinerary_planner is planned, it forces explore,
+stay, tour_guide, food_guide to run first (it consumes their outputs).
+
+
+5. CONFIGURATION / WORKING PARAMETERS (config.py)
+-------------------------------------------------
+    Parameter              Default                          Env var
+    ---------------------  -------------------------------  --------------------
+    LLM model              openai/gpt-oss-20b               NIM_MODEL
+    NIM base URL           https://integrate.api.nvidia...  NIM_BASE_URL
+    NIM timeout            45 s                             NIM_TIMEOUT_S
+    API key                — (required for LLM work)        NVIDIA_API_KEY
+    Inference concurrency  2                                MAX_INFERENCE_CONCURRENCY
+    Max revision loops     2                                MAX_REVISION_LOOPS
+    Travel API URL         http://127.0.0.1:8000            TRAVEL_API_URL
+    Agents server          127.0.0.1:8100                   AGENTS_HOST / AGENTS_PORT
+    Retrieval k            8                                MEMORY_RETRIEVAL_K
+    Overfetch              4                                MEMORY_OVERFETCH
+    Context chars          1600                             MEMORY_CONTEXT_CHARS
+    Min write importance   0.45                             MEMORY_MIN_IMPORTANCE
+
+Config precedence: environment variables > agents/.env file > defaults.
+has_llm() checks whether an API key is present.
+
+
+6. STATE MODEL (state.py)
+-------------------------
+AgentState is a typed TypedDict with a custom reducer _merge_results:
+parallel specialist branches merge agent_results BY AGENT ID (latest
+wins) — so concurrent writes don't clobber each other. Key groups:
+
+    Identity:    request_id, user_id, session_id, page
+    Progress:    tasks, revision_count, errors, status
+    Understanding: trip_brief, destination_id/name, nights
+    Outputs:     agent_results, itinerary, budget, validation_issues
+    Response:    response, clarification_question
+
+Large payloads are kept BEHIND REFERENCES (pydantic models, compact
+MemoryContext) — full tool responses/history are never duplicated
+into state.
+
+
+7. CHECKPOINTING (checkpointing.py)
+-----------------------------------
+- Prefers LangGraph MemorySaver with a serializer allowlist for
+  agents.schemas; falls back to a minimal thread-safe in-process
+  _MemorySaver (dict keyed by thread_id + checkpoint_ns).
+- Only keeps EXECUTION STATE (resumability), deliberately separate
+  from durable Iron Web memory. Thread ID = session_id.
+
+
+8. KEY DESIGN PRINCIPLES
+------------------------
+1. Skip, don't speculate — unplanned agents return {}; nothing runs
+   "just in case".
+2. Graceful degradation — failures become reported gaps ("Some parts
+   could not be completed: ..."), never fabricated data.
+3. Bounded loops — revision capped at 2; clarify only for critical
+   gaps.
+4. Typed boundaries — everything in/out is a pydantic model
+   (OrchestrationRequest / OrchestrationResponse).
+5. Parallel fan-out — independent specialists run concurrently,
+   merged by agent-id reducer.
+
+================================================================================
+AGENT 2: TRIP CONSULTANT (trip_consultant.py)
+================================================================================
+
+Role: Produces a TripBrief from the user request + memory. Handles
+clarification flow and merges previous-round answers. Runs BEFORE the
+workflow graph starts — it is the first step in `understand_requirements`.
+
+Key details:
+- agent_id = "trip_consultant"
+- extract(request, memory) -> TripBrief
+  - Deterministic extraction (regex + vocabulary) with optional LLM refinement
+  - Known destinations: goa, jaipur, manali, munnar, varanasi, udaipur,
+    rishikesh, kochi, andaman, ladakh, kerala, darjeeling, shimla
+  - Date patterns: ISO (YYYY-MM-DD) and DMY (D/M/Y)
+  - Duration: "3 days" -> sets start_date 14 days out + duration
+  - Party size: regex for "for X people", "group of X", etc.
+  - Budget: regex for "under Rs X", "up to X k", "within X lakh"
+    - "per person" -> budget_per_person_inr, else -> budget_total_inr
+  - Interests: matches against _INTEREST_WORDS list
+  - Pace: relaxed/moderate/packed (keyword-driven)
+  - Transport preferences: train, flight, bus, car, ferry
+  - Dietary requirements: vegetarian, vegan, halal, jain, gluten-free
+  - Accessibility needs: wheelchair, step-free, accessible, low-sensory
+  - Hard constraints: markers "must", "only", "definitely" + interest
+- _apply_memory(brief, memory) — fills soft fields from past preferences
+  (dietary, pace if "slow travel" or "relaxed pace" found)
+- _llm_refine(text, brief) — optional NIM client refinement; falls back
+  silently if unavailable or output malformed; never invents details
+- _finalize(brief) — sets missing_fields, clarification_question, confidence
+  (1.0 - 0.15 * len(missing))
+  - No destination & not flexible -> "Where would you like to go, and around which dates?"
+  - No party_size -> "How many people are travelling?"
+  - No budget -> "Roughly what budget should I plan around (total or per person)?"
+- memory_queries(brief) -> ["travel preferences budget pace dietary"]
+  + "previous trips {destination}" if destination is set
+- preference_writes(brief, user_id, session_id) — only explicit durable
+  statements become preference memories:
+  - Each dietary requirement -> importance 0.85, confidence 0.9
+  - Preferred pace -> importance 0.6, confidence 0.7
+- run(request, memory) -> AgentResult
+  - status = "needs_clarification" if clarification_question else "ok"
+  - summary = _summary(brief): "Trip brief: Goa, 7 days, party of 2, ~Rs 15000/person"
+    or "Trip brief: details pending" if nothing extracted
+- _summary(brief) — static method building human-readable summary from
+  destination, duration, party_size, per-person budget
+
+TripBrief fields produced:
+  destination, destination_flexible, start_date, end_date, duration_days
+  party_size, budget_total_inr, budget_per_person_inr, pace
+  interests (list), dietary_requirements (list)
+  accessibility_needs (list), hard_constraints (list)
+  missing_fields (list), clarification_question, confidence
+
+Config / LLM:
+- LLM refinement via NIM client (get_nim_client())
+- has_llm() in config.py depends on NVIDIA_API_KEY env var
+- LLM is optional — deterministic extraction always runs first
+
+================================================================================
+AGENT 3: ITINERARY PLANNER (itinerary_planner.py)
+================================================================================
+
+Role: Combines research into a practical day-wise schedule.
+
+Key details:
+- agent_id = "itinerary_planner"
+- draft(brief, *, destination_name, attractions, food_options, stay_options,
+  transport_options, arrival_mode) -> AgentResult
+- Builds ItineraryDay objects with timed stops (morning/afternoon/lunch/buffer)
+- Pace determines start/end times: relaxed (09:30/11:30), moderate (09:00/12:00),
+  packed (08:30/12:30)
+- Day 1: arrival transport stop, then attraction + lunch cycle
+- Subsequent days: attraction cycle alternating with lunch, afternoon stops
+- Last day: "Pack up and head home" buffer stop
+- Assumptions tracked: stay costs (per-night ₹X, unverified), meal placeholders,
+  unverified experiences, opening hours
+- Returns DraftItinerary with:
+  - title: "{duration}-day trip to {destination_name}"
+  - days: list of ItineraryDay objects with stops, start/end times, titles, kinds,
+    locations, est_cost_inr, notes, evidence
+  - total_est_cost_inr: sum of all stop costs
+  - assumptions: list of cost/availability assumptions
+  - alternatives: e.g. "Swap the afternoon activity for a food walk if the weather turns."
+  - unresolved_conflicts: empty list by default
+- latency_ms tracked on every result (time.perf_counter())
+- memory_queries(brief) -> ["travel pace itinerary feedback"]
+
+Draft algorithm:
+- _DAY_START = {"relaxed": "09:30", "moderate": "09:00", "packed": "08:30"}
+- _MORNING_END = {"relaxed": "11:30", "moderate": "12:00", "packed": "12:30"}
+- _LUNCH = ("13:00", "14:00")
+- _AFTERNOON = {"relaxed": ("15:30", "17:30"), "moderate": ("15:00", "17:30"),
+  "packed": ("14:30", "18:00")}
+- attraction_cycle = list(attractions) cycled through each day
+- lunch_cycle = list(food_options) cycled through each day
+- For day 1: add arrival transport stop, then if not first day, add attraction
+- Lunch stop added if food_options available (lunch_index incremented each day)
+- Afternoon stop added for all days except the last (which gets "Pack up and head home")
+- Stops include: kind (transport, attraction, food, buffer), title, start_time,
+  end_time, day number, location, est_cost_inr, notes, evidence
+- Calendar dates: brief.start_date + (day-1) if has_dates, else None
+
+Assumptions generation:
+- Stay assumption: "Assumes a room at {stay.name} for all nights (per-night ₹{price:,},
+  availability unverified)" if stay_options present
+- Meal assumption: "Meal costs use a placeholder allowance; no venue data was available."
+  if no food_options
+- No attraction assumption: "No verified experiences were found; mornings are left open."
+  if no attraction_cycle
+
+================================================================================
+================================================================================
+AGENT 4: BUDGET BOOKING AGENT (budget_booking_agent.py)
+================================================================================
+
+Role: Cost estimates, comparison, booking assistance. Estimates are always
+labeled; a booking is only attempted with an explicit confirmed flag and an
+idempotency key, and success is reported strictly from the provider response.
+
+Key details:
+- agent_id = "budget_booking_agent"
+- estimate(brief, *, stay_options, transport_options, food_options, attractions,
+  itinerary, nights=2, party_size=1, per_person=True) -> AgentResult
+  - Builds BudgetLine items:
+    * stay: first stay total (or per-night price * nights) — note: "per room;
+      availability unverified"
+    * transport: price_per_seat_inr * party_size — note: "{mode} sample fare;
+      seats not held"
+    * food: max food price * party_size * (nights+1); fallback Rs 400/day —
+      note: "one sit-down meal per day"
+    * activities: top-4 attraction prices * party_size — note: "guide/experience
+      fees"
+    * contingency: 10% of subtotal (_CONTINGENCY_RATE = 0.10) — note: "10%
+      buffer for local travel and extras"
+  - Returns BudgetEstimate with per_person flag, total_inr, status="estimate",
+    warnings=["All figures are estimates from catalog data, not live prices."]
+  - Runs validate_budget(estimate, brief) and appends warnings
+
+- attempt_booking(user_id, cart_items, confirmed, coupon_code?, idempotency_key?)
+  -> AgentResult
+  - ONLY sends to provider when confirmed=True; otherwise nothing is sent
+  - Reports status from provider response only:
+    * "confirmed" -> status "ok", summary "Booking confirmed by provider (ref {id})"
+    * "pending"   -> status "ok", summary "Request sent to the provider. Nothing
+      is charged or confirmed until the provider accepts it."
+    * otherwise   -> status "failed", summary "Booking could not be completed: {detail}"
+  - Evidence marks kind="mock" if simulated, "live" otherwise
+
+- refresh_routes(destination_id, mode?) — price check via transport tool
+  (search_routes, limit=3) before presenting anything as current
+- memory_queries(brief) -> ["budget preferences currency booking decisions"]
+
+================================================================================
+AGENT 5: STAY AGENT (stay_agent.py)
+================================================================================
+
+Role: Accommodation search, comparison and shortlisting.
+
+Key details:
+- agent_id = "stay_agent"
+- search(brief, *, destination_id, destination_name, nights=2, limit=4)
+  -> AgentResult
+  - Wanted amenity detection from memory: {"wifi": "Wi-Fi", "breakfast":
+    "breakfast", "home-food": "home food"}
+  - Budget filter: keeps stay costs within ~55% of the per-person budget
+    (max_price = max(500, budget_per_person * 0.55 / nights))
+  - Calls stay_tool.search_stays(destination_id, max_price, amenity, limit=limit+2)
+  - Returns StayOption objects:
+    stay_id, name, location, kind, price_per_night_inr, total_price_inr
+    (estimate_stay_total), rating, amenities, availability_status="unknown"
+    (no live availability feed), pros, cons, evidence
+  - Sorting: options sorted by _rank_key, descending
+
+- _pros(row, wanted_amenity):
+  * rating >= 4.5 -> "highly rated ({rating})"
+  * wanted amenity present -> "has {label} you prefer"
+  * kind == "homestay" -> "local homestay character"
+- _cons(row, max_price):
+  * price > 80% of max_price -> "toward the top of your budget range"
+  * no amenities listed -> "amenity details missing"
+- _rank_key(option) = (rating * 2.0) + max(0, 6 - price_per_night/1000)
+  + number of pros
+- Summary: "{n} stay options near {destination}" or "stay search failed: {error}"
+- memory_queries(brief) -> ["accommodation preferences amenities homestay hotel
+  feedback"]
+
+================================================================================
+AGENT 6: TOUR GUIDE AGENT (tour_guide_agent.py)
+================================================================================
+
+Role: Attractions, culture and sightseeing recommendations.
+
+Key details:
+- agent_id = "tour_guide_agent"
+- recommend(brief, *, destination_id, destination_name, limit=5) -> AgentResult
+  - Interests from brief.interests + memory mining:
+    * "visited" / "been to" phrases -> visited set (skipped unless "revisit"/
+      "again" requested)
+    * "disliked" / "did not enjoy" / "skip" phrases -> disliked set (always
+      filtered out)
+    * specialty tags found in memory join the interests
+  - Specialty match: first tag from _SPECIALTIES found in interests:
+    ["history", "food walks", "adventure", "nature", "culture", "spiritual"]
+  - Calls guide_tool.search_guides(destination_id, specialty, limit=limit+2)
+  - Returns Attraction objects:
+    guide_id, name, category (joined specialties or "local experience"),
+    why_fit ("aligns with your interest in {tags}" or "a well-reviewed local
+    experience"), approx_duration_min=180, location, price_per_person_inr,
+    hours_caveat="hours not verified against a live source", evidence
+- Summary: "{n} experience ideas in {destination}" (+ error if failed)
+- memory_queries(brief) -> ["visited places interests pace accessibility"]
+
+================================================================================
+AGENT 7: FOOD GUIDE AGENT (food_guide_agent.py)
+================================================================================
+
+Role: Cuisine and restaurant recommendations.
+
+Key details:
+- agent_id = "food_guide_agent"
+- recommend(brief, *, destination_id, destination_name, limit=5) -> AgentResult
+  - Dietary requirements from brief + memory (vegetarian, vegan, halal, jain,
+    gluten-free)
+  - NEVER assumes a diet the user has not stated
+  - diet_param = "veg" if {vegetarian, vegan, jain} intersect dietary
+  - Budget filter: max_price = effective_budget_per_person * 0.12 (12% of
+    per-person budget for a meal)
+  - Calls food_tool.search_food(destination_id, diet, max_price, limit=limit+2)
+  - Returns FoodOption objects:
+    place_id, name, cuisine, approx_price_per_guest_inr, location, diet,
+    dietary_fit, hours_caveat="opening hours not verified against a live
+    source", reservation_status="unknown", evidence
+- _dietary_fit(dietary, row_diet):
+  * no dietary requirements -> None
+  * row_diet "veg"/"both" -> "suits your stated dietary requirements"
+  * otherwise -> "may not match your stated dietary requirements — verify with
+    the venue"
+- Summary: "{n} food recommendations in {destination}" (+ error if failed)
+- memory_queries(brief) -> ["food preferences cuisine dietary restrictions liked
+  disliked"]
+
+================================================================================
+AGENT 8: TRAVEL SUPPORT AGENT (travel_support_agent.py)
+================================================================================
+
+Role: Preparation, disruption handling, in-trip changes.
+
+Key details:
+- agent_id = "travel_support_agent"
+- support(request, brief, *, destination_id, destination_name, itinerary)
+  -> AgentResult
+  - EMERGENCY detection first (_EMERGENCY_RE: emergency, ambulance, police,
+    hospital, accident):
+    * topic="emergency", directs to official services (India: 112)
+    * explicitly states it cannot replace emergency services or advisories
+    * returns immediately — no other processing
+  - REPLAN detection (_REPLAN_WORDS: change, cancel, move, postpone, reschedule,
+    delay, closed, storm, rain):
+    * topic="itinerary change", needs_replanning=True
+    * Lists up to 3 affected itinerary days/stops
+    * Warns: bookings already sent to providers need explicit cancellation
+  - TOPIC routing by request text:
+    * "pack" -> packing list (climate-aware)
+    * train/flight/bus/reach/airport -> transport guidance
+    * default -> trip preparation
+  - PACKING list (_PACKING_BASE): walking shoes, water bottle, charger +
+    power bank, medicines, ID copies
+    * cold/alpine/highland climate -> + warm layers, windproof jacket
+    * tropical/coast/monsoon -> + light cottons, rain shell, sunscreen
+    * duration -> + "Clothes for ~N days"
+    * dietary requirements -> + fitting snack options
+  - Weather integration: weather_tool.weather_note(destination_id,
+    destination_name) when destination known -> source_freshness="current"
+  - Returns SupportGuidance: topic, guidance, source_freshness, affected_items,
+    risks, needs_confirmation=False, needs_replanning
+- Summary: "Support guidance for {topic}"
+- memory_queries(brief) -> ["trip details support history preferences"]
+
+================================================================================
+AGENT 9: EXPLORE AGENT (explore_agent.py)
+================================================================================
+
+Role: Destination discovery and inspiration.
+
+Key details:
+- agent_id = "explore_agent"
+- discover(brief, memory, *, limit=5) -> AgentResult
+  - Interests from brief.interests + memory tags: beach, mountain, heritage,
+    culture, nature, spiritual, wellness, food, adventure
+  - Query: brief.destination if set AND not flexible, else None (open search)
+  - Calls destination_tool.search_destinations(query, limit=limit+3)
+  - Cost levels (_COST_LEVELS): <= Rs 12,000 "budget", <= Rs 30,000 "mid",
+    > Rs 30,000 "premium"
+  - Returns DestinationIdea objects:
+    destination_id, slug, name, region (state + country), why_fit,
+    suggested_duration_days (brief duration or default 3), best_season,
+    cost_level, avg_cost_inr, tags, seasonality_note ("Verify the season fits
+    your dates; best listed as {season}"), evidence
+- _why_fit(row, interests, overlap):
+  * shared tags -> "matches your interest in {tags}"
+  * overlap only -> "matches your interests"
+  * otherwise -> "explored for its {top-2 tags}" or "local character"
+- DIVERSITY heuristic: strong matches (why_fit contains "matches your
+  interest") come first (up to limit-1), then fresh ideas fill the rest
+- wish_writes(brief, user_id, session_id) -> [] — discovery NEVER writes
+  memory; wish-list writes happen only on explicit user statements that the
+  orchestrator passes through
+- Summary: "{n} destination ideas" (+ error if failed)
+- memory_queries(brief) -> ["destinations explored wishlist interests"]
+  + "{destination} impressions" if a destination is set
+
+================================================================================
+END OF DOCUMENT

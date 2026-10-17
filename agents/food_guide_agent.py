@@ -48,7 +48,7 @@ class FoodGuideAgent:
             max_price = int(budget_per_person * 0.12) if budget_per_person else None
 
             response = food_tool.search_food(
-                destination_id, diet=diet_param, max_price=max_price, limit=limit + 2,
+                destination_id, destination_name=destination_name, diet=diet_param, max_price=max_price, limit=limit + 2,
             )
             options: list[FoodOption] = []
             if response.ok:

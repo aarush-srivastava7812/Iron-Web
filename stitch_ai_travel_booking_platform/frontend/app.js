@@ -94,21 +94,40 @@ function notice(message, title = "Something needs attention") {
   return `<div class="detail-block" role="status"><h3>${escapeHTML(title)}</h3><p>${escapeHTML(message)}</p></div>`;
 }
 function loginPrompt() {
-  return `<section class="section"><div class="container"><div class="empty-state"><div class="big-icon">♙</div><h2>Keep your journeys together</h2><p>Sign in with Google to save places, plan with your private trip memory and submit requests.</p><a class="btn" href="#login">Continue with Google →</a></div></div></section>`;
+  return `<section class="section"><div class="container"><div class="empty-state"><div class="big-icon">♙</div><h2>Keep your journeys together</h2><p>Sign in to save places, plan with your private trip memory and submit requests.</p><a class="btn" href="#login">Sign In / Register →</a></div></div></section>`;
 }
 function requireAuth() {
   if (state.user) return true;
   sessionStorage.setItem("voyaraAfterLogin", location.hash || "#home");
-  views.toast("Sign in with Google to continue.");
+  views.toast("Please sign in to continue.");
   location.hash = "login";
   return false;
 }
 function updateAccount() {
+  const actions = document.querySelector(".header-actions");
+  let logoutBtn = document.querySelector(".logout-header-btn");
   const link = document.querySelector(".login-link");
-  link.textContent = state.user
-    ? state.user.full_name?.split(" ")[0] || "My account"
-    : "Login / Signup";
-  link.href = state.user ? "#dashboard" : "#login";
+  if (!link) return;
+  if (state.user) {
+    const name = state.user.full_name?.split(" ")[0] || state.user.username || "My Account";
+    link.textContent = name;
+    link.href = "#login";
+    link.title = "View account details";
+    if (!logoutBtn && actions) {
+      logoutBtn = document.createElement("button");
+      logoutBtn.type = "button";
+      logoutBtn.className = "mini-btn logout-header-btn";
+      logoutBtn.dataset.action = "logout";
+      logoutBtn.textContent = "Sign Out";
+      logoutBtn.style.cssText = "border:1px solid #dce5ec;padding:7px 14px;border-radius:10px;font-size:12px;font-weight:700;color:#c0392b;background:#fff;cursor:pointer;margin-left:4px;display:inline-flex;align-items:center;";
+      link.after(logoutBtn);
+    }
+  } else {
+    link.textContent = "Login / Signup";
+    link.href = "#login";
+    link.removeAttribute("title");
+    logoutBtn?.remove();
+  }
 }
 async function loadFavorites() {
   state.favorites = state.user ? await api("/favorites") : [];
@@ -141,6 +160,7 @@ async function render() {
       hotels: views.hotelsPage,
       planner: views.plannerPage,
       flights: views.flightsPage,
+      travel: views.flightsPage,
       about: views.aboutPage,
       contact: views.contactPage,
       privacy: privacyPage,
@@ -148,20 +168,8 @@ async function render() {
     };
     let html;
     if (route === "dashboard") {
-      app.innerHTML = notice("Loading your journeys…");
-      if (state.user) {
-        const [bookings, itineraries, conversations, profile] =
-          await Promise.all([
-            api("/bookings"),
-            api("/itineraries"),
-            api("/assistant/conversations"),
-            api("/profile"),
-          ]);
-        if (version !== renderVersion) return;
-        Object.assign(state, { bookings, itineraries, conversations, profile });
-        await loadFavorites();
-      }
-      html = dashboardPage();
+      location.hash = "home";
+      return;
     } else if (route === "travel-book") html = await journeyUI.bookPage(param);
     else if (route === "chat") html = `<section class="section"><div class="container"><div class="journey-planner-entry"><div><h1>Your Voyara travel team</h1><p>Talk through your trip, compare catalog choices and create your personal Travel Book.</p></div><button class="journey-primary" data-action="open-travel-chat">Start a conversation</button></div></div></section>`;
     else if (route === "booking") html = bookingPage(query);
@@ -180,7 +188,7 @@ async function render() {
     } else if (route === "trip") html = await tripPage(param);
     else
       html = pages[route]
-        ? pages[route]()
+        ? pages[route](query, param)
         : notice(
             "This page could not be found. Use the navigation to explore.",
             "Page not found",
@@ -228,48 +236,140 @@ async function render() {
 
 function loginPage() {
   if (state.user)
-    return `${views.pageHero("WELCOME BACK", "Your next chapter awaits", "Your account is connected.")}<section class="section"><div class="container"><div class="auth-card"><h2>${escapeHTML(state.user.full_name || "Traveller")}</h2><p>${escapeHTML(state.user.email)}</p><a class="btn" href="#dashboard">My journeys →</a> <button class="mini-btn" data-action="logout">Sign out</button></div></div></section>`;
-  return `${views.pageHero("YOUR JOURNEYS START HERE", "Welcome to Voyara", "One Google account for your saved places, trip requests and private travel memory.")}<section class="section"><div class="container"><div class="auth-card"><div class="brand-mark">↗</div><h2>Travel starts with you</h2><p>Continue with your Google account.</p><div id="googleSignIn" aria-live="polite">Checking sign-in availability…</div><p id="authStatus" role="status"></p><p class="subtext">By continuing, you agree to the <a href="#privacy">privacy information</a>.</p><a class="text-link" href="#destinations">Explore first →</a></div></div></section>`;
+    return `${views.pageHero("WELCOME BACK", "Your next chapter awaits", "Your account is connected.")}<section class="section"><div class="container"><div class="auth-card"><h2>${escapeHTML(state.user.full_name || state.user.username || "Traveller")}</h2><p>${escapeHTML(state.user.email || "")}</p><a class="btn" href="#home">Explore Journeys →</a> <button class="btn" data-action="logout" style="background:#c0392b;margin-left:10px;">Sign Out</button></div></div></section>`;
+  return `${views.pageHero("YOUR JOURNEYS START HERE", "Welcome to Voyara", "Sign in to save your journeys, trip notes and access personalized travel memory.")}<section class="section"><div class="container"><div class="auth-card"><div class="brand-mark">↗</div><h2>Travel starts with you</h2><p>Sign in to your account, create a new one, or continue with demo access.</p><div class="auth-tabs" role="tablist"><button type="button" class="auth-tab-btn active" id="tabSignIn" role="tab" aria-selected="true">Sign In</button><button type="button" class="auth-tab-btn" id="tabSignUp" role="tab" aria-selected="false">Create Account</button></div><form id="signInForm" class="auth-form"><div class="field"><label for="authIdentifier">Email or Username</label><input type="text" id="authIdentifier" name="identifier" autocomplete="username" placeholder="e.g. vansh or your@email.com" required></div><div class="field"><label for="authPassword">Password</label><input type="password" id="authPassword" name="password" autocomplete="current-password" placeholder="Enter your password" required></div><button type="submit" class="btn auth-submit" style="width:100%;margin-top:6px;">Sign In to Voyara →</button></form><form id="signUpForm" class="auth-form" style="display:none;"><div class="field"><label for="regFullName">Full Name</label><input type="text" id="regFullName" name="full_name" autocomplete="name" placeholder="e.g. Vansh Varshney"></div><div class="field"><label for="regUsername">Username</label><input type="text" id="regUsername" name="username" autocomplete="username" placeholder="Choose a username" required></div><div class="field"><label for="regEmail">Email Address</label><input type="email" id="regEmail" name="email" autocomplete="email" placeholder="e.g. your@email.com" required></div><div class="field"><label for="regPassword">Password</label><input type="password" id="regPassword" name="password" autocomplete="new-password" placeholder="At least 6 characters" minlength="6" required></div><button type="submit" class="btn auth-submit" style="width:100%;margin-top:6px;">Create Account & Sign In →</button></form><p id="authStatus" role="status" style="margin-top:14px;color:#c0392b;font-weight:600;min-height:20px;"></p><div class="auth-divider"><span>OR QUICK ACCESS</span></div><div class="demo-auth-box"><p>Instant local access without entering credentials:</p><button class="btn" id="developerSignIn" type="button" style="width:100%;background:#184e72;">Continue as Demo Traveler ⚡</button></div><div id="googleSignIn" aria-live="polite"></div><p class="subtext">By continuing, you agree to the <a href="#privacy">privacy information</a>.</p><a class="text-link" href="#destinations">Explore first →</a></div></div></section>`;
 }
 let googleScript;
 async function mountGoogle(version) {
   if (state.user) return;
-  const [config, developer] = await Promise.all([
-    api("/auth/google/config"),
-    api("/auth/developer/config"),
-  ]);
-  if (version !== renderVersion) return;
-  const target = document.getElementById("googleSignIn");
-  if (developer.enabled) {
-    target.insertAdjacentHTML(
-      "afterend",
-      '<div class="setup-note"><b>Local developer account</b><p>Use the app while Google sign-in is being configured.</p><button class="btn" id="developerSignIn" type="button">Continue as Developer →</button></div>',
-    );
-    document.getElementById("developerSignIn").onclick = async (event) => {
-      const button = event.currentTarget;
-      button.disabled = true;
-      const status = document.getElementById("authStatus");
-      status.textContent = "Opening your developer account…";
+  const status = document.getElementById("authStatus");
+  const tabSignIn = document.getElementById("tabSignIn");
+  const tabSignUp = document.getElementById("tabSignUp");
+  const signInForm = document.getElementById("signInForm");
+  const signUpForm = document.getElementById("signUpForm");
+
+  const finishLogin = async (user) => {
+    state.user = user;
+    currentConversation = null;
+    await loadFavorites();
+    updateAccount();
+    const next = sessionStorage.getItem("voyaraAfterLogin") || "#home";
+    sessionStorage.removeItem("voyaraAfterLogin");
+    location.hash = next;
+  };
+
+  if (tabSignIn && tabSignUp && signInForm && signUpForm) {
+    tabSignIn.onclick = () => {
+      tabSignIn.classList.add("active");
+      tabSignIn.setAttribute("aria-selected", "true");
+      tabSignUp.classList.remove("active");
+      tabSignUp.setAttribute("aria-selected", "false");
+      signInForm.style.display = "flex";
+      signUpForm.style.display = "none";
+      if (status) status.textContent = "";
+    };
+    tabSignUp.onclick = () => {
+      tabSignUp.classList.add("active");
+      tabSignUp.setAttribute("aria-selected", "true");
+      tabSignIn.classList.remove("active");
+      tabSignIn.setAttribute("aria-selected", "false");
+      signUpForm.style.display = "flex";
+      signInForm.style.display = "none";
+      if (status) status.textContent = "";
+    };
+
+    signInForm.onsubmit = async (event) => {
+      event.preventDefault();
+      const btn = signInForm.querySelector("button[type=submit]");
+      btn.disabled = true;
+      if (status) {
+        status.style.color = "#184e72";
+        status.textContent = "Signing in…";
+      }
       try {
-        state.user = await api("/auth/developer", {
+        const identifier = document.getElementById("authIdentifier").value.trim();
+        const password = document.getElementById("authPassword").value;
+        const result = await api("/auth/login?session=true", {
           method: "POST",
-          headers: { "X-Voyara-Developer": "1" },
+          body: { identifier, password },
         });
-        currentConversation = null;
-        await loadFavorites();
-        updateAccount();
-        const next = sessionStorage.getItem("voyaraAfterLogin") || "#dashboard";
-        sessionStorage.removeItem("voyaraAfterLogin");
-        location.hash = next;
+        await finishLogin(result.user || result);
       } catch (error) {
-        status.textContent = error.message;
-        button.disabled = false;
+        if (status) {
+          status.style.color = "#c0392b";
+          status.textContent = error.message || "Invalid credentials.";
+        }
+        btn.disabled = false;
+      }
+    };
+
+    signUpForm.onsubmit = async (event) => {
+      event.preventDefault();
+      const btn = signUpForm.querySelector("button[type=submit]");
+      btn.disabled = true;
+      if (status) {
+        status.style.color = "#184e72";
+        status.textContent = "Creating account…";
+      }
+      try {
+        const full_name = document.getElementById("regFullName").value.trim() || undefined;
+        const username = document.getElementById("regUsername").value.trim();
+        const email = document.getElementById("regEmail").value.trim();
+        const password = document.getElementById("regPassword").value;
+        const result = await api("/auth/register?session=true", {
+          method: "POST",
+          body: { full_name, username, email, password },
+        });
+        await finishLogin(result.user || result);
+      } catch (error) {
+        if (status) {
+          status.style.color = "#c0392b";
+          status.textContent = error.message || "Could not register account.";
+        }
+        btn.disabled = false;
       }
     };
   }
+
+  const devBtn = document.getElementById("developerSignIn");
+  if (devBtn) {
+    devBtn.onclick = async () => {
+      devBtn.disabled = true;
+      if (status) {
+        status.style.color = "#184e72";
+        status.textContent = "Opening your demo account…";
+      }
+      try {
+        const user = await api("/auth/developer", {
+          method: "POST",
+          headers: { "X-Voyara-Developer": "1" },
+        });
+        await finishLogin(user);
+      } catch (error) {
+        if (status) {
+          status.style.color = "#c0392b";
+          status.textContent = error.message;
+        }
+        devBtn.disabled = false;
+      }
+    };
+  }
+
+  const [config, developer] = await Promise.all([
+    api("/auth/google/config").catch(() => ({ configured: false })),
+    api("/auth/developer/config").catch(() => ({ enabled: false })),
+  ]);
+  if (version !== renderVersion) return;
+
+  if (!developer.enabled && devBtn) {
+    devBtn.closest(".demo-auth-box")?.remove();
+  }
+
+  const target = document.getElementById("googleSignIn");
+  if (!target) return;
   if (!config.configured) {
     target.innerHTML =
-      '<div class="setup-note"><b>Google sign-in is awaiting setup</b><p>The owner needs to add the Google Web client ID. You can explore now, or use the local developer account below when enabled.</p></div>';
+      '<small style="display:block;color:var(--muted);font-size:12px;margin:8px 0;">Google sign-in is optional (awaiting client ID in backend/.env)</small>';
     return;
   }
   try {
@@ -300,22 +400,21 @@ async function mountGoogle(version) {
       auto_select: false,
       callback: async (response) => {
         if (version !== renderVersion) return;
-        const status = document.getElementById("authStatus");
-        status.textContent = "Signing you in…";
+        if (status) {
+          status.style.color = "#184e72";
+          status.textContent = "Signing you in with Google…";
+        }
         try {
-          state.user = await api("/auth/google", {
+          const user = await api("/auth/google", {
             method: "POST",
             body: { credential: response.credential, nonce: config.nonce },
           });
-          currentConversation = null;
-          await loadFavorites();
-          updateAccount();
-          const next =
-            sessionStorage.getItem("voyaraAfterLogin") || "#dashboard";
-          sessionStorage.removeItem("voyaraAfterLogin");
-          location.hash = next;
+          await finishLogin(user);
         } catch (error) {
-          status.textContent = error.message;
+          if (status) {
+            status.style.color = "#c0392b";
+            status.textContent = error.message;
+          }
         }
       },
     });
@@ -345,12 +444,35 @@ function selectedItem(query) {
   if (!list) return null;
   const id = Number(query.get("id"));
   const place = query.get("place");
-  const item = id
-    ? list.find((x) => x.id === id)
-    : place
-      ? list.find((x) => x.name.toLowerCase() === place.toLowerCase())
-      : list[0];
-  return item ? { kind, item } : null;
+  if (id) {
+    const item = list.find((x) => x.id === id);
+    if (item) return { kind, item };
+  }
+  if (place) {
+    const pl = place.toLowerCase().trim();
+    const dest = state.catalog.destinations.find(
+      (d) => d.name.toLowerCase() === pl || (d.slug && d.slug.toLowerCase() === pl),
+    );
+    if (kind === "package") {
+      const match = list.find(
+        (x) => x.name.toLowerCase() === pl || (dest && x.id === dest.id),
+      );
+      if (match) return { kind, item: match };
+    } else if (kind === "stay") {
+      const match =
+        list.find((x) => dest && x.destination_id === dest.destination_id) ||
+        list.find((x) => x.place && x.place.toLowerCase() === pl) ||
+        list.find((x) => x.name.toLowerCase().includes(pl));
+      if (match) return { kind, item: match };
+    } else if (kind === "experience") {
+      const match =
+        list.find((x) => dest && x.destination_id === dest.destination_id) ||
+        list.find((x) => x.place && x.place.toLowerCase() === pl) ||
+        list.find((x) => x.name.toLowerCase().includes(pl));
+      if (match) return { kind, item: match };
+    }
+  }
+  return list[0] ? { kind, item: list[0] } : null;
 }
 function bookingPage(query) {
   const selected = selectedItem(query);
@@ -402,7 +524,7 @@ function itemName(item) {
   );
 }
 function privacyPage() {
-  return `${views.pageHero("YOUR INFORMATION", "Privacy & your travel memory", "Control the information you share with Voyara.")}<section class="section"><div class="container"><div class="detail-block"><h2>Your account and trips</h2><p>Google verifies your sign-in. Voyara stores your account ID, verified email, name, saved items, booking requests, enquiries and trip conversations in its backend database. Google credentials are verified on the server; the browser session uses an HttpOnly cookie.</p><h2>Your travel memory</h2><p>Confirmed trip details and saved preferences are used by the connected travel agents. Open a conversation in My Trips to inspect or forget a memory event. Deleting a conversation also forgets that trip’s memory. Saved itineraries and booking records are separate records you can manage in My Trips.</p><h2>Catalog and communications</h2><p>The catalog is illustrative. Booking requests require provider confirmation and collect no payment. Enquiries and newsletter subscriptions are stored; outbound email is awaiting configuration. Images load from Unsplash and fonts from Google Fonts. Google Identity Services loads on sign-in when configured.</p><a class="btn" href="#dashboard">Manage my journeys</a> <a class="mini-btn" href="#contact">Contact us</a></div></div></section>`;
+  return `${views.pageHero("YOUR INFORMATION", "Privacy & your travel memory", "Control the information you share with Voyara.")}<section class="section"><div class="container"><div class="detail-block"><h2>Your account and trips</h2><p>Google verifies your sign-in. Voyara stores your account ID, verified email, name, saved items, booking requests, enquiries and trip conversations in its backend database. Google credentials are verified on the server; the browser session uses an HttpOnly cookie.</p><h2>Your travel memory</h2><p>Confirmed trip details and saved preferences are used by the connected travel agents. Open a conversation in My Trips to inspect or forget a memory event. Deleting a conversation also forgets that trip’s memory. Saved itineraries and booking records are separate records you can manage in My Trips.</p><h2>Catalog and communications</h2><p>The catalog is illustrative. Booking requests require provider confirmation and collect no payment. Enquiries and newsletter subscriptions are stored; outbound email is awaiting configuration. Images load from Unsplash and fonts from Google Fonts. Google Identity Services loads on sign-in when configured.</p><a class="btn" href="#home">Explore journeys</a> <a class="mini-btn" href="#contact">Contact us</a></div></div></section>`;
 }
 
 function partialDraftNotice(text) {
@@ -473,7 +595,7 @@ async function tripPage(id) {
   }
   currentConversation = id;
   sessionStorage.setItem("voyaraTrip:" + state.user.id, id);
-  return `${views.pageHero("YOUR PRIVATE TRIP MEMORY", escapeHTML(conversation.title), "These are your saved conversation and confirmed memory events.")}<section class="section"><div class="container"><a class="mini-btn" href="#planner">Update this trip’s details</a> <a class="mini-btn" href="#dashboard">My journeys</a><div class="detail-block"><h2>Conversation</h2>${conversation.messages.map((m) => `<article class="chat-record"><b>${m.role === "user" ? "You" : "Travel team"}</b>${m.role === "assistant" ? partialDraftNotice(m.content) : ""}<pre class="plan-text">${escapeHTML(m.content)}</pre></article>`).join("") || "<p>No messages yet.</p>"}<form id="tripChat"><div class="field"><label>Continue this conversation</label><input name="content" required maxlength="2000"></div><button class="btn" type="submit">Send to travel team</button><div class="form-status" role="status"></div></form></div><div class="detail-block"><h2>Your confirmed trip details</h2>${memoryDetails(context)}</div><h2>Memory events</h2>${(events.events || []).map((event) => memoryEventView(event, id)).join("") || "<p>No active memory events.</p>"}</div></section>`;
+  return `${views.pageHero("YOUR PRIVATE TRIP MEMORY", escapeHTML(conversation.title), "These are your saved conversation and confirmed memory events.")}<section class="section"><div class="container"><a class="mini-btn" href="#planner">Update this trip’s details</a> <a class="mini-btn" href="#home">Home</a><div class="detail-block"><h2>Conversation</h2>${conversation.messages.map((m) => `<article class="chat-record"><b>${m.role === "user" ? "You" : "Travel team"}</b>${m.role === "assistant" ? partialDraftNotice(m.content) : ""}<pre class="plan-text">${escapeHTML(m.content)}</pre></article>`).join("") || "<p>No messages yet.</p>"}<form id="tripChat"><div class="field"><label>Continue this conversation</label><input name="content" required maxlength="2000"></div><button class="btn" type="submit">Send to travel team</button><div class="form-status" role="status"></div></form></div><div class="detail-block"><h2>Your confirmed trip details</h2>${memoryDetails(context)}</div><h2>Memory events</h2>${(events.events || []).map((event) => memoryEventView(event, id)).join("") || "<p>No active memory events.</p>"}</div></section>`;
 }
 
 function labelFields(root) {
@@ -596,8 +718,21 @@ function bindConcierge(route) {
 function bindForms(route, query) {
   document.querySelectorAll("[data-search-tab]").forEach((button) =>
     button.addEventListener("click", () => {
-      if (button.dataset.searchTab !== "holiday")
-        location.hash = button.dataset.searchTab;
+      const tab = button.dataset.searchTab;
+      if (tab === "holiday") return;
+      const searchForm = document.getElementById("quickSearch");
+      const place = searchForm?.elements?.destination?.value?.trim() || "";
+      if (tab === "flights") {
+        location.hash = place ? `travel?to=${encodeURIComponent(place)}` : "travel";
+      } else if (tab === "hotels") {
+        location.hash = place ? `hotels?place=${encodeURIComponent(place)}` : "hotels";
+      } else if (tab === "tours") {
+        location.hash = place ? `tours?place=${encodeURIComponent(place)}` : "tours";
+      } else if (tab === "packages") {
+        location.hash = place ? `packages?place=${encodeURIComponent(place)}` : "packages";
+      } else {
+        location.hash = tab;
+      }
     }),
   );
   bindSubmit("destinationSearch", async (form, status) => {
@@ -754,10 +889,28 @@ function bindForms(route, query) {
                   : {}),
             },
           ];
-    const quote = await api("/website/quote", {
-      method: "POST",
-      body: { items },
-    });
+    status.innerHTML = `<span style="color:var(--orange)">✦ Voyara Multi-Agent System is reviewing your trip request...</span>`;
+    const targetPlace = query.get("place") || (item ? item.place || item.name : "");
+    const [quote, agentData] = await Promise.all([
+      api("/website/quote", {
+        method: "POST",
+        body: { items },
+      }),
+      api("/website/agent-review", {
+        method: "POST",
+        body: {
+          destination_name: targetPlace,
+          items,
+          traveler: Object.fromEntries(
+            ["first", "last", "email", "phone"].map((k) => [k, f.get(k)]),
+          ),
+        },
+      }).catch((err) => {
+        console.warn("Agent review notice:", err);
+        return null;
+      }),
+    ]);
+    status.textContent = "";
     const traveler = Object.fromEntries(
       ["first", "last", "email", "phone", "notes"].map((k) => [k, f.get(k)]),
     );
@@ -769,7 +922,134 @@ function bindForms(route, query) {
       expected_total_inr: quote.total_inr,
     };
     const review = document.getElementById("bookingReview");
-    review.innerHTML = `<div class="detail-block"><div class="eyebrow">REVIEW YOUR REQUEST</div><h2>${money(quote.total_inr)}</h2>${quote.lines.map((l) => `<p>${escapeHTML(l.name)} × ${l.quantity} · ${money(l.total_inr)}</p>`).join("")}<p>${escapeHTML(start)} · ${escapeHTML(traveler.first)} ${escapeHTML(traveler.last)} · ${escapeHTML(traveler.email)}</p><p>${escapeHTML(quote.notice)}</p><button class="btn" id="confirmRequest">Confirm booking request →</button> <button class="mini-btn" id="editRequest">Edit details</button><div id="confirmationStatus" role="status"></div></div>`;
+    const itemImg = item?.img ? views.photo(item.img) : "https://images.unsplash.com/photo-1709338573277-c161cbf8702c?auto=format&fit=crop&w=900&q=82";
+    const itemTag = item?.tag || item?.type || (kind === "stay" ? "Hotel & Stay" : kind === "package" ? "Holiday Package" : "Travel Route");
+    const itemRating = item?.rating ? `★ ${escapeHTML(item.rating)} <small>(${escapeHTML(item.reviews || "verified")})</small>` : "★ 4.8 <small>(curated)</small>";
+    const itemDuration = item?.nights ? `${item.nights} Nights / ${item.nights + 1} Days` : (kind === "stay" ? `${start} to ${f.get("end_date") || "check-out"}` : "Full Day Activity");
+    const destName = agentData?.destination?.name || targetPlace || (item?.name || "India");
+
+    const agentsHtml = agentData?.agents ? `
+      <div class="review-agent-council">
+        <div class="council-heading">
+          <h3><span>✦</span> AI Multi-Agent Council Evaluation</h3>
+          <span class="council-badge">Voyara Multi-Agent System</span>
+        </div>
+        <div class="council-grid">
+          ${agentData.agents.map((a) => `
+            <div class="council-agent-card">
+              <div class="agent-card-head">
+                <div class="agent-title-row">
+                  <span class="agent-avatar-mini tone-${a.color}">✦</span>
+                  <div>
+                    <span class="agent-name-text">${escapeHTML(a.name)}</span>
+                    <span class="agent-role-tag">${escapeHTML(a.badge)}</span>
+                  </div>
+                </div>
+                <span class="agent-score-pill">${escapeHTML(a.score)}</span>
+              </div>
+              <p class="agent-verdict-p">${escapeHTML(a.verdict)}</p>
+              <div class="agent-advice-box">
+                <strong>Recommendation:</strong> ${escapeHTML(a.recommendation)}
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    ` : "";
+
+    const curatedHtml = agentData ? `
+      <div class="review-curated-section">
+        <div class="curated-heading">
+          <span>⌖</span> Curated ${escapeHTML(destName)} Catalog Pairings
+        </div>
+        <div class="curated-mini-grid">
+          ${(agentData.curated_stays || []).slice(0, 2).map((s) => `
+            <div class="curated-mini-item">
+              <small>Verified Stay</small>
+              <strong>${escapeHTML(s.name)}</strong>
+              <span>★ ${escapeHTML(String(s.rating || 4.8))} · ${money(s.price_inr)} / night</span>
+            </div>
+          `).join("")}
+          ${(agentData.curated_experiences || []).slice(0, 2).map((e) => `
+            <div class="curated-mini-item">
+              <small>Local Experience</small>
+              <strong>${escapeHTML(e.name)}</strong>
+              <span>${money(e.price_inr)} / person</span>
+            </div>
+          `).join("")}
+          ${(agentData.curated_food || []).slice(0, 2).map((fd) => `
+            <div class="curated-mini-item">
+              <small>Authentic Dining</small>
+              <strong>${escapeHTML(fd.name)}</strong>
+              <span>${escapeHTML(fd.cuisine)} · ${money(fd.price_inr)} for two</span>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    ` : "";
+
+    review.innerHTML = `
+      <div class="booking-review-catalog-card">
+        <div class="review-catalog-header">
+          <div class="review-catalog-image" style="background-image:url('${itemImg}')">
+            <span class="review-tag">${escapeHTML(itemTag)}</span>
+            <span class="review-badge-rating">${itemRating}</span>
+          </div>
+          <div class="review-catalog-main">
+            <div class="eyebrow" style="color:var(--orange);letter-spacing:1px;font-weight:700">REVIEW YOUR TRIP REQUEST</div>
+            <h2>${escapeHTML(item?.name || name)} ${kind === "package" ? "Holiday" : ""}</h2>
+            <p style="color:var(--muted);font-size:13px;line-height:1.5;margin-bottom:8px">${escapeHTML(agentData?.destination?.description || item?.desc || "Handcrafted itinerary with verified local stays, experiences, and on-trip support.")}</p>
+            <div class="review-details-grid">
+              <div class="review-detail-cell">
+                <small>Travel Date / Duration</small>
+                <strong>${escapeHTML(start)} · ${itemDuration}</strong>
+              </div>
+              <div class="review-detail-cell">
+                <small>Guests / Quantity</small>
+                <strong>${quantity} ${quantity === 1 ? (kind === "stay" ? "Room" : "Traveler") : (kind === "stay" ? "Rooms" : "Travelers")}</strong>
+              </div>
+              <div class="review-detail-cell">
+                <small>Lead Traveler</small>
+                <strong>${escapeHTML(traveler.first)} ${escapeHTML(traveler.last)}</strong>
+              </div>
+              <div class="review-detail-cell">
+                <small>Contact Email & Phone</small>
+                <strong style="word-break:break-all">${escapeHTML(traveler.email)} ${traveler.phone ? `· ${escapeHTML(traveler.phone)}` : ""}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        ${agentsHtml}
+        ${curatedHtml}
+        <div class="review-catalog-breakdown">
+          <div class="eyebrow">ESTIMATED PRICE BREAKDOWN</div>
+          <div class="review-line-items">
+            ${quote.lines.map((l) => `<div class="review-line-row"><span><strong>${escapeHTML(l.name)}</strong> × ${l.quantity}</span><b>${money(l.total_inr)}</b></div>`).join("")}
+            <div class="review-total-row">
+              <div>
+                <strong>Total Estimated Cost</strong>
+                <small style="display:block;color:var(--muted);font-weight:400;font-size:11px">All taxes included · No immediate payment required</small>
+              </div>
+              <div class="review-total-price">${money(quote.total_inr)}</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-catalog-footer">
+          <div class="review-guarantee">
+            <span style="font-size:20px">🛡️</span>
+            <div>
+              <strong style="font-size:13px;color:var(--navy);display:block">Zero-risk booking request</strong>
+              <p style="margin:0;font-size:12px;color:var(--muted)">${escapeHTML(quote.notice)}</p>
+            </div>
+          </div>
+          <div class="review-actions-bar">
+            <button class="btn btn-confirm-request" id="confirmRequest">Confirm booking request →</button>
+            <button class="btn btn-outline" id="editRequest" type="button">Edit details</button>
+          </div>
+          <div id="confirmationStatus" role="status"></div>
+        </div>
+      </div>`;
+    review.scrollIntoView({ behavior: "smooth" });
     form.dataset.locked = "true";
     form
       .querySelectorAll("input,select,textarea,button")
@@ -797,7 +1077,7 @@ function bindForms(route, query) {
               booking.id +
               " is saved to your account. Provider confirmation is still required. No payment has been taken.",
             "Your request is saved",
-          ) + '<a class="btn" href="#dashboard">View My Trips →</a>';
+          ) + '<a class="btn" href="#home">Back to Home →</a>';
         form.hidden = true;
       } catch (error) {
         document.getElementById("confirmationStatus").textContent =
@@ -834,6 +1114,7 @@ function bindForms(route, query) {
   }
   bindSubmit("flightSearch", async (form, status) => {
     const f = new FormData(form),
+      modeVal = f.get("mode") || "all",
       params = new URLSearchParams({
         origin_id: f.get("from"),
         destination_id: f.get("to"),
@@ -841,13 +1122,61 @@ function bindForms(route, query) {
         travelers: parseInt(f.get("travellers")),
         cabin: f.get("cabin"),
       });
+    if (modeVal !== "all") params.set("mode", modeVal);
     if (f.get("return")) params.set("return_date", f.get("return"));
     const result = await api("/website/flights?" + params);
     const target = document.getElementById("flightResults");
+    const modeIcons = { flight: "✈️", train: "🚂", bus: "🚌", cab: "🚕", ferry: "⛴️" };
+    const modeLabel = (m) => ({ flight: "Flight", train: "Train", bus: "Bus", cab: "Cab", ferry: "Ferry" }[m] || m);
     const combinations = result.outbound.flatMap((out) =>
       f.get("return") ? result.return.map((back) => [out, back]) : [[out]],
     );
-    target.innerHTML = `${notice(result.notice, "Route options")}${combinations.length ? combinations.map((legs, i) => `<article class="flight-card"><div><h3>${legs.map((l) => escapeHTML(l.origin) + " → " + escapeHTML(l.destination)).join(" / ")}</h3><p>${legs.map((l) => escapeHTML(l.date) + " · " + l.duration_min + " min · " + escapeHTML(l.name)).join("<br>")}</p><p>Economy · ${f.get("travellers")}</p></div><div class="price">${money(legs.reduce((sum, l) => sum + l.price_inr, 0))}<small>/ person</small></div><button class="btn" data-flight="${i}">Select route →</button></article>`).join("") : notice("No matching routes are stored. Try New Delhi to Kashmir or choose other airports.", "No routes found")}`;
+    target.innerHTML = `${notice(result.notice, "Travel options")}${combinations.length ? combinations.map((legs, i) => {
+      const totalPrice = legs.reduce((sum, l) => sum + l.price_inr, 0);
+      const primary = legs[0];
+      const modeBadge = {
+        flight: '<span class="tag" style="background:#e8f4fd;color:#1868a8;font-weight:700">✈️ Flight</span>',
+        train: '<span class="tag" style="background:#fff3e0;color:#c76300;font-weight:700">🚂 Train · Express</span>',
+        bus: '<span class="tag" style="background:#e8f8f0;color:#178253;font-weight:700">🚌 Luxury Coach</span>',
+      }[primary.mode] || `<span class="tag">${escapeHTML(primary.mode)}</span>`;
+      return `<article class="flight-card" style="display:flex;justify-content:space-between;align-items:center;gap:24px;border:1px solid #e2ecf4;background:white;border-radius:18px;padding:22px 26px;margin-bottom:16px;box-shadow:0 4px 18px #102e520a">
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            ${modeBadge}
+            <strong style="font-size:16px;color:var(--navy)">${escapeHTML(legs.map(l => l.name).join(" + "))}</strong>
+            <span style="font-size:12px;color:var(--muted)">· Route #${legs.map(l => l.id).join("-")}</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:20px;margin-bottom:10px">
+            <div>
+              <div style="font-weight:800;font-size:18px;color:var(--navy)">${escapeHTML(primary.origin)}</div>
+              <div style="font-size:12px;color:var(--muted)">Origin</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;min-width:110px">
+              <span style="font-size:11px;color:var(--muted);font-weight:600">${legs.reduce((s, l) => s + l.duration_min, 0)} min</span>
+              <div style="width:100%;height:2px;background:#d3e2ee;position:relative;margin:4px 0">
+                <span style="position:absolute;right:0;top:-4px;font-size:10px">➔</span>
+              </div>
+              <span style="font-size:10px;color:#2e7d32;font-weight:600">${legs.length > 1 ? "Round Trip" : "Direct Service"}</span>
+            </div>
+            <div>
+              <div style="font-weight:800;font-size:18px;color:var(--navy)">${escapeHTML(primary.destination)}</div>
+              <div style="font-size:12px;color:var(--muted)">Destination</div>
+            </div>
+          </div>
+          <div style="font-size:12px;color:var(--muted);display:flex;gap:16px">
+            <span>📅 ${escapeHTML(primary.date)}</span>
+            <span>💺 ${escapeHTML(f.get("cabin"))}</span>
+            <span>👥 ${escapeHTML(f.get("travellers"))}</span>
+          </div>
+        </div>
+        <div style="text-align:right;border-left:1px solid #eef3f7;padding-left:24px;min-width:150px">
+          <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px">Total Fare</div>
+          <div style="font:800 24px Manrope;color:var(--navy);margin:4px 0">${money(totalPrice)}</div>
+          <div style="font-size:11px;color:var(--muted);margin-bottom:12px">per traveller · incl. taxes</div>
+          <button class="btn" style="width:100%;padding:10px 16px" data-flight="${i}">Select Route →</button>
+        </div>
+      </article>`;
+    }).join("") : notice("No matching routes found for this mode. Try \"All\" modes or choose different cities.", "No routes found")}`;
     target.querySelectorAll("[data-flight]").forEach((b) =>
       b.addEventListener("click", () => {
         state.flightSelection = combinations[Number(b.dataset.flight)].map(
@@ -880,6 +1209,17 @@ function bindForms(route, query) {
       "change",
       () => (fs.elements.return.min = fs.elements.depart.value),
     );
+    // Travel mode tabs
+    const tabs = document.getElementById("travelModeTabs");
+    if (tabs) {
+      tabs.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-travel-mode]");
+        if (!btn) return;
+        tabs.querySelectorAll(".chip").forEach((c) => c.classList.remove("selected"));
+        btn.classList.add("selected");
+        fs.elements.mode.value = btn.dataset.travelMode;
+      });
+    }
   }
   bindSubmit("contactForm", async (form, status) => {
     const f = Object.fromEntries(new FormData(form));
@@ -961,7 +1301,13 @@ function filterDestinations(value) {
       .join("");
 }
 function updatePackages() {
-  let rows = state.catalog.destinations.filter(
+  const qPlace = routeInfo().query.get("place") || routeInfo().query.get("destination") || "";
+  let base = state.catalog.destinations;
+  if (qPlace) {
+    const scoped = base.filter((d) => d.name.toLowerCase().includes(qPlace.toLowerCase()) || (d.region && d.region.toLowerCase().includes(qPlace.toLowerCase())));
+    if (scoped.length) base = scoped;
+  }
+  let rows = base.filter(
     (d) => packageFilter === "All" || d.tag === packageFilter,
   );
   if (packageSort !== "featured")
@@ -983,11 +1329,17 @@ function sortPackages(value) {
 }
 function filterExperiences(value) {
   selectedChip(value);
+  const qPlace = routeInfo().query.get("place") || routeInfo().query.get("destination") || "";
+  let list = state.catalog.experiences;
+  if (qPlace) {
+    const scoped = list.filter((e) => (e.place && e.place.toLowerCase() === qPlace.toLowerCase()) || e.name.toLowerCase().includes(qPlace.toLowerCase()));
+    if (scoped.length) list = scoped;
+  }
   document.getElementById("experienceGrid").innerHTML =
-    state.catalog.experiences
+    list
       .filter((x) => value === "All" || x.type === value)
       .map(views.experienceCard)
-      .join("") || notice("Try another experience type.");
+      .join("") || notice("Try another experience type.", "No matching experiences");
 }
 function filterHotels() {
   const value = document.getElementById("hotelSearch").value.toLowerCase();
@@ -1062,7 +1414,7 @@ Object.assign(window, {
     toggleSave(kind, id).catch((error) => views.toast(error.message)),
 });
 
-app.addEventListener("click", async (event) => {
+document.addEventListener("click", async (event) => {
   const b = event.target.closest("[data-action]");
   if (!b || b.disabled) return;
   b.disabled = true;
@@ -1096,6 +1448,7 @@ app.addEventListener("click", async (event) => {
       currentConversation = null;
       views.setSaved([]);
       updateAccount();
+      views.toast("You have been signed out.");
       location.hash = "home";
     } else if (action === "cancel") {
       await api("/bookings/" + b.dataset.id + "/cancel", { method: "POST" });

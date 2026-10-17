@@ -46,6 +46,7 @@ class BookingItemIn(BaseModel):
     end_date: dt.date | None = None
     start_time: dt.time | None = None
     duration_min: int | None = Field(default=None, ge=1, le=1440)
+    meal_slot: Literal["breakfast", "lunch", "dinner"] | None = None
 
 
 class BookingIn(BaseModel):

@@ -4,111 +4,161 @@
       "name": "Kashmir",
       "region": "North India",
       "tag": "Best seller",
-      "desc": "Snowy peaks, serene lakes and unforgettable moments.",
+      "desc": "Dal Lake reflections, saffron fields and Mughal gardens set against the Great Himalayan Range. Srinagar's old city, houseboats and the meadows of Gulmarg reward unhurried exploration.",
       "price": 24999,
       "nights": 6,
       "rating": "4.8",
       "reviews": "12.4k",
-      "img": "photo-1595815771614-ade9d652a65d"
+      "img": "photo-1595815771614-ade9d652a65d",
+      "lat": 34.08,
+      "lng": 74.80,
+      "best_season": "Apr-Oct",
+      "climate": "Alpine / Highland",
+      "highlights": ["Dal Lake houseboat stay", "Gulmarg cable car", "Pahalgam valley walks", "Srinagar old city bazaars", "Mughal gardens tour"]
     },
     {
       "name": "Manali",
       "region": "North India",
       "tag": "Adventure",
-      "desc": "Mountain trails, pine forests and cosy stays.",
+      "desc": "Pine-scented morning walks, the Beas river rushing below and Rohtang Pass above the clouds. Manali blends adventure with mountain calm in equal measure.",
       "price": 18999,
       "nights": 5,
       "rating": "4.7",
       "reviews": "10.8k",
-      "img": "photo-1626621341517-bbf3d9990a23"
+      "img": "photo-1626621341517-bbf3d9990a23",
+      "lat": 32.24,
+      "lng": 77.19,
+      "best_season": "Mar-Jun",
+      "climate": "Alpine mountain",
+      "highlights": ["Rohtang Pass drive", "Solang Valley snow", "Old Manali cafes", "Hadimba Temple", "Paragliding & rafting"]
     },
     {
       "name": "Jaipur",
       "region": "West India",
       "tag": "Cultural",
-      "desc": "Royal heritage, colourful bazaars and timeless beauty.",
+      "desc": "Pink sandstone forts, jewelled bazaars and courtyard cafes in the heart of Rajasthan. Amber Fort at dawn and a thali dinner in a haveli courtyard are memories you'll carry home.",
       "price": 16999,
       "nights": 4,
       "rating": "4.6",
       "reviews": "9.2k",
-      "img": "photo-1603262110263-fb0112e7cc33"
+      "img": "photo-1603262110263-fb0112e7cc33",
+      "lat": 26.91,
+      "lng": 75.79,
+      "best_season": "Oct-Mar",
+      "climate": "Hot semi-arid",
+      "highlights": ["Amber Fort sunrise visit", "Hawa Mahal photography", "Johari Bazaar gems", "City Palace tour", "Elephant village excursion"]
     },
     {
       "name": "Goa",
       "region": "West India",
       "tag": "Beach",
-      "desc": "Golden beaches, laid-back sunsets and coastal flavours.",
+      "desc": "Golden beaches, a colonial old quarter and tables that fill up long after sunset. Goa is equally good for a hammock holiday and a week of village exploring.",
       "price": 13999,
       "nights": 5,
       "rating": "4.7",
       "reviews": "11.6k",
-      "img": "photo-1512343879784-a960bf40e7f2"
+      "img": "photo-1512343879784-a960bf40e7f2",
+      "lat": 15.30,
+      "lng": 74.12,
+      "best_season": "Nov-Feb",
+      "climate": "Tropical coast",
+      "highlights": ["Old Goa heritage churches", "Palolem beach sunset", "Spice plantation tour", "Flea market shopping", "Sunset river cruise"]
     },
     {
       "name": "Kerala",
       "region": "South India",
       "tag": "Wellness",
-      "desc": "Backwaters, lush greenery and slow-living escapes.",
+      "desc": "Backwaters traced by wooden kettuvallams, tea-draped hillsides at Munnar and the living traditions of Kochi's harbour quarter. Kerala slows you down in the best possible way.",
       "price": 18999,
       "nights": 5,
       "rating": "4.8",
       "reviews": "10.9k",
-      "img": "photo-1602216056096-3b40cc0c9944"
+      "img": "photo-1602216056096-3b40cc0c9944",
+      "lat": 9.50,
+      "lng": 76.33,
+      "best_season": "Oct-Mar",
+      "climate": "Tropical monsoon",
+      "highlights": ["Alleppey houseboat cruise", "Munnar tea garden walk", "Kathakali cultural show", "Ayurveda spa day", "Periyar wildlife sanctuary"]
     },
     {
       "name": "Udaipur",
       "region": "West India",
       "tag": "Romantic",
-      "desc": "Lake palaces, sunset boat rides and royal stays.",
+      "desc": "A city of lakes reflecting palace walls, of rooftop dinners and horse-drawn carriages that still make sense here. Udaipur rewards those who linger.",
       "price": 17999,
       "nights": 5,
       "rating": "4.6",
       "reviews": "8.7k",
-      "img": "photo-1599661046827-dacff0c0f09a"
+      "img": "photo-1709338573277-c161cbf8702c",
+      "lat": 24.58,
+      "lng": 73.68,
+      "best_season": "Oct-Mar",
+      "climate": "Hot semi-arid",
+      "highlights": ["Lake Pichola boat ride", "City Palace sunset", "Bagore Ki Haveli cultural show", "Sajjangarh Monsoon Palace", "Local market craft shopping"]
     },
     {
       "name": "Varanasi",
       "region": "North India",
       "tag": "Spiritual",
-      "desc": "Ancient ghats, sacred rituals and soulful mornings.",
+      "desc": "Dawn on the Ganga, temple bells echoing through centuries of lanes and a city that has never stopped. Varanasi is best experienced slowly, with a local to show you its layers.",
       "price": 14999,
       "nights": 4,
       "rating": "4.9",
       "reviews": "4.9k",
-      "img": "photo-1561361513-2d000a50f0dc"
+      "img": "photo-1561359313-0639aad49ca6",
+      "lat": 25.32,
+      "lng": 82.97,
+      "best_season": "Oct-Mar",
+      "climate": "Humid subtropical",
+      "highlights": ["Ganga Aarti at Dashashwamedh Ghat", "Sunrise boat ride", "Old city lane walk", "Sarnath day trip", "Banarasi silk market"]
     },
     {
       "name": "Rishikesh",
       "region": "North India",
       "tag": "Adventure",
-      "desc": "River rafting, mountain air and riverside calm.",
+      "desc": "River paths, suspension bridges and forest trails above the Ganges. Rishikesh is a gentle base for yoga, day hikes and white-water rafting with certified river guides.",
       "price": 12999,
       "nights": 4,
       "rating": "4.7",
       "reviews": "8.1k",
-      "img": "photo-1500530855697-b586d89ba3ee"
+      "img": "photo-1603867106100-0d2039fc8757",
+      "lat": 30.09,
+      "lng": 78.27,
+      "best_season": "Sep-Nov",
+      "climate": "Temperate foothills",
+      "highlights": ["White-water rafting", "Laxman Jhula sunrise walk", "Yoga & meditation retreat", "Neelkanth Mahadev trek", "Beatles Ashram tour"]
     },
     {
       "name": "Andaman",
       "region": "Islands",
       "tag": "Island escape",
-      "desc": "Crystal-clear water, coral reefs and quiet coves.",
+      "desc": "Powder-white beaches, clear water over living coral and forest trails that reach the coast. The Andamans reward those who leave their schedule behind.",
       "price": 28999,
       "nights": 5,
       "rating": "4.8",
       "reviews": "7.6k",
-      "img": "photo-1519046904884-53103b34b206"
+      "img": "photo-1519046904884-53103b34b206",
+      "lat": 11.74,
+      "lng": 92.74,
+      "best_season": "Nov-Apr",
+      "climate": "Tropical island",
+      "highlights": ["Radhanagar Beach sunset", "Havelock scuba diving", "Cellular Jail light show", "Glass-bottom boat trip", "Neil Island cycling"]
     },
     {
       "name": "Darjeeling",
       "region": "East India",
       "tag": "Nature",
-      "desc": "Tea gardens, mountain views and toy-train charm.",
+      "desc": "First Flush tea at dawn with Kangchenjunga above the clouds, a toy train winding through forest clearings and a hill station that still moves at its own Victorian pace.",
       "price": 16999,
       "nights": 5,
       "rating": "4.6",
       "reviews": "6.3k",
-      "img": "photo-1544735716-392fe2489ffa"
+      "img": "photo-1671711847762-b8308b444a42",
+      "lat": 27.04,
+      "lng": 88.26,
+      "best_season": "Mar-May, Sep-Nov",
+      "climate": "Highland subtropical",
+      "highlights": ["Tiger Hill sunrise & Kangchenjunga view", "Darjeeling Himalayan Railway toy train", "Tea estate tour & tasting", "Peace Pagoda walk", "Himalayan Mountaineering Institute"]
     }
   ],
   "experiences": [
@@ -118,15 +168,15 @@
       "place": "Manali",
       "price": 2499,
       "img": "photo-1551632811-561732d1e306",
-      "desc": "A guided trail through pine forests and panoramic mountain paths."
+      "desc": "A guided trail through pine forests and panoramic mountain paths above 3,000 metres."
     },
     {
       "name": "Old Jaipur walk",
       "type": "Culture",
       "place": "Jaipur",
       "price": 1299,
-      "img": "photo-1599661046827-dacff0c0f09a",
-      "desc": "Discover hidden havelis, craft lanes and local stories with a guide."
+      "img": "photo-1603262110263-fb0112e7cc33",
+      "desc": "Discover hidden havelis, craft lanes and local stories with a registered guide."
     },
     {
       "name": "Kerala backwater cruise",
@@ -134,23 +184,23 @@
       "place": "Alleppey",
       "price": 3499,
       "img": "photo-1602216056096-3b40cc0c9944",
-      "desc": "Glide past palm-lined canals and village life on a private boat."
+      "desc": "Glide past palm-lined canals and village life on a traditional wooden kettuvallam."
     },
     {
       "name": "Ganga sunrise ceremony",
       "type": "Spiritual",
       "place": "Varanasi",
       "price": 999,
-      "img": "photo-1561361513-2d000a50f0dc",
-      "desc": "A respectful, small-group introduction to the riverfront rituals."
+      "img": "photo-1561359313-0639aad49ca6",
+      "desc": "A respectful, small-group boat experience for the morning Aarti at Dashashwamedh Ghat."
     },
     {
       "name": "River rafting",
       "type": "Adventure",
       "place": "Rishikesh",
       "price": 1799,
-      "img": "photo-1500530855697-b586d89ba3ee",
-      "desc": "Feel the rush of the Ganges with certified local river guides."
+      "img": "photo-1603867106100-0d2039fc8757",
+      "desc": "Feel the rush of Grade III–IV rapids on the Ganges with certified local river guides."
     },
     {
       "name": "Coastal food trail",
@@ -158,7 +208,151 @@
       "place": "Goa",
       "price": 1599,
       "img": "photo-1512343879784-a960bf40e7f2",
-      "desc": "Taste regional favourites at independent neighbourhood spots."
+      "desc": "Taste regional favourites — bebinca, xacuti, fresh catch — at independent neighbourhood spots."
+    },
+    {
+      "name": "Pangong Lake sunrise drive",
+      "type": "Adventure",
+      "place": "Leh Ladakh",
+      "price": 3999,
+      "img": "photo-1609230469457-6e86fe39cd25",
+      "desc": "Early morning jeep drive to catch the colour-shifting waters of Pangong Tso at first light."
+    },
+    {
+      "name": "Hampi heritage walk",
+      "type": "Culture",
+      "place": "Hampi",
+      "price": 1199,
+      "img": "photo-1582510003544-4d00b7f74220",
+      "desc": "Step through the ruins of Vijayanagara with an ASI-certified local historian guide."
+    },
+    {
+      "name": "Darjeeling tea experience",
+      "type": "Food",
+      "place": "Darjeeling",
+      "price": 1499,
+      "img": "photo-1671711847762-b8308b444a42",
+      "desc": "Walk a working tea garden, pick leaves with a planter and end with a guided cupping session."
+    },
+    {
+      "name": "Ayurveda wellness day",
+      "type": "Wellness",
+      "place": "Kerala",
+      "price": 4499,
+      "img": "photo-1590490360182-c33d57733427",
+      "desc": "A full Panchakarma consultation and traditional Abhyanga massage at a Kerala Ayurveda centre."
+    },
+    {
+      "name": "Kathakali cultural evening",
+      "type": "Culture",
+      "place": "Kerala",
+      "price": 899,
+      "img": "photo-1602216056096-3b40cc0c9944",
+      "desc": "Witness the elaborate makeup, storytelling and footwork of Kerala's classical dance-drama."
+    },
+    {
+      "name": "Udaipur lake boat ride",
+      "type": "Romantic",
+      "place": "Udaipur",
+      "price": 1299,
+      "img": "photo-1709338573277-c161cbf8702c",
+      "desc": "Drift across Lake Pichola past the shimmering Jag Mandir island palace as the sun dips low."
+    },
+    {
+      "name": "Dal Lake Shikara & Floating Market",
+      "type": "Culture",
+      "place": "Kashmir",
+      "price": 1499,
+      "img": "photo-1595815771614-ade9d652a65d",
+      "desc": "Glide through the morning mist on Dal Lake, visiting floating vegetable markets and historic wooden houseboats."
+    },
+    {
+      "name": "Gulmarg Gondola & Meadow Trek",
+      "type": "Adventure",
+      "place": "Kashmir",
+      "price": 2899,
+      "img": "photo-1564013799919-ab600027ffc6",
+      "desc": "Ascend to Kongdoori and Apharwat Peak on Asia's highest cable car, followed by a guided meadow hike."
+    },
+    {
+      "name": "Old Srinagar & Wazwan Food Trail",
+      "type": "Food",
+      "place": "Kashmir",
+      "price": 1799,
+      "img": "photo-1595815771614-ade9d652a65d",
+      "desc": "Explore Jama Masjid, spice bazaars, wood-carving artisans, and sample authentic 7-course Kashmiri Wazwan."
+    },
+    {
+      "name": "Havelock Island Scuba & Coral Reef",
+      "type": "Adventure",
+      "place": "Andaman",
+      "price": 3899,
+      "img": "photo-1519046904884-53103b34b206",
+      "desc": "PADI-guided scuba dive along pristine coral gardens with turtles, rays, and tropical marine life."
+    },
+    {
+      "name": "Radhanagar Sunset & Mangrove Kayak",
+      "type": "Nature",
+      "place": "Andaman",
+      "price": 1999,
+      "img": "photo-1519046904884-53103b34b206",
+      "desc": "Kayak through tranquil bio-rich mangrove creeks before taking in the golden sunset at Radhanagar Beach."
+    },
+    {
+      "name": "Old Delhi Spice Trail & Street Flavours",
+      "type": "Food",
+      "place": "New Delhi",
+      "price": 1299,
+      "img": "photo-1587474260584-136574528ed5",
+      "desc": "Navigate Khari Baoli, Chandni Chowk street food gems, and historic Mughal lanes with a culinary insider."
+    },
+    {
+      "name": "Mughal Monuments & Heritage Walk",
+      "type": "Culture",
+      "place": "New Delhi",
+      "price": 999,
+      "img": "photo-1587474260584-136574528ed5",
+      "desc": "Curated architectural walking tour of Humayun's Tomb, Sunder Nursery, and Nizamuddin Dargah."
+    },
+    {
+      "name": "South Mumbai Art Deco & Heritage Trail",
+      "type": "Culture",
+      "place": "Mumbai",
+      "price": 1199,
+      "img": "photo-1570168007204-dfb528c6958f",
+      "desc": "Discover UNESCO Victorian Gothic and Art Deco precincts around Oval Maidan and Marine Drive."
+    },
+    {
+      "name": "Coastal Seafood & Koli Village Trail",
+      "type": "Food",
+      "place": "Mumbai",
+      "price": 1599,
+      "img": "photo-1570168007204-dfb528c6958f",
+      "desc": "Visit Sassoon Docks at dawn, explore a traditional Koli fishing enclave, and savour fresh Malvani seafood."
+    },
+    {
+      "name": "Garden City Walk & Heritage Coffee Trail",
+      "type": "Culture",
+      "place": "Bengaluru",
+      "price": 899,
+      "img": "photo-1596176530529-78163a4f7af2",
+      "desc": "Stroll Lalbagh Botanical Gardens, explore colonial cantonment history, and taste vintage filter coffee."
+    },
+    {
+      "name": "Charminar & Nizami Biryani Trail",
+      "type": "Food",
+      "place": "Hyderabad",
+      "price": 1299,
+      "img": "photo-1605649487212-47bdab064df7",
+      "desc": "Evening heritage walk through Laad Bazaar to the Charminar, finishing with authentic Dum Biryani and Irani Chai."
+    },
+    {
+      "name": "Mylapore Heritage & Kapaleeshwarar Temple",
+      "type": "Culture",
+      "place": "Chennai",
+      "price": 999,
+      "img": "photo-1582510003544-4d00b7f74220",
+      "desc": "Experience 7th-century Dravidian architecture, sacred temple tank rituals, and classical Carnatic arts."
     }
   ],
   "hotels": [
@@ -215,6 +409,60 @@
       "rating": "4.8",
       "img": "photo-1564013799919-ab600027ffc6",
       "amenities": "Breakfast · Heating · Valley view"
+    },
+    {
+      "name": "Pangong Campsite",
+      "place": "Leh Ladakh",
+      "type": "Luxury tented camp",
+      "price": 7999,
+      "rating": "4.9",
+      "img": "photo-1609230469457-6e86fe39cd25",
+      "amenities": "Lakeside · All meals · Stargazing deck"
+    },
+    {
+      "name": "Boulders & Bananas",
+      "place": "Hampi",
+      "type": "Boutique guesthouse",
+      "price": 2799,
+      "rating": "4.7",
+      "img": "photo-1582510003544-4d00b7f74220",
+      "amenities": "Rooftop · Wi-Fi · Home-cooked breakfast"
+    },
+    {
+      "name": "Darjeeling Planter's Inn",
+      "place": "Darjeeling",
+      "type": "Colonial heritage",
+      "price": 4499,
+      "rating": "4.6",
+      "img": "photo-1671711847762-b8308b444a42",
+      "amenities": "Tea service · Mountain view · Library"
+    },
+    {
+      "name": "River Perch Resort",
+      "place": "Rishikesh",
+      "type": "Riverside retreat",
+      "price": 5299,
+      "rating": "4.7",
+      "img": "photo-1603867106100-0d2039fc8757",
+      "amenities": "Yoga deck · River view · Organic meals"
+    },
+    {
+      "name": "Island Pearl Cottages",
+      "place": "Andaman",
+      "type": "Beach cottages",
+      "price": 9499,
+      "rating": "4.8",
+      "img": "photo-1519046904884-53103b34b206",
+      "amenities": "Beach access · Snorkelling gear · Breakfast"
+    },
+    {
+      "name": "Ganga View Heritage",
+      "place": "Varanasi",
+      "type": "Ghat-facing haveli",
+      "price": 3299,
+      "rating": "4.8",
+      "img": "photo-1561359313-0639aad49ca6",
+      "amenities": "Ghat view · Rooftop · Wi-Fi"
     }
   ]
 }

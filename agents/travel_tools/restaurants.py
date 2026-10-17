@@ -7,6 +7,7 @@ from .base import ToolResponse, get_tools
 def search_food(
     destination_id: int | None = None,
     *,
+    destination_name: str | None = None,
     diet: str | None = None,
     cuisine: str | None = None,
     max_price: int | None = None,
@@ -16,6 +17,8 @@ def search_food(
     params: dict = {"limit": str(limit)}
     if destination_id is not None:
         params["destination_id"] = str(destination_id)
+    if destination_name:
+        params["destination_name"] = str(destination_name)
     if diet:
         params["diet"] = diet[:20]
     if cuisine:

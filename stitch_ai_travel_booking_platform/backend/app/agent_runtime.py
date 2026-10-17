@@ -79,11 +79,22 @@ class CatalogSnapshot(TravelApiBackend):
         params = params or {}
         if len(parts) == 2:
             rows = [r for r in rows if str(r["id"]) == parts[1]]
+        dest_name = params.get("destination_name") or params.get("destination")
+        if dest_name and "destination_id" not in params:
+            dest_cf = str(dest_name).casefold().strip()
+            for d in self.cache.get("destinations", []):
+                if dest_cf in str(d.get("name", "")).casefold() or dest_cf in str(d.get("slug", "")).casefold():
+                    params["destination_id"] = str(d["id"])
+                    break
         for key in ("destination_id", "origin_id", "diet"):
             if params.get(key) is not None:
-                if key == "destination_id" and parts[0] in {"stays", "food", "guides"}:
-                    ids = self.regions.get(int(params[key]), {int(params[key])})
-                    rows = [r for r in rows if r.get(key) in ids]
+                if key == "destination_id" and parts[0] in {"stays", "food", "guides", "experiences"}:
+                    try:
+                        did = int(params[key])
+                        ids = self.regions.get(did, {did})
+                        rows = [r for r in rows if r.get(key) in ids]
+                    except (ValueError, TypeError):
+                        pass
                 else:
                     rows = [r for r in rows if str(r.get(key)) == str(params[key])]
         if params.get("q"):
@@ -381,7 +392,7 @@ class TravelerMemory:
         )
         if parsed:
             self.submit(text=text, trip_id=trip_id, claims=parsed)
-        elif not QUERY.fullmatch(text.strip()):
+        elif not (QUERY.search(text.strip()) or text.strip().lower().startswith("plan my trip")):
             return dict(
                 status="needs_clarification",
                 response="I could not safely turn that message into trip requirements. Save the exact destination, dates, total budget and travelers in Trip details, then ask ‘Plan my trip’. You can also send explicit updates such as ‘Lower my budget to INR 40000’.",

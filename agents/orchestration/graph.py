@@ -183,9 +183,10 @@ class TravelWorkflow(AgenticWorkflowMixin):
         # synthesis reports a real result.
         base: AgentState = {"clarification_question": None}
         brief: TripBrief | None = state.get("trip_brief")
-        if not brief or not brief.destination:
+        dest_candidate = (brief.destination if brief and brief.destination else None) or state.get("destination_name") or state.get("place")
+        if not dest_candidate:
             return base
-        response = destination_tool.search_destinations(query=brief.destination, limit=1)
+        response = destination_tool.search_destinations(query=dest_candidate, limit=1)
         if hasattr(self.gateway, "validate_current"):
             from agents.memory_gateway.three_tier import MemoryNeedsInformation
             exact = [row for row in response.data if brief.destination.strip().casefold()

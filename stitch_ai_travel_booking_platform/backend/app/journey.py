@@ -9,7 +9,7 @@ from typing import Literal
 
 from fastapi import HTTPException
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
-from sqlalchemy import select
+from sqlalchemy import func, select
 
 from agents.config import settings as agent_settings
 from agents.resource_manager.model_registry import get_nim_client
@@ -143,17 +143,25 @@ def preferences(db, user_id):
 
 
 def options(db, draft):
-    destination = db.scalar(select(Destination).where(Destination.name == draft.get("destination")))
+    dest_name = (draft.get("destination") or "").strip().lower()
+    destination = (
+        db.scalar(select(Destination).where(func.lower(Destination.name) == dest_name))
+        or db.scalar(select(Destination).where(func.lower(Destination.slug) == dest_name))
+    ) if dest_name else None
     ids = destination_ids(db, destination.id) if destination else set()
     destinations = [dict(id=d.id, name=d.name, kind="destination", description=d.description[:180], price_inr=d.avg_cost_inr)
                     for d in db.scalars(select(Destination).order_by(Destination.id).limit(35))]
     stays = [dict(id=s.id, kind="stay", name=s.name, price_inr=s.price_inr, location=db.get(Destination,s.destination_id).name,
-                  image="/travel/kerala.jpg" if s.destination_id in ids and draft.get("destination") in {"Kerala","Kochi","Munnar","Alleppey"} else None)
+                  image="/travel/kerala.jpg" if s.destination_id in ids and dest_name in {"kerala","kochi","munnar","alleppey"} else None)
              for s in db.scalars(select(Stay).where(Stay.destination_id.in_(ids)).order_by(Stay.price_inr).limit(14))] if ids else []
     experiences = [dict(id=e.id, kind="experience", name=e.name, price_inr=e.price_inr, location=db.get(Destination,e.destination_id).name,
-                        image="/travel/kerala.jpg" if draft.get("destination") in {"Kerala","Kochi","Munnar","Alleppey"} else None)
+                        image="/travel/kerala.jpg" if dest_name in {"kerala","kochi","munnar","alleppey"} else None)
                    for e in db.scalars(select(Experience).where(Experience.destination_id.in_(ids)).order_by(Experience.id).limit(14))] if ids else []
-    origin = db.scalar(select(Destination).where(Destination.name == draft.get("origin")))
+    orig_name = (draft.get("origin") or "").strip().lower()
+    origin = (
+        db.scalar(select(Destination).where(func.lower(Destination.name) == orig_name))
+        or db.scalar(select(Destination).where(func.lower(Destination.slug) == orig_name))
+    ) if orig_name else None
     # Kerala's sample airport gateway is Kochi, rather than the region container.
     target = db.scalar(select(Destination).where(Destination.slug == "kochi")) if destination and destination.slug == "kerala" else destination
     flights = [dict(id=r.id, kind="flight", name=r.operator, origin=origin.name, location=target.name,
@@ -234,8 +242,26 @@ def chat_turn(db, row, user, text, client=None):
             catalog_destinations=[i["name"] for i in current["options"]["destinations"]]), ensure_ascii=False)}],
         model=agent_settings.nim_agent_model, temperature=0.35, max_tokens=1400)
     if not isinstance(extraction, dict) or not isinstance(extraction.get("updates"), dict):
-        return unavailable
-    updates = dict(extraction["updates"])
+        # Graceful fallback: extract basic parameters if NIM had a timeout or glitch
+        import re
+        fb_updates = {}
+        lower = text.lower()
+        for d_item in current["options"]["destinations"]:
+            if d_item["name"].lower() in lower:
+                fb_updates["destination"] = d_item["name"]
+                break
+        m_dur = re.search(r"(\d+)\s*(?:day|days|night|nights)", lower)
+        if m_dur:
+            fb_updates["duration_days"] = max(2, min(60, int(m_dur.group(1))))
+        m_trav = re.search(r"(\d+)\s*(?:adult|adults|traveller|travellers|people|person|pax|guest|guests)", lower)
+        if m_trav:
+            fb_updates["traveller_count"] = max(1, min(30, int(m_trav.group(1))))
+        m_bud = re.search(r"(?:inr|rs\.?|₹|budget)?\s*(\d{4,8})", lower)
+        if m_bud and int(m_bud.group(1)) >= 1000:
+            fb_updates["budget"] = int(m_bud.group(1))
+        updates = fb_updates
+    else:
+        updates = dict(extraction["updates"])
     source = extraction.get("end_date_source")
     if "end_date" in updates and (not isinstance(source, str) or not source.strip() or source not in text):
         updates.pop("end_date")
@@ -285,7 +311,15 @@ def chat_turn(db, row, user, text, client=None):
             estimate_notice=estimate_notice, saved_preferences=current["saved_preferences"]), ensure_ascii=False)}],
         model=agent_settings.nim_agent_model, temperature=0.65, max_tokens=1600)
     if not isinstance(answer, dict) or not isinstance(answer.get("reply"), str) or not answer["reply"].strip():
-        return unavailable
+        dest = proposed.get("destination") or "your destination"
+        trav = f" for {proposed['traveller_count']} travellers" if proposed.get("traveller_count") else ""
+        dur = f" ({proposed['duration_days']} days)" if proposed.get("duration_days") else ""
+        reply_msg = f"I've updated your trip outline for {dest}{trav}{dur}. You can review the itinerary details, select your preferred stays and experiences below, or adjust any preferences."
+        sample_cards = []
+        for g in ("stays", "experiences", "flights"):
+            for itm in matched.get(g, [])[:2]:
+                sample_cards.append({"kind": itm["kind"], "id": itm["id"]})
+        answer = {"reply": reply_msg, "cards": sample_cards}
     if updates:
         update_draft(db, row, proposed, row.revision)
     all_items = [item for group in matched.values() for item in group]

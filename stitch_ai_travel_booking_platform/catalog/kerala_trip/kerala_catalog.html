@@ -1,0 +1,2064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Voyara — Kerala Travel Book (Complete 9-Page Dossier)</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Outfit:wght@500;600;700;800&display=swap');
+
+:root {
+  --navy: #0f273d;
+  --navy-dark: #071524;
+  --teal: #10777c;
+  --teal-light: #e6f4f4;
+  --teal-border: #99f6e4;
+  --gold: #f59e0b;
+  --gold-warm: #d97706;
+  --gold-bg: #fef3c7;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --card-bg: #f8fafc;
+  --border-light: #e2e8f0;
+  --green: #10b981;
+  --green-bg: #ecfdf5;
+  --blue: #2563eb;
+  --blue-bg: #eff6ff;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-dark);
+  background: #cbd5e1;
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.page {
+  width: 920px;
+  min-height: 1300px;
+  background: #ffffff;
+  box-shadow: 0 20px 40px -15px rgba(0,0,0,0.25);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+/* Page 1 Cover Styles */
+.top-nav {
+  padding: 16px 36px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1;
+}
+
+.brand-sub {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gold-warm);
+  font-weight: 600;
+}
+
+.top-slogan {
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  color: var(--navy);
+}
+
+.hero-wrap {
+  position: relative;
+  height: 310px;
+  overflow: hidden;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15,39,61,0.25) 0%, rgba(15,39,61,0.65) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 36px 32px;
+  color: #ffffff;
+}
+
+.hero-pill {
+  align-self: flex-start;
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+  color: #ffffff;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.hero-vibe {
+  position: absolute;
+  top: 24px;
+  right: 36px;
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  color: #ffffff;
+  transform: rotate(-5deg);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.hero-title-area h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.hero-title-area h1 span.script {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 600;
+  color: #fbbf24;
+  margin-left: 8px;
+}
+
+.hero-subtitle {
+  font-size: 14px;
+  color: #e2e8f0;
+  max-width: 650px;
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 22px;
+}
+
+.hero-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #f1f5f9;
+}
+
+.hero-badge-item svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+}
+
+.wave-divider {
+  position: relative;
+  margin-top: -30px;
+  z-index: 2;
+}
+
+.wave-divider svg {
+  display: block;
+  width: 100%;
+  height: 38px;
+}
+
+.page-body {
+  padding: 0 36px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  gap: 20px;
+}
+
+.details-card {
+  background: #f8fafc;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.detail-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.detail-row .icon {
+  width: 18px;
+  height: 18px;
+  color: var(--teal);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.detail-label {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  display: block;
+}
+
+.detail-val {
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.highlights-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 18px 22px;
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 14px;
+}
+
+.highlights-title {
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.highlights-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.highlights-list li {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dark);
+}
+
+.check-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--gold-bg);
+  color: var(--gold-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.check-icon svg {
+  width: 11px;
+  height: 11px;
+  stroke-width: 3;
+}
+
+.mini-map-box {
+  background: #eaf4f0;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.plan-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.plan-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plan-heading {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.plan-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.plan-item-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-card-img {
+  height: 80px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.plan-card-body {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.plan-card-type {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+
+.plan-card-details {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.plan-card-details strong {
+  color: var(--text-dark);
+  display: block;
+}
+
+.bottom-callout-grid {
+  display: grid;
+  grid-template-columns: 210px 1fr 270px;
+  gap: 16px;
+  background: #f8fafc;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 14px 18px;
+  align-items: center;
+}
+
+.cost-text small {
+  font-size: 10px;
+  color: var(--text-muted);
+  display: block;
+}
+
+.cost-text strong {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.download-cta-btn {
+  background: var(--navy);
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.download-cta-btn svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Nav header for inner pages */
+.page-top-nav {
+  background: var(--navy);
+  color: #ffffff;
+  padding: 14px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.brand-badge {
+  font-size: 9px;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.page-category-tag {
+  font-size: 11px;
+  color: #cbd5e1;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.page-hero-banner {
+  padding: 24px 36px 14px;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 24px;
+  align-items: center;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.page-hero-banner h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+
+.page-hero-banner h1 span {
+  color: var(--teal);
+}
+
+.accent-bar {
+  width: 50px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+.page-hero-banner p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.page-hero-thumb {
+  height: 130px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px -5px rgba(0,0,0,0.15);
+}
+
+.page-hero-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.page-content {
+  padding: 0 36px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.page-footer {
+  background: var(--navy);
+  color: #ffffff;
+  padding: 12px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  margin-top: auto;
+}
+
+.page-footer .meta {
+  color: #94a3b8;
+}
+
+.page-footer .page-number {
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+/* Grids & Cards */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-padded {
+  padding: 16px;
+}
+
+.card-header {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.tag-pill {
+  display: inline-block;
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tag-green { background: var(--green-bg); color: var(--green); border: 1px solid #a7f3d0; }
+.tag-gold { background: var(--gold-bg); color: var(--gold-warm); border: 1px solid #fde68a; }
+.tag-teal { background: var(--teal-light); color: var(--teal); border: 1px solid var(--teal-border); }
+.tag-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid #bfdbfe; }
+
+/* Tables */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11.5px;
+}
+
+.styled-table th {
+  background: #f1f5f9;
+  color: var(--navy);
+  text-align: left;
+  padding: 10px 14px;
+  font-weight: 700;
+  border-bottom: 2px solid var(--border-light);
+}
+
+.styled-table td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-dark);
+}
+
+.styled-table tr:last-child td {
+  border-bottom: none;
+}
+
+.styled-table .num {
+  text-align: right;
+  font-weight: 600;
+}
+
+.total-row td {
+  background: #f8fafc;
+  font-weight: 800;
+  font-size: 13.5px;
+  color: var(--navy);
+  border-top: 2px solid var(--navy);
+}
+
+/* Timeline & Schedule */
+.timeline-item {
+  display: flex;
+  gap: 14px;
+  padding: 11px 0;
+  border-bottom: 1px dashed var(--border-light);
+}
+
+.time-slot {
+  width: 120px;
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 11.5px;
+  color: var(--teal);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.timeline-body {
+  flex: 1;
+}
+
+.timeline-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+
+.timeline-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.notice-box {
+  background: #f8fafc;
+  border-left: 4px solid var(--teal);
+  padding: 12px 16px;
+  border-radius: 0 8px 8px 0;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.notice-box strong {
+  color: var(--navy);
+}
+
+@media print {
+  body { background: transparent; padding: 0; gap: 0; }
+  .page { box-shadow: none; border-radius: 0; page-break-after: always; width: 100%; min-height: 100vh; margin: 0; }
+}
+</style>
+</head>
+<body>
+
+  <div class="page" id="page1">
+    <header class="top-nav">
+      <div class="brand-logo">
+        <svg viewBox="0 0 40 40" fill="none" width="36" height="36">
+          <circle cx="20" cy="20" r="18" fill="#f59e0b" fill-opacity="0.15"/>
+          <path d="M20 4C11.163 4 4 11.163 4 20C4 28.837 11.163 36 20 36C28.837 36 36 28.837 36 20" stroke="#0f273d" stroke-width="3" stroke-linecap="round"/>
+          <path d="M28 14L16 26L12 22" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <div class="brand-title">Voyara</div>
+          <div class="brand-sub">Tours • Travels</div>
+        </div>
+      </div>
+      <div class="top-slogan">More Destinations More Stories ✈ ♡</div>
+    </header>
+
+    <div class="hero-wrap">
+      <img class="hero-img" src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1400&q=85" alt="Kerala Houseboat Backwaters">
+      <div class="hero-overlay">
+        <div style="display:flex; justify-content:space-between; width:100%;">
+          <div class="hero-pill">YOUR PERSONAL TRAVEL BOOK</div>
+          <div class="hero-vibe">Good Vibes Only ♡</div>
+        </div>
+        <div class="hero-title-area">
+          <h1>Your Kerala<span class="script">Escape</span></h1>
+          <p class="hero-subtitle">Backwaters, beaches, hills and a whole lot of memories. Your perfect getaway is here!</p>
+          <div class="hero-badges">
+            <div class="hero-badge-item">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              Nature & Relaxation
+            </div>
+            <div class="hero-badge-item">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              Culture & Heritage
+            </div>
+            <div class="hero-badge-item">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 3v18h18"/></svg>
+              Local Cuisine
+            </div>
+            <div class="hero-badge-item">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              Scenic Experiences
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wave-divider">
+      <svg viewBox="0 0 920 38" fill="none" preserveAspectRatio="none"><path d="M0,0 C150,30 350,38 460,20 C600,0 750,25 920,10 L920,38 L0,38 Z" fill="#ffffff"/></svg>
+    </div>
+
+    <div class="page-body">
+      <div class="overview-grid">
+        <div class="details-card">
+          <div class="detail-row">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <div><span class="detail-label">Destination</span><span class="detail-val">Kerala, India</span></div>
+          </div>
+          <div class="detail-row">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <div><span class="detail-label">Travel Dates</span><span class="detail-val">12 – 18 December 2026</span></div>
+          </div>
+          <div class="detail-row">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div><span class="detail-label">Duration</span><span class="detail-val">7 Days, 6 Nights</span></div>
+          </div>
+          <div class="detail-row">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            <div><span class="detail-label">Travelers</span><span class="detail-val">2 Adults</span></div>
+          </div>
+          <div class="detail-row">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+            <div><span class="detail-label">Starting Point</span><span class="detail-val">New Delhi</span></div>
+          </div>
+          <div class="detail-row">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+            <div><span class="detail-label">Destinations</span><span class="detail-val">Kochi → Munnar → Alleppey</span></div>
+          </div>
+          <div class="detail-row">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            <div><span class="detail-label">Travel Style</span><span class="detail-val">Nature, Relaxation & Cultural Experience</span></div>
+          </div>
+        </div>
+
+        <div class="highlights-card">
+          <div>
+            <div class="highlights-title">☀ Trip Highlights</div>
+            <ul class="highlights-list">
+              <li><div class="check-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>Stay in handpicked 4★ hotels</li>
+              <li><div class="check-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>Explore vibrant Kochi and its heritage</li>
+              <li><div class="check-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>Scenic drive to Munnar's tea gardens</li>
+              <li><div class="check-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>Relax with a serene backwaters cruise</li>
+              <li><div class="check-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>Experience authentic Kerala cuisine</li>
+              <li><div class="check-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>Private cab for comfortable travel</li>
+            </ul>
+          </div>
+          <div class="mini-map-box" style="padding:4px; height:185px;">
+<svg viewBox="0 0 260 290" width="100%" height="100%" style="border-radius:8px; overflow:hidden; background:#f0fdf4;">
+  <defs>
+    <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bae6fd"/>
+      <stop offset="100%" stop-color="#e0f2fe"/>
+    </linearGradient>
+    <linearGradient id="ghatsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#86efac"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Arabian Sea (West) -->
+  <rect x="0" y="0" width="260" height="290" fill="url(#oceanGrad)"/>
+  
+  <!-- Subtle wave lines in ocean -->
+  <path d="M 10,60 Q 25,55 40,60 T 70,60" fill="none" stroke="#7dd3fc" stroke-width="1.2" opacity="0.7"/>
+  <path d="M 15,120 Q 30,115 45,120 T 75,120" fill="none" stroke="#7dd3fc" stroke-width="1.2" opacity="0.7"/>
+  <path d="M 10,180 Q 25,175 40,180 T 65,180" fill="none" stroke="#7dd3fc" stroke-width="1.2" opacity="0.7"/>
+  <path d="M 20,240 Q 35,235 50,240 T 80,240" fill="none" stroke="#7dd3fc" stroke-width="1.2" opacity="0.7"/>
+  
+  <!-- Sailboat in ocean -->
+  <g transform="translate(22, 140) scale(0.7)" opacity="0.6">
+    <path d="M 0,15 L 12,0 L 12,15 Z" fill="#0284c7"/>
+    <path d="M 15,15 L 23,4 L 15,15 Z" fill="#38bdf8"/>
+    <path d="M -3,17 L 27,17 L 22,23 L 2,23 Z" fill="#0369a1"/>
+  </g>
+  <text x="14" y="270" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#0369a1" letter-spacing="1">ARABIAN SEA</text>
+
+  <!-- Kerala State Geographical Contour -->
+  <!-- Starts north near Kasaragod, curves along Malabar coast down to Kovalam, with eastern spine of Western Ghats -->
+  <path d="M 85,15 
+           C 115,12 155,25 175,45 
+           C 200,70 215,110 220,150 
+           C 225,190 205,235 185,265 
+           C 170,285 155,288 145,285 
+           C 135,275 140,250 130,225 
+           C 115,185 100,165 90,135 
+           C 78,105 70,60 85,15 Z" 
+        fill="#dcfce7" stroke="#4ade80" stroke-width="2" filter="url(#shadow)"/>
+
+  <!-- Western Ghats Mountain Ridge Texture (East) -->
+  <path d="M 135,35 
+           C 160,50 185,85 195,125 
+           C 205,165 190,210 170,245 
+           L 185,265 C 205,235 225,190 220,150 C 215,110 200,70 175,45 Z" 
+        fill="url(#ghatsGrad)" opacity="0.75"/>
+
+  <!-- Mountain peak symbols in Western Ghats -->
+  <g fill="#15803d" opacity="0.8">
+    <polygon points="175,85 182,73 189,85"/>
+    <polygon points="186,105 194,92 202,105"/>
+    <polygon points="168,140 176,128 184,140"/>
+    <polygon points="172,175 180,163 188,175"/>
+  </g>
+
+  <!-- Vembanad Lake & Backwaters Network (Blue in coastal plain) -->
+  <path d="M 92,130 C 95,145 92,165 102,185 C 106,195 104,208 108,220" 
+        fill="none" stroke="#0284c7" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+  <text x="114" y="200" font-family="'Inter', sans-serif" font-size="7.5" font-weight="600" fill="#0369a1">Vembanad Lake</text>
+
+  <!-- Route Line (Connecting Kochi -> Munnar -> Alleppey) -->
+  <!-- Kochi to Munnar (climb into hills) -->
+  <path d="M 92,135 Q 130,105 168,88" fill="none" stroke="#0f273d" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 92,135 Q 130,105 168,88" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,4"/>
+  
+  <!-- Munnar to Alleppey (hills to backwaters) -->
+  <path d="M 168,88 Q 155,160 108,210" fill="none" stroke="#0f273d" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 168,88 Q 155,160 108,210" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <!-- Munnar Pin (In Highlands) -->
+  <circle cx="168" cy="88" r="8" fill="#f59e0b" stroke="#ffffff" stroke-width="2.5" filter="url(#shadow)"/>
+  <circle cx="168" cy="88" r="3" fill="#0f273d"/>
+  <rect x="178" y="76" width="68" height="24" rx="4" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="183" y="88" font-family="'Outfit', sans-serif" font-size="9.5" font-weight="800" fill="#0f273d">Munnar</text>
+  <text x="183" y="96" font-family="'Inter', sans-serif" font-size="7.5" font-weight="600" fill="#16a34a">1,600m Tea Hills</text>
+
+  <!-- Kochi Pin (Coast / Harbor) -->
+  <circle cx="92" cy="135" r="8" fill="#f59e0b" stroke="#ffffff" stroke-width="2.5" filter="url(#shadow)"/>
+  <circle cx="92" cy="135" r="3" fill="#0f273d"/>
+  <rect x="24" y="123" width="62" height="24" rx="4" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="29" y="135" font-family="'Outfit', sans-serif" font-size="9.5" font-weight="800" fill="#0f273d">Kochi</text>
+  <text x="29" y="143" font-family="'Inter', sans-serif" font-size="7.5" font-weight="600" fill="#0284c7">Historic Port</text>
+
+  <!-- Alleppey Pin (Backwaters) -->
+  <circle cx="108" cy="210" r="8" fill="#f59e0b" stroke="#ffffff" stroke-width="2.5" filter="url(#shadow)"/>
+  <circle cx="108" cy="210" r="3" fill="#0f273d"/>
+  <rect x="118" y="200" width="76" height="24" rx="4" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="123" y="212" font-family="'Outfit', sans-serif" font-size="9.5" font-weight="800" fill="#0f273d">Alleppey</text>
+  <text x="123" y="220" font-family="'Inter', sans-serif" font-size="7.5" font-weight="600" fill="#0d9488">Serene Houseboats</text>
+
+  <!-- Route Tags -->
+  <g transform="translate(112, 102)">
+    <rect x="0" y="0" width="38" height="12" rx="3" fill="#0f273d" opacity="0.85"/>
+    <text x="19" y="9" font-family="'Inter', sans-serif" font-size="6.5" font-weight="700" fill="#ffffff" text-anchor="middle">3.5 hrs</text>
+  </g>
+  <g transform="translate(136, 155)">
+    <rect x="0" y="0" width="34" height="12" rx="3" fill="#0f273d" opacity="0.85"/>
+    <text x="17" y="9" font-family="'Inter', sans-serif" font-size="6.5" font-weight="700" fill="#ffffff" text-anchor="middle">4.0 hrs</text>
+  </g>
+
+  <!-- State Badge Label -->
+  <text x="155" y="40" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#15803d" letter-spacing="2">KERALA</text>
+
+  <!-- Compass Rose (Top Right) -->
+  <g transform="translate(230, 25)">
+    <circle cx="0" cy="0" r="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" filter="url(#shadow)"/>
+    <polygon points="0,-11 3,0 -3,0" fill="#dc2626"/>
+    <polygon points="0,11 3,0 -3,0" fill="#64748b"/>
+    <text x="0" y="-13" font-family="'Inter', sans-serif" font-size="7" font-weight="800" fill="#dc2626" text-anchor="middle">N</text>
+  </g>
+</svg>
+</div>
+        </div>
+      </div>
+
+      <div class="plan-section">
+        <div class="plan-section-header">
+          <div class="plan-heading">
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+            Your Selected Travel Plan
+          </div>
+          <span class="tag-pill tag-teal">View Full Itinerary →</span>
+        </div>
+        <div class="plan-cards-grid">
+          <div class="plan-item-card">
+            <img class="plan-card-img" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80" alt="Flight">
+            <div class="plan-card-body">
+              <div><div class="plan-card-type">✈ Flights</div><div class="plan-card-details"><strong>Delhi → Kochi</strong>IndiGo • 6E 123<br>12 Dec • 08:00 AM</div></div>
+              <div style="display:flex; justify-content:space-between; align-items:center;"><button class="btn-ghost">View Ticket</button><span class="tag-pill tag-green">Confirmed</span></div>
+            </div>
+          </div>
+          <div class="plan-item-card">
+            <img class="plan-card-img" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80" alt="Hotels">
+            <div class="plan-card-body">
+              <div><div class="plan-card-type">🏨 Hotels</div><div class="plan-card-details"><strong>Kochi</strong> Hotel Grand Hyatt (2N)<br><strong>Munnar</strong> Tea Mount (2N)<br><strong>Alleppey</strong> Retreat (2N)</div></div>
+              <div style="display:flex; justify-content:space-between; align-items:center;"><button class="btn-ghost">View Hotels</button><span class="tag-pill tag-green">Confirmed</span></div>
+            </div>
+          </div>
+          <div class="plan-item-card">
+            <img class="plan-card-img" src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=600&q=80" alt="Kathakali">
+            <div class="plan-card-body">
+              <div><div class="plan-card-type">📷 Experiences</div><div class="plan-card-details"><strong>Kochi Sightseeing Tour</strong><br>Munnar Tea Plantation<br>Alleppey Houseboat</div></div>
+              <div style="display:flex; justify-content:space-between; align-items:center;"><button class="btn-ghost">View Details</button><span class="tag-pill tag-teal">Selected</span></div>
+            </div>
+          </div>
+          <div class="plan-item-card">
+            <img class="plan-card-img" src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80" alt="Cab">
+            <div class="plan-card-body">
+              <div><div class="plan-card-type">🚗 Transport</div><div class="plan-card-details"><strong>Private Cab (Kochi → Munnar)</strong><br>Private Cab (Munnar → Alleppey)<br>Airport Transfers Included</div></div>
+              <div style="display:flex; justify-content:space-between; align-items:center;"><button class="btn-ghost">View Details</button><span class="tag-pill tag-green">Confirmed</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-callout-grid">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:38px; height:38px; border-radius:8px; background:var(--gold-bg); color:var(--gold-warm); display:flex; align-items:center; justify-content:center;">
+            <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div class="cost-text"><small>Estimated Trip Cost</small><strong>₹ 65,000</strong> <small style="display:inline;">per person</small></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; border-left:1px solid var(--border-light); padding-left:16px;">
+          <div style="width:38px; height:38px; border-radius:8px; background:#fed7aa; color:#ea580c; display:flex; align-items:center; justify-content:center;">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <div><strong style="color:#ea580c; font-size:11px; display:block;">Draft — Awaiting Confirmation</strong><small style="font-size:10px; color:var(--text-muted);">You can still make changes before finalizing.</small></div>
+        </div>
+        <div class="download-cta-btn">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          <div><strong style="font-size:12px; display:block;">Download Travel Book</strong><small style="font-size:9.5px; color:#94a3b8;">Get complete trip details in PDF</small></div>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="page-footer">
+      <div class="brand-box" style="gap:6px;">
+        <span class="brand-name" style="font-size:13px;">VOYARA</span>
+        <span class="brand-badge" style="font-size:8px;">TRAVEL BOOK</span>
+      </div>
+      <div class="meta">📍 Kerala, India &nbsp;|&nbsp; Verified Curated Catalog</div>
+      <div class="page-number">Page 1 of 9</div>
+    </footer>
+    
+  </div>
+    
+
+  <div class="page" id="page2">
+    
+    <div class="page-top-nav">
+      <div class="brand-box">
+        <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+          <circle cx="16" cy="16" r="14" fill="#f59e0b" fill-opacity="0.2"/>
+          <path d="M16 4C9.373 4 4 9.373 4 16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M22 11L13 20L10 17" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-name">VOYARA</span>
+        <span class="brand-badge">MANUAL CATALOG DOSSIER</span>
+      </div>
+      <div class="page-category-tag">SECTION 2: DISCOVER KERALA</div>
+    </div>
+    
+    <div class="page-hero-banner">
+      <div>
+        <span class="eyebrow">YOUR DESTINATION</span>
+        <h1>Discover <span>Kerala</span></h1>
+        <div class="accent-bar"></div>
+        <p>Tropical beaches, misty hills, serene backwaters and a rich cultural heritage — Kerala is a paradise that feels like home.</p>
+      </div>
+      <div class="page-hero-thumb">
+        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=600&q=80" alt="Kerala Backwaters">
+      </div>
+    </div>
+
+    <div class="page-content">
+      <div style="background:#f0fdfa; border:1px solid #ccfbf1; border-radius:12px; padding:12px 18px; display:flex; align-items:center; gap:20px;">
+        <div style="font-family:'Outfit',sans-serif; font-size:14px; font-weight:700; color:var(--navy); width:130px; line-height:1.2;">What makes Kerala special?</div>
+        <div style="display:flex; gap:14px; flex:1;">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:3px; font-size:10px; font-weight:600;">
+            <div style="width:34px; height:34px; border-radius:50%; background:#14b8a6; color:#fff; display:flex; align-items:center; justify-content:center;">🌿</div>
+            <span>Lush Nature</span>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:3px; font-size:10px; font-weight:600;">
+            <div style="width:34px; height:34px; border-radius:50%; background:#14b8a6; color:#fff; display:flex; align-items:center; justify-content:center;">🛶</div>
+            <span>Backwaters</span>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:3px; font-size:10px; font-weight:600;">
+            <div style="width:34px; height:34px; border-radius:50%; background:#14b8a6; color:#fff; display:flex; align-items:center; justify-content:center;">🍲</div>
+            <span>Local Cuisine</span>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:3px; font-size:10px; font-weight:600;">
+            <div style="width:34px; height:34px; border-radius:50%; background:#14b8a6; color:#fff; display:flex; align-items:center; justify-content:center;">🏛</div>
+            <span>Culture & Heritage</span>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:3px; font-size:10px; font-weight:600;">
+            <div style="width:34px; height:34px; border-radius:50%; background:#14b8a6; color:#fff; display:flex; align-items:center; justify-content:center;">🏖</div>
+            <span>Beaches & Rest</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr) 210px; gap:12px;">
+        <div class="card">
+          <img style="height:110px; object-fit:cover;" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=400&q=80" alt="Kochi">
+          <div class="card-padded" style="padding:10px;">
+            <div class="card-header">Kochi</div>
+            <p style="font-size:10.5px; color:var(--text-muted); margin-bottom:6px;">Colonial charm, vibrant markets and rich culture.</p>
+            <ul style="font-size:10px; list-style:none; line-height:1.5;">
+              <li>• Fort Kochi sightseeing</li>
+              <li>• Chinese fishing nets</li>
+              <li>• Local food walk</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <img style="height:110px; object-fit:cover;" src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=400&q=80" alt="Munnar">
+          <div class="card-padded" style="padding:10px;">
+            <div class="card-header">Munnar</div>
+            <p style="font-size:10.5px; color:var(--text-muted); margin-bottom:6px;">Misty hills, tea gardens and breathtaking views.</p>
+            <ul style="font-size:10px; list-style:none; line-height:1.5;">
+              <li>• Tea plantation tour</li>
+              <li>• Mattupetty Lake</li>
+              <li>• Scenic viewpoints</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <img style="height:110px; object-fit:cover;" src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=400&q=80" alt="Alleppey">
+          <div class="card-padded" style="padding:10px;">
+            <div class="card-header">Alleppey</div>
+            <p style="font-size:10.5px; color:var(--text-muted); margin-bottom:6px;">Serene backwaters and traditional village life.</p>
+            <ul style="font-size:10px; list-style:none; line-height:1.5;">
+              <li>• Houseboat cruise</li>
+              <li>• Village tour</li>
+              <li>• Sunset views</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="background:#eef8f6; border:1px solid #c7ece6; border-radius:10px; padding:6px; display:flex; flex-direction:column; align-items:center; height:240px;">
+<svg viewBox="0 0 260 290" width="100%" height="100%" style="border-radius:8px; overflow:hidden; background:#f0fdf4;">
+  <defs>
+    <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bae6fd"/>
+      <stop offset="100%" stop-color="#e0f2fe"/>
+    </linearGradient>
+    <linearGradient id="ghatsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#86efac"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Arabian Sea (West) -->
+  <rect x="0" y="0" width="260" height="290" fill="url(#oceanGrad)"/>
+  
+  <!-- Subtle wave lines in ocean -->
+  <path d="M 10,60 Q 25,55 40,60 T 70,60" fill="none" stroke="#7dd3fc" stroke-width="1.2" opacity="0.7"/>
+  <path d="M 15,120 Q 30,115 45,120 T 75,120" fill="none" stroke="#7dd3fc" stroke-width="1.2" opacity="0.7"/>
+  <path d="M 10,180 Q 25,175 40,180 T 65,180" fill="none" stroke="#7dd3fc" stroke-width="1.2" opacity="0.7"/>
+  <path d="M 20,240 Q 35,235 50,240 T 80,240" fill="none" stroke="#7dd3fc" stroke-width="1.2" opacity="0.7"/>
+  
+  <!-- Sailboat in ocean -->
+  <g transform="translate(22, 140) scale(0.7)" opacity="0.6">
+    <path d="M 0,15 L 12,0 L 12,15 Z" fill="#0284c7"/>
+    <path d="M 15,15 L 23,4 L 15,15 Z" fill="#38bdf8"/>
+    <path d="M -3,17 L 27,17 L 22,23 L 2,23 Z" fill="#0369a1"/>
+  </g>
+  <text x="14" y="270" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#0369a1" letter-spacing="1">ARABIAN SEA</text>
+
+  <!-- Kerala State Geographical Contour -->
+  <!-- Starts north near Kasaragod, curves along Malabar coast down to Kovalam, with eastern spine of Western Ghats -->
+  <path d="M 85,15 
+           C 115,12 155,25 175,45 
+           C 200,70 215,110 220,150 
+           C 225,190 205,235 185,265 
+           C 170,285 155,288 145,285 
+           C 135,275 140,250 130,225 
+           C 115,185 100,165 90,135 
+           C 78,105 70,60 85,15 Z" 
+        fill="#dcfce7" stroke="#4ade80" stroke-width="2" filter="url(#shadow)"/>
+
+  <!-- Western Ghats Mountain Ridge Texture (East) -->
+  <path d="M 135,35 
+           C 160,50 185,85 195,125 
+           C 205,165 190,210 170,245 
+           L 185,265 C 205,235 225,190 220,150 C 215,110 200,70 175,45 Z" 
+        fill="url(#ghatsGrad)" opacity="0.75"/>
+
+  <!-- Mountain peak symbols in Western Ghats -->
+  <g fill="#15803d" opacity="0.8">
+    <polygon points="175,85 182,73 189,85"/>
+    <polygon points="186,105 194,92 202,105"/>
+    <polygon points="168,140 176,128 184,140"/>
+    <polygon points="172,175 180,163 188,175"/>
+  </g>
+
+  <!-- Vembanad Lake & Backwaters Network (Blue in coastal plain) -->
+  <path d="M 92,130 C 95,145 92,165 102,185 C 106,195 104,208 108,220" 
+        fill="none" stroke="#0284c7" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+  <text x="114" y="200" font-family="'Inter', sans-serif" font-size="7.5" font-weight="600" fill="#0369a1">Vembanad Lake</text>
+
+  <!-- Route Line (Connecting Kochi -> Munnar -> Alleppey) -->
+  <!-- Kochi to Munnar (climb into hills) -->
+  <path d="M 92,135 Q 130,105 168,88" fill="none" stroke="#0f273d" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 92,135 Q 130,105 168,88" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,4"/>
+  
+  <!-- Munnar to Alleppey (hills to backwaters) -->
+  <path d="M 168,88 Q 155,160 108,210" fill="none" stroke="#0f273d" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 168,88 Q 155,160 108,210" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <!-- Munnar Pin (In Highlands) -->
+  <circle cx="168" cy="88" r="8" fill="#f59e0b" stroke="#ffffff" stroke-width="2.5" filter="url(#shadow)"/>
+  <circle cx="168" cy="88" r="3" fill="#0f273d"/>
+  <rect x="178" y="76" width="68" height="24" rx="4" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="183" y="88" font-family="'Outfit', sans-serif" font-size="9.5" font-weight="800" fill="#0f273d">Munnar</text>
+  <text x="183" y="96" font-family="'Inter', sans-serif" font-size="7.5" font-weight="600" fill="#16a34a">1,600m Tea Hills</text>
+
+  <!-- Kochi Pin (Coast / Harbor) -->
+  <circle cx="92" cy="135" r="8" fill="#f59e0b" stroke="#ffffff" stroke-width="2.5" filter="url(#shadow)"/>
+  <circle cx="92" cy="135" r="3" fill="#0f273d"/>
+  <rect x="24" y="123" width="62" height="24" rx="4" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="29" y="135" font-family="'Outfit', sans-serif" font-size="9.5" font-weight="800" fill="#0f273d">Kochi</text>
+  <text x="29" y="143" font-family="'Inter', sans-serif" font-size="7.5" font-weight="600" fill="#0284c7">Historic Port</text>
+
+  <!-- Alleppey Pin (Backwaters) -->
+  <circle cx="108" cy="210" r="8" fill="#f59e0b" stroke="#ffffff" stroke-width="2.5" filter="url(#shadow)"/>
+  <circle cx="108" cy="210" r="3" fill="#0f273d"/>
+  <rect x="118" y="200" width="76" height="24" rx="4" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="123" y="212" font-family="'Outfit', sans-serif" font-size="9.5" font-weight="800" fill="#0f273d">Alleppey</text>
+  <text x="123" y="220" font-family="'Inter', sans-serif" font-size="7.5" font-weight="600" fill="#0d9488">Serene Houseboats</text>
+
+  <!-- Route Tags -->
+  <g transform="translate(112, 102)">
+    <rect x="0" y="0" width="38" height="12" rx="3" fill="#0f273d" opacity="0.85"/>
+    <text x="19" y="9" font-family="'Inter', sans-serif" font-size="6.5" font-weight="700" fill="#ffffff" text-anchor="middle">3.5 hrs</text>
+  </g>
+  <g transform="translate(136, 155)">
+    <rect x="0" y="0" width="34" height="12" rx="3" fill="#0f273d" opacity="0.85"/>
+    <text x="17" y="9" font-family="'Inter', sans-serif" font-size="6.5" font-weight="700" fill="#ffffff" text-anchor="middle">4.0 hrs</text>
+  </g>
+
+  <!-- State Badge Label -->
+  <text x="155" y="40" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#15803d" letter-spacing="2">KERALA</text>
+
+  <!-- Compass Rose (Top Right) -->
+  <g transform="translate(230, 25)">
+    <circle cx="0" cy="0" r="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" filter="url(#shadow)"/>
+    <polygon points="0,-11 3,0 -3,0" fill="#dc2626"/>
+    <polygon points="0,11 3,0 -3,0" fill="#64748b"/>
+    <text x="0" y="-13" font-family="'Inter', sans-serif" font-size="7" font-weight="800" fill="#dc2626" text-anchor="middle">N</text>
+  </g>
+</svg>
+</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; background:#f0f9ff; border:1px solid #e0f2fe; border-radius:10px; padding:14px 16px;">
+        <div>
+          <span style="font-size:10px; color:var(--text-muted); font-weight:700; display:block;">📅 BEST TIME TO VISIT</span>
+          <strong style="font-size:12px; color:var(--navy);">Oct – Mar</strong>
+          <small style="display:block; font-size:9.5px; color:var(--text-muted);">Pleasant winter weather</small>
+        </div>
+        <div>
+          <span style="font-size:10px; color:var(--text-muted); font-weight:700; display:block;">☀ WEATHER</span>
+          <strong style="font-size:12px; color:var(--navy);">24°C – 32°C</strong>
+          <small style="display:block; font-size:9.5px; color:var(--text-muted);">Tropical coast, cooler hills</small>
+        </div>
+        <div>
+          <span style="font-size:10px; color:var(--text-muted); font-weight:700; display:block;">🍴 LOCAL CUISINE</span>
+          <strong style="font-size:12px; color:var(--navy);">Appam & Sadya</strong>
+          <small style="display:block; font-size:9.5px; color:var(--text-muted);">Fresh coconut & seafood</small>
+        </div>
+        <div>
+          <span style="font-size:10px; color:var(--text-muted); font-weight:700; display:block;">🧳 PACKING TIPS</span>
+          <strong style="font-size:12px; color:var(--navy);">Light Cottons & Hat</strong>
+          <small style="display:block; font-size:9.5px; color:var(--text-muted);">Sunscreen & walking shoes</small>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="page-footer">
+      <div class="brand-box" style="gap:6px;">
+        <span class="brand-name" style="font-size:13px;">VOYARA</span>
+        <span class="brand-badge" style="font-size:8px;">TRAVEL BOOK</span>
+      </div>
+      <div class="meta">📍 Kerala, India &nbsp;|&nbsp; Verified Curated Catalog</div>
+      <div class="page-number">Page 2 of 9</div>
+    </footer>
+    
+  </div>
+    
+
+  <div class="page" id="page3">
+    
+    <div class="page-top-nav">
+      <div class="brand-box">
+        <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+          <circle cx="16" cy="16" r="14" fill="#f59e0b" fill-opacity="0.2"/>
+          <path d="M16 4C9.373 4 4 9.373 4 16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M22 11L13 20L10 17" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-name">VOYARA</span>
+        <span class="brand-badge">MANUAL CATALOG DOSSIER</span>
+      </div>
+      <div class="page-category-tag">SECTION 3: HANDPICKED STAYS</div>
+    </div>
+    
+    <div class="page-hero-banner">
+      <div>
+        <span class="eyebrow">ACCOMMODATION DOSSIER</span>
+        <h1>Where You'll <span>Rest</span></h1>
+        <div class="accent-bar"></div>
+        <p>A sequence of distinctive tropical properties: waterfront 5-star colonial luxury, misty tea plantation cottages, and private backwater villas.</p>
+      </div>
+      <div class="page-hero-thumb">
+        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80" alt="Resort">
+      </div>
+    </div>
+
+    <div class="page-content">
+      <div class="grid-3">
+        <div class="card">
+          <img style="height:120px; object-fit:cover;" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=500&q=80" alt="Grand Hyatt">
+          <div class="card-padded">
+            <span class="tag-pill tag-green" style="margin-bottom:4px;">5★ Waterfront Luxury</span>
+            <div class="card-header">Hotel Grand Hyatt</div>
+            <div style="font-size:11px; color:var(--teal); font-weight:700; margin-bottom:6px;">Kochi · 2 Nights (12–14 Dec)</div>
+            <p style="font-size:11px; color:var(--text-muted); line-height:1.4; margin-bottom:8px;">Set on Bolgatty Island with panoramic Vembanad Lake views, landscaped waterside gardens, and award-winning Santata Ayurvedic spa.</p>
+            <div style="font-size:10px; color:var(--text-dark); background:#f1f5f9; padding:6px 8px; border-radius:6px;">
+              <strong>Included:</strong> Waterfront Breakfast, Spa credit, Pool access
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+              <span style="font-size:12px; font-weight:800; color:var(--navy);">₹8,500 <small>/ night</small></span>
+              <span class="tag-pill tag-gold">★ 4.9</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img style="height:120px; object-fit:cover;" src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=500&q=80" alt="Tea Mount Resort">
+          <div class="card-padded">
+            <span class="tag-pill tag-teal" style="margin-bottom:4px;">Hilltop Plantation</span>
+            <div class="card-header">Tea Mount Resort</div>
+            <div style="font-size:11px; color:var(--teal); font-weight:700; margin-bottom:6px;">Munnar · 2 Nights (14–16 Dec)</div>
+            <p style="font-size:11px; color:var(--text-muted); line-height:1.4; margin-bottom:8px;">Perched amid undulating emerald tea gardens. Private stone balconies overlooking misty valleys with guided morning plantation walks.</p>
+            <div style="font-size:10px; color:var(--text-dark); background:#f1f5f9; padding:6px 8px; border-radius:6px;">
+              <strong>Included:</strong> Breakfast, Plantation tour, Campfire evening
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+              <span style="font-size:12px; font-weight:800; color:var(--navy);">₹5,200 <small>/ night</small></span>
+              <span class="tag-pill tag-gold">★ 4.7</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img style="height:120px; object-fit:cover;" src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80" alt="Backwater Retreat">
+          <div class="card-padded">
+            <span class="tag-pill tag-gold" style="margin-bottom:4px;">Houseboat & Canal Villa</span>
+            <div class="card-header">Backwater Retreat</div>
+            <div style="font-size:11px; color:var(--teal); font-weight:700; margin-bottom:6px;">Alleppey · 2 Nights (16–18 Dec)</div>
+            <p style="font-size:11px; color:var(--text-muted); line-height:1.4; margin-bottom:8px;">Private wooden jetty access with 1 overnight kettuvallam cruise and 1 night in a heritage palm-thatched waterfront villa.</p>
+            <div style="font-size:10px; color:var(--text-dark); background:#f1f5f9; padding:6px 8px; border-radius:6px;">
+              <strong>Included:</strong> All meals on cruise, Canoe sunset trail, AC bedrooms
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+              <span style="font-size:12px; font-weight:800; color:var(--navy);">₹6,999 <small>/ night</small></span>
+              <span class="tag-pill tag-gold">★ 4.8</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Location</th>
+              <th>Room Category</th>
+              <th>Air Conditioning</th>
+              <th>Check-in / Out</th>
+              <th class="num">Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Hotel Grand Hyatt</strong></td>
+              <td>Bolgatty Island, Kochi</td>
+              <td>Deluxe Lake View King</td>
+              <td>Central Climate Control</td>
+              <td>15:00 / 12:00</td>
+              <td class="num"><span class="tag-pill tag-green">9.5 / 10</span></td>
+            </tr>
+            <tr>
+              <td><strong>Tea Mount Resort</strong></td>
+              <td>Misty Hills, Munnar</td>
+              <td>Valley View Plantation Chalet</td>
+              <td>Natural Mountain Air & Heat</td>
+              <td>13:00 / 11:00</td>
+              <td class="num"><span class="tag-pill tag-green">9.1 / 10</span></td>
+            </tr>
+            <tr>
+              <td><strong>Backwater Retreat</strong></td>
+              <td>Punnamada, Alleppey</td>
+              <td>Air-Conditioned Kettuvallam</td>
+              <td>Full AC in bedrooms</td>
+              <td>12:00 / 09:30</td>
+              <td class="num"><span class="tag-pill tag-green">9.3 / 10</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="notice-box">
+        <strong>Voyara Quality Standard:</strong> All three accommodations have been verified on-site for water cleanliness, mosquito control, backup power generation, and verified hospitality standards.
+      </div>
+    </div>
+    
+    <footer class="page-footer">
+      <div class="brand-box" style="gap:6px;">
+        <span class="brand-name" style="font-size:13px;">VOYARA</span>
+        <span class="brand-badge" style="font-size:8px;">TRAVEL BOOK</span>
+      </div>
+      <div class="meta">📍 Kerala, India &nbsp;|&nbsp; Verified Curated Catalog</div>
+      <div class="page-number">Page 3 of 9</div>
+    </footer>
+    
+  </div>
+    
+
+  <div class="page" id="page4">
+    
+    <div class="page-top-nav">
+      <div class="brand-box">
+        <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+          <circle cx="16" cy="16" r="14" fill="#f59e0b" fill-opacity="0.2"/>
+          <path d="M16 4C9.373 4 4 9.373 4 16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M22 11L13 20L10 17" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-name">VOYARA</span>
+        <span class="brand-badge">MANUAL CATALOG DOSSIER</span>
+      </div>
+      <div class="page-category-tag">SECTION 4: DINING & TIMINGS</div>
+    </div>
+    
+    <div class="page-hero-banner">
+      <div>
+        <span class="eyebrow">KERALA CULINARY RHYTHM</span>
+        <h1>Flavours & <span>Timings</span></h1>
+        <div class="accent-bar"></div>
+        <p>A sensory feast of coastal spices, steamed breakfast appams, traditional 24-dish Sadya served on fresh plantain leaves, and fresh catch seafood.</p>
+      </div>
+      <div class="page-hero-thumb">
+        <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=600&q=80" alt="Kerala Cuisine">
+      </div>
+    </div>
+
+    <div class="page-content">
+      <div class="grid-2">
+        <div class="card card-padded">
+          <div class="card-header" style="display:flex; justify-content:space-between; align-items:center;">
+            <span>Daily Culinary Schedule</span>
+            <span class="tag-pill tag-gold">Meal Slots</span>
+          </div>
+
+          <div class="timeline-item">
+            <div class="time-slot">🥥 07:30 – 09:30 AM</div>
+            <div class="timeline-body">
+              <div class="timeline-title">Breakfast: Appam & Stew</div>
+              <div class="timeline-desc">Lacy fermented rice pancakes with coconut milk vegetable stew, idiyappam (string hoppers), and fresh tender coconut water.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="time-slot">☕ 11:00 – 11:30 AM</div>
+            <div class="timeline-body">
+              <div class="timeline-title">Frothed Malabar Filter Coffee</div>
+              <div class="timeline-desc">Traditional brass tumbler coffee brewed with roasted chicory beans and cardamom, served along hill roads.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="time-slot">🍃 01:00 – 02:30 PM</div>
+            <div class="timeline-body">
+              <div class="timeline-title">Traditional Banana Leaf Sadya</div>
+              <div class="timeline-desc">Grand vegetarian feast: red matta rice, aviyal, thoran, sambar, pulissery, inji puli, papadum, and payasam dessert.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="time-slot">🍌 05:00 – 06:00 PM</div>
+            <div class="timeline-body">
+              <div class="timeline-title">Evening Pazham Pori & Chai</div>
+              <div class="timeline-desc">Golden crisp ripe banana fritters paired with spiced Sulaimani black tea with mint and lemon.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item" style="border-bottom:none;">
+            <div class="time-slot">🐟 08:00 – 10:00 PM</div>
+            <div class="timeline-body">
+              <div class="timeline-title">Coastal Seafood & Malabar Parotta</div>
+              <div class="timeline-desc">Karimeen Pollichathu (pearl spot fish wrapped in banana leaf) or creamy Alleppey fish curry with flaky layered parottas.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div class="card card-padded" style="border-left:4px solid var(--teal);">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <strong style="font-size:13px; color:var(--navy);">Kerala Family Kitchen</strong>
+              <span class="tag-pill tag-green">Veg & Sadya Specialist</span>
+            </div>
+            <small style="color:var(--text-muted); display:block; margin:2px 0 6px;">Fort Kochi / Mattancherry · Rating 4.7★</small>
+            <p style="font-size:11px; color:var(--text-dark); line-height:1.4;">Renowned heritage dining hall serving authentic 24-dish vegetarian Sadya prepared according to ancient Ayurvedic culinary principles.</p>
+            <div style="font-size:10px; font-weight:700; color:var(--navy); margin-top:6px;">Average Cost: ₹900 / meal</div>
+          </div>
+
+          <div class="card card-padded" style="border-left:4px solid var(--gold);">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <strong style="font-size:13px; color:var(--navy);">Kerala Corner Cafe</strong>
+              <span class="tag-pill tag-teal">Cafe & Spiced Brews</span>
+            </div>
+            <small style="color:var(--text-muted); display:block; margin:2px 0 6px;">Tea County Road, Munnar · Rating 4.5★</small>
+            <p style="font-size:11px; color:var(--text-dark); line-height:1.4;">Warm colonial bakery offering fresh plantation teas, cinnamon apple cakes, ginger cookies, and organic hill honey.</p>
+            <div style="font-size:10px; font-weight:700; color:var(--navy); margin-top:6px;">Average Cost: ₹850 / meal</div>
+          </div>
+
+          <div class="card card-padded" style="border-left:4px solid var(--blue);">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <strong style="font-size:13px; color:var(--navy);">Kerala Market Bites</strong>
+              <span class="tag-pill tag-gold">Fresh Catch Seafood</span>
+            </div>
+            <small style="color:var(--text-muted); display:block; margin:2px 0 6px;">Finishing Point, Alleppey · Rating 4.6★</small>
+            <p style="font-size:11px; color:var(--text-dark); line-height:1.4;">Canalside open grill specializing in fresh water tiger prawns, crab roast with shallots, and spicy pepper squid fry.</p>
+            <div style="font-size:10px; font-weight:700; color:var(--navy); margin-top:6px;">Average Cost: ₹420 / snack</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notice-box">
+        <strong>Dietary Accommodations:</strong> 100% vegetarian, Jain-friendly, and gluten-free options are confirmed at each stop. Spice levels can be customized on request (mild / medium / authentic spicy).
+      </div>
+    </div>
+    
+    <footer class="page-footer">
+      <div class="brand-box" style="gap:6px;">
+        <span class="brand-name" style="font-size:13px;">VOYARA</span>
+        <span class="brand-badge" style="font-size:8px;">TRAVEL BOOK</span>
+      </div>
+      <div class="meta">📍 Kerala, India &nbsp;|&nbsp; Verified Curated Catalog</div>
+      <div class="page-number">Page 4 of 9</div>
+    </footer>
+    
+  </div>
+    
+
+  <div class="page" id="page5">
+    
+    <div class="page-top-nav">
+      <div class="brand-box">
+        <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+          <circle cx="16" cy="16" r="14" fill="#f59e0b" fill-opacity="0.2"/>
+          <path d="M16 4C9.373 4 4 9.373 4 16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M22 11L13 20L10 17" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-name">VOYARA</span>
+        <span class="brand-badge">MANUAL CATALOG DOSSIER</span>
+      </div>
+      <div class="page-category-tag">SECTION 5: PLACES TO VISIT</div>
+    </div>
+    
+    <div class="page-hero-banner">
+      <div>
+        <span class="eyebrow">FEATURED EXPERIENCES</span>
+        <h1>Tours & <span>Sightseeing</span></h1>
+        <div class="accent-bar"></div>
+        <p>A chronological tour of cultural and natural marvels — from historic colonial spice trading lanes to palm-fringed backwaters and tea estates.</p>
+      </div>
+      <div class="page-hero-thumb">
+        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80" alt="Sightseeing">
+      </div>
+    </div>
+
+    <div class="page-content">
+      <div class="grid-2">
+        <div class="card">
+          <img style="height:125px; object-fit:cover;" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=500&q=80" alt="Fort Kochi">
+          <div class="card-padded">
+            <span class="tag-pill tag-green" style="margin-bottom:4px;">Day 2 · 09:00 AM – 12:30 PM</span>
+            <div class="card-header">Fort Kochi Colonial Heritage Walk</div>
+            <p style="font-size:11px; color:var(--text-muted); line-height:1.4; margin-bottom:8px;">Stroll past 14th-century Chinese fishing nets, visit St. Francis Church (Vasco da Gama's original resting place), and explore Jewish Town spice warehouses.</p>
+            <div style="font-size:10.5px; color:var(--navy); font-weight:600; line-height:1.3;">
+              ✓ Certified heritage historian guide<br>
+              ✓ Paradesi Synagogue & Dutch Palace entry<br>
+              ✓ Spiced tea tasting in historical warehouse
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img style="height:125px; object-fit:cover;" src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=500&q=80" alt="Munnar Tea">
+          <div class="card-padded">
+            <span class="tag-pill tag-blue" style="margin-bottom:4px;">Day 3 · 10:00 AM – 02:00 PM</span>
+            <div class="card-header">Munnar Tea Plantation & Factory Tasting</div>
+            <p style="font-size:11px; color:var(--text-muted); line-height:1.4; margin-bottom:8px;">Walk along hillside tea trails at 1,600m altitude. Witness artisanal leaf plucking, leaf curling, oxidation, and attend a curated tea sommelier tasting.</p>
+            <div style="font-size:10.5px; color:var(--navy); font-weight:600; line-height:1.3;">
+              ✓ VIP Tea Museum entry & factory access<br>
+              ✓ Guided estate walk through private tea gardens<br>
+              ✓ Complimentary tin of premium orthodox tea
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img style="height:125px; object-fit:cover;" src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80" alt="Backwater Cruise">
+          <div class="card-padded">
+            <span class="tag-pill tag-gold" style="margin-bottom:4px;">Day 5 · 12:00 PM – 05:30 PM</span>
+            <div class="card-header">Alleppey Houseboat & Village Canoe Trail</div>
+            <p style="font-size:11px; color:var(--text-muted); line-height:1.4; margin-bottom:8px;">Board a traditional wooden kettuvallam for an intimate cruise through canals. Transfer to a wooden village canoe to explore narrow coir-making hamlets.</p>
+            <div style="font-size:10.5px; color:var(--navy); font-weight:600; line-height:1.3;">
+              ✓ Private chartered houseboat with 3 crew members<br>
+              ✓ Freshly cooked on-board lunch & snacks<br>
+              ✓ Guided canoe village excursion
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img style="height:125px; object-fit:cover;" src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80" alt="Kathakali">
+          <div class="card-padded">
+            <span class="tag-pill tag-teal" style="margin-bottom:4px;">Day 6 · 06:00 PM – 08:00 PM</span>
+            <div class="card-header">Kathakali Evening & Kalaripayattu Martial Arts</div>
+            <p style="font-size:11px; color:var(--text-muted); line-height:1.4; margin-bottom:8px;">Witness the theatrical transformation of classical Kathakali artists as natural pigment makeup is applied, followed by ancient Kalaripayattu sword demonstrations.</p>
+            <div style="font-size:10.5px; color:var(--navy); font-weight:600; line-height:1.3;">
+              ✓ Front-row reserved seats in heritage theatre<br>
+              ✓ Behind-the-scenes greenroom makeup tour<br>
+              ✓ Interactive photo session with lead dancers
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notice-box">
+        <strong>Comfort & Accessibility:</strong> Houseboats and private cabs are equipped with shaded canopies and life vests. Walking distances during the heritage tour are gentle (approx. 2.5 km with frequent rest stops).
+      </div>
+    </div>
+    
+    <footer class="page-footer">
+      <div class="brand-box" style="gap:6px;">
+        <span class="brand-name" style="font-size:13px;">VOYARA</span>
+        <span class="brand-badge" style="font-size:8px;">TRAVEL BOOK</span>
+      </div>
+      <div class="meta">📍 Kerala, India &nbsp;|&nbsp; Verified Curated Catalog</div>
+      <div class="page-number">Page 5 of 9</div>
+    </footer>
+    
+  </div>
+    
+
+  <div class="page" id="page6">
+    
+    <div class="page-top-nav">
+      <div class="brand-box">
+        <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+          <circle cx="16" cy="16" r="14" fill="#f59e0b" fill-opacity="0.2"/>
+          <path d="M16 4C9.373 4 4 9.373 4 16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M22 11L13 20L10 17" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-name">VOYARA</span>
+        <span class="brand-badge">MANUAL CATALOG DOSSIER</span>
+      </div>
+      <div class="page-category-tag">SECTION 6: TRANSIT & TRANSPORT</div>
+    </div>
+    
+    <div class="page-hero-banner">
+      <div>
+        <span class="eyebrow">JOURNEY LOGISTICS</span>
+        <h1>Seamless <span>Travelling</span></h1>
+        <div class="accent-bar"></div>
+        <p>Private air-conditioned Toyota Innova chauffeur service, confirmed non-stop flights, and scenic ghat road transitions.</p>
+      </div>
+      <div class="page-hero-thumb">
+        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80" alt="Transit">
+      </div>
+    </div>
+
+    <div class="page-content">
+      <div class="card card-padded">
+        <div class="card-header">Confirmed Inbound & Outbound Flight Details</div>
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Sector</th>
+              <th>Airline & Flight</th>
+              <th>Departure</th>
+              <th>Arrival</th>
+              <th>Baggage</th>
+              <th class="num">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Delhi (DEL) → Kochi (COK)</strong></td>
+              <td>IndiGo • 6E 123</td>
+              <td>12 Dec · 08:00 AM (T1D)</td>
+              <td>12 Dec · 11:15 AM</td>
+              <td>15 kg check-in + 7 kg cabin</td>
+              <td class="num"><span class="tag-pill tag-green">Confirmed</span></td>
+            </tr>
+            <tr>
+              <td><strong>Kochi (COK) → Delhi (DEL)</strong></td>
+              <td>IndiGo • 6E 458</td>
+              <td>18 Dec · 04:30 PM</td>
+              <td>18 Dec · 07:45 PM (T1D)</td>
+              <td>15 kg check-in + 7 kg cabin</td>
+              <td class="num"><span class="tag-pill tag-green">Confirmed</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid-2">
+        <div class="card card-padded">
+          <div class="card-header">Dedicated Private Vehicle (Innova Crysta)</div>
+          <p style="font-size:11.5px; color:var(--text-muted); line-height:1.45; margin-bottom:10px;">
+            A private AC Toyota Innova Crysta is stationed with you for all 7 days, including all intercity transfers between Kochi, Munnar, and Alleppey.
+          </p>
+          <ul style="font-size:11px; color:var(--text-dark); list-style:none; line-height:1.6;">
+            <li>✓ Uniformed, English-speaking professional chauffeur</li>
+            <li>✓ Highway toll fees, parking tickets, and inter-district permits paid</li>
+            <li>✓ Cold bottled water, wet wipes, and umbrella in car</li>
+            <li>✓ Flexible stops along Cheeyappara & Valara waterfalls</li>
+          </ul>
+        </div>
+
+        <div class="card card-padded">
+          <div class="card-header">Scenic Drive Durations</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="background:#f8fafc; padding:8px 10px; border-radius:6px; font-size:11px;">
+              <strong>Kochi (COK Airport) → Grand Hyatt Bolgatty</strong><br>
+              <span style="color:var(--text-muted);">32 km · Approx 50 min · Clean expressway transfer</span>
+            </div>
+            <div style="background:#f8fafc; padding:8px 10px; border-radius:6px; font-size:11px;">
+              <strong>Kochi → Munnar Hill Station</strong><br>
+              <span style="color:var(--text-muted);">128 km · Approx 3 hrs 45 min · Scenic Western Ghats waterfalls</span>
+            </div>
+            <div style="background:#f8fafc; padding:8px 10px; border-radius:6px; font-size:11px;">
+              <strong>Munnar → Alleppey Backwaters</strong><br>
+              <span style="color:var(--text-muted);">165 km · Approx 4 hrs 15 min · Rubber plantations & coastal plains</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notice-box">
+        <strong>Train & Bus Connectivity Note:</strong> For travelers wishing to experience Indian Railways, the Vande Bharat Express operates between Ernakulam (Kochi) and Alappuzha. Private transfers connect directly from the railway station to your houseboat dock.
+      </div>
+    </div>
+    
+    <footer class="page-footer">
+      <div class="brand-box" style="gap:6px;">
+        <span class="brand-name" style="font-size:13px;">VOYARA</span>
+        <span class="brand-badge" style="font-size:8px;">TRAVEL BOOK</span>
+      </div>
+      <div class="meta">📍 Kerala, India &nbsp;|&nbsp; Verified Curated Catalog</div>
+      <div class="page-number">Page 6 of 9</div>
+    </footer>
+    
+  </div>
+    
+
+  <div class="page" id="page7">
+    
+    <div class="page-top-nav">
+      <div class="brand-box">
+        <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+          <circle cx="16" cy="16" r="14" fill="#f59e0b" fill-opacity="0.2"/>
+          <path d="M16 4C9.373 4 4 9.373 4 16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M22 11L13 20L10 17" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-name">VOYARA</span>
+        <span class="brand-badge">MANUAL CATALOG DOSSIER</span>
+      </div>
+      <div class="page-category-tag">SECTION 7: BUDGET & PAYMENT</div>
+    </div>
+    
+    <div class="page-hero-banner">
+      <div>
+        <span class="eyebrow">FINANCIAL SUMMARY</span>
+        <h1>Budget & <span>Payment</span></h1>
+        <div class="accent-bar"></div>
+        <p>Complete itemized price schedule. Guaranteed fixed rates, inclusive of 5-star lodging, flights, experiences, and luxury chauffeur transit.</p>
+      </div>
+      <div class="page-hero-thumb">
+        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80" alt="Budget">
+      </div>
+    </div>
+
+    <div class="page-content">
+      <div class="card">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Item / Service Description</th>
+              <th>Category</th>
+              <th>Basis / Details</th>
+              <th class="num">Amount (INR)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Roundtrip Flights (DEL ↔ COK)</strong></td>
+              <td>Airfare</td>
+              <td>2 Adults, IndiGo direct flights, 15kg bags</td>
+              <td class="num">₹28,600</td>
+            </tr>
+            <tr>
+              <td><strong>Hotel Grand Hyatt Kochi (2 Nights)</strong></td>
+              <td>Lodging</td>
+              <td>5★ Deluxe Lake View Room, Breakfast included</td>
+              <td class="num">₹17,000</td>
+            </tr>
+            <tr>
+              <td><strong>Tea Mount Resort Munnar (2 Nights)</strong></td>
+              <td>Lodging</td>
+              <td>Plantation Chalet, Valley View & Breakfast</td>
+              <td class="num">₹10,400</td>
+            </tr>
+            <tr>
+              <td><strong>Backwater Retreat Houseboat & Villa (2 Nights)</strong></td>
+              <td>Lodging</td>
+              <td>1 Night Kettuvallam (all meals) + 1 Night Villa</td>
+              <td class="num">₹13,998</td>
+            </tr>
+            <tr>
+              <td><strong>Private Dedicated AC Innova Crysta (7 Days)</strong></td>
+              <td>Transit</td>
+              <td>Chauffeur, fuel, intercity permits, toll taxes</td>
+              <td class="num">₹24,500</td>
+            </tr>
+            <tr>
+              <td><strong>Curated Experiences & Sanctuary Entries</strong></td>
+              <td>Sightseeing</td>
+              <td>Fort Kochi heritage, Tea museum, Kathakali show</td>
+              <td class="num">₹12,897</td>
+            </tr>
+            <tr>
+              <td><strong>Curated Regional Dining Allowances</strong></td>
+              <td>Dining</td>
+              <td>Traditional Sadya & Malabar coastal dinners</td>
+              <td class="num">₹16,400</td>
+            </tr>
+            <tr>
+              <td><strong>GST (5%) & Voyara Concierge Protection</strong></td>
+              <td>Taxes</td>
+              <td>Government tax and 24/7 on-ground assistance</td>
+              <td class="num">₹6,205</td>
+            </tr>
+            <tr class="total-row">
+              <td colspan="3"><strong>TOTAL TRIP INVESTMENT (2 ADULTS)</strong></td>
+              <td class="num" style="color:var(--navy); font-size:16px;">₹1,30,000</td>
+            </tr>
+            <tr style="background:#ecfdf5;">
+              <td colspan="3"><strong style="color:#047857;">COST PER PERSON</strong></td>
+              <td class="num" style="color:#047857; font-size:16px; font-weight:800;">₹65,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid-2">
+        <div class="card card-padded">
+          <div class="card-header">Payment Schedule</div>
+          <div style="display:flex; flex-direction:column; gap:8px; font-size:11.5px;">
+            <div style="display:flex; justify-content:space-between; border-bottom:1px solid #f1f5f9; padding-bottom:4px;">
+              <span><strong>Booking Deposit (20%)</strong> to confirm:</span>
+              <strong style="color:var(--navy);">₹26,000</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; border-bottom:1px solid #f1f5f9; padding-bottom:4px;">
+              <span><strong>Second Milestone (50%)</strong> 21 days prior:</span>
+              <strong style="color:var(--navy);">₹65,000</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span><strong>Final Balance (30%)</strong> on hotel check-in:</span>
+              <strong style="color:var(--navy);">₹39,000</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-padded">
+          <div class="card-header">Flexible Cancellation Terms</div>
+          <ul style="font-size:11px; color:var(--text-muted); list-style:none; line-height:1.5;">
+            <li>• <strong>Up to 20 days prior:</strong> 100% refund on hotels and cabs</li>
+            <li>• <strong>10–19 days prior:</strong> 80% refund of land package</li>
+            <li>• <strong>Within 10 days:</strong> Free date amendment within 6 months</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="notice-box">
+        <strong>Price Protection Guarantee:</strong> Once your deposit is received, your flight, hotel room rates, and private vehicle fares are 100% locked against seasonal surges.
+      </div>
+    </div>
+    
+    <footer class="page-footer">
+      <div class="brand-box" style="gap:6px;">
+        <span class="brand-name" style="font-size:13px;">VOYARA</span>
+        <span class="brand-badge" style="font-size:8px;">TRAVEL BOOK</span>
+      </div>
+      <div class="meta">📍 Kerala, India &nbsp;|&nbsp; Verified Curated Catalog</div>
+      <div class="page-number">Page 7 of 9</div>
+    </footer>
+    
+  </div>
+    
+
+  <div class="page" id="page8">
+    
+    <div class="page-top-nav">
+      <div class="brand-box">
+        <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+          <circle cx="16" cy="16" r="14" fill="#f59e0b" fill-opacity="0.2"/>
+          <path d="M16 4C9.373 4 4 9.373 4 16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M22 11L13 20L10 17" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-name">VOYARA</span>
+        <span class="brand-badge">MANUAL CATALOG DOSSIER</span>
+      </div>
+      <div class="page-category-tag">SECTION 8: DAY-BY-DAY ITINERARY</div>
+    </div>
+    
+    <div class="page-hero-banner">
+      <div>
+        <span class="eyebrow">CHRONOLOGICAL PROGRAM</span>
+        <h1>Day-by-Day <span>Schedule</span></h1>
+        <div class="accent-bar"></div>
+        <p>A leisurely sequence balancing scenic road drives, restorative backwater moments, and cultural explorations.</p>
+      </div>
+      <div class="page-hero-thumb">
+        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=600&q=80" alt="Itinerary">
+      </div>
+    </div>
+
+    <div class="page-content">
+      <div class="card card-padded">
+        <div class="timeline-item">
+          <div class="time-slot">DAY 1 · 12 DEC</div>
+          <div class="timeline-body">
+            <div class="timeline-title">Arrival in Kochi & Grand Hyatt Check-In</div>
+            <div class="timeline-desc">11:15 AM arrival at Cochin International Airport. Meet chauffeur, transfer to Hotel Grand Hyatt Bolgatty. Afternoon relaxation by the waterfront pool, sunset harbor breeze.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time-slot">DAY 2 · 13 DEC</div>
+          <div class="timeline-body">
+            <div class="timeline-title">Fort Kochi Colonial Heritage & Spice Walk</div>
+            <div class="timeline-desc">09:00 AM walking tour of Chinese fishing nets, Jewish Synagogue, and spice markets. Grand 24-dish vegetarian Sadya lunch served on fresh plantain leaf.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time-slot">DAY 3 · 14 DEC</div>
+          <div class="timeline-body">
+            <div class="timeline-title">Scenic Drive to Munnar Tea Highlands</div>
+            <div class="timeline-desc">Check-out and ascend the Western Ghats past Cheeyappara & Valara waterfalls. Check into Tea Mount Resort. Evening sunset over tea gardens with hot cardamom brew.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time-slot">DAY 4 · 15 DEC</div>
+          <div class="timeline-body">
+            <div class="timeline-title">Tea Plantation Walk & Mattupetty Dam</div>
+            <div class="timeline-desc">Guided stroll through tea estates with leaf pickers. Visit Tata Tea Museum and take a quiet boat cruise along Mattupetty Lake surrounded by eucalyptus hills.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time-slot">DAY 5 · 16 DEC</div>
+          <div class="timeline-body">
+            <div class="timeline-title">Descent to Alleppey & Houseboat Cruise</div>
+            <div class="timeline-desc">Morning drive from hills to Alleppey backwaters. Board private kettuvallam houseboat at noon. Feast on fresh Karimeen fish curry while drifting past village hamlets.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time-slot">DAY 6 · 17 DEC</div>
+          <div class="timeline-body">
+            <div class="timeline-title">Canoe Canal Excursion & Kathakali Show</div>
+            <div class="timeline-desc">Morning narrow canoe ride through coir-spinning villages. Transfer to coastal resort. Evening attendance at a traditional Kathakali and Kalaripayattu performance.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item" style="border-bottom:none;">
+          <div class="time-slot">DAY 7 · 18 DEC</div>
+          <div class="timeline-body">
+            <div class="timeline-title">Souvenirs & Departure to New Delhi</div>
+            <div class="timeline-desc">Morning purchase of Malabar black pepper, hill spices, and banana chips. Chauffeur transfer to Kochi Airport for 04:30 PM departure flight back to New Delhi.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card card-padded" style="background:#f0fdfa;">
+          <div class="card-header" style="color:#0f766e;">Tropical Comfort Checklist</div>
+          <p style="font-size:10.5px; color:#115e59; line-height:1.4;">
+            Pack breathable cotton or linen clothing, comfortable slip-on walking sandals, sunglasses, and a wide-brim hat. Mosquito repellent lotion is recommended for evening canalside strolls.
+          </p>
+        </div>
+        <div class="card card-padded" style="background:#fef3c7;">
+          <div class="card-header" style="color:#92400e;">Authentic Spices & Tea Buying</div>
+          <p style="font-size:10.5px; color:#78350f; line-height:1.4;">
+            Always buy whole spices (cardamom pods, tellicherry pepper, whole cinnamon) vacuum-sealed from licensed spice cooperatives to retain volatile essential oils.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="page-footer">
+      <div class="brand-box" style="gap:6px;">
+        <span class="brand-name" style="font-size:13px;">VOYARA</span>
+        <span class="brand-badge" style="font-size:8px;">TRAVEL BOOK</span>
+      </div>
+      <div class="meta">📍 Kerala, India &nbsp;|&nbsp; Verified Curated Catalog</div>
+      <div class="page-number">Page 8 of 9</div>
+    </footer>
+    
+  </div>
+    
+
+  <div class="page" id="page9">
+    
+    <div class="page-top-nav">
+      <div class="brand-box">
+        <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+          <circle cx="16" cy="16" r="14" fill="#f59e0b" fill-opacity="0.2"/>
+          <path d="M16 4C9.373 4 4 9.373 4 16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M22 11L13 20L10 17" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-name">VOYARA</span>
+        <span class="brand-badge">MANUAL CATALOG DOSSIER</span>
+      </div>
+      <div class="page-category-tag">SECTION 9: CONFIRMATION & CONTACTS</div>
+    </div>
+    
+    <div class="page-hero-banner">
+      <div>
+        <span class="eyebrow">OFFICIAL CONFIRMATION</span>
+        <h1>Voyara <span>Guarantee</span></h1>
+        <div class="accent-bar"></div>
+        <p>Your Kerala holiday is protected by licensed hospitality partners, 24/7 helpline coordination, and certified local guides.</p>
+      </div>
+      <div class="page-hero-thumb">
+        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=600&q=80" alt="Back Cover">
+      </div>
+    </div>
+
+    <div class="page-content">
+      <div class="grid-2">
+        <div class="card card-padded">
+          <div class="card-header">Booking Dossier Credentials</div>
+          <table class="styled-table" style="font-size:11px;">
+            <tr><td><strong>Booking Reference</strong></td><td>VYR-KER-2026-44781</td></tr>
+            <tr><td><strong>Lead Traveler</strong></td><td>Arjun Mehta (2 Adults)</td></tr>
+            <tr><td><strong>Dates</strong></td><td>12 Dec – 18 Dec 2026 (7D/6N)</td></tr>
+            <tr><td><strong>Catalog Type</strong></td><td>Manual Curated Dossier</td></tr>
+            <tr><td><strong>Verification Status</strong></td><td><span class="tag-pill tag-green">Fully Confirmed & Audited</span></td></tr>
+          </table>
+        </div>
+
+        <div class="card card-padded" style="background:#f8fafc;">
+          <div class="card-header">24/7 On-Ground Support Contacts</div>
+          <div style="font-size:11px; line-height:1.6; color:var(--text-dark);">
+            📞 <strong>Voyara Kochi Concierge:</strong> +91 484 266 7788<br>
+            🚗 <strong>Dedicated Chauffeur (Sujith):</strong> +91 94470 54321<br>
+            🏨 <strong>Grand Hyatt Bolgatty Desk:</strong> +91 484 266 1234<br>
+            🚑 <strong>Kerala State Emergency Services:</strong> 108 / 112
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-padded">
+        <div class="card-header">Responsible Tourism Guidelines</div>
+        <div class="grid-3" style="font-size:10.5px; color:var(--text-muted); line-height:1.45;">
+          <div>
+            <strong style="color:var(--navy); display:block; margin-bottom:2px;">Backwater Ecology</strong>
+            Support zero-plastic initiatives on houseboats. Refrain from throwing trash into inland lagoons.
+          </div>
+          <div>
+            <strong style="color:var(--navy); display:block; margin-bottom:2px;">Temple Dress Code</strong>
+            Traditional attire (dhoti/sari or salwar) required when visiting ancient temple premises.
+          </div>
+          <div>
+            <strong style="color:var(--navy); display:block; margin-bottom:2px;">Support Local Artisans</strong>
+            Purchase coir handicrafts and spice blends directly from women-led self-help cooperatives.
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--navy); color:#ffffff; border-radius:12px; padding:24px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px; margin-top:10px;">
+        <svg viewBox="0 0 40 40" width="44" height="44" fill="none">
+          <circle cx="20" cy="20" r="18" fill="#f59e0b" fill-opacity="0.25"/>
+          <path d="M20 4C11.163 4 4 11.163 4 20C4 28.837 11.163 36 20 36C28.837 36 36 28.837 36 20" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M28 14L16 26L12 22" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div style="font-family:'Outfit',sans-serif; font-size:20px; font-weight:800; letter-spacing:0.5px;">VOYARA TOURS & TRAVELS</div>
+        <div style="font-family:'Caveat',cursive; font-size:22px; color:#f59e0b;">Let's turn your travel dreams into plans ♡</div>
+        <p style="font-size:11px; color:#cbd5e1; max-width:500px;">New Delhi · Kochi · Srinagar · Mumbai · Bengaluru | concierge@voyara.com | www.voyara.com</p>
+        <div style="font-size:10px; color:#94a3b8; margin-top:4px;">© 2026 Voyara Technologies Pvt. Ltd. All rights reserved.</div>
+      </div>
+    </div>
+    
+    <footer class="page-footer">
+      <div class="brand-box" style="gap:6px;">
+        <span class="brand-name" style="font-size:13px;">VOYARA</span>
+        <span class="brand-badge" style="font-size:8px;">TRAVEL BOOK</span>
+      </div>
+      <div class="meta">📍 Kerala, India &nbsp;|&nbsp; Verified Curated Catalog</div>
+      <div class="page-number">Page 9 of 9</div>
+    </footer>
+    
+  </div>
+    
+</body>
+</html>

@@ -16,6 +16,10 @@ def main():
     from dotenv import load_dotenv
 
     load_dotenv(backend / ".env")
+    os.environ.setdefault("DEV_LOGIN_ENABLED", "true")
+    os.environ.setdefault("COOKIE_SECURE", "false")
+    if not os.environ.get("SECRET_KEY") or os.environ["SECRET_KEY"].startswith(("dev-only", "change-me")):
+        os.environ["SECRET_KEY"] = "voyara-strong-auth-secret-key-64e9a8b1c2d3f4e5a6b7c8d9e0f1a2b3"
     data = root / "data" / "voyara_app"
     data.mkdir(parents=True, exist_ok=True)
     os.environ.setdefault(

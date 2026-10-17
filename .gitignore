@@ -60,3 +60,6 @@ dist/
 report/**/server.json
 test-results/
 playwright-report/
+
+.goals/
+.serena/

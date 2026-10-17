@@ -59,6 +59,9 @@ if not travel_assets.exists():
     travel_assets=frontend_dist.parent/"public"/"travel"
 if travel_assets.exists():
     app.mount("/travel",StaticFiles(directory=travel_assets),name="travel-images")
+catalog_dir = Path(__file__).resolve().parents[2] / "catalog"
+if catalog_dir.exists():
+    app.mount("/catalog", StaticFiles(directory=catalog_dir, html=True), name="catalog-pages")
 
 
 @app.get("/", include_in_schema=False)

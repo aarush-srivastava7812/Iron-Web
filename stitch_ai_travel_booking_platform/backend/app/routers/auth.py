@@ -52,7 +52,7 @@ def developer_login(request: Request, response: Response, db: Session = Depends(
 
 
 @router.post("/register", response_model=TokenOut, status_code=201)
-def register(body: RegisterIn, db: Session = Depends(get_db)):
+def register(body: RegisterIn, response: Response, session: bool = False, db: Session = Depends(get_db)):
     email = body.email.lower()
     if db.scalar(select(User).where(or_(User.email == email, User.username == body.username))):
         raise HTTPException(409, "Email or username already in use")
@@ -60,15 +60,19 @@ def register(body: RegisterIn, db: Session = Depends(get_db)):
                 full_name=body.full_name, phone=body.phone)
     db.add(user)
     db.commit()
+    if session:
+        set_session_cookies(response, user.id)
     return TokenOut(access_token=create_token(user.id), user=user)
 
 
 @router.post("/login", response_model=TokenOut)
-def login(body: LoginIn, db: Session = Depends(get_db)):
+def login(body: LoginIn, response: Response, session: bool = False, db: Session = Depends(get_db)):
     ident = body.identifier.strip()
     user = db.scalar(select(User).where(or_(User.email == ident.lower(), User.username == ident)))
     if not user or not user.is_active or not verify_password(user.password_hash, body.password):
         raise HTTPException(401, "Invalid credentials")
+    if session:
+        set_session_cookies(response, user.id)
     return TokenOut(access_token=create_token(user.id), user=user)
 
 

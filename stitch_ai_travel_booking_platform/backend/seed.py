@@ -14,6 +14,8 @@ DESTS = [
     ("rishikesh", "Rishikesh", "Uttarakhand", "River paths, forest air and quiet mornings beside the Ganga. A soft landing for yoga, day hikes and time outdoors.", ["river", "wellness", "adventure"], "Sep-Nov", 30.09, 78.27, 18000, "Temperate foothills"),
     ("kochi", "Kochi", "Kerala", "A harbor city layered with spice markets, art spaces and backwater day trips. Let the ferry set the pace.", ["coastal", "culture", "food"], "Oct-Mar", 9.93, 76.26, 21000, "Tropical monsoon"),
     ("andaman", "Andaman Islands", "Andaman and Nicobar Islands", "Clear water, forest trails and long stretches of island quiet. Leave space for the sea to make the itinerary.", ["island", "beach", "nature"], "Nov-Apr", 11.74, 92.74, 34000, "Tropical island"),
+    ("leh-ladakh", "Leh Ladakh", "Ladakh", "High-altitude deserts, turquoise monasteries perched on cliffs and Pangong Lake's colour-shifting waters. Ladakh is otherworldly — and worth every bit of the journey.", ["mountain", "adventure", "heritage", "offbeat"], "Jun-Sep", 34.15, 77.58, 35000, "Cold desert"),
+    ("hampi", "Hampi", "Karnataka", "Boulders, banana groves and the ruins of a once-great empire spread across an ancient landscape. Hampi rewards those who wander without a fixed plan.", ["heritage", "culture", "offbeat", "adventure"], "Oct-Feb", 15.34, 76.46, 12000, "Tropical savanna"),
 ]
 
 
@@ -41,12 +43,12 @@ def run():
         db.flush()
         ds = db.query(Destination).all()
         for i, d in enumerate(ds):
-            if not db.query(Stay).filter_by(destination_id=d.id).first():
-                db.add_all([
-                    Stay(destination_id=d.id, name=f"{d.name} Courtyard House", kind="hotel", price_inr=3200 + i * 250, rating=4.6, amenities=["wifi", "breakfast"]),
-                    Stay(destination_id=d.id, name=f"{d.name} Backpackers' Nook", kind="hostel", price_inr=750 + i * 55, rating=4.3, amenities=["wifi"]),
-                    Stay(destination_id=d.id, name=f"{d.name} Slow Living Homestay", kind="homestay", price_inr=1850 + i * 125, rating=4.8, amenities=["home-food", "wifi"]),
-                ])
+            if not db.query(Stay).filter_by(destination_id=d.id, kind="hostel").first():
+                db.add(Stay(destination_id=d.id, name=f"{d.name} Backpackers' Nook", kind="hostel", price_inr=750 + i * 55, rating=4.3, amenities=["wifi"]))
+            if not db.query(Stay).filter_by(destination_id=d.id, kind="hotel").first():
+                db.add(Stay(destination_id=d.id, name=f"{d.name} Courtyard House", kind="hotel", price_inr=3200 + i * 250, rating=4.6, amenities=["wifi", "breakfast"]))
+            if not db.query(Stay).filter_by(destination_id=d.id, kind="homestay").first():
+                db.add(Stay(destination_id=d.id, name=f"{d.name} Slow Living Homestay", kind="homestay", price_inr=1850 + i * 125, rating=4.8, amenities=["home-food", "wifi"]))
             if not db.query(FoodPlace).filter_by(destination_id=d.id).first():
                 db.add_all([
                     FoodPlace(destination_id=d.id, name=f"{d.name} Family Kitchen", kind="restaurant", cuisine="Regional", diet="veg", price_inr=480 + i * 35, rating=4.7),

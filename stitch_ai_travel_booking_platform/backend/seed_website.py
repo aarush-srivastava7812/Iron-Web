@@ -15,6 +15,8 @@ LOCATIONS = {
     "Bengaluru": ("bengaluru", "Karnataka", 12.97, 77.59),
     "Hyderabad": ("hyderabad", "Telangana", 17.39, 78.49),
     "Chennai": ("chennai", "Tamil Nadu", 13.08, 80.27),
+    "Leh Ladakh": ("leh-ladakh", "Ladakh", 34.15, 77.58),
+    "Hampi": ("hampi", "Karnataka", 15.34, 76.46),
 }
 
 
@@ -22,6 +24,8 @@ def seed_website(db):
     data = json.loads((Path(__file__).with_name("website_catalog.json")).read_text(encoding="utf-8"))
     by_name = {d.name: d for d in db.scalars(select(Destination)).all()}
     by_name["Andaman"] = by_name["Andaman Islands"]
+    if "Leh Ladakh" not in by_name and "Leh Ladakh" in LOCATIONS:
+        pass  # will be added in the loop below
     for name, (slug, state, lat, lng) in LOCATIONS.items():
         if name not in by_name:
             d = Destination(name=name, slug=slug, state=state, lat=lat, lng=lng,
@@ -54,12 +58,27 @@ def seed_website(db):
                          price_inr=entry["price"],languages=["English","Hindi"],specialties=["culture","nature"],rating=4.5))
     origins = [by_name[n] for n in ["New Delhi", "Mumbai", "Bengaluru", "Hyderabad", "Chennai"]]
     for i, origin in enumerate(origins):
-        for j, target in enumerate([by_name[n] for n in ["Kashmir", "Goa", "Jaipur", "Kochi", "Varanasi"]]):
+        for j, target in enumerate([by_name[n] for n in ["Kashmir", "Goa", "Jaipur", "Kochi", "Varanasi",
+                                                          "Leh Ladakh", "Andaman"]
+                                    if n in by_name]):
             for a, b in [(origin, target), (target, origin)]:
                 if not db.scalar(select(TransportRoute).where(TransportRoute.origin_id == a.id,
                                                               TransportRoute.destination_id == b.id,
                                                               TransportRoute.mode == "flight")):
                     db.add(TransportRoute(origin_id=a.id, destination_id=b.id, mode="flight",
-                                          operator="Voyara sample flight", duration_min=120 + j * 15,
+                                          operator="IndiGo / Air India Express", duration_min=120 + j * 15,
                                           price_inr=4900 + i * 400 + j * 300, seats_available=40))
+                if b.name != "Andaman" and a.name != "Andaman":
+                    if not db.scalar(select(TransportRoute).where(TransportRoute.origin_id == a.id,
+                                                                  TransportRoute.destination_id == b.id,
+                                                                  TransportRoute.mode == "train")):
+                        db.add(TransportRoute(origin_id=a.id, destination_id=b.id, mode="train",
+                                              operator="Vande Bharat / Rajdhani Express", duration_min=360 + j * 40,
+                                              price_inr=1450 + i * 150 + j * 90, seats_available=120))
+                    if not db.scalar(select(TransportRoute).where(TransportRoute.origin_id == a.id,
+                                                                  TransportRoute.destination_id == b.id,
+                                                                  TransportRoute.mode == "bus")):
+                        db.add(TransportRoute(origin_id=a.id, destination_id=b.id, mode="bus",
+                                              operator="Zingbus / Intrcity Volvo AC Sleeper", duration_min=480 + j * 50,
+                                              price_inr=850 + i * 90 + j * 60, seats_available=36))
     db.commit()
