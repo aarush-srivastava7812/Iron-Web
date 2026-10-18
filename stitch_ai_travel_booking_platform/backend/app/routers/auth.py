@@ -1,3 +1,5 @@
+import secrets
+
 from fastapi import APIRouter, Depends, HTTPException, Request, Response
 from sqlalchemy import or_, select
 from sqlalchemy.orm import Session
@@ -14,6 +16,36 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 _DEV_USERNAME = "voyara_local_developer"
 _DEV_EMAIL = "developer@voyara.example.com"
 _DEV_PASSWORD_MARKER = "!local-developer-only!"
+
+
+def _judge_demo_available():
+    return bool(settings.judge_demo_enabled and settings.cookie_secure
+                and settings.judge_demo_origins
+                and all(origin.startswith("https://") for origin in settings.judge_demo_origins)
+                and len(settings.secret_key) >= 32
+                and not settings.secret_key.startswith(("dev-only", "change-me")))
+
+
+@router.get("/judge/config")
+def judge_demo_config():
+    return {"enabled": _judge_demo_available()}
+
+
+@router.post("/judge", response_model=UserOut)
+def judge_demo_login(request: Request, response: Response, db: Session = Depends(get_db)):
+    if not _judge_demo_available():
+        raise HTTPException(404, "Not found")
+    if (request.headers.get("origin") not in settings.judge_demo_origins
+            or request.headers.get("x-voyara-judge") != "1"):
+        raise HTTPException(403, "Open judge demo access from the Voyara website.")
+    # Separate ordinary travelers prevent judges from sharing trips or impersonating users.
+    tag = secrets.token_hex(12)
+    user = User(username="judge_" + tag, email="judge_" + tag + "@demo.voyara.example.com",
+                full_name="Voyara Judge", password_hash="!judge-demo-session-only!", role="user")
+    db.add(user)
+    db.commit()
+    set_session_cookies(response, user.id)
+    return user
 
 
 def _developer_available(request: Request):

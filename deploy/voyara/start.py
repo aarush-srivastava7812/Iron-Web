@@ -25,6 +25,8 @@ def main():
     os.environ.setdefault("FASTEMBED_CACHE_PATH", str(data / "models"))
     os.environ.setdefault("COOKIE_SECURE", "true")
     os.environ["DEV_LOGIN_ENABLED"] = "false"
+    os.environ.setdefault("JUDGE_DEMO_ENABLED", "true")
+    os.environ.setdefault("JUDGE_DEMO_ORIGINS", "https://voyara-travel-taupe.vercel.app")
 
     graph = None
     if not os.environ.get("FALKORDB_HOST"):

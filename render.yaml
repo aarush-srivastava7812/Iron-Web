@@ -16,6 +16,10 @@ services:
         value: "true"
       - key: DEV_LOGIN_ENABLED
         value: "false"
+      - key: JUDGE_DEMO_ENABLED
+        value: "true"
+      - key: JUDGE_DEMO_ORIGINS
+        value: https://voyara-travel-taupe.vercel.app
       - key: CONTEXT_USE_GPU
         value: "false"
       - key: CORS_ORIGINS

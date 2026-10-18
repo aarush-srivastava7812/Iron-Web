@@ -22,6 +22,13 @@ auto mode explicitly labels offline behavior when no credential is available.
 Set `GOOGLE_CLIENT_ID` and authorize the website's HTTPS origin in Google to
 enable Google sign-in. Email/password accounts are also supported.
 
+The hosted sign-in page also offers **Continue as Judge**. Each click creates an
+ordinary, isolated demo traveler and issues the same secure session/CSRF cookies
+as regular sign-in. It grants no admin access and cannot open existing accounts.
+This demo deployment enables `JUDGE_DEMO_ENABLED` with the exact website origin
+in `JUDGE_DEMO_ORIGINS`. Set `JUDGE_DEMO_ENABLED=false` to remove hosted demo
+access after judging. The local developer sign-in remains local-only.
+
 The free demo stores SQLite, Qdrant, graph AOF files and journals under `/data`
 on the ephemeral container filesystem. Data is lost on restarts, redeploys and
 idle spin-down. Existing workstation data is not uploaded or migrated. A paid

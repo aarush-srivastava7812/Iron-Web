@@ -332,7 +332,10 @@ async function mountGoogle(version) {
   }
 
   const devBtn = document.getElementById("developerSignIn");
+  let judgeEnabled = false;
   if (devBtn) {
+    devBtn.disabled = true;
+    devBtn.closest(".demo-auth-box").hidden = true;
     devBtn.onclick = async () => {
       devBtn.disabled = true;
       if (status) {
@@ -340,9 +343,9 @@ async function mountGoogle(version) {
         status.textContent = "Opening your demo account…";
       }
       try {
-        const user = await api("/auth/developer", {
+        const user = await api(judgeEnabled ? "/auth/judge" : "/auth/developer", {
           method: "POST",
-          headers: { "X-Voyara-Developer": "1" },
+          headers: judgeEnabled ? { "X-Voyara-Judge": "1" } : { "X-Voyara-Developer": "1" },
         });
         await finishLogin(user);
       } catch (error) {
@@ -355,14 +358,26 @@ async function mountGoogle(version) {
     };
   }
 
-  const [config, developer] = await Promise.all([
+  const [config, developer, judge] = await Promise.all([
     api("/auth/google/config").catch(() => ({ configured: false })),
     api("/auth/developer/config").catch(() => ({ enabled: false })),
+    api("/auth/judge/config").catch(() => ({ enabled: false })),
   ]);
   if (version !== renderVersion) return;
 
-  if (!developer.enabled && devBtn) {
-    devBtn.closest(".demo-auth-box")?.remove();
+  judgeEnabled = judge.enabled;
+  if (devBtn) {
+    const demoBox = devBtn.closest(".demo-auth-box");
+    if (!developer.enabled && !judgeEnabled) {
+      demoBox?.remove();
+    } else {
+      demoBox.hidden = false;
+      devBtn.disabled = false;
+      if (judgeEnabled) {
+        devBtn.textContent = "Continue as Judge →";
+        demoBox.querySelector("p").textContent = "Test the full travel experience without a password. Each sign-in creates a separate demo traveler with its own trips.";
+      }
+    }
   }
 
   const target = document.getElementById("googleSignIn");
