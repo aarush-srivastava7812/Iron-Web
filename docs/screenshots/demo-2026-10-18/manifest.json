@@ -1,0 +1,114 @@
+[
+  {
+    "file": "voyara-home.png",
+    "title": "Voyara travel website",
+    "description": "Destination discovery and the entry to trip planning.",
+    "width": 1600,
+    "height": 1000,
+    "bytes": 1157722
+  },
+  {
+    "file": "voyara-trip-request.png",
+    "title": "Trip request",
+    "description": "Kerala, 1\u20133 December 2026, two travelers and relaxed pace.",
+    "width": 700,
+    "height": 1000,
+    "bytes": 65282
+  },
+  {
+    "file": "dashboard-memory-graph.png",
+    "title": "Memory graph",
+    "description": "Explorer, graph relationships, Inspector and replay dock.",
+    "width": 1600,
+    "height": 1000,
+    "bytes": 406917
+  },
+  {
+    "file": "dashboard-agent-wiring.png",
+    "title": "Agent wiring",
+    "description": "Registered actors and their shared memory connections.",
+    "width": 1600,
+    "height": 1000,
+    "bytes": 149134
+  },
+  {
+    "file": "dashboard-activity.png",
+    "title": "Activity",
+    "description": "Actual events separated by actor.",
+    "width": 1600,
+    "height": 1000,
+    "bytes": 135133
+  },
+  {
+    "file": "dashboard-architecture.png",
+    "title": "Three-tier architecture",
+    "description": "Hot context, context cards and durable evidence.",
+    "width": 1600,
+    "height": 1000,
+    "bytes": 195996
+  },
+  {
+    "file": "dashboard-context-xray.png",
+    "title": "Context X-ray",
+    "description": "Captured context, allocation and supporting fields.",
+    "width": 1600,
+    "height": 1000,
+    "bytes": 181849
+  },
+  {
+    "file": "dashboard-cache.png",
+    "title": "Cache",
+    "description": "Measured context reuse and cache capacity.",
+    "width": 1600,
+    "height": 1000,
+    "bytes": 190956
+  },
+  {
+    "file": "dashboard-provider.png",
+    "title": "Provider",
+    "description": "Recorded model requests and reported input/output tokens.",
+    "width": 1600,
+    "height": 1000,
+    "bytes": 189936
+  },
+  {
+    "file": "dashboard-hardware.png",
+    "title": "Hardware",
+    "description": "Available memory observations and unavailable measurements.",
+    "width": 1600,
+    "height": 1000,
+    "bytes": 173773
+  },
+  {
+    "file": "dashboard-latency.png",
+    "title": "Latency",
+    "description": "Measured context and agent-operation latency.",
+    "width": 1600,
+    "height": 1000,
+    "bytes": 178244
+  },
+  {
+    "file": "dashboard-source-inspection.png",
+    "title": "Source inspection",
+    "description": "Qdrant numeric vectors and source metadata.",
+    "width": 1600,
+    "height": 1000,
+    "bytes": 248198
+  },
+  {
+    "file": "context-budget-before.png",
+    "title": "Budget context before",
+    "description": "INR 200,000 and its supporting claim/source.",
+    "width": 1600,
+    "height": 1000,
+    "bytes": 154379
+  },
+  {
+    "file": "context-budget-after.png",
+    "title": "Budget context after",
+    "description": "INR 120,000 with revised supporting evidence.",
+    "width": 1600,
+    "height": 1000,
+    "bytes": 157536
+  }
+]

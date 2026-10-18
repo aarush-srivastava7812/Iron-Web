@@ -1,0 +1,68 @@
+IRONWEB AND VOYARA — COMPANION TRANSCRIPT
+Duration: 3:00
+
+00:00–00:05 · A travel request, explained through memory
+Follow a travel request through Ironweb's live memory dashboard and Voyara.
+
+00:05–00:13 · Memory graph · explore the three tiers
+The graph connects hot context, context cards, and durable evidence. Search, select, zoom, and inspect each memory.
+
+00:13–00:21 · Inspector · values, history and sources
+The inspector exposes values, history, and source links. Replay selects an observed context while the graph stays current.
+
+00:21–00:27 · Agent wiring · roles and shared memory
+Nine actors are registered. This planning route uses seven specialists plus the memory orchestrator.
+
+00:27–00:33 · Activity · inspect each observed event
+Activity separates each actor's work. Select an event to inspect what actually happened.
+
+00:33–00:39 · Architecture · hot context, cards, evidence
+Three tiers connect bounded instructions and traveler facts, task cards, and durable evidence.
+
+00:39–00:46 · Context X-ray · exact input and provenance
+Context X-ray shows each agent's captured input, allocation, supported fields, and the claims behind them.
+
+00:46–00:50 · Cache · measured reuse and capacity
+Cache shows measured reuse, payload bytes, and entry limits.
+
+00:50–00:54 · Provider · recorded model usage
+Provider shows recorded requests and reported model token usage.
+
+00:54–00:58 · Hardware · measured and unavailable values
+Hardware distinguishes observed memory from unavailable GPU utilization.
+
+00:58–01:02 · Latency · inspect an actual measurement
+Latency points expose measured context assembly and agent work.
+
+01:02–01:07 · Source inspection · stores, vectors and receipts
+Inspect live databases, Qdrant vectors, receipts, and masked provider identity.
+
+01:07–01:12 · Replay, filters, shortcuts and drawers
+Replay, filters, keyboard shortcuts, and responsive drawers complete the controls.
+
+01:12–01:20 · Voyara · from discovery to a trip request
+Voyara turns these capabilities into a travel experience, from destination discovery to a personal trip planner.
+
+01:20–01:31 · Request · Kerala, 2 travelers, 1–3 December
+We request Kerala for two travelers, from December first to third, with a relaxed pace and a two hundred thousand rupee budget.
+
+01:31–01:56 · Live request · website and dashboard together
+The website waits while the dashboard shows the same run. The orchestrator assembles context, specialists research destinations, stays, food, and experiences, then the itinerary and budget agents finish. These are observed events and real model calls. Waiting is accelerated in this edit.
+
+01:56–02:04 · Result · seven completed specialists
+Seven specialists completed. Voyara saves the itinerary, indicative costs, and each agent's recorded work for review.
+
+02:04–02:15 · Before · budget and its supporting source
+Open the budget agent's captured context. Its budget is two hundred thousand rupees, backed by a specific claim and source. Context allocation here uses UTF-8 bytes.
+
+02:15–02:25 · Change · INR 200,000 → INR 120,000
+Now lower the budget to one hundred twenty thousand rupees. Saving the requirement marks the older plan stale before regeneration starts.
+
+02:25–02:46 · Regenerate · agents read the revised context
+Create a new outline with the same team. Both views remain synchronized as agents read the revised requirements and validate their results. The prior context stays available as history, while the new run captures the updated budget and evidence.
+
+02:46–02:56 · After · new budget, new evidence, current version 2
+The budget changed from two hundred thousand to one hundred twenty thousand, with a new claim and source. Version two is current.
+
+02:56–03:00 · Visible agents. Traceable context. A current plan.
+One request, visible agent work, and traceable context changes.

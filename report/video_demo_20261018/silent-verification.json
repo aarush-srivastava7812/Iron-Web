@@ -1,0 +1,18 @@
+{
+  "duration_seconds": 180.0,
+  "video_codec": "h264",
+  "width": 2560,
+  "height": 1440,
+  "frames": 4500,
+  "audio_streams": 0,
+  "subtitle_streams": 0,
+  "subtitle_panel_restored_to_background": true,
+  "chapter_titles_and_demo_labels_retained": true,
+  "original_unchanged": true,
+  "original_sha256": "1c50a9fa95fc28ccb149ebed5a5c329fe111ef63c5778a02d598d0f78a1fe0e0",
+  "silent_sha256": "f6743d710dfde24a25cf25dfad4d5ef5396181e6b0fbebadb42f89dd5cf7e413",
+  "bytes": 13196809,
+  "transcript_sections": 22,
+  "full_decode_passed": true,
+  "subtitle_removal_visually_verified": true
+}

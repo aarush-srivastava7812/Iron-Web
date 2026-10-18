@@ -1,0 +1,143 @@
+1
+00:00:00,150 --> 00:00:04,850
+Follow a travel request through Ironweb's live memory dashboard and Voyara.
+
+2
+00:00:05,150 --> 00:00:09,608
+The graph connects hot context, context cards, and durable evidence.
+
+3
+00:00:09,608 --> 00:00:12,850
+Search, select, zoom, and inspect each memory.
+
+4
+00:00:13,150 --> 00:00:16,615
+The inspector exposes values, history, and source links.
+
+5
+00:00:16,615 --> 00:00:20,850
+Replay selects an observed context while the graph stays current.
+
+6
+00:00:21,150 --> 00:00:22,931
+Nine actors are registered.
+
+7
+00:00:22,931 --> 00:00:26,850
+This planning route uses seven specialists plus the memory orchestrator.
+
+8
+00:00:27,150 --> 00:00:29,430
+Activity separates each actor's work.
+
+9
+00:00:29,430 --> 00:00:32,850
+Select an event to inspect what actually happened.
+
+10
+00:00:33,150 --> 00:00:38,850
+Three tiers connect bounded instructions and traveler facts, task cards, and durable evidence.
+
+11
+00:00:39,150 --> 00:00:45,850
+Context X-ray shows each agent's captured input, allocation, supported fields, and the claims behind them.
+
+12
+00:00:46,150 --> 00:00:49,850
+Cache shows measured reuse, payload bytes, and entry limits.
+
+13
+00:00:50,150 --> 00:00:53,850
+Provider shows recorded requests and reported model token usage.
+
+14
+00:00:54,150 --> 00:00:57,850
+Hardware distinguishes observed memory from unavailable GPU utilization.
+
+15
+00:00:58,150 --> 00:01:01,850
+Latency points expose measured context assembly and agent work.
+
+16
+00:01:02,150 --> 00:01:06,850
+Inspect live databases, Qdrant vectors, receipts, and masked provider identity.
+
+17
+00:01:07,150 --> 00:01:11,850
+Replay, filters, keyboard shortcuts, and responsive drawers complete the controls.
+
+18
+00:01:12,150 --> 00:01:19,850
+Voyara turns these capabilities into a travel experience, from destination discovery to a personal trip planner.
+
+19
+00:01:20,150 --> 00:01:30,850
+We request Kerala for two travelers, from December first to third, with a relaxed pace and a two hundred thousand rupee budget.
+
+20
+00:01:31,150 --> 00:01:37,057
+The website waits while the dashboard shows the same run.
+
+21
+00:01:37,057 --> 00:01:47,259
+The orchestrator assembles context, specialists research destinations, stays, food, and experiences, then the itinerary and budget agents finish.
+
+22
+00:01:47,259 --> 00:01:52,091
+These are observed events and real model calls.
+
+23
+00:01:52,091 --> 00:01:55,850
+Waiting is accelerated in this edit.
+
+24
+00:01:56,150 --> 00:01:57,861
+Seven specialists completed.
+
+25
+00:01:57,861 --> 00:02:03,850
+Voyara saves the itinerary, indicative costs, and each agent's recorded work for review.
+
+26
+00:02:04,150 --> 00:02:06,733
+Open the budget agent's captured context.
+
+27
+00:02:06,733 --> 00:02:12,267
+Its budget is two hundred thousand rupees, backed by a specific claim and source.
+
+28
+00:02:12,267 --> 00:02:14,850
+Context allocation here uses UTF-eight bytes.
+
+29
+00:02:15,150 --> 00:02:19,789
+Now lower the budget to one hundred twenty thousand rupees.
+
+30
+00:02:19,789 --> 00:02:24,850
+Saving the requirement marks the older plan stale before regeneration starts.
+
+31
+00:02:25,150 --> 00:02:29,586
+Create a new outline with the same team.
+
+32
+00:02:29,586 --> 00:02:36,979
+Both views remain synchronized as agents read the revised requirements and validate their results.
+
+33
+00:02:36,979 --> 00:02:45,850
+The prior context stays available as history, while the new run captures the updated budget and evidence.
+
+34
+00:02:46,150 --> 00:02:53,829
+The budget changed from two hundred thousand to one hundred twenty thousand, with a new claim and source.
+
+35
+00:02:53,829 --> 00:02:55,850
+Version two is current.
+
+36
+00:02:56,150 --> 00:02:59,850
+One request, visible agent work, and traceable context changes.

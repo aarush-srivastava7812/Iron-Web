@@ -13,6 +13,28 @@ Text memory backed by embedded Qdrant and a FalkorDB graph service. The applicat
 
 The supported application is in `memory/`, `server.py`, and `web/`. Optional experiments are in `research/`. Earlier designs, phase scripts, reports and unused source are preserved under `archive/2026-10-12/`; they describe the earlier implementation.
 
+## Three-minute demo
+
+[Watch the narrated walkthrough](report/video_demo_20261018/ironweb-voyara-3min.mp4) · [Subtitles](report/video_demo_20261018/captions.srt) · [All 14 screenshots](docs/screenshots/demo-2026-10-18/README.md)
+
+A [silent copy without subtitles](report/video_demo_20261018/ironweb-voyara-3min-silent.mp4) is also available with a separate [companion transcript](report/video_demo_20261018/transcript.md) ([plain text](report/video_demo_20261018/transcript.txt)).
+
+The walkthrough tours the dashboard, introduces Voyara, and shows the website beside the live agent activity during a real trip request. It then changes the budget from INR 200,000 to INR 120,000, inspects the revised context and provenance, and shows the regenerated current plan. Accelerated waiting is labeled.
+
+| Voyara travel website | Live memory graph |
+| --- | --- |
+| ![Voyara homepage](docs/screenshots/demo-2026-10-18/voyara-home.png) | ![Ironweb memory graph, Explorer, Inspector and replay dock](docs/screenshots/demo-2026-10-18/dashboard-memory-graph.png) |
+| **Agent wiring** | **Context X-ray** |
+| ![Registered agents connected to shared memory](docs/screenshots/demo-2026-10-18/dashboard-agent-wiring.png) | ![Captured agent context allocation and supporting fields](docs/screenshots/demo-2026-10-18/dashboard-context-xray.png) |
+
+The same Budget agent's captured context before and after the requirement update:
+
+| Before: INR 200,000 | After: INR 120,000 |
+| --- | --- |
+| ![Initial Budget agent context and supporting budget claim](docs/screenshots/demo-2026-10-18/context-budget-before.png) | ![Revised Budget agent context with the updated budget and supporting claim](docs/screenshots/demo-2026-10-18/context-budget-after.png) |
+
+These are actual local demonstration screenshots. Context allocation uses UTF-8 bytes; provider-reported model token usage is shown separately. The travel catalog and cost estimates remain illustrative.
+
 ## Run
 
 Use Python 3.12 and Docker Desktop (or an existing FalkorDB service). For a new CPU environment:
