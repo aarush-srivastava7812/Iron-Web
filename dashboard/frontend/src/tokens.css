@@ -1,27 +1,29 @@
 /* All UI color values live here. Semantic aliases keep existing utilities stable. */
 :root {
-  --ui-bg: #141416;
-  --ui-panel: #1b1b1e;
-  --ui-raised: #232327;
-  --ui-border: #2c2c31;
-  --ui-text: #ececec;
-  --ui-secondary: #a1a1aa;
-  --agent-planner: #60a5fa;
-  --agent-researcher: #5eead4;
-  --agent-reviewer: #c084fc;
-  --tier-hot: #fb923c;
-  --tier-context: #c7c25a;
-  --tier-evidence: #94a3b8;
-  --state-current: #f2ee6b;
-  --state-conflict: #f87171;
+  /* Voyara navy, orange and teal, adjusted for dense data on light surfaces. */
+  --ui-accent: #ff8813;
+  --graph-edge: #708ba2;
+  --ui-bg: #f7fbff;
+  --ui-panel: #ffffff;
+  --ui-raised: #edf4f9;
+  --ui-border: #d5e1eb;
+  --ui-text: #193a5d;
+  --ui-secondary: #526b82;
+  --agent-planner: #245b89;
+  --agent-researcher: #127b78;
+  --agent-reviewer: #7956a4;
+  --tier-hot: #bd5b0c;
+  --tier-context: #127b78;
+  --tier-evidence: #366489;
+  --state-current: #a94b08;
+  --state-conflict: #bd3542;
   --state-dormant-opacity: 0.35;
   --state-selection-dim-opacity: 0.2;
-  --diff-added: #4ade80;
+  --diff-added: #167247;
   --diff-removed: var(--state-conflict);
   --diff-added-bg: color-mix(in srgb, var(--diff-added) 8%, transparent);
   --diff-removed-bg: color-mix(in srgb, var(--diff-removed) 8%, transparent);
-  --state-current-glow: 0 0 0 3px
-    color-mix(in srgb, var(--state-current) 16%, transparent);
+  --state-current-glow: 0 0 0 1px var(--state-current);
 }
 @theme {
   --font-sans: "Geist", sans-serif;

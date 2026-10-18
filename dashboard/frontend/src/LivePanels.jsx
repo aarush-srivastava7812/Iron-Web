@@ -347,7 +347,7 @@ export function Wiring({ agents, event, agent, onAgent, onStore }) {
                   y={y - 16}
                   width="180"
                   height="32"
-                  rx="8"
+                  rx="0"
                   fill="var(--ui-raised)"
                   stroke={agentColor(a.agent_id)}
                 />
@@ -370,7 +370,7 @@ export function Wiring({ agents, event, agent, onAgent, onStore }) {
             y={height / 2 - 40}
             width="180"
             height="80"
-            rx="12"
+            rx="0"
             fill="var(--ui-raised)"
             stroke="var(--tier-evidence)"
           />
@@ -427,7 +427,7 @@ export function Wiring({ agents, event, agent, onAgent, onStore }) {
                 y={y - 22}
                 width="175"
                 height="44"
-                rx="8"
+                rx="0"
                 fill="var(--ui-raised)"
                 stroke="var(--ui-border)"
               />

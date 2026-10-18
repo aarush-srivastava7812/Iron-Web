@@ -225,14 +225,17 @@ export default function LiveGraph({ graph, selected, onSelect, event, agent }) {
                   y1={a.y}
                   x2={b.x}
                   y2={b.y}
-                  stroke="var(--ui-secondary)"
+                  stroke={selected && (e.source === selected || e.target === selected)
+                    ? "var(--state-current)"
+                    : "var(--graph-edge)"}
                   opacity={
                     selected &&
                     !(neighbors.has(e.source) && neighbors.has(e.target))
-                      ? 0.08
-                      : 0.22
+                      ? 0.18
+                      : 0.8
                   }
-                  strokeWidth=".7"
+                  strokeWidth={selected && (e.source === selected || e.target === selected) ? 1.5 : 1}
+                  vectorEffect="non-scaling-stroke"
                 >
                   <title>{e.relation}</title>
                 </line>
@@ -266,7 +269,7 @@ export default function LiveGraph({ graph, selected, onSelect, event, agent }) {
                   onFocus={() => setHover(n.id)}
                   onBlur={() => setHover(null)}
                   transform={`translate(${n.x},${n.y})`}
-                  opacity={dim ? 0.2 : dormant ? 0.35 : 1}
+                  opacity={dim ? 0.45 : dormant ? 0.55 : 1}
                 >
                   <title>
                     {n.label} · {n.id} · {n.access} observed accesses ·{" "}
@@ -287,7 +290,7 @@ export default function LiveGraph({ graph, selected, onSelect, event, agent }) {
                     fill={COLORS[n.tier]}
                     stroke={COLORS[n.tier]}
                     strokeDasharray={dormant ? "3 3" : undefined}
-                    fillOpacity={dormant ? 0.2 : 0.9}
+                    fillOpacity={dormant ? 0.25 : 1}
                   />
                   {show && (
                     <text
