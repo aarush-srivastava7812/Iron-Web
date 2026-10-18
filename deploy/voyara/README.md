@@ -39,3 +39,28 @@ cookies, adds the Google popup response header, and supports direct route links.
 Update that proxy target and redeploy if the Render service domain changes.
 
 Never put provider keys or session secrets in Git or Vite environment variables.
+
+## Live deployment
+
+- Website: https://voyara-travel-taupe.vercel.app
+- API health: https://voyara-api-kyb2.onrender.com/health
+- Render service: `srv-dbaann2jnfac73f0qchg`, Singapore, free plan.
+- Vercel project: `voyara-travel`, scope `aarushsrivastava7812-6631`.
+- Source branch: `codex/deploy-voyara`; the main branch and dashboard are managed separately.
+
+Automatic Render deployments are disabled. To release a reviewed commit:
+
+```powershell
+render deploys create srv-dbaann2jnfac73f0qchg --commit <commit-sha> --output json
+```
+
+From the public frontend directory, deploy website changes with:
+
+```powershell
+vercel deploy --project voyara-travel --scope aarushsrivastava7812-6631 --prod --yes --no-wait
+```
+
+The initial container smoke test passed under a 512 MiB memory limit, using
+about 410 MiB after one offline planning request. It checked catalog loading,
+registration, authenticated identity, trip requirements and a successful real
+graph/vector-backed offline plan. This is not a concurrency capacity guarantee.
