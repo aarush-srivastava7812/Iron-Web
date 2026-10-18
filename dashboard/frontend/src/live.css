@@ -70,7 +70,7 @@
   display: inline-flex;
   align-items: center;
   border: 1px solid var(--ui-border);
-  border-radius: 3px;
+  border-radius: 0;
   padding: 1px 5px;
   font: var(--type-xs) var(--font-mono);
   color: var(--ui-secondary);
@@ -100,8 +100,8 @@
   background: var(--ui-raised);
   z-index: 20;
   padding: 8px;
-  border-radius: 6px;
-  box-shadow: 0 12px 24px color-mix(in srgb, var(--ui-bg) 85%, transparent);
+  border-radius: 0;
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--ui-text) 12%, transparent);
 }
 .agent-menu button {
   width: 100%;
@@ -111,7 +111,7 @@
   gap: 8px;
   justify-content: space-between;
   border: 1px solid var(--ui-border);
-  border-radius: 4px;
+  border-radius: 0;
   margin-bottom: 4px;
   color: var(--ui-secondary);
 }
@@ -132,7 +132,7 @@
 .connection-state i {
   width: 5px;
   height: 5px;
-  border-radius: 50%;
+  border-radius: 0;
   background: currentColor;
 }
 .connection-state.live {
@@ -140,7 +140,7 @@
 }
 .follow-button {
   border: 1px solid var(--ui-border);
-  border-radius: 4px;
+  border-radius: 0;
   height: 30px;
   padding: 0 9px;
   white-space: nowrap;
@@ -203,7 +203,7 @@
   align-items: center;
   gap: 8px;
   border: 1px solid var(--ui-border);
-  border-radius: 4px;
+  border-radius: 0;
   margin: 0 16px 16px;
   height: 34px;
   padding: 0 10px;
@@ -245,7 +245,7 @@
   width: 6px;
   height: 6px;
   background: var(--tier-color);
-  border-radius: 50%;
+  border-radius: 0;
 }
 .live-tree small {
   font: var(--type-xs) var(--font-mono);
@@ -261,7 +261,7 @@
   align-items: center;
   width: 100%;
   padding: 7px 8px 7px 22px;
-  border-radius: 4px;
+  border-radius: 0;
   text-align: left;
   color: var(--ui-secondary);
 }
@@ -314,7 +314,7 @@
 }
 .live-stage > nav > button[aria-selected="true"] {
   color: var(--ui-text);
-  border-color: var(--state-current);
+  border-color: var(--ui-accent);
 }
 .live-stage > nav svg {
   width: 13px;
@@ -383,7 +383,7 @@
 .graph-tools button {
   padding: 4px 6px;
   border: 1px solid var(--ui-border);
-  border-radius: 3px;
+  border-radius: 0;
 }
 .live-graph-body {
   flex: 1;
@@ -404,15 +404,17 @@
   stroke-width: 2px;
 }
 .live-node-label {
-  font: var(--type-xs) var(--font-mono);
+  font: 500 var(--type-xs) var(--font-mono);
   fill: var(--ui-text);
   paint-order: stroke;
   stroke: var(--ui-bg);
-  stroke-width: 4px;
-  stroke-linejoin: round;
+  stroke-width: 2.5px;
+  stroke-linejoin: miter;
+  vector-effect: non-scaling-stroke;
+  text-rendering: geometricPrecision;
 }
 .live-graph .current-ring {
-  filter: drop-shadow(0 0 3px var(--state-current));
+  filter: none;
 }
 .color-key,
 .activity-key {
@@ -440,7 +442,7 @@
   width: 7px;
   height: 7px;
   display: block;
-  border-radius: 1px;
+  border-radius: 0;
   flex-shrink: 0;
 }
 .key-note {
@@ -515,7 +517,7 @@
 }
 .inspector-tabs button[aria-selected="true"] {
   color: var(--ui-text);
-  border-color: var(--state-current);
+  border-color: var(--ui-accent);
 }
 .inspector-scroll {
   min-height: 0;
@@ -541,7 +543,7 @@
   background: var(--ui-bg);
   border: 1px solid var(--ui-border);
   padding: 12px;
-  border-radius: 4px;
+  border-radius: 0;
 }
 .actual-diff {
   margin: 16px 0;
@@ -663,7 +665,7 @@
 .live-heatmap-row button {
   height: 16px;
   min-width: 0;
-  border-radius: 1px;
+  border-radius: 0;
   font-size: var(--type-xs);
   color: var(--ui-bg);
   line-height: 1;
@@ -705,7 +707,7 @@
   border: 1px solid var(--ui-border);
   border-left: 3px solid var(--tier-color);
   padding: 12px 16px;
-  border-radius: 4px;
+  border-radius: 0;
   flex: 1;
   min-height: 0;
 }
@@ -752,7 +754,7 @@
   height: 4px;
   background: var(--ui-border);
   margin: 8px 0;
-  border-radius: 2px;
+  border-radius: 0;
   overflow: hidden;
 }
 .tier-usage-bar i {
@@ -783,7 +785,7 @@
 .resource-tabs button {
   padding: 6px 10px;
   border: 1px solid var(--ui-border);
-  border-radius: 4px;
+  border-radius: 0;
   color: var(--ui-secondary);
 }
 .resource-tabs button[aria-pressed="true"] {
@@ -855,7 +857,7 @@
   padding: 16px;
   border: 1px solid var(--ui-border);
   background: var(--ui-panel);
-  border-radius: 4px;
+  border-radius: 0;
   margin-top: 20px;
   color: var(--ui-secondary);
 }
@@ -917,7 +919,7 @@
 }
 .latency-chart i {
   height: 8px;
-  border-radius: 2px;
+  border-radius: 0;
 }
 .latency-chart b {
   text-align: right;
@@ -951,7 +953,7 @@
   padding: 4px 6px;
   border: 1px solid var(--ui-border);
   height: 28px;
-  border-radius: 3px;
+  border-radius: 0;
 }
 .live-transport button svg {
   height: 13px;
@@ -993,7 +995,7 @@
   display: block;
   width: 5px;
   height: 5px;
-  border-radius: 50%;
+  border-radius: 0;
 }
 .live-lane > div {
   display: grid;
@@ -1010,7 +1012,7 @@
 .live-lane button {
   height: 9px;
   position: relative;
-  border-radius: 1px;
+  border-radius: 0;
 }
 .live-lane button.selected {
   outline: 1px solid var(--state-current);
@@ -1079,7 +1081,7 @@
   max-height: 85dvh;
   overflow: auto;
   border: 1px solid var(--ui-border);
-  border-radius: 8px;
+  border-radius: 0;
   background: var(--ui-panel);
   color: var(--ui-text);
   padding: 0;
@@ -1128,7 +1130,7 @@
 .live-loading button {
   padding: 8px 16px;
   border: 1px solid var(--ui-border);
-  border-radius: 4px;
+  border-radius: 0;
 }
 .live-mobile-tools,
 .live-drawer-close {
@@ -1443,3 +1445,86 @@
 }
 .viewer-login { display: grid; gap: 12px; width: min(360px, 90vw); text-align: left; }
 .viewer-login input { color: var(--ui-text); background: var(--ui-raised); border: 1px solid var(--ui-border); padding: 10px; font: inherit; }
+
+/* Square surfaces and explicit brand accents across the live workspace. */
+.live-app .icon-button,
+.live-app input[type="range"],
+.live-dialog button,
+.live-loading input {
+  border-radius: 0;
+}
+.live-topbar .brand {
+  color: var(--ui-text);
+}
+.live-topbar .brand-mark i {
+  background: var(--ui-accent);
+}
+.live-topbar {
+  border-top: 2px solid var(--ui-accent);
+}
+.live-stage > nav > button[aria-selected="true"],
+.inspector-tabs button[aria-selected="true"] {
+  border-bottom-color: var(--ui-accent);
+  font-weight: 600;
+}
+.follow-button.active,
+.resource-tabs button[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--ui-accent) 10%, var(--ui-panel));
+  border-color: var(--ui-accent);
+}
+.live-app input[type="range"] {
+  accent-color: var(--ui-accent);
+}
+.live-graph-body svg {
+  shape-rendering: geometricPrecision;
+}
+.live-graph-body circle,
+.live-graph-body line {
+  vector-effect: non-scaling-stroke;
+}
+.live-dialog::backdrop,
+.live-columns .drawer-backdrop {
+  background: color-mix(in srgb, var(--ui-text) 40%, transparent);
+}
+
+.live-wiring [role="button"] .svg-kicker {
+  font-size: var(--type-xs);
+  letter-spacing: 0.2px;
+}
+.live-axis input[type="range"] {
+  appearance: none;
+  background: transparent;
+  height: 12px;
+}
+.live-axis input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 0;
+  background: var(--ui-border);
+}
+.live-axis input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  margin-top: -4px;
+  border: 1px solid var(--state-current);
+  border-radius: 0;
+  background: var(--ui-accent);
+}
+.live-axis input[type="range"]::-moz-range-track {
+  height: 4px;
+  border-radius: 0;
+  background: var(--ui-border);
+}
+.live-axis input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--state-current);
+  border-radius: 0;
+  background: var(--ui-accent);
+}
+@media (max-width: 600px) {
+  .live-graph-body .kicker {
+    font-size: 9px;
+    letter-spacing: 0.2px;
+  }
+}

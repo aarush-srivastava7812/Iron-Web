@@ -1,0 +1,48 @@
+{
+  "checks": [
+    {
+      "view": "Memory graph",
+      "overflow": false,
+      "background": "rgb(247, 251, 255)",
+      "text": "rgb(25, 58, 93)",
+      "rounded": []
+    },
+    {
+      "view": "Agent wiring",
+      "overflow": false,
+      "background": "rgb(247, 251, 255)",
+      "text": "rgb(25, 58, 93)",
+      "rounded": []
+    },
+    {
+      "view": "Activity",
+      "overflow": false,
+      "background": "rgb(247, 251, 255)",
+      "text": "rgb(25, 58, 93)",
+      "rounded": []
+    },
+    {
+      "view": "Architecture",
+      "overflow": false,
+      "background": "rgb(247, 251, 255)",
+      "text": "rgb(25, 58, 93)",
+      "rounded": []
+    },
+    {
+      "view": "Resources",
+      "overflow": false,
+      "background": "rgb(247, 251, 255)",
+      "text": "rgb(25, 58, 93)",
+      "rounded": []
+    }
+  ],
+  "graph": {
+    "filter": "none",
+    "edges": 267,
+    "stroke": "1",
+    "vectorEffect": "non-scaling-stroke",
+    "labelWeight": "500"
+  },
+  "mobileOverflow": false,
+  "errors": []
+}
