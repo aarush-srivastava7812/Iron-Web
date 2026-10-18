@@ -1,0 +1,37 @@
+{
+  "file": "youtube-upload/ironweb-voyara-2m58-final.mp4",
+  "duration_seconds": 178,
+  "display_duration": "2:58",
+  "audio_duration_seconds": 178,
+  "audio_bitstream_identical_to_previous_voice_export": true,
+  "voice_source_unchanged": true,
+  "caption_source": "Actual final voiceover, locally transcribed with word timestamps; no summary-script captions reused",
+  "transcription_model": "faster-whisper small.en",
+  "word_count": 494,
+  "caption_count": 55,
+  "spelling_corrections": [
+    {
+      "start": 62.88,
+      "before": " nutrient",
+      "after": " Qdrant",
+      "reason": "Project proper-name spelling correction in the source-inspection phrase."
+    },
+    {
+      "start": 103.24,
+      "before": " voyara",
+      "after": " Voyara",
+      "reason": "Project name spelling/capitalization."
+    },
+    {
+      "start": 147.68,
+      "before": " Voyada",
+      "after": " Voyara",
+      "reason": "Project name spelling/capitalization."
+    }
+  ],
+  "frames": 4450,
+  "width": 2560,
+  "height": 1440,
+  "full_decode_passed": true,
+  "bytes": 15808380
+}

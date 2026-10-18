@@ -1,0 +1,410 @@
+{
+  "started_at": "2026-10-18T13:52:56.874Z",
+  "clips": {
+    "intro": {
+      "start": 1792331582729,
+      "end": 1792331587736
+    },
+    "graph": {
+      "start": 1792331587741,
+      "end": 1792331597086
+    },
+    "inspector": {
+      "start": 1792331597087,
+      "end": 1792331605598
+    },
+    "wiring": {
+      "start": 1792331605599,
+      "end": 1792331613468
+    },
+    "activity": {
+      "start": 1792331613470,
+      "end": 1792331621297
+    },
+    "architecture": {
+      "start": 1792331621307,
+      "end": 1792331627997
+    },
+    "resources-context": {
+      "start": 1792331628255,
+      "end": 1792331635869
+    },
+    "resources-cache": {
+      "start": 1792331635870,
+      "end": 1792331640132
+    },
+    "resources-provider": {
+      "start": 1792331640133,
+      "end": 1792331644380
+    },
+    "resources-hardware": {
+      "start": 1792331644382,
+      "end": 1792331648629
+    },
+    "resources-latency": {
+      "start": 1792331648631,
+      "end": 1792331653034
+    },
+    "source": {
+      "start": 1792331653037,
+      "end": 1792331660420
+    },
+    "controls": {
+      "start": 1792331660422,
+      "end": 1792331669286
+    },
+    "website": {
+      "start": 1792331675068,
+      "end": 1792331683569
+    },
+    "request": {
+      "start": 1792331683571,
+      "end": 1792331689941
+    },
+    "run-initial": {
+      "start": 1792331690197,
+      "end": 1792331739001
+    },
+    "result": {
+      "start": 1792331739008,
+      "end": 1792331746452
+    },
+    "context-before": {
+      "start": 1792331750436,
+      "end": 1792331762338
+    },
+    "edit": {
+      "start": 1792331762731,
+      "end": 1792331774431
+    },
+    "run-revised": {
+      "start": 1792331774606,
+      "end": 1792331816501
+    },
+    "comparison": {
+      "start": 1792331823056,
+      "end": 1792331839825
+    },
+    "outro": {
+      "start": 1792331840187,
+      "end": 1792331845658
+    }
+  },
+  "runs": [
+    {
+      "phase": "initial",
+      "http_status": 200,
+      "status": "ok",
+      "seconds": 43.7,
+      "agents": [
+        {
+          "id": "trip_consultant",
+          "status": "ok",
+          "mode": "nvidia",
+          "model": "openai/gpt-oss-20b"
+        },
+        {
+          "id": "explore_agent",
+          "status": "ok",
+          "mode": "nvidia",
+          "model": "openai/gpt-oss-20b"
+        },
+        {
+          "id": "food_guide_agent",
+          "status": "ok",
+          "mode": "nvidia",
+          "model": "openai/gpt-oss-20b"
+        },
+        {
+          "id": "stay_agent",
+          "status": "ok",
+          "mode": "nvidia",
+          "model": "openai/gpt-oss-20b"
+        },
+        {
+          "id": "tour_guide_agent",
+          "status": "ok",
+          "mode": "nvidia",
+          "model": "openai/gpt-oss-20b"
+        },
+        {
+          "id": "itinerary_planner",
+          "status": "ok",
+          "mode": "nvidia",
+          "model": "openai/gpt-oss-20b"
+        },
+        {
+          "id": "budget_booking_agent",
+          "status": "ok",
+          "mode": "nvidia",
+          "model": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "phase": "revised",
+      "http_status": 200,
+      "status": "ok",
+      "seconds": 39.38,
+      "agents": [
+        {
+          "id": "trip_consultant",
+          "status": "ok",
+          "mode": "nvidia",
+          "model": "openai/gpt-oss-20b"
+        },
+        {
+          "id": "explore_agent",
+          "status": "ok",
+          "mode": "nvidia",
+          "model": "openai/gpt-oss-20b"
+        },
+        {
+          "id": "food_guide_agent",
+          "status": "ok",
+          "mode": "nvidia",
+          "model": "openai/gpt-oss-20b"
+        },
+        {
+          "id": "stay_agent",
+          "status": "ok",
+          "mode": "nvidia",
+          "model": "openai/gpt-oss-20b"
+        },
+        {
+          "id": "tour_guide_agent",
+          "status": "ok",
+          "mode": "nvidia",
+          "model": "openai/gpt-oss-20b"
+        },
+        {
+          "id": "itinerary_planner",
+          "status": "ok",
+          "mode": "nvidia",
+          "model": "openai/gpt-oss-20b"
+        },
+        {
+          "id": "budget_booking_agent",
+          "status": "ok",
+          "mode": "nvidia",
+          "model": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "dashboard-memory-graph.png",
+    "dashboard-agent-wiring.png",
+    "dashboard-activity.png",
+    "dashboard-architecture.png",
+    "dashboard-context-xray.png",
+    "dashboard-cache.png",
+    "dashboard-provider.png",
+    "dashboard-hardware.png",
+    "dashboard-latency.png",
+    "dashboard-source-inspection.png",
+    "voyara-home.png",
+    "voyara-trip-request.png",
+    "voyara-agent-results.png",
+    "context-budget-before.png",
+    "context-payload-before.png",
+    "voyara-requirements-changed.png",
+    "context-budget-after.png",
+    "voyara-revised-itinerary.png"
+  ],
+  "samples": [
+    {
+      "phase": "initial",
+      "at": 1792331696412,
+      "events": 1,
+      "latest": "memory_submitted",
+      "actor": null
+    },
+    {
+      "phase": "initial",
+      "at": 1792331702121,
+      "events": 7,
+      "latest": "context_assembled",
+      "actor": "trip_consultant"
+    },
+    {
+      "phase": "initial",
+      "at": 1792331707150,
+      "events": 12,
+      "latest": "context_assembled",
+      "actor": "explore_agent"
+    },
+    {
+      "phase": "initial",
+      "at": 1792331713231,
+      "events": 14,
+      "latest": "context_assembled",
+      "actor": "stay_agent"
+    },
+    {
+      "phase": "initial",
+      "at": 1792331718782,
+      "events": 15,
+      "latest": "context_assembled",
+      "actor": "tour_guide_agent"
+    },
+    {
+      "phase": "initial",
+      "at": 1792331725098,
+      "events": 17,
+      "latest": "context_assembled",
+      "actor": "itinerary_planner"
+    },
+    {
+      "phase": "initial",
+      "at": 1792331730854,
+      "events": 17,
+      "latest": "context_assembled",
+      "actor": "itinerary_planner"
+    },
+    {
+      "phase": "initial",
+      "at": 1792331736409,
+      "events": 19,
+      "latest": "context_assembled",
+      "actor": "budget_booking_agent"
+    },
+    {
+      "phase": "revised",
+      "at": 1792331774924,
+      "events": 29,
+      "latest": "workflow_finished",
+      "actor": null
+    },
+    {
+      "phase": "revised",
+      "at": 1792331779576,
+      "events": 30,
+      "latest": "memory_submitted",
+      "actor": null
+    },
+    {
+      "phase": "revised",
+      "at": 1792331786199,
+      "events": 35,
+      "latest": "context_assembled",
+      "actor": "trip_consultant"
+    },
+    {
+      "phase": "revised",
+      "at": 1792331792080,
+      "events": 41,
+      "latest": "context_assembled",
+      "actor": "food_guide_agent"
+    },
+    {
+      "phase": "revised",
+      "at": 1792331797774,
+      "events": 43,
+      "latest": "context_assembled",
+      "actor": "tour_guide_agent"
+    },
+    {
+      "phase": "revised",
+      "at": 1792331804572,
+      "events": 45,
+      "latest": "context_assembled",
+      "actor": "itinerary_planner"
+    },
+    {
+      "phase": "revised",
+      "at": 1792331812958,
+      "events": 47,
+      "latest": "context_assembled",
+      "actor": "budget_booking_agent"
+    }
+  ],
+  "dashboard_started": 1792331577694,
+  "website_started": 1792331578681,
+  "trip_id": "b2573ae2-1d7f-4507-93f1-7abdbde71df3",
+  "initial_plan": {
+    "version": 1,
+    "stale": false,
+    "budget": 200000,
+    "total": 20229
+  },
+  "stale_plan": {
+    "version": 1,
+    "stale": true,
+    "budget": 200000
+  },
+  "context_comparison": {
+    "old_event": 75,
+    "new_event": 103,
+    "old_field": {
+      "predicate": "budget",
+      "status": "supported",
+      "values": [
+        200000
+      ],
+      "text": "[trip] budget: [200000] [claims: claim_4842ef37b321d1f6aa4b81b0f7dc401b]",
+      "claim_ids": [
+        "claim_4842ef37b321d1f6aa4b81b0f7dc401b"
+      ],
+      "source_event_ids": [
+        "0ad7eb27a93e41858491b3f9ceb62248"
+      ],
+      "valid_until": 9223372036854776000,
+      "scopes": [
+        {
+          "trip_id": "b2573ae2-1d7f-4507-93f1-7abdbde71df3"
+        }
+      ],
+      "location": "trip",
+      "key": [
+        "budget",
+        "trip"
+      ],
+      "hot": true,
+      "required": true
+    },
+    "new_field": {
+      "predicate": "budget",
+      "status": "supported",
+      "values": [
+        120000
+      ],
+      "text": "[trip] budget: [120000] [claims: claim_ea0b0e38911cd9bf14ea8515ef368a60]",
+      "claim_ids": [
+        "claim_ea0b0e38911cd9bf14ea8515ef368a60"
+      ],
+      "source_event_ids": [
+        "97ac29716e5d497b888774e6df51338e"
+      ],
+      "valid_until": 9223372036854776000,
+      "scopes": [
+        {
+          "trip_id": "b2573ae2-1d7f-4507-93f1-7abdbde71df3"
+        }
+      ],
+      "location": "trip",
+      "key": [
+        "budget",
+        "trip"
+      ],
+      "hot": true,
+      "required": true
+    },
+    "old_context_units": 1268,
+    "new_context_units": 1348,
+    "tokenizer": "voyara-deterministic-utf8-v1"
+  },
+  "final_plan": {
+    "version": 2,
+    "stale": false,
+    "budget": 120000,
+    "total": 25843
+  },
+  "success": true,
+  "dashboard_ended": 1792331845660,
+  "dashboard_video": "D:\\Opencode_\\reserchpaper\\report\\video_demo_20261018\\raw\\page@c0a4b86323f3809cf8d6c4e6cb7a91dd.webm",
+  "website_ended": 1792331846508,
+  "website_video": "D:\\Opencode_\\reserchpaper\\report\\video_demo_20261018\\raw\\page@f0ec29d3431d585812eaf936d8ecbba8.webm",
+  "completed_at": "2026-10-18T13:57:30.683Z"
+}

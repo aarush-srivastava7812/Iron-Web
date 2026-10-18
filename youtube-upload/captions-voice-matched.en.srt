@@ -1,0 +1,232 @@
+1
+00:00:00,000 --> 00:00:01,590
+Iron Web times Voyara.
+
+2
+00:00:02,235 --> 00:00:04,490
+The intelligence behind every journey.
+
+3
+00:00:05,175 --> 00:00:07,570
+At the heart of Iron Web lies a living memory graph.
+
+4
+00:00:07,835 --> 00:00:09,570
+Hot context. Context cards.
+
+5
+00:00:09,815 --> 00:00:12,550
+Durable evidence. All connected in one place.
+
+6
+00:00:13,055 --> 00:00:14,130
+Open any memory.
+
+7
+00:00:14,275 --> 00:00:18,750
+And the inspector reveals its values, its history, and the sources behind
+it.
+
+8
+00:00:20,995 --> 00:00:22,670
+Nine actors are registered in the system.
+
+9
+00:00:22,895 --> 00:00:26,470
+For this planning workflow, seven specialists collaborate with a memory
+orchestrator.
+
+10
+00:00:26,795 --> 00:00:29,140
+The activity timeline brings their work to life.
+
+11
+00:00:29,155 --> 00:00:32,390
+Select an event and see exactly what happened.
+
+12
+00:00:32,875 --> 00:00:37,220
+Bounded instructions and traveler facts, task-specific context cards, and
+durable evidence that can be
+
+13
+00:00:37,235 --> 00:00:38,310
+retrieved when it matters.
+
+14
+00:00:38,615 --> 00:00:42,800
+With Context X-ray, you can look inside each agent's captured input, see
+how context was allocated, which
+
+15
+00:00:42,815 --> 00:00:45,170
+fields were supported, and which claims connect back to their sources.
+
+16
+00:00:45,595 --> 00:00:49,110
+The cache reveals measured reuse, payload sizes, and entry limits.
+
+17
+00:00:49,555 --> 00:00:53,050
+The provider view displays recorded requests and reported model token
+usage.
+
+18
+00:00:53,555 --> 00:00:56,920
+Hardware monitoring distinguishes observed memory from GPU utilization that
+isn't available.
+
+19
+00:00:56,935 --> 00:01:01,290
+Latency points reveal measured context assembly and agent execution time.
+
+20
+00:01:01,395 --> 00:01:06,010
+You can inspect live databases, Qdrant vectors, execution receipts, and
+masked provider identities.
+
+21
+00:01:06,775 --> 00:01:12,200
+Filters Keyboard shortcuts Responsive drawers That's where Voyara
+
+22
+00:01:12,215 --> 00:01:17,360
+comes in. A travel experience that begins with a simple idea and turns it
+into a journey
+
+23
+00:01:17,375 --> 00:01:18,870
+designed around you.
+
+24
+00:01:19,295 --> 00:01:24,740
+Let's plan a trip. Two travellers Kerala December 1st through December 3rd
+A relaxed
+
+25
+00:01:24,755 --> 00:01:27,250
+pace and a budget of ₹200,000.
+
+26
+00:01:27,515 --> 00:01:28,950
+That's all we need to begin.
+
+27
+00:01:30,155 --> 00:01:32,410
+The orchestrator assembles the relevant context.
+
+28
+00:01:33,075 --> 00:01:34,750
+Destination specialists begin their research.
+
+29
+00:01:35,335 --> 00:01:38,110
+Stay, food and experience specialists contribute their findings.
+
+30
+00:01:38,415 --> 00:01:41,250
+Then the itinerary and budget agents bring the pieces together.
+
+31
+00:01:41,475 --> 00:01:44,730
+And all the while, the dashboard and Voyara remain synchronized.
+
+32
+00:01:44,995 --> 00:01:47,950
+What happens in the application is reflected in the memory dashboard.
+
+33
+00:01:48,135 --> 00:01:49,490
+The activity is observed.
+
+34
+00:01:49,715 --> 00:01:50,940
+The model calls are real.
+
+35
+00:01:50,955 --> 00:01:54,470
+For this demonstration, the waiting time has been accelerated in the edit.
+
+36
+00:01:54,995 --> 00:01:56,910
+Seven specialists have completed their work.
+
+37
+00:01:57,195 --> 00:02:02,370
+Voyara now saves the itinerary, indicative costs, and the recorded work of
+each agent ready for review.
+
+38
+00:02:02,715 --> 00:02:04,630
+We open the budget agent's captured context.
+
+39
+00:02:04,795 --> 00:02:06,710
+There it is, 200,000 rupees.
+
+40
+00:02:06,835 --> 00:02:10,370
+Not just a number, but a requirement supported by a specific claim and its
+source.
+
+41
+00:02:10,515 --> 00:02:13,230
+Here, context allocation is measured using UTF-8 bytes.
+
+42
+00:02:13,595 --> 00:02:15,110
+So, let's change the budget.
+
+43
+00:02:15,335 --> 00:02:18,170
+From 200,000 rupees to 120,000.
+
+44
+00:02:18,215 --> 00:02:19,340
+We save the new requirement.
+
+45
+00:02:19,355 --> 00:02:23,070
+and before a new plan is generated, the older plan is marked stale.
+
+46
+00:02:23,635 --> 00:02:26,510
+Now we create a new outline with the same team.
+
+47
+00:02:26,835 --> 00:02:29,870
+Once again, Voyara and IronWeb move together.
+
+48
+00:02:30,155 --> 00:02:32,230
+The agents read the revised requirements.
+
+49
+00:02:32,495 --> 00:02:35,930
+They gather and validate their results against the updated context.
+
+50
+00:02:36,275 --> 00:02:38,950
+The previous context remains available as history.
+
+51
+00:02:39,255 --> 00:02:43,830
+The new run captures the revised budget and the evidence that supports the
+new plan.
+
+52
+00:02:44,175 --> 00:02:48,120
+The budget has changed from 200,000 rupees to 120,000.
+
+53
+00:02:48,135 --> 00:02:53,710
+A new claim has been recorded, a new source supports it, and version 2 is
+now current.
+
+54
+00:02:54,575 --> 00:02:56,530
+Intelligence you can see, memory you can trace,
+
+55
+00:02:56,975 --> 00:02:57,770
+journeys made personal.

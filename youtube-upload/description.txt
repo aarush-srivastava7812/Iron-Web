@@ -1,0 +1,37 @@
+What happens when a traveler changes the budget after AI agents have already made a plan?
+
+Iron Web is a shared agent-memory system demonstrated through Voyara, a travel-planning website. FalkorDB connects versioned requirements, their source evidence, and the work that depends on them.
+
+This 2-minute 58-second demo shows a Kerala trip for two travelers, December 1–3, 2026. Seven hosted specialists create a draft using an INR 200,000 budget. The budget then changes to INR 120,000: the older plan becomes stale, and a new run captures the revised requirement and supporting evidence.
+
+The video retains the supplied ElevenLabs narration and includes English captions burned into the picture.
+
+Graph Hacks: Context for AI Agents — WeMakeDevs x FalkorDB
+Track 02: Agent Memory and Coordination
+
+Repository and setup:
+https://github.com/aarush-srivastava7812/Iron-Web
+
+Local demo instructions:
+https://github.com/aarush-srivastava7812/Iron-Web/blob/main/DEMO.md
+
+Memory lifecycle and graph queries:
+https://github.com/aarush-srivastava7812/Iron-Web/blob/main/memory/lifecycle/service.py
+
+CHAPTERS
+00:00 Memory graph and source evidence
+00:21 Agent wiring and activity
+00:33 Three-tier architecture and context X-ray
+01:01 Source inspection and replay controls
+01:11 Voyara and the trip request
+01:30 Seven specialists build the plan
+01:55 Results and the original budget evidence
+02:14 Lower the budget and regenerate
+02:44 Updated evidence and the current plan
+
+DEMO NOTES
+The recording shows real application activity and hosted model calls. Waiting is accelerated where labeled. Travel inventory and cost estimates are illustrative; no supplier reservation or payment is executed. Context allocation uses UTF-8 bytes; provider-reported model tokens are separate.
+
+Coding assistants contributed to the build and documentation. The team remains responsible for explaining and verifying the implementation.
+
+#FalkorDB #AIAgents #GraphHacks

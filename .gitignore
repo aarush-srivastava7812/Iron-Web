@@ -71,3 +71,10 @@ playwright-report/
 **/storageState.json
 **/session.json
 *.secret
+
+# Local distribution bundle and disposable video rendering intermediates.
+/youtube-upload-package.zip
+/report/video_demo_20261018/raw/
+/report/video_demo_20261018/edit/
+/report/video_demo_20261018/audio/
+/youtube-upload/preview-*.jpg

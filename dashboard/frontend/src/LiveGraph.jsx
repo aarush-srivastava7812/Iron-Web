@@ -227,7 +227,7 @@ export default function LiveGraph({ graph, selected, onSelect, event, agent }) {
                   y2={b.y}
                   stroke={selected && (e.source === selected || e.target === selected)
                     ? "var(--state-current)"
-                    : "var(--graph-edge)"}
+                    : a.tier !== "durable" ? COLORS[a.tier] : "var(--graph-edge)"}
                   opacity={
                     selected &&
                     !(neighbors.has(e.source) && neighbors.has(e.target))

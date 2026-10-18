@@ -1,0 +1,3555 @@
+{
+  "source": "youtube-upload/ironweb-voyara-2m58-final.mp4",
+  "model": "faster-whisper small.en",
+  "language": "en",
+  "language_probability": 1,
+  "duration": 178.0053125,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 29.18,
+      "text": " Iron Web. Times. Voyara. The intelligence behind every journey. At the heart of Iron Web lies a living memory graph. Hot context. Context cards. Durable evidence. All connected in one place. Open any memory. And the inspector reveals its values, its history, and the sources behind it. Nine actors are registered in the system. For this planning workflow, seven specialists collaborate with a memory orchestrator. The activity timeline brings their work to life.",
+      "avg_logprob": -0.15030946511971324,
+      "no_speech_prob": 0.0036916446406394243,
+      "words": [
+        {
+          "start": 0.0,
+          "end": 0.34,
+          "word": " Iron",
+          "probability": 0.502383291721344
+        },
+        {
+          "start": 0.34,
+          "end": 0.56,
+          "word": " Web.",
+          "probability": 0.3762926757335663
+        },
+        {
+          "start": 0.84,
+          "end": 0.98,
+          "word": " Times.",
+          "probability": 0.781398355960846
+        },
+        {
+          "start": 1.08,
+          "end": 1.44,
+          "word": " Voyara.",
+          "probability": 0.13447874411940575
+        },
+        {
+          "start": 2.26,
+          "end": 2.26,
+          "word": " The",
+          "probability": 0.923782467842102
+        },
+        {
+          "start": 2.26,
+          "end": 2.82,
+          "word": " intelligence",
+          "probability": 0.8157328367233276
+        },
+        {
+          "start": 2.82,
+          "end": 3.34,
+          "word": " behind",
+          "probability": 0.9452385306358337
+        },
+        {
+          "start": 3.34,
+          "end": 3.9,
+          "word": " every",
+          "probability": 0.9755378365516663
+        },
+        {
+          "start": 3.9,
+          "end": 4.34,
+          "word": " journey.",
+          "probability": 0.9915732741355896
+        },
+        {
+          "start": 5.2,
+          "end": 5.22,
+          "word": " At",
+          "probability": 0.9598473310470581
+        },
+        {
+          "start": 5.22,
+          "end": 5.34,
+          "word": " the",
+          "probability": 0.9982131719589233
+        },
+        {
+          "start": 5.34,
+          "end": 5.52,
+          "word": " heart",
+          "probability": 0.9957679510116577
+        },
+        {
+          "start": 5.52,
+          "end": 5.66,
+          "word": " of",
+          "probability": 0.9959381818771362
+        },
+        {
+          "start": 5.66,
+          "end": 5.86,
+          "word": " Iron",
+          "probability": 0.7597771883010864
+        },
+        {
+          "start": 5.86,
+          "end": 6.04,
+          "word": " Web",
+          "probability": 0.9623472690582275
+        },
+        {
+          "start": 6.04,
+          "end": 6.28,
+          "word": " lies",
+          "probability": 0.6550226211547852
+        },
+        {
+          "start": 6.28,
+          "end": 6.48,
+          "word": " a",
+          "probability": 0.9332053661346436
+        },
+        {
+          "start": 6.48,
+          "end": 6.72,
+          "word": " living",
+          "probability": 0.98427814245224
+        },
+        {
+          "start": 6.72,
+          "end": 7.06,
+          "word": " memory",
+          "probability": 0.9870714545249939
+        },
+        {
+          "start": 7.06,
+          "end": 7.42,
+          "word": " graph.",
+          "probability": 0.9553270936012268
+        },
+        {
+          "start": 7.86,
+          "end": 8.0,
+          "word": " Hot",
+          "probability": 0.9550058245658875
+        },
+        {
+          "start": 8.0,
+          "end": 8.46,
+          "word": " context.",
+          "probability": 0.8748493790626526
+        },
+        {
+          "start": 8.86,
+          "end": 9.04,
+          "word": " Context",
+          "probability": 0.9840630292892456
+        },
+        {
+          "start": 9.04,
+          "end": 9.42,
+          "word": " cards.",
+          "probability": 0.9370579123497009
+        },
+        {
+          "start": 9.84,
+          "end": 10.08,
+          "word": " Durable",
+          "probability": 0.9624310433864594
+        },
+        {
+          "start": 10.08,
+          "end": 10.42,
+          "word": " evidence.",
+          "probability": 0.9709939360618591
+        },
+        {
+          "start": 10.9,
+          "end": 11.1,
+          "word": " All",
+          "probability": 0.997338593006134
+        },
+        {
+          "start": 11.1,
+          "end": 11.42,
+          "word": " connected",
+          "probability": 0.9936084747314453
+        },
+        {
+          "start": 11.42,
+          "end": 11.86,
+          "word": " in",
+          "probability": 0.9089368581771851
+        },
+        {
+          "start": 11.86,
+          "end": 12.06,
+          "word": " one",
+          "probability": 0.9933405518531799
+        },
+        {
+          "start": 12.06,
+          "end": 12.4,
+          "word": " place.",
+          "probability": 0.9963567852973938
+        },
+        {
+          "start": 13.08,
+          "end": 13.34,
+          "word": " Open",
+          "probability": 0.989021897315979
+        },
+        {
+          "start": 13.34,
+          "end": 13.62,
+          "word": " any",
+          "probability": 0.9869519472122192
+        },
+        {
+          "start": 13.62,
+          "end": 13.98,
+          "word": " memory.",
+          "probability": 0.9957062602043152
+        },
+        {
+          "start": 14.3,
+          "end": 14.38,
+          "word": " And",
+          "probability": 0.9906319379806519
+        },
+        {
+          "start": 14.38,
+          "end": 14.5,
+          "word": " the",
+          "probability": 0.9902421832084656
+        },
+        {
+          "start": 14.5,
+          "end": 14.88,
+          "word": " inspector",
+          "probability": 0.9098194241523743
+        },
+        {
+          "start": 14.88,
+          "end": 15.36,
+          "word": " reveals",
+          "probability": 0.9907193779945374
+        },
+        {
+          "start": 15.36,
+          "end": 15.62,
+          "word": " its",
+          "probability": 0.9900045990943909
+        },
+        {
+          "start": 15.62,
+          "end": 16.02,
+          "word": " values,",
+          "probability": 0.9941257238388062
+        },
+        {
+          "start": 16.4,
+          "end": 16.54,
+          "word": " its",
+          "probability": 0.9692006707191467
+        },
+        {
+          "start": 16.54,
+          "end": 16.98,
+          "word": " history,",
+          "probability": 0.9991937279701233
+        },
+        {
+          "start": 17.22,
+          "end": 17.4,
+          "word": " and",
+          "probability": 0.9979684948921204
+        },
+        {
+          "start": 17.4,
+          "end": 17.52,
+          "word": " the",
+          "probability": 0.9977983832359314
+        },
+        {
+          "start": 17.52,
+          "end": 17.84,
+          "word": " sources",
+          "probability": 0.9943429231643677
+        },
+        {
+          "start": 17.84,
+          "end": 18.28,
+          "word": " behind",
+          "probability": 0.9945313930511475
+        },
+        {
+          "start": 18.28,
+          "end": 18.6,
+          "word": " it.",
+          "probability": 0.9958659410476685
+        },
+        {
+          "start": 21.02,
+          "end": 21.18,
+          "word": " Nine",
+          "probability": 0.9512682557106018
+        },
+        {
+          "start": 21.18,
+          "end": 21.54,
+          "word": " actors",
+          "probability": 0.9261782169342041
+        },
+        {
+          "start": 21.54,
+          "end": 21.68,
+          "word": " are",
+          "probability": 0.9954230189323425
+        },
+        {
+          "start": 21.68,
+          "end": 21.98,
+          "word": " registered",
+          "probability": 0.9994643330574036
+        },
+        {
+          "start": 21.98,
+          "end": 22.16,
+          "word": " in",
+          "probability": 0.995669960975647
+        },
+        {
+          "start": 22.16,
+          "end": 22.24,
+          "word": " the",
+          "probability": 0.9982942938804626
+        },
+        {
+          "start": 22.24,
+          "end": 22.52,
+          "word": " system.",
+          "probability": 0.9980607628822327
+        },
+        {
+          "start": 22.92,
+          "end": 23.0,
+          "word": " For",
+          "probability": 0.993529736995697
+        },
+        {
+          "start": 23.0,
+          "end": 23.18,
+          "word": " this",
+          "probability": 0.9991818070411682
+        },
+        {
+          "start": 23.18,
+          "end": 23.4,
+          "word": " planning",
+          "probability": 0.988501787185669
+        },
+        {
+          "start": 23.4,
+          "end": 23.78,
+          "word": " workflow,",
+          "probability": 0.9507144689559937
+        },
+        {
+          "start": 24.14,
+          "end": 24.3,
+          "word": " seven",
+          "probability": 0.9708230495452881
+        },
+        {
+          "start": 24.3,
+          "end": 24.76,
+          "word": " specialists",
+          "probability": 0.9904409646987915
+        },
+        {
+          "start": 24.76,
+          "end": 25.24,
+          "word": " collaborate",
+          "probability": 0.9875002503395081
+        },
+        {
+          "start": 25.24,
+          "end": 25.44,
+          "word": " with",
+          "probability": 0.9951978325843811
+        },
+        {
+          "start": 25.44,
+          "end": 25.54,
+          "word": " a",
+          "probability": 0.40312495827674866
+        },
+        {
+          "start": 25.54,
+          "end": 25.78,
+          "word": " memory",
+          "probability": 0.8922575116157532
+        },
+        {
+          "start": 25.78,
+          "end": 26.32,
+          "word": " orchestrator.",
+          "probability": 0.9689754247665405
+        },
+        {
+          "start": 26.82,
+          "end": 27.02,
+          "word": " The",
+          "probability": 0.9962064027786255
+        },
+        {
+          "start": 27.02,
+          "end": 27.4,
+          "word": " activity",
+          "probability": 0.9836031198501587
+        },
+        {
+          "start": 27.4,
+          "end": 27.86,
+          "word": " timeline",
+          "probability": 0.9827733039855957
+        },
+        {
+          "start": 27.86,
+          "end": 28.24,
+          "word": " brings",
+          "probability": 0.9862337112426758
+        },
+        {
+          "start": 28.24,
+          "end": 28.44,
+          "word": " their",
+          "probability": 0.9964156150817871
+        },
+        {
+          "start": 28.44,
+          "end": 28.66,
+          "word": " work",
+          "probability": 0.9980579018592834
+        },
+        {
+          "start": 28.66,
+          "end": 28.86,
+          "word": " to",
+          "probability": 0.9973869919776917
+        },
+        {
+          "start": 28.86,
+          "end": 29.18,
+          "word": " life.",
+          "probability": 0.9980090260505676
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 29.18,
+      "end": 32.24,
+      "text": " Select an event and see exactly what happened.",
+      "avg_logprob": -0.08730688139244362,
+      "no_speech_prob": 0.36707058548927307,
+      "words": [
+        {
+          "start": 29.18,
+          "end": 29.88,
+          "word": " Select",
+          "probability": 0.08735209703445435
+        },
+        {
+          "start": 29.88,
+          "end": 30.12,
+          "word": " an",
+          "probability": 0.988730251789093
+        },
+        {
+          "start": 30.12,
+          "end": 30.4,
+          "word": " event",
+          "probability": 0.9729921221733093
+        },
+        {
+          "start": 30.4,
+          "end": 30.8,
+          "word": " and",
+          "probability": 0.735678493976593
+        },
+        {
+          "start": 30.8,
+          "end": 31.0,
+          "word": " see",
+          "probability": 0.9947254061698914
+        },
+        {
+          "start": 31.0,
+          "end": 31.48,
+          "word": " exactly",
+          "probability": 0.9581210017204285
+        },
+        {
+          "start": 31.48,
+          "end": 31.78,
+          "word": " what",
+          "probability": 0.9973184466362
+        },
+        {
+          "start": 31.78,
+          "end": 32.24,
+          "word": " happened.",
+          "probability": 0.9970716238021851
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 32.9,
+      "end": 34.22,
+      "text": " Bounded instructions and traveler facts,",
+      "avg_logprob": -0.08730688139244362,
+      "no_speech_prob": 0.36707058548927307,
+      "words": [
+        {
+          "start": 32.9,
+          "end": 33.06,
+          "word": " Bounded",
+          "probability": 0.9030844271183014
+        },
+        {
+          "start": 33.06,
+          "end": 33.42,
+          "word": " instructions",
+          "probability": 0.9499614238739014
+        },
+        {
+          "start": 33.42,
+          "end": 33.7,
+          "word": " and",
+          "probability": 0.9914659261703491
+        },
+        {
+          "start": 33.7,
+          "end": 33.92,
+          "word": " traveler",
+          "probability": 0.5666416883468628
+        },
+        {
+          "start": 33.92,
+          "end": 34.22,
+          "word": " facts,",
+          "probability": 0.9914773106575012
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 34.76,
+      "end": 36.28,
+      "text": " task-specific context cards, and",
+      "avg_logprob": -0.08730688139244362,
+      "no_speech_prob": 0.36707058548927307,
+      "words": [
+        {
+          "start": 34.76,
+          "end": 34.78,
+          "word": " task",
+          "probability": 0.9501332640647888
+        },
+        {
+          "start": 34.78,
+          "end": 35.12,
+          "word": "-specific",
+          "probability": 0.7647486329078674
+        },
+        {
+          "start": 35.12,
+          "end": 35.52,
+          "word": " context",
+          "probability": 0.9174370765686035
+        },
+        {
+          "start": 35.52,
+          "end": 35.82,
+          "word": " cards,",
+          "probability": 0.9958328604698181
+        },
+        {
+          "start": 36.2,
+          "end": 36.28,
+          "word": " and",
+          "probability": 0.9916058778762817
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "start": 36.28,
+      "end": 38.16,
+      "text": " durable evidence that can be retrieved when it matters.",
+      "avg_logprob": -0.08730688139244362,
+      "no_speech_prob": 0.36707058548927307,
+      "words": [
+        {
+          "start": 36.28,
+          "end": 36.52,
+          "word": " durable",
+          "probability": 0.9960005879402161
+        },
+        {
+          "start": 36.52,
+          "end": 36.9,
+          "word": " evidence",
+          "probability": 0.9955742359161377
+        },
+        {
+          "start": 36.9,
+          "end": 37.06,
+          "word": " that",
+          "probability": 0.9944151639938354
+        },
+        {
+          "start": 37.06,
+          "end": 37.16,
+          "word": " can",
+          "probability": 0.9987210631370544
+        },
+        {
+          "start": 37.16,
+          "end": 37.26,
+          "word": " be",
+          "probability": 0.9969797730445862
+        },
+        {
+          "start": 37.26,
+          "end": 37.56,
+          "word": " retrieved",
+          "probability": 0.9985471367835999
+        },
+        {
+          "start": 37.56,
+          "end": 37.78,
+          "word": " when",
+          "probability": 0.9967513084411621
+        },
+        {
+          "start": 37.78,
+          "end": 37.88,
+          "word": " it",
+          "probability": 0.9987258315086365
+        },
+        {
+          "start": 37.88,
+          "end": 38.16,
+          "word": " matters.",
+          "probability": 0.9987249970436096
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "start": 38.64,
+      "end": 41.14,
+      "text": " With Context X-ray, you can look inside each agent's captured input,",
+      "avg_logprob": -0.08730688139244362,
+      "no_speech_prob": 0.36707058548927307,
+      "words": [
+        {
+          "start": 38.64,
+          "end": 38.8,
+          "word": " With",
+          "probability": 0.992789089679718
+        },
+        {
+          "start": 38.8,
+          "end": 39.06,
+          "word": " Context",
+          "probability": 0.6328532099723816
+        },
+        {
+          "start": 39.06,
+          "end": 39.26,
+          "word": " X",
+          "probability": 0.8093494176864624
+        },
+        {
+          "start": 39.26,
+          "end": 39.4,
+          "word": "-ray,",
+          "probability": 0.7349892854690552
+        },
+        {
+          "start": 39.58,
+          "end": 39.62,
+          "word": " you",
+          "probability": 0.9961063265800476
+        },
+        {
+          "start": 39.62,
+          "end": 39.7,
+          "word": " can",
+          "probability": 0.998181939125061
+        },
+        {
+          "start": 39.7,
+          "end": 39.8,
+          "word": " look",
+          "probability": 0.995995283126831
+        },
+        {
+          "start": 39.8,
+          "end": 40.04,
+          "word": " inside",
+          "probability": 0.9977743029594421
+        },
+        {
+          "start": 40.04,
+          "end": 40.3,
+          "word": " each",
+          "probability": 0.9970226883888245
+        },
+        {
+          "start": 40.3,
+          "end": 40.68,
+          "word": " agent's",
+          "probability": 0.9810137152671814
+        },
+        {
+          "start": 40.68,
+          "end": 40.86,
+          "word": " captured",
+          "probability": 0.9797517657279968
+        },
+        {
+          "start": 40.86,
+          "end": 41.14,
+          "word": " input,",
+          "probability": 0.997979462146759
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "start": 41.42,
+      "end": 43.44,
+      "text": " see how context was allocated, which fields were supported,",
+      "avg_logprob": -0.08730688139244362,
+      "no_speech_prob": 0.36707058548927307,
+      "words": [
+        {
+          "start": 41.42,
+          "end": 41.58,
+          "word": " see",
+          "probability": 0.9938051700592041
+        },
+        {
+          "start": 41.58,
+          "end": 41.72,
+          "word": " how",
+          "probability": 0.9992049336433411
+        },
+        {
+          "start": 41.72,
+          "end": 41.98,
+          "word": " context",
+          "probability": 0.909590482711792
+        },
+        {
+          "start": 41.98,
+          "end": 42.12,
+          "word": " was",
+          "probability": 0.9965928196907043
+        },
+        {
+          "start": 42.12,
+          "end": 42.44,
+          "word": " allocated,",
+          "probability": 0.9976783394813538
+        },
+        {
+          "start": 42.7,
+          "end": 42.84,
+          "word": " which",
+          "probability": 0.9972074627876282
+        },
+        {
+          "start": 42.84,
+          "end": 43.02,
+          "word": " fields",
+          "probability": 0.997500479221344
+        },
+        {
+          "start": 43.02,
+          "end": 43.16,
+          "word": " were",
+          "probability": 0.9960101842880249
+        },
+        {
+          "start": 43.16,
+          "end": 43.44,
+          "word": " supported,",
+          "probability": 0.9976282715797424
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "start": 43.64,
+      "end": 45.02,
+      "text": " and which claims connect back to their sources.",
+      "avg_logprob": -0.08730688139244362,
+      "no_speech_prob": 0.36707058548927307,
+      "words": [
+        {
+          "start": 43.64,
+          "end": 43.76,
+          "word": " and",
+          "probability": 0.9968746900558472
+        },
+        {
+          "start": 43.76,
+          "end": 43.92,
+          "word": " which",
+          "probability": 0.9977748990058899
+        },
+        {
+          "start": 43.92,
+          "end": 44.12,
+          "word": " claims",
+          "probability": 0.9977655410766602
+        },
+        {
+          "start": 44.12,
+          "end": 44.38,
+          "word": " connect",
+          "probability": 0.9918163418769836
+        },
+        {
+          "start": 44.38,
+          "end": 44.58,
+          "word": " back",
+          "probability": 0.9923182725906372
+        },
+        {
+          "start": 44.58,
+          "end": 44.68,
+          "word": " to",
+          "probability": 0.9981318116188049
+        },
+        {
+          "start": 44.68,
+          "end": 44.78,
+          "word": " their",
+          "probability": 0.9976152181625366
+        },
+        {
+          "start": 44.78,
+          "end": 45.02,
+          "word": " sources.",
+          "probability": 0.998539924621582
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "start": 45.62,
+      "end": 47.16,
+      "text": " The cache reveals measured reuse,",
+      "avg_logprob": -0.08730688139244362,
+      "no_speech_prob": 0.36707058548927307,
+      "words": [
+        {
+          "start": 45.62,
+          "end": 45.78,
+          "word": " The",
+          "probability": 0.9941444993019104
+        },
+        {
+          "start": 45.78,
+          "end": 46.04,
+          "word": " cache",
+          "probability": 0.8356321454048157
+        },
+        {
+          "start": 46.04,
+          "end": 46.44,
+          "word": " reveals",
+          "probability": 0.995191216468811
+        },
+        {
+          "start": 46.44,
+          "end": 46.8,
+          "word": " measured",
+          "probability": 0.9704385995864868
+        },
+        {
+          "start": 46.8,
+          "end": 47.16,
+          "word": " reuse,",
+          "probability": 0.9146232604980469
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "start": 47.46,
+      "end": 48.96,
+      "text": " payload sizes, and entry limits.",
+      "avg_logprob": -0.08730688139244362,
+      "no_speech_prob": 0.36707058548927307,
+      "words": [
+        {
+          "start": 47.46,
+          "end": 47.68,
+          "word": " payload",
+          "probability": 0.9958425164222717
+        },
+        {
+          "start": 47.68,
+          "end": 48.08,
+          "word": " sizes,",
+          "probability": 0.9951506853103638
+        },
+        {
+          "start": 48.3,
+          "end": 48.4,
+          "word": " and",
+          "probability": 0.9982346296310425
+        },
+        {
+          "start": 48.4,
+          "end": 48.66,
+          "word": " entry",
+          "probability": 0.998877227306366
+        },
+        {
+          "start": 48.66,
+          "end": 48.96,
+          "word": " limits.",
+          "probability": 0.9893161058425903
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "start": 49.58,
+      "end": 51.42,
+      "text": " The provider view displays recorded requests",
+      "avg_logprob": -0.08730688139244362,
+      "no_speech_prob": 0.36707058548927307,
+      "words": [
+        {
+          "start": 49.58,
+          "end": 49.7,
+          "word": " The",
+          "probability": 0.9940682649612427
+        },
+        {
+          "start": 49.7,
+          "end": 50.0,
+          "word": " provider",
+          "probability": 0.62233966588974
+        },
+        {
+          "start": 50.0,
+          "end": 50.26,
+          "word": " view",
+          "probability": 0.9921988844871521
+        },
+        {
+          "start": 50.26,
+          "end": 50.62,
+          "word": " displays",
+          "probability": 0.9980822801589966
+        },
+        {
+          "start": 50.62,
+          "end": 51.0,
+          "word": " recorded",
+          "probability": 0.9890702962875366
+        },
+        {
+          "start": 51.0,
+          "end": 51.42,
+          "word": " requests",
+          "probability": 0.9962205290794373
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "start": 51.42,
+      "end": 52.9,
+      "text": " and reported model token usage.",
+      "avg_logprob": -0.08730688139244362,
+      "no_speech_prob": 0.36707058548927307,
+      "words": [
+        {
+          "start": 51.42,
+          "end": 51.68,
+          "word": " and",
+          "probability": 0.9865058064460754
+        },
+        {
+          "start": 51.68,
+          "end": 52.04,
+          "word": " reported",
+          "probability": 0.9887315630912781
+        },
+        {
+          "start": 52.04,
+          "end": 52.3,
+          "word": " model",
+          "probability": 0.98807692527771
+        },
+        {
+          "start": 52.3,
+          "end": 52.6,
+          "word": " token",
+          "probability": 0.9271408319473267
+        },
+        {
+          "start": 52.6,
+          "end": 52.9,
+          "word": " usage.",
+          "probability": 0.9992535710334778
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "start": 53.58,
+      "end": 55.2,
+      "text": " Hardware monitoring distinguishes observed memory",
+      "avg_logprob": -0.08730688139244362,
+      "no_speech_prob": 0.36707058548927307,
+      "words": [
+        {
+          "start": 53.58,
+          "end": 53.74,
+          "word": " Hardware",
+          "probability": 0.979268491268158
+        },
+        {
+          "start": 53.74,
+          "end": 54.1,
+          "word": " monitoring",
+          "probability": 0.9910866618156433
+        },
+        {
+          "start": 54.1,
+          "end": 54.54,
+          "word": " distinguishes",
+          "probability": 0.9943497776985168
+        },
+        {
+          "start": 54.54,
+          "end": 54.9,
+          "word": " observed",
+          "probability": 0.9938889741897583
+        },
+        {
+          "start": 54.9,
+          "end": 55.2,
+          "word": " memory",
+          "probability": 0.9997838139533997
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "start": 55.2,
+      "end": 56.96,
+      "text": " from GPU utilization that isn't available.",
+      "avg_logprob": -0.08730688139244362,
+      "no_speech_prob": 0.36707058548927307,
+      "words": [
+        {
+          "start": 55.2,
+          "end": 55.4,
+          "word": " from",
+          "probability": 0.9984610080718994
+        },
+        {
+          "start": 55.4,
+          "end": 55.68,
+          "word": " GPU",
+          "probability": 0.9973549842834473
+        },
+        {
+          "start": 55.68,
+          "end": 56.14,
+          "word": " utilization",
+          "probability": 0.9904419183731079
+        },
+        {
+          "start": 56.14,
+          "end": 56.4,
+          "word": " that",
+          "probability": 0.9979051351547241
+        },
+        {
+          "start": 56.4,
+          "end": 56.66,
+          "word": " isn't",
+          "probability": 0.9987592697143555
+        },
+        {
+          "start": 56.66,
+          "end": 56.96,
+          "word": " available.",
+          "probability": 0.99920254945755
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "start": 56.96,
+      "end": 61.14,
+      "text": " Latency points reveal measured context assembly and agent execution time.",
+      "avg_logprob": -0.1801324005105666,
+      "no_speech_prob": 0.43639111518859863,
+      "words": [
+        {
+          "start": 56.96,
+          "end": 57.92,
+          "word": " Latency",
+          "probability": 0.7188133001327515
+        },
+        {
+          "start": 57.92,
+          "end": 58.14,
+          "word": " points",
+          "probability": 0.9346377849578857
+        },
+        {
+          "start": 58.14,
+          "end": 58.46,
+          "word": " reveal",
+          "probability": 0.9807705283164978
+        },
+        {
+          "start": 58.46,
+          "end": 58.82,
+          "word": " measured",
+          "probability": 0.9834360480308533
+        },
+        {
+          "start": 58.82,
+          "end": 59.24,
+          "word": " context",
+          "probability": 0.9833864569664001
+        },
+        {
+          "start": 59.24,
+          "end": 59.66,
+          "word": " assembly",
+          "probability": 0.9717552065849304
+        },
+        {
+          "start": 59.66,
+          "end": 59.88,
+          "word": " and",
+          "probability": 0.962152361869812
+        },
+        {
+          "start": 59.88,
+          "end": 60.16,
+          "word": " agent",
+          "probability": 0.9728056192398071
+        },
+        {
+          "start": 60.16,
+          "end": 60.6,
+          "word": " execution",
+          "probability": 0.9967840909957886
+        },
+        {
+          "start": 60.6,
+          "end": 61.14,
+          "word": " time.",
+          "probability": 0.9951583743095398
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "start": 61.42,
+      "end": 62.56,
+      "text": " You can inspect live databases,",
+      "avg_logprob": -0.1801324005105666,
+      "no_speech_prob": 0.43639111518859863,
+      "words": [
+        {
+          "start": 61.42,
+          "end": 61.48,
+          "word": " You",
+          "probability": 0.9809461236000061
+        },
+        {
+          "start": 61.48,
+          "end": 61.58,
+          "word": " can",
+          "probability": 0.9988724589347839
+        },
+        {
+          "start": 61.58,
+          "end": 61.86,
+          "word": " inspect",
+          "probability": 0.9965292811393738
+        },
+        {
+          "start": 61.86,
+          "end": 62.1,
+          "word": " live",
+          "probability": 0.934562623500824
+        },
+        {
+          "start": 62.1,
+          "end": 62.56,
+          "word": " databases,",
+          "probability": 0.9829983115196228
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "start": 62.88,
+      "end": 65.86,
+      "text": " nutrient vectors, execution receipts, and masked provider identities.",
+      "avg_logprob": -0.1801324005105666,
+      "no_speech_prob": 0.43639111518859863,
+      "words": [
+        {
+          "start": 62.88,
+          "end": 63.04,
+          "word": " nutrient",
+          "probability": 0.0701875239610672
+        },
+        {
+          "start": 63.04,
+          "end": 63.42,
+          "word": " vectors,",
+          "probability": 0.9944889545440674
+        },
+        {
+          "start": 63.72,
+          "end": 64.02,
+          "word": " execution",
+          "probability": 0.9929186701774597
+        },
+        {
+          "start": 64.02,
+          "end": 64.36,
+          "word": " receipts,",
+          "probability": 0.9899981617927551
+        },
+        {
+          "start": 64.62,
+          "end": 64.72,
+          "word": " and",
+          "probability": 0.9941760301589966
+        },
+        {
+          "start": 64.72,
+          "end": 65.02,
+          "word": " masked",
+          "probability": 0.72335284948349
+        },
+        {
+          "start": 65.02,
+          "end": 65.38,
+          "word": " provider",
+          "probability": 0.9900543689727783
+        },
+        {
+          "start": 65.38,
+          "end": 65.86,
+          "word": " identities.",
+          "probability": 0.991619348526001
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "start": 66.8,
+      "end": 67.96,
+      "text": " Filters",
+      "avg_logprob": -0.1801324005105666,
+      "no_speech_prob": 0.43639111518859863,
+      "words": [
+        {
+          "start": 66.8,
+          "end": 67.96,
+          "word": " Filters",
+          "probability": 0.7496742010116577
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "start": 67.96,
+      "end": 69.18,
+      "text": " Keyboard shortcuts",
+      "avg_logprob": -0.1801324005105666,
+      "no_speech_prob": 0.43639111518859863,
+      "words": [
+        {
+          "start": 67.96,
+          "end": 68.58,
+          "word": " Keyboard",
+          "probability": 0.9359918832778931
+        },
+        {
+          "start": 68.58,
+          "end": 69.18,
+          "word": " shortcuts",
+          "probability": 0.5892692804336548
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "start": 69.18,
+      "end": 70.92,
+      "text": " Responsive drawers",
+      "avg_logprob": -0.1801324005105666,
+      "no_speech_prob": 0.43639111518859863,
+      "words": [
+        {
+          "start": 69.18,
+          "end": 70.28,
+          "word": " Responsive",
+          "probability": 0.9844594299793243
+        },
+        {
+          "start": 70.28,
+          "end": 70.92,
+          "word": " drawers",
+          "probability": 0.847345381975174
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "start": 70.92,
+      "end": 72.9,
+      "text": " That's where Voyara comes in.",
+      "avg_logprob": -0.1801324005105666,
+      "no_speech_prob": 0.43639111518859863,
+      "words": [
+        {
+          "start": 70.92,
+          "end": 71.72,
+          "word": " That's",
+          "probability": 0.9075393378734589
+        },
+        {
+          "start": 71.72,
+          "end": 71.86,
+          "word": " where",
+          "probability": 0.9955481290817261
+        },
+        {
+          "start": 71.86,
+          "end": 72.24,
+          "word": " Voyara",
+          "probability": 0.6441469788551331
+        },
+        {
+          "start": 72.24,
+          "end": 72.5,
+          "word": " comes",
+          "probability": 0.9913536906242371
+        },
+        {
+          "start": 72.5,
+          "end": 72.9,
+          "word": " in.",
+          "probability": 0.9970842003822327
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "start": 73.24,
+      "end": 75.8,
+      "text": " A travel experience that begins with a simple idea",
+      "avg_logprob": -0.1801324005105666,
+      "no_speech_prob": 0.43639111518859863,
+      "words": [
+        {
+          "start": 73.24,
+          "end": 73.28,
+          "word": " A",
+          "probability": 0.9780330657958984
+        },
+        {
+          "start": 73.28,
+          "end": 73.56,
+          "word": " travel",
+          "probability": 0.9966984391212463
+        },
+        {
+          "start": 73.56,
+          "end": 74.12,
+          "word": " experience",
+          "probability": 0.9989961981773376
+        },
+        {
+          "start": 74.12,
+          "end": 74.36,
+          "word": " that",
+          "probability": 0.9941624999046326
+        },
+        {
+          "start": 74.36,
+          "end": 74.68,
+          "word": " begins",
+          "probability": 0.9927752017974854
+        },
+        {
+          "start": 74.68,
+          "end": 74.92,
+          "word": " with",
+          "probability": 0.9989620447158813
+        },
+        {
+          "start": 74.92,
+          "end": 75.08,
+          "word": " a",
+          "probability": 0.9911189675331116
+        },
+        {
+          "start": 75.08,
+          "end": 75.38,
+          "word": " simple",
+          "probability": 0.998446524143219
+        },
+        {
+          "start": 75.38,
+          "end": 75.8,
+          "word": " idea",
+          "probability": 0.999029278755188
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "start": 75.8,
+      "end": 78.72,
+      "text": " and turns it into a journey designed around you.",
+      "avg_logprob": -0.1801324005105666,
+      "no_speech_prob": 0.43639111518859863,
+      "words": [
+        {
+          "start": 75.8,
+          "end": 76.32,
+          "word": " and",
+          "probability": 0.8430370092391968
+        },
+        {
+          "start": 76.32,
+          "end": 76.56,
+          "word": " turns",
+          "probability": 0.9928493499755859
+        },
+        {
+          "start": 76.56,
+          "end": 76.72,
+          "word": " it",
+          "probability": 0.9916486740112305
+        },
+        {
+          "start": 76.72,
+          "end": 76.96,
+          "word": " into",
+          "probability": 0.9942303895950317
+        },
+        {
+          "start": 76.96,
+          "end": 77.12,
+          "word": " a",
+          "probability": 0.9959315657615662
+        },
+        {
+          "start": 77.12,
+          "end": 77.4,
+          "word": " journey",
+          "probability": 0.9989913105964661
+        },
+        {
+          "start": 77.4,
+          "end": 77.86,
+          "word": " designed",
+          "probability": 0.9895052313804626
+        },
+        {
+          "start": 77.86,
+          "end": 78.32,
+          "word": " around",
+          "probability": 0.9991239905357361
+        },
+        {
+          "start": 78.32,
+          "end": 78.72,
+          "word": " you.",
+          "probability": 0.9894369840621948
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "start": 79.32,
+      "end": 80.06,
+      "text": " Let's plan a trip.",
+      "avg_logprob": -0.1801324005105666,
+      "no_speech_prob": 0.43639111518859863,
+      "words": [
+        {
+          "start": 79.32,
+          "end": 79.48,
+          "word": " Let's",
+          "probability": 0.9828241765499115
+        },
+        {
+          "start": 79.48,
+          "end": 79.66,
+          "word": " plan",
+          "probability": 0.9831616878509521
+        },
+        {
+          "start": 79.66,
+          "end": 79.8,
+          "word": " a",
+          "probability": 0.995335042476654
+        },
+        {
+          "start": 79.8,
+          "end": 80.06,
+          "word": " trip.",
+          "probability": 0.9979076385498047
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "start": 80.54,
+      "end": 81.04,
+      "text": " Two travellers",
+      "avg_logprob": -0.1801324005105666,
+      "no_speech_prob": 0.43639111518859863,
+      "words": [
+        {
+          "start": 80.54,
+          "end": 80.64,
+          "word": " Two",
+          "probability": 0.8428459167480469
+        },
+        {
+          "start": 80.64,
+          "end": 81.04,
+          "word": " travellers",
+          "probability": 0.41418784856796265
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "start": 81.04,
+      "end": 81.78,
+      "text": " Kerala",
+      "avg_logprob": -0.1801324005105666,
+      "no_speech_prob": 0.43639111518859863,
+      "words": [
+        {
+          "start": 81.04,
+          "end": 81.78,
+          "word": " Kerala",
+          "probability": 0.006686124484986067
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "start": 81.78,
+      "end": 84.26,
+      "text": " December 1st through December 3rd",
+      "avg_logprob": -0.1801324005105666,
+      "no_speech_prob": 0.43639111518859863,
+      "words": [
+        {
+          "start": 81.78,
+          "end": 82.5,
+          "word": " December",
+          "probability": 0.21321384608745575
+        },
+        {
+          "start": 82.5,
+          "end": 83.16,
+          "word": " 1st",
+          "probability": 0.802272617816925
+        },
+        {
+          "start": 83.16,
+          "end": 83.2,
+          "word": " through",
+          "probability": 0.7882376313209534
+        },
+        {
+          "start": 83.2,
+          "end": 83.54,
+          "word": " December",
+          "probability": 0.9875470995903015
+        },
+        {
+          "start": 83.54,
+          "end": 84.26,
+          "word": " 3rd",
+          "probability": 0.9931747615337372
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "start": 84.26,
+      "end": 87.1,
+      "text": " A relaxed pace and a budget of ₹200,000.",
+      "avg_logprob": -0.16977629396650526,
+      "no_speech_prob": 0.0236164890229702,
+      "words": [
+        {
+          "start": 84.26,
+          "end": 84.42,
+          "word": " A",
+          "probability": 0.6349080204963684
+        },
+        {
+          "start": 84.42,
+          "end": 84.78,
+          "word": " relaxed",
+          "probability": 0.9806689620018005
+        },
+        {
+          "start": 84.78,
+          "end": 85.16,
+          "word": " pace",
+          "probability": 0.9888648986816406
+        },
+        {
+          "start": 85.16,
+          "end": 85.68,
+          "word": " and",
+          "probability": 0.791598916053772
+        },
+        {
+          "start": 85.68,
+          "end": 85.78,
+          "word": " a",
+          "probability": 0.9424295425415039
+        },
+        {
+          "start": 85.78,
+          "end": 85.98,
+          "word": " budget",
+          "probability": 0.9972214698791504
+        },
+        {
+          "start": 85.98,
+          "end": 86.26,
+          "word": " of",
+          "probability": 0.9975760579109192
+        },
+        {
+          "start": 86.26,
+          "end": 86.68,
+          "word": " ₹200",
+          "probability": 0.7229470312595367
+        },
+        {
+          "start": 86.68,
+          "end": 87.1,
+          "word": ",000.",
+          "probability": 0.9850031733512878
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "start": 87.54,
+      "end": 88.8,
+      "text": " That's all we need to begin.",
+      "avg_logprob": -0.16977629396650526,
+      "no_speech_prob": 0.0236164890229702,
+      "words": [
+        {
+          "start": 87.54,
+          "end": 88.04,
+          "word": " That's",
+          "probability": 0.9840333759784698
+        },
+        {
+          "start": 88.04,
+          "end": 88.14,
+          "word": " all",
+          "probability": 0.9988477230072021
+        },
+        {
+          "start": 88.14,
+          "end": 88.28,
+          "word": " we",
+          "probability": 0.9962859153747559
+        },
+        {
+          "start": 88.28,
+          "end": 88.42,
+          "word": " need",
+          "probability": 0.996749997138977
+        },
+        {
+          "start": 88.42,
+          "end": 88.54,
+          "word": " to",
+          "probability": 0.9985694885253906
+        },
+        {
+          "start": 88.54,
+          "end": 88.8,
+          "word": " begin.",
+          "probability": 0.9956129789352417
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "start": 90.18,
+      "end": 92.26,
+      "text": " The orchestrator assembles the relevant context.",
+      "avg_logprob": -0.16977629396650526,
+      "no_speech_prob": 0.0236164890229702,
+      "words": [
+        {
+          "start": 90.18,
+          "end": 90.26,
+          "word": " The",
+          "probability": 0.9523098468780518
+        },
+        {
+          "start": 90.26,
+          "end": 90.84,
+          "word": " orchestrator",
+          "probability": 0.9608957171440125
+        },
+        {
+          "start": 90.84,
+          "end": 91.32,
+          "word": " assembles",
+          "probability": 0.9873642325401306
+        },
+        {
+          "start": 91.32,
+          "end": 91.46,
+          "word": " the",
+          "probability": 0.9925304055213928
+        },
+        {
+          "start": 91.46,
+          "end": 91.74,
+          "word": " relevant",
+          "probability": 0.9992935657501221
+        },
+        {
+          "start": 91.74,
+          "end": 92.26,
+          "word": " context.",
+          "probability": 0.9980055689811707
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "start": 93.1,
+      "end": 94.6,
+      "text": " Destination specialists begin their research.",
+      "avg_logprob": -0.16977629396650526,
+      "no_speech_prob": 0.0236164890229702,
+      "words": [
+        {
+          "start": 93.1,
+          "end": 93.1,
+          "word": " Destination",
+          "probability": 0.9482967853546143
+        },
+        {
+          "start": 93.1,
+          "end": 93.64,
+          "word": " specialists",
+          "probability": 0.9837827086448669
+        },
+        {
+          "start": 93.64,
+          "end": 94.02,
+          "word": " begin",
+          "probability": 0.9939252734184265
+        },
+        {
+          "start": 94.02,
+          "end": 94.22,
+          "word": " their",
+          "probability": 0.9945136308670044
+        },
+        {
+          "start": 94.22,
+          "end": 94.6,
+          "word": " research.",
+          "probability": 0.9981796741485596
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "start": 95.36,
+      "end": 97.96,
+      "text": " Stay, food and experience specialists contribute their findings.",
+      "avg_logprob": -0.16977629396650526,
+      "no_speech_prob": 0.0236164890229702,
+      "words": [
+        {
+          "start": 95.36,
+          "end": 95.38,
+          "word": " Stay,",
+          "probability": 0.9033965468406677
+        },
+        {
+          "start": 95.64,
+          "end": 95.78,
+          "word": " food",
+          "probability": 0.9018679857254028
+        },
+        {
+          "start": 95.78,
+          "end": 95.98,
+          "word": " and",
+          "probability": 0.7268747091293335
+        },
+        {
+          "start": 95.98,
+          "end": 96.42,
+          "word": " experience",
+          "probability": 0.9818217158317566
+        },
+        {
+          "start": 96.42,
+          "end": 96.9,
+          "word": " specialists",
+          "probability": 0.9925575256347656
+        },
+        {
+          "start": 96.9,
+          "end": 97.38,
+          "word": " contribute",
+          "probability": 0.9975480437278748
+        },
+        {
+          "start": 97.38,
+          "end": 97.62,
+          "word": " their",
+          "probability": 0.995590090751648
+        },
+        {
+          "start": 97.62,
+          "end": 97.96,
+          "word": " findings.",
+          "probability": 0.9963819980621338
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "start": 98.44,
+      "end": 101.1,
+      "text": " Then the itinerary and budget agents bring the pieces together.",
+      "avg_logprob": -0.16977629396650526,
+      "no_speech_prob": 0.0236164890229702,
+      "words": [
+        {
+          "start": 98.44,
+          "end": 98.62,
+          "word": " Then",
+          "probability": 0.9880693554878235
+        },
+        {
+          "start": 98.62,
+          "end": 98.82,
+          "word": " the",
+          "probability": 0.6626412868499756
+        },
+        {
+          "start": 98.82,
+          "end": 99.32,
+          "word": " itinerary",
+          "probability": 0.9595299959182739
+        },
+        {
+          "start": 99.32,
+          "end": 99.5,
+          "word": " and",
+          "probability": 0.9976625442504883
+        },
+        {
+          "start": 99.5,
+          "end": 99.72,
+          "word": " budget",
+          "probability": 0.9663383960723877
+        },
+        {
+          "start": 99.72,
+          "end": 100.08,
+          "word": " agents",
+          "probability": 0.9964733719825745
+        },
+        {
+          "start": 100.08,
+          "end": 100.3,
+          "word": " bring",
+          "probability": 0.9933441877365112
+        },
+        {
+          "start": 100.3,
+          "end": 100.46,
+          "word": " the",
+          "probability": 0.9957564473152161
+        },
+        {
+          "start": 100.46,
+          "end": 100.72,
+          "word": " pieces",
+          "probability": 0.9992616772651672
+        },
+        {
+          "start": 100.72,
+          "end": 101.1,
+          "word": " together.",
+          "probability": 0.9991624355316162
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "start": 101.5,
+      "end": 104.58,
+      "text": " And all the while, the dashboard and voyara remain synchronized.",
+      "avg_logprob": -0.16977629396650526,
+      "no_speech_prob": 0.0236164890229702,
+      "words": [
+        {
+          "start": 101.5,
+          "end": 101.66,
+          "word": " And",
+          "probability": 0.9567657113075256
+        },
+        {
+          "start": 101.66,
+          "end": 101.88,
+          "word": " all",
+          "probability": 0.9551465511322021
+        },
+        {
+          "start": 101.88,
+          "end": 102.0,
+          "word": " the",
+          "probability": 0.991151750087738
+        },
+        {
+          "start": 102.0,
+          "end": 102.24,
+          "word": " while,",
+          "probability": 0.997702419757843
+        },
+        {
+          "start": 102.5,
+          "end": 102.6,
+          "word": " the",
+          "probability": 0.9885382652282715
+        },
+        {
+          "start": 102.6,
+          "end": 102.96,
+          "word": " dashboard",
+          "probability": 0.9842590093612671
+        },
+        {
+          "start": 102.96,
+          "end": 103.24,
+          "word": " and",
+          "probability": 0.991730272769928
+        },
+        {
+          "start": 103.24,
+          "end": 103.58,
+          "word": " voyara",
+          "probability": 0.375797301530838
+        },
+        {
+          "start": 103.58,
+          "end": 104.0,
+          "word": " remain",
+          "probability": 0.8234712481498718
+        },
+        {
+          "start": 104.0,
+          "end": 104.58,
+          "word": " synchronized.",
+          "probability": 0.8558998703956604
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "start": 105.02,
+      "end": 107.8,
+      "text": " What happens in the application is reflected in the memory dashboard.",
+      "avg_logprob": -0.16977629396650526,
+      "no_speech_prob": 0.0236164890229702,
+      "words": [
+        {
+          "start": 105.02,
+          "end": 105.16,
+          "word": " What",
+          "probability": 0.9958661794662476
+        },
+        {
+          "start": 105.16,
+          "end": 105.4,
+          "word": " happens",
+          "probability": 0.9970355033874512
+        },
+        {
+          "start": 105.4,
+          "end": 105.6,
+          "word": " in",
+          "probability": 0.9961307048797607
+        },
+        {
+          "start": 105.6,
+          "end": 105.68,
+          "word": " the",
+          "probability": 0.9966357350349426
+        },
+        {
+          "start": 105.68,
+          "end": 106.08,
+          "word": " application",
+          "probability": 0.9975270628929138
+        },
+        {
+          "start": 106.08,
+          "end": 106.44,
+          "word": " is",
+          "probability": 0.9892197251319885
+        },
+        {
+          "start": 106.44,
+          "end": 106.8,
+          "word": " reflected",
+          "probability": 0.9984632730484009
+        },
+        {
+          "start": 106.8,
+          "end": 107.08,
+          "word": " in",
+          "probability": 0.9976294636726379
+        },
+        {
+          "start": 107.08,
+          "end": 107.16,
+          "word": " the",
+          "probability": 0.9951558113098145
+        },
+        {
+          "start": 107.16,
+          "end": 107.38,
+          "word": " memory",
+          "probability": 0.9512858390808105
+        },
+        {
+          "start": 107.38,
+          "end": 107.8,
+          "word": " dashboard.",
+          "probability": 0.9966698288917542
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "start": 108.16,
+      "end": 109.34,
+      "text": " The activity is observed.",
+      "avg_logprob": -0.16977629396650526,
+      "no_speech_prob": 0.0236164890229702,
+      "words": [
+        {
+          "start": 108.16,
+          "end": 108.3,
+          "word": " The",
+          "probability": 0.9971641898155212
+        },
+        {
+          "start": 108.3,
+          "end": 108.64,
+          "word": " activity",
+          "probability": 0.9986035227775574
+        },
+        {
+          "start": 108.64,
+          "end": 108.94,
+          "word": " is",
+          "probability": 0.9990348815917969
+        },
+        {
+          "start": 108.94,
+          "end": 109.34,
+          "word": " observed.",
+          "probability": 0.9961708188056946
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "start": 109.74,
+      "end": 110.98,
+      "text": " The model calls are real.",
+      "avg_logprob": -0.16977629396650526,
+      "no_speech_prob": 0.0236164890229702,
+      "words": [
+        {
+          "start": 109.74,
+          "end": 109.84,
+          "word": " The",
+          "probability": 0.9937331080436707
+        },
+        {
+          "start": 109.84,
+          "end": 110.1,
+          "word": " model",
+          "probability": 0.9873836636543274
+        },
+        {
+          "start": 110.1,
+          "end": 110.4,
+          "word": " calls",
+          "probability": 0.9909277558326721
+        },
+        {
+          "start": 110.4,
+          "end": 110.68,
+          "word": " are",
+          "probability": 0.9982779026031494
+        },
+        {
+          "start": 110.68,
+          "end": 110.98,
+          "word": " real.",
+          "probability": 0.9884089231491089
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "start": 110.98,
+      "end": 114.32,
+      "text": " For this demonstration, the waiting time has been accelerated in the edit.",
+      "avg_logprob": -0.13102223568683047,
+      "no_speech_prob": 0.22082257270812988,
+      "words": [
+        {
+          "start": 110.98,
+          "end": 111.48,
+          "word": " For",
+          "probability": 0.4414736330509186
+        },
+        {
+          "start": 111.48,
+          "end": 111.64,
+          "word": " this",
+          "probability": 0.9881181120872498
+        },
+        {
+          "start": 111.64,
+          "end": 112.14,
+          "word": " demonstration,",
+          "probability": 0.9928556680679321
+        },
+        {
+          "start": 112.4,
+          "end": 112.44,
+          "word": " the",
+          "probability": 0.9877780079841614
+        },
+        {
+          "start": 112.44,
+          "end": 112.64,
+          "word": " waiting",
+          "probability": 0.9914032816886902
+        },
+        {
+          "start": 112.64,
+          "end": 112.92,
+          "word": " time",
+          "probability": 0.9958315491676331
+        },
+        {
+          "start": 112.92,
+          "end": 113.1,
+          "word": " has",
+          "probability": 0.9934992790222168
+        },
+        {
+          "start": 113.1,
+          "end": 113.22,
+          "word": " been",
+          "probability": 0.9911053776741028
+        },
+        {
+          "start": 113.22,
+          "end": 113.72,
+          "word": " accelerated",
+          "probability": 0.9924119114875793
+        },
+        {
+          "start": 113.72,
+          "end": 113.98,
+          "word": " in",
+          "probability": 0.993953287601471
+        },
+        {
+          "start": 113.98,
+          "end": 114.1,
+          "word": " the",
+          "probability": 0.995811939239502
+        },
+        {
+          "start": 114.1,
+          "end": 114.32,
+          "word": " edit.",
+          "probability": 0.9213048815727234
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "start": 115.02,
+      "end": 116.76,
+      "text": " Seven specialists have completed their work.",
+      "avg_logprob": -0.13102223568683047,
+      "no_speech_prob": 0.22082257270812988,
+      "words": [
+        {
+          "start": 115.02,
+          "end": 115.2,
+          "word": " Seven",
+          "probability": 0.6677054762840271
+        },
+        {
+          "start": 115.2,
+          "end": 115.58,
+          "word": " specialists",
+          "probability": 0.9512999653816223
+        },
+        {
+          "start": 115.58,
+          "end": 115.9,
+          "word": " have",
+          "probability": 0.9974925518035889
+        },
+        {
+          "start": 115.9,
+          "end": 116.24,
+          "word": " completed",
+          "probability": 0.9980073571205139
+        },
+        {
+          "start": 116.24,
+          "end": 116.48,
+          "word": " their",
+          "probability": 0.9930785298347473
+        },
+        {
+          "start": 116.48,
+          "end": 116.76,
+          "word": " work.",
+          "probability": 0.997782289981842
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "start": 117.22,
+      "end": 122.22,
+      "text": " Voyara now saves the itinerary, indicative costs, and the recorded work of each agent ready for review.",
+      "avg_logprob": -0.13102223568683047,
+      "no_speech_prob": 0.22082257270812988,
+      "words": [
+        {
+          "start": 117.22,
+          "end": 117.42,
+          "word": " Voyara",
+          "probability": 0.5501952767372131
+        },
+        {
+          "start": 117.42,
+          "end": 117.66,
+          "word": " now",
+          "probability": 0.9879065752029419
+        },
+        {
+          "start": 117.66,
+          "end": 117.98,
+          "word": " saves",
+          "probability": 0.9955936074256897
+        },
+        {
+          "start": 117.98,
+          "end": 118.12,
+          "word": " the",
+          "probability": 0.9981949925422668
+        },
+        {
+          "start": 118.12,
+          "end": 118.6,
+          "word": " itinerary,",
+          "probability": 0.8754071295261383
+        },
+        {
+          "start": 118.78,
+          "end": 119.06,
+          "word": " indicative",
+          "probability": 0.8153047561645508
+        },
+        {
+          "start": 119.06,
+          "end": 119.46,
+          "word": " costs,",
+          "probability": 0.985524594783783
+        },
+        {
+          "start": 119.78,
+          "end": 119.88,
+          "word": " and",
+          "probability": 0.9958341121673584
+        },
+        {
+          "start": 119.88,
+          "end": 119.98,
+          "word": " the",
+          "probability": 0.9930353760719299
+        },
+        {
+          "start": 119.98,
+          "end": 120.28,
+          "word": " recorded",
+          "probability": 0.9928029179573059
+        },
+        {
+          "start": 120.28,
+          "end": 120.56,
+          "word": " work",
+          "probability": 0.997468113899231
+        },
+        {
+          "start": 120.56,
+          "end": 120.74,
+          "word": " of",
+          "probability": 0.9961100220680237
+        },
+        {
+          "start": 120.74,
+          "end": 120.96,
+          "word": " each",
+          "probability": 0.9993128776550293
+        },
+        {
+          "start": 120.96,
+          "end": 121.34,
+          "word": " agent",
+          "probability": 0.9843326807022095
+        },
+        {
+          "start": 121.34,
+          "end": 121.68,
+          "word": " ready",
+          "probability": 0.6840112209320068
+        },
+        {
+          "start": 121.68,
+          "end": 121.92,
+          "word": " for",
+          "probability": 0.9972816705703735
+        },
+        {
+          "start": 121.92,
+          "end": 122.22,
+          "word": " review.",
+          "probability": 0.9990164041519165
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "start": 122.74,
+      "end": 124.48,
+      "text": " We open the budget agent's captured context.",
+      "avg_logprob": -0.13102223568683047,
+      "no_speech_prob": 0.22082257270812988,
+      "words": [
+        {
+          "start": 122.74,
+          "end": 122.88,
+          "word": " We",
+          "probability": 0.9691518545150757
+        },
+        {
+          "start": 122.88,
+          "end": 123.06,
+          "word": " open",
+          "probability": 0.9539452195167542
+        },
+        {
+          "start": 123.06,
+          "end": 123.22,
+          "word": " the",
+          "probability": 0.9964553117752075
+        },
+        {
+          "start": 123.22,
+          "end": 123.42,
+          "word": " budget",
+          "probability": 0.9005724191665649
+        },
+        {
+          "start": 123.42,
+          "end": 123.84,
+          "word": " agent's",
+          "probability": 0.879195898771286
+        },
+        {
+          "start": 123.84,
+          "end": 124.04,
+          "word": " captured",
+          "probability": 0.9456775188446045
+        },
+        {
+          "start": 124.04,
+          "end": 124.48,
+          "word": " context.",
+          "probability": 0.9812114238739014
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "start": 124.82,
+      "end": 126.56,
+      "text": " There it is, 200,000 rupees.",
+      "avg_logprob": -0.13102223568683047,
+      "no_speech_prob": 0.22082257270812988,
+      "words": [
+        {
+          "start": 124.82,
+          "end": 124.98,
+          "word": " There",
+          "probability": 0.9723283052444458
+        },
+        {
+          "start": 124.98,
+          "end": 125.06,
+          "word": " it",
+          "probability": 0.990851104259491
+        },
+        {
+          "start": 125.06,
+          "end": 125.26,
+          "word": " is,",
+          "probability": 0.999365508556366
+        },
+        {
+          "start": 125.58,
+          "end": 125.82,
+          "word": " 200",
+          "probability": 0.7608312964439392
+        },
+        {
+          "start": 125.82,
+          "end": 126.24,
+          "word": ",000",
+          "probability": 0.9210753440856934
+        },
+        {
+          "start": 126.24,
+          "end": 126.56,
+          "word": " rupees.",
+          "probability": 0.8542014360427856
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "start": 126.86,
+      "end": 130.22,
+      "text": " Not just a number, but a requirement supported by a specific claim and its source.",
+      "avg_logprob": -0.13102223568683047,
+      "no_speech_prob": 0.22082257270812988,
+      "words": [
+        {
+          "start": 126.86,
+          "end": 126.96,
+          "word": " Not",
+          "probability": 0.9889149069786072
+        },
+        {
+          "start": 126.96,
+          "end": 127.1,
+          "word": " just",
+          "probability": 0.9987216591835022
+        },
+        {
+          "start": 127.1,
+          "end": 127.26,
+          "word": " a",
+          "probability": 0.9980205297470093
+        },
+        {
+          "start": 127.26,
+          "end": 127.42,
+          "word": " number,",
+          "probability": 0.9967120885848999
+        },
+        {
+          "start": 127.66,
+          "end": 127.8,
+          "word": " but",
+          "probability": 0.998557984828949
+        },
+        {
+          "start": 127.8,
+          "end": 127.9,
+          "word": " a",
+          "probability": 0.9961789846420288
+        },
+        {
+          "start": 127.9,
+          "end": 128.3,
+          "word": " requirement",
+          "probability": 0.993610680103302
+        },
+        {
+          "start": 128.3,
+          "end": 128.68,
+          "word": " supported",
+          "probability": 0.8273393511772156
+        },
+        {
+          "start": 128.68,
+          "end": 128.92,
+          "word": " by",
+          "probability": 0.9981235861778259
+        },
+        {
+          "start": 128.92,
+          "end": 129.08,
+          "word": " a",
+          "probability": 0.9894155263900757
+        },
+        {
+          "start": 129.08,
+          "end": 129.32,
+          "word": " specific",
+          "probability": 0.9985949397087097
+        },
+        {
+          "start": 129.32,
+          "end": 129.58,
+          "word": " claim",
+          "probability": 0.9959623217582703
+        },
+        {
+          "start": 129.58,
+          "end": 129.84,
+          "word": " and",
+          "probability": 0.9925927519798279
+        },
+        {
+          "start": 129.84,
+          "end": 129.98,
+          "word": " its",
+          "probability": 0.961938202381134
+        },
+        {
+          "start": 129.98,
+          "end": 130.22,
+          "word": " source.",
+          "probability": 0.9955724477767944
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "start": 130.54,
+      "end": 133.08,
+      "text": " Here, context allocation is measured using UTF-8 bytes.",
+      "avg_logprob": -0.13102223568683047,
+      "no_speech_prob": 0.22082257270812988,
+      "words": [
+        {
+          "start": 130.54,
+          "end": 130.74,
+          "word": " Here,",
+          "probability": 0.9916039109230042
+        },
+        {
+          "start": 130.92,
+          "end": 131.1,
+          "word": " context",
+          "probability": 0.9786039590835571
+        },
+        {
+          "start": 131.1,
+          "end": 131.44,
+          "word": " allocation",
+          "probability": 0.996206521987915
+        },
+        {
+          "start": 131.44,
+          "end": 131.7,
+          "word": " is",
+          "probability": 0.9987567663192749
+        },
+        {
+          "start": 131.7,
+          "end": 131.92,
+          "word": " measured",
+          "probability": 0.9946117401123047
+        },
+        {
+          "start": 131.92,
+          "end": 132.24,
+          "word": " using",
+          "probability": 0.993024468421936
+        },
+        {
+          "start": 132.24,
+          "end": 132.58,
+          "word": " UTF",
+          "probability": 0.9699568748474121
+        },
+        {
+          "start": 132.58,
+          "end": 132.86,
+          "word": "-8",
+          "probability": 0.9271862506866455
+        },
+        {
+          "start": 132.86,
+          "end": 133.08,
+          "word": " bytes.",
+          "probability": 0.9824432134628296
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "start": 133.62,
+      "end": 134.96,
+      "text": " So, let's change the budget.",
+      "avg_logprob": -0.13102223568683047,
+      "no_speech_prob": 0.22082257270812988,
+      "words": [
+        {
+          "start": 133.62,
+          "end": 133.94,
+          "word": " So,",
+          "probability": 0.9929319620132446
+        },
+        {
+          "start": 134.08,
+          "end": 134.42,
+          "word": " let's",
+          "probability": 0.9945116937160492
+        },
+        {
+          "start": 134.42,
+          "end": 134.58,
+          "word": " change",
+          "probability": 0.9988791346549988
+        },
+        {
+          "start": 134.58,
+          "end": 134.74,
+          "word": " the",
+          "probability": 0.9987426400184631
+        },
+        {
+          "start": 134.74,
+          "end": 134.96,
+          "word": " budget.",
+          "probability": 0.9986897110939026
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "start": 135.36,
+      "end": 138.02,
+      "text": " From 200,000 rupees to 120,000.",
+      "avg_logprob": -0.13102223568683047,
+      "no_speech_prob": 0.22082257270812988,
+      "words": [
+        {
+          "start": 135.36,
+          "end": 135.44,
+          "word": " From",
+          "probability": 0.9592946767807007
+        },
+        {
+          "start": 135.44,
+          "end": 135.88,
+          "word": " 200",
+          "probability": 0.9901999831199646
+        },
+        {
+          "start": 135.88,
+          "end": 136.22,
+          "word": ",000",
+          "probability": 0.995799332857132
+        },
+        {
+          "start": 136.22,
+          "end": 136.58,
+          "word": " rupees",
+          "probability": 0.9946499466896057
+        },
+        {
+          "start": 136.58,
+          "end": 136.88,
+          "word": " to",
+          "probability": 0.8594189882278442
+        },
+        {
+          "start": 136.88,
+          "end": 137.52,
+          "word": " 120",
+          "probability": 0.9936721324920654
+        },
+        {
+          "start": 137.52,
+          "end": 138.02,
+          "word": ",000.",
+          "probability": 0.9957026839256287
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "start": 138.24,
+      "end": 139.38,
+      "text": " We save the new requirement.",
+      "avg_logprob": -0.13102223568683047,
+      "no_speech_prob": 0.22082257270812988,
+      "words": [
+        {
+          "start": 138.24,
+          "end": 138.46,
+          "word": " We",
+          "probability": 0.9946258664131165
+        },
+        {
+          "start": 138.46,
+          "end": 138.7,
+          "word": " save",
+          "probability": 0.9675447344779968
+        },
+        {
+          "start": 138.7,
+          "end": 138.86,
+          "word": " the",
+          "probability": 0.998978853225708
+        },
+        {
+          "start": 138.86,
+          "end": 139.0,
+          "word": " new",
+          "probability": 0.9991788268089294
+        },
+        {
+          "start": 139.0,
+          "end": 139.38,
+          "word": " requirement.",
+          "probability": 0.9977537989616394
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "start": 139.38,
+      "end": 142.92,
+      "text": " and before a new plan is generated, the older plan is marked stale.",
+      "avg_logprob": -0.10146955962766681,
+      "no_speech_prob": 0.4153525233268738,
+      "words": [
+        {
+          "start": 139.38,
+          "end": 139.88,
+          "word": " and",
+          "probability": 0.24299785494804382
+        },
+        {
+          "start": 139.88,
+          "end": 140.14,
+          "word": " before",
+          "probability": 0.970146656036377
+        },
+        {
+          "start": 140.14,
+          "end": 140.32,
+          "word": " a",
+          "probability": 0.9925501346588135
+        },
+        {
+          "start": 140.32,
+          "end": 140.46,
+          "word": " new",
+          "probability": 0.9953859448432922
+        },
+        {
+          "start": 140.46,
+          "end": 140.64,
+          "word": " plan",
+          "probability": 0.9944867491722107
+        },
+        {
+          "start": 140.64,
+          "end": 140.82,
+          "word": " is",
+          "probability": 0.9975677132606506
+        },
+        {
+          "start": 140.82,
+          "end": 141.22,
+          "word": " generated,",
+          "probability": 0.9908114671707153
+        },
+        {
+          "start": 141.5,
+          "end": 141.54,
+          "word": " the",
+          "probability": 0.9941117167472839
+        },
+        {
+          "start": 141.54,
+          "end": 141.8,
+          "word": " older",
+          "probability": 0.9871426820755005
+        },
+        {
+          "start": 141.8,
+          "end": 142.1,
+          "word": " plan",
+          "probability": 0.9956203103065491
+        },
+        {
+          "start": 142.1,
+          "end": 142.28,
+          "word": " is",
+          "probability": 0.9967781901359558
+        },
+        {
+          "start": 142.28,
+          "end": 142.58,
+          "word": " marked",
+          "probability": 0.9965953230857849
+        },
+        {
+          "start": 142.58,
+          "end": 142.92,
+          "word": " stale.",
+          "probability": 0.13452297449111938
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "start": 143.66,
+      "end": 146.36,
+      "text": " Now we create a new outline with the same team.",
+      "avg_logprob": -0.10146955962766681,
+      "no_speech_prob": 0.4153525233268738,
+      "words": [
+        {
+          "start": 143.66,
+          "end": 143.88,
+          "word": " Now",
+          "probability": 0.9600547552108765
+        },
+        {
+          "start": 143.88,
+          "end": 144.08,
+          "word": " we",
+          "probability": 0.8848822712898254
+        },
+        {
+          "start": 144.08,
+          "end": 144.36,
+          "word": " create",
+          "probability": 0.9929736852645874
+        },
+        {
+          "start": 144.36,
+          "end": 144.56,
+          "word": " a",
+          "probability": 0.9941291809082031
+        },
+        {
+          "start": 144.56,
+          "end": 144.82,
+          "word": " new",
+          "probability": 0.8764235973358154
+        },
+        {
+          "start": 144.82,
+          "end": 145.22,
+          "word": " outline",
+          "probability": 0.9616948962211609
+        },
+        {
+          "start": 145.22,
+          "end": 145.46,
+          "word": " with",
+          "probability": 0.982833206653595
+        },
+        {
+          "start": 145.46,
+          "end": 145.62,
+          "word": " the",
+          "probability": 0.9959712624549866
+        },
+        {
+          "start": 145.62,
+          "end": 145.96,
+          "word": " same",
+          "probability": 0.9929012060165405
+        },
+        {
+          "start": 145.96,
+          "end": 146.36,
+          "word": " team.",
+          "probability": 0.991793692111969
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "start": 146.86,
+      "end": 149.72,
+      "text": " Once again, Voyada and IronWeb move together.",
+      "avg_logprob": -0.10146955962766681,
+      "no_speech_prob": 0.4153525233268738,
+      "words": [
+        {
+          "start": 146.86,
+          "end": 147.02,
+          "word": " Once",
+          "probability": 0.9920017719268799
+        },
+        {
+          "start": 147.02,
+          "end": 147.38,
+          "word": " again,",
+          "probability": 0.9991940855979919
+        },
+        {
+          "start": 147.68,
+          "end": 148.0,
+          "word": " Voyada",
+          "probability": 0.4668166935443878
+        },
+        {
+          "start": 148.0,
+          "end": 148.3,
+          "word": " and",
+          "probability": 0.9930999279022217
+        },
+        {
+          "start": 148.3,
+          "end": 148.78,
+          "word": " IronWeb",
+          "probability": 0.6014452129602432
+        },
+        {
+          "start": 148.78,
+          "end": 149.16,
+          "word": " move",
+          "probability": 0.9195725917816162
+        },
+        {
+          "start": 149.16,
+          "end": 149.72,
+          "word": " together.",
+          "probability": 0.9989983439445496
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "start": 150.18,
+      "end": 152.08,
+      "text": " The agents read the revised requirements.",
+      "avg_logprob": -0.10146955962766681,
+      "no_speech_prob": 0.4153525233268738,
+      "words": [
+        {
+          "start": 150.18,
+          "end": 150.32,
+          "word": " The",
+          "probability": 0.9916233420372009
+        },
+        {
+          "start": 150.32,
+          "end": 150.62,
+          "word": " agents",
+          "probability": 0.9314261078834534
+        },
+        {
+          "start": 150.62,
+          "end": 150.96,
+          "word": " read",
+          "probability": 0.9961003065109253
+        },
+        {
+          "start": 150.96,
+          "end": 151.14,
+          "word": " the",
+          "probability": 0.9944499731063843
+        },
+        {
+          "start": 151.14,
+          "end": 151.54,
+          "word": " revised",
+          "probability": 0.9977250695228577
+        },
+        {
+          "start": 151.54,
+          "end": 152.08,
+          "word": " requirements.",
+          "probability": 0.9975908994674683
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "start": 152.52,
+      "end": 155.78,
+      "text": " They gather and validate their results against the updated context.",
+      "avg_logprob": -0.10146955962766681,
+      "no_speech_prob": 0.4153525233268738,
+      "words": [
+        {
+          "start": 152.52,
+          "end": 152.68,
+          "word": " They",
+          "probability": 0.9868005514144897
+        },
+        {
+          "start": 152.68,
+          "end": 152.92,
+          "word": " gather",
+          "probability": 0.9989894032478333
+        },
+        {
+          "start": 152.92,
+          "end": 153.24,
+          "word": " and",
+          "probability": 0.9906702041625977
+        },
+        {
+          "start": 153.24,
+          "end": 153.68,
+          "word": " validate",
+          "probability": 0.9961459636688232
+        },
+        {
+          "start": 153.68,
+          "end": 153.92,
+          "word": " their",
+          "probability": 0.9916439652442932
+        },
+        {
+          "start": 153.92,
+          "end": 154.24,
+          "word": " results",
+          "probability": 0.995610773563385
+        },
+        {
+          "start": 154.24,
+          "end": 154.62,
+          "word": " against",
+          "probability": 0.9950725436210632
+        },
+        {
+          "start": 154.62,
+          "end": 154.88,
+          "word": " the",
+          "probability": 0.9979426264762878
+        },
+        {
+          "start": 154.88,
+          "end": 155.3,
+          "word": " updated",
+          "probability": 0.998863697052002
+        },
+        {
+          "start": 155.3,
+          "end": 155.78,
+          "word": " context.",
+          "probability": 0.9950199127197266
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "start": 156.3,
+      "end": 158.8,
+      "text": " The previous context remains available as history.",
+      "avg_logprob": -0.10146955962766681,
+      "no_speech_prob": 0.4153525233268738,
+      "words": [
+        {
+          "start": 156.3,
+          "end": 156.46,
+          "word": " The",
+          "probability": 0.9953435063362122
+        },
+        {
+          "start": 156.46,
+          "end": 156.82,
+          "word": " previous",
+          "probability": 0.9991697072982788
+        },
+        {
+          "start": 156.82,
+          "end": 157.26,
+          "word": " context",
+          "probability": 0.9958505630493164
+        },
+        {
+          "start": 157.26,
+          "end": 157.68,
+          "word": " remains",
+          "probability": 0.9975645542144775
+        },
+        {
+          "start": 157.68,
+          "end": 158.08,
+          "word": " available",
+          "probability": 0.9962217807769775
+        },
+        {
+          "start": 158.08,
+          "end": 158.42,
+          "word": " as",
+          "probability": 0.9988992214202881
+        },
+        {
+          "start": 158.42,
+          "end": 158.8,
+          "word": " history.",
+          "probability": 0.9457085728645325
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "start": 159.28,
+      "end": 161.36,
+      "text": " The new run captures the revised budget",
+      "avg_logprob": -0.10146955962766681,
+      "no_speech_prob": 0.4153525233268738,
+      "words": [
+        {
+          "start": 159.28,
+          "end": 159.46,
+          "word": " The",
+          "probability": 0.993558943271637
+        },
+        {
+          "start": 159.46,
+          "end": 159.66,
+          "word": " new",
+          "probability": 0.9567568898200989
+        },
+        {
+          "start": 159.66,
+          "end": 159.9,
+          "word": " run",
+          "probability": 0.9778778553009033
+        },
+        {
+          "start": 159.9,
+          "end": 160.36,
+          "word": " captures",
+          "probability": 0.9973739385604858
+        },
+        {
+          "start": 160.36,
+          "end": 160.6,
+          "word": " the",
+          "probability": 0.9981557726860046
+        },
+        {
+          "start": 160.6,
+          "end": 161.0,
+          "word": " revised",
+          "probability": 0.9993566870689392
+        },
+        {
+          "start": 161.0,
+          "end": 161.36,
+          "word": " budget",
+          "probability": 0.9984044432640076
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "start": 161.36,
+      "end": 163.68,
+      "text": " and the evidence that supports the new plan.",
+      "avg_logprob": -0.10146955962766681,
+      "no_speech_prob": 0.4153525233268738,
+      "words": [
+        {
+          "start": 161.36,
+          "end": 161.78,
+          "word": " and",
+          "probability": 0.9039573073387146
+        },
+        {
+          "start": 161.78,
+          "end": 161.92,
+          "word": " the",
+          "probability": 0.9937993884086609
+        },
+        {
+          "start": 161.92,
+          "end": 162.3,
+          "word": " evidence",
+          "probability": 0.9989495873451233
+        },
+        {
+          "start": 162.3,
+          "end": 162.56,
+          "word": " that",
+          "probability": 0.9973164200782776
+        },
+        {
+          "start": 162.56,
+          "end": 162.92,
+          "word": " supports",
+          "probability": 0.9966861605644226
+        },
+        {
+          "start": 162.92,
+          "end": 163.18,
+          "word": " the",
+          "probability": 0.9982900023460388
+        },
+        {
+          "start": 163.18,
+          "end": 163.34,
+          "word": " new",
+          "probability": 0.9991123080253601
+        },
+        {
+          "start": 163.34,
+          "end": 163.68,
+          "word": " plan.",
+          "probability": 0.9984772801399231
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "start": 164.2,
+      "end": 168.16,
+      "text": " The budget has changed from 200,000 rupees to 120,000.",
+      "avg_logprob": -0.10146955962766681,
+      "no_speech_prob": 0.4153525233268738,
+      "words": [
+        {
+          "start": 164.2,
+          "end": 164.46,
+          "word": " The",
+          "probability": 0.9959895014762878
+        },
+        {
+          "start": 164.46,
+          "end": 164.7,
+          "word": " budget",
+          "probability": 0.9985864162445068
+        },
+        {
+          "start": 164.7,
+          "end": 164.92,
+          "word": " has",
+          "probability": 0.9977697134017944
+        },
+        {
+          "start": 164.92,
+          "end": 165.2,
+          "word": " changed",
+          "probability": 0.9976720213890076
+        },
+        {
+          "start": 165.2,
+          "end": 165.5,
+          "word": " from",
+          "probability": 0.9972706437110901
+        },
+        {
+          "start": 165.5,
+          "end": 165.96,
+          "word": " 200",
+          "probability": 0.6840540170669556
+        },
+        {
+          "start": 165.96,
+          "end": 166.38,
+          "word": ",000",
+          "probability": 0.9509264826774597
+        },
+        {
+          "start": 166.38,
+          "end": 166.72,
+          "word": " rupees",
+          "probability": 0.8709202408790588
+        },
+        {
+          "start": 166.72,
+          "end": 166.92,
+          "word": " to",
+          "probability": 0.9879133105278015
+        },
+        {
+          "start": 166.92,
+          "end": 167.62,
+          "word": " 120",
+          "probability": 0.9955084323883057
+        },
+        {
+          "start": 167.62,
+          "end": 168.16,
+          "word": ",000.",
+          "probability": 0.997544676065445
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "start": 168.16,
+      "end": 173.56,
+      "text": " A new claim has been recorded, a new source supports it, and version 2 is now current.",
+      "avg_logprob": -0.22085692943670812,
+      "no_speech_prob": 0.5339893698692322,
+      "words": [
+        {
+          "start": 168.16,
+          "end": 168.7,
+          "word": " A",
+          "probability": 0.15185026824474335
+        },
+        {
+          "start": 168.7,
+          "end": 168.88,
+          "word": " new",
+          "probability": 0.947869598865509
+        },
+        {
+          "start": 168.88,
+          "end": 169.14,
+          "word": " claim",
+          "probability": 0.9891223311424255
+        },
+        {
+          "start": 169.14,
+          "end": 169.32,
+          "word": " has",
+          "probability": 0.9894954562187195
+        },
+        {
+          "start": 169.32,
+          "end": 169.48,
+          "word": " been",
+          "probability": 0.9979196190834045
+        },
+        {
+          "start": 169.48,
+          "end": 169.9,
+          "word": " recorded,",
+          "probability": 0.9954835176467896
+        },
+        {
+          "start": 170.32,
+          "end": 170.42,
+          "word": " a",
+          "probability": 0.8920877575874329
+        },
+        {
+          "start": 170.42,
+          "end": 170.62,
+          "word": " new",
+          "probability": 0.9959322810173035
+        },
+        {
+          "start": 170.62,
+          "end": 170.92,
+          "word": " source",
+          "probability": 0.9886670708656311
+        },
+        {
+          "start": 170.92,
+          "end": 171.32,
+          "word": " supports",
+          "probability": 0.9902425408363342
+        },
+        {
+          "start": 171.32,
+          "end": 171.66,
+          "word": " it,",
+          "probability": 0.9958058595657349
+        },
+        {
+          "start": 171.94,
+          "end": 172.1,
+          "word": " and",
+          "probability": 0.9934638142585754
+        },
+        {
+          "start": 172.1,
+          "end": 172.3,
+          "word": " version",
+          "probability": 0.8037680983543396
+        },
+        {
+          "start": 172.3,
+          "end": 172.64,
+          "word": " 2",
+          "probability": 0.7565750479698181
+        },
+        {
+          "start": 172.64,
+          "end": 172.92,
+          "word": " is",
+          "probability": 0.9912830591201782
+        },
+        {
+          "start": 172.92,
+          "end": 173.18,
+          "word": " now",
+          "probability": 0.988121509552002
+        },
+        {
+          "start": 173.18,
+          "end": 173.56,
+          "word": " current.",
+          "probability": 0.996418833732605
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "start": 174.6,
+      "end": 177.62,
+      "text": " Intelligence you can see, memory you can trace, journeys made personal.",
+      "avg_logprob": -0.22085692943670812,
+      "no_speech_prob": 0.5339893698692322,
+      "words": [
+        {
+          "start": 174.6,
+          "end": 174.6,
+          "word": " Intelligence",
+          "probability": 0.9802692532539368
+        },
+        {
+          "start": 174.6,
+          "end": 174.78,
+          "word": " you",
+          "probability": 0.9527137875556946
+        },
+        {
+          "start": 174.78,
+          "end": 174.92,
+          "word": " can",
+          "probability": 0.9961697459220886
+        },
+        {
+          "start": 174.92,
+          "end": 175.18,
+          "word": " see,",
+          "probability": 0.9987879395484924
+        },
+        {
+          "start": 175.52,
+          "end": 175.62,
+          "word": " memory",
+          "probability": 0.9189395904541016
+        },
+        {
+          "start": 175.62,
+          "end": 175.94,
+          "word": " you",
+          "probability": 0.992106556892395
+        },
+        {
+          "start": 175.94,
+          "end": 176.08,
+          "word": " can",
+          "probability": 0.9988847374916077
+        },
+        {
+          "start": 176.08,
+          "end": 176.38,
+          "word": " trace,",
+          "probability": 0.9988141059875488
+        },
+        {
+          "start": 177.0,
+          "end": 177.0,
+          "word": " journeys",
+          "probability": 0.8434026837348938
+        },
+        {
+          "start": 177.0,
+          "end": 177.3,
+          "word": " made",
+          "probability": 0.996728777885437
+        },
+        {
+          "start": 177.3,
+          "end": 177.62,
+          "word": " personal.",
+          "probability": 0.9994480013847351
+        }
+      ]
+    }
+  ],
+  "transcribed_audio_source_at_time": "ironweb-voyara-2m58-captioned-with-voice.mp4",
+  "source_note": "Final export retains the identical copied audio stream from the transcribed voice export."
+}

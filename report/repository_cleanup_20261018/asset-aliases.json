@@ -1,0 +1,132 @@
+[
+  {
+    "removed": "blog/assets/context-budget-after.png",
+    "canonical": "docs/screenshots/demo-2026-10-18/context-budget-after.png",
+    "sha256": "581b647793786f64620a9d591ad3b1cb332d1b32a48012c1c88cfab09f487085"
+  },
+  {
+    "removed": "blog/assets/context-budget-before.png",
+    "canonical": "docs/screenshots/demo-2026-10-18/context-budget-before.png",
+    "sha256": "eb8a8526f74991fa30d4a83ca199224bc467fd6bf082f71d1c6254fb3fcd9a9c"
+  },
+  {
+    "removed": "report/control_stress_20261017/failure-31.png",
+    "canonical": "report/control_stress_20261017/failure-29.png",
+    "sha256": "c489ab66263f89a18738ba4e547cf5c86808c2e779a28b31cbeb55fa44489e56"
+  },
+  {
+    "removed": "report/control_stress_20261017/failure-32.png",
+    "canonical": "report/control_stress_20261017/failure-29.png",
+    "sha256": "c489ab66263f89a18738ba4e547cf5c86808c2e779a28b31cbeb55fa44489e56"
+  },
+  {
+    "removed": "report/control_stress_20261017/failure-33.png",
+    "canonical": "report/control_stress_20261017/failure-29.png",
+    "sha256": "c489ab66263f89a18738ba4e547cf5c86808c2e779a28b31cbeb55fa44489e56"
+  },
+  {
+    "removed": "report/control_stress_20261017/failure-34.png",
+    "canonical": "report/control_stress_20261017/failure-29.png",
+    "sha256": "c489ab66263f89a18738ba4e547cf5c86808c2e779a28b31cbeb55fa44489e56"
+  },
+  {
+    "removed": "report/control_stress_20261017/failure-37.png",
+    "canonical": "report/control_stress_20261017/failure-36.png",
+    "sha256": "3e29bc0396e25697281ee19e27294a8664be0c4e9ce0ae2d5ce6d5c3e80d818c"
+  },
+  {
+    "removed": "report/control_stress_20261017/failure-38.png",
+    "canonical": "report/control_stress_20261017/failure-36.png",
+    "sha256": "3e29bc0396e25697281ee19e27294a8664be0c4e9ce0ae2d5ce6d5c3e80d818c"
+  },
+  {
+    "removed": "report/control_stress_20261017/failure-39.png",
+    "canonical": "report/control_stress_20261017/failure-36.png",
+    "sha256": "3e29bc0396e25697281ee19e27294a8664be0c4e9ce0ae2d5ce6d5c3e80d818c"
+  },
+  {
+    "removed": "report/control_stress_20261017/failure-56.png",
+    "canonical": "report/control_stress_20261017/failure-52.png",
+    "sha256": "d484a5f078f2caf385d8813ded9bff5c372f8e21ee0667d5224f8314f534e222"
+  },
+  {
+    "removed": "report/shared_memory_20261014_final/videos/page@75d51d463851b5149b60da76e89dcfdd.webm",
+    "canonical": "report/shared_memory_20261014_final/walkthrough.webm",
+    "sha256": "f533037abda1a5fb1b597b18ec270ee8f4999f1cb9c1a6e29bae866f7444e0a3"
+  },
+  {
+    "removed": "report/video_demo_20261018/context-budget-after.png",
+    "canonical": "docs/screenshots/demo-2026-10-18/context-budget-after.png",
+    "sha256": "581b647793786f64620a9d591ad3b1cb332d1b32a48012c1c88cfab09f487085"
+  },
+  {
+    "removed": "report/video_demo_20261018/context-budget-before.png",
+    "canonical": "docs/screenshots/demo-2026-10-18/context-budget-before.png",
+    "sha256": "eb8a8526f74991fa30d4a83ca199224bc467fd6bf082f71d1c6254fb3fcd9a9c"
+  },
+  {
+    "removed": "report/video_demo_20261018/dashboard-activity.png",
+    "canonical": "docs/screenshots/demo-2026-10-18/dashboard-activity.png",
+    "sha256": "218a6986dd281bdf8ed594fdd2006dfb7452ff1b0b6649d950bcb4ffa61bd2ca"
+  },
+  {
+    "removed": "report/video_demo_20261018/dashboard-agent-wiring.png",
+    "canonical": "docs/screenshots/demo-2026-10-18/dashboard-agent-wiring.png",
+    "sha256": "316f326a4afeb02b6df9539b512d715aa093b7d622f3c1ae779595bcc2593123"
+  },
+  {
+    "removed": "report/video_demo_20261018/dashboard-architecture.png",
+    "canonical": "docs/screenshots/demo-2026-10-18/dashboard-architecture.png",
+    "sha256": "c771686fa799eecc5e447046c47ef0119c7efecddc2f1d4eb2dfa5e5411bd403"
+  },
+  {
+    "removed": "report/video_demo_20261018/dashboard-cache.png",
+    "canonical": "docs/screenshots/demo-2026-10-18/dashboard-cache.png",
+    "sha256": "2fe1fb8b7103d689bcb93a77fc3e290ec2a30a4dfa8fc82a8bceaf2f336d25e8"
+  },
+  {
+    "removed": "report/video_demo_20261018/dashboard-context-xray.png",
+    "canonical": "docs/screenshots/demo-2026-10-18/dashboard-context-xray.png",
+    "sha256": "7db22eb65e7cfe0800260c672e463e52bac66a2050de47661efe47353a568168"
+  },
+  {
+    "removed": "report/video_demo_20261018/dashboard-hardware.png",
+    "canonical": "docs/screenshots/demo-2026-10-18/dashboard-hardware.png",
+    "sha256": "df7debe5ddaff34b8933cee9e27abdf209bb1bd4d2d6f2a7275e0426c41fa861"
+  },
+  {
+    "removed": "report/video_demo_20261018/dashboard-latency.png",
+    "canonical": "docs/screenshots/demo-2026-10-18/dashboard-latency.png",
+    "sha256": "4668365de4801eb2921d8444e7333d478a71d09b75bf155a2d1f67adcf9a27a2"
+  },
+  {
+    "removed": "report/video_demo_20261018/dashboard-memory-graph.png",
+    "canonical": "docs/screenshots/demo-2026-10-18/dashboard-memory-graph.png",
+    "sha256": "4cb2870700c83763da14c71d789f45cf6a69dca35c4f981382977f9b28556ce7"
+  },
+  {
+    "removed": "report/video_demo_20261018/dashboard-provider.png",
+    "canonical": "docs/screenshots/demo-2026-10-18/dashboard-provider.png",
+    "sha256": "f8d5acb5b13d5ccfd8c10325b1c25704d7fe37158fa5523a0d84b1f9fcaab56c"
+  },
+  {
+    "removed": "report/video_demo_20261018/dashboard-source-inspection.png",
+    "canonical": "docs/screenshots/demo-2026-10-18/dashboard-source-inspection.png",
+    "sha256": "a8cfc6991af82864dde00c5d94817db91302e7f4957768fae548ce4d4f4032c8"
+  },
+  {
+    "removed": "report/video_demo_20261018/voyara-home.png",
+    "canonical": "docs/screenshots/demo-2026-10-18/voyara-home.png",
+    "sha256": "adfa20116bfacfaf766bb47dccd45bf0c17989b27af580dcd11f5eeccc9f9226"
+  },
+  {
+    "removed": "report/video_demo_20261018/voyara-trip-request.png",
+    "canonical": "docs/screenshots/demo-2026-10-18/voyara-trip-request.png",
+    "sha256": "4528568d4e71359c6cc264e920ee83daf6396de9d1aab67be08b9a5ea1afb585"
+  },
+  {
+    "removed": "youtube-upload/thumbnail.jpg",
+    "canonical": "report/video_demo_20261018/poster.jpg",
+    "sha256": "eb4db52587d5dd2f4bebd77d5c89baba243d8e5f8d5fdc9a889eee264d1917e8"
+  }
+]

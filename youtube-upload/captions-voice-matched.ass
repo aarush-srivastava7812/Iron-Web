@@ -1,0 +1,67 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2560
+PlayResY: 1440
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Segoe UI,38,&H00FFFFFF,&H00FFFFFF,&H00382310,&H00382310,0,0,0,0,100,100,0,0,1,1,0,2,80,80,48,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.59,Default,,0,0,0,,Iron Web times Voyara.
+Dialogue: 0,0:00:02.24,0:00:04.49,Default,,0,0,0,,The intelligence behind every journey.
+Dialogue: 0,0:00:05.18,0:00:07.57,Default,,0,0,0,,At the heart of Iron Web lies a living memory graph.
+Dialogue: 0,0:00:07.84,0:00:09.57,Default,,0,0,0,,Hot context. Context cards.
+Dialogue: 0,0:00:09.82,0:00:12.55,Default,,0,0,0,,Durable evidence. All connected in one place.
+Dialogue: 0,0:00:13.06,0:00:14.13,Default,,0,0,0,,Open any memory.
+Dialogue: 0,0:00:14.28,0:00:18.75,Default,,0,0,0,,And the inspector reveals its values, its history, and the sources behind\Nit.
+Dialogue: 0,0:00:21.00,0:00:22.67,Default,,0,0,0,,Nine actors are registered in the system.
+Dialogue: 0,0:00:22.90,0:00:26.47,Default,,0,0,0,,For this planning workflow, seven specialists collaborate with a memory\Norchestrator.
+Dialogue: 0,0:00:26.80,0:00:29.14,Default,,0,0,0,,The activity timeline brings their work to life.
+Dialogue: 0,0:00:29.16,0:00:32.39,Default,,0,0,0,,Select an event and see exactly what happened.
+Dialogue: 0,0:00:32.88,0:00:37.22,Default,,0,0,0,,Bounded instructions and traveler facts, task-specific context cards, and\Ndurable evidence that can be
+Dialogue: 0,0:00:37.24,0:00:38.31,Default,,0,0,0,,retrieved when it matters.
+Dialogue: 0,0:00:38.62,0:00:42.80,Default,,0,0,0,,With Context X-ray, you can look inside each agent's captured input, see\Nhow context was allocated, which
+Dialogue: 0,0:00:42.82,0:00:45.17,Default,,0,0,0,,fields were supported, and which claims connect back to their sources.
+Dialogue: 0,0:00:45.60,0:00:49.11,Default,,0,0,0,,The cache reveals measured reuse, payload sizes, and entry limits.
+Dialogue: 0,0:00:49.56,0:00:53.05,Default,,0,0,0,,The provider view displays recorded requests and reported model token\Nusage.
+Dialogue: 0,0:00:53.56,0:00:56.92,Default,,0,0,0,,Hardware monitoring distinguishes observed memory from GPU utilization that\Nisn't available.
+Dialogue: 0,0:00:56.94,0:01:01.29,Default,,0,0,0,,Latency points reveal measured context assembly and agent execution time.
+Dialogue: 0,0:01:01.40,0:01:06.01,Default,,0,0,0,,You can inspect live databases, Qdrant vectors, execution receipts, and\Nmasked provider identities.
+Dialogue: 0,0:01:06.78,0:01:12.20,Default,,0,0,0,,Filters Keyboard shortcuts Responsive drawers That's where Voyara
+Dialogue: 0,0:01:12.22,0:01:17.36,Default,,0,0,0,,comes in. A travel experience that begins with a simple idea and turns it\Ninto a journey
+Dialogue: 0,0:01:17.38,0:01:18.87,Default,,0,0,0,,designed around you.
+Dialogue: 0,0:01:19.30,0:01:24.74,Default,,0,0,0,,Let's plan a trip. Two travellers Kerala December 1st through December 3rd\NA relaxed
+Dialogue: 0,0:01:24.76,0:01:27.25,Default,,0,0,0,,pace and a budget of ₹200,000.
+Dialogue: 0,0:01:27.52,0:01:28.95,Default,,0,0,0,,That's all we need to begin.
+Dialogue: 0,0:01:30.16,0:01:32.41,Default,,0,0,0,,The orchestrator assembles the relevant context.
+Dialogue: 0,0:01:33.08,0:01:34.75,Default,,0,0,0,,Destination specialists begin their research.
+Dialogue: 0,0:01:35.34,0:01:38.11,Default,,0,0,0,,Stay, food and experience specialists contribute their findings.
+Dialogue: 0,0:01:38.42,0:01:41.25,Default,,0,0,0,,Then the itinerary and budget agents bring the pieces together.
+Dialogue: 0,0:01:41.48,0:01:44.73,Default,,0,0,0,,And all the while, the dashboard and Voyara remain synchronized.
+Dialogue: 0,0:01:45.00,0:01:47.95,Default,,0,0,0,,What happens in the application is reflected in the memory dashboard.
+Dialogue: 0,0:01:48.14,0:01:49.49,Default,,0,0,0,,The activity is observed.
+Dialogue: 0,0:01:49.72,0:01:50.94,Default,,0,0,0,,The model calls are real.
+Dialogue: 0,0:01:50.96,0:01:54.47,Default,,0,0,0,,For this demonstration, the waiting time has been accelerated in the edit.
+Dialogue: 0,0:01:55.00,0:01:56.91,Default,,0,0,0,,Seven specialists have completed their work.
+Dialogue: 0,0:01:57.20,0:02:02.37,Default,,0,0,0,,Voyara now saves the itinerary, indicative costs, and the recorded work of\Neach agent ready for review.
+Dialogue: 0,0:02:02.72,0:02:04.63,Default,,0,0,0,,We open the budget agent's captured context.
+Dialogue: 0,0:02:04.80,0:02:06.71,Default,,0,0,0,,There it is, 200,000 rupees.
+Dialogue: 0,0:02:06.84,0:02:10.37,Default,,0,0,0,,Not just a number, but a requirement supported by a specific claim and its\Nsource.
+Dialogue: 0,0:02:10.51,0:02:13.23,Default,,0,0,0,,Here, context allocation is measured using UTF-8 bytes.
+Dialogue: 0,0:02:13.60,0:02:15.11,Default,,0,0,0,,So, let's change the budget.
+Dialogue: 0,0:02:15.34,0:02:18.17,Default,,0,0,0,,From 200,000 rupees to 120,000.
+Dialogue: 0,0:02:18.22,0:02:19.34,Default,,0,0,0,,We save the new requirement.
+Dialogue: 0,0:02:19.35,0:02:23.07,Default,,0,0,0,,and before a new plan is generated, the older plan is marked stale.
+Dialogue: 0,0:02:23.64,0:02:26.51,Default,,0,0,0,,Now we create a new outline with the same team.
+Dialogue: 0,0:02:26.84,0:02:29.87,Default,,0,0,0,,Once again, Voyara and IronWeb move together.
+Dialogue: 0,0:02:30.16,0:02:32.23,Default,,0,0,0,,The agents read the revised requirements.
+Dialogue: 0,0:02:32.50,0:02:35.93,Default,,0,0,0,,They gather and validate their results against the updated context.
+Dialogue: 0,0:02:36.28,0:02:38.95,Default,,0,0,0,,The previous context remains available as history.
+Dialogue: 0,0:02:39.26,0:02:43.83,Default,,0,0,0,,The new run captures the revised budget and the evidence that supports the\Nnew plan.
+Dialogue: 0,0:02:44.18,0:02:48.12,Default,,0,0,0,,The budget has changed from 200,000 rupees to 120,000.
+Dialogue: 0,0:02:48.14,0:02:53.71,Default,,0,0,0,,A new claim has been recorded, a new source supports it, and version 2 is\Nnow current.
+Dialogue: 0,0:02:54.58,0:02:56.53,Default,,0,0,0,,Intelligence you can see, memory you can trace,
+Dialogue: 0,0:02:56.98,0:02:57.77,Default,,0,0,0,,journeys made personal.

@@ -1,0 +1,6 @@
+{
+  "errors": [],
+  "axisDisplay": "block",
+  "missingMeasurementsHandled": true,
+  "scope": "Unavailable-state check removes captured readings in browser test responses only; application data is unchanged."
+}

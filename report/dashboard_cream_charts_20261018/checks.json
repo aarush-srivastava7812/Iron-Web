@@ -1,0 +1,146 @@
+{
+  "checks": [
+    {
+      "sub": "Context",
+      "width": 1440,
+      "overflow": false,
+      "internalOverflow": false,
+      "graphics": 8
+    },
+    {
+      "sub": "Cache",
+      "width": 1440,
+      "overflow": false,
+      "internalOverflow": false,
+      "graphics": 3
+    },
+    {
+      "sub": "Provider",
+      "width": 1440,
+      "overflow": false,
+      "internalOverflow": false,
+      "graphics": 2
+    },
+    {
+      "sub": "Hardware",
+      "width": 1440,
+      "overflow": false,
+      "internalOverflow": false,
+      "graphics": 1
+    },
+    {
+      "sub": "Latency",
+      "width": 1440,
+      "overflow": false,
+      "internalOverflow": false,
+      "graphics": 1
+    },
+    {
+      "sub": "Architecture",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "sub": "Memory graph",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "sub": "Context",
+      "width": 1280,
+      "overflow": false,
+      "internalOverflow": false,
+      "graphics": 8
+    },
+    {
+      "sub": "Cache",
+      "width": 1280,
+      "overflow": false,
+      "internalOverflow": false,
+      "graphics": 3
+    },
+    {
+      "sub": "Provider",
+      "width": 1280,
+      "overflow": false,
+      "internalOverflow": false,
+      "graphics": 2
+    },
+    {
+      "sub": "Hardware",
+      "width": 1280,
+      "overflow": false,
+      "internalOverflow": false,
+      "graphics": 1
+    },
+    {
+      "sub": "Latency",
+      "width": 1280,
+      "overflow": false,
+      "internalOverflow": false,
+      "graphics": 1
+    },
+    {
+      "sub": "Architecture",
+      "width": 1280,
+      "overflow": false
+    },
+    {
+      "sub": "Memory graph",
+      "width": 1280,
+      "overflow": false
+    },
+    {
+      "sub": "Context",
+      "width": 390,
+      "overflow": false,
+      "internalOverflow": false,
+      "graphics": 8
+    },
+    {
+      "sub": "Cache",
+      "width": 390,
+      "overflow": false,
+      "internalOverflow": false,
+      "graphics": 3
+    },
+    {
+      "sub": "Provider",
+      "width": 390,
+      "overflow": false,
+      "internalOverflow": false,
+      "graphics": 2
+    },
+    {
+      "sub": "Hardware",
+      "width": 390,
+      "overflow": false,
+      "internalOverflow": false,
+      "graphics": 1
+    },
+    {
+      "sub": "Latency",
+      "width": 390,
+      "overflow": false,
+      "internalOverflow": false,
+      "graphics": 1
+    },
+    {
+      "sub": "Architecture",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "sub": "Memory graph",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "contextExpanded": 1
+    },
+    {
+      "latencyKeyboardSelected": "#3\nOrchestrator read context\n1,047 ms"
+    }
+  ],
+  "errors": []
+}

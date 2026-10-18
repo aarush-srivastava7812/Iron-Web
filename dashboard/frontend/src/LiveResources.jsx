@@ -18,19 +18,33 @@ import {
   lastCapturedCardBytes,
 } from "./liveData.js";
 import { Badge, Json } from "./LivePanels.jsx";
+import {
+  RingChart,
+  Gauge,
+  ChartLegend,
+  MemoryPlot,
+  LatencyPlot,
+  CHART_COLORS,
+  formatNumber,
+  percent,
+} from "./ResourceCharts.jsx";
+
 export function Resources({ data, graph, event, onSelect, events }) {
   const [tab, setTab] = useState("Context"),
     [open, setOpen] = useState(null);
   const unit = contextUnit(data),
-    policy = data.tiers.policy,
-    reads = events.filter(
-      (e) => e.kind === "context_assembled" && e.id <= event?.id,
-    ),
-    hits = reads.filter((e) => e.detail.cache_hit).length,
-    usage = data.credentials.usage,
+    policy = data.tiers.policy;
+  const reads = events.filter(
+    (e) => e.kind === "context_assembled" && e.id <= event?.id,
+  );
+  const hits = reads.filter((e) => e.detail?.cache_hit).length;
+  const usage = data.credentials.usage,
     resources = data.resources || {};
+  const reported = usage?.usage_responses > 0;
+  const tokenTotal = reported ? usage.input_tokens + usage.output_tokens : null;
+  const cacheRatio = percent(hits, reads.length);
   return (
-    <div className="live-resources">
+    <div className="live-resources resource-gallery">
       <div className="resource-tabs">
         {["Context", "Cache", "Provider", "Hardware", "Latency"].map((t) => (
           <button aria-pressed={tab === t} key={t} onClick={() => setTab(t)}>
@@ -38,61 +52,99 @@ export function Resources({ data, graph, event, onSelect, events }) {
           </button>
         ))}
       </div>
+      <div className="resource-title">
+        <div>
+          <span className="kicker">Memory observatory</span>
+          <h2>
+            {
+              {
+                Context: "Context X-ray",
+                Cache: "Context reuse",
+                Provider: data.credentials.provider,
+                Hardware: "Runtime hardware",
+                Latency: "Observed latency",
+              }[tab]
+            }
+          </h2>
+        </div>
+        <Badge />
+      </div>
       {tab === "Context" && (
         <>
-          <div className="resource-title">
-            <h2>Context X-ray</h2>
-            <span>
-              {unit} <Badge />
-            </span>
-          </div>
-          <div className="context-xray">
+          <p className="chart-intro">
+            The shape of each agent's context. Select a ring to follow its
+            sources.
+          </p>
+          <div className="context-orbits">
             {graph.contexts.length ? (
               graph.contexts.map((c) => {
-                const used = c.tokens?.prompt || 0,
-                  sys = c.tokens?.agent || 0,
-                  hot = c.tokens?.traveller || 0,
-                  rest = Math.max(0, used - sys - hot);
+                const used = c.tokens?.prompt,
+                  instructions = c.tokens?.agent || 0,
+                  traveler = c.tokens?.traveller || 0;
+                const segments = [
+                  {
+                    label: "Instructions",
+                    value: instructions,
+                    color: CHART_COLORS[2],
+                  },
+                  {
+                    label: "Traveler",
+                    value: traveler,
+                    color: CHART_COLORS[1],
+                  },
+                  {
+                    label: "Other framing, cards & evidence",
+                    value: Math.max(0, (used || 0) - instructions - traveler),
+                    color: CHART_COLORS[0],
+                  },
+                ];
                 return (
-                  <section key={c.agent_id}>
+                  <section
+                    className={`context-orbit ${open === c.agent_id ? "expanded" : ""}`}
+                    key={c.agent_id}
+                  >
                     <button
-                      className="context-row"
+                      className="context-orbit-button"
+                      aria-expanded={open === c.agent_id}
                       onClick={() =>
                         setOpen(open === c.agent_id ? null : c.agent_id)
                       }
                     >
-                      <span style={{ color: agentColor(c.agent_id) }}>
-                        {agentName(c.agent_id)}
-                      </span>
-                      <div
-                        className="context-bar"
-                        title={`Instructions ${sys}, traveler ${hot}, remaining framing/cards/evidence ${rest}; limit ${policy.context_limit} ${unit}`}
-                      >
-                        <i
-                          style={{
-                            width: `${(sys / policy.context_limit) * 100}%`,
-                            background: "var(--agent-planner)",
-                          }}
-                        />
-                        <i
-                          style={{
-                            width: `${(hot / policy.context_limit) * 100}%`,
-                            background: "var(--tier-hot)",
-                          }}
-                        />
-                        <i
-                          style={{
-                            width: `${(rest / policy.context_limit) * 100}%`,
-                            background: "var(--tier-context)",
-                          }}
-                        />
+                      <RingChart
+                        small
+                        segments={segments}
+                        total={policy.context_limit}
+                        value={percent(used, policy.context_limit)}
+                        label="of limit"
+                      />
+                      <div>
+                        <span
+                          className="orbit-agent"
+                          style={{ color: agentColor(c.agent_id) }}
+                        >
+                          {agentName(c.agent_id)}
+                        </span>
+                        <strong className="mono">
+                          {formatNumber(used)}{" "}
+                          <small>/ {formatNumber(policy.context_limit)}</small>
+                        </strong>
+                        <span className="orbit-unit">{unit}</span>
+                        <span className="orbit-action">
+                          {open === c.agent_id
+                            ? "Close sources"
+                            : "Inspect sources"}{" "}
+                          ↗
+                        </span>
                       </div>
-                      <span className="mono">
-                        {used} / {policy.context_limit}
-                      </span>
                     </button>
                     {open === c.agent_id && (
                       <div className="context-sources">
+                        <ChartLegend
+                          rows={segments.map((s) => ({
+                            ...s,
+                            value: formatNumber(s.value),
+                          }))}
+                        />
                         {c.fields?.map((f) => (
                           <div key={f.predicate}>
                             <strong>{f.predicate}</strong>
@@ -116,22 +168,31 @@ export function Resources({ data, graph, event, onSelect, events }) {
                 );
               })
             ) : (
-              <p>No agent has assembled a context in this scope yet.</p>
+              <div className="chart-empty">
+                No agent has assembled a context in this scope yet.
+              </div>
             )}
           </div>
-          <div className="activity-key">
-            <span>
-              <i style={{ background: "var(--agent-planner)" }} />
-              Instructions
-            </span>
-            <span>
-              <i style={{ background: "var(--tier-hot)" }} />
-              Traveler
-            </span>
-            <span>
-              <i style={{ background: "var(--tier-context)" }} />
-              Other framing, cards & evidence
-            </span>
+          <div className="chart-inline-legend">
+            {[
+              "Instructions",
+              "Traveler",
+              "Other framing, cards & evidence",
+            ].map((label, i) => (
+              <span key={label}>
+                <i
+                  style={{
+                    background: [
+                      CHART_COLORS[2],
+                      CHART_COLORS[1],
+                      CHART_COLORS[0],
+                    ][i],
+                  }}
+                />
+                {label}
+              </span>
+            ))}
+            <span>Unfilled ring = remaining budget</span>
           </div>
           <div className="resource-empty">
             <strong>Savings vs no-memory baseline: N/A</strong>
@@ -144,28 +205,70 @@ export function Resources({ data, graph, event, onSelect, events }) {
       )}
       {tab === "Cache" && (
         <>
-          <div className="big-metric">
-            {reads.length
-              ? Math.round((hits / reads.length) * 100) + "%"
-              : "N/A"}
-            <span>
-              Context cache hit rate <Badge />
-            </span>
-          </div>
-          <div className="resource-grid">
-            <Metric
-              label="Completed reads in selected window"
-              value={reads.length}
-            />
-            <Metric label="Cache hits" value={hits} />
-            <Metric
-              label="Payload bytes / quota"
-              value={`${bytes(data.cache.payload_bytes)} / ${bytes(data.cache.max_payload_bytes)}`}
-            />
-            <Metric
-              label="Entries / quota"
-              value={`${data.cache.entries} / ${data.cache.max_entries}`}
-            />
+          <p className="chart-intro">
+            Reuse in the selected event window, with current cache occupancy
+            alongside it.
+          </p>
+          <div className="chart-composition cache-composition">
+            <section className="chart-panel primary-chart">
+              <h3>Context cache hit rate</h3>
+              <RingChart
+                segments={[
+                  { label: "Cache hits", value: hits, color: CHART_COLORS[0] },
+                  {
+                    label: "Reads without a cache hit",
+                    value: reads.length - hits,
+                    color: CHART_COLORS[1],
+                  },
+                ]}
+                total={reads.length}
+                value={cacheRatio}
+                label="cache hits"
+              />
+              <ChartLegend
+                rows={[
+                  { label: "Cache hits", value: hits, color: CHART_COLORS[0] },
+                  {
+                    label: "Reads without a cache hit",
+                    value: reads.length - hits,
+                    color: CHART_COLORS[1],
+                  },
+                  {
+                    label: "Completed reads in selected window",
+                    value: reads.length,
+                    color: "var(--ui-text)",
+                  },
+                ]}
+              />
+            </section>
+            <div className="quota-stack">
+              <section className="chart-panel quota-panel">
+                <Gauge
+                  value={data.cache.payload_bytes}
+                  total={data.cache.max_payload_bytes}
+                  label="payload quota"
+                  color={CHART_COLORS[2]}
+                />
+                <h3>Payload bytes / quota</h3>
+                <p className="mono">
+                  {bytes(data.cache.payload_bytes)}{" "}
+                  <span>/ {bytes(data.cache.max_payload_bytes)}</span>
+                </p>
+              </section>
+              <section className="chart-panel quota-panel">
+                <Gauge
+                  value={data.cache.entries}
+                  total={data.cache.max_entries}
+                  label="entry quota"
+                  color={CHART_COLORS[3]}
+                />
+                <h3>Entries / quota</h3>
+                <p className="mono">
+                  {formatNumber(data.cache.entries)}{" "}
+                  <span>/ {formatNumber(data.cache.max_entries)}</span>
+                </p>
+              </section>
+            </div>
           </div>
           <p className="truth-note">
             Context-payload cache, not NVIDIA prompt caching. Occupancy is the
@@ -176,27 +279,70 @@ export function Resources({ data, graph, event, onSelect, events }) {
       )}
       {tab === "Provider" && (
         <>
-          <div className="resource-title">
-            <h2>{data.credentials.provider}</h2>
-            <Badge />
-          </div>
-          <div className="resource-grid">
-            <Metric
-              label="Observed HTTP inference requests"
-              value={usage?.requests ?? "N/A"}
-            />
-            <Metric
-              label="Successful responses"
-              value={usage?.successful ?? "N/A"}
-            />
-            <Metric
-              label="Reported input tokens"
-              value={usage?.usage_responses ? usage.input_tokens : "N/A"}
-            />
-            <Metric
-              label="Reported output tokens"
-              value={usage?.usage_responses ? usage.output_tokens : "N/A"}
-            />
+          <p className="chart-intro">
+            Reported token composition and observed responses from the provider.
+          </p>
+          <div className="chart-composition provider-composition">
+            <section className="chart-panel primary-chart">
+              <h3>Reported token composition</h3>
+              <RingChart
+                total={tokenTotal}
+                value={reported ? formatNumber(tokenTotal) : "N/A"}
+                label="total tokens"
+                segments={
+                  reported
+                    ? [
+                        {
+                          label: "Input",
+                          value: usage.input_tokens,
+                          color: CHART_COLORS[2],
+                        },
+                        {
+                          label: "Output",
+                          value: usage.output_tokens,
+                          color: CHART_COLORS[1],
+                        },
+                      ]
+                    : []
+                }
+              />
+              <ChartLegend
+                rows={[
+                  {
+                    label: "Reported input tokens",
+                    value: reported ? formatNumber(usage.input_tokens) : "N/A",
+                    color: CHART_COLORS[2],
+                  },
+                  {
+                    label: "Reported output tokens",
+                    value: reported ? formatNumber(usage.output_tokens) : "N/A",
+                    color: CHART_COLORS[1],
+                  },
+                ]}
+              />
+            </section>
+            <section className="chart-panel response-chart">
+              <h3>Successful responses</h3>
+              <Gauge
+                value={usage?.successful}
+                total={usage?.requests}
+                label="response success"
+              />
+              <ChartLegend
+                rows={[
+                  {
+                    label: "Observed HTTP inference requests",
+                    value: formatNumber(usage?.requests),
+                    color: "var(--ui-text)",
+                  },
+                  {
+                    label: "Successful responses",
+                    value: formatNumber(usage?.successful),
+                    color: CHART_COLORS[0],
+                  },
+                ]}
+              />
+            </section>
           </div>
           <p className="truth-note">
             {usage?.scope}. Provider input/output usage is separate from
@@ -207,32 +353,37 @@ export function Resources({ data, graph, event, onSelect, events }) {
       )}
       {tab === "Hardware" && (
         <>
-          <div className="resource-title">
-            <h2>Runtime hardware</h2>
-            <Badge />
-          </div>
-          <div className="resource-grid">
-            <Metric
-              label="Website process RAM"
-              value={bytes(resources.ram_bytes)}
+          <p className="chart-intro">
+            Current memory observations on a shared byte scale. Each reading has
+            a different scope.
+          </p>
+          <section className="chart-panel">
+            <h3>Memory residency</h3>
+            <MemoryPlot
+              rows={[
+                { label: "Website process RAM", value: resources.ram_bytes },
+                { label: "Observed device VRAM", value: resources.vram_bytes },
+                {
+                  label: "Last captured CUDA card allocation",
+                  value: lastCapturedCardBytes(graph.contexts),
+                },
+              ]}
             />
-            <Metric
-              label="Observed device VRAM"
-              value={bytes(resources.vram_bytes)}
-            />
-            <Metric
-              label="GPU utilization"
-              value={
-                resources.gpu_util == null
+          </section>
+          <section className="hardware-status">
+            <span className="status-glyph">◇</span>
+            <div>
+              <h3>GPU utilization</h3>
+              <p>
+                {resources.gpu_util == null
                   ? "Not instrumented"
-                  : resources.gpu_util + "%"
-              }
-            />
-            <Metric
-              label="Last captured CUDA card allocation"
-              value={bytes(lastCapturedCardBytes(graph.contexts))}
-            />
-          </div>
+                  : resources.gpu_util + "%"}
+              </p>
+            </div>
+            <Badge>
+              {resources.gpu_util == null ? "Unavailable" : "Measured"}
+            </Badge>
+          </section>
           <p className="truth-note">
             Snapshot observations, not a fabricated historical sparkline. CPU
             card matching uses no CUDA card allocation; device-wide VRAM may
@@ -255,67 +406,42 @@ export function Resources({ data, graph, event, onSelect, events }) {
       )}
       {tab === "Latency" && (
         <>
-          <div className="resource-title">
-            <h2>Observed latency</h2>
-            <Badge />
-          </div>
-          <div className="latency-chart">
-            {events
-              .filter((e) => e.detail?.latency_ms != null && e.id <= event?.id)
-              .slice(-18)
-              .map((e) => (
-                <div
-                  key={e.id}
-                  title={`${eventLabel(e)}: ${e.detail.latency_ms} ms`}
-                >
-                  <span>#{e.id}</span>
-                  <i
-                    style={{
-                      width:
-                        Math.max(
-                          2,
-                          Math.min(
-                            100,
-                            (e.detail.latency_ms /
-                              Math.max(
-                                1,
-                                ...events.map((x) => x.detail?.latency_ms || 0),
-                              )) *
-                              100,
-                          ),
-                        ) + "%",
-                      background: agentColor(e.agent_id),
-                    }}
-                  />
-                  <b>{Math.round(e.detail.latency_ms)} ms</b>
-                </div>
-              ))}
+          <p className="chart-intro">
+            Every point is an observed operation. Select a point for its exact
+            measurement.
+          </p>
+          <section className="chart-panel">
+            <h3>Operation latency</h3>
+            <LatencyPlot events={events.filter((e) => e.id <= event?.id)} />
+          </section>
+          <div className="chart-inline-legend">
+            {["Planning", "Research", "Review"].map((label, i) => (
+              <span key={label}>
+                <i
+                  style={{
+                    background: [
+                      "var(--agent-planner)",
+                      "var(--agent-researcher)",
+                      "var(--agent-reviewer)",
+                    ][i],
+                  }}
+                />
+                {label}
+              </span>
+            ))}
           </div>
           <p className="truth-note">
             Context events measure gateway retrieval/assembly; completion events
             measure agent work. Parallel work is not summed into a fictional
-            end-to-end total.
+            end-to-end total. Event order is evenly spaced; it does not
+            represent elapsed time between operations.
           </p>
         </>
       )}
     </div>
   );
 }
-function Metric({ label, value }) {
-  return (
-    <div className="resource-metric">
-      <span>{label}</span>
-      <strong>{value}</strong>
-      <Badge>
-        {String(value).includes("N/A") || value === "Not instrumented"
-          ? "Unavailable"
-          : label.includes("quota")
-            ? "Measured / configured"
-            : "Measured"}
-      </Badge>
-    </div>
-  );
-}
+
 export function Dock({
   events,
   event,

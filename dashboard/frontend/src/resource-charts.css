@@ -1,0 +1,533 @@
+/* Data graphics use SVG paths rather than raster effects or decorative values. */
+.resource-gallery {
+  background: var(--ui-bg);
+  padding: 22px 24px;
+}
+.resource-gallery .resource-title {
+  margin-bottom: 8px;
+}
+.resource-gallery .resource-title .kicker {
+  font-size: 10px;
+  letter-spacing: 1.6px;
+}
+.resource-gallery .resource-title h2 {
+  font-size: 22px;
+  letter-spacing: -0.6px;
+  margin-top: 5px;
+  font-weight: 500;
+}
+.chart-intro {
+  color: var(--ui-secondary);
+  line-height: 1.65;
+  margin: 0 0 20px;
+  max-width: 68ch;
+}
+.resource-gallery .resource-tabs {
+  gap: 0;
+  border-bottom: 1px solid var(--ui-border);
+  margin-bottom: 24px;
+}
+.resource-gallery .resource-tabs button {
+  border: 0;
+  border-bottom: 2px solid transparent;
+  padding: 10px 14px;
+  background: transparent;
+}
+.resource-gallery .resource-tabs button:first-child {
+  padding-left: 0;
+}
+.resource-gallery .resource-tabs button[aria-pressed="true"] {
+  border-bottom-color: var(--ui-accent);
+  color: var(--ui-text);
+  background: transparent;
+  font-weight: 600;
+}
+.context-orbits {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--ui-border);
+  border-left: 1px solid var(--ui-border);
+  background: var(--ui-panel);
+}
+.context-orbit {
+  min-width: 0;
+  border-right: 1px solid var(--ui-border);
+  border-bottom: 1px solid var(--ui-border);
+}
+.context-orbit.expanded {
+  grid-column: 1 / -1;
+  background: var(--ui-panel);
+}
+.context-orbit-button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 14px;
+  text-align: left;
+  min-height: 128px;
+}
+.context-orbit-button > div {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+}
+.orbit-agent {
+  font-size: 13px;
+  font-weight: 600;
+}
+.context-orbit-button strong {
+  font-size: 14px;
+  font-weight: 500;
+}
+.context-orbit-button strong small {
+  color: var(--ui-secondary);
+  font-size: 11px;
+}
+.orbit-unit {
+  color: var(--ui-secondary);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.orbit-action {
+  color: var(--ui-secondary);
+  font-size: 11px;
+  margin-top: 5px;
+}
+.context-sources .chart-legend {
+  margin-bottom: 14px;
+}
+.metric-ring {
+  display: block;
+  width: min(100%, 220px);
+  height: auto;
+  margin: 12px auto 18px;
+  flex-shrink: 0;
+  overflow: visible;
+}
+.metric-ring.small {
+  width: 96px;
+  margin: 0;
+}
+.metric-ring circle,
+.metric-gauge path,
+.metric-gauge line {
+  fill: none;
+}
+.ring-track {
+  stroke: var(--ui-raised);
+  stroke-width: 10;
+}
+.ring-ticks {
+  stroke: var(--ui-border);
+  stroke-width: 1.5;
+}
+.ring-inner {
+  stroke: var(--ui-border);
+  stroke-width: 0.6;
+}
+.ring-value,
+.gauge-value {
+  font: 400 28px var(--font-mono);
+  fill: var(--ui-text);
+  letter-spacing: -1.4px;
+}
+.metric-ring.small .ring-value {
+  font-size: 24px;
+}
+.ring-caption {
+  fill: var(--ui-secondary);
+  font: 9px var(--font-sans);
+  letter-spacing: 0.3px;
+}
+.metric-gauge {
+  display: block;
+  width: 100%;
+  max-width: 245px;
+  margin: 16px auto;
+  overflow: visible;
+}
+.gauge-track {
+  fill: none;
+  stroke: var(--ui-raised);
+  stroke-width: 10;
+}
+.gauge-value {
+  font-size: 31px;
+}
+.chart-inline-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  color: var(--ui-secondary);
+  padding: 15px 0 0;
+  font-size: 11px;
+}
+.chart-inline-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.chart-inline-legend i,
+.chart-legend i {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+}
+.chart-legend {
+  width: 100%;
+  margin: 0;
+}
+.chart-legend > div {
+  display: flex;
+  gap: 14px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--ui-border);
+}
+.chart-legend > div:last-child {
+  border-bottom: 0;
+}
+.chart-legend dt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ui-secondary);
+  font-size: 11px;
+  line-height: 1.5;
+}
+.chart-legend dd {
+  font: 500 13px var(--font-mono);
+  color: var(--ui-text);
+  text-align: right;
+  white-space: nowrap;
+}
+.chart-composition {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 18px;
+}
+.chart-panel {
+  border: 1px solid var(--ui-border);
+  background: var(--ui-panel);
+  padding: 20px;
+  min-width: 0;
+}
+.chart-panel h3 {
+  color: var(--ui-text);
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.1px;
+}
+.primary-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.primary-chart h3 {
+  align-self: flex-start;
+}
+.quota-stack {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 18px;
+}
+.quota-panel {
+  display: grid;
+  grid-template-columns: 124px minmax(0, 1fr);
+  align-content: center;
+  column-gap: 14px;
+}
+.quota-panel .metric-gauge {
+  grid-row: 1 / 3;
+  margin: 0;
+}
+.quota-panel h3 {
+  align-self: end;
+  margin-bottom: 6px;
+}
+.quota-panel p {
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.quota-panel p span {
+  display: block;
+  color: var(--ui-secondary);
+}
+.response-chart {
+  display: flex;
+  flex-direction: column;
+}
+.response-chart .metric-gauge {
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 20px 0;
+}
+.memory-plot {
+  display: block;
+  width: 100%;
+  margin: 14px 0;
+}
+.plot-grid {
+  stroke: var(--ui-border);
+  stroke-width: 1;
+}
+.plot-tick {
+  font: 10px var(--font-mono);
+  fill: var(--ui-secondary);
+}
+.memory-observations .chart-legend i {
+  border-radius: 50%;
+  width: 7px;
+  height: 7px;
+}
+.hardware-status {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--ui-border);
+}
+.hardware-status .status-glyph {
+  color: var(--chart-plum);
+  font-size: 32px;
+}
+.hardware-status > div {
+  flex: 1;
+}
+.hardware-status h3 {
+  color: var(--ui-secondary);
+  font-size: 11px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+.hardware-status p {
+  color: var(--ui-text);
+}
+.latency-observations {
+  display: block;
+  margin-top: 18px;
+}
+.latency-plot {
+  width: 100%;
+  display: block;
+  overflow: visible;
+}
+.latency-plot circle[role="button"] {
+  cursor: pointer;
+}
+.latency-plot circle[role="button"]:focus-visible {
+  outline: 2px solid var(--ui-text);
+  outline-offset: 3px;
+}
+.plot-axis-note {
+  color: var(--ui-secondary);
+  font: 10px var(--font-mono);
+  line-height: 1.6;
+}
+.plot-selection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--ui-border);
+  padding: 14px 0;
+  color: var(--ui-secondary);
+}
+.plot-selection strong {
+  margin-left: auto;
+  color: var(--ui-text);
+  font: 500 14px var(--font-mono);
+  white-space: nowrap;
+}
+.chart-empty {
+  padding: 36px 20px;
+  color: var(--ui-secondary);
+  line-height: 1.7;
+  text-align: center;
+}
+.resource-gallery .resource-empty {
+  margin-top: 18px;
+  background: transparent;
+  border-width: 0 0 0 2px;
+  padding: 8px 16px;
+}
+.resource-gallery .resource-empty strong {
+  font-size: 12px;
+}
+.resource-gallery .resource-empty p {
+  margin-top: 5px;
+}
+.resource-gallery > .truth-note {
+  max-width: 90ch;
+}
+.live-architecture > section {
+  position: relative;
+  padding-right: 118px;
+  background: var(--ui-panel);
+}
+.tier-meter {
+  width: 84px;
+  height: 58px;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.tier-meter .gauge-track {
+  stroke-width: 6;
+}
+.tier-meter-value {
+  fill: var(--ui-text);
+  font: 11px var(--font-mono);
+}
+@media (max-width: 1399px) and (min-width: 1280px) {
+  .context-orbit-button {
+    gap: 10px;
+    padding: 12px 8px;
+  }
+  .metric-ring.small {
+    width: 80px;
+  }
+  .quota-panel {
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 8px;
+    padding: 16px 12px;
+  }
+}
+@media (max-width: 700px) {
+  .resource-gallery {
+    padding: 16px;
+  }
+  .context-orbits {
+    grid-template-columns: 1fr;
+  }
+  .context-orbit-button {
+    min-height: 118px;
+    gap: 24px;
+  }
+  .context-orbit-button > div {
+    flex: 1;
+  }
+  .chart-composition {
+    grid-template-columns: 1fr;
+  }
+  .quota-stack {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .quota-panel {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 14px 12px;
+    gap: 6px;
+  }
+  .quota-panel .metric-gauge {
+    width: 100%;
+    max-width: 145px;
+  }
+  .quota-panel h3 {
+    align-self: center;
+    margin: 0;
+  }
+  .quota-panel p span {
+    display: inline;
+  }
+  .metric-ring {
+    max-width: 190px;
+  }
+  .response-chart .metric-gauge {
+    padding: 0;
+  }
+  .chart-panel {
+    padding: 16px;
+  }
+  .chart-legend dd {
+    font-size: 12px;
+  }
+  .resource-gallery .resource-tabs button {
+    padding-inline: 10px;
+  }
+  .plot-selection {
+    flex-wrap: wrap;
+    gap: 6px 10px;
+  }
+  .plot-selection strong {
+    margin-left: 0;
+  }
+  .live-architecture > section {
+    padding-right: 90px;
+  }
+  .tier-meter {
+    width: 68px;
+    right: 10px;
+  }
+}
+@media (max-width: 400px) {
+  .resource-gallery .resource-tabs button {
+    padding-inline: 8px;
+  }
+  .chart-legend > div {
+    gap: 8px;
+  }
+  .chart-legend dd {
+    white-space: normal;
+  }
+}
+
+/* Keep charts within the inspection workspace and override legacy bar-row layout. */
+.resource-gallery .resource-tabs {
+  margin-bottom: 16px;
+}
+.primary-chart > .metric-ring {
+  width: 180px;
+  margin: 10px auto 12px;
+}
+.memory-plot {
+  max-height: 180px;
+}
+.latency-plot {
+  height: 240px;
+}
+.latency-observations > .plot-axis-note {
+  display: block;
+}
+.latency-observations > .plot-selection {
+  display: flex;
+}
+@media (max-width: 700px) {
+  .latency-plot {
+    height: auto;
+  }
+  .primary-chart > .metric-ring {
+    width: 164px;
+  }
+}
+
+/* A navy masthead anchors the beige workspace to the supplied palette. */
+.live-topbar {
+  --ui-text: var(--palette-beige);
+  --ui-secondary: var(--palette-sky);
+  --ui-panel: var(--palette-navy);
+  --ui-bg: var(--palette-navy);
+  --ui-raised: color-mix(in srgb, var(--palette-teal) 35%, var(--palette-navy));
+  --ui-border: color-mix(in srgb, var(--palette-sky) 35%, var(--palette-navy));
+  --agent-planner: var(--agent-planner-on-dark);
+  --agent-researcher: var(--agent-researcher-on-dark);
+  --agent-reviewer: var(--agent-reviewer-on-dark);
+  --state-current: var(--palette-beige);
+  --ui-accent: var(--palette-sky);
+  background: var(--palette-navy);
+  color: var(--palette-beige);
+}
+.memory-plot circle {
+  stroke: var(--palette-navy);
+  stroke-width: 1;
+}
+
+.live-topbar .icon-button { color: var(--palette-sky); }

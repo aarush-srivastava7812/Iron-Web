@@ -1,7 +1,7 @@
 {
   "schema": "iron_web_dashboard_v1",
   "status": "online",
-  "timestamp": 1792252442.9853911,
+  "timestamp": 1792270689.8843899,
   "trip_id": null,
   "scope": "traveler_shared_memory",
   "observations": {
@@ -12015,7 +12015,7 @@
     "source": "measured",
     "scope": "website process / device snapshot",
     "ram_bytes": null,
-    "vram_bytes": 5775556608,
+    "vram_bytes": 2103443456,
     "gpu_util": null,
     "device": {
       "gpu_enabled_requested": false,
@@ -12028,15 +12028,15 @@
       "embedder_provider": "CPUExecutionProvider",
       "reranker_provider": "Uninitialized",
       "vram_total_mb": 6141,
-      "vram_used_mb": 5508,
-      "vram_free_mb": 413,
+      "vram_used_mb": 2006,
+      "vram_free_mb": 3915,
       "vram_budget_mb": 5117,
       "safety_buffer_mb": 1024,
       "execution_mode": "CPU Execution",
       "status_notes": "CPU execution configured explicitly."
     }
   },
-  "inspection_ms": 331.08,
+  "inspection_ms": 266.49,
   "notes": [
     "Observations are bounded to 500 events and contexts to 256 entries; both reset on process restart.",
     "Database counts cover the selected traveler's store; graph/vector pages may have a narrower trip scope.",

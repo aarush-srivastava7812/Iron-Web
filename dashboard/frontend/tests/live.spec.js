@@ -185,14 +185,16 @@ test("drawers and reduced motion work with the actual feed", async ({
 });
 
 test("a stalled SSE transport marks the real snapshot stale and reconnects", async ({ page }) => {
-  test.setTimeout(45000);
+  test.setTimeout(90000);
   const held = [];
   const stall = route => { held.push(route); };
   // Only the stream transport is held. Initial HTTP and recovered snapshots
   // still come from the actual memory owner; no mock memory is introduced.
   await page.route("**/api/dashboard/stream", stall);
   await page.goto("/");
-  await expect(page.getByTestId("live-dashboard")).toBeVisible();
+  // Loading the real snapshot can exceed the default five-second assertion
+  // under concurrent test load. Keep the heartbeat deadlines below unchanged.
+  await expect(page.getByTestId("live-dashboard")).toBeVisible({ timeout: 30000 });
   await expect(page.locator(".feed-warning")).toContainText(
     "No fresh memory snapshot", { timeout: 18000 },
   );

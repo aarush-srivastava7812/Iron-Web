@@ -1,0 +1,2288 @@
+{
+  "graph_name": "lifecycle_demo_541ada2f305a",
+  "real_embeddings": "BAAI/bge-small-en-v1.5",
+  "events": [
+    {
+      "memory_id": "demo_old_budget",
+      "claims": [
+        "claim_f169fa3a629d50a4067150c09ee61988"
+      ]
+    },
+    {
+      "memory_id": "demo_profile",
+      "claims": [
+        "claim_d36b3c52badf7ad4913e7ff0f090a3de",
+        "claim_1e96ab6c503241d6d479a84680c88a39",
+        "claim_4c356bc8c1b0cf6ebb750d83a47964dd"
+      ]
+    },
+    {
+      "memory_id": "demo_new_budget",
+      "claims": [
+        "claim_582024ff6d0ad738a6157b0f09f74e69"
+      ]
+    },
+    {
+      "memory_id": "demo_confirm_discipline",
+      "claims": [
+        "claim_4710798e93df9ceb5502f28538d3b16a"
+      ]
+    },
+    {
+      "memory_id": "demo_employer",
+      "claims": [
+        "claim_c182ef804561beb51499ca62548e9fe3"
+      ]
+    },
+    {
+      "memory_id": "demo_location",
+      "claims": [
+        "claim_e9e01e447efa72e5fa91f926ea14331e"
+      ]
+    },
+    {
+      "memory_id": "demo_identity",
+      "claims": [
+        "claim_b4582fa6638265b822e9c5b843cffd6d"
+      ]
+    }
+  ],
+  "old_claim": {
+    "claim_id": "claim_f169fa3a629d50a4067150c09ee61988",
+    "memory_id": "demo_old_budget",
+    "subject": "Traveller",
+    "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+    "predicate": "budget",
+    "value": 1000,
+    "kind": "rule",
+    "scope": {},
+    "status": "superseded",
+    "accepted": true,
+    "current_eligible": false,
+    "protected": false,
+    "accepted_for_current_use": false,
+    "correction_known": false,
+    "protected_at_creation": true,
+    "fuzzy_score": 0.0,
+    "fuzzy_explanation": {
+      "score": 0.0,
+      "hard_rule": "not_current",
+      "fired_rules": []
+    },
+    "previous_score": 1.0,
+    "changed_by": "claim_582024ff6d0ad738a6157b0f09f74e69",
+    "change_reason": "Explicit user budget change",
+    "conflicting_claim_ids": [
+      "claim_582024ff6d0ad738a6157b0f09f74e69",
+      "claim_e24c1346055a42c2179586e38c207f4c"
+    ],
+    "sources": [
+      {
+        "id": "source_4237ce97b85b76d9b75bc6fb1a13c26b",
+        "memory_id": "demo_old_budget",
+        "event_id": "demo_old_budget",
+        "text": "The traveller approved a maximum travel budget of 1000.",
+        "origin": "user",
+        "actor_id": "demo_user",
+        "user_confirmed": true,
+        "quality": 0.9,
+        "evidence_group": "user:demo_user",
+        "recorded_at": 1792162956,
+        "received_at": 1792335756,
+        "digest": "receipt_291f9882f15e3fc51cf875fecf64e0f4",
+        "metadata_json": "{\"source\":\"explicit_demonstration_fixture\"}"
+      }
+    ],
+    "valid_from": 0,
+    "valid_until": 9223372036854775807,
+    "accepted_at": 1792162956,
+    "ended_at": 1792249356,
+    "reason": "",
+    "historical_meaning": "source assertion; effective dates unspecified",
+    "references": [],
+    "identity_evidence": [],
+    "evidence_path": [
+      "claim_f169fa3a629d50a4067150c09ee61988",
+      "SUPPORTED_BY",
+      "source_4237ce97b85b76d9b75bc6fb1a13c26b"
+    ]
+  },
+  "new_claim": {
+    "claim_id": "claim_582024ff6d0ad738a6157b0f09f74e69",
+    "memory_id": "demo_new_budget",
+    "subject": "Traveller",
+    "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+    "predicate": "budget",
+    "value": 600,
+    "kind": "rule",
+    "scope": {},
+    "status": "disputed",
+    "accepted": true,
+    "current_eligible": true,
+    "protected": true,
+    "accepted_for_current_use": false,
+    "correction_known": false,
+    "protected_at_creation": true,
+    "fuzzy_score": 1.0,
+    "fuzzy_explanation": {
+      "score": 1.0,
+      "hard_rule": "user_confirmed_protection",
+      "fired_rules": []
+    },
+    "previous_score": null,
+    "changed_by": null,
+    "change_reason": null,
+    "conflicting_claim_ids": [
+      "claim_e24c1346055a42c2179586e38c207f4c"
+    ],
+    "sources": [
+      {
+        "id": "source_c4e3c6d13ae2fc352ffef93bd8811209",
+        "memory_id": "demo_new_budget",
+        "event_id": "demo_new_budget",
+        "text": "The traveller lowered the approved maximum budget to 600.",
+        "origin": "user",
+        "actor_id": "demo_user",
+        "user_confirmed": true,
+        "quality": 0.9,
+        "evidence_group": "user:demo_user",
+        "recorded_at": 1792249356,
+        "received_at": 1792335757,
+        "digest": "receipt_9976067cdc58bec959320a20732cb652",
+        "metadata_json": "{\"source\":\"explicit_demonstration_fixture\"}"
+      }
+    ],
+    "valid_from": 0,
+    "valid_until": 9223372036854775807,
+    "accepted_at": 1792249356,
+    "ended_at": null,
+    "reason": "Explicit user budget change",
+    "historical_meaning": "source assertion; effective dates unspecified",
+    "references": [],
+    "identity_evidence": [],
+    "evidence_path": [
+      "claim_582024ff6d0ad738a6157b0f09f74e69",
+      "SUPPORTED_BY",
+      "source_c4e3c6d13ae2fc352ffef93bd8811209"
+    ]
+  },
+  "accepted_change_result": {
+    "answer_status": "supported",
+    "subject": "Traveller",
+    "requested_predicate": "budget",
+    "scope": {},
+    "temporal_mode": "now",
+    "evidence": [
+      {
+        "claim_id": "claim_582024ff6d0ad738a6157b0f09f74e69",
+        "memory_id": "demo_new_budget",
+        "subject": "Traveller",
+        "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+        "predicate": "budget",
+        "value": 600,
+        "kind": "rule",
+        "scope": {},
+        "status": "accepted",
+        "accepted": true,
+        "current_eligible": true,
+        "protected": true,
+        "accepted_for_current_use": true,
+        "correction_known": false,
+        "protected_at_creation": true,
+        "fuzzy_score": 1.0,
+        "fuzzy_explanation": {
+          "score": 1.0,
+          "hard_rule": "user_confirmed_protection",
+          "fired_rules": []
+        },
+        "previous_score": null,
+        "changed_by": null,
+        "change_reason": null,
+        "conflicting_claim_ids": [],
+        "sources": [
+          {
+            "id": "source_c4e3c6d13ae2fc352ffef93bd8811209",
+            "memory_id": "demo_new_budget",
+            "event_id": "demo_new_budget",
+            "text": "The traveller lowered the approved maximum budget to 600.",
+            "origin": "user",
+            "actor_id": "demo_user",
+            "user_confirmed": true,
+            "quality": 0.9,
+            "evidence_group": "user:demo_user",
+            "recorded_at": 1792249356,
+            "received_at": 1792335757,
+            "digest": "receipt_9976067cdc58bec959320a20732cb652",
+            "metadata_json": "{\"source\":\"explicit_demonstration_fixture\"}"
+          }
+        ],
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "accepted_at": 1792249356,
+        "ended_at": null,
+        "reason": "Explicit user budget change",
+        "historical_meaning": "source assertion; effective dates unspecified",
+        "references": [],
+        "identity_evidence": [],
+        "evidence_path": [
+          "claim_582024ff6d0ad738a6157b0f09f74e69",
+          "SUPPORTED_BY",
+          "source_c4e3c6d13ae2fc352ffef93bd8811209"
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "unresolved_dispute_result": {
+    "answer_status": "disputed",
+    "subject": "Traveller",
+    "requested_predicate": "budget",
+    "scope": {},
+    "temporal_mode": "now",
+    "evidence": [
+      {
+        "claim_id": "claim_e24c1346055a42c2179586e38c207f4c",
+        "memory_id": "demo_proposal",
+        "subject": "Traveller",
+        "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+        "predicate": "budget",
+        "value": 900,
+        "kind": "rule",
+        "scope": {},
+        "status": "disputed",
+        "accepted": false,
+        "current_eligible": true,
+        "protected": false,
+        "accepted_for_current_use": false,
+        "correction_known": false,
+        "protected_at_creation": false,
+        "fuzzy_score": 0.6558750000000001,
+        "fuzzy_explanation": {
+          "score": 0.6558750000000001,
+          "inputs": {
+            "freshness": 1.0,
+            "quality": 0.5,
+            "support": 0.3333333333333333,
+            "agreement": 0.5
+          },
+          "memberships": {
+            "freshness": {
+              "low": 0.0,
+              "medium": 0.0,
+              "high": 1.0
+            },
+            "quality": {
+              "low": 0.0,
+              "medium": 1.0,
+              "high": 0.0
+            },
+            "support": {
+              "low": 0.33333333333333337,
+              "medium": 0.6666666666666666,
+              "high": 0.0
+            },
+            "agreement": {
+              "low": 0.0,
+              "medium": 1.0,
+              "high": 0.0
+            }
+          },
+          "fired_rules": [
+            {
+              "conditions": {
+                "freshness": "high",
+                "quality": "medium",
+                "support": "low",
+                "agreement": "medium"
+              },
+              "firing_strength": 0.33333333333333337,
+              "output": 0.6175
+            },
+            {
+              "conditions": {
+                "freshness": "high",
+                "quality": "medium",
+                "support": "medium",
+                "agreement": "medium"
+              },
+              "firing_strength": 0.6666666666666666,
+              "output": 0.685
+            }
+          ],
+          "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+          "calibrated_probability": false
+        },
+        "previous_score": null,
+        "changed_by": null,
+        "change_reason": null,
+        "conflicting_claim_ids": [
+          "claim_582024ff6d0ad738a6157b0f09f74e69"
+        ],
+        "sources": [
+          {
+            "id": "source_c3bcc4b0303e29f67ab3ee5703ed9007",
+            "memory_id": "demo_proposal",
+            "event_id": "demo_proposal",
+            "text": "The planner proposes a conflicting budget of 900.",
+            "origin": "agent",
+            "actor_id": "planner",
+            "user_confirmed": false,
+            "quality": 0.5,
+            "evidence_group": "agent_assertions",
+            "recorded_at": 1792335759,
+            "received_at": 1792335759,
+            "digest": "receipt_43c419bee0ec15442114bdf8c4355bd0",
+            "metadata_json": "{}"
+          }
+        ],
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "accepted_at": 1792335759,
+        "ended_at": null,
+        "reason": "",
+        "historical_meaning": "source assertion; effective dates unspecified",
+        "references": [],
+        "identity_evidence": [],
+        "evidence_path": [
+          "claim_e24c1346055a42c2179586e38c207f4c",
+          "SUPPORTED_BY",
+          "source_c3bcc4b0303e29f67ab3ee5703ed9007"
+        ]
+      },
+      {
+        "claim_id": "claim_582024ff6d0ad738a6157b0f09f74e69",
+        "memory_id": "demo_new_budget",
+        "subject": "Traveller",
+        "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+        "predicate": "budget",
+        "value": 600,
+        "kind": "rule",
+        "scope": {},
+        "status": "disputed",
+        "accepted": true,
+        "current_eligible": true,
+        "protected": true,
+        "accepted_for_current_use": false,
+        "correction_known": false,
+        "protected_at_creation": true,
+        "fuzzy_score": 1.0,
+        "fuzzy_explanation": {
+          "score": 1.0,
+          "hard_rule": "user_confirmed_protection",
+          "fired_rules": []
+        },
+        "previous_score": null,
+        "changed_by": null,
+        "change_reason": null,
+        "conflicting_claim_ids": [
+          "claim_e24c1346055a42c2179586e38c207f4c"
+        ],
+        "sources": [
+          {
+            "id": "source_c4e3c6d13ae2fc352ffef93bd8811209",
+            "memory_id": "demo_new_budget",
+            "event_id": "demo_new_budget",
+            "text": "The traveller lowered the approved maximum budget to 600.",
+            "origin": "user",
+            "actor_id": "demo_user",
+            "user_confirmed": true,
+            "quality": 0.9,
+            "evidence_group": "user:demo_user",
+            "recorded_at": 1792249356,
+            "received_at": 1792335757,
+            "digest": "receipt_9976067cdc58bec959320a20732cb652",
+            "metadata_json": "{\"source\":\"explicit_demonstration_fixture\"}"
+          }
+        ],
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "accepted_at": 1792249356,
+        "ended_at": null,
+        "reason": "Explicit user budget change",
+        "historical_meaning": "source assertion; effective dates unspecified",
+        "references": [],
+        "identity_evidence": [],
+        "evidence_path": [
+          "claim_582024ff6d0ad738a6157b0f09f74e69",
+          "SUPPORTED_BY",
+          "source_c4e3c6d13ae2fc352ffef93bd8811209"
+        ]
+      }
+    ],
+    "warnings": [
+      "Resolve conflicting claims before acting."
+    ]
+  },
+  "handoff": {
+    "as_of": 1792335758,
+    "can_continue": false,
+    "work": [
+      {
+        "work": {
+          "id": "trip_plan",
+          "description": "Plan based on the approved budget",
+          "agent_id": "planner",
+          "status": "stale",
+          "created_at": 1792335757,
+          "validation_state": "stale",
+          "fingerprint": "work_1d0621ccf055da81d46a317efa0053fc",
+          "used_claim_ids": "[\"claim_f169fa3a629d50a4067150c09ee61988\"]",
+          "dependency_ids": "[]",
+          "requirement_watches_json": "[{\"scope\":{},\"subject_id\":\"subject_038c3d39120ea46e7d9d4b05f9ebfb52\"}]",
+          "known_requirement_fields_json": "[\"field_2229f80a2462f1d92c8faa0889c2a221\"]",
+          "invalidated_by": "claim_582024ff6d0ad738a6157b0f09f74e69",
+          "review_reason": "Explicit user budget change"
+        },
+        "used_versions": [
+          {
+            "claim_id": "claim_f169fa3a629d50a4067150c09ee61988",
+            "memory_id": "demo_old_budget",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "budget",
+            "value": 1000,
+            "kind": "rule",
+            "scope": {},
+            "status": "superseded",
+            "accepted": true,
+            "current_eligible": false,
+            "protected": false,
+            "accepted_for_current_use": false,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 0.0,
+            "fuzzy_explanation": {
+              "score": 0.0,
+              "hard_rule": "not_current",
+              "fired_rules": []
+            },
+            "previous_score": 1.0,
+            "changed_by": "claim_582024ff6d0ad738a6157b0f09f74e69",
+            "change_reason": "Explicit user budget change",
+            "conflicting_claim_ids": [
+              "claim_582024ff6d0ad738a6157b0f09f74e69"
+            ],
+            "sources": [
+              {
+                "id": "source_4237ce97b85b76d9b75bc6fb1a13c26b",
+                "memory_id": "demo_old_budget",
+                "event_id": "demo_old_budget",
+                "text": "The traveller approved a maximum travel budget of 1000.",
+                "origin": "user",
+                "actor_id": "demo_user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:demo_user",
+                "recorded_at": 1792162956,
+                "received_at": 1792335756,
+                "digest": "receipt_291f9882f15e3fc51cf875fecf64e0f4",
+                "metadata_json": "{\"source\":\"explicit_demonstration_fixture\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792162956,
+            "ended_at": 1792249356,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_f169fa3a629d50a4067150c09ee61988",
+              "SUPPORTED_BY",
+              "source_4237ce97b85b76d9b75bc6fb1a13c26b"
+            ]
+          }
+        ],
+        "current_evidence": [
+          {
+            "claim_id": "claim_582024ff6d0ad738a6157b0f09f74e69",
+            "memory_id": "demo_new_budget",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "budget",
+            "value": 600,
+            "kind": "rule",
+            "scope": {},
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": true,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 1.0,
+            "fuzzy_explanation": {
+              "score": 1.0,
+              "hard_rule": "user_confirmed_protection",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_c4e3c6d13ae2fc352ffef93bd8811209",
+                "memory_id": "demo_new_budget",
+                "event_id": "demo_new_budget",
+                "text": "The traveller lowered the approved maximum budget to 600.",
+                "origin": "user",
+                "actor_id": "demo_user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:demo_user",
+                "recorded_at": 1792249356,
+                "received_at": 1792335757,
+                "digest": "receipt_9976067cdc58bec959320a20732cb652",
+                "metadata_json": "{\"source\":\"explicit_demonstration_fixture\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792249356,
+            "ended_at": null,
+            "reason": "Explicit user budget change",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_582024ff6d0ad738a6157b0f09f74e69",
+              "SUPPORTED_BY",
+              "source_c4e3c6d13ae2fc352ffef93bd8811209"
+            ]
+          }
+        ],
+        "prerequisites": [],
+        "awaiting_prerequisites": [],
+        "needs_review": true,
+        "warnings": [],
+        "prerequisite_reviews": {}
+      },
+      {
+        "work": {
+          "id": "seat_note",
+          "description": "Seat preference recorded",
+          "agent_id": "planner",
+          "status": "completed",
+          "created_at": 1792335757,
+          "validation_state": "current",
+          "fingerprint": "work_71264b0d583ca8b8060e773aa7c9ae92",
+          "used_claim_ids": "[\"claim_4c356bc8c1b0cf6ebb750d83a47964dd\"]",
+          "dependency_ids": "[]",
+          "requirement_watches_json": "[{\"scope\":{},\"subject_id\":\"subject_038c3d39120ea46e7d9d4b05f9ebfb52\"}]",
+          "known_requirement_fields_json": "[\"field_2229f80a2462f1d92c8faa0889c2a221\"]",
+          "completed_at": 1792335757
+        },
+        "used_versions": [
+          {
+            "claim_id": "claim_4c356bc8c1b0cf6ebb750d83a47964dd",
+            "memory_id": "demo_profile",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "seat_preference",
+            "value": "aisle",
+            "kind": "fact",
+            "scope": {},
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.16619621739240256,
+            "fuzzy_explanation": {
+              "score": 0.16619621739240256,
+              "inputs": {
+                "freshness": 0.249999955430355,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.50000008913929,
+                  "medium": 0.49999991086071005,
+                  "high": 0.0
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "low",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.03333333927595266,
+                  "output": 0.41500000000000004
+                },
+                {
+                  "conditions": {
+                    "freshness": "low",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.0666666785519053,
+                  "output": 0.48250000000000004
+                },
+                {
+                  "conditions": {
+                    "freshness": "low",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.1333333571038107,
+                  "output": 0.5950000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "low",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.26666671420762134,
+                  "output": 0.6625000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.033333327390714,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.06666665478142798,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.13333330956285602,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.266666619125712,
+                  "output": 0.7975000000000001
+                }
+              ],
+              "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_0e187ed0b9180264aebbd69f73ba807c",
+                "memory_id": "demo_profile",
+                "event_id": "demo_profile",
+                "text": "The traveller studies AI & Data Science, in year three, and prefers aisle seats.",
+                "origin": "user",
+                "actor_id": "demo_user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:demo_user",
+                "recorded_at": 1776783756,
+                "received_at": 1792335757,
+                "digest": "receipt_e27a33f329e80a3569511ecd51fc3d1a",
+                "metadata_json": "{\"source\":\"explicit_demonstration_fixture\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1776783756,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_4c356bc8c1b0cf6ebb750d83a47964dd",
+              "SUPPORTED_BY",
+              "source_0e187ed0b9180264aebbd69f73ba807c"
+            ]
+          }
+        ],
+        "current_evidence": [
+          {
+            "claim_id": "claim_4c356bc8c1b0cf6ebb750d83a47964dd",
+            "memory_id": "demo_profile",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "seat_preference",
+            "value": "aisle",
+            "kind": "fact",
+            "scope": {},
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.16619621739240256,
+            "fuzzy_explanation": {
+              "score": 0.16619621739240256,
+              "inputs": {
+                "freshness": 0.249999955430355,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.50000008913929,
+                  "medium": 0.49999991086071005,
+                  "high": 0.0
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "low",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.03333333927595266,
+                  "output": 0.41500000000000004
+                },
+                {
+                  "conditions": {
+                    "freshness": "low",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.0666666785519053,
+                  "output": 0.48250000000000004
+                },
+                {
+                  "conditions": {
+                    "freshness": "low",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.1333333571038107,
+                  "output": 0.5950000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "low",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.26666671420762134,
+                  "output": 0.6625000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.033333327390714,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.06666665478142798,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.13333330956285602,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.266666619125712,
+                  "output": 0.7975000000000001
+                }
+              ],
+              "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_0e187ed0b9180264aebbd69f73ba807c",
+                "memory_id": "demo_profile",
+                "event_id": "demo_profile",
+                "text": "The traveller studies AI & Data Science, in year three, and prefers aisle seats.",
+                "origin": "user",
+                "actor_id": "demo_user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:demo_user",
+                "recorded_at": 1776783756,
+                "received_at": 1792335757,
+                "digest": "receipt_e27a33f329e80a3569511ecd51fc3d1a",
+                "metadata_json": "{\"source\":\"explicit_demonstration_fixture\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1776783756,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_4c356bc8c1b0cf6ebb750d83a47964dd",
+              "SUPPORTED_BY",
+              "source_0e187ed0b9180264aebbd69f73ba807c"
+            ]
+          }
+        ],
+        "prerequisites": [],
+        "awaiting_prerequisites": [],
+        "needs_review": false,
+        "warnings": [],
+        "prerequisite_reviews": {}
+      }
+    ]
+  },
+  "missing_answer": {
+    "answer_status": "missing",
+    "subject": "Traveller",
+    "requested_predicate": "phone_number",
+    "scope": {},
+    "temporal_mode": "now",
+    "evidence": [],
+    "warnings": []
+  },
+  "multi_step_answer": {
+    "answer_status": "supported",
+    "steps": [
+      {
+        "subject": "Traveller",
+        "predicate": "employer",
+        "answer_status": "supported",
+        "evidence": [
+          {
+            "claim_id": "claim_c182ef804561beb51499ca62548e9fe3",
+            "memory_id": "demo_employer",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "employer",
+            "value": "Example Systems",
+            "kind": "fact",
+            "scope": {},
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8652586875782772,
+            "fuzzy_explanation": {
+              "score": 0.8652586875782772,
+              "inputs": {
+                "freshness": 0.9999988411897985,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 2.317620402925158e-06,
+                  "high": 0.9999976823795971
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.5450802686167718e-07,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 3.090160537233543e-07,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 6.180321074467089e-07,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.2360642148934176e-06,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.06666651215863979,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.13333302431727956,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.2666660486345593,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.5333320972691185,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_780c4180a30dfbd8b66bc15046f81984",
+                "memory_id": "demo_employer",
+                "event_id": "demo_employer",
+                "text": "The traveller works at Example Systems.",
+                "origin": "user",
+                "actor_id": "demo_user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:demo_user",
+                "recorded_at": 1792335746,
+                "received_at": 1792335758,
+                "digest": "receipt_4f4308bc9414cf03650aac1dd0200ce0",
+                "metadata_json": "{\"source\":\"explicit_demonstration_fixture\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792335746,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [
+              "Example Systems"
+            ],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_c182ef804561beb51499ca62548e9fe3",
+              "SUPPORTED_BY",
+              "source_780c4180a30dfbd8b66bc15046f81984"
+            ]
+          }
+        ]
+      },
+      {
+        "subject": "Example Systems",
+        "predicate": "location",
+        "answer_status": "supported",
+        "evidence": [
+          {
+            "claim_id": "claim_e9e01e447efa72e5fa91f926ea14331e",
+            "memory_id": "demo_location",
+            "subject": "Example Electrosystems",
+            "subject_id": "subject_db5130233e50ccd52f843584f63d989b",
+            "predicate": "location",
+            "value": "Pune",
+            "kind": "fact",
+            "scope": {},
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8652586875782772,
+            "fuzzy_explanation": {
+              "score": 0.8652586875782772,
+              "inputs": {
+                "freshness": 0.9999988411897985,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 2.317620402925158e-06,
+                  "high": 0.9999976823795971
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.5450802686167718e-07,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 3.090160537233543e-07,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 6.180321074467089e-07,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.2360642148934176e-06,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.06666651215863979,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.13333302431727956,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.2666660486345593,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.5333320972691185,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_de34e2da728a31a37ce6405a5951fb5c",
+                "memory_id": "demo_location",
+                "event_id": "demo_location",
+                "text": "Example Electrosystems is located in Pune.",
+                "origin": "user",
+                "actor_id": "demo_user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:demo_user",
+                "recorded_at": 1792335746,
+                "received_at": 1792335758,
+                "digest": "receipt_ac7a71f310f2a05c727a13356ec6efcf",
+                "metadata_json": "{\"source\":\"explicit_demonstration_fixture\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792335746,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [
+              {
+                "alias_subject_id": "subject_f4cef8c7affc475970f746fca88ebb16",
+                "canonical_subject_id": "subject_db5130233e50ccd52f843584f63d989b",
+                "evidence_claim_id": "claim_b4582fa6638265b822e9c5b843cffd6d"
+              }
+            ],
+            "evidence_path": [
+              "claim_e9e01e447efa72e5fa91f926ea14331e",
+              "SUPPORTED_BY",
+              "source_de34e2da728a31a37ce6405a5951fb5c"
+            ]
+          }
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "claim_id": "claim_e9e01e447efa72e5fa91f926ea14331e",
+        "memory_id": "demo_location",
+        "subject": "Example Electrosystems",
+        "subject_id": "subject_db5130233e50ccd52f843584f63d989b",
+        "predicate": "location",
+        "value": "Pune",
+        "kind": "fact",
+        "scope": {},
+        "status": "accepted",
+        "accepted": true,
+        "current_eligible": true,
+        "protected": false,
+        "accepted_for_current_use": true,
+        "correction_known": false,
+        "protected_at_creation": false,
+        "fuzzy_score": 0.8652586875782772,
+        "fuzzy_explanation": {
+          "score": 0.8652586875782772,
+          "inputs": {
+            "freshness": 0.9999988411897985,
+            "quality": 0.9,
+            "support": 0.3333333333333333,
+            "agreement": 1.0
+          },
+          "memberships": {
+            "freshness": {
+              "low": 0.0,
+              "medium": 2.317620402925158e-06,
+              "high": 0.9999976823795971
+            },
+            "quality": {
+              "low": 0.0,
+              "medium": 0.19999999999999996,
+              "high": 0.8
+            },
+            "support": {
+              "low": 0.33333333333333337,
+              "medium": 0.6666666666666666,
+              "high": 0.0
+            },
+            "agreement": {
+              "low": 0.0,
+              "medium": 0.0,
+              "high": 1.0
+            }
+          },
+          "fired_rules": [
+            {
+              "conditions": {
+                "freshness": "medium",
+                "quality": "medium",
+                "support": "low",
+                "agreement": "high"
+              },
+              "firing_strength": 1.5450802686167718e-07,
+              "output": 0.55
+            },
+            {
+              "conditions": {
+                "freshness": "medium",
+                "quality": "medium",
+                "support": "medium",
+                "agreement": "high"
+              },
+              "firing_strength": 3.090160537233543e-07,
+              "output": 0.6175
+            },
+            {
+              "conditions": {
+                "freshness": "medium",
+                "quality": "high",
+                "support": "low",
+                "agreement": "high"
+              },
+              "firing_strength": 6.180321074467089e-07,
+              "output": 0.7300000000000001
+            },
+            {
+              "conditions": {
+                "freshness": "medium",
+                "quality": "high",
+                "support": "medium",
+                "agreement": "high"
+              },
+              "firing_strength": 1.2360642148934176e-06,
+              "output": 0.7975000000000001
+            },
+            {
+              "conditions": {
+                "freshness": "high",
+                "quality": "medium",
+                "support": "low",
+                "agreement": "high"
+              },
+              "firing_strength": 0.06666651215863979,
+              "output": 0.685
+            },
+            {
+              "conditions": {
+                "freshness": "high",
+                "quality": "medium",
+                "support": "medium",
+                "agreement": "high"
+              },
+              "firing_strength": 0.13333302431727956,
+              "output": 0.7525000000000001
+            },
+            {
+              "conditions": {
+                "freshness": "high",
+                "quality": "high",
+                "support": "low",
+                "agreement": "high"
+              },
+              "firing_strength": 0.2666660486345593,
+              "output": 0.865
+            },
+            {
+              "conditions": {
+                "freshness": "high",
+                "quality": "high",
+                "support": "medium",
+                "agreement": "high"
+              },
+              "firing_strength": 0.5333320972691185,
+              "output": 0.9325
+            }
+          ],
+          "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+          "calibrated_probability": false
+        },
+        "previous_score": null,
+        "changed_by": null,
+        "change_reason": null,
+        "conflicting_claim_ids": [],
+        "sources": [
+          {
+            "id": "source_de34e2da728a31a37ce6405a5951fb5c",
+            "memory_id": "demo_location",
+            "event_id": "demo_location",
+            "text": "Example Electrosystems is located in Pune.",
+            "origin": "user",
+            "actor_id": "demo_user",
+            "user_confirmed": true,
+            "quality": 0.9,
+            "evidence_group": "user:demo_user",
+            "recorded_at": 1792335746,
+            "received_at": 1792335758,
+            "digest": "receipt_ac7a71f310f2a05c727a13356ec6efcf",
+            "metadata_json": "{\"source\":\"explicit_demonstration_fixture\"}"
+          }
+        ],
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "accepted_at": 1792335746,
+        "ended_at": null,
+        "reason": "",
+        "historical_meaning": "source assertion; effective dates unspecified",
+        "references": [],
+        "identity_evidence": [
+          {
+            "alias_subject_id": "subject_f4cef8c7affc475970f746fca88ebb16",
+            "canonical_subject_id": "subject_db5130233e50ccd52f843584f63d989b",
+            "evidence_claim_id": "claim_b4582fa6638265b822e9c5b843cffd6d"
+          }
+        ],
+        "evidence_path": [
+          "claim_e9e01e447efa72e5fa91f926ea14331e",
+          "SUPPORTED_BY",
+          "source_de34e2da728a31a37ce6405a5951fb5c"
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "current_search": [
+    {
+      "memory_id": "demo_new_budget",
+      "content": "Traveller: budget = 600",
+      "score": 2.377895097473804,
+      "metadata": {
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "importance": 1.0,
+        "memory_type": "semantic",
+        "timestamp": 1792249356,
+        "source": "explicit_demonstration_fixture",
+        "memory_claim_ids": [
+          "claim_582024ff6d0ad738a6157b0f09f74e69"
+        ],
+        "memory_source_id": "source_c4e3c6d13ae2fc352ffef93bd8811209",
+        "memory_versioned": true,
+        "extraction_status": "typed_claims",
+        "extraction_is_mock": false,
+        "extractor_name": "explicit_claim_contract",
+        "memory_evidence": [
+          {
+            "claim_id": "claim_582024ff6d0ad738a6157b0f09f74e69",
+            "memory_id": "demo_new_budget",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "budget",
+            "value": 600,
+            "kind": "rule",
+            "scope": {},
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": true,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": true,
+            "fuzzy_score": 1.0,
+            "fuzzy_explanation": {
+              "score": 1.0,
+              "hard_rule": "user_confirmed_protection",
+              "fired_rules": []
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_c4e3c6d13ae2fc352ffef93bd8811209",
+                "memory_id": "demo_new_budget",
+                "event_id": "demo_new_budget",
+                "text": "The traveller lowered the approved maximum budget to 600.",
+                "origin": "user",
+                "actor_id": "demo_user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:demo_user",
+                "recorded_at": 1792249356,
+                "received_at": 1792335757,
+                "digest": "receipt_9976067cdc58bec959320a20732cb652",
+                "metadata_json": "{\"source\":\"explicit_demonstration_fixture\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792249356,
+            "ended_at": null,
+            "reason": "Explicit user budget change",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_582024ff6d0ad738a6157b0f09f74e69",
+              "SUPPORTED_BY",
+              "source_c4e3c6d13ae2fc352ffef93bd8811209"
+            ]
+          }
+        ],
+        "answer_status": "evidence"
+      },
+      "entity_ids": [
+        "subject_038c3d39120ea46e7d9d4b05f9ebfb52"
+      ],
+      "retrieval_method": "graph+vector",
+      "timestamp": 1792249356,
+      "valid_from": 0,
+      "valid_until": 9223372036854775807,
+      "importance": 1.0,
+      "is_superseded": false,
+      "retrieval_trace": {
+        "memory_id": "demo_new_budget",
+        "retrieval_method": "graph+vector",
+        "vector_score": 0.8301967666681659,
+        "rerank_score": null,
+        "graph_relevance": 1.0,
+        "linked_entities": [
+          "subject_038c3d39120ea46e7d9d4b05f9ebfb52"
+        ],
+        "final_score": 2.377895097473804,
+        "selection_rank": 1,
+        "candidate_count": 3,
+        "superseded": false,
+        "stage_ms": {
+          "vector": 13.89589998871088,
+          "graph": 15.61609999043867,
+          "conflicts": 10.43039999785833,
+          "lifecycle": 60.445900016929954,
+          "rerank": 0.00200001522898674
+        },
+        "total_retrieval_ms": 110.33039999892935,
+        "lifecycle": {
+          "claim_ids": [
+            "claim_582024ff6d0ad738a6157b0f09f74e69"
+          ],
+          "source_paths": [
+            [
+              "claim_582024ff6d0ad738a6157b0f09f74e69",
+              "SUPPORTED_BY",
+              "source_c4e3c6d13ae2fc352ffef93bd8811209"
+            ]
+          ],
+          "discovery_memory_ids": [
+            "demo_old_budget",
+            "demo_new_budget",
+            "demo_profile",
+            "demo_confirm_discipline"
+          ]
+        }
+      }
+    },
+    {
+      "memory_id": "demo_confirm_discipline",
+      "content": "Traveller: discipline = AI & Data Science",
+      "score": 2.0901061178091984,
+      "metadata": {
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "importance": 1.0,
+        "memory_type": "semantic",
+        "timestamp": 1792335751,
+        "source": "explicit_demonstration_fixture",
+        "memory_claim_ids": [
+          "claim_4710798e93df9ceb5502f28538d3b16a"
+        ],
+        "memory_source_id": "source_bcff956db247171366aa5ba26aa44c43",
+        "memory_versioned": true,
+        "extraction_status": "typed_claims",
+        "extraction_is_mock": false,
+        "extractor_name": "explicit_claim_contract",
+        "memory_evidence": [
+          {
+            "claim_id": "claim_4710798e93df9ceb5502f28538d3b16a",
+            "memory_id": "demo_confirm_discipline",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "discipline",
+            "value": "AI & Data Science",
+            "kind": "fact",
+            "scope": {},
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.8652592933111017,
+            "fuzzy_explanation": {
+              "score": 0.8652592933111017,
+              "inputs": {
+                "freshness": 0.9999993760251092,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.0,
+                  "medium": 1.2479497815132135e-06,
+                  "high": 0.9999987520502185
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 8.319665210088089e-08,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 1.6639330420176176e-07,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 3.327866084035236e-07,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 6.655732168070471e-07,
+                  "output": 0.7975000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.06666658347001456,
+                  "output": 0.685
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.13333316694002909,
+                  "output": 0.7525000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.2666663338800583,
+                  "output": 0.865
+                },
+                {
+                  "conditions": {
+                    "freshness": "high",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.5333326677601165,
+                  "output": 0.9325
+                }
+              ],
+              "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_0e187ed0b9180264aebbd69f73ba807c",
+                "memory_id": "demo_profile",
+                "event_id": "demo_profile",
+                "text": "The traveller studies AI & Data Science, in year three, and prefers aisle seats.",
+                "origin": "user",
+                "actor_id": "demo_user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:demo_user",
+                "recorded_at": 1776783756,
+                "received_at": 1792335757,
+                "digest": "receipt_e27a33f329e80a3569511ecd51fc3d1a",
+                "metadata_json": "{\"source\":\"explicit_demonstration_fixture\"}"
+              },
+              {
+                "id": "source_bcff956db247171366aa5ba26aa44c43",
+                "memory_id": "demo_confirm_discipline",
+                "event_id": "demo_confirm_discipline",
+                "text": "The traveller reconfirmed the AI & Data Science discipline only.",
+                "origin": "user",
+                "actor_id": "demo_user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:demo_user",
+                "recorded_at": 1792335751,
+                "received_at": 1792335758,
+                "digest": "receipt_bd06e582e900d22634c50c6881f743fe",
+                "metadata_json": "{\"source\":\"explicit_demonstration_fixture\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792335751,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_4710798e93df9ceb5502f28538d3b16a",
+              "SUPPORTED_BY",
+              "source_bcff956db247171366aa5ba26aa44c43"
+            ]
+          }
+        ],
+        "answer_status": "evidence"
+      },
+      "entity_ids": [
+        "subject_038c3d39120ea46e7d9d4b05f9ebfb52"
+      ],
+      "retrieval_method": "graph+vector",
+      "timestamp": 1792335751,
+      "valid_from": 0,
+      "valid_until": 9223372036854775807,
+      "importance": 1.0,
+      "is_superseded": false,
+      "retrieval_trace": {
+        "memory_id": "demo_confirm_discipline",
+        "retrieval_method": "graph+vector",
+        "vector_score": 0.5603174110050008,
+        "rerank_score": null,
+        "graph_relevance": 1.0,
+        "linked_entities": [
+          "subject_038c3d39120ea46e7d9d4b05f9ebfb52"
+        ],
+        "final_score": 2.0901061178091984,
+        "selection_rank": 2,
+        "candidate_count": 3,
+        "superseded": false,
+        "stage_ms": {
+          "vector": 13.89589998871088,
+          "graph": 15.61609999043867,
+          "conflicts": 10.43039999785833,
+          "lifecycle": 60.445900016929954,
+          "rerank": 0.00200001522898674
+        },
+        "total_retrieval_ms": 110.33479997422546,
+        "lifecycle": {
+          "claim_ids": [
+            "claim_4710798e93df9ceb5502f28538d3b16a"
+          ],
+          "source_paths": [
+            [
+              "claim_4710798e93df9ceb5502f28538d3b16a",
+              "SUPPORTED_BY",
+              "source_bcff956db247171366aa5ba26aa44c43"
+            ]
+          ],
+          "discovery_memory_ids": [
+            "demo_old_budget",
+            "demo_new_budget",
+            "demo_profile",
+            "demo_confirm_discipline"
+          ]
+        }
+      }
+    },
+    {
+      "memory_id": "demo_profile",
+      "content": "Traveller: study year = 3\nTraveller: seat preference = aisle",
+      "score": 1.7602468302429677,
+      "metadata": {
+        "valid_from": 0,
+        "valid_until": 9223372036854775807,
+        "importance": 1.0,
+        "memory_type": "semantic",
+        "timestamp": 1776783756,
+        "source": "explicit_demonstration_fixture",
+        "memory_claim_ids": [
+          "claim_d36b3c52badf7ad4913e7ff0f090a3de",
+          "claim_1e96ab6c503241d6d479a84680c88a39",
+          "claim_4c356bc8c1b0cf6ebb750d83a47964dd"
+        ],
+        "memory_source_id": "source_0e187ed0b9180264aebbd69f73ba807c",
+        "memory_versioned": true,
+        "extraction_status": "typed_claims",
+        "extraction_is_mock": false,
+        "extractor_name": "explicit_claim_contract",
+        "memory_evidence": [
+          {
+            "claim_id": "claim_1e96ab6c503241d6d479a84680c88a39",
+            "memory_id": "demo_profile",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "study_year",
+            "value": 3,
+            "kind": "fact",
+            "scope": {},
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.16619621739240256,
+            "fuzzy_explanation": {
+              "score": 0.16619621739240256,
+              "inputs": {
+                "freshness": 0.249999955430355,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.50000008913929,
+                  "medium": 0.49999991086071005,
+                  "high": 0.0
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "low",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.03333333927595266,
+                  "output": 0.41500000000000004
+                },
+                {
+                  "conditions": {
+                    "freshness": "low",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.0666666785519053,
+                  "output": 0.48250000000000004
+                },
+                {
+                  "conditions": {
+                    "freshness": "low",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.1333333571038107,
+                  "output": 0.5950000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "low",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.26666671420762134,
+                  "output": 0.6625000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.033333327390714,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.06666665478142798,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.13333330956285602,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.266666619125712,
+                  "output": 0.7975000000000001
+                }
+              ],
+              "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_0e187ed0b9180264aebbd69f73ba807c",
+                "memory_id": "demo_profile",
+                "event_id": "demo_profile",
+                "text": "The traveller studies AI & Data Science, in year three, and prefers aisle seats.",
+                "origin": "user",
+                "actor_id": "demo_user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:demo_user",
+                "recorded_at": 1776783756,
+                "received_at": 1792335757,
+                "digest": "receipt_e27a33f329e80a3569511ecd51fc3d1a",
+                "metadata_json": "{\"source\":\"explicit_demonstration_fixture\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1776783756,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_1e96ab6c503241d6d479a84680c88a39",
+              "SUPPORTED_BY",
+              "source_0e187ed0b9180264aebbd69f73ba807c"
+            ]
+          },
+          {
+            "claim_id": "claim_4c356bc8c1b0cf6ebb750d83a47964dd",
+            "memory_id": "demo_profile",
+            "subject": "Traveller",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "predicate": "seat_preference",
+            "value": "aisle",
+            "kind": "fact",
+            "scope": {},
+            "status": "accepted",
+            "accepted": true,
+            "current_eligible": true,
+            "protected": false,
+            "accepted_for_current_use": true,
+            "correction_known": false,
+            "protected_at_creation": false,
+            "fuzzy_score": 0.16619621739240256,
+            "fuzzy_explanation": {
+              "score": 0.16619621739240256,
+              "inputs": {
+                "freshness": 0.249999955430355,
+                "quality": 0.9,
+                "support": 0.3333333333333333,
+                "agreement": 1.0
+              },
+              "memberships": {
+                "freshness": {
+                  "low": 0.50000008913929,
+                  "medium": 0.49999991086071005,
+                  "high": 0.0
+                },
+                "quality": {
+                  "low": 0.0,
+                  "medium": 0.19999999999999996,
+                  "high": 0.8
+                },
+                "support": {
+                  "low": 0.33333333333333337,
+                  "medium": 0.6666666666666666,
+                  "high": 0.0
+                },
+                "agreement": {
+                  "low": 0.0,
+                  "medium": 0.0,
+                  "high": 1.0
+                }
+              },
+              "fired_rules": [
+                {
+                  "conditions": {
+                    "freshness": "low",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.03333333927595266,
+                  "output": 0.41500000000000004
+                },
+                {
+                  "conditions": {
+                    "freshness": "low",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.0666666785519053,
+                  "output": 0.48250000000000004
+                },
+                {
+                  "conditions": {
+                    "freshness": "low",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.1333333571038107,
+                  "output": 0.5950000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "low",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.26666671420762134,
+                  "output": 0.6625000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.033333327390714,
+                  "output": 0.55
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "medium",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.06666665478142798,
+                  "output": 0.6175
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "low",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.13333330956285602,
+                  "output": 0.7300000000000001
+                },
+                {
+                  "conditions": {
+                    "freshness": "medium",
+                    "quality": "high",
+                    "support": "medium",
+                    "agreement": "high"
+                  },
+                  "firing_strength": 0.266666619125712,
+                  "output": 0.7975000000000001
+                }
+              ],
+              "method": "Sugeno v2; product conjunction; monotone rule outputs; freshness scaling",
+              "calibrated_probability": false
+            },
+            "previous_score": null,
+            "changed_by": null,
+            "change_reason": null,
+            "conflicting_claim_ids": [],
+            "sources": [
+              {
+                "id": "source_0e187ed0b9180264aebbd69f73ba807c",
+                "memory_id": "demo_profile",
+                "event_id": "demo_profile",
+                "text": "The traveller studies AI & Data Science, in year three, and prefers aisle seats.",
+                "origin": "user",
+                "actor_id": "demo_user",
+                "user_confirmed": true,
+                "quality": 0.9,
+                "evidence_group": "user:demo_user",
+                "recorded_at": 1776783756,
+                "received_at": 1792335757,
+                "digest": "receipt_e27a33f329e80a3569511ecd51fc3d1a",
+                "metadata_json": "{\"source\":\"explicit_demonstration_fixture\"}"
+              }
+            ],
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1776783756,
+            "ended_at": null,
+            "reason": "",
+            "historical_meaning": "source assertion; effective dates unspecified",
+            "references": [],
+            "identity_evidence": [],
+            "evidence_path": [
+              "claim_4c356bc8c1b0cf6ebb750d83a47964dd",
+              "SUPPORTED_BY",
+              "source_0e187ed0b9180264aebbd69f73ba807c"
+            ]
+          }
+        ],
+        "answer_status": "evidence"
+      },
+      "entity_ids": [
+        "subject_038c3d39120ea46e7d9d4b05f9ebfb52"
+      ],
+      "retrieval_method": "graph+vector",
+      "timestamp": 1776783756,
+      "valid_from": 0,
+      "valid_until": 9223372036854775807,
+      "importance": 1.0,
+      "is_superseded": false,
+      "retrieval_trace": {
+        "memory_id": "demo_profile",
+        "retrieval_method": "graph+vector",
+        "vector_score": 0.5603174110050008,
+        "rerank_score": null,
+        "graph_relevance": 1.0,
+        "linked_entities": [
+          "subject_038c3d39120ea46e7d9d4b05f9ebfb52"
+        ],
+        "final_score": 1.7602468302429677,
+        "selection_rank": 3,
+        "candidate_count": 3,
+        "superseded": false,
+        "stage_ms": {
+          "vector": 13.89589998871088,
+          "graph": 15.61609999043867,
+          "conflicts": 10.43039999785833,
+          "lifecycle": 60.445900016929954,
+          "rerank": 0.00200001522898674
+        },
+        "total_retrieval_ms": 110.33759999554604,
+        "lifecycle": {
+          "claim_ids": [
+            "claim_1e96ab6c503241d6d479a84680c88a39",
+            "claim_4c356bc8c1b0cf6ebb750d83a47964dd"
+          ],
+          "source_paths": [
+            [
+              "claim_1e96ab6c503241d6d479a84680c88a39",
+              "SUPPORTED_BY",
+              "source_0e187ed0b9180264aebbd69f73ba807c"
+            ],
+            [
+              "claim_4c356bc8c1b0cf6ebb750d83a47964dd",
+              "SUPPORTED_BY",
+              "source_0e187ed0b9180264aebbd69f73ba807c"
+            ]
+          ],
+          "discovery_memory_ids": [
+            "demo_old_budget",
+            "demo_new_budget",
+            "demo_profile",
+            "demo_confirm_discipline"
+          ]
+        }
+      }
+    }
+  ],
+  "score_at_ages": {
+    "0": 0.16619625000000002,
+    "30": 0.12917456964926619,
+    "90": 0.07892156250000001,
+    "365": 0.00905059904862907
+  },
+  "checks": {
+    "old_current_score_zero": true,
+    "new_protection_one": true,
+    "current_budget_600": true,
+    "dispute_visible": true,
+    "missing_answer_explicit": true,
+    "alias_path_pune": true,
+    "affected_plan_stale": true,
+    "unaffected_completed_work_retained": true,
+    "both_original_sources_retained": true
+  }
+}

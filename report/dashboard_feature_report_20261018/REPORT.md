@@ -45,7 +45,7 @@ The event window included eight context requests, eight assembled contexts, seve
 
 **Where:** Resources > Context, together with the right-hand Memory inspector.
 
-Context X-ray shows each captured agent context as a bar against its configured limit. It separates agent instructions, traveler information, and the remaining framing, cards, and evidence. Expanding an agent row reveals context fields, their status, and clickable supporting claim IDs. An expandable payload shows the exact observed context and its accounting unit.
+Context X-ray shows each captured agent context as a segmented ring against its configured limit. It separates agent instructions, traveler information, and the remaining framing, cards, and evidence. Expanding an agent ring reveals context fields, their status, and clickable supporting claim IDs. An expandable payload shows the exact observed context and its accounting unit.
 
 Selecting a linked claim opens the inspector. Supporting field details expose claim IDs, scopes, and source-event IDs, allowing a reviewer to follow the evidence behind an instruction or requirement.
 
@@ -61,7 +61,7 @@ The graph combines actual paged FalkorDB nodes and relationships with explicitly
 
 Its main controls and visual features are:
 
-- Tier colors: orange for hot context, yellow/olive for context cards, and slate gray for durable evidence.
+- Tier colors: amber for hot context, jade for context cards, and blue for durable evidence.
 - Clickable nodes that synchronize with the explorer and inspector.
 - Highlighting of a selected node and its immediate connections.
 - Node sizing by observed access count, with a uniform-size alternative.
@@ -130,11 +130,11 @@ The header shows observed/registered counts. The agent menu lists per-agent read
 
 | Subview | What it displays | What the reviewer can learn |
 | --- | --- | --- |
-| Context | Captured context allocation, configured limits, field status, and supporting claims | Whether supplied context fits its budget and has traceable sources |
-| Cache | Completed context reads through the selected event, cache hits, hit rate, latest payload occupancy, and entry quotas | Whether the application reused assembled context and how much cache capacity is occupied |
-| Provider | Observed inference HTTP requests, successful responses, and reported input/output tokens | Which provider usage was actually recorded |
-| Hardware | Website-process RAM, observed device VRAM, latest captured CUDA card allocation, and device/residency details | Which runtime memory measurements are available |
-| Latency | Up to 18 recent measured events through the selected event, with latency in milliseconds | Where recorded context assembly or agent work took time |
+| Context | Segmented allocation rings, configured limits, field status, and supporting claims | Whether supplied context fits its budget and has traceable sources |
+| Cache | Hit/miss composition ring, payload and entry quota gauges, and exact read counts | Whether the application reused assembled context and how much cache capacity is occupied |
+| Provider | Input/output token composition ring, response success gauge, and exact request counts | Which provider usage was actually recorded |
+| Hardware | Shared-byte-scale dot plot of process RAM, device VRAM, and captured CUDA card allocation, with residency details | Which runtime memory measurements are available |
+| Latency | Up to 18 measured events in an interactive point plot, with exact latency in milliseconds | Where recorded context assembly or agent work took time |
 
 The top bar also summarizes selected context utilization and retained-window cache hit rate. Measurement/configuration labels and unavailable states help explain the figures.
 
@@ -148,7 +148,7 @@ No equivalent no-memory prompt was captured, so savings versus a no-memory basel
 
 **Where:** Architecture.
 
-Architecture shows the three tiers with their names, storage descriptions, observed amounts, and configured allocations where available. Hot context is measured in the consumer's actual unit; context cards are counted against configured card slots across captured contexts; durable evidence shows stored memories and the number of knowledge-graph nodes on the current page.
+Architecture shows the three tiers with their names, storage descriptions, observed amounts, and configured allocations where available. Hot context is measured in the consumer's actual unit; compact semicircular gauges show recorded hot/card allocation against its configured limit; context cards are counted against configured card slots across captured contexts; durable evidence shows stored memories and the number of knowledge-graph nodes on the current page.
 
 Selecting a tier opens its contents in the inspector. This gives a simpler introduction to the system before exploring individual graph relationships.
 

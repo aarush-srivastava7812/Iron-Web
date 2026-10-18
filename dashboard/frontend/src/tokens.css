@@ -1,25 +1,41 @@
 /* All UI color values live here. Semantic aliases keep existing utilities stable. */
 :root {
-  /* Voyara navy, orange and teal, adjusted for dense data on light surfaces. */
-  --ui-accent: #ff8813;
-  --graph-edge: #708ba2;
-  --ui-bg: #f7fbff;
-  --ui-panel: #ffffff;
-  --ui-raised: #edf4f9;
-  --ui-border: #d5e1eb;
-  --ui-text: #193a5d;
-  --ui-secondary: #526b82;
-  --agent-planner: #245b89;
-  --agent-researcher: #127b78;
-  --agent-reviewer: #7956a4;
-  --tier-hot: #bd5b0c;
-  --tier-context: #127b78;
-  --tier-evidence: #366489;
-  --state-current: #a94b08;
-  --state-conflict: #bd3542;
+  /* Primary palette supplied in the reference. */
+  --palette-navy: #2f4156;
+  --palette-teal: #567c8d;
+  --palette-sky: #c8d9e6;
+  --palette-beige: #f5efeb;
+  /* Stronger data accents distinguish categories without coloring the surfaces. */
+  --accent-jade: #287b76;
+  --accent-amber: #9c651e;
+  --accent-plum: #855d85;
+  --accent-blue: #3d709a;
+  --agent-planner-on-dark: #a4c5e1;
+  --agent-researcher-on-dark: #a1cec4;
+  --agent-reviewer-on-dark: #d2b3ce;
+  --chart-teal: var(--accent-jade);
+  --chart-amber: var(--accent-amber);
+  --chart-plum: var(--accent-plum);
+  --chart-blue: var(--accent-blue);
+  --ui-accent: var(--palette-teal);
+  --graph-edge: var(--palette-teal);
+  --ui-bg: var(--palette-beige);
+  --ui-panel: color-mix(in srgb, var(--palette-beige) 85%, var(--palette-sky));
+  --ui-raised: color-mix(in srgb, var(--palette-sky) 32%, var(--palette-beige));
+  --ui-border: color-mix(in srgb, var(--palette-teal) 28%, var(--palette-beige));
+  --ui-text: var(--palette-navy);
+  --ui-secondary: color-mix(in srgb, var(--palette-navy) 20%, var(--palette-teal));
+  --agent-planner: var(--accent-blue);
+  --agent-researcher: var(--accent-jade);
+  --agent-reviewer: var(--accent-plum);
+  --tier-hot: var(--accent-amber);
+  --tier-context: var(--accent-jade);
+  --tier-evidence: var(--accent-blue);
+  --state-current: var(--accent-amber);
+  --state-conflict: #ae4a4c;
   --state-dormant-opacity: 0.35;
   --state-selection-dim-opacity: 0.2;
-  --diff-added: #167247;
+  --diff-added: var(--accent-jade);
   --diff-removed: var(--state-conflict);
   --diff-added-bg: color-mix(in srgb, var(--diff-added) 8%, transparent);
   --diff-removed-bg: color-mix(in srgb, var(--diff-removed) 8%, transparent);

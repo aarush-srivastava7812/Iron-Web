@@ -12,6 +12,7 @@ import {
   contextUnit,
   eventLabel,
 } from "./liveData.js";
+import { TierMeter } from "./ResourceCharts.jsx";
 export { Resources, Dock } from "./LiveResources.jsx";
 export function Badge({ children = "Measured", kind = "measured" }) {
   return <span className={`source-badge ${kind}`}>{children}</span>;
@@ -557,15 +558,7 @@ export function Architecture({ data, graph, onTier, selectedTier }) {
             <p>{data.tiers.layers[i].description}</p>
             {limit != null ? (
               <>
-                <div className="tier-usage-bar">
-                  <i
-                    style={{
-                      width:
-                        Math.min(100, (amount / Math.max(1, limit)) * 100) +
-                        "%",
-                    }}
-                  />
-                </div>
+                <TierMeter value={amount} total={limit} color={color} />
                 <div className="tier-caption">
                   {amount} / {limit}{" "}
                   {t === "hot"

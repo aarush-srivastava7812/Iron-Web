@@ -1,14 +1,13 @@
-# Ironweb and Voyara: three-minute walkthrough
+# Final demonstration and retained evidence
 
-- [Silent video, without narration or subtitles](ironweb-voyara-3min-silent.mp4)
-- [Companion transcript](transcript.md) · [Plain text](transcript.txt)
-- [Narrated video with subtitles](ironweb-voyara-3min.mp4) · [SRT subtitles](captions.srt)
-- [Screenshot gallery](../../docs/screenshots/demo-2026-10-18/README.md) · [Download all 14 screenshots](readme-screenshots.zip)
+[Watch the final 2:58 voiced and captioned demo](../../youtube-upload/ironweb-voyara-2m58-final.mp4) · [Matching SRT captions](../../youtube-upload/captions-voice-matched.en.srt) · [Actual voiceover transcript](../../youtube-upload/voiceover-transcript-reviewed.txt)
 
-Both videos are exactly 180 seconds at 2560 × 1440. The silent copy retains the chapter titles and demonstration labels. The original narrated video is preserved.
+[Canonical screenshot gallery](../../docs/screenshots/demo-2026-10-18/README.md) · [Final media verification](../../youtube-upload/voice-matched-verification.json)
 
-The walkthrough shows the dashboard's five views, Resources tabs and source inspection; introduces Voyara; and displays the website beside the dashboard during two actual planning runs. A Kerala request for two travelers on 1–3 December 2026 starts with INR 200,000. Its budget is then updated to INR 120,000, making version 1 stale before a current version 2 is generated. Each recorded run completed seven NVIDIA specialists. Accelerated waiting is labeled.
+The final export is exactly 178 seconds at 2560 x 1440 and 25 fps. Its supplied voice is retained unchanged from the voice-preserving 2:58 export. Captions were transcribed from that actual audio with word-level timing. All demonstration scenes are retained.
 
-The final screenshots and verification records are from the local demo traveler. Catalog entries and listed-item estimates are illustrative. Context allocation is measured in UTF-8 bytes; reported provider token usage is separate.
+The original capture shows two hosted planning runs: a Kerala trip for two travelers on December 1-3, 2026, initially with INR 200,000 and then INR 120,000. Each recorded run completed seven specialists. Accelerated waiting is labeled. Travel inventory and cost estimates are illustrative; context allocation uses UTF-8 bytes, separately from reported provider tokens.
 
-Verification: [narrated export](video-verification.json), [silent export](silent-verification.json), and [quality checks](quality-checks.json). Raw recordings, temporary render outputs and local authentication state are not included in the published deliverables.
+`recording.json`, `video-verification.json`, `silent-verification.json`, `elevenlabs-verification.json` and `quality-checks.json` retain dated capture/export evidence. Some describe the original 180-second edit, rather than the final 178-second export. The final verification is linked above.
+
+Superseded video variants, review frames, duplicate screenshot copies, render segments and raw browser recordings were removed from the Git working tree after recoverable copies were made under the workstation's ignored `.scratch/merge-cleanup-20261018/removed/` directory. The canonical gallery and final video remain. No application database or runtime secret was included in the cleanup.

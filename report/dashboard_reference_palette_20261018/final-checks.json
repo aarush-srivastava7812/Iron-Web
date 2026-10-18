@@ -1,0 +1,52 @@
+{
+  "errors": [],
+  "theme": {
+    "text": "rgb(47, 65, 86)",
+    "secondary": "color(srgb 0.306667 0.44 0.509804)",
+    "header": "rgb(47, 65, 86)",
+    "background": "rgb(245, 239, 235)"
+  },
+  "menu": [
+    {
+      "text": "○ Orchestrator1 reads",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "text": "○ Consultant1 reads",
+      "color": "rgb(200, 217, 230)"
+    },
+    {
+      "text": "○ Explore1 reads",
+      "color": "rgb(200, 217, 230)"
+    },
+    {
+      "text": "○ Stay1 reads",
+      "color": "rgb(200, 217, 230)"
+    },
+    {
+      "text": "○ Food1 reads",
+      "color": "rgb(200, 217, 230)"
+    },
+    {
+      "text": "○ Tour1 reads",
+      "color": "rgb(200, 217, 230)"
+    },
+    {
+      "text": "○ Planner1 reads",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "text": "○ Budget1 reads",
+      "color": "color(srgb 0.838235 0.888235 0.926471)"
+    },
+    {
+      "text": "○ Support0 reads",
+      "color": "color(srgb 0.838235 0.888235 0.926471)"
+    },
+    {
+      "text": "Show all agents",
+      "color": "rgb(200, 217, 230)"
+    }
+  ],
+  "overflow": false
+}

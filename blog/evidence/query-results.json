@@ -1,0 +1,111 @@
+{
+  "graph": "lifecycle_demo_541ada2f305a",
+  "queries": [
+    {
+      "name": "claim_state",
+      "query": "MATCH(c:MemoryClaim {id:$id}) RETURN properties(c)",
+      "parameters": {
+        "id": "claim_582024ff6d0ad738a6157b0f09f74e69"
+      },
+      "rows": [
+        [
+          {
+            "id": "claim_582024ff6d0ad738a6157b0f09f74e69",
+            "memory_id": "demo_new_budget",
+            "source_id": "source_c4e3c6d13ae2fc352ffef93bd8811209",
+            "subject_id": "subject_038c3d39120ea46e7d9d4b05f9ebfb52",
+            "subject_name": "Traveller",
+            "predicate": "budget",
+            "value_json": "600",
+            "kind": "rule",
+            "scope_json": "{}",
+            "scope_key": "context_44136fa355b3678a1146ad16f7e8649e",
+            "valid_from": 0,
+            "valid_until": 9223372036854775807,
+            "accepted_at": 1792249356,
+            "recorded_at": 1792249356,
+            "accepted": true,
+            "protected": true,
+            "cardinality": "single",
+            "half_life_days": 90.0,
+            "reason": "Explicit user budget change",
+            "group_key": "field_2229f80a2462f1d92c8faa0889c2a221",
+            "references_json": "[]",
+            "action": "supersede",
+            "score_at_creation": 1.0
+          }
+        ]
+      ]
+    },
+    {
+      "name": "direct_affected_work",
+      "query": "MATCH(w:MemoryWork)-[:USES]->(c:MemoryClaim) WHERE c.id IN $ids RETURN DISTINCT w.id LIMIT $limit",
+      "parameters": {
+        "ids": [
+          "claim_f169fa3a629d50a4067150c09ee61988"
+        ],
+        "limit": 101
+      },
+      "rows": [
+        [
+          "trip_plan"
+        ]
+      ]
+    },
+    {
+      "name": "downstream_work",
+      "query": "MATCH(w:MemoryWork)-[:DEPENDS_ON]->(p:MemoryWork) WHERE p.id IN $ids RETURN DISTINCT w.id LIMIT $limit",
+      "parameters": {
+        "ids": [
+          "trip_plan"
+        ],
+        "limit": 101
+      },
+      "rows": []
+    },
+    {
+      "name": "source_evidence",
+      "query": "MATCH(s:MemorySource) WHERE s.id IN $ids RETURN properties(s)",
+      "parameters": {
+        "ids": [
+          "source_c4e3c6d13ae2fc352ffef93bd8811209"
+        ]
+      },
+      "rows": [
+        [
+          {
+            "id": "source_c4e3c6d13ae2fc352ffef93bd8811209",
+            "memory_id": "demo_new_budget",
+            "event_id": "demo_new_budget",
+            "text": "The traveller lowered the approved maximum budget to 600.",
+            "origin": "user",
+            "actor_id": "demo_user",
+            "user_confirmed": true,
+            "quality": 0.9,
+            "evidence_group": "user:demo_user",
+            "recorded_at": 1792249356,
+            "received_at": 1792335757,
+            "digest": "receipt_9976067cdc58bec959320a20732cb652",
+            "metadata_json": "{\"source\":\"explicit_demonstration_fixture\"}"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "inspect_dependency_path",
+      "query": "MATCH (w:MemoryWork)-[:USES]->(old:MemoryClaim),\n      (current:MemoryClaim)-[:SUPERSEDES]->(old),\n      (current)-[:SUPPORTED_BY]->(source:MemorySource)\n      WHERE w.id = $work_id\n      RETURN w.id, old.value_json, current.value_json,\n             source.memory_id, w.validation_state",
+      "parameters": {
+        "work_id": "trip_plan"
+      },
+      "rows": [
+        [
+          "trip_plan",
+          "1000",
+          "600",
+          "demo_new_budget",
+          "stale"
+        ]
+      ]
+    }
+  ]
+}

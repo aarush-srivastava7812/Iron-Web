@@ -43,6 +43,7 @@ import {
   ViewHeader,
 } from "./LivePanels.jsx";
 import "./live.css";
+import "./resource-charts.css";
 const API = (import.meta.env.VITE_DASHBOARD_API_URL || "").replace(/\/$/, "");
 const icons = [
   Share1Icon,

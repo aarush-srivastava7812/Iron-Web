@@ -1,0 +1,315 @@
+{
+  "source_duration_seconds": 359.471,
+  "retained_source_seconds": 199.548,
+  "removed_source_seconds": 159.923,
+  "output_duration_seconds": 180,
+  "maximum_section_speed": 1.5044,
+  "pitch_preserved": true,
+  "video_stream_unchanged": true,
+  "subtitle_streams": 0,
+  "source_audio_unchanged": true,
+  "source_sha256": "ce481568f4522c8e2f022b92850b2506765cff46d060cbe50dbc21410182c837",
+  "audio_codec": "aac",
+  "width": 2560,
+  "height": 1440,
+  "bytes": 17504457,
+  "sections": [
+    {
+      "scene": "intro",
+      "video_start": 0,
+      "video_end": 5,
+      "source_ranges": [
+        [
+          0,
+          4.78373
+        ]
+      ],
+      "source_seconds": 4.78373,
+      "speed": 1.0
+    },
+    {
+      "scene": "graph",
+      "video_start": 5,
+      "video_end": 13,
+      "source_ranges": [
+        [
+          24.855068,
+          34.442993
+        ]
+      ],
+      "source_seconds": 9.587925000000002,
+      "speed": 1.2292
+    },
+    {
+      "scene": "inspector",
+      "video_start": 13,
+      "video_end": 21,
+      "source_ranges": [
+        [
+          43.074229,
+          49.042154499999995
+        ]
+      ],
+      "source_seconds": 5.967925499999993,
+      "speed": 1.0
+    },
+    {
+      "scene": "wiring",
+      "video_start": 21,
+      "video_end": 27,
+      "source_ranges": [
+        [
+          66.205635,
+          73.4319955
+        ]
+      ],
+      "source_seconds": 7.226360499999998,
+      "speed": 1.2459
+    },
+    {
+      "scene": "activity",
+      "video_start": 27,
+      "video_end": 33,
+      "source_ranges": [
+        [
+          79.0031065,
+          84.9338775
+        ]
+      ],
+      "source_seconds": 5.930770999999993,
+      "speed": 1.0225
+    },
+    {
+      "scene": "architecture",
+      "video_start": 33,
+      "video_end": 39,
+      "source_ranges": [
+        [
+          95.26415,
+          103.4142175
+        ]
+      ],
+      "source_seconds": 8.150067500000006,
+      "speed": 1.4052
+    },
+    {
+      "scene": "resources-context",
+      "video_start": 39,
+      "video_end": 46,
+      "source_ranges": [
+        [
+          103.4142175,
+          113.644127
+        ]
+      ],
+      "source_seconds": 10.22990949999999,
+      "speed": 1.5044
+    },
+    {
+      "scene": "resources-cache",
+      "video_start": 46,
+      "video_end": 50,
+      "source_ranges": [
+        [
+          121.5504305,
+          125.70141749999999
+        ]
+      ],
+      "source_seconds": 4.150986999999986,
+      "speed": 1.0924
+    },
+    {
+      "scene": "resources-provider",
+      "video_start": 50,
+      "video_end": 54,
+      "source_ranges": [
+        [
+          125.70141749999999,
+          130.10379849999998
+        ]
+      ],
+      "source_seconds": 4.402380999999991,
+      "speed": 1.1585
+    },
+    {
+      "scene": "resources-hardware",
+      "video_start": 54,
+      "video_end": 58,
+      "source_ranges": [
+        [
+          130.10379849999998,
+          135.5212585
+        ]
+      ],
+      "source_seconds": 5.4174600000000055,
+      "speed": 1.4256
+    },
+    {
+      "scene": "resources-latency",
+      "video_start": 58,
+      "video_end": 62,
+      "source_ranges": [
+        [
+          135.5212585,
+          139.8917915
+        ]
+      ],
+      "source_seconds": 4.370533000000023,
+      "speed": 1.1501
+    },
+    {
+      "scene": "source",
+      "video_start": 62,
+      "video_end": 67,
+      "source_ranges": [
+        [
+          139.8917915,
+          146.81917199999998
+        ]
+      ],
+      "source_seconds": 6.92738049999997,
+      "speed": 1.4432
+    },
+    {
+      "scene": "controls",
+      "video_start": 67,
+      "video_end": 72,
+      "source_ranges": [
+        [
+          146.81917199999998,
+          151.73427450000003
+        ]
+      ],
+      "source_seconds": 4.915102500000046,
+      "speed": 1.024
+    },
+    {
+      "scene": "website",
+      "video_start": 72,
+      "video_end": 80,
+      "source_ranges": [
+        [
+          162.258061,
+          164.148424
+        ],
+        [
+          168.5373925,
+          174.92041949999998
+        ]
+      ],
+      "source_seconds": 8.273389999999978,
+      "speed": 1.0607
+    },
+    {
+      "scene": "request",
+      "video_start": 80,
+      "video_end": 91,
+      "source_ranges": [
+        [
+          174.92041949999998,
+          184.985601
+        ]
+      ],
+      "source_seconds": 10.065181500000023,
+      "speed": 1.0
+    },
+    {
+      "scene": "run-initial",
+      "video_start": 91,
+      "video_end": 116,
+      "source_ranges": [
+        [
+          190.338413,
+          218.615669
+        ]
+      ],
+      "source_seconds": 28.277255999999994,
+      "speed": 1.1402
+    },
+    {
+      "scene": "result",
+      "video_start": 116,
+      "video_end": 124,
+      "source_ranges": [
+        [
+          218.615669,
+          227.4938325
+        ]
+      ],
+      "source_seconds": 8.8781635,
+      "speed": 1.1382
+    },
+    {
+      "scene": "context-before",
+      "video_start": 124,
+      "video_end": 135,
+      "source_ranges": [
+        [
+          229.01973900000002,
+          239.45835599999998
+        ],
+        [
+          243.034807,
+          246.893367
+        ]
+      ],
+      "source_seconds": 14.297176999999976,
+      "speed": 1.3238
+    },
+    {
+      "scene": "edit",
+      "video_start": 135,
+      "video_end": 145,
+      "source_ranges": [
+        [
+          261.3904875,
+          272.502222
+        ]
+      ],
+      "source_seconds": 11.111734500000011,
+      "speed": 1.1339
+    },
+    {
+      "scene": "run-revised",
+      "video_start": 145,
+      "video_end": 166,
+      "source_ranges": [
+        [
+          283.66377550000004,
+          304.81284600000004
+        ]
+      ],
+      "source_seconds": 21.149070499999993,
+      "speed": 1.0168
+    },
+    {
+      "scene": "comparison",
+      "video_start": 166,
+      "video_end": 176,
+      "source_ranges": [
+        [
+          316.1604875,
+          326.63521549999996
+        ]
+      ],
+      "source_seconds": 10.47472799999997,
+      "speed": 1.0688
+    },
+    {
+      "scene": "outro",
+      "video_start": 176,
+      "video_end": 180,
+      "source_ranges": [
+        [
+          354.3691045,
+          359.3294555
+        ]
+      ],
+      "source_seconds": 4.960351000000003,
+      "speed": 1.3054
+    }
+  ],
+  "full_decode_passed": true,
+  "narration_mean_volume_db": -20.5,
+  "narration_peak_db": -4.4
+}

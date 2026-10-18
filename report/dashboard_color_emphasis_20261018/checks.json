@@ -1,0 +1,20 @@
+{
+  "tiers": [
+    "rgb(156, 101, 30)",
+    "rgb(40, 123, 118)",
+    "rgb(61, 112, 154)"
+  ],
+  "groups": [
+    "rgb(61, 112, 154)",
+    "rgb(40, 123, 118)",
+    "rgb(133, 93, 133)",
+    "rgb(174, 74, 76)"
+  ],
+  "highlight": {
+    "stroke": "rgb(156, 101, 30)",
+    "filter": "none"
+  },
+  "noWhite": true,
+  "overflow": false,
+  "errors": []
+}

@@ -1,0 +1,55 @@
+Iron Web times Voyara.
+The intelligence behind every journey.
+At the heart of Iron Web lies a living memory graph.
+Hot context. Context cards.
+Durable evidence. All connected in one place.
+Open any memory.
+And the inspector reveals its values, its history, and the sources behind it.
+Nine actors are registered in the system.
+For this planning workflow, seven specialists collaborate with a memory orchestrator.
+The activity timeline brings their work to life.
+Select an event and see exactly what happened.
+Bounded instructions and traveler facts, task-specific context cards, and durable evidence that can be
+retrieved when it matters.
+With Context X-ray, you can look inside each agent's captured input, see how context was allocated, which
+fields were supported, and which claims connect back to their sources.
+The cache reveals measured reuse, payload sizes, and entry limits.
+The provider view displays recorded requests and reported model token usage.
+Hardware monitoring distinguishes observed memory from GPU utilization that isn't available.
+Latency points reveal measured context assembly and agent execution time.
+You can inspect live databases, Qdrant vectors, execution receipts, and masked provider identities.
+Filters Keyboard shortcuts Responsive drawers That's where Voyara
+comes in. A travel experience that begins with a simple idea and turns it into a journey
+designed around you.
+Let's plan a trip. Two travellers Kerala December 1st through December 3rd A relaxed
+pace and a budget of ₹200,000.
+That's all we need to begin.
+The orchestrator assembles the relevant context.
+Destination specialists begin their research.
+Stay, food and experience specialists contribute their findings.
+Then the itinerary and budget agents bring the pieces together.
+And all the while, the dashboard and Voyara remain synchronized.
+What happens in the application is reflected in the memory dashboard.
+The activity is observed.
+The model calls are real.
+For this demonstration, the waiting time has been accelerated in the edit.
+Seven specialists have completed their work.
+Voyara now saves the itinerary, indicative costs, and the recorded work of each agent ready for review.
+We open the budget agent's captured context.
+There it is, 200,000 rupees.
+Not just a number, but a requirement supported by a specific claim and its source.
+Here, context allocation is measured using UTF-8 bytes.
+So, let's change the budget.
+From 200,000 rupees to 120,000.
+We save the new requirement.
+and before a new plan is generated, the older plan is marked stale.
+Now we create a new outline with the same team.
+Once again, Voyara and IronWeb move together.
+The agents read the revised requirements.
+They gather and validate their results against the updated context.
+The previous context remains available as history.
+The new run captures the revised budget and the evidence that supports the new plan.
+The budget has changed from 200,000 rupees to 120,000.
+A new claim has been recorded, a new source supports it, and version 2 is now current.
+Intelligence you can see, memory you can trace,
+journeys made personal.

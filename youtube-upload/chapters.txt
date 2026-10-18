@@ -1,0 +1,9 @@
+00:00 Memory graph and source evidence
+00:21 Agent wiring and activity
+00:33 Three-tier architecture and context X-ray
+01:01 Source inspection and replay controls
+01:11 Voyara and the trip request
+01:30 Seven specialists build the plan
+01:55 Results and the original budget evidence
+02:14 Lower the budget and regenerate
+02:44 Updated evidence and the current plan
