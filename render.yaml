@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: voyara-api
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    numInstances: 1
+    autoDeployTrigger: off
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: DEV_LOGIN_ENABLED
+        value: "false"
+      - key: CONTEXT_USE_GPU
+        value: "false"
+      - key: CORS_ORIGINS
+        sync: false
+    buildFilter:
+      paths:
+        - Dockerfile
+        - Dockerfile.dockerignore
+        - deploy/voyara/**
+        - memory/**
+        - agents/**
+        - requirements/**
+        - requirements.txt
+        - config.yaml
+        - stitch_ai_travel_booking_platform/backend/**
+        - stitch_ai_travel_booking_platform/transitions/**
