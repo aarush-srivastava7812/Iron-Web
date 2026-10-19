@@ -51,6 +51,8 @@ It submits one Jaipur trip from the browser, checks four actual research executi
 
 The browser now starts owner-scoped background planning jobs (`message-jobs` and `confirm-jobs`) and polls short status requests. Job results persist in the application database and can be read after a browser refresh. Identical active retries reuse the job; different overlapping requests are rejected. The single-worker deployment bounds the queue to eight runs and executes one plan at a time. Interrupted jobs fail explicitly after process restart; paid provider work is never replayed automatically.
 
+At most two TinyFish automations are submitted at once. The other specialists wait locally, before starting their provider timeout. This avoids spending the execution budget in TinyFish's queue. A cold destination can require two waves of research; the frontend polls for up to twenty minutes. Completed public findings remain reusable for one hour.
+
 Compatible traveler engines share one process-wide embedding model with serialized inference; graph, vector, journal and private memory remain separately scoped. The container limits embedding and graph threads. Render still uses its existing free tier and ephemeral storage; server replacement can discard saved application data. No paid capacity or persistent disk is provisioned by this change.
 
 Configure `TINYFISH_API_KEY` privately on Render and `VOYARA_AGENT_MODE=tinyfish`. Do not expose the key through Vercel frontend variables. `/health` checks process liveness; only a completed live planning run demonstrates provider access and memory/result validation.

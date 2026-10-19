@@ -283,3 +283,29 @@ def test_expired_memory_with_failed_research_does_not_repeat_paid_work(connected
     assert result["status"] == "failed" and result["itinerary"] is None
     assert len(calls) == 4
     assert client.get(path + "/plan", headers=headers).json() is None
+def test_provider_submission_is_bounded_before_execution_timeout(monkeypatch):
+    from concurrent.futures import ThreadPoolExecutor
+    from threading import Lock
+    import time
+    from agents.config import settings
+    from agents.tinyfish import TinyFishClient
+
+    monkeypatch.setattr(settings, "tinyfish_api_key", "test-key")
+    monkeypatch.setattr(settings, "tinyfish_cache_path", "")
+    gate = Lock()
+    current, peak = 0, 0
+
+    def execute(self, url, goal):
+        nonlocal current, peak
+        with gate:
+            current += 1
+            peak = max(peak, current)
+        time.sleep(0.05)
+        with gate:
+            current -= 1
+        return goal
+
+    monkeypatch.setattr(TinyFishClient, "_execute", execute)
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        result = list(executor.map(lambda i: TinyFishClient().research("https://example.com", str(i)), range(4)))
+    assert result == ["0", "1", "2", "3"] and peak == 2 and current == 0

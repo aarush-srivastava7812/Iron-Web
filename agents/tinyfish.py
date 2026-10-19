@@ -13,14 +13,20 @@ import json
 from pathlib import Path
 import time
 import uuid
+from threading import BoundedSemaphore
 from typing import Literal
-from urllib.parse import urlencode, urlsplit
+from urllib.parse import quote, urlencode, urlsplit
 
 import httpx
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from agents.config import settings
 from agents.schemas import AgentExecution, AgentResult, Attraction, DestinationIdea, Evidence, FoodOption, StayOption
+
+# Bound provider submissions as well as application jobs. A city needs four
+# specialists; submitting all four at once can leave half the provider runs in
+# its queue until their entire execution timeout has already elapsed.
+_research_slots = BoundedSemaphore(2)
 
 RESEARCH_ROLES = {
     "explore_agent": ("Atlas · destination researcher", "destination information and things to see", "destination_ideas"),
@@ -142,6 +148,10 @@ class TinyFishClient:
                     return cached["run_id"], output
             except (OSError, ValueError, KeyError, TypeError):
                 pass
+        with _research_slots:
+            return self._execute(url, goal)
+
+    def _execute(self, url, goal):
         owned = self.client is None
         client = self.client or httpx.Client(base_url="https://agent.tinyfish.ai", timeout=30,
                                             headers={"X-API-Key": settings.tinyfish_api_key})
@@ -215,7 +225,7 @@ class TinyFishResearchAgent:
                 "stay_agent": "Use a published indicative INR per-room nightly rate (price_basis per_room_night). No dates are supplied; do not claim date-specific quotes or availability.",
                 "food_guide_agent": "Use an indicative INR per-person meal cost (price_basis per_guest_meal). Label vegetarian only if the source explicitly supports vegetarian meals.",
                 "tour_guide_agent": "Use the INR per-person admission fee (price_basis per_guest_visit). A zero fee requires explicit free admission on the source.",
-                "explore_agent": "Describe the destination itself. Prices are not needed: set price_inr null, price_basis unknown, currency unknown, dietary unknown.",
+                "explore_agent": "Read the provided encyclopedia entry and describe the destination itself. Stop after confirming the city and one useful fact; further tourism-site navigation is unnecessary. Prices are not needed: set price_inr null, price_basis unknown, currency unknown, dietary unknown.",
             }
             goal = (
                 f"Research {purpose} in {city}. Find 1 useful result and stop after the first source-backed match. "
@@ -229,6 +239,8 @@ class TinyFishResearchAgent:
                 "Return the requested JSON shape, or no items if research is unsuccessful."
             )
             url = "https://www.google.com/search?" + urlencode({"q": f"{city} {purpose}"})
+            if self.agent_id == "explore_agent":
+                url = "https://en.wikipedia.org/wiki/" + quote(city.replace(" ", "_"), safe="")
             if (self.agent_id == "stay_agent" and settings.tinyfish_stay_start_url
                     and city.casefold() == settings.tinyfish_stay_source_destination.casefold()):
                 url = public_url(settings.tinyfish_stay_start_url)
