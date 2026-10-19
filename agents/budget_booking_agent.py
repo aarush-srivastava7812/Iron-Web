@@ -92,14 +92,17 @@ class BudgetBookingAgent:
                                     basis="estimate", note="10% buffer for local travel and extras"))
 
             total = sum(line.amount_inr for line in lines)
+            web_research = any(o.evidence.source == "tinyfish.web" for o in stay_options + food_options + attractions)
+            price_warning = ("Figures use source-reported indicative web rates, not date-specific quotes; confirm prices and availability."
+                             if web_research else "All figures are estimates from catalog data, not live prices.")
             estimate = BudgetEstimate(
                 per_person=per_person,
                 lines=lines,
                 total_inr=total,
                 price_checked_at=None,  # no provider price check performed
                 status="estimate",
-                warnings=["All figures are estimates from catalog data, not live prices.",
-                          "Includes the listed catalog activities and meals; unverified transport and extra meals are excluded."],
+                warnings=[price_warning,
+                          "Includes the listed activities and meals; unverified transport and extra meals are excluded."],
             )
             if brief is not None:
                 validation = validate_budget(estimate, brief)

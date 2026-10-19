@@ -10,6 +10,8 @@ import sys
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--port", type=int, default=8000)
+    parser.add_argument("--agent-mode", choices=["tinyfish", "nvidia", "offline", "auto"],
+                        help="Select a provider for this local process only")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     backend = root / "stitch_ai_travel_booking_platform" / "backend"
@@ -17,6 +19,9 @@ def main():
     from dotenv import load_dotenv
 
     load_dotenv(backend / ".env")
+    if args.agent_mode:
+        os.environ["VOYARA_AGENT_MODE"] = args.agent_mode
+    os.environ.setdefault("TINYFISH_CACHE_PATH", str(root / ".scratch" / "tinyfish-public-research"))
     os.environ.setdefault("DEV_LOGIN_ENABLED", "true")
     os.environ.setdefault("COOKIE_SECURE", "false")
     if not os.environ.get("SECRET_KEY") or os.environ["SECRET_KEY"].startswith(("dev-only", "change-me")):

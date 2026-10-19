@@ -192,6 +192,9 @@ class TravelWorkflow(AgenticWorkflowMixin):
             exact = [row for row in response.data if brief.destination.strip().casefold()
                      in {str(row.get("name", "")).casefold(), str(row.get("slug", "")).casefold()}]
             if not response.ok or not exact:
+                from agents.agentic import provider
+                if self.agentic and provider() == "tinyfish":
+                    return dict(base, destination_name=brief.destination, destination_id=None)
                 raise MemoryNeedsInformation({"destination": "no exact catalog match"})
             response.data = exact
         if response.ok and response.data:
@@ -275,7 +278,7 @@ class TravelWorkflow(AgenticWorkflowMixin):
         """Merge point for parallel branches; resolve destination from explore
         results if the brief named no known destination."""
         updates: AgentState = {}
-        if state.get("destination_id") is None:
+        if state.get("destination_id") is None and not state.get("destination_name"):
             for result in state.get("agent_results", []):
                 if result.destination_ideas:
                     top = result.destination_ideas[0]

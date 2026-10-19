@@ -11,6 +11,7 @@ from ..deps import current_user
 from ..models import AIMessage, TravelBook, User
 from ..schemas import MessageIn
 from .. import journey, travel_book
+from .. import planning_jobs
 from .assistant import _owned_conversation
 
 router=APIRouter(prefix="/assistant/conversations",tags=["travel journey"])
@@ -56,7 +57,8 @@ def chat(conversation_id:str,body:MessageIn,user:User=Depends(current_user),db:S
         if conversation.title=="New travel chat" and row.data.get("draft",{}).get("destination"):
             conversation.title=row.data["draft"]["destination"]+" · your journey"
         db.commit()
-        return dict(**answer,message=original,assistant_message=reply,workspace=journey.present(db,row,user.id),mode="nvidia")
+        from agents.agentic import provider
+        return dict(**answer,message=original,assistant_message=reply,workspace=journey.present(db,row,user.id),mode="local" if provider()=="tinyfish" else "nvidia")
 
 
 @router.post("/{conversation_id}/selections")
@@ -83,6 +85,17 @@ def confirm_trip(conversation_id:str,body:journey.ConfirmIn,user:User=Depends(cu
     reply=AIMessage(conversation_id=conversation_id,role="assistant",content=result["response"])
     db.add(reply); db.commit()
     return dict(orchestration=result,reply=result["response"],workspace=journey.present(db,row,user.id))
+
+
+@router.post("/{conversation_id}/confirm-jobs", status_code=202)
+def start_confirm_job(conversation_id: str, body: journey.ConfirmIn,
+                      user: User = Depends(current_user), db: Session = Depends(get_db),
+                      runtime=Depends(get_agent_runtime)):
+    _owned_conversation(db,user,conversation_id)
+    row=journey.workspace(db,conversation_id)
+    if row.revision != body.expected_revision:
+        raise HTTPException(409,"Your draft changed. Review its latest details before confirming.")
+    return planning_jobs.start(db,user.id,conversation_id,"confirm",body,runtime)
 
 
 @router.get("/{conversation_id}/travel-book")

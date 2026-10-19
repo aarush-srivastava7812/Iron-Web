@@ -11,10 +11,32 @@ from ..schemas import ConversationIn, MemoryIn, MessageIn, TripRequirementsIn
 from ..agent_runtime import CatalogSnapshot, get_agent_runtime
 from memory.shared.service import PendingMemory
 from .. import plan_drafts
+from .. import planning_jobs
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/assistant", tags=["assistant"])
+
+
+@router.post("/conversations/{conversation_id}/message-jobs", status_code=202)
+def start_message_job(conversation_id: str, body: MessageIn, user: User = Depends(current_user),
+                      db: Session = Depends(get_db), runtime=Depends(get_agent_runtime)):
+    _owned_conversation(db, user, conversation_id)
+    if not body.content.strip():
+        raise HTTPException(422, "Message must not be blank")
+    return planning_jobs.start(db, user.id, conversation_id, "message", body, runtime)
+
+
+@router.get("/conversations/{conversation_id}/planning-jobs/{job_id}")
+def get_planning_job(conversation_id: str, job_id: str, user: User = Depends(current_user),
+                     db: Session = Depends(get_db)):
+    _owned_conversation(db, user, conversation_id)
+    job = db.scalar(select(planning_jobs.PlanningJob).where(
+        planning_jobs.PlanningJob.id == job_id, planning_jobs.PlanningJob.user_id == user.id,
+        planning_jobs.PlanningJob.conversation_id == conversation_id))
+    if job is None:
+        raise HTTPException(404, "Planning job not found")
+    return planning_jobs.present(job)
 
 @router.get("/conversations")
 def list_conversations(user: User = Depends(current_user), db: Session = Depends(get_db)):

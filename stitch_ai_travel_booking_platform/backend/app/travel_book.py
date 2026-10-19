@@ -9,6 +9,7 @@ from fastapi import HTTPException
 from . import journey, plan_drafts
 from .destination_content import KERALA
 from .models import Destination, Stay
+from agents.schemas import StayOption
 
 
 def snapshot(db, conversation_id, user):
@@ -28,6 +29,16 @@ def snapshot(db, conversation_id, user):
     stay = db.get(Stay,stay_id) if stay_id else None
     lodging = dict(id=stay.id,name=stay.name,location=db.get(Destination,stay.destination_id).name,
                    price_per_night_inr=stay.price_inr,nights=brief["duration_days"]-1,status="Selected · availability unverified") if stay else None
+    if lodging is None and plan.get("selected_stay_ref"):
+        web_stay = next((s for r in rows if r["agent_id"] == "stay_agent" for s in r.get("stay_options", [])
+                         if s.get("evidence", {}).get("source") == "tinyfish.web"
+                         and plan["selected_stay_ref"] in {
+                             plan_drafts.stay_ref(StayOption.model_validate(s)), s["evidence"].get("ref")}), None)
+        if web_stay:
+            lodging = dict(id=None, name=web_stay["name"], location=web_stay["location"],
+                           price_per_night_inr=web_stay["price_per_night_inr"], nights=brief["duration_days"]-1,
+                           status="Web research · indicative rate; dates and availability unverified",
+                           source_url=web_stay["evidence"]["ref"])
     options = journey.options(db,draft)
     flight = next((f for f in options["flights"] if f["id"] == work.data.get("selections",{}).get("flight")),None)
     budget = deepcopy(plan["budget"])
@@ -47,7 +58,9 @@ def snapshot(db, conversation_id, user):
                 guide=KERALA if brief["destination"] in {"Kerala","Kochi","Munnar","Alleppey"} else None,
                 itinerary=plan["itinerary"],stay=lodging,flight=flight,budget=budget,
                 agents=[dict(agent=r["agent_id"],execution=r.get("execution")) for r in rows],
-                status="Draft · no supplier reservations",notice="Personal hackathon travel draft. All catalog inventory and prices are illustrative.",
+                status="Draft · no supplier reservations",notice=("Personal travel draft. Web rates are indicative; dates and availability require supplier confirmation."
+                    if any(r.get("execution", {}).get("mode") == "tinyfish" for r in rows if r.get("execution"))
+                    else "Personal hackathon travel draft. All catalog inventory and prices are illustrative."),
                 photo_attribution="Kerala photograph: Unsplash, photo-1602216056096-3b40cc0c9944. Editorial content: Voyara demo catalog.")
 
 
@@ -144,6 +157,8 @@ def render_pdf(data, base_url):
     if stay:
         story.append(p(stay["name"],"BookHeading"))
         table([["Location",stay["location"]],["Nights",str(stay["nights"])],["Indicative nightly room rate",money(stay["price_per_night_inr"])],["Selection status",stay["status"]]])
+        if stay.get("source_url"):
+            story.append(p("Research source: " + stay["source_url"], "BookSmall"))
         story.append(p("The estimate assumes one room for all nights. Room occupancy, child policies, taxes, check-in times and cancellation terms require confirmation. A room in one city does not confirm accommodation in every city on a regional route."))
     else:
         story.append(p("No accommodation has been selected. Room costs are excluded until a supported stay is chosen."))

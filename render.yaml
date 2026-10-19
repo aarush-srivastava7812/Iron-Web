@@ -22,6 +22,14 @@ services:
         value: https://voyara-travel-taupe.vercel.app
       - key: CONTEXT_USE_GPU
         value: "false"
+      - key: VOYARA_AGENT_MODE
+        value: tinyfish
+      - key: TINYFISH_API_KEY
+        sync: false
+      - key: TINYFISH_TIMEOUT_S
+        value: "480"
+      - key: EMBEDDING_THREADS
+        value: "1"
       - key: CORS_ORIGINS
         value: https://voyara-travel-taupe.vercel.app
     buildFilter:

@@ -426,6 +426,12 @@ class TravelerMemory:
                     memory=[],
                 )
             if not gateway.validate_current():
+                if result.status == "failed" or any(item.status == "failed" for item in result.agent_results):
+                    return dict(
+                        status="failed", itinerary=None, budget=None, memory=[],
+                        response="A research task did not complete before the trip context expired. No complete plan was saved. Check the team's execution details, confirm current trip details, then retry.",
+                        agent_results=[item.model_dump(mode="json") for item in result.agent_results],
+                    )
                 continue
             for item in result.agent_results:
                 execution = item.execution.model_dump(mode="json") if item.execution else None
@@ -454,7 +460,7 @@ class TravelerMemory:
                 or any(r.status == "failed" for r in result.agent_results)
             ):
                 output["status"] = "failed" if any(r.status == "failed" for r in result.agent_results) else "needs_clarification"
-                output["response"] = " ".join(errors) or "A travel agent could not complete its work. Check the team’s execution details and NVIDIA configuration, then retry."
+                output["response"] = " ".join(errors) or "A travel agent could not complete its work. Check the team’s execution details and research service configuration, then retry."
                 output["itinerary"], output["budget"] = None, None
                 return output
             return output

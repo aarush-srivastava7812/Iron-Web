@@ -28,10 +28,16 @@ ROLES = {
 }
 
 
+def provider():
+    if settings.agent_mode not in {"auto", "nvidia", "offline", "tinyfish"}:
+        raise ValueError("VOYARA_AGENT_MODE must be auto, nvidia, offline or tinyfish")
+    if settings.agent_mode == "auto":
+        return "nvidia" if settings.has_llm() else "offline"
+    return settings.agent_mode
+
+
 def enabled():
-    if settings.agent_mode not in {"auto", "nvidia", "offline"}:
-        raise ValueError("VOYARA_AGENT_MODE must be auto, nvidia or offline")
-    return settings.agent_mode == "nvidia" or (settings.agent_mode == "auto" and settings.has_llm())
+    return provider() != "offline"
 
 
 def _schema(name, description, properties=None, required=None):
@@ -176,6 +182,20 @@ class AgenticWorkflowMixin:
     """Wrap workflow operations, leaving existing graph dependencies intact."""
 
     def _agent_operation(self, agent_id, operation, state, *, memory=None, planner_inputs=None):
+        if self.agentic and provider() == "tinyfish":
+            from agents.tinyfish import RESEARCH_ROLES, TinyFishResearchAgent
+
+            if agent_id in RESEARCH_ROLES:
+                return TinyFishResearchAgent(agent_id).run(state.get("trip_brief"))
+            result = operation(**(planner_inputs or {}))
+            if planner_inputs is not None:
+                for key, values in planner_inputs.items():
+                    setattr(result, key, values)
+            name, goal, _, tool_name, _ = ROLES[agent_id]
+            result.execution = AgentExecution(mode="local", persona=name, goal=goal,
+                tool_calls=[tool_name], completed=result.status == "ok",
+                decision="Applied confirmed memory and local planning/calculation rules to the research results.")
+            return result
         if not self.agentic:
             result = operation(**(planner_inputs or {}))
             if planner_inputs is not None:

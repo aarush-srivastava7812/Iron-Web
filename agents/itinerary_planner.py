@@ -146,7 +146,7 @@ class ItineraryPlanner:
                 summary=f"Drafted a {duration}-day itinerary with {sum(len(d.stops) for d in days)} stops",
                 itinerary=itinerary,
                 evidence=[Evidence(source="itinerary_planner", kind="estimate", retrieved_at=int(time.time()),
-                                   note="schedule built from catalog data; opening hours unverified")],
+                                   note="schedule built from research results; opening hours unverified")],
                 latency_ms=int((time.perf_counter() - started) * 1000),
             )
         except Exception as error:

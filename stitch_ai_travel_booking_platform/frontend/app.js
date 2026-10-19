@@ -79,6 +79,16 @@ async function api(path, { method = "GET", body, ...options } = {}) {
     error.status = response.status;
     throw error;
   }
+  if (data.job_id && data.status_url && method === "POST") {
+    const deadline = Date.now() + 20 * 60 * 1000;
+    while (Date.now() < deadline) {
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      const job = await api(data.status_url, {signal: options.signal});
+      if (job.status === "completed") return job.result;
+      if (job.status === "failed") throw new Error(job.error || "Planning could not finish. Review your saved trip before retrying.");
+    }
+    throw new Error("Your travel team is still working. Reopen this trip to check its saved plan before starting another run.");
+  }
   return data;
 }
 
@@ -222,7 +232,7 @@ async function render() {
     if(route==="chat")journeyUI.open({tripId:query.get("tripId")||undefined});
     if(route==="planner"){
       const form=document.getElementById("plannerForm");
-      form?.insertAdjacentHTML("beforebegin",'<div class="journey-planner-entry"><div><h2>A conversation is a good place to start.</h2><p>Tell your NVIDIA-powered travel team what you have in mind. Review your choices, then create a personal Travel Book.</p></div><button class="journey-primary" data-action="open-travel-chat">Chat with my travel team</button></div>');
+      form?.insertAdjacentHTML("beforebegin",'<div class="journey-planner-entry"><div><h2>A conversation is a good place to start.</h2><p>Tell your travel team what you have in mind. Review your choices, then create a personal Travel Book.</p></div><button class="journey-primary" data-action="open-travel-chat">Chat with my travel team</button></div>');
     }
     if(query.get("tripId")&&state.user)await bindTripDeepLink(route,query.get("tripId"));
     labelFields(app);
@@ -678,7 +688,7 @@ async function ensureConversation() {
 }
 async function askAgents(content, page = "plan") {
   const id = await ensureConversation();
-  return api("/assistant/conversations/" + id + "/messages", {
+  return api("/assistant/conversations/" + id + "/message-jobs", {
     method: "POST",
     body: { content, page },
   });

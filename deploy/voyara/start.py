@@ -23,6 +23,9 @@ def main():
     os.environ.setdefault("DATABASE_URL", "sqlite:///" + (data / "travel.db").as_posix())
     os.environ.setdefault("AGENT_MEMORY_PATH", str(data / "memory"))
     os.environ.setdefault("FASTEMBED_CACHE_PATH", str(data / "models"))
+    os.environ.setdefault("TINYFISH_CACHE_PATH", str(data / "public-research"))
+    os.environ.setdefault("EMBEDDING_THREADS", "1")
+    os.environ.setdefault("OMP_NUM_THREADS", "1")
     os.environ.setdefault("COOKIE_SECURE", "true")
     os.environ["DEV_LOGIN_ENABLED"] = "false"
     os.environ.setdefault("JUDGE_DEMO_ENABLED", "true")
@@ -38,6 +41,7 @@ def main():
             "redis-server", "--bind", "127.0.0.1", "--port", "6379",
             "--dir", str(graph_data), "--appendonly", "yes", "--appendfsync", "everysec",
             "--save", "", "--loadmodule", "/usr/local/lib/falkordb.so",
+            "THREAD_COUNT", "1", "OMP_THREAD_COUNT", "1",
             "MAX_QUEUED_QUERIES", "25", "TIMEOUT", "1000", "RESULTSET_SIZE", "-1",
         ])
 

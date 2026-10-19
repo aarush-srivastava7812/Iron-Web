@@ -91,8 +91,13 @@ def normalize(db, draft):
         wanted = aliases.get(wanted, wanted)
         destination = next((d for d in db.scalars(select(Destination)) if d.name.casefold() == wanted or d.slug == wanted), None)
         if destination is None:
-            raise HTTPException(422, "Choose a destination from the demo catalog.")
-        data["destination"] = destination.name
+            from agents.agentic import provider
+            name = data["destination"].strip()
+            if provider() != "tinyfish" or len(name) > 80 or not all(c.isalpha() or c in " -'.," for c in name):
+                raise HTTPException(422, "Choose a destination from the demo catalog.")
+            data["destination"] = name
+        else:
+            data["destination"] = destination.name
     if data.get("origin"):
         wanted={"delhi":"New Delhi","cochin":"Kochi","bangalore":"Bengaluru"}.get(data["origin"].casefold(),data["origin"])
         origin=next((d for d in db.scalars(select(Destination)) if d.name.casefold()==wanted.casefold()),None)
@@ -208,6 +213,10 @@ def select_item(db, row, body):
 def chat_turn(db, row, user, text, client=None):
     if not text.strip():
         raise HTTPException(422, "Message must not be blank.")
+    from agents.agentic import provider
+    if provider() == "tinyfish":
+        from .local_chat import chat_turn as local_chat_turn
+        return local_chat_turn(db, row, user, text)
     client = client or get_nim_client()
     history = db.scalars(select(AIMessage).where(AIMessage.conversation_id == row.conversation_id)
                          .order_by(AIMessage.id.desc()).limit(12)).all()
@@ -242,24 +251,7 @@ def chat_turn(db, row, user, text, client=None):
             catalog_destinations=[i["name"] for i in current["options"]["destinations"]]), ensure_ascii=False)}],
         model=agent_settings.nim_agent_model, temperature=0.35, max_tokens=1400)
     if not isinstance(extraction, dict) or not isinstance(extraction.get("updates"), dict):
-        # Graceful fallback: extract basic parameters if NIM had a timeout or glitch
-        import re
-        fb_updates = {}
-        lower = text.lower()
-        for d_item in current["options"]["destinations"]:
-            if d_item["name"].lower() in lower:
-                fb_updates["destination"] = d_item["name"]
-                break
-        m_dur = re.search(r"(\d+)\s*(?:day|days|night|nights)", lower)
-        if m_dur:
-            fb_updates["duration_days"] = max(2, min(60, int(m_dur.group(1))))
-        m_trav = re.search(r"(\d+)\s*(?:adult|adults|traveller|travellers|people|person|pax|guest|guests)", lower)
-        if m_trav:
-            fb_updates["traveller_count"] = max(1, min(30, int(m_trav.group(1))))
-        m_bud = re.search(r"(?:inr|rs\.?|₹|budget)?\s*(\d{4,8})", lower)
-        if m_bud and int(m_bud.group(1)) >= 1000:
-            fb_updates["budget"] = int(m_bud.group(1))
-        updates = fb_updates
+        return unavailable
     else:
         updates = dict(extraction["updates"])
     source = extraction.get("end_date_source")

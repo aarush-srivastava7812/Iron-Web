@@ -40,6 +40,11 @@ class AgentSettings:
     # auto uses NIM when a credential exists; offline is an explicitly labelled demo.
     agent_mode: str = _get("VOYARA_AGENT_MODE", "auto")
     agent_max_turns: int = int(_get("VOYARA_AGENT_MAX_TURNS", "5"))
+    tinyfish_api_key: str = _get("TINYFISH_API_KEY", _root_values.get("TINYFISH_API_KEY", "")).strip("\"'")
+    tinyfish_timeout_s: float = float(_get("TINYFISH_TIMEOUT_S", "480"))
+    tinyfish_cache_path: str = _get("TINYFISH_CACHE_PATH", "")
+    tinyfish_stay_start_url: str = _get("TINYFISH_STAY_START_URL", "")
+    tinyfish_stay_source_destination: str = _get("TINYFISH_STAY_SOURCE_DESTINATION", "")
 
     travel_api_url: str = _get("TRAVEL_API_URL", "http://127.0.0.1:8000").rstrip("/")
     travel_api_token: str = _get("TRAVEL_API_TOKEN")

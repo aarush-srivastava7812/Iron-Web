@@ -1,5 +1,6 @@
 """Versioned hackathon drafts. Clients send edit operations, never prices."""
 from copy import deepcopy
+import json
 
 from fastapi import HTTPException
 from pydantic import BaseModel, ConfigDict, Field
@@ -8,7 +9,7 @@ from sqlalchemy.exc import IntegrityError
 from typing import Literal
 
 from agents.budget_booking_agent import BudgetBookingAgent
-from agents.schemas import AgentResult, DraftItinerary, TripBrief
+from agents.schemas import AgentResult, DraftItinerary, StayOption, TripBrief
 from agents.validation.itinerary_validator import validate_itinerary
 from .models import PlanVersion, TripWorkspace
 
@@ -31,6 +32,12 @@ def invalidate(db, conversation_id):
     db.execute(update(PlanVersion).where(PlanVersion.conversation_id == conversation_id).values(stale=True))
 
 
+def stay_ref(stay):
+    """Web findings have source references, never fabricated catalog IDs."""
+    return ("catalog:" + str(stay.stay_id) if stay.stay_id is not None
+            else "web:" + json.dumps([stay.evidence.ref, stay.name], ensure_ascii=False, separators=(",", ":")))
+
+
 def save_generated(db, conversation_id, result):
     if result.get("status") != "ok" or not result.get("itinerary") or not result.get("budget"):
         return None
@@ -39,6 +46,7 @@ def save_generated(db, conversation_id, result):
     stay = next((r.get("stay_options", [])[0] for r in result["agent_results"]
                  if r["agent_id"] == "itinerary_planner" and r.get("stay_options")), None)
     source["selected_stay_id"] = stay.get("stay_id") if stay else None
+    source["selected_stay_ref"] = stay_ref(StayOption.model_validate(stay)) if stay else None
     source["change"] = "Travel team generated this draft"
     row = PlanVersion(conversation_id=conversation_id, version=rows[0].version + 1 if rows else 1,
                       payload=source)
@@ -78,12 +86,14 @@ def edit(db, conversation_id, body):
     payload = deepcopy(source.payload)
     brief = TripBrief.model_validate(payload["trip_brief"])
     results = [AgentResult.model_validate(r) for r in payload["agent_results"]]
-    get = lambda agent, field: next((getattr(r, field) for r in results if r.agent_id == agent), [])
+    def get(agent, field):
+        return next((getattr(r, field) for r in results if r.agent_id == agent), [])
     stays = get("stay_agent", "stay_options")
     itinerary = DraftItinerary.model_validate(payload["itinerary"])
     try:
         if body.action == "stay":
             payload["selected_stay_id"] = stays[body.candidate].stay_id
+            payload["selected_stay_ref"] = stay_ref(stays[body.candidate])
         elif body.action != "restore":
             day = itinerary.days[body.day]
             stop = day.stops[body.stop]
@@ -112,7 +122,9 @@ def edit(db, conversation_id, body):
                 day.stops[body.stop], day.stops[other_index] = other, stop
         itinerary.total_est_cost_inr = sum(s.est_cost_inr for d in itinerary.days for s in d.stops)
         itinerary.assumptions = [a for a in itinerary.assumptions if not a.startswith("Assumes a room")]
-        stay = next((s for s in stays if s.stay_id == payload.get("selected_stay_id")), None)
+        stay = next((s for s in stays if (
+            payload["selected_stay_ref"] in {stay_ref(s), s.evidence.ref} if payload.get("selected_stay_ref")
+            else s.stay_id == payload.get("selected_stay_id"))), None)
         if stay:
             itinerary.assumptions.append(f"Assumes a room at {stay.name}; occupancy and availability unverified.")
         validation = validate_itinerary(itinerary, brief)

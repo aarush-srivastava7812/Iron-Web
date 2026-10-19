@@ -7,7 +7,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from .config import settings
-from .db import create_schema
+from .db import create_schema, SessionLocal
 from .routers import dashboard
 from .routers import journey
 from .routers import assistant, auth, bookings, catalog, favorites, itineraries, leads, offers, profile, google_auth, website
@@ -16,6 +16,9 @@ from .routers import assistant, auth, bookings, catalog, favorites, itineraries,
 @asynccontextmanager
 async def lifespan(_):
     create_schema()
+    from .planning_jobs import recover
+    with SessionLocal() as db:
+        recover(db)
     yield
     from .agent_runtime import runtime
     runtime.close()

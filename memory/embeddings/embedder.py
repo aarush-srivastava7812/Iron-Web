@@ -4,6 +4,7 @@ Supports CPU (default) and GPU (CUDAExecutionProvider) paths.
 """
 
 import os
+from threading import RLock
 from typing import List, Optional
 import numpy as np
 
@@ -12,6 +13,8 @@ from memory.device import ensure_cuda_dlls_loaded
 
 # Default model: BAAI/bge-small-en-v1.5 (384-dim, fast, good quality)
 DEFAULT_MODEL = "BAAI/bge-small-en-v1.5"
+_instances = {}
+_instances_lock = RLock()
 
 
 class Embedder:
@@ -40,6 +43,7 @@ class Embedder:
         self.model_name = model_name
         self.cache_dir = cache_dir
         self.batch_size = batch_size
+        self._inference_lock = RLock()
 
         # Resolve GPU flag: explicit arg > env var > default false
         self.use_gpu = (
@@ -95,6 +99,7 @@ class Embedder:
                 model_name=self.model_name,
                 cache_dir=self.cache_dir,
                 providers=self._providers,
+                threads=int(os.getenv("EMBEDDING_THREADS", "2")),
             )
             provider_str = ", ".join(self._providers)
             print(
@@ -110,6 +115,7 @@ class Embedder:
                     model_name=self.model_name,
                     cache_dir=self.cache_dir,
                     providers=self._providers,
+                    threads=int(os.getenv("EMBEDDING_THREADS", "2")),
                 )
             else:
                 raise
@@ -128,7 +134,8 @@ class Embedder:
             return np.empty((0, self.dimension), dtype=np.float32)
 
         # FastEmbed returns generator, convert to list then array
-        embeddings = list(self._model.embed(texts, batch_size=self.batch_size))
+        with self._inference_lock:
+            embeddings = list(self._model.embed(texts, batch_size=self.batch_size))
         return np.array(embeddings, dtype=np.float32)
 
     def embed_single(self, text: str) -> np.ndarray:
@@ -158,9 +165,13 @@ def get_embedder(
     Returns:
         Embedder instance
     """
-    return Embedder(
-        model_name=model_name,
-        use_gpu=use_gpu,
-        cache_dir=cache_dir,
-        batch_size=batch_size,
-    )
+    # Only model resources are shared. Graphs, vectors and journals remain scoped
+    # to their authenticated traveler. Serialize creation to avoid duplicate ONNX
+    # sessions when two travelers first use memory at the same time.
+    gpu = use_gpu if use_gpu is not None else os.getenv("USE_GPU", "false").lower() == "true"
+    key = (model_name, batch_size, gpu, cache_dir, os.getenv("EMBEDDING_THREADS", "2"))
+    with _instances_lock:
+        if key not in _instances:
+            _instances[key] = Embedder(model_name=model_name, use_gpu=gpu,
+                                       cache_dir=cache_dir, batch_size=batch_size)
+        return _instances[key]

@@ -328,7 +328,7 @@ AgentStatus = Literal["ok", "failed", "skipped", "needs_clarification"]
 
 
 class AgentExecution(StrictModel):
-    mode: Literal["nvidia", "offline"]
+    mode: Literal["nvidia", "offline", "tinyfish", "local"]
     persona: str
     goal: str
     model: str | None = None
