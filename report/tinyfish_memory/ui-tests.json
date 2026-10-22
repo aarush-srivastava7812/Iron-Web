@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22T01:30:29.376490+00:00",
+  "generated_at": "2026-10-22T04:09:49.076465+00:00",
   "checks": [
     {
       "label": "Memory and presentation tests",
@@ -7,7 +7,7 @@
       "total": 28,
       "status": "passed",
       "scope": "Isolated SQL / gateway contracts; real FalkorDB round trip excluded",
-      "elapsed_seconds": 19.07,
+      "elapsed_seconds": 18.74,
       "command": "D:\\Opencode_\\reserchpaper\\.venv\\Scripts\\python.exe -m pytest tests/test_external_memory.py tests/test_agent_presentation.py -q --tb=short --show-capture=no"
     },
     {
@@ -16,7 +16,7 @@
       "total": 13,
       "status": "passed",
       "scope": "JavaScript unit checks",
-      "elapsed_seconds": 1.87,
+      "elapsed_seconds": 6.63,
       "command": "\"C:\\Program Files\\nodejs\\npm.cmd\" test"
     },
     {
@@ -25,7 +25,7 @@
       "total": 1,
       "status": "passed",
       "scope": "Production bundle",
-      "elapsed_seconds": 6.71,
+      "elapsed_seconds": 7.22,
       "command": "\"C:\\Program Files\\nodejs\\npm.cmd\" run build"
     },
     {
@@ -34,7 +34,7 @@
       "total": 1,
       "status": "passed",
       "scope": "Production bundle",
-      "elapsed_seconds": 2.44,
+      "elapsed_seconds": 2.4,
       "command": "\"C:\\Program Files\\nodejs\\npm.cmd\" run build"
     },
     {
@@ -42,11 +42,10 @@
       "passed": 4,
       "total": 4,
       "status": "passed",
-      "scope": "Labelled dashboard fixtures + six-slide HTML; keyboard, fullscreen and five viewport sizes",
-      "elapsed_seconds": 12.96,
+      "scope": "Labelled dashboard fixtures + actual generated HTML; desktop/mobile",
+      "elapsed_seconds": 30.0,
       "command": "\"C:\\Program Files\\nodejs\\npx.cmd\" playwright test tests/tinyfish-memory.spec.js --reporter=json"
     }
   ],
-  "status": "passed",
-  "last_browser_retest_at": "2026-10-22T01:40:05.611757+00:00"
+  "status": "passed"
 }

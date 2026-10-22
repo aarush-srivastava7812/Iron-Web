@@ -1,0 +1,707 @@
+{
+  "origin": "https://voyara-travel-taupe.vercel.app",
+  "checks": [
+    "Hosted judge sign-in",
+    "Exact Agra message responds locally and asks for missing details",
+    "Planning starts as HTTP 202 background job through Vercel",
+    "Second judge session stays responsive; private trip is inaccessible"
+  ],
+  "page_errors": [],
+  "live_provider": true,
+  "chat_seconds": [
+    0.5,
+    0.28
+  ],
+  "trip_id": "150109bb-2f52-4df9-b64d-844a194492f7",
+  "job_id": "900f5ca0-d926-4e5c-a3c6-38a4c6e516b9",
+  "research_seconds": 500.08,
+  "orchestration": {
+    "status": "failed",
+    "itinerary": null,
+    "budget": null,
+    "memory": [],
+    "response": "A research task did not complete before the trip context expired. No complete plan was saved. Check the team's execution details, confirm current trip details, then retry.",
+    "agent_results": [
+      {
+        "agent_id": "trip_consultant",
+        "status": "ok",
+        "summary": "Trip brief: Agra, 3 days, party of 2, ~\u20b945,000/person",
+        "destination_ideas": [],
+        "stay_options": [],
+        "attractions": [],
+        "food_options": [],
+        "transport_options": [],
+        "itinerary": null,
+        "budget": null,
+        "guidance": null,
+        "trip_brief": {
+          "destination": "Agra",
+          "destination_flexible": false,
+          "start_date": "2026-12-01",
+          "end_date": "2026-12-03",
+          "duration_days": 3,
+          "party_size": 2,
+          "purpose": null,
+          "budget_total_inr": 90000,
+          "budget_per_person_inr": null,
+          "interests": [
+            "culture"
+          ],
+          "pace": "relaxed",
+          "transport_preferences": [],
+          "dietary_requirements": [],
+          "accessibility_needs": [],
+          "hard_constraints": [],
+          "preferences": [],
+          "missing_fields": [],
+          "clarification_question": null,
+          "confidence": 0.5
+        },
+        "evidence": [],
+        "errors": [],
+        "latency_ms": null,
+        "execution": {
+          "mode": "local",
+          "persona": "Mira \u00b7 trip editor",
+          "goal": "Check the confirmed brief for gaps; never invent traveler facts.",
+          "model": null,
+          "temperature": null,
+          "tool_calls": [
+            "inspect_brief"
+          ],
+          "observations": [],
+          "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+          "completed": true
+        }
+      },
+      {
+        "agent_id": "explore_agent",
+        "status": "ok",
+        "summary": "1 web research results for Agra",
+        "destination_ideas": [
+          {
+            "destination_id": null,
+            "slug": null,
+            "name": "Taj Mahal",
+            "region": "Agra",
+            "why_fit": "The Taj Mahal is a UNESCO World Heritage Site and one of the New Seven Wonders of the World. Commissioned in 1632 by Mughal emperor Shah Jahan to house the tomb of his beloved wife Mumtaz Mahal, it sits on the banks of the Yamuna River. The complex includes outlying buildings and the tomb of Shah Jahan itself. Agra Fort is also a UNESCO World Heritage Site and served as the main residence of the Mughal emperors until the capital was shifted to Delhi.",
+            "suggested_duration_days": 3,
+            "best_season": null,
+            "cost_level": null,
+            "avg_cost_inr": null,
+            "tags": [],
+            "seasonality_note": null,
+            "evidence": {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792430079,
+              "ref": "https://en.wikipedia.org/wiki/Agra#Monuments_and_architecture",
+              "note": "Web-reported indicative data; dates and availability unverified. Prices not provided by the source (Wikipedia encyclopedia entry); no pricing, opening hours, or availability information available."
+            }
+          }
+        ],
+        "stay_options": [],
+        "attractions": [],
+        "food_options": [],
+        "transport_options": [],
+        "itinerary": null,
+        "budget": null,
+        "guidance": null,
+        "trip_brief": null,
+        "evidence": [
+          {
+            "source": "tinyfish.web",
+            "kind": "live",
+            "retrieved_at": 1792430079,
+            "ref": "https://en.wikipedia.org/wiki/Agra#Monuments_and_architecture",
+            "note": "Web-reported indicative data; dates and availability unverified. Prices not provided by the source (Wikipedia encyclopedia entry); no pricing, opening hours, or availability information available."
+          }
+        ],
+        "errors": [],
+        "latency_ms": 93974,
+        "execution": {
+          "mode": "tinyfish",
+          "persona": "Atlas \u00b7 destination researcher",
+          "goal": "Research destination information and things to see",
+          "model": null,
+          "temperature": null,
+          "tool_calls": [
+            "tinyfish.web_research"
+          ],
+          "observations": [
+            "TinyFish run: c35c6909-feac-456e-b550-d69f2fa2fa1b",
+            "Validated 1 public web results; applied private requirements locally."
+          ],
+          "decision": "Selected source-linked research; prices and availability require supplier confirmation.",
+          "completed": true
+        }
+      },
+      {
+        "agent_id": "food_guide_agent",
+        "status": "failed",
+        "summary": "TinyFish research timed out",
+        "destination_ideas": [],
+        "stay_options": [],
+        "attractions": [],
+        "food_options": [],
+        "transport_options": [],
+        "itinerary": null,
+        "budget": null,
+        "guidance": null,
+        "trip_brief": null,
+        "evidence": [],
+        "errors": [
+          "TinyFish research timed out"
+        ],
+        "latency_ms": 480404,
+        "execution": {
+          "mode": "tinyfish",
+          "persona": "Saffron \u00b7 food researcher",
+          "goal": "Research restaurants, menus and per-person meal prices",
+          "model": null,
+          "temperature": null,
+          "tool_calls": [
+            "tinyfish.web_research"
+          ],
+          "observations": [
+            "TinyFish research timed out",
+            "Failure kind: TinyFishError"
+          ],
+          "decision": "",
+          "completed": false
+        }
+      },
+      {
+        "agent_id": "stay_agent",
+        "status": "ok",
+        "summary": "1 web research results for Agra",
+        "destination_ideas": [],
+        "stay_options": [
+          {
+            "stay_id": null,
+            "name": "ITC Mughal",
+            "location": "Agra",
+            "kind": null,
+            "price_per_night_inr": 16000,
+            "total_price_inr": 32000,
+            "rating": null,
+            "amenities": [],
+            "availability_status": "unknown",
+            "cancellation_note": null,
+            "pros": [
+              "5-star deluxe hotel on Fatehabad Road, Agra. Listed on the official Taj Mahal Department of Tourism, Government of Uttar Pradesh website with published indicative tariffs."
+            ],
+            "cons": [
+              "Published indicative tariff range from INR 16,000 to INR 100,000 per room per night. No dates supplied; rates are general published indicative rates and may vary by season, occupancy, and room type. Contact the hotel directly for current availability and exact pricing."
+            ],
+            "evidence": {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792430172,
+              "ref": "https://www.tajmahal.gov.in/accomodation.aspx",
+              "note": "Web-reported indicative data; dates and availability unverified. Published indicative tariff range from INR 16,000 to INR 100,000 per room per night. No dates supplied; rates are general published indicative rates and may vary by season, occupancy, and room type. Contact the hotel directly for current availability and exact pricing."
+            }
+          }
+        ],
+        "attractions": [],
+        "food_options": [],
+        "transport_options": [],
+        "itinerary": null,
+        "budget": null,
+        "guidance": null,
+        "trip_brief": null,
+        "evidence": [
+          {
+            "source": "tinyfish.web",
+            "kind": "live",
+            "retrieved_at": 1792430172,
+            "ref": "https://www.tajmahal.gov.in/accomodation.aspx",
+            "note": "Web-reported indicative data; dates and availability unverified. Published indicative tariff range from INR 16,000 to INR 100,000 per room per night. No dates supplied; rates are general published indicative rates and may vary by season, occupancy, and room type. Contact the hotel directly for current availability and exact pricing."
+          }
+        ],
+        "errors": [],
+        "latency_ms": 184776,
+        "execution": {
+          "mode": "tinyfish",
+          "persona": "Haven \u00b7 stay researcher",
+          "goal": "Research hotels and published indicative INR room rates",
+          "model": null,
+          "temperature": null,
+          "tool_calls": [
+            "tinyfish.web_research"
+          ],
+          "observations": [
+            "TinyFish run: 9742c7fc-3531-4a8d-891c-d1fdd2683c5c",
+            "Validated 1 public web results; applied private requirements locally."
+          ],
+          "decision": "Selected source-linked research; prices and availability require supplier confirmation.",
+          "completed": true
+        }
+      },
+      {
+        "agent_id": "tour_guide_agent",
+        "status": "ok",
+        "summary": "1 web research results for Agra",
+        "destination_ideas": [],
+        "stay_options": [],
+        "attractions": [
+          {
+            "guide_id": null,
+            "name": "Taj Mahal",
+            "category": null,
+            "why_fit": "Iconic white marble mausoleum, UNESCO World Heritage Site built by Mughal Emperor Shah Jahan in memory of his wife Mumtaz Mahal.",
+            "approx_duration_min": null,
+            "location": "Agra",
+            "price_per_person_inr": 1100,
+            "hours_caveat": "Foreign tourists: INR 1100 + INR 200 optional for main mausoleum. SAARC/BIMSTEC citizens: INR 540 + INR 200 optional. Domestic/Indian visitors: INR 50 + INR 200 optional. Children below 15 years: free entry. Online ticket discount of INR 5 for Indian tickets and INR 50 for foreigner tickets. Open 30 minutes before sunrise to 30 minutes before sunset, except Fridays.",
+            "evidence": {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792430266,
+              "ref": "https://www.tajmahal.gov.in/",
+              "note": "Web-reported indicative data; dates and availability unverified. Foreign tourists: INR 1100 + INR 200 optional for main mausoleum. SAARC/BIMSTEC citizens: INR 540 + INR 200 optional. Domestic/Indian visitors: INR 50 + INR 200 optional. Children below 15 years: free entry. Online ticket discount of INR 5 for Indian tickets and INR 50 for foreigner tickets. Open 30 minutes before sunrise to 30 minutes before sunset, except Fridays."
+            }
+          }
+        ],
+        "food_options": [],
+        "transport_options": [],
+        "itinerary": null,
+        "budget": null,
+        "guidance": null,
+        "trip_brief": null,
+        "evidence": [
+          {
+            "source": "tinyfish.web",
+            "kind": "live",
+            "retrieved_at": 1792430266,
+            "ref": "https://www.tajmahal.gov.in/",
+            "note": "Web-reported indicative data; dates and availability unverified. Foreign tourists: INR 1100 + INR 200 optional for main mausoleum. SAARC/BIMSTEC citizens: INR 540 + INR 200 optional. Domestic/Indian visitors: INR 50 + INR 200 optional. Children below 15 years: free entry. Online ticket discount of INR 5 for Indian tickets and INR 50 for foreigner tickets. Open 30 minutes before sunrise to 30 minutes before sunset, except Fridays."
+          }
+        ],
+        "errors": [],
+        "latency_ms": 277018,
+        "execution": {
+          "mode": "tinyfish",
+          "persona": "Roam \u00b7 attraction researcher",
+          "goal": "Research attractions, admission fees and opening-hour caveats",
+          "model": null,
+          "temperature": null,
+          "tool_calls": [
+            "tinyfish.web_research"
+          ],
+          "observations": [
+            "TinyFish run: 21c36836-a796-4837-b8c1-17a47681c536",
+            "Validated 1 public web results; applied private requirements locally."
+          ],
+          "decision": "Selected source-linked research; prices and availability require supplier confirmation.",
+          "completed": true
+        }
+      },
+      {
+        "agent_id": "itinerary_planner",
+        "status": "ok",
+        "summary": "Drafted a 3-day itinerary with 6 stops",
+        "destination_ideas": [],
+        "stay_options": [
+          {
+            "stay_id": null,
+            "name": "ITC Mughal",
+            "location": "Agra",
+            "kind": null,
+            "price_per_night_inr": 16000,
+            "total_price_inr": 32000,
+            "rating": null,
+            "amenities": [],
+            "availability_status": "unknown",
+            "cancellation_note": null,
+            "pros": [
+              "5-star deluxe hotel on Fatehabad Road, Agra. Listed on the official Taj Mahal Department of Tourism, Government of Uttar Pradesh website with published indicative tariffs."
+            ],
+            "cons": [
+              "Published indicative tariff range from INR 16,000 to INR 100,000 per room per night. No dates supplied; rates are general published indicative rates and may vary by season, occupancy, and room type. Contact the hotel directly for current availability and exact pricing."
+            ],
+            "evidence": {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792430172,
+              "ref": "https://www.tajmahal.gov.in/accomodation.aspx",
+              "note": "Web-reported indicative data; dates and availability unverified. Published indicative tariff range from INR 16,000 to INR 100,000 per room per night. No dates supplied; rates are general published indicative rates and may vary by season, occupancy, and room type. Contact the hotel directly for current availability and exact pricing."
+            }
+          }
+        ],
+        "attractions": [
+          {
+            "guide_id": null,
+            "name": "Taj Mahal",
+            "category": null,
+            "why_fit": "Iconic white marble mausoleum, UNESCO World Heritage Site built by Mughal Emperor Shah Jahan in memory of his wife Mumtaz Mahal.",
+            "approx_duration_min": null,
+            "location": "Agra",
+            "price_per_person_inr": 1100,
+            "hours_caveat": "Foreign tourists: INR 1100 + INR 200 optional for main mausoleum. SAARC/BIMSTEC citizens: INR 540 + INR 200 optional. Domestic/Indian visitors: INR 50 + INR 200 optional. Children below 15 years: free entry. Online ticket discount of INR 5 for Indian tickets and INR 50 for foreigner tickets. Open 30 minutes before sunrise to 30 minutes before sunset, except Fridays.",
+            "evidence": {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792430266,
+              "ref": "https://www.tajmahal.gov.in/",
+              "note": "Web-reported indicative data; dates and availability unverified. Foreign tourists: INR 1100 + INR 200 optional for main mausoleum. SAARC/BIMSTEC citizens: INR 540 + INR 200 optional. Domestic/Indian visitors: INR 50 + INR 200 optional. Children below 15 years: free entry. Online ticket discount of INR 5 for Indian tickets and INR 50 for foreigner tickets. Open 30 minutes before sunrise to 30 minutes before sunset, except Fridays."
+            }
+          }
+        ],
+        "food_options": [],
+        "transport_options": [],
+        "itinerary": {
+          "title": "3-day trip to Agra",
+          "days": [
+            {
+              "day": 1,
+              "calendar_date": "2026-12-01",
+              "stops": [
+                {
+                  "day": 1,
+                  "start_time": "09:30",
+                  "end_time": "11:30",
+                  "title": "Arrive by surface transport",
+                  "kind": "transport",
+                  "location": "Agra",
+                  "est_cost_inr": 0,
+                  "notes": "travel time assumed within the morning window",
+                  "evidence": null
+                },
+                {
+                  "day": 1,
+                  "start_time": "15:30",
+                  "end_time": "17:30",
+                  "title": "Taj Mahal",
+                  "kind": "attraction",
+                  "location": "Agra",
+                  "est_cost_inr": 1100,
+                  "notes": null,
+                  "evidence": {
+                    "source": "tinyfish.web",
+                    "kind": "live",
+                    "retrieved_at": 1792430266,
+                    "ref": "https://www.tajmahal.gov.in/",
+                    "note": "Web-reported indicative data; dates and availability unverified. Foreign tourists: INR 1100 + INR 200 optional for main mausoleum. SAARC/BIMSTEC citizens: INR 540 + INR 200 optional. Domestic/Indian visitors: INR 50 + INR 200 optional. Children below 15 years: free entry. Online ticket discount of INR 5 for Indian tickets and INR 50 for foreigner tickets. Open 30 minutes before sunrise to 30 minutes before sunset, except Fridays."
+                  }
+                }
+              ]
+            },
+            {
+              "day": 2,
+              "calendar_date": "2026-12-02",
+              "stops": [
+                {
+                  "day": 2,
+                  "start_time": "09:30",
+                  "end_time": "11:30",
+                  "title": "Free morning to wander",
+                  "kind": "buffer",
+                  "location": "Agra",
+                  "est_cost_inr": 0,
+                  "notes": "Unscheduled time; no additional catalog experience selected.",
+                  "evidence": null
+                },
+                {
+                  "day": 2,
+                  "start_time": "15:30",
+                  "end_time": "17:30",
+                  "title": "Free afternoon for local exploration",
+                  "kind": "buffer",
+                  "location": "Agra",
+                  "est_cost_inr": 0,
+                  "notes": "Unscheduled time; costs are not included.",
+                  "evidence": null
+                }
+              ]
+            },
+            {
+              "day": 3,
+              "calendar_date": "2026-12-03",
+              "stops": [
+                {
+                  "day": 3,
+                  "start_time": "09:30",
+                  "end_time": "11:30",
+                  "title": "Free morning to wander",
+                  "kind": "buffer",
+                  "location": "Agra",
+                  "est_cost_inr": 0,
+                  "notes": "Unscheduled time; no additional catalog experience selected.",
+                  "evidence": null
+                },
+                {
+                  "day": 3,
+                  "start_time": "15:30",
+                  "end_time": "17:30",
+                  "title": "Pack up and head home",
+                  "kind": "buffer",
+                  "location": "Agra",
+                  "est_cost_inr": 0,
+                  "notes": null,
+                  "evidence": null
+                }
+              ]
+            }
+          ],
+          "total_est_cost_inr": 1100,
+          "assumptions": [
+            "Assumes a room at ITC Mughal for all nights (per-night \u20b916,000, availability unverified).",
+            "Meal costs use a placeholder allowance; no venue data was available."
+          ],
+          "alternatives": [
+            "Swap the afternoon activity for a food walk if the weather turns."
+          ],
+          "unresolved_conflicts": []
+        },
+        "budget": null,
+        "guidance": null,
+        "trip_brief": null,
+        "evidence": [
+          {
+            "source": "itinerary_planner",
+            "kind": "estimate",
+            "retrieved_at": 1792430467,
+            "ref": null,
+            "note": "schedule built from research results; opening hours unverified"
+          }
+        ],
+        "errors": [],
+        "latency_ms": 0,
+        "execution": {
+          "mode": "local",
+          "persona": "Weaver \u00b7 day planner",
+          "goal": "Compose the specialists' actual findings into a paced schedule; review and revise conflicts.",
+          "model": null,
+          "temperature": null,
+          "tool_calls": [
+            "build_schedule"
+          ],
+          "observations": [],
+          "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+          "completed": true
+        }
+      },
+      {
+        "agent_id": "budget_booking_agent",
+        "status": "ok",
+        "summary": "Estimated \u20b937,620 for 2 travellers",
+        "destination_ideas": [],
+        "stay_options": [],
+        "attractions": [],
+        "food_options": [],
+        "transport_options": [],
+        "itinerary": null,
+        "budget": {
+          "currency": "INR",
+          "per_person": false,
+          "lines": [
+            {
+              "category": "stay",
+              "amount_inr": 32000,
+              "basis": "estimate",
+              "note": "per room; availability unverified"
+            },
+            {
+              "category": "food",
+              "amount_inr": 0,
+              "basis": "estimate",
+              "note": "scheduled meals only"
+            },
+            {
+              "category": "activities",
+              "amount_inr": 2200,
+              "basis": "estimate",
+              "note": "guide/experience fees"
+            },
+            {
+              "category": "contingency",
+              "amount_inr": 3420,
+              "basis": "estimate",
+              "note": "10% buffer for local travel and extras"
+            }
+          ],
+          "total_inr": 37620,
+          "budget_delta_inr": null,
+          "price_checked_at": null,
+          "status": "estimate",
+          "warnings": [
+            "Figures use source-reported indicative web rates, not date-specific quotes; confirm prices and availability.",
+            "Includes the listed activities and meals; unverified transport and extra meals are excluded."
+          ]
+        },
+        "guidance": null,
+        "trip_brief": null,
+        "evidence": [
+          {
+            "source": "budget_calculator",
+            "kind": "estimate",
+            "retrieved_at": 1792430468,
+            "ref": null,
+            "note": "deterministic calculation from tool results"
+          }
+        ],
+        "errors": [],
+        "latency_ms": 0,
+        "execution": {
+          "mode": "local",
+          "persona": "Ledger \u00b7 skeptical reviewer",
+          "goal": "Run the exact cost calculator; check the budget and explain exclusions. Never book or pay.",
+          "model": null,
+          "temperature": null,
+          "tool_calls": [
+            "calculate_budget"
+          ],
+          "observations": [],
+          "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+          "completed": true
+        }
+      }
+    ]
+  },
+  "agent_summary": [
+    {
+      "agent": "trip_consultant",
+      "status": "ok",
+      "execution": {
+        "mode": "local",
+        "persona": "Mira \u00b7 trip editor",
+        "goal": "Check the confirmed brief for gaps; never invent traveler facts.",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "inspect_brief"
+        ],
+        "observations": [],
+        "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+        "completed": true
+      },
+      "errors": []
+    },
+    {
+      "agent": "explore_agent",
+      "status": "ok",
+      "execution": {
+        "mode": "tinyfish",
+        "persona": "Atlas \u00b7 destination researcher",
+        "goal": "Research destination information and things to see",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "tinyfish.web_research"
+        ],
+        "observations": [
+          "TinyFish run: c35c6909-feac-456e-b550-d69f2fa2fa1b",
+          "Validated 1 public web results; applied private requirements locally."
+        ],
+        "decision": "Selected source-linked research; prices and availability require supplier confirmation.",
+        "completed": true
+      },
+      "errors": []
+    },
+    {
+      "agent": "food_guide_agent",
+      "status": "failed",
+      "execution": {
+        "mode": "tinyfish",
+        "persona": "Saffron \u00b7 food researcher",
+        "goal": "Research restaurants, menus and per-person meal prices",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "tinyfish.web_research"
+        ],
+        "observations": [
+          "TinyFish research timed out",
+          "Failure kind: TinyFishError"
+        ],
+        "decision": "",
+        "completed": false
+      },
+      "errors": [
+        "TinyFish research timed out"
+      ]
+    },
+    {
+      "agent": "stay_agent",
+      "status": "ok",
+      "execution": {
+        "mode": "tinyfish",
+        "persona": "Haven \u00b7 stay researcher",
+        "goal": "Research hotels and published indicative INR room rates",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "tinyfish.web_research"
+        ],
+        "observations": [
+          "TinyFish run: 9742c7fc-3531-4a8d-891c-d1fdd2683c5c",
+          "Validated 1 public web results; applied private requirements locally."
+        ],
+        "decision": "Selected source-linked research; prices and availability require supplier confirmation.",
+        "completed": true
+      },
+      "errors": []
+    },
+    {
+      "agent": "tour_guide_agent",
+      "status": "ok",
+      "execution": {
+        "mode": "tinyfish",
+        "persona": "Roam \u00b7 attraction researcher",
+        "goal": "Research attractions, admission fees and opening-hour caveats",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "tinyfish.web_research"
+        ],
+        "observations": [
+          "TinyFish run: 21c36836-a796-4837-b8c1-17a47681c536",
+          "Validated 1 public web results; applied private requirements locally."
+        ],
+        "decision": "Selected source-linked research; prices and availability require supplier confirmation.",
+        "completed": true
+      },
+      "errors": []
+    },
+    {
+      "agent": "itinerary_planner",
+      "status": "ok",
+      "execution": {
+        "mode": "local",
+        "persona": "Weaver \u00b7 day planner",
+        "goal": "Compose the specialists' actual findings into a paced schedule; review and revise conflicts.",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "build_schedule"
+        ],
+        "observations": [],
+        "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+        "completed": true
+      },
+      "errors": []
+    },
+    {
+      "agent": "budget_booking_agent",
+      "status": "ok",
+      "execution": {
+        "mode": "local",
+        "persona": "Ledger \u00b7 skeptical reviewer",
+        "goal": "Run the exact cost calculator; check the budget and explain exclusions. Never book or pay.",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "calculate_budget"
+        ],
+        "observations": [],
+        "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+        "completed": true
+      },
+      "errors": []
+    }
+  ],
+  "status": "failed",
+  "error": "[{'agent': 'trip_consultant', 'status': 'ok', 'execution': {'mode': 'local', 'persona': 'Mira \u00b7 trip editor', 'goal': 'Check the confirmed brief for gaps; never invent traveler facts.', 'model': None, 'temperature': None, 'tool_calls': ['inspect_brief'], 'observations': [], 'decision': 'Applied confirmed memory and local planning/calculation rules to the research results.', 'completed': True}, 'errors': []}, {'agent': 'explore_agent', 'status': 'ok', 'execution': {'mode': 'tinyfish', 'persona': 'Atlas \u00b7 destination researcher', 'goal': 'Research destination information and things to see', 'model': None, 'temperature': None, 'tool_calls': ['tinyfish.web_research'], 'observations': ['TinyFish run: c35c6909-feac-456e-b550-d69f2fa2fa1b', 'Validated 1 public web results; applied private requirements locally.'], 'decision': 'Selected source-linked research; prices and availability require supplier confirmation.', 'completed': True}, 'errors': []}, {'agent': 'food_guide_agent', 'status': 'failed', 'execution': {'mode': 'tinyfish', 'persona': 'Saffron \u00b7 food researcher', 'goal': 'Research restaurants, menus and per-person meal prices', 'model': None, 'temperature': None, 'tool_calls': ['tinyfish.web_research'], 'observations': ['TinyFish research timed out', 'Failure kind: TinyFishError'], 'decision': '', 'completed': False}, 'errors': ['TinyFish research timed out']}, {'agent': 'stay_agent', 'status': 'ok', 'execution': {'mode': 'tinyfish', 'persona': 'Haven \u00b7 stay researcher', 'goal': 'Research hotels and published indicative INR room rates', 'model': None, 'temperature': None, 'tool_calls': ['tinyfish.web_research'], 'observations': ['TinyFish run: 9742c7fc-3531-4a8d-891c-d1fdd2683c5c', 'Validated 1 public web results; applied private requirements locally.'], 'decision': 'Selected source-linked research; prices and availability require supplier confirmation.', 'completed': True}, 'errors': []}, {'agent': 'tour_guide_agent', 'status': 'ok', 'execution': {'mode': 'tinyfish', 'persona': 'Roam \u00b7 attraction researcher', 'goal': 'Research attractions, admission fees and opening-hour caveats', 'model': None, 'temperature': None, 'tool_calls': ['tinyfish.web_research'], 'observations': ['TinyFish run: 21c36836-a796-4837-b8c1-17a47681c536', 'Validated 1 public web results; applied private requirements locally.'], 'decision': 'Selected source-linked research; prices and availability require supplier confirmation.', 'completed': True}, 'errors': []}, {'agent': 'itinerary_planner', 'status': 'ok', 'execution': {'mode': 'local', 'persona': 'Weaver \u00b7 day planner', 'goal': \"Compose the specialists' actual findings into a paced schedule; review and revise conflicts.\", 'model': None, 'temperature': None, 'tool_calls': ['build_schedule'], 'observations': [], 'decision': 'Applied confirmed memory and local planning/calculation rules to the research results.', 'completed': True}, 'errors': []}, {'agent': 'budget_booking_agent', 'status': 'ok', 'execution': {'mode': 'local', 'persona': 'Ledger \u00b7 skeptical reviewer', 'goal': 'Run the exact cost calculator; check the budget and explain exclusions. Never book or pay.', 'model': None, 'temperature': None, 'tool_calls': ['calculate_budget'], 'observations': [], 'decision': 'Applied confirmed memory and local planning/calculation rules to the research results.', 'completed': True}, 'errors': []}]",
+  "seconds": 510.5
+}

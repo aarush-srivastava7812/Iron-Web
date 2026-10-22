@@ -1,0 +1,1020 @@
+{
+  "origin": "http://127.0.0.1:8094",
+  "provider": "TinyFish",
+  "live_provider": true,
+  "checks": [
+    "Local demo sign-in"
+  ],
+  "page_errors": [],
+  "http_status": 200,
+  "planner_response": {
+    "message": {},
+    "reply": {
+      "conversation_id": "c3f709e3-de52-4554-8caa-c72b1860894d",
+      "role": "assistant",
+      "content": "A travel agent could not complete its work. Check the team\u2019s execution details and research service configuration, then retry.",
+      "id": 2,
+      "created_at": "2026-10-19T16:04:08.474802+00:00"
+    },
+    "connection_status": "agent_incomplete",
+    "detail": "A specialist could not complete its work. No complete plan was saved.",
+    "orchestration": {
+      "request_id": "5440ce7f9914",
+      "status": "failed",
+      "response": "A travel agent could not complete its work. Check the team\u2019s execution details and research service configuration, then retry.",
+      "page": "plan",
+      "trip_brief": {
+        "destination": "Jaipur",
+        "destination_flexible": false,
+        "start_date": "2026-12-01",
+        "end_date": "2026-12-03",
+        "duration_days": 3,
+        "party_size": 2,
+        "purpose": null,
+        "budget_total_inr": 90000,
+        "budget_per_person_inr": null,
+        "interests": [
+          "Food",
+          "Culture"
+        ],
+        "pace": "moderate",
+        "transport_preferences": [],
+        "dietary_requirements": [],
+        "accessibility_needs": [],
+        "hard_constraints": [],
+        "preferences": [],
+        "missing_fields": [],
+        "clarification_question": null,
+        "confidence": 0.5
+      },
+      "itinerary": null,
+      "budget": null,
+      "agent_results": [
+        {
+          "agent_id": "trip_consultant",
+          "status": "ok",
+          "summary": "Trip brief: Jaipur, 3 days, party of 2, ~\u20b945,000/person",
+          "destination_ideas": [],
+          "stay_options": [],
+          "attractions": [],
+          "food_options": [],
+          "transport_options": [],
+          "itinerary": null,
+          "budget": null,
+          "guidance": null,
+          "trip_brief": {
+            "destination": "Jaipur",
+            "destination_flexible": false,
+            "start_date": "2026-12-01",
+            "end_date": "2026-12-03",
+            "duration_days": 3,
+            "party_size": 2,
+            "purpose": null,
+            "budget_total_inr": 90000,
+            "budget_per_person_inr": null,
+            "interests": [
+              "Food",
+              "Culture"
+            ],
+            "pace": "moderate",
+            "transport_preferences": [],
+            "dietary_requirements": [],
+            "accessibility_needs": [],
+            "hard_constraints": [],
+            "preferences": [],
+            "missing_fields": [],
+            "clarification_question": null,
+            "confidence": 0.5
+          },
+          "evidence": [],
+          "errors": [],
+          "latency_ms": null,
+          "execution": {
+            "mode": "local",
+            "persona": "Mira \u00b7 trip editor",
+            "goal": "Check the confirmed brief for gaps; never invent traveler facts.",
+            "model": null,
+            "temperature": null,
+            "tool_calls": [
+              "inspect_brief"
+            ],
+            "observations": [],
+            "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+            "completed": true
+          }
+        },
+        {
+          "agent_id": "explore_agent",
+          "status": "failed",
+          "summary": "TinyFish research timed out",
+          "destination_ideas": [],
+          "stay_options": [],
+          "attractions": [],
+          "food_options": [],
+          "transport_options": [],
+          "itinerary": null,
+          "budget": null,
+          "guidance": null,
+          "trip_brief": null,
+          "evidence": [],
+          "errors": [
+            "TinyFish research timed out"
+          ],
+          "latency_ms": 240546,
+          "execution": {
+            "mode": "tinyfish",
+            "persona": "Atlas \u00b7 destination researcher",
+            "goal": "Research destination information and things to see",
+            "model": null,
+            "temperature": null,
+            "tool_calls": [
+              "tinyfish.web_research"
+            ],
+            "observations": [
+              "TinyFish research timed out"
+            ],
+            "decision": "",
+            "completed": false
+          }
+        },
+        {
+          "agent_id": "food_guide_agent",
+          "status": "ok",
+          "summary": "3 web research results for Jaipur",
+          "destination_ideas": [],
+          "stay_options": [],
+          "attractions": [],
+          "food_options": [
+            {
+              "place_id": null,
+              "name": "Chokhi Dhani",
+              "cuisine": null,
+              "approx_price_per_guest_inr": 1100,
+              "location": "Jaipur",
+              "diet": null,
+              "dietary_fit": null,
+              "hours_caveat": "Indicative per-person meal cost of Rs. 1000 to 1200 for authentic Rajasthani thali. Prices are indicative and subject to change; no specific dates supplied.",
+              "reservation_status": "unknown",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792425792,
+                "ref": "https://www.jaipurday.com/jaipur-restaurants-and-bars",
+                "note": "Web-reported indicative data; dates and availability unverified. Indicative per-person meal cost of Rs. 1000 to 1200 for authentic Rajasthani thali. Prices are indicative and subject to change; no specific dates supplied."
+              }
+            },
+            {
+              "place_id": null,
+              "name": "Niros",
+              "cuisine": null,
+              "approx_price_per_guest_inr": 1250,
+              "location": "Jaipur",
+              "diet": null,
+              "dietary_fit": null,
+              "hours_caveat": "Indicative per-person meal cost of Rs. 1000 to 1500 for North Indian and Mughlai dishes. Prices are indicative and subject to change; no specific dates supplied.",
+              "reservation_status": "unknown",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792425792,
+                "ref": "https://www.jaipurday.com/jaipur-restaurants-and-bars",
+                "note": "Web-reported indicative data; dates and availability unverified. Indicative per-person meal cost of Rs. 1000 to 1500 for North Indian and Mughlai dishes. Prices are indicative and subject to change; no specific dates supplied."
+              }
+            },
+            {
+              "place_id": null,
+              "name": "Laxmi Mishthan Bhandar (LMB)",
+              "cuisine": null,
+              "approx_price_per_guest_inr": 1150,
+              "location": "Jaipur",
+              "diet": "veg",
+              "dietary_fit": "Source reports vegetarian meals; confirm with venue",
+              "hours_caveat": "Indicative per-person meal cost of Rs. 800 to 1500 for Rajasthani sweets, snacks, and vegetarian thali. Prices are indicative and subject to change; no specific dates supplied.",
+              "reservation_status": "unknown",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792425792,
+                "ref": "https://www.jaipurday.com/jaipur-restaurants-and-bars",
+                "note": "Web-reported indicative data; dates and availability unverified. Indicative per-person meal cost of Rs. 800 to 1500 for Rajasthani sweets, snacks, and vegetarian thali. Prices are indicative and subject to change; no specific dates supplied."
+              }
+            }
+          ],
+          "transport_options": [],
+          "itinerary": null,
+          "budget": null,
+          "guidance": null,
+          "trip_brief": null,
+          "evidence": [
+            {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792425792,
+              "ref": "https://www.jaipurday.com/jaipur-restaurants-and-bars",
+              "note": "Web-reported indicative data; dates and availability unverified. Indicative per-person meal cost of Rs. 1000 to 1200 for authentic Rajasthani thali. Prices are indicative and subject to change; no specific dates supplied."
+            },
+            {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792425792,
+              "ref": "https://www.jaipurday.com/jaipur-restaurants-and-bars",
+              "note": "Web-reported indicative data; dates and availability unverified. Indicative per-person meal cost of Rs. 1000 to 1500 for North Indian and Mughlai dishes. Prices are indicative and subject to change; no specific dates supplied."
+            },
+            {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792425792,
+              "ref": "https://www.jaipurday.com/jaipur-restaurants-and-bars",
+              "note": "Web-reported indicative data; dates and availability unverified. Indicative per-person meal cost of Rs. 800 to 1500 for Rajasthani sweets, snacks, and vegetarian thali. Prices are indicative and subject to change; no specific dates supplied."
+            }
+          ],
+          "errors": [],
+          "latency_ms": 186890,
+          "execution": {
+            "mode": "tinyfish",
+            "persona": "Saffron \u00b7 food researcher",
+            "goal": "Research restaurants, menus and per-person meal prices",
+            "model": null,
+            "temperature": null,
+            "tool_calls": [
+              "tinyfish.web_research"
+            ],
+            "observations": [
+              "TinyFish run: 04e89e03-b13c-460a-86bd-cf8a84ea303c",
+              "Validated 3 public web results; applied private requirements locally."
+            ],
+            "decision": "Selected source-linked research; prices and availability require supplier confirmation.",
+            "completed": true
+          }
+        },
+        {
+          "agent_id": "stay_agent",
+          "status": "failed",
+          "summary": "TinyFish research timed out",
+          "destination_ideas": [],
+          "stay_options": [],
+          "attractions": [],
+          "food_options": [],
+          "transport_options": [],
+          "itinerary": null,
+          "budget": null,
+          "guidance": null,
+          "trip_brief": null,
+          "evidence": [],
+          "errors": [
+            "TinyFish research timed out"
+          ],
+          "latency_ms": 240344,
+          "execution": {
+            "mode": "tinyfish",
+            "persona": "Haven \u00b7 stay researcher",
+            "goal": "Research hotels and published indicative INR room rates",
+            "model": null,
+            "temperature": null,
+            "tool_calls": [
+              "tinyfish.web_research"
+            ],
+            "observations": [
+              "TinyFish research timed out"
+            ],
+            "decision": "",
+            "completed": false
+          }
+        },
+        {
+          "agent_id": "tour_guide_agent",
+          "status": "failed",
+          "summary": "TinyFish research unavailable or returned invalid data",
+          "destination_ideas": [],
+          "stay_options": [],
+          "attractions": [],
+          "food_options": [],
+          "transport_options": [],
+          "itinerary": null,
+          "budget": null,
+          "guidance": null,
+          "trip_brief": null,
+          "evidence": [],
+          "errors": [
+            "TinyFish research unavailable or returned invalid data"
+          ],
+          "latency_ms": 241233,
+          "execution": {
+            "mode": "tinyfish",
+            "persona": "Roam \u00b7 attraction researcher",
+            "goal": "Research attractions, admission fees and opening-hour caveats",
+            "model": null,
+            "temperature": null,
+            "tool_calls": [
+              "tinyfish.web_research"
+            ],
+            "observations": [
+              "TinyFish research unavailable or returned invalid data"
+            ],
+            "decision": "",
+            "completed": false
+          }
+        },
+        {
+          "agent_id": "itinerary_planner",
+          "status": "ok",
+          "summary": "Drafted a 3-day itinerary with 9 stops",
+          "destination_ideas": [],
+          "stay_options": [],
+          "attractions": [],
+          "food_options": [
+            {
+              "place_id": null,
+              "name": "Chokhi Dhani",
+              "cuisine": null,
+              "approx_price_per_guest_inr": 1100,
+              "location": "Jaipur",
+              "diet": null,
+              "dietary_fit": null,
+              "hours_caveat": "Indicative per-person meal cost of Rs. 1000 to 1200 for authentic Rajasthani thali. Prices are indicative and subject to change; no specific dates supplied.",
+              "reservation_status": "unknown",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792425792,
+                "ref": "https://www.jaipurday.com/jaipur-restaurants-and-bars",
+                "note": "Web-reported indicative data; dates and availability unverified. Indicative per-person meal cost of Rs. 1000 to 1200 for authentic Rajasthani thali. Prices are indicative and subject to change; no specific dates supplied."
+              }
+            },
+            {
+              "place_id": null,
+              "name": "Niros",
+              "cuisine": null,
+              "approx_price_per_guest_inr": 1250,
+              "location": "Jaipur",
+              "diet": null,
+              "dietary_fit": null,
+              "hours_caveat": "Indicative per-person meal cost of Rs. 1000 to 1500 for North Indian and Mughlai dishes. Prices are indicative and subject to change; no specific dates supplied.",
+              "reservation_status": "unknown",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792425792,
+                "ref": "https://www.jaipurday.com/jaipur-restaurants-and-bars",
+                "note": "Web-reported indicative data; dates and availability unverified. Indicative per-person meal cost of Rs. 1000 to 1500 for North Indian and Mughlai dishes. Prices are indicative and subject to change; no specific dates supplied."
+              }
+            },
+            {
+              "place_id": null,
+              "name": "Laxmi Mishthan Bhandar (LMB)",
+              "cuisine": null,
+              "approx_price_per_guest_inr": 1150,
+              "location": "Jaipur",
+              "diet": "veg",
+              "dietary_fit": "Source reports vegetarian meals; confirm with venue",
+              "hours_caveat": "Indicative per-person meal cost of Rs. 800 to 1500 for Rajasthani sweets, snacks, and vegetarian thali. Prices are indicative and subject to change; no specific dates supplied.",
+              "reservation_status": "unknown",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792425792,
+                "ref": "https://www.jaipurday.com/jaipur-restaurants-and-bars",
+                "note": "Web-reported indicative data; dates and availability unverified. Indicative per-person meal cost of Rs. 800 to 1500 for Rajasthani sweets, snacks, and vegetarian thali. Prices are indicative and subject to change; no specific dates supplied."
+              }
+            }
+          ],
+          "transport_options": [],
+          "itinerary": {
+            "title": "3-day trip to Jaipur",
+            "days": [
+              {
+                "day": 1,
+                "calendar_date": "2026-12-01",
+                "stops": [
+                  {
+                    "day": 1,
+                    "start_time": "09:00",
+                    "end_time": "12:00",
+                    "title": "Arrive by surface transport",
+                    "kind": "transport",
+                    "location": "Jaipur",
+                    "est_cost_inr": 0,
+                    "notes": "travel time assumed within the morning window",
+                    "evidence": null
+                  },
+                  {
+                    "day": 1,
+                    "start_time": "13:00",
+                    "end_time": "14:00",
+                    "title": "Lunch at Chokhi Dhani",
+                    "kind": "food",
+                    "location": "Jaipur",
+                    "est_cost_inr": 1100,
+                    "notes": null,
+                    "evidence": {
+                      "source": "tinyfish.web",
+                      "kind": "live",
+                      "retrieved_at": 1792425792,
+                      "ref": "https://www.jaipurday.com/jaipur-restaurants-and-bars",
+                      "note": "Web-reported indicative data; dates and availability unverified. Indicative per-person meal cost of Rs. 1000 to 1200 for authentic Rajasthani thali. Prices are indicative and subject to change; no specific dates supplied."
+                    }
+                  },
+                  {
+                    "day": 1,
+                    "start_time": "15:00",
+                    "end_time": "17:30",
+                    "title": "Free afternoon for local exploration",
+                    "kind": "buffer",
+                    "location": "Jaipur",
+                    "est_cost_inr": 0,
+                    "notes": "Unscheduled time; costs are not included.",
+                    "evidence": null
+                  }
+                ]
+              },
+              {
+                "day": 2,
+                "calendar_date": "2026-12-02",
+                "stops": [
+                  {
+                    "day": 2,
+                    "start_time": "09:00",
+                    "end_time": "12:00",
+                    "title": "Free morning to wander",
+                    "kind": "buffer",
+                    "location": "Jaipur",
+                    "est_cost_inr": 0,
+                    "notes": "Unscheduled time; no additional catalog experience selected.",
+                    "evidence": null
+                  },
+                  {
+                    "day": 2,
+                    "start_time": "13:00",
+                    "end_time": "14:00",
+                    "title": "Lunch at Niros",
+                    "kind": "food",
+                    "location": "Jaipur",
+                    "est_cost_inr": 1250,
+                    "notes": null,
+                    "evidence": {
+                      "source": "tinyfish.web",
+                      "kind": "live",
+                      "retrieved_at": 1792425792,
+                      "ref": "https://www.jaipurday.com/jaipur-restaurants-and-bars",
+                      "note": "Web-reported indicative data; dates and availability unverified. Indicative per-person meal cost of Rs. 1000 to 1500 for North Indian and Mughlai dishes. Prices are indicative and subject to change; no specific dates supplied."
+                    }
+                  },
+                  {
+                    "day": 2,
+                    "start_time": "15:00",
+                    "end_time": "17:30",
+                    "title": "Free afternoon for local exploration",
+                    "kind": "buffer",
+                    "location": "Jaipur",
+                    "est_cost_inr": 0,
+                    "notes": "Unscheduled time; costs are not included.",
+                    "evidence": null
+                  }
+                ]
+              },
+              {
+                "day": 3,
+                "calendar_date": "2026-12-03",
+                "stops": [
+                  {
+                    "day": 3,
+                    "start_time": "09:00",
+                    "end_time": "12:00",
+                    "title": "Free morning to wander",
+                    "kind": "buffer",
+                    "location": "Jaipur",
+                    "est_cost_inr": 0,
+                    "notes": "Unscheduled time; no additional catalog experience selected.",
+                    "evidence": null
+                  },
+                  {
+                    "day": 3,
+                    "start_time": "13:00",
+                    "end_time": "14:00",
+                    "title": "Lunch at Laxmi Mishthan Bhandar (LMB)",
+                    "kind": "food",
+                    "location": "Jaipur",
+                    "est_cost_inr": 1150,
+                    "notes": "Source reports vegetarian meals; confirm with venue",
+                    "evidence": {
+                      "source": "tinyfish.web",
+                      "kind": "live",
+                      "retrieved_at": 1792425792,
+                      "ref": "https://www.jaipurday.com/jaipur-restaurants-and-bars",
+                      "note": "Web-reported indicative data; dates and availability unverified. Indicative per-person meal cost of Rs. 800 to 1500 for Rajasthani sweets, snacks, and vegetarian thali. Prices are indicative and subject to change; no specific dates supplied."
+                    }
+                  },
+                  {
+                    "day": 3,
+                    "start_time": "15:00",
+                    "end_time": "17:30",
+                    "title": "Pack up and head home",
+                    "kind": "buffer",
+                    "location": "Jaipur",
+                    "est_cost_inr": 0,
+                    "notes": null,
+                    "evidence": null
+                  }
+                ]
+              }
+            ],
+            "total_est_cost_inr": 3500,
+            "assumptions": [
+              "No verified experiences were found; mornings are left open."
+            ],
+            "alternatives": [],
+            "unresolved_conflicts": []
+          },
+          "budget": null,
+          "guidance": null,
+          "trip_brief": null,
+          "evidence": [
+            {
+              "source": "itinerary_planner",
+              "kind": "estimate",
+              "retrieved_at": 1792425847,
+              "ref": null,
+              "note": "schedule built from research results; opening hours unverified"
+            }
+          ],
+          "errors": [],
+          "latency_ms": 0,
+          "execution": {
+            "mode": "local",
+            "persona": "Weaver \u00b7 day planner",
+            "goal": "Compose the specialists' actual findings into a paced schedule; review and revise conflicts.",
+            "model": null,
+            "temperature": null,
+            "tool_calls": [
+              "build_schedule"
+            ],
+            "observations": [],
+            "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+            "completed": true
+          }
+        },
+        {
+          "agent_id": "budget_booking_agent",
+          "status": "ok",
+          "summary": "Estimated \u20b97,700 for 2 travellers",
+          "destination_ideas": [],
+          "stay_options": [],
+          "attractions": [],
+          "food_options": [],
+          "transport_options": [],
+          "itinerary": null,
+          "budget": {
+            "currency": "INR",
+            "per_person": false,
+            "lines": [
+              {
+                "category": "food",
+                "amount_inr": 7000,
+                "basis": "estimate",
+                "note": "scheduled meals only"
+              },
+              {
+                "category": "contingency",
+                "amount_inr": 700,
+                "basis": "estimate",
+                "note": "10% buffer for local travel and extras"
+              }
+            ],
+            "total_inr": 7700,
+            "budget_delta_inr": null,
+            "price_checked_at": null,
+            "status": "estimate",
+            "warnings": [
+              "Figures use source-reported indicative web rates, not date-specific quotes; confirm prices and availability.",
+              "Includes the listed activities and meals; unverified transport and extra meals are excluded."
+            ]
+          },
+          "guidance": null,
+          "trip_brief": null,
+          "evidence": [
+            {
+              "source": "budget_calculator",
+              "kind": "estimate",
+              "retrieved_at": 1792425848,
+              "ref": null,
+              "note": "deterministic calculation from tool results"
+            }
+          ],
+          "errors": [],
+          "latency_ms": 0,
+          "execution": {
+            "mode": "local",
+            "persona": "Ledger \u00b7 skeptical reviewer",
+            "goal": "Run the exact cost calculator; check the budget and explain exclusions. Never book or pay.",
+            "model": null,
+            "temperature": null,
+            "tool_calls": [
+              "calculate_budget"
+            ],
+            "observations": [],
+            "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+            "completed": true
+          }
+        }
+      ],
+      "validation_issues": [
+        {
+          "severity": "info",
+          "code": "prices_unverified",
+          "message": "prices are estimates; no provider price check has been recorded",
+          "field": null
+        }
+      ],
+      "clarification_question": null,
+      "errors": [],
+      "memory": [
+        {
+          "agent_id": "travel_orchestrator",
+          "cache_hit": false,
+          "tokens": {
+            "agent": 128,
+            "traveller": 493,
+            "prompt": 1235,
+            "reserved_output": 2048
+          },
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          },
+          "cards": [
+            "itinerary_details"
+          ],
+          "claim_ids": [
+            "claim_27954791a9c13671480c395ef92fab77",
+            "claim_2abc97e0d3d0723fb501e81755a16302",
+            "claim_435a75e0c8f0da959ef695fa93773730",
+            "claim_4f05bc14a925b7fe0832200bdec27f8d",
+            "claim_5d1cdd29fea0c2fa6a33b7ed3c6f5c0f",
+            "claim_a6111d135863fdacb9e08ff8ee0ace08",
+            "claim_b8562712597c14a9625457bf55d4cd47"
+          ]
+        },
+        {
+          "agent_id": "trip_consultant",
+          "cache_hit": false,
+          "tokens": {
+            "agent": 96,
+            "traveller": 493,
+            "prompt": 1210,
+            "reserved_output": 2048
+          },
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          },
+          "cards": [
+            "itinerary_details"
+          ],
+          "claim_ids": [
+            "claim_27954791a9c13671480c395ef92fab77",
+            "claim_2abc97e0d3d0723fb501e81755a16302",
+            "claim_435a75e0c8f0da959ef695fa93773730",
+            "claim_4f05bc14a925b7fe0832200bdec27f8d",
+            "claim_5d1cdd29fea0c2fa6a33b7ed3c6f5c0f",
+            "claim_a6111d135863fdacb9e08ff8ee0ace08",
+            "claim_b8562712597c14a9625457bf55d4cd47"
+          ]
+        },
+        {
+          "agent_id": "explore_agent",
+          "cache_hit": false,
+          "tokens": {
+            "agent": 80,
+            "traveller": 493,
+            "prompt": 1196,
+            "reserved_output": 2048
+          },
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          },
+          "cards": [
+            "itinerary_details"
+          ],
+          "claim_ids": [
+            "claim_27954791a9c13671480c395ef92fab77",
+            "claim_2abc97e0d3d0723fb501e81755a16302",
+            "claim_435a75e0c8f0da959ef695fa93773730",
+            "claim_4f05bc14a925b7fe0832200bdec27f8d",
+            "claim_5d1cdd29fea0c2fa6a33b7ed3c6f5c0f",
+            "claim_a6111d135863fdacb9e08ff8ee0ace08",
+            "claim_b8562712597c14a9625457bf55d4cd47"
+          ]
+        },
+        {
+          "agent_id": "food_guide_agent",
+          "cache_hit": false,
+          "tokens": {
+            "agent": 110,
+            "traveller": 493,
+            "prompt": 1246,
+            "reserved_output": 2048
+          },
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          },
+          "cards": [
+            "itinerary_details"
+          ],
+          "claim_ids": [
+            "claim_27954791a9c13671480c395ef92fab77",
+            "claim_2abc97e0d3d0723fb501e81755a16302",
+            "claim_435a75e0c8f0da959ef695fa93773730",
+            "claim_4f05bc14a925b7fe0832200bdec27f8d",
+            "claim_5d1cdd29fea0c2fa6a33b7ed3c6f5c0f",
+            "claim_a6111d135863fdacb9e08ff8ee0ace08",
+            "claim_b8562712597c14a9625457bf55d4cd47"
+          ]
+        },
+        {
+          "agent_id": "stay_agent",
+          "cache_hit": false,
+          "tokens": {
+            "agent": 118,
+            "traveller": 424,
+            "prompt": 1251,
+            "reserved_output": 2048
+          },
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          },
+          "cards": [
+            "hotel_details"
+          ],
+          "claim_ids": [
+            "claim_27954791a9c13671480c395ef92fab77",
+            "claim_2abc97e0d3d0723fb501e81755a16302",
+            "claim_435a75e0c8f0da959ef695fa93773730",
+            "claim_4f05bc14a925b7fe0832200bdec27f8d",
+            "claim_5d1cdd29fea0c2fa6a33b7ed3c6f5c0f",
+            "claim_a6111d135863fdacb9e08ff8ee0ace08",
+            "claim_b8562712597c14a9625457bf55d4cd47"
+          ]
+        },
+        {
+          "agent_id": "tour_guide_agent",
+          "cache_hit": false,
+          "tokens": {
+            "agent": 88,
+            "traveller": 493,
+            "prompt": 1207,
+            "reserved_output": 2048
+          },
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          },
+          "cards": [
+            "itinerary_details"
+          ],
+          "claim_ids": [
+            "claim_27954791a9c13671480c395ef92fab77",
+            "claim_2abc97e0d3d0723fb501e81755a16302",
+            "claim_435a75e0c8f0da959ef695fa93773730",
+            "claim_4f05bc14a925b7fe0832200bdec27f8d",
+            "claim_5d1cdd29fea0c2fa6a33b7ed3c6f5c0f",
+            "claim_a6111d135863fdacb9e08ff8ee0ace08",
+            "claim_b8562712597c14a9625457bf55d4cd47"
+          ]
+        },
+        {
+          "agent_id": "itinerary_planner",
+          "cache_hit": false,
+          "tokens": {
+            "agent": 113,
+            "traveller": 493,
+            "prompt": 1215,
+            "reserved_output": 2048
+          },
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          },
+          "cards": [
+            "itinerary_details"
+          ],
+          "claim_ids": [
+            "claim_27954791a9c13671480c395ef92fab77",
+            "claim_2abc97e0d3d0723fb501e81755a16302",
+            "claim_435a75e0c8f0da959ef695fa93773730",
+            "claim_4f05bc14a925b7fe0832200bdec27f8d",
+            "claim_5d1cdd29fea0c2fa6a33b7ed3c6f5c0f",
+            "claim_a6111d135863fdacb9e08ff8ee0ace08",
+            "claim_b8562712597c14a9625457bf55d4cd47"
+          ]
+        },
+        {
+          "agent_id": "budget_booking_agent",
+          "cache_hit": false,
+          "tokens": {
+            "agent": 104,
+            "traveller": 426,
+            "prompt": 1201,
+            "reserved_output": 2048
+          },
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          },
+          "cards": [
+            "flight_details"
+          ],
+          "claim_ids": [
+            "claim_27954791a9c13671480c395ef92fab77",
+            "claim_2abc97e0d3d0723fb501e81755a16302",
+            "claim_435a75e0c8f0da959ef695fa93773730",
+            "claim_4f05bc14a925b7fe0832200bdec27f8d",
+            "claim_5d1cdd29fea0c2fa6a33b7ed3c6f5c0f",
+            "claim_a6111d135863fdacb9e08ff8ee0ace08",
+            "claim_b8562712597c14a9625457bf55d4cd47"
+          ]
+        }
+      ]
+    }
+  },
+  "seconds": 248.06,
+  "agent_summary": [
+    {
+      "agent": "trip_consultant",
+      "status": "ok",
+      "execution": {
+        "mode": "local",
+        "persona": "Mira \u00b7 trip editor",
+        "goal": "Check the confirmed brief for gaps; never invent traveler facts.",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "inspect_brief"
+        ],
+        "observations": [],
+        "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+        "completed": true
+      },
+      "errors": []
+    },
+    {
+      "agent": "explore_agent",
+      "status": "failed",
+      "execution": {
+        "mode": "tinyfish",
+        "persona": "Atlas \u00b7 destination researcher",
+        "goal": "Research destination information and things to see",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "tinyfish.web_research"
+        ],
+        "observations": [
+          "TinyFish research timed out"
+        ],
+        "decision": "",
+        "completed": false
+      },
+      "errors": [
+        "TinyFish research timed out"
+      ]
+    },
+    {
+      "agent": "food_guide_agent",
+      "status": "ok",
+      "execution": {
+        "mode": "tinyfish",
+        "persona": "Saffron \u00b7 food researcher",
+        "goal": "Research restaurants, menus and per-person meal prices",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "tinyfish.web_research"
+        ],
+        "observations": [
+          "TinyFish run: 04e89e03-b13c-460a-86bd-cf8a84ea303c",
+          "Validated 3 public web results; applied private requirements locally."
+        ],
+        "decision": "Selected source-linked research; prices and availability require supplier confirmation.",
+        "completed": true
+      },
+      "errors": []
+    },
+    {
+      "agent": "stay_agent",
+      "status": "failed",
+      "execution": {
+        "mode": "tinyfish",
+        "persona": "Haven \u00b7 stay researcher",
+        "goal": "Research hotels and published indicative INR room rates",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "tinyfish.web_research"
+        ],
+        "observations": [
+          "TinyFish research timed out"
+        ],
+        "decision": "",
+        "completed": false
+      },
+      "errors": [
+        "TinyFish research timed out"
+      ]
+    },
+    {
+      "agent": "tour_guide_agent",
+      "status": "failed",
+      "execution": {
+        "mode": "tinyfish",
+        "persona": "Roam \u00b7 attraction researcher",
+        "goal": "Research attractions, admission fees and opening-hour caveats",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "tinyfish.web_research"
+        ],
+        "observations": [
+          "TinyFish research unavailable or returned invalid data"
+        ],
+        "decision": "",
+        "completed": false
+      },
+      "errors": [
+        "TinyFish research unavailable or returned invalid data"
+      ]
+    },
+    {
+      "agent": "itinerary_planner",
+      "status": "ok",
+      "execution": {
+        "mode": "local",
+        "persona": "Weaver \u00b7 day planner",
+        "goal": "Compose the specialists' actual findings into a paced schedule; review and revise conflicts.",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "build_schedule"
+        ],
+        "observations": [],
+        "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+        "completed": true
+      },
+      "errors": []
+    },
+    {
+      "agent": "budget_booking_agent",
+      "status": "ok",
+      "execution": {
+        "mode": "local",
+        "persona": "Ledger \u00b7 skeptical reviewer",
+        "goal": "Run the exact cost calculator; check the budget and explain exclusions. Never book or pay.",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "calculate_budget"
+        ],
+        "observations": [],
+        "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+        "completed": true
+      },
+      "errors": []
+    }
+  ],
+  "status": "failed",
+  "error": "Research/validation did not complete"
+}

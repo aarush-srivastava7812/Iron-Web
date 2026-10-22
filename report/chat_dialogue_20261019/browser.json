@@ -1,0 +1,81 @@
+{
+  "checks": [
+    "Contextual questions, quick replies, short answers after reload, and transparent group-budget arithmetic",
+    "Destination information is sourced and read-only",
+    "Read-only destination previews cannot select a hotel for the wrong trip",
+    "Corrections preserve other facts; summaries and ambiguous choices preserve the draft",
+    "Simulated provider failure explains the failed specialist, preserves details, and offers progress checking without a new run",
+    "Stalled network request restores controls and retains unsent input"
+  ],
+  "turns": [
+    {
+      "input": "I want a trip to Agra",
+      "reply": "Updated your draft. Destination: Agra.\n\nWhat is your departure date? You can say '1 December 2026' or 'tomorrow'.",
+      "awaiting": "start_date",
+      "seconds": 0.234
+    },
+    {
+      "input": "1 December 2026",
+      "reply": "Updated your draft. Departure: 2026-12-01.\n\nHow many days would you like to stay? You can also give a return date.",
+      "awaiting": "duration_days",
+      "seconds": 0.094
+    },
+    {
+      "input": "Three days",
+      "reply": "Updated your draft. Return: 2026-12-03; Days: 3.\n\nHow many travelers are going, including children?",
+      "awaiting": "traveller_count",
+      "seconds": 0.125
+    },
+    {
+      "input": "two",
+      "reply": "Updated your draft. Travelers: 2.\n\nWhat is your total group budget in INR? You can say '30k total' or give a per-person amount.",
+      "awaiting": "budget",
+      "seconds": 0.125
+    },
+    {
+      "input": "15k per person",
+      "reply": "Updated your draft. Total budget: INR 30,000 total.\nINR 15,000 per person \u00d7 2 travelers = INR 30,000 total.\n\nYour essentials are ready. Review the draft, then press 'Confirm details & start research'. This uses TinyFish research credit and can take several minutes; it doesn't book anything.",
+      "awaiting": null,
+      "seconds": 0.094
+    },
+    {
+      "input": "Tell me about Agra",
+      "reply": "Agra \u2014 the district's official tourism guide lists the Taj Mahal, Agra Fort, Fatehpur Sikri and Mehtab Bagh among its places to visit. Check current visiting information with the venue. Official guide: https://agra.nic.in/tourist-places/\n\nThis information hasn't changed your trip.",
+      "awaiting": null,
+      "seconds": 0.093
+    },
+    {
+      "input": "Show hotels in Jaipur",
+      "reply": "Here are sample stays for Jaipur. These are catalog examples, not live availability. I haven't changed your trip destination. Set your destination to Jaipur before adding one of these options.",
+      "awaiting": "selection",
+      "seconds": 0.125
+    },
+    {
+      "input": "Jaipur instead of Agra",
+      "reply": "Updated your draft. Destination: Jaipur.\n\nYour essentials are ready. Review the draft, then press 'Confirm details & start research'. This uses TinyFish research credit and can take several minutes; it doesn't book anything.",
+      "awaiting": null,
+      "seconds": 0.125
+    },
+    {
+      "input": "Increase my budget by 5k",
+      "reply": "Updated your draft. Total budget: INR 35,000 total.\n\nYour essentials are ready. Review the draft, then press 'Confirm details & start research'. This uses TinyFish research credit and can take several minutes; it doesn't book anything.",
+      "awaiting": null,
+      "seconds": 0.125
+    },
+    {
+      "input": "Show my budget",
+      "reply": "Your current draft:\nDestination: Jaipur\nDeparture: 2026-12-01\nReturn: 2026-12-03\nDays: 3\nTravelers: 2\nTotal budget: INR 35,000\nYour budget is a spending limit, not a verified trip cost. Itemized costs need a saved plan.\nReview Trip details, then use the confirmation button when you're ready.",
+      "awaiting": null,
+      "seconds": 0.109
+    },
+    {
+      "input": "Maybe Agra or Jaipur",
+      "reply": "Which destination should I use? I haven't changed the destination.",
+      "awaiting": "destination",
+      "seconds": 0.11
+    }
+  ],
+  "page_errors": [],
+  "paid_research_started": false,
+  "status": "passed"
+}

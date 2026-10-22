@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "write_status": 200,
+  "read_status": 200,
+  "seconds": 3.05,
+  "check": "Separate judge can write and read confirmed memory while Agra research runs"
+}

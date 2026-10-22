@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "mode": "manual catalog outline, no TinyFish calls",
+  "trip_id": "501f7eb6-a2f0-4ac6-96c0-89e2c97abcee",
+  "seconds": 23.7,
+  "checks": [
+    "background job",
+    "memory-backed dated itinerary",
+    "saved plan",
+    "Travel Book PDF",
+    "rendered Travel Book survives browser reload"
+  ]
+}

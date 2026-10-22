@@ -1,0 +1,1587 @@
+{
+  "origin": "http://127.0.0.1:8094",
+  "provider": "TinyFish",
+  "live_provider": true,
+  "checks": [
+    "Local demo sign-in",
+    "Real provider research, dated plan, budget calculation and saved draft",
+    "Visible TinyFish labels and source links"
+  ],
+  "page_errors": [],
+  "http_status": 200,
+  "planner_response": {
+    "message": {},
+    "reply": {
+      "conversation_id": "3776b121-7c8b-4311-a7de-a9a00fbad407",
+      "role": "assistant",
+      "content": "Trip Consultant: Trip brief: Jaipur, 3 days, party of 2, ~\u20b945,000/person\nExplore Agent: 5 web research results for Jaipur\nSuggestions: City Palace; Hawa Mahal (Palace of Winds); Jantar Mantar; Amber Palace (Amber Fort)\nFood Guide Agent: 1 web research results for Jaipur\nSuggestions: Chokhi Dhani (Sitapura)\nStay Agent: 1 web research results for Jaipur\nSuggestions: Jai Niwas (Arya Niwas Group)\nTour Guide Agent: 5 web research results for Jaipur\nSuggestions: City Palace; Hawa Mahal; Jantar Mantar; Amber / Amer Fort\nItinerary Planner: Drafted a 3-day itinerary with 9 stops\nSuggestions: Jai Niwas (Arya Niwas Group)\nBudget Booking Agent: Estimated \u20b922,550 for 2 travellers\nSchedule:\nDay 1: Arrive by surface transport \u2192 Lunch at Chokhi Dhani (Sitapura) \u2192 City Palace\nDay 2: Hawa Mahal \u2192 Lunch at Chokhi Dhani (Sitapura) \u2192 Jantar Mantar\nDay 3: Amber / Amer Fort \u2192 Lunch at Chokhi Dhani (Sitapura) \u2192 Pack up and head home\nEstimated cost: \u20b922,550 total (estimates, not confirmed prices)\nFigures use source-reported indicative web rates, not date-specific quotes; confirm prices and availability.\nIncludes the listed activities and meals; unverified transport and extra meals are excluded.",
+      "id": 7,
+      "created_at": "2026-10-19T16:22:48.206486+00:00"
+    },
+    "connection_status": "agents_connected",
+    "detail": "Uses your confirmed trip requirements and saved preferences. Prices and availability need provider confirmation.",
+    "orchestration": {
+      "request_id": "861c62fed110",
+      "status": "ok",
+      "response": "Trip Consultant: Trip brief: Jaipur, 3 days, party of 2, ~\u20b945,000/person\nExplore Agent: 5 web research results for Jaipur\nSuggestions: City Palace; Hawa Mahal (Palace of Winds); Jantar Mantar; Amber Palace (Amber Fort)\nFood Guide Agent: 1 web research results for Jaipur\nSuggestions: Chokhi Dhani (Sitapura)\nStay Agent: 1 web research results for Jaipur\nSuggestions: Jai Niwas (Arya Niwas Group)\nTour Guide Agent: 5 web research results for Jaipur\nSuggestions: City Palace; Hawa Mahal; Jantar Mantar; Amber / Amer Fort\nItinerary Planner: Drafted a 3-day itinerary with 9 stops\nSuggestions: Jai Niwas (Arya Niwas Group)\nBudget Booking Agent: Estimated \u20b922,550 for 2 travellers\nSchedule:\nDay 1: Arrive by surface transport \u2192 Lunch at Chokhi Dhani (Sitapura) \u2192 City Palace\nDay 2: Hawa Mahal \u2192 Lunch at Chokhi Dhani (Sitapura) \u2192 Jantar Mantar\nDay 3: Amber / Amer Fort \u2192 Lunch at Chokhi Dhani (Sitapura) \u2192 Pack up and head home\nEstimated cost: \u20b922,550 total (estimates, not confirmed prices)\nFigures use source-reported indicative web rates, not date-specific quotes; confirm prices and availability.\nIncludes the listed activities and meals; unverified transport and extra meals are excluded.",
+      "page": "plan",
+      "trip_brief": {
+        "destination": "Jaipur",
+        "destination_flexible": false,
+        "start_date": "2026-12-01",
+        "end_date": "2026-12-03",
+        "duration_days": 3,
+        "party_size": 2,
+        "purpose": null,
+        "budget_total_inr": 90000,
+        "budget_per_person_inr": null,
+        "interests": [
+          "Food",
+          "Culture"
+        ],
+        "pace": "moderate",
+        "transport_preferences": [],
+        "dietary_requirements": [],
+        "accessibility_needs": [],
+        "hard_constraints": [],
+        "preferences": [],
+        "missing_fields": [],
+        "clarification_question": null,
+        "confidence": 0.5
+      },
+      "itinerary": {
+        "title": "3-day trip to Jaipur",
+        "days": [
+          {
+            "day": 1,
+            "calendar_date": "2026-12-01",
+            "stops": [
+              {
+                "day": 1,
+                "start_time": "09:00",
+                "end_time": "12:00",
+                "title": "Arrive by surface transport",
+                "kind": "transport",
+                "location": "Jaipur",
+                "est_cost_inr": 0,
+                "notes": "travel time assumed within the morning window",
+                "evidence": null
+              },
+              {
+                "day": 1,
+                "start_time": "13:00",
+                "end_time": "14:00",
+                "title": "Lunch at Chokhi Dhani (Sitapura)",
+                "kind": "food",
+                "location": "Jaipur, Rajasthan, India",
+                "est_cost_inr": 1700,
+                "notes": null,
+                "evidence": {
+                  "source": "tinyfish.web",
+                  "kind": "live",
+                  "retrieved_at": 1792426596,
+                  "ref": "https://www.google.com/search?q=Jaipur+restaurants%2C+menus+and+per-person+meal+prices",
+                  "note": "Web-reported indicative data; dates and availability unverified. Approx. \u20b91,700 per person for the standard entry and dining plan. Price includes the complete village meal experience with cultural performances and activities. Prices may vary based on season, specific menu selection, and additional experiences offered."
+                }
+              },
+              {
+                "day": 1,
+                "start_time": "15:00",
+                "end_time": "17:30",
+                "title": "City Palace",
+                "kind": "attraction",
+                "location": "Jaipur",
+                "est_cost_inr": 200,
+                "notes": null,
+                "evidence": {
+                  "source": "tinyfish.web",
+                  "kind": "live",
+                  "retrieved_at": 1792426597,
+                  "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                  "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b9200; Foreign adult: \u20b9700. Composite ticket: \u20b9300 (Indian) or \u20b91000 (Foreign) valid 2 days. Children under 7 free. Open 9:30 AM\u20135:00 PM, closed on Holi."
+                }
+              }
+            ]
+          },
+          {
+            "day": 2,
+            "calendar_date": "2026-12-02",
+            "stops": [
+              {
+                "day": 2,
+                "start_time": "09:00",
+                "end_time": "12:00",
+                "title": "Hawa Mahal",
+                "kind": "attraction",
+                "location": "Jaipur",
+                "est_cost_inr": 50,
+                "notes": "The iconic five-story 'Palace of Winds' with intricate honeycomb facade and 953 small windows (jharokhas).",
+                "evidence": {
+                  "source": "tinyfish.web",
+                  "kind": "live",
+                  "retrieved_at": 1792426597,
+                  "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                  "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b950; Student: \u20b920; Foreign adult: \u20b9200; Foreign student: \u20b9100. Single camera fee: \u20b950. Children under 7 free. Open 9:00 AM\u20134:30 PM, closed on Holi."
+                }
+              },
+              {
+                "day": 2,
+                "start_time": "13:00",
+                "end_time": "14:00",
+                "title": "Lunch at Chokhi Dhani (Sitapura)",
+                "kind": "food",
+                "location": "Jaipur, Rajasthan, India",
+                "est_cost_inr": 1700,
+                "notes": null,
+                "evidence": {
+                  "source": "tinyfish.web",
+                  "kind": "live",
+                  "retrieved_at": 1792426596,
+                  "ref": "https://www.google.com/search?q=Jaipur+restaurants%2C+menus+and+per-person+meal+prices",
+                  "note": "Web-reported indicative data; dates and availability unverified. Approx. \u20b91,700 per person for the standard entry and dining plan. Price includes the complete village meal experience with cultural performances and activities. Prices may vary based on season, specific menu selection, and additional experiences offered."
+                }
+              },
+              {
+                "day": 2,
+                "start_time": "15:00",
+                "end_time": "17:30",
+                "title": "Jantar Mantar",
+                "kind": "attraction",
+                "location": "Jaipur",
+                "est_cost_inr": 50,
+                "notes": null,
+                "evidence": {
+                  "source": "tinyfish.web",
+                  "kind": "live",
+                  "retrieved_at": 1792426597,
+                  "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                  "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b950; Student: \u20b915; Foreign adult: \u20b9200; Foreign student: \u20b9100. Children under 7 free. Open 9:00 AM\u20134:30 PM, closed on Holi."
+                }
+              }
+            ]
+          },
+          {
+            "day": 3,
+            "calendar_date": "2026-12-03",
+            "stops": [
+              {
+                "day": 3,
+                "start_time": "09:00",
+                "end_time": "12:00",
+                "title": "Amber / Amer Fort",
+                "kind": "attraction",
+                "location": "Jaipur",
+                "est_cost_inr": 100,
+                "notes": "Majestic hilltop fortress palace with artistic Hindu temple style architecture, Sheesh Mahal, and scenic approach.",
+                "evidence": {
+                  "source": "tinyfish.web",
+                  "kind": "live",
+                  "retrieved_at": 1792426597,
+                  "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                  "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b9100; Student: \u20b910; Foreign adult: \u20b9550; Foreign student: \u20b9100. Single camera: \u20b950; Video camera: \u20b9100. Children under 7 free. Open 8:00 AM\u20135:30 PM, closed on Holi."
+                }
+              },
+              {
+                "day": 3,
+                "start_time": "13:00",
+                "end_time": "14:00",
+                "title": "Lunch at Chokhi Dhani (Sitapura)",
+                "kind": "food",
+                "location": "Jaipur, Rajasthan, India",
+                "est_cost_inr": 1700,
+                "notes": null,
+                "evidence": {
+                  "source": "tinyfish.web",
+                  "kind": "live",
+                  "retrieved_at": 1792426596,
+                  "ref": "https://www.google.com/search?q=Jaipur+restaurants%2C+menus+and+per-person+meal+prices",
+                  "note": "Web-reported indicative data; dates and availability unverified. Approx. \u20b91,700 per person for the standard entry and dining plan. Price includes the complete village meal experience with cultural performances and activities. Prices may vary based on season, specific menu selection, and additional experiences offered."
+                }
+              },
+              {
+                "day": 3,
+                "start_time": "15:00",
+                "end_time": "17:30",
+                "title": "Pack up and head home",
+                "kind": "buffer",
+                "location": "Jaipur",
+                "est_cost_inr": 0,
+                "notes": null,
+                "evidence": null
+              }
+            ]
+          }
+        ],
+        "total_est_cost_inr": 5500,
+        "assumptions": [
+          "Assumes a room at Jai Niwas (Arya Niwas Group) for all nights (per-night \u20b94,750, availability unverified)."
+        ],
+        "alternatives": [
+          "Swap the afternoon activity for a food walk if the weather turns."
+        ],
+        "unresolved_conflicts": []
+      },
+      "budget": {
+        "currency": "INR",
+        "per_person": false,
+        "lines": [
+          {
+            "category": "stay",
+            "amount_inr": 9500,
+            "basis": "estimate",
+            "note": "per room; availability unverified"
+          },
+          {
+            "category": "food",
+            "amount_inr": 10200,
+            "basis": "estimate",
+            "note": "scheduled meals only"
+          },
+          {
+            "category": "activities",
+            "amount_inr": 800,
+            "basis": "estimate",
+            "note": "guide/experience fees"
+          },
+          {
+            "category": "contingency",
+            "amount_inr": 2050,
+            "basis": "estimate",
+            "note": "10% buffer for local travel and extras"
+          }
+        ],
+        "total_inr": 22550,
+        "budget_delta_inr": null,
+        "price_checked_at": null,
+        "status": "estimate",
+        "warnings": [
+          "Figures use source-reported indicative web rates, not date-specific quotes; confirm prices and availability.",
+          "Includes the listed activities and meals; unverified transport and extra meals are excluded."
+        ]
+      },
+      "agent_results": [
+        {
+          "agent_id": "trip_consultant",
+          "status": "ok",
+          "summary": "Trip brief: Jaipur, 3 days, party of 2, ~\u20b945,000/person",
+          "destination_ideas": [],
+          "stay_options": [],
+          "attractions": [],
+          "food_options": [],
+          "transport_options": [],
+          "itinerary": null,
+          "budget": null,
+          "guidance": null,
+          "trip_brief": {
+            "destination": "Jaipur",
+            "destination_flexible": false,
+            "start_date": "2026-12-01",
+            "end_date": "2026-12-03",
+            "duration_days": 3,
+            "party_size": 2,
+            "purpose": null,
+            "budget_total_inr": 90000,
+            "budget_per_person_inr": null,
+            "interests": [
+              "Food",
+              "Culture"
+            ],
+            "pace": "moderate",
+            "transport_preferences": [],
+            "dietary_requirements": [],
+            "accessibility_needs": [],
+            "hard_constraints": [],
+            "preferences": [],
+            "missing_fields": [],
+            "clarification_question": null,
+            "confidence": 0.5
+          },
+          "evidence": [],
+          "errors": [],
+          "latency_ms": null,
+          "execution": {
+            "mode": "local",
+            "persona": "Mira \u00b7 trip editor",
+            "goal": "Check the confirmed brief for gaps; never invent traveler facts.",
+            "model": null,
+            "temperature": null,
+            "tool_calls": [
+              "inspect_brief"
+            ],
+            "observations": [],
+            "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+            "completed": true
+          }
+        },
+        {
+          "agent_id": "explore_agent",
+          "status": "ok",
+          "summary": "5 web research results for Jaipur",
+          "destination_ideas": [
+            {
+              "destination_id": null,
+              "slug": null,
+              "name": "City Palace",
+              "region": "Jaipur",
+              "why_fit": "A royal complex showcasing Rajasthani architecture, museums, and courtyards. One of the major attractions in Jaipur.",
+              "suggested_duration_days": 3,
+              "best_season": null,
+              "cost_level": null,
+              "avg_cost_inr": null,
+              "tags": [],
+              "seasonality_note": null,
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426594,
+                "ref": "https://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/tourist-destinations/jaipur.html",
+                "note": "Web-reported indicative data; dates and availability unverified. No pricing information available from source. Opening hours and entry fees should be confirmed directly."
+              }
+            },
+            {
+              "destination_id": null,
+              "slug": null,
+              "name": "Hawa Mahal (Palace of Winds)",
+              "region": "Jaipur",
+              "why_fit": "An iconic five-story pink sandstone palace with 953 small windows (jharokhas) designed to allow royal women to observe everyday life and festivals without being seen. A landmark of Jaipur.",
+              "suggested_duration_days": 3,
+              "best_season": null,
+              "cost_level": null,
+              "avg_cost_inr": null,
+              "tags": [],
+              "seasonality_note": null,
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426594,
+                "ref": "https://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/tourist-destinations/jaipur.html",
+                "note": "Web-reported indicative data; dates and availability unverified. No pricing information available from source. Opening hours and entry fees should be confirmed directly."
+              }
+            },
+            {
+              "destination_id": null,
+              "slug": null,
+              "name": "Jantar Mantar",
+              "region": "Jaipur",
+              "why_fit": "A collection of architectural astronomical instruments built by Maharaja Jai Singh II. It is a UNESCO World Heritage Site featuring the world's largest stone sundial.",
+              "suggested_duration_days": 3,
+              "best_season": null,
+              "cost_level": null,
+              "avg_cost_inr": null,
+              "tags": [],
+              "seasonality_note": null,
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426594,
+                "ref": "https://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/tourist-destinations/jaipur.html",
+                "note": "Web-reported indicative data; dates and availability unverified. No pricing information available from source. Opening hours and entry fees should be confirmed directly."
+              }
+            },
+            {
+              "destination_id": null,
+              "slug": null,
+              "name": "Amber Palace (Amber Fort)",
+              "region": "Jaipur",
+              "why_fit": "A majestic fort-palace complex built with red sandstone and marble, situated on a hilltop. Known for its artistic Hindu style elements, Sheesh Mahal (Mirror Palace), and Diwan-i-Aam (Hall of Public Audience).",
+              "suggested_duration_days": 3,
+              "best_season": null,
+              "cost_level": null,
+              "avg_cost_inr": null,
+              "tags": [],
+              "seasonality_note": null,
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426594,
+                "ref": "https://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/tourist-destinations/jaipur.html",
+                "note": "Web-reported indicative data; dates and availability unverified. No pricing information available from source. Located on a hilltop; opening hours and entry fees should be confirmed directly."
+              }
+            },
+            {
+              "destination_id": null,
+              "slug": null,
+              "name": "Jal Mahal (Water Palace)",
+              "region": "Jaipur",
+              "why_fit": "A beautiful palace located in the middle of Man Sagar Lake. Built in Rajasthani and Mughal architectural styles, it appears to float on the lake. Visitable from the outside only.",
+              "suggested_duration_days": 3,
+              "best_season": null,
+              "cost_level": null,
+              "avg_cost_inr": null,
+              "tags": [],
+              "seasonality_note": null,
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426594,
+                "ref": "https://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/tourist-destinations/jaipur.html",
+                "note": "Web-reported indicative data; dates and availability unverified. No pricing information available from source. The palace is not open for interior visits; viewing is from the perimeter."
+              }
+            }
+          ],
+          "stay_options": [],
+          "attractions": [],
+          "food_options": [],
+          "transport_options": [],
+          "itinerary": null,
+          "budget": null,
+          "guidance": null,
+          "trip_brief": null,
+          "evidence": [
+            {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792426594,
+              "ref": "https://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/tourist-destinations/jaipur.html",
+              "note": "Web-reported indicative data; dates and availability unverified. No pricing information available from source. Opening hours and entry fees should be confirmed directly."
+            },
+            {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792426594,
+              "ref": "https://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/tourist-destinations/jaipur.html",
+              "note": "Web-reported indicative data; dates and availability unverified. No pricing information available from source. Opening hours and entry fees should be confirmed directly."
+            },
+            {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792426594,
+              "ref": "https://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/tourist-destinations/jaipur.html",
+              "note": "Web-reported indicative data; dates and availability unverified. No pricing information available from source. Opening hours and entry fees should be confirmed directly."
+            },
+            {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792426594,
+              "ref": "https://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/tourist-destinations/jaipur.html",
+              "note": "Web-reported indicative data; dates and availability unverified. No pricing information available from source. Located on a hilltop; opening hours and entry fees should be confirmed directly."
+            },
+            {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792426594,
+              "ref": "https://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/tourist-destinations/jaipur.html",
+              "note": "Web-reported indicative data; dates and availability unverified. No pricing information available from source. The palace is not open for interior visits; viewing is from the perimeter."
+            }
+          ],
+          "errors": [],
+          "latency_ms": 0,
+          "execution": {
+            "mode": "tinyfish",
+            "persona": "Atlas \u00b7 destination researcher",
+            "goal": "Research destination information and things to see",
+            "model": null,
+            "temperature": null,
+            "tool_calls": [
+              "tinyfish.web_research"
+            ],
+            "observations": [
+              "TinyFish run: 02acfb7a-e8cb-463b-bb9c-7dcfd7b4e528",
+              "Validated 5 public web results; applied private requirements locally.",
+              "Reused source-linked public research retrieved within the last hour."
+            ],
+            "decision": "Selected source-linked research; prices and availability require supplier confirmation.",
+            "completed": true
+          }
+        },
+        {
+          "agent_id": "food_guide_agent",
+          "status": "ok",
+          "summary": "1 web research results for Jaipur",
+          "destination_ideas": [],
+          "stay_options": [],
+          "attractions": [],
+          "food_options": [
+            {
+              "place_id": null,
+              "name": "Chokhi Dhani (Sitapura)",
+              "cuisine": null,
+              "approx_price_per_guest_inr": 1700,
+              "location": "Jaipur, Rajasthan, India",
+              "diet": null,
+              "dietary_fit": null,
+              "hours_caveat": "Approx. \u20b91,700 per person for the standard entry and dining plan. Price includes the complete village meal experience with cultural performances and activities. Prices may vary based on season, specific menu selection, and additional experiences offered.",
+              "reservation_status": "unknown",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426596,
+                "ref": "https://www.google.com/search?q=Jaipur+restaurants%2C+menus+and+per-person+meal+prices",
+                "note": "Web-reported indicative data; dates and availability unverified. Approx. \u20b91,700 per person for the standard entry and dining plan. Price includes the complete village meal experience with cultural performances and activities. Prices may vary based on season, specific menu selection, and additional experiences offered."
+              }
+            }
+          ],
+          "transport_options": [],
+          "itinerary": null,
+          "budget": null,
+          "guidance": null,
+          "trip_brief": null,
+          "evidence": [
+            {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792426596,
+              "ref": "https://www.google.com/search?q=Jaipur+restaurants%2C+menus+and+per-person+meal+prices",
+              "note": "Web-reported indicative data; dates and availability unverified. Approx. \u20b91,700 per person for the standard entry and dining plan. Price includes the complete village meal experience with cultural performances and activities. Prices may vary based on season, specific menu selection, and additional experiences offered."
+            }
+          ],
+          "errors": [],
+          "latency_ms": 0,
+          "execution": {
+            "mode": "tinyfish",
+            "persona": "Saffron \u00b7 food researcher",
+            "goal": "Research restaurants, menus and per-person meal prices",
+            "model": null,
+            "temperature": null,
+            "tool_calls": [
+              "tinyfish.web_research"
+            ],
+            "observations": [
+              "TinyFish run: 29e12b37-cd68-4117-b521-9b488eb4d1e3",
+              "Validated 1 public web results; applied private requirements locally.",
+              "Reused source-linked public research retrieved within the last hour."
+            ],
+            "decision": "Selected source-linked research; prices and availability require supplier confirmation.",
+            "completed": true
+          }
+        },
+        {
+          "agent_id": "stay_agent",
+          "status": "ok",
+          "summary": "1 web research results for Jaipur",
+          "destination_ideas": [],
+          "stay_options": [
+            {
+              "stay_id": null,
+              "name": "Jai Niwas (Arya Niwas Group)",
+              "location": "Jaipur, Rajasthan",
+              "kind": null,
+              "price_per_night_inr": 4750,
+              "total_price_inr": 9500,
+              "rating": null,
+              "amenities": [],
+              "availability_status": "unknown",
+              "cancellation_note": null,
+              "pros": [
+                "A renovated colonial bungalow family-managed hotel with a great garden, located in the heart of Jaipur. The property features ample gardens and public areas, and can host dinners, cultural shows, and weddings. Rooms are well-appointed and pleasant with amenities including TV with cable channels, air conditioning, high-speed Wi-Fi, electric kettle, writing desk, fridge, and attached bathroom with hot and cold water. The hotel has traditional/colonial style furnishings and offers ample parking, backup generator, money exchange, and taxi/tour assistance."
+              ],
+              "cons": [
+                "Indicative published rate range of INR 3000\u20136500 per night across rooms (as per PDF pages 6\u20137). Rates vary by room type (single/double/family). Advance charged only for very busy dates; free cancellation till two days before arrival; discounts available for long-staying guests; no charge for small kids and half charges for 5\u201310 year olds (PDF pages 19\u201320). No date-specific quotes or availability claims."
+              ],
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426967,
+                "ref": "https://ebrochure.aryaniwas.com/pdfs/Jai_Niwas_25.pdf",
+                "note": "Web-reported indicative data; dates and availability unverified. Indicative published rate range of INR 3000\u20136500 per night across rooms (as per PDF pages 6\u20137). Rates vary by room type (single/double/family). Advance charged only for very busy dates; free cancellation till two days before arrival; discounts available for long-staying guests; no charge for small kids and half charges for 5\u201310 year olds (PDF pages 19\u201320). No date-specific quotes or availability claims."
+              }
+            }
+          ],
+          "attractions": [],
+          "food_options": [],
+          "transport_options": [],
+          "itinerary": null,
+          "budget": null,
+          "guidance": null,
+          "trip_brief": null,
+          "evidence": [
+            {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792426967,
+              "ref": "https://ebrochure.aryaniwas.com/pdfs/Jai_Niwas_25.pdf",
+              "note": "Web-reported indicative data; dates and availability unverified. Indicative published rate range of INR 3000\u20136500 per night across rooms (as per PDF pages 6\u20137). Rates vary by room type (single/double/family). Advance charged only for very busy dates; free cancellation till two days before arrival; discounts available for long-staying guests; no charge for small kids and half charges for 5\u201310 year olds (PDF pages 19\u201320). No date-specific quotes or availability claims."
+            }
+          ],
+          "errors": [],
+          "latency_ms": 65250,
+          "execution": {
+            "mode": "tinyfish",
+            "persona": "Haven \u00b7 stay researcher",
+            "goal": "Research hotels and published indicative INR room rates",
+            "model": null,
+            "temperature": null,
+            "tool_calls": [
+              "tinyfish.web_research"
+            ],
+            "observations": [
+              "TinyFish run: 377ddfee-a108-4ff2-9fa0-2a04723b2e84",
+              "Validated 1 public web results; applied private requirements locally."
+            ],
+            "decision": "Selected source-linked research; prices and availability require supplier confirmation.",
+            "completed": true
+          }
+        },
+        {
+          "agent_id": "tour_guide_agent",
+          "status": "ok",
+          "summary": "5 web research results for Jaipur",
+          "destination_ideas": [],
+          "stay_options": [],
+          "attractions": [
+            {
+              "guide_id": null,
+              "name": "City Palace",
+              "category": null,
+              "why_fit": "A grand palace complex now housing a museum with royal artifacts, tapestries, arms and clothing collections.",
+              "approx_duration_min": null,
+              "location": "Jaipur",
+              "price_per_person_inr": 200,
+              "hours_caveat": "Indian adult: \u20b9200; Foreign adult: \u20b9700. Composite ticket: \u20b9300 (Indian) or \u20b91000 (Foreign) valid 2 days. Children under 7 free. Open 9:30 AM\u20135:00 PM, closed on Holi.",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426597,
+                "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b9200; Foreign adult: \u20b9700. Composite ticket: \u20b9300 (Indian) or \u20b91000 (Foreign) valid 2 days. Children under 7 free. Open 9:30 AM\u20135:00 PM, closed on Holi."
+              }
+            },
+            {
+              "guide_id": null,
+              "name": "Hawa Mahal",
+              "category": null,
+              "why_fit": "The iconic five-story 'Palace of Winds' with intricate honeycomb facade and 953 small windows (jharokhas).",
+              "approx_duration_min": null,
+              "location": "Jaipur",
+              "price_per_person_inr": 50,
+              "hours_caveat": "Indian adult: \u20b950; Student: \u20b920; Foreign adult: \u20b9200; Foreign student: \u20b9100. Single camera fee: \u20b950. Children under 7 free. Open 9:00 AM\u20134:30 PM, closed on Holi.",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426597,
+                "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b950; Student: \u20b920; Foreign adult: \u20b9200; Foreign student: \u20b9100. Single camera fee: \u20b950. Children under 7 free. Open 9:00 AM\u20134:30 PM, closed on Holi."
+              }
+            },
+            {
+              "guide_id": null,
+              "name": "Jantar Mantar",
+              "category": null,
+              "why_fit": "UNESCO World Heritage Site featuring the world's largest stone observatory with massive astronomical instruments.",
+              "approx_duration_min": null,
+              "location": "Jaipur",
+              "price_per_person_inr": 50,
+              "hours_caveat": "Indian adult: \u20b950; Student: \u20b915; Foreign adult: \u20b9200; Foreign student: \u20b9100. Children under 7 free. Open 9:00 AM\u20134:30 PM, closed on Holi.",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426597,
+                "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b950; Student: \u20b915; Foreign adult: \u20b9200; Foreign student: \u20b9100. Children under 7 free. Open 9:00 AM\u20134:30 PM, closed on Holi."
+              }
+            },
+            {
+              "guide_id": null,
+              "name": "Amber / Amer Fort",
+              "category": null,
+              "why_fit": "Majestic hilltop fortress palace with artistic Hindu temple style architecture, Sheesh Mahal, and scenic approach.",
+              "approx_duration_min": null,
+              "location": "Jaipur",
+              "price_per_person_inr": 100,
+              "hours_caveat": "Indian adult: \u20b9100; Student: \u20b910; Foreign adult: \u20b9550; Foreign student: \u20b9100. Single camera: \u20b950; Video camera: \u20b9100. Children under 7 free. Open 8:00 AM\u20135:30 PM, closed on Holi.",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426597,
+                "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b9100; Student: \u20b910; Foreign adult: \u20b9550; Foreign student: \u20b9100. Single camera: \u20b950; Video camera: \u20b9100. Children under 7 free. Open 8:00 AM\u20135:30 PM, closed on Holi."
+              }
+            },
+            {
+              "guide_id": null,
+              "name": "Nahargarh Fort",
+              "category": null,
+              "why_fit": "Hilltop fort offering panoramic views of Jaipur, with palaces and temples along the Aravalli ridge.",
+              "approx_duration_min": null,
+              "location": "Jaipur",
+              "price_per_person_inr": 50,
+              "hours_caveat": "Indian adult: \u20b950; Student: \u20b95; Foreign adult: \u20b9200; Foreign student: \u20b925. Children under 7 free. Open 10:00 AM\u20136:00 PM, closed on Holi.",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426597,
+                "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b950; Student: \u20b95; Foreign adult: \u20b9200; Foreign student: \u20b925. Children under 7 free. Open 10:00 AM\u20136:00 PM, closed on Holi."
+              }
+            }
+          ],
+          "food_options": [],
+          "transport_options": [],
+          "itinerary": null,
+          "budget": null,
+          "guidance": null,
+          "trip_brief": null,
+          "evidence": [
+            {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792426597,
+              "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+              "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b9200; Foreign adult: \u20b9700. Composite ticket: \u20b9300 (Indian) or \u20b91000 (Foreign) valid 2 days. Children under 7 free. Open 9:30 AM\u20135:00 PM, closed on Holi."
+            },
+            {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792426597,
+              "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+              "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b950; Student: \u20b920; Foreign adult: \u20b9200; Foreign student: \u20b9100. Single camera fee: \u20b950. Children under 7 free. Open 9:00 AM\u20134:30 PM, closed on Holi."
+            },
+            {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792426597,
+              "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+              "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b950; Student: \u20b915; Foreign adult: \u20b9200; Foreign student: \u20b9100. Children under 7 free. Open 9:00 AM\u20134:30 PM, closed on Holi."
+            },
+            {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792426597,
+              "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+              "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b9100; Student: \u20b910; Foreign adult: \u20b9550; Foreign student: \u20b9100. Single camera: \u20b950; Video camera: \u20b9100. Children under 7 free. Open 8:00 AM\u20135:30 PM, closed on Holi."
+            },
+            {
+              "source": "tinyfish.web",
+              "kind": "live",
+              "retrieved_at": 1792426597,
+              "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+              "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b950; Student: \u20b95; Foreign adult: \u20b9200; Foreign student: \u20b925. Children under 7 free. Open 10:00 AM\u20136:00 PM, closed on Holi."
+            }
+          ],
+          "errors": [],
+          "latency_ms": 0,
+          "execution": {
+            "mode": "tinyfish",
+            "persona": "Roam \u00b7 attraction researcher",
+            "goal": "Research attractions, admission fees and opening-hour caveats",
+            "model": null,
+            "temperature": null,
+            "tool_calls": [
+              "tinyfish.web_research"
+            ],
+            "observations": [
+              "TinyFish run: 478b0330-dc61-40c1-b33c-d8a496072f8c",
+              "Validated 5 public web results; applied private requirements locally.",
+              "Reused source-linked public research retrieved within the last hour."
+            ],
+            "decision": "Selected source-linked research; prices and availability require supplier confirmation.",
+            "completed": true
+          }
+        },
+        {
+          "agent_id": "itinerary_planner",
+          "status": "ok",
+          "summary": "Drafted a 3-day itinerary with 9 stops",
+          "destination_ideas": [],
+          "stay_options": [
+            {
+              "stay_id": null,
+              "name": "Jai Niwas (Arya Niwas Group)",
+              "location": "Jaipur, Rajasthan",
+              "kind": null,
+              "price_per_night_inr": 4750,
+              "total_price_inr": 9500,
+              "rating": null,
+              "amenities": [],
+              "availability_status": "unknown",
+              "cancellation_note": null,
+              "pros": [
+                "A renovated colonial bungalow family-managed hotel with a great garden, located in the heart of Jaipur. The property features ample gardens and public areas, and can host dinners, cultural shows, and weddings. Rooms are well-appointed and pleasant with amenities including TV with cable channels, air conditioning, high-speed Wi-Fi, electric kettle, writing desk, fridge, and attached bathroom with hot and cold water. The hotel has traditional/colonial style furnishings and offers ample parking, backup generator, money exchange, and taxi/tour assistance."
+              ],
+              "cons": [
+                "Indicative published rate range of INR 3000\u20136500 per night across rooms (as per PDF pages 6\u20137). Rates vary by room type (single/double/family). Advance charged only for very busy dates; free cancellation till two days before arrival; discounts available for long-staying guests; no charge for small kids and half charges for 5\u201310 year olds (PDF pages 19\u201320). No date-specific quotes or availability claims."
+              ],
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426967,
+                "ref": "https://ebrochure.aryaniwas.com/pdfs/Jai_Niwas_25.pdf",
+                "note": "Web-reported indicative data; dates and availability unverified. Indicative published rate range of INR 3000\u20136500 per night across rooms (as per PDF pages 6\u20137). Rates vary by room type (single/double/family). Advance charged only for very busy dates; free cancellation till two days before arrival; discounts available for long-staying guests; no charge for small kids and half charges for 5\u201310 year olds (PDF pages 19\u201320). No date-specific quotes or availability claims."
+              }
+            }
+          ],
+          "attractions": [
+            {
+              "guide_id": null,
+              "name": "City Palace",
+              "category": null,
+              "why_fit": "A grand palace complex now housing a museum with royal artifacts, tapestries, arms and clothing collections.",
+              "approx_duration_min": null,
+              "location": "Jaipur",
+              "price_per_person_inr": 200,
+              "hours_caveat": "Indian adult: \u20b9200; Foreign adult: \u20b9700. Composite ticket: \u20b9300 (Indian) or \u20b91000 (Foreign) valid 2 days. Children under 7 free. Open 9:30 AM\u20135:00 PM, closed on Holi.",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426597,
+                "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b9200; Foreign adult: \u20b9700. Composite ticket: \u20b9300 (Indian) or \u20b91000 (Foreign) valid 2 days. Children under 7 free. Open 9:30 AM\u20135:00 PM, closed on Holi."
+              }
+            },
+            {
+              "guide_id": null,
+              "name": "Hawa Mahal",
+              "category": null,
+              "why_fit": "The iconic five-story 'Palace of Winds' with intricate honeycomb facade and 953 small windows (jharokhas).",
+              "approx_duration_min": null,
+              "location": "Jaipur",
+              "price_per_person_inr": 50,
+              "hours_caveat": "Indian adult: \u20b950; Student: \u20b920; Foreign adult: \u20b9200; Foreign student: \u20b9100. Single camera fee: \u20b950. Children under 7 free. Open 9:00 AM\u20134:30 PM, closed on Holi.",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426597,
+                "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b950; Student: \u20b920; Foreign adult: \u20b9200; Foreign student: \u20b9100. Single camera fee: \u20b950. Children under 7 free. Open 9:00 AM\u20134:30 PM, closed on Holi."
+              }
+            },
+            {
+              "guide_id": null,
+              "name": "Jantar Mantar",
+              "category": null,
+              "why_fit": "UNESCO World Heritage Site featuring the world's largest stone observatory with massive astronomical instruments.",
+              "approx_duration_min": null,
+              "location": "Jaipur",
+              "price_per_person_inr": 50,
+              "hours_caveat": "Indian adult: \u20b950; Student: \u20b915; Foreign adult: \u20b9200; Foreign student: \u20b9100. Children under 7 free. Open 9:00 AM\u20134:30 PM, closed on Holi.",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426597,
+                "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b950; Student: \u20b915; Foreign adult: \u20b9200; Foreign student: \u20b9100. Children under 7 free. Open 9:00 AM\u20134:30 PM, closed on Holi."
+              }
+            },
+            {
+              "guide_id": null,
+              "name": "Amber / Amer Fort",
+              "category": null,
+              "why_fit": "Majestic hilltop fortress palace with artistic Hindu temple style architecture, Sheesh Mahal, and scenic approach.",
+              "approx_duration_min": null,
+              "location": "Jaipur",
+              "price_per_person_inr": 100,
+              "hours_caveat": "Indian adult: \u20b9100; Student: \u20b910; Foreign adult: \u20b9550; Foreign student: \u20b9100. Single camera: \u20b950; Video camera: \u20b9100. Children under 7 free. Open 8:00 AM\u20135:30 PM, closed on Holi.",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426597,
+                "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b9100; Student: \u20b910; Foreign adult: \u20b9550; Foreign student: \u20b9100. Single camera: \u20b950; Video camera: \u20b9100. Children under 7 free. Open 8:00 AM\u20135:30 PM, closed on Holi."
+              }
+            },
+            {
+              "guide_id": null,
+              "name": "Nahargarh Fort",
+              "category": null,
+              "why_fit": "Hilltop fort offering panoramic views of Jaipur, with palaces and temples along the Aravalli ridge.",
+              "approx_duration_min": null,
+              "location": "Jaipur",
+              "price_per_person_inr": 50,
+              "hours_caveat": "Indian adult: \u20b950; Student: \u20b95; Foreign adult: \u20b9200; Foreign student: \u20b925. Children under 7 free. Open 10:00 AM\u20136:00 PM, closed on Holi.",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426597,
+                "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b950; Student: \u20b95; Foreign adult: \u20b9200; Foreign student: \u20b925. Children under 7 free. Open 10:00 AM\u20136:00 PM, closed on Holi."
+              }
+            }
+          ],
+          "food_options": [
+            {
+              "place_id": null,
+              "name": "Chokhi Dhani (Sitapura)",
+              "cuisine": null,
+              "approx_price_per_guest_inr": 1700,
+              "location": "Jaipur, Rajasthan, India",
+              "diet": null,
+              "dietary_fit": null,
+              "hours_caveat": "Approx. \u20b91,700 per person for the standard entry and dining plan. Price includes the complete village meal experience with cultural performances and activities. Prices may vary based on season, specific menu selection, and additional experiences offered.",
+              "reservation_status": "unknown",
+              "evidence": {
+                "source": "tinyfish.web",
+                "kind": "live",
+                "retrieved_at": 1792426596,
+                "ref": "https://www.google.com/search?q=Jaipur+restaurants%2C+menus+and+per-person+meal+prices",
+                "note": "Web-reported indicative data; dates and availability unverified. Approx. \u20b91,700 per person for the standard entry and dining plan. Price includes the complete village meal experience with cultural performances and activities. Prices may vary based on season, specific menu selection, and additional experiences offered."
+              }
+            }
+          ],
+          "transport_options": [],
+          "itinerary": {
+            "title": "3-day trip to Jaipur",
+            "days": [
+              {
+                "day": 1,
+                "calendar_date": "2026-12-01",
+                "stops": [
+                  {
+                    "day": 1,
+                    "start_time": "09:00",
+                    "end_time": "12:00",
+                    "title": "Arrive by surface transport",
+                    "kind": "transport",
+                    "location": "Jaipur",
+                    "est_cost_inr": 0,
+                    "notes": "travel time assumed within the morning window",
+                    "evidence": null
+                  },
+                  {
+                    "day": 1,
+                    "start_time": "13:00",
+                    "end_time": "14:00",
+                    "title": "Lunch at Chokhi Dhani (Sitapura)",
+                    "kind": "food",
+                    "location": "Jaipur, Rajasthan, India",
+                    "est_cost_inr": 1700,
+                    "notes": null,
+                    "evidence": {
+                      "source": "tinyfish.web",
+                      "kind": "live",
+                      "retrieved_at": 1792426596,
+                      "ref": "https://www.google.com/search?q=Jaipur+restaurants%2C+menus+and+per-person+meal+prices",
+                      "note": "Web-reported indicative data; dates and availability unverified. Approx. \u20b91,700 per person for the standard entry and dining plan. Price includes the complete village meal experience with cultural performances and activities. Prices may vary based on season, specific menu selection, and additional experiences offered."
+                    }
+                  },
+                  {
+                    "day": 1,
+                    "start_time": "15:00",
+                    "end_time": "17:30",
+                    "title": "City Palace",
+                    "kind": "attraction",
+                    "location": "Jaipur",
+                    "est_cost_inr": 200,
+                    "notes": null,
+                    "evidence": {
+                      "source": "tinyfish.web",
+                      "kind": "live",
+                      "retrieved_at": 1792426597,
+                      "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                      "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b9200; Foreign adult: \u20b9700. Composite ticket: \u20b9300 (Indian) or \u20b91000 (Foreign) valid 2 days. Children under 7 free. Open 9:30 AM\u20135:00 PM, closed on Holi."
+                    }
+                  }
+                ]
+              },
+              {
+                "day": 2,
+                "calendar_date": "2026-12-02",
+                "stops": [
+                  {
+                    "day": 2,
+                    "start_time": "09:00",
+                    "end_time": "12:00",
+                    "title": "Hawa Mahal",
+                    "kind": "attraction",
+                    "location": "Jaipur",
+                    "est_cost_inr": 50,
+                    "notes": "The iconic five-story 'Palace of Winds' with intricate honeycomb facade and 953 small windows (jharokhas).",
+                    "evidence": {
+                      "source": "tinyfish.web",
+                      "kind": "live",
+                      "retrieved_at": 1792426597,
+                      "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                      "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b950; Student: \u20b920; Foreign adult: \u20b9200; Foreign student: \u20b9100. Single camera fee: \u20b950. Children under 7 free. Open 9:00 AM\u20134:30 PM, closed on Holi."
+                    }
+                  },
+                  {
+                    "day": 2,
+                    "start_time": "13:00",
+                    "end_time": "14:00",
+                    "title": "Lunch at Chokhi Dhani (Sitapura)",
+                    "kind": "food",
+                    "location": "Jaipur, Rajasthan, India",
+                    "est_cost_inr": 1700,
+                    "notes": null,
+                    "evidence": {
+                      "source": "tinyfish.web",
+                      "kind": "live",
+                      "retrieved_at": 1792426596,
+                      "ref": "https://www.google.com/search?q=Jaipur+restaurants%2C+menus+and+per-person+meal+prices",
+                      "note": "Web-reported indicative data; dates and availability unverified. Approx. \u20b91,700 per person for the standard entry and dining plan. Price includes the complete village meal experience with cultural performances and activities. Prices may vary based on season, specific menu selection, and additional experiences offered."
+                    }
+                  },
+                  {
+                    "day": 2,
+                    "start_time": "15:00",
+                    "end_time": "17:30",
+                    "title": "Jantar Mantar",
+                    "kind": "attraction",
+                    "location": "Jaipur",
+                    "est_cost_inr": 50,
+                    "notes": null,
+                    "evidence": {
+                      "source": "tinyfish.web",
+                      "kind": "live",
+                      "retrieved_at": 1792426597,
+                      "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                      "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b950; Student: \u20b915; Foreign adult: \u20b9200; Foreign student: \u20b9100. Children under 7 free. Open 9:00 AM\u20134:30 PM, closed on Holi."
+                    }
+                  }
+                ]
+              },
+              {
+                "day": 3,
+                "calendar_date": "2026-12-03",
+                "stops": [
+                  {
+                    "day": 3,
+                    "start_time": "09:00",
+                    "end_time": "12:00",
+                    "title": "Amber / Amer Fort",
+                    "kind": "attraction",
+                    "location": "Jaipur",
+                    "est_cost_inr": 100,
+                    "notes": "Majestic hilltop fortress palace with artistic Hindu temple style architecture, Sheesh Mahal, and scenic approach.",
+                    "evidence": {
+                      "source": "tinyfish.web",
+                      "kind": "live",
+                      "retrieved_at": 1792426597,
+                      "ref": "https://hawamahaltickets.com/jaipur-monuments-with-entry-fees-and-timings/",
+                      "note": "Web-reported indicative data; dates and availability unverified. Indian adult: \u20b9100; Student: \u20b910; Foreign adult: \u20b9550; Foreign student: \u20b9100. Single camera: \u20b950; Video camera: \u20b9100. Children under 7 free. Open 8:00 AM\u20135:30 PM, closed on Holi."
+                    }
+                  },
+                  {
+                    "day": 3,
+                    "start_time": "13:00",
+                    "end_time": "14:00",
+                    "title": "Lunch at Chokhi Dhani (Sitapura)",
+                    "kind": "food",
+                    "location": "Jaipur, Rajasthan, India",
+                    "est_cost_inr": 1700,
+                    "notes": null,
+                    "evidence": {
+                      "source": "tinyfish.web",
+                      "kind": "live",
+                      "retrieved_at": 1792426596,
+                      "ref": "https://www.google.com/search?q=Jaipur+restaurants%2C+menus+and+per-person+meal+prices",
+                      "note": "Web-reported indicative data; dates and availability unverified. Approx. \u20b91,700 per person for the standard entry and dining plan. Price includes the complete village meal experience with cultural performances and activities. Prices may vary based on season, specific menu selection, and additional experiences offered."
+                    }
+                  },
+                  {
+                    "day": 3,
+                    "start_time": "15:00",
+                    "end_time": "17:30",
+                    "title": "Pack up and head home",
+                    "kind": "buffer",
+                    "location": "Jaipur",
+                    "est_cost_inr": 0,
+                    "notes": null,
+                    "evidence": null
+                  }
+                ]
+              }
+            ],
+            "total_est_cost_inr": 5500,
+            "assumptions": [
+              "Assumes a room at Jai Niwas (Arya Niwas Group) for all nights (per-night \u20b94,750, availability unverified)."
+            ],
+            "alternatives": [
+              "Swap the afternoon activity for a food walk if the weather turns."
+            ],
+            "unresolved_conflicts": []
+          },
+          "budget": null,
+          "guidance": null,
+          "trip_brief": null,
+          "evidence": [
+            {
+              "source": "itinerary_planner",
+              "kind": "estimate",
+              "retrieved_at": 1792426967,
+              "ref": null,
+              "note": "schedule built from research results; opening hours unverified"
+            }
+          ],
+          "errors": [],
+          "latency_ms": 0,
+          "execution": {
+            "mode": "local",
+            "persona": "Weaver \u00b7 day planner",
+            "goal": "Compose the specialists' actual findings into a paced schedule; review and revise conflicts.",
+            "model": null,
+            "temperature": null,
+            "tool_calls": [
+              "build_schedule"
+            ],
+            "observations": [],
+            "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+            "completed": true
+          }
+        },
+        {
+          "agent_id": "budget_booking_agent",
+          "status": "ok",
+          "summary": "Estimated \u20b922,550 for 2 travellers",
+          "destination_ideas": [],
+          "stay_options": [],
+          "attractions": [],
+          "food_options": [],
+          "transport_options": [],
+          "itinerary": null,
+          "budget": {
+            "currency": "INR",
+            "per_person": false,
+            "lines": [
+              {
+                "category": "stay",
+                "amount_inr": 9500,
+                "basis": "estimate",
+                "note": "per room; availability unverified"
+              },
+              {
+                "category": "food",
+                "amount_inr": 10200,
+                "basis": "estimate",
+                "note": "scheduled meals only"
+              },
+              {
+                "category": "activities",
+                "amount_inr": 800,
+                "basis": "estimate",
+                "note": "guide/experience fees"
+              },
+              {
+                "category": "contingency",
+                "amount_inr": 2050,
+                "basis": "estimate",
+                "note": "10% buffer for local travel and extras"
+              }
+            ],
+            "total_inr": 22550,
+            "budget_delta_inr": null,
+            "price_checked_at": null,
+            "status": "estimate",
+            "warnings": [
+              "Figures use source-reported indicative web rates, not date-specific quotes; confirm prices and availability.",
+              "Includes the listed activities and meals; unverified transport and extra meals are excluded."
+            ]
+          },
+          "guidance": null,
+          "trip_brief": null,
+          "evidence": [
+            {
+              "source": "budget_calculator",
+              "kind": "estimate",
+              "retrieved_at": 1792426967,
+              "ref": null,
+              "note": "deterministic calculation from tool results"
+            }
+          ],
+          "errors": [],
+          "latency_ms": 1,
+          "execution": {
+            "mode": "local",
+            "persona": "Ledger \u00b7 skeptical reviewer",
+            "goal": "Run the exact cost calculator; check the budget and explain exclusions. Never book or pay.",
+            "model": null,
+            "temperature": null,
+            "tool_calls": [
+              "calculate_budget"
+            ],
+            "observations": [],
+            "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+            "completed": true
+          }
+        }
+      ],
+      "validation_issues": [
+        {
+          "severity": "info",
+          "code": "prices_unverified",
+          "message": "prices are estimates; no provider price check has been recorded",
+          "field": null
+        }
+      ],
+      "clarification_question": null,
+      "errors": [],
+      "memory": [
+        {
+          "agent_id": "travel_orchestrator",
+          "cache_hit": false,
+          "tokens": {
+            "agent": 128,
+            "traveller": 493,
+            "prompt": 1235,
+            "reserved_output": 2048
+          },
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          },
+          "cards": [
+            "itinerary_details"
+          ],
+          "claim_ids": [
+            "claim_3a1fb1854c2feaa197f6b1f65ca307a3",
+            "claim_68b4377f884dcb12606c530ac4a21a3d",
+            "claim_b4c0ca3e95cd3279ed02c06c29b338eb",
+            "claim_b744244011797ddacf478cdcfc0eec40",
+            "claim_b86d6cebe6e9c4b37a784786a121b147",
+            "claim_dca070fdca94a32448f281bc175f8638",
+            "claim_fd39cde99571449faefc6ba5ffe41e5f"
+          ]
+        },
+        {
+          "agent_id": "trip_consultant",
+          "cache_hit": false,
+          "tokens": {
+            "agent": 96,
+            "traveller": 493,
+            "prompt": 1210,
+            "reserved_output": 2048
+          },
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          },
+          "cards": [
+            "itinerary_details"
+          ],
+          "claim_ids": [
+            "claim_3a1fb1854c2feaa197f6b1f65ca307a3",
+            "claim_68b4377f884dcb12606c530ac4a21a3d",
+            "claim_b4c0ca3e95cd3279ed02c06c29b338eb",
+            "claim_b744244011797ddacf478cdcfc0eec40",
+            "claim_b86d6cebe6e9c4b37a784786a121b147",
+            "claim_dca070fdca94a32448f281bc175f8638",
+            "claim_fd39cde99571449faefc6ba5ffe41e5f"
+          ]
+        },
+        {
+          "agent_id": "explore_agent",
+          "cache_hit": false,
+          "tokens": {
+            "agent": 80,
+            "traveller": 493,
+            "prompt": 1196,
+            "reserved_output": 2048
+          },
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          },
+          "cards": [
+            "itinerary_details"
+          ],
+          "claim_ids": [
+            "claim_3a1fb1854c2feaa197f6b1f65ca307a3",
+            "claim_68b4377f884dcb12606c530ac4a21a3d",
+            "claim_b4c0ca3e95cd3279ed02c06c29b338eb",
+            "claim_b744244011797ddacf478cdcfc0eec40",
+            "claim_b86d6cebe6e9c4b37a784786a121b147",
+            "claim_dca070fdca94a32448f281bc175f8638",
+            "claim_fd39cde99571449faefc6ba5ffe41e5f"
+          ]
+        },
+        {
+          "agent_id": "food_guide_agent",
+          "cache_hit": false,
+          "tokens": {
+            "agent": 110,
+            "traveller": 493,
+            "prompt": 1246,
+            "reserved_output": 2048
+          },
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          },
+          "cards": [
+            "itinerary_details"
+          ],
+          "claim_ids": [
+            "claim_3a1fb1854c2feaa197f6b1f65ca307a3",
+            "claim_68b4377f884dcb12606c530ac4a21a3d",
+            "claim_b4c0ca3e95cd3279ed02c06c29b338eb",
+            "claim_b744244011797ddacf478cdcfc0eec40",
+            "claim_b86d6cebe6e9c4b37a784786a121b147",
+            "claim_dca070fdca94a32448f281bc175f8638",
+            "claim_fd39cde99571449faefc6ba5ffe41e5f"
+          ]
+        },
+        {
+          "agent_id": "stay_agent",
+          "cache_hit": false,
+          "tokens": {
+            "agent": 118,
+            "traveller": 424,
+            "prompt": 1251,
+            "reserved_output": 2048
+          },
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          },
+          "cards": [
+            "hotel_details"
+          ],
+          "claim_ids": [
+            "claim_3a1fb1854c2feaa197f6b1f65ca307a3",
+            "claim_68b4377f884dcb12606c530ac4a21a3d",
+            "claim_b4c0ca3e95cd3279ed02c06c29b338eb",
+            "claim_b744244011797ddacf478cdcfc0eec40",
+            "claim_b86d6cebe6e9c4b37a784786a121b147",
+            "claim_dca070fdca94a32448f281bc175f8638",
+            "claim_fd39cde99571449faefc6ba5ffe41e5f"
+          ]
+        },
+        {
+          "agent_id": "tour_guide_agent",
+          "cache_hit": false,
+          "tokens": {
+            "agent": 88,
+            "traveller": 493,
+            "prompt": 1207,
+            "reserved_output": 2048
+          },
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          },
+          "cards": [
+            "itinerary_details"
+          ],
+          "claim_ids": [
+            "claim_3a1fb1854c2feaa197f6b1f65ca307a3",
+            "claim_68b4377f884dcb12606c530ac4a21a3d",
+            "claim_b4c0ca3e95cd3279ed02c06c29b338eb",
+            "claim_b744244011797ddacf478cdcfc0eec40",
+            "claim_b86d6cebe6e9c4b37a784786a121b147",
+            "claim_dca070fdca94a32448f281bc175f8638",
+            "claim_fd39cde99571449faefc6ba5ffe41e5f"
+          ]
+        },
+        {
+          "agent_id": "itinerary_planner",
+          "cache_hit": false,
+          "tokens": {
+            "agent": 113,
+            "traveller": 493,
+            "prompt": 1215,
+            "reserved_output": 2048
+          },
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          },
+          "cards": [
+            "itinerary_details"
+          ],
+          "claim_ids": [
+            "claim_3a1fb1854c2feaa197f6b1f65ca307a3",
+            "claim_68b4377f884dcb12606c530ac4a21a3d",
+            "claim_b4c0ca3e95cd3279ed02c06c29b338eb",
+            "claim_b744244011797ddacf478cdcfc0eec40",
+            "claim_b86d6cebe6e9c4b37a784786a121b147",
+            "claim_dca070fdca94a32448f281bc175f8638",
+            "claim_fd39cde99571449faefc6ba5ffe41e5f"
+          ]
+        },
+        {
+          "agent_id": "budget_booking_agent",
+          "cache_hit": false,
+          "tokens": {
+            "agent": 104,
+            "traveller": 426,
+            "prompt": 1201,
+            "reserved_output": 2048
+          },
+          "residency": {
+            "device": "cpu",
+            "resident_bytes": 0,
+            "peak_owned_tensor_bytes": 0,
+            "max_card_budget_bytes": 67108864,
+            "provider_arena_limit_bytes": 0,
+            "fallback_reason": "not_requested"
+          },
+          "cards": [
+            "flight_details"
+          ],
+          "claim_ids": [
+            "claim_3a1fb1854c2feaa197f6b1f65ca307a3",
+            "claim_68b4377f884dcb12606c530ac4a21a3d",
+            "claim_b4c0ca3e95cd3279ed02c06c29b338eb",
+            "claim_b744244011797ddacf478cdcfc0eec40",
+            "claim_b86d6cebe6e9c4b37a784786a121b147",
+            "claim_dca070fdca94a32448f281bc175f8638",
+            "claim_fd39cde99571449faefc6ba5ffe41e5f"
+          ]
+        }
+      ]
+    }
+  },
+  "seconds": 77.91,
+  "agent_summary": [
+    {
+      "agent": "trip_consultant",
+      "status": "ok",
+      "execution": {
+        "mode": "local",
+        "persona": "Mira \u00b7 trip editor",
+        "goal": "Check the confirmed brief for gaps; never invent traveler facts.",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "inspect_brief"
+        ],
+        "observations": [],
+        "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+        "completed": true
+      },
+      "errors": []
+    },
+    {
+      "agent": "explore_agent",
+      "status": "ok",
+      "execution": {
+        "mode": "tinyfish",
+        "persona": "Atlas \u00b7 destination researcher",
+        "goal": "Research destination information and things to see",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "tinyfish.web_research"
+        ],
+        "observations": [
+          "TinyFish run: 02acfb7a-e8cb-463b-bb9c-7dcfd7b4e528",
+          "Validated 5 public web results; applied private requirements locally.",
+          "Reused source-linked public research retrieved within the last hour."
+        ],
+        "decision": "Selected source-linked research; prices and availability require supplier confirmation.",
+        "completed": true
+      },
+      "errors": []
+    },
+    {
+      "agent": "food_guide_agent",
+      "status": "ok",
+      "execution": {
+        "mode": "tinyfish",
+        "persona": "Saffron \u00b7 food researcher",
+        "goal": "Research restaurants, menus and per-person meal prices",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "tinyfish.web_research"
+        ],
+        "observations": [
+          "TinyFish run: 29e12b37-cd68-4117-b521-9b488eb4d1e3",
+          "Validated 1 public web results; applied private requirements locally.",
+          "Reused source-linked public research retrieved within the last hour."
+        ],
+        "decision": "Selected source-linked research; prices and availability require supplier confirmation.",
+        "completed": true
+      },
+      "errors": []
+    },
+    {
+      "agent": "stay_agent",
+      "status": "ok",
+      "execution": {
+        "mode": "tinyfish",
+        "persona": "Haven \u00b7 stay researcher",
+        "goal": "Research hotels and published indicative INR room rates",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "tinyfish.web_research"
+        ],
+        "observations": [
+          "TinyFish run: 377ddfee-a108-4ff2-9fa0-2a04723b2e84",
+          "Validated 1 public web results; applied private requirements locally."
+        ],
+        "decision": "Selected source-linked research; prices and availability require supplier confirmation.",
+        "completed": true
+      },
+      "errors": []
+    },
+    {
+      "agent": "tour_guide_agent",
+      "status": "ok",
+      "execution": {
+        "mode": "tinyfish",
+        "persona": "Roam \u00b7 attraction researcher",
+        "goal": "Research attractions, admission fees and opening-hour caveats",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "tinyfish.web_research"
+        ],
+        "observations": [
+          "TinyFish run: 478b0330-dc61-40c1-b33c-d8a496072f8c",
+          "Validated 5 public web results; applied private requirements locally.",
+          "Reused source-linked public research retrieved within the last hour."
+        ],
+        "decision": "Selected source-linked research; prices and availability require supplier confirmation.",
+        "completed": true
+      },
+      "errors": []
+    },
+    {
+      "agent": "itinerary_planner",
+      "status": "ok",
+      "execution": {
+        "mode": "local",
+        "persona": "Weaver \u00b7 day planner",
+        "goal": "Compose the specialists' actual findings into a paced schedule; review and revise conflicts.",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "build_schedule"
+        ],
+        "observations": [],
+        "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+        "completed": true
+      },
+      "errors": []
+    },
+    {
+      "agent": "budget_booking_agent",
+      "status": "ok",
+      "execution": {
+        "mode": "local",
+        "persona": "Ledger \u00b7 skeptical reviewer",
+        "goal": "Run the exact cost calculator; check the budget and explain exclusions. Never book or pay.",
+        "model": null,
+        "temperature": null,
+        "tool_calls": [
+          "calculate_budget"
+        ],
+        "observations": [],
+        "decision": "Applied confirmed memory and local planning/calculation rules to the research results.",
+        "completed": true
+      },
+      "errors": []
+    }
+  ],
+  "status": "failed",
+  "error": "'conversation_id'"
+}

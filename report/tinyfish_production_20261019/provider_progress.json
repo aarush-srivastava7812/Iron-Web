@@ -1,0 +1,38 @@
+[
+  {
+    "run_id": "8069671e-7154-4cd7-9c38-9f37cae7f522",
+    "role": "Research attractions, admission fees and opening-hour caveats",
+    "status": "PENDING",
+    "created_at": "2026-10-19T16:59:18Z",
+    "started_at": null,
+    "finished_at": null,
+    "error": null
+  },
+  {
+    "run_id": "77e1f543-4cc6-4303-a3c0-af0c3abae7fe",
+    "role": "Research hotels and published indicative INR room rates",
+    "status": "PENDING",
+    "created_at": "2026-10-19T16:59:17Z",
+    "started_at": null,
+    "finished_at": null,
+    "error": null
+  },
+  {
+    "run_id": "8fde13b9-f1fd-451b-a5fa-c6ad2385ee8e",
+    "role": "Research restaurants, menus and per-person meal prices",
+    "status": "COMPLETED",
+    "created_at": "2026-10-19T16:59:16Z",
+    "started_at": "2026-10-19T16:59:19Z",
+    "finished_at": "2026-10-19T17:01:59Z",
+    "error": null
+  },
+  {
+    "run_id": "ad21b71b-b2a0-42c6-bd15-f6748367d6a5",
+    "role": "Research destination information and things to see",
+    "status": "RUNNING",
+    "created_at": "2026-10-19T16:59:15Z",
+    "started_at": "2026-10-19T16:59:18Z",
+    "finished_at": null,
+    "error": null
+  }
+]

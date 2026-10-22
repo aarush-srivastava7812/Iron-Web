@@ -15,7 +15,7 @@ import sys
 import time
 import uuid
 
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, expect
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "report/tinyfish_memory"
@@ -336,13 +336,9 @@ def main():
 
                 def follow_live():
                     page.get_by_role("button", name="Follow live", exact=True).click()
-                    require(
-                        page.get_by_role(
-                            "button", name="Follow live", exact=True
-                        ).get_attribute("aria-pressed")
-                        == "true",
-                        "Follow live did not reconnect",
-                    )
+                    expect(
+                        page.get_by_role("button", name="Follow live", exact=True)
+                    ).to_have_attribute("aria-pressed", "true")
                     page.goto(DASHBOARD + "/tinyfish", wait_until="domcontentloaded")
                     page.get_by_role(
                         "heading", name="TinyFish intelligence", exact=True, level=1

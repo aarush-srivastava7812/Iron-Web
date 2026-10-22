@@ -1,0 +1,81 @@
+{
+  "origin": "https://voyara-travel-taupe.vercel.app",
+  "checks": [
+    {
+      "label": "Judge demo sign-in",
+      "method": "POST",
+      "path": "/auth/judge",
+      "http_status": 200,
+      "seconds": 0.796
+    },
+    {
+      "label": "Session persists",
+      "method": "GET",
+      "path": "/auth/me",
+      "http_status": 200,
+      "seconds": 0.391
+    },
+    {
+      "label": "Catalog through Vercel",
+      "method": "GET",
+      "path": "/destinations",
+      "http_status": 200,
+      "seconds": 1.125
+    },
+    {
+      "label": "Create isolated test trip",
+      "method": "POST",
+      "path": "/assistant/conversations",
+      "http_status": 201,
+      "seconds": 0.672
+    },
+    {
+      "label": "Commit confirmed requirements",
+      "method": "PUT",
+      "path": "/assistant/conversations/9f43b17f-f5c4-492e-839f-7e85f6c72003/requirements",
+      "http_status": 502,
+      "seconds": 8.437,
+      "error": ""
+    }
+  ],
+  "catalog_destinations": [
+    "Goa",
+    "Jaipur",
+    "Manali",
+    "Munnar",
+    "Varanasi",
+    "Udaipur",
+    "Rishikesh",
+    "Kochi",
+    "Andaman Islands",
+    "Leh Ladakh",
+    "Hampi",
+    "Kashmir",
+    "Kerala",
+    "Darjeeling",
+    "New Delhi",
+    "Mumbai",
+    "Bengaluru",
+    "Hyderabad",
+    "Chennai",
+    "Alleppey"
+  ],
+  "conversation_id": "9f43b17f-f5c4-492e-839f-7e85f6c72003",
+  "requirements": {
+    "destination": "Jaipur",
+    "start_date": "2026-11-12",
+    "end_date": "2026-11-15",
+    "budget": 30000,
+    "currency": "INR",
+    "traveller_count": 2,
+    "pace": "moderate",
+    "interests": [
+      "Culture",
+      "Food"
+    ]
+  },
+  "exception": {
+    "type": "HTTPError",
+    "message": "502 Server Error: Bad Gateway for url: https://voyara-travel-taupe.vercel.app/api/assistant/conversations/9f43b17f-f5c4-492e-839f-7e85f6c72003/requirements"
+  }
+}

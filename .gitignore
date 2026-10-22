@@ -78,3 +78,7 @@ playwright-report/
 /report/video_demo_20261018/edit/
 /report/video_demo_20261018/audio/
 /youtube-upload/preview-*.jpg
+
+# Disposable presentation authoring caches; final exported decks remain tracked.
+/.chart-data-*/
+/report/judging_deck_20261018/.build/

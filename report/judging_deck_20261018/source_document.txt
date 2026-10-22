@@ -1,0 +1,98 @@
+AZINHACK '26 Online Round: Guidelines & FAQ
+About AZINHACK '26
+AZINHACK '26 is a flagship hackathon by IoSC (Intel oneAPI Student Club), GGSIPU East Delhi Campus. It runs in two stages:
+1. Online round (now until 18 October 2026): build your project online and submit it.
+2. 2 Day finale (21-22 October 2026): shortlisted teams participate in a 2-day format at USAR, GGSIPU East Delhi Campus, Delhi, with Day 1 consisting of build and evaluation rounds, followed by Day 2 finals for shortlisted teams, presenting to an expert jury.
+Prize pool: ₹1,00,000+, plus sponsor goodies, merchandise and opportunities.
+Problem statement
+Open Innovation. There is no fixed problem. Pick a problem you care about, in any domain, and solve it with any tech stack or approach.
+The one mandatory rule: TinyFish
+TinyFish integration is mandatory. Your project must use TinyFish in a way that is functional and relevant to what you are building. A token mention does not count. You decide how it fits into your product, and you must show and explain it in your submission.
+TinyFish helps AI apps and agents work with the live web. You can explore:
+* Search API: get fresh information from the live web
+* Fetch API: pull structured, AI-ready content from webpages
+* Web Agent: run goal-driven, multi-step tasks on websites
+* Browser Infrastructure: control cloud browsers with tools like Playwright and CDP
+Great fits include AI agents, research tools, automation systems, data products and other web-connected apps.
+How the online round works
+1. Register on Unstop and form your team.
+2. Build your project online. Pick a problem, build a solution and integrate TinyFish.
+3. Submit your project by 18 October 2026,(see the checklist below).
+4. Screening: submissions go through a technical and originality check and are scored using the marking below.
+5. Shortlisting: shortlisted teams are invited to the 2 Day finale.
+How you will be judged (100 points)
+Criteria
+	Points
+	What the jury looks for
+	Working GitHub project
+	20
+	A public repo with working code, a clear README and visible commits.
+	TinyFish integration
+	20
+	TinyFish is used meaningfully, works, and is relevant to your use case. Explain it in your README and demo video.
+	Social media post about your project
+	10
+	A post that clearly shows what your project does (see the tips below).
+	Technique
+	10
+	Quality of the technical approach, architecture and execution.
+	Innovation and idea
+	20
+	How original and creative the problem and solution are.
+	Impact and usefulness
+	10
+	Does it solve a real problem for real people? Is it realistic?
+	Demo video and explanation
+	10
+	A clear walkthrough that shows the project working and explains what it does and how.
+	Total
+	100
+
+
+
+
+About the social media post (10 points)
+Post about your project on any platform (LinkedIn, X or similar). This helps us evaluate faster, because your post shows how you present and explain your work.
+* Keep the post focused on your project: what it does, who it helps and what makes it cool.
+* You do not have to mention the hackathon in the post. It is about your project.
+* Add a short demo video, screenshots or a GIF if you can. It makes the post much stronger.
+* Include a link to your GitHub repo.
+* Make sure the post is public so the jury can open it.
+Submission checklist
+* A public GitHub repo with working code and a README that explains the project, how to run it and how TinyFish is used
+* A demo video [add length, e.g. 2-3 minutes] showing the project working, including your TinyFish integration
+* The link to your public social media post
+* Submit everything through Unstop before the deadline
+Ground rules
+* Be original. Projects go through a technical and originality screening.
+* TinyFish must be part of your project, or it is not eligible for the TinyFish points.
+* Make sure your repo and post links are public and working. We cannot score what we cannot open.
+* The organizers' and jury's decisions are final.
+What happens at the finale
+Shortlisted teams come to the USAR campus on 21-22 October for the 2 day finale. Day 1 consists of build and evaluation rounds, followed by Day 2 finals for shortlisted teams, presenting before the jury, and networking with industry and the community. Full finale details will be shared with shortlisted teams.
+FAQ
+Do I need to come to the campus for the online round?
+No. The online round is fully online. Only shortlisted teams attend the finale at USAR.
+Do I have to use TinyFish?
+Yes. It is the only mandatory requirement. Everything else about your project is up to you.
+What should I build?
+Anything. This is an Open Innovation track. Choose a real problem and solve it your way.
+How do I get started with TinyFish?
+Sign up through the TinyFish link below to claim $13 in free credits, then explore the Search, Fetch, Web Agent and Browser Infrastructure tools.
+Does the social media post have to mention AZINHACK?
+No. Just focus on your project. It is there to help the jury see how you present your work.
+Is a GitHub repo compulsory?
+Yes. A working GitHub project is worth 20 points, so make sure your repo is public and your code actually runs.
+What if my TinyFish integration is very small?
+It needs to be meaningful and relevant to your use case. A token or decorative use will score poorly.
+What happens after I submit?
+Your project is screened and scored. Shortlisted teams get an invite to the 2 day finale on 21-22 October.
+What is the team size, and can I work solo?
+Team Size : 1-4
+Where do I ask more questions?
+Join the WhatsApp group below, or contact Pranshu (+91 9773531802) or Piyush (+91 92135 79886).
+Important links
+* Registration: https://unstop.com/competitions/azinhack-2026-1763832/
+* WhatsApp group:  https://chat.whatsapp.com/Hwq2LDDdEB7KCB5RBVPADw?mode=gi_t
+* TinyFish sign-up ($13 free credits): Claim your free credits
+Build. Ship something real.

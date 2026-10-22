@@ -1,6 +1,6 @@
 {
   "schema": "tinyfish-memory-ablation-v1",
-  "generated_at": "2026-10-22T01:01:52.505728+00:00",
+  "generated_at": "2026-10-22T03:59:56.347266+00:00",
   "scope": "Controlled local ablation using mock Search/Fetch transport and seeded exact source statements. No live TinyFish calls. Not a production latency, quality or cost claim.",
   "baseline": "Uncached Search/Fetch loop; evidence guards measured as separate seeded challenge cases, not as a claim about the previous release.",
   "repeated_requests": {

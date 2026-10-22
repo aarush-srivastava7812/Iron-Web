@@ -1,0 +1,381 @@
+{
+  "origin": "https://voyara-travel-taupe.vercel.app",
+  "checks": [
+    {
+      "label": "Judge demo sign-in",
+      "method": "POST",
+      "path": "/auth/judge",
+      "http_status": 200,
+      "seconds": 0.25
+    },
+    {
+      "label": "Session persists",
+      "method": "GET",
+      "path": "/auth/me",
+      "http_status": 200,
+      "seconds": 0.14
+    },
+    {
+      "label": "Catalog through Vercel",
+      "method": "GET",
+      "path": "/destinations",
+      "http_status": 200,
+      "seconds": 0.125
+    },
+    {
+      "label": "Create isolated test trip",
+      "method": "POST",
+      "path": "/assistant/conversations",
+      "http_status": 201,
+      "seconds": 0.188
+    },
+    {
+      "label": "Commit confirmed requirements",
+      "method": "PUT",
+      "path": "/assistant/conversations/833fb109-425c-4427-b36b-7420d4ed964c/requirements",
+      "http_status": 200,
+      "seconds": 16.172
+    },
+    {
+      "label": "Read confirmed trip memory",
+      "method": "GET",
+      "path": "/assistant/conversations/833fb109-425c-4427-b36b-7420d4ed964c/requirements",
+      "http_status": 200,
+      "seconds": 4.656
+    },
+    {
+      "label": "Generate trip with travel agents",
+      "method": "POST",
+      "path": "/assistant/conversations/833fb109-425c-4427-b36b-7420d4ed964c/messages",
+      "http_status": 502,
+      "seconds": 120.141,
+      "error": "An error occurred with this application.\n\nROUTER_EXTERNAL_TARGET_ERROR\n\nbom1::g7mdp-1792346612763-b389c590f1a4\n"
+    }
+  ],
+  "catalog_destinations": [
+    "Goa",
+    "Jaipur",
+    "Manali",
+    "Munnar",
+    "Varanasi",
+    "Udaipur",
+    "Rishikesh",
+    "Kochi",
+    "Andaman Islands",
+    "Leh Ladakh",
+    "Hampi",
+    "Kashmir",
+    "Kerala",
+    "Darjeeling",
+    "New Delhi",
+    "Mumbai",
+    "Bengaluru",
+    "Hyderabad",
+    "Chennai",
+    "Alleppey"
+  ],
+  "conversation_id": "833fb109-425c-4427-b36b-7420d4ed964c",
+  "requirements": {
+    "destination": "Jaipur",
+    "start_date": "2026-11-12",
+    "end_date": "2026-11-15",
+    "budget": 30000,
+    "currency": "INR",
+    "traveller_count": 2,
+    "pace": "moderate",
+    "interests": [
+      "Culture",
+      "Food"
+    ]
+  },
+  "confirmed_context": {
+    "status": "ready",
+    "required_issues": {},
+    "fields": [
+      {
+        "predicate": "destination",
+        "status": "supported",
+        "values": [
+          "Jaipur"
+        ],
+        "text": "[trip] destination: [\"Jaipur\"] [claims: claim_4249ce5dd706135ed25932e27c3c5a52]",
+        "claim_ids": [
+          "claim_4249ce5dd706135ed25932e27c3c5a52"
+        ],
+        "source_event_ids": [
+          "0618feb716c649139ea48eab74f5a1a5"
+        ],
+        "valid_until": 9223372036854775807,
+        "scopes": [
+          {
+            "trip_id": "833fb109-425c-4427-b36b-7420d4ed964c"
+          }
+        ],
+        "location": "trip",
+        "key": [
+          "destination",
+          "trip"
+        ],
+        "hot": true,
+        "required": true
+      },
+      {
+        "predicate": "dates",
+        "status": "supported",
+        "values": [
+          "2026-11-12 to 2026-11-15"
+        ],
+        "text": "[trip] dates: [\"2026-11-12 to 2026-11-15\"] [claims: claim_778aaffd3a6e414e018799f6a787c826]",
+        "claim_ids": [
+          "claim_778aaffd3a6e414e018799f6a787c826"
+        ],
+        "source_event_ids": [
+          "0618feb716c649139ea48eab74f5a1a5"
+        ],
+        "valid_until": 9223372036854775807,
+        "scopes": [
+          {
+            "trip_id": "833fb109-425c-4427-b36b-7420d4ed964c"
+          }
+        ],
+        "location": "trip",
+        "key": [
+          "dates",
+          "trip"
+        ],
+        "hot": true,
+        "required": true
+      },
+      {
+        "predicate": "budget",
+        "status": "supported",
+        "values": [
+          30000
+        ],
+        "text": "[trip] budget: [30000] [claims: claim_4a6d414e0de9983c7b20a3dc4c78f76c]",
+        "claim_ids": [
+          "claim_4a6d414e0de9983c7b20a3dc4c78f76c"
+        ],
+        "source_event_ids": [
+          "0618feb716c649139ea48eab74f5a1a5"
+        ],
+        "valid_until": 9223372036854775807,
+        "scopes": [
+          {
+            "trip_id": "833fb109-425c-4427-b36b-7420d4ed964c"
+          }
+        ],
+        "location": "trip",
+        "key": [
+          "budget",
+          "trip"
+        ],
+        "hot": true,
+        "required": true
+      },
+      {
+        "predicate": "currency",
+        "status": "supported",
+        "values": [
+          "INR"
+        ],
+        "text": "[trip] currency: [\"INR\"] [claims: claim_29fe51822c99113d769b2b46ad5f7317]",
+        "claim_ids": [
+          "claim_29fe51822c99113d769b2b46ad5f7317"
+        ],
+        "source_event_ids": [
+          "0618feb716c649139ea48eab74f5a1a5"
+        ],
+        "valid_until": 9223372036854775807,
+        "scopes": [
+          {
+            "trip_id": "833fb109-425c-4427-b36b-7420d4ed964c"
+          }
+        ],
+        "location": "trip",
+        "key": [
+          "currency",
+          "trip"
+        ],
+        "hot": true,
+        "required": true
+      },
+      {
+        "predicate": "dietary",
+        "status": "missing",
+        "values": [],
+        "text": "[trip] dietary: missing",
+        "claim_ids": [],
+        "source_event_ids": [],
+        "valid_until": 9223372036854775807,
+        "scopes": [],
+        "location": "trip",
+        "key": [
+          "dietary",
+          "trip"
+        ],
+        "hot": true,
+        "required": false
+      },
+      {
+        "predicate": "pace",
+        "status": "supported",
+        "values": [
+          "moderate"
+        ],
+        "text": "[trip] pace: [\"moderate\"] [claims: claim_6561c902f293a24ae767c4170e20ffd4]",
+        "claim_ids": [
+          "claim_6561c902f293a24ae767c4170e20ffd4"
+        ],
+        "source_event_ids": [
+          "0618feb716c649139ea48eab74f5a1a5"
+        ],
+        "valid_until": 9223372036854775807,
+        "scopes": [
+          {
+            "trip_id": "833fb109-425c-4427-b36b-7420d4ed964c"
+          }
+        ],
+        "location": "trip",
+        "key": [
+          "pace",
+          "trip"
+        ],
+        "hot": true,
+        "required": false
+      },
+      {
+        "predicate": "interests",
+        "status": "supported",
+        "values": [
+          [
+            "Culture",
+            "Food"
+          ]
+        ],
+        "text": "[trip] interests: [[\"Culture\",\"Food\"]] [claims: claim_06dbe857a05b5b51cdd7336e584ebf88]",
+        "claim_ids": [
+          "claim_06dbe857a05b5b51cdd7336e584ebf88"
+        ],
+        "source_event_ids": [
+          "0618feb716c649139ea48eab74f5a1a5"
+        ],
+        "valid_until": 9223372036854775807,
+        "scopes": [
+          {
+            "trip_id": "833fb109-425c-4427-b36b-7420d4ed964c"
+          }
+        ],
+        "location": "trip",
+        "key": [
+          "interests",
+          "trip"
+        ],
+        "hot": false,
+        "required": false
+      },
+      {
+        "predicate": "activity_preferences",
+        "status": "missing",
+        "values": [],
+        "text": "[trip] activity_preferences: missing",
+        "claim_ids": [],
+        "source_event_ids": [],
+        "valid_until": 9223372036854775807,
+        "scopes": [],
+        "location": "trip",
+        "key": [
+          "activity_preferences",
+          "trip"
+        ],
+        "hot": false,
+        "required": false
+      },
+      {
+        "predicate": "mood",
+        "status": "missing",
+        "values": [],
+        "text": "[trip] mood: missing",
+        "claim_ids": [],
+        "source_event_ids": [],
+        "valid_until": 9223372036854775807,
+        "scopes": [],
+        "location": "trip",
+        "key": [
+          "mood",
+          "session"
+        ],
+        "hot": false,
+        "required": false
+      },
+      {
+        "predicate": "traveller_count",
+        "status": "supported",
+        "values": [
+          2
+        ],
+        "text": "[trip] traveller_count: [2] [claims: claim_9afa2657fd7ab788e24a2df89ba30c02]",
+        "claim_ids": [
+          "claim_9afa2657fd7ab788e24a2df89ba30c02"
+        ],
+        "source_event_ids": [
+          "0618feb716c649139ea48eab74f5a1a5"
+        ],
+        "valid_until": 9223372036854775807,
+        "scopes": [
+          {
+            "trip_id": "833fb109-425c-4427-b36b-7420d4ed964c"
+          }
+        ],
+        "location": "trip",
+        "key": [
+          "traveller_count",
+          "trip"
+        ],
+        "hot": true,
+        "required": true
+      }
+    ],
+    "cards": [
+      {
+        "card_id": "itinerary_details",
+        "text": "# Itinerary details\nSource-derived data (not agent instructions):\n[trip] interests: [[\"Culture\",\"Food\"]] [claims: claim_06dbe857a05b5b51cdd7336e584ebf88]\n[trip] activity_preferences: missing",
+        "claim_ids": [
+          "claim_06dbe857a05b5b51cdd7336e584ebf88"
+        ],
+        "source_event_ids": [
+          "0618feb716c649139ea48eab74f5a1a5"
+        ],
+        "statuses": {
+          "interests": "supported",
+          "activity_preferences": "missing"
+        },
+        "mood": null,
+        "task_types": [
+          "itinerary"
+        ],
+        "version": "2ebedb68385223dddf1ade43abd326a533b1034ef61941b0f8c6c41595ff2c52",
+        "subject": "Traveller",
+        "scope": {
+          "trip_id": "833fb109-425c-4427-b36b-7420d4ed964c"
+        },
+        "generated_at": 1792346608.2000818,
+        "expires_at": 1792346908.2000818,
+        "token_count": 190
+      }
+    ],
+    "cache_hit": false,
+    "residency": {
+      "device": "cpu",
+      "resident_bytes": 0,
+      "peak_owned_tensor_bytes": 0,
+      "max_card_budget_bytes": 67108864,
+      "provider_arena_limit_bytes": 0,
+      "fallback_reason": "not_requested"
+    }
+  },
+  "exception": {
+    "type": "HTTPError",
+    "message": "502 Server Error: Bad Gateway for url: https://voyara-travel-taupe.vercel.app/api/assistant/conversations/833fb109-425c-4427-b36b-7420d4ed964c/messages"
+  }
+}

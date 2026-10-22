@@ -1,0 +1,1507 @@
+{
+  "generated_at": "2026-10-22T04:02:05.107927+00:00",
+  "schema": "presentation-memory-source-retrieval-v1",
+  "scope": "Fresh CPU source retrieval on real local datasets; first 20 LoCoMo, 20 project DMR/MSC and 5 LongMemEval questions in release order, retaining complete selected histories. Not official full-dataset answer accuracy. No TinyFish requests or improvement attribution. Historical query_time is not applied: current source retrieval only.",
+  "selection": {
+    "locomo": 20,
+    "dmr": 20,
+    "longmemeval": 5
+  },
+  "k": 5,
+  "baseline": "BM25 lexical retrieval (k1=1.5, b=0.75), identical documents and scope",
+  "engine": "Current ApplicationMemoryEngine / Iron Web 2 / FalkorDB / cached CPU embeddings / no reranker",
+  "datasets": [
+    {
+      "benchmark": "locomo",
+      "questions": 20,
+      "documents": 19,
+      "input_sha256": "a6e292465fc11839b9f6bc6d4eae6912b80736432569400addb9e84eef54bf9b",
+      "ingestion_ms": 10821.81,
+      "rows": [
+        {
+          "example_id": "locomo:conv-26:qa:0",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_1"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_1",
+            "locomo:conv-26:session_10",
+            "locomo:conv-26:session_13",
+            "locomo:conv-26:session_12",
+            "locomo:conv-26:session_5"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_9",
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_11",
+            "locomo:conv-26:session_7",
+            "locomo:conv-26:session_14"
+          ],
+          "lexical": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 0.3,
+          "native_ms": 111.058
+        },
+        {
+          "example_id": "locomo:conv-26:qa:1",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_1"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_1",
+            "locomo:conv-26:session_13",
+            "locomo:conv-26:session_14",
+            "locomo:conv-26:session_17",
+            "locomo:conv-26:session_18"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_14",
+            "locomo:conv-26:session_12",
+            "locomo:conv-26:session_17",
+            "locomo:conv-26:session_11",
+            "locomo:conv-26:session_8"
+          ],
+          "lexical": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 0.35,
+          "native_ms": 105.565
+        },
+        {
+          "example_id": "locomo:conv-26:qa:2",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_1"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_7",
+            "locomo:conv-26:session_10",
+            "locomo:conv-26:session_13",
+            "locomo:conv-26:session_18",
+            "locomo:conv-26:session_4"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_17",
+            "locomo:conv-26:session_5",
+            "locomo:conv-26:session_7",
+            "locomo:conv-26:session_14"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 0.245,
+          "native_ms": 112.026
+        },
+        {
+          "example_id": "locomo:conv-26:qa:3",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_2"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_1",
+            "locomo:conv-26:session_17",
+            "locomo:conv-26:session_8",
+            "locomo:conv-26:session_14",
+            "locomo:conv-26:session_13"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_17",
+            "locomo:conv-26:session_7",
+            "locomo:conv-26:session_16",
+            "locomo:conv-26:session_6"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 0.24,
+          "native_ms": 100.63
+        },
+        {
+          "example_id": "locomo:conv-26:qa:4",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_1"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_11",
+            "locomo:conv-26:session_13",
+            "locomo:conv-26:session_16",
+            "locomo:conv-26:session_3",
+            "locomo:conv-26:session_1"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_11",
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_17",
+            "locomo:conv-26:session_14",
+            "locomo:conv-26:session_16"
+          ],
+          "lexical": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 0.2
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 0.171,
+          "native_ms": 91.88
+        },
+        {
+          "example_id": "locomo:conv-26:qa:5",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_2"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_2",
+            "locomo:conv-26:session_13",
+            "locomo:conv-26:session_18",
+            "locomo:conv-26:session_14",
+            "locomo:conv-26:session_15"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_2",
+            "locomo:conv-26:session_7",
+            "locomo:conv-26:session_12",
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_8"
+          ],
+          "lexical": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "native": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "lexical_ms": 0.181,
+          "native_ms": 94.307
+        },
+        {
+          "example_id": "locomo:conv-26:qa:6",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_2"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_14",
+            "locomo:conv-26:session_18",
+            "locomo:conv-26:session_9",
+            "locomo:conv-26:session_6",
+            "locomo:conv-26:session_4"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_18",
+            "locomo:conv-26:session_12",
+            "locomo:conv-26:session_10",
+            "locomo:conv-26:session_6",
+            "locomo:conv-26:session_2"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 0.2
+          },
+          "lexical_ms": 0.207,
+          "native_ms": 96.199
+        },
+        {
+          "example_id": "locomo:conv-26:qa:7",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_2",
+            "locomo:conv-26:session_3"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_1",
+            "locomo:conv-26:session_11",
+            "locomo:conv-26:session_14",
+            "locomo:conv-26:session_12",
+            "locomo:conv-26:session_19"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_16",
+            "locomo:conv-26:session_6",
+            "locomo:conv-26:session_8",
+            "locomo:conv-26:session_17"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 0.178,
+          "native_ms": 93.147
+        },
+        {
+          "example_id": "locomo:conv-26:qa:8",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_3"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_3",
+            "locomo:conv-26:session_18",
+            "locomo:conv-26:session_13",
+            "locomo:conv-26:session_5",
+            "locomo:conv-26:session_2"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_17",
+            "locomo:conv-26:session_3",
+            "locomo:conv-26:session_7",
+            "locomo:conv-26:session_5"
+          ],
+          "lexical": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "native": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 0.3333333333333333
+          },
+          "lexical_ms": 0.204,
+          "native_ms": 93.96
+        },
+        {
+          "example_id": "locomo:conv-26:qa:9",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_3"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_10",
+            "locomo:conv-26:session_2",
+            "locomo:conv-26:session_7",
+            "locomo:conv-26:session_3",
+            "locomo:conv-26:session_16"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_6",
+            "locomo:conv-26:session_8",
+            "locomo:conv-26:session_3",
+            "locomo:conv-26:session_7"
+          ],
+          "lexical": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 0.25
+          },
+          "native": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 0.25
+          },
+          "lexical_ms": 0.263,
+          "native_ms": 94.932
+        },
+        {
+          "example_id": "locomo:conv-26:qa:10",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_3"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_10",
+            "locomo:conv-26:session_1",
+            "locomo:conv-26:session_6",
+            "locomo:conv-26:session_16",
+            "locomo:conv-26:session_7"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_6",
+            "locomo:conv-26:session_8",
+            "locomo:conv-26:session_16",
+            "locomo:conv-26:session_3"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 0.2
+          },
+          "lexical_ms": 0.251,
+          "native_ms": 96.166
+        },
+        {
+          "example_id": "locomo:conv-26:qa:11",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_3",
+            "locomo:conv-26:session_4"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_3",
+            "locomo:conv-26:session_8",
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_4",
+            "locomo:conv-26:session_16"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_17",
+            "locomo:conv-26:session_16",
+            "locomo:conv-26:session_3",
+            "locomo:conv-26:session_7"
+          ],
+          "lexical": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "native": {
+            "recall_at_5": 0.5,
+            "hit_at_5": 1.0,
+            "mrr": 0.25
+          },
+          "lexical_ms": 0.202,
+          "native_ms": 107.44
+        },
+        {
+          "example_id": "locomo:conv-26:qa:12",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_4"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_4",
+            "locomo:conv-26:session_11",
+            "locomo:conv-26:session_16",
+            "locomo:conv-26:session_3",
+            "locomo:conv-26:session_15"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_17",
+            "locomo:conv-26:session_16",
+            "locomo:conv-26:session_6",
+            "locomo:conv-26:session_7"
+          ],
+          "lexical": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 0.206,
+          "native_ms": 94.299
+        },
+        {
+          "example_id": "locomo:conv-26:qa:13",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_1",
+            "locomo:conv-26:session_4"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_7",
+            "locomo:conv-26:session_4",
+            "locomo:conv-26:session_1",
+            "locomo:conv-26:session_16",
+            "locomo:conv-26:session_6"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_7",
+            "locomo:conv-26:session_17",
+            "locomo:conv-26:session_5",
+            "locomo:conv-26:session_16"
+          ],
+          "lexical": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 0.5
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 0.225,
+          "native_ms": 98.561
+        },
+        {
+          "example_id": "locomo:conv-26:qa:14",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_3",
+            "locomo:conv-26:session_4"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_4",
+            "locomo:conv-26:session_7",
+            "locomo:conv-26:session_17",
+            "locomo:conv-26:session_5",
+            "locomo:conv-26:session_10"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_7",
+            "locomo:conv-26:session_1",
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_6",
+            "locomo:conv-26:session_17"
+          ],
+          "lexical": {
+            "recall_at_5": 0.5,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 0.444,
+          "native_ms": 110.783
+        },
+        {
+          "example_id": "locomo:conv-26:qa:15",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_1",
+            "locomo:conv-26:session_5",
+            "locomo:conv-26:session_9"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_13",
+            "locomo:conv-26:session_5",
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_11",
+            "locomo:conv-26:session_17"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_12",
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_14",
+            "locomo:conv-26:session_8",
+            "locomo:conv-26:session_10"
+          ],
+          "lexical": {
+            "recall_at_5": 0.3333333333333333,
+            "hit_at_5": 1.0,
+            "mrr": 0.5
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 0.172,
+          "native_ms": 125.632
+        },
+        {
+          "example_id": "locomo:conv-26:qa:16",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_5"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_5",
+            "locomo:conv-26:session_16",
+            "locomo:conv-26:session_14",
+            "locomo:conv-26:session_12",
+            "locomo:conv-26:session_8"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_5",
+            "locomo:conv-26:session_17",
+            "locomo:conv-26:session_14",
+            "locomo:conv-26:session_12",
+            "locomo:conv-26:session_16"
+          ],
+          "lexical": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "native": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "lexical_ms": 0.296,
+          "native_ms": 114.214
+        },
+        {
+          "example_id": "locomo:conv-26:qa:17",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_5"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_5",
+            "locomo:conv-26:session_9",
+            "locomo:conv-26:session_14",
+            "locomo:conv-26:session_7",
+            "locomo:conv-26:session_3"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_5",
+            "locomo:conv-26:session_7",
+            "locomo:conv-26:session_9",
+            "locomo:conv-26:session_6",
+            "locomo:conv-26:session_15"
+          ],
+          "lexical": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "native": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "lexical_ms": 0.293,
+          "native_ms": 96.146
+        },
+        {
+          "example_id": "locomo:conv-26:qa:18",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_4",
+            "locomo:conv-26:session_6",
+            "locomo:conv-26:session_8"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_5",
+            "locomo:conv-26:session_7",
+            "locomo:conv-26:session_14",
+            "locomo:conv-26:session_10",
+            "locomo:conv-26:session_6"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_12",
+            "locomo:conv-26:session_6",
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_18",
+            "locomo:conv-26:session_8"
+          ],
+          "lexical": {
+            "recall_at_5": 0.3333333333333333,
+            "hit_at_5": 1.0,
+            "mrr": 0.2
+          },
+          "native": {
+            "recall_at_5": 0.6666666666666666,
+            "hit_at_5": 1.0,
+            "mrr": 0.5
+          },
+          "lexical_ms": 0.132,
+          "native_ms": 95.272
+        },
+        {
+          "example_id": "locomo:conv-26:qa:19",
+          "ground_truth_ids": [
+            "locomo:conv-26:session_4",
+            "locomo:conv-26:session_6"
+          ],
+          "lexical_ids": [
+            "locomo:conv-26:session_10",
+            "locomo:conv-26:session_8",
+            "locomo:conv-26:session_15",
+            "locomo:conv-26:session_17",
+            "locomo:conv-26:session_18"
+          ],
+          "native_ids": [
+            "locomo:conv-26:session_6",
+            "locomo:conv-26:session_18",
+            "locomo:conv-26:session_8",
+            "locomo:conv-26:session_2",
+            "locomo:conv-26:session_15"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.5,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "lexical_ms": 0.269,
+          "native_ms": 93.996
+        }
+      ],
+      "lexical": {
+        "recall_at_5": 0.6083333333333333,
+        "hit_at_5": 0.7,
+        "mrr": 0.5325,
+        "median_ms": 0.23249999999999998
+      },
+      "native": {
+        "recall_at_5": 0.43333333333333335,
+        "hit_at_5": 0.5,
+        "mrr": 0.2866666666666667,
+        "median_ms": 96.1825
+      }
+    },
+    {
+      "benchmark": "dmr",
+      "questions": 20,
+      "documents": 100,
+      "input_sha256": "33a55cc7f763eaa17a7ba5cada6345d2f28b6fbb99ed643f296ede28c768e7ba",
+      "ingestion_ms": 20218.38,
+      "rows": [
+        {
+          "example_id": "dmr:0000:qa",
+          "ground_truth_ids": [
+            "dmr:0000:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0013:session:2",
+            "dmr:0005:session:2",
+            "dmr:0010:session:1",
+            "dmr:0008:session:3",
+            "dmr:0004:session:1"
+          ],
+          "native_ids": [
+            "dmr:0010:session:4",
+            "dmr:0010:session:1",
+            "dmr:0008:session:4",
+            "dmr:0012:session:3",
+            "dmr:0005:session:3"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 2.287,
+          "native_ms": 111.996
+        },
+        {
+          "example_id": "dmr:0001:qa",
+          "ground_truth_ids": [
+            "dmr:0001:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0001:session:0",
+            "dmr:0009:session:2",
+            "dmr:0018:session:1",
+            "dmr:0005:session:2",
+            "dmr:0017:session:3"
+          ],
+          "native_ids": [
+            "dmr:0019:session:4",
+            "dmr:0001:session:4",
+            "dmr:0001:session:1",
+            "dmr:0005:session:3",
+            "dmr:0010:session:4"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 0.5
+          },
+          "lexical_ms": 2.364,
+          "native_ms": 107.415
+        },
+        {
+          "example_id": "dmr:0002:qa",
+          "ground_truth_ids": [
+            "dmr:0002:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0017:session:3",
+            "dmr:0018:session:1",
+            "dmr:0005:session:2",
+            "dmr:0002:session:0",
+            "dmr:0002:session:1"
+          ],
+          "native_ids": [
+            "dmr:0019:session:4",
+            "dmr:0012:session:3",
+            "dmr:0004:session:3",
+            "dmr:0010:session:4",
+            "dmr:0001:session:4"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 1.69,
+          "native_ms": 119.873
+        },
+        {
+          "example_id": "dmr:0003:qa",
+          "ground_truth_ids": [
+            "dmr:0003:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0005:session:2",
+            "dmr:0003:session:1",
+            "dmr:0012:session:0",
+            "dmr:0017:session:3",
+            "dmr:0016:session:0"
+          ],
+          "native_ids": [
+            "dmr:0003:session:1",
+            "dmr:0019:session:4",
+            "dmr:0004:session:3",
+            "dmr:0001:session:4",
+            "dmr:0016:session:0"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 1.794,
+          "native_ms": 123.311
+        },
+        {
+          "example_id": "dmr:0004:qa",
+          "ground_truth_ids": [
+            "dmr:0004:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0004:session:0",
+            "dmr:0018:session:0",
+            "dmr:0009:session:1",
+            "dmr:0013:session:2",
+            "dmr:0000:session:3"
+          ],
+          "native_ids": [
+            "dmr:0012:session:3",
+            "dmr:0018:session:4",
+            "dmr:0004:session:3",
+            "dmr:0002:session:1",
+            "dmr:0013:session:4"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 2.193,
+          "native_ms": 117.788
+        },
+        {
+          "example_id": "dmr:0005:qa",
+          "ground_truth_ids": [
+            "dmr:0005:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0018:session:2",
+            "dmr:0013:session:2",
+            "dmr:0017:session:3",
+            "dmr:0017:session:1",
+            "dmr:0009:session:3"
+          ],
+          "native_ids": [
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0000:session:1",
+            "dmr:0013:session:1",
+            "dmr:0018:session:4"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "lexical_ms": 2.959,
+          "native_ms": 112.178
+        },
+        {
+          "example_id": "dmr:0006:qa",
+          "ground_truth_ids": [
+            "dmr:0006:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0017:session:3",
+            "dmr:0002:session:3",
+            "dmr:0009:session:2",
+            "dmr:0018:session:3",
+            "dmr:0004:session:3"
+          ],
+          "native_ids": [
+            "dmr:0002:session:1",
+            "dmr:0006:session:4",
+            "dmr:0002:session:3",
+            "dmr:0006:session:2",
+            "dmr:0002:session:4"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 0.5
+          },
+          "lexical_ms": 1.592,
+          "native_ms": 102.086
+        },
+        {
+          "example_id": "dmr:0007:qa",
+          "ground_truth_ids": [
+            "dmr:0007:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0005:session:3",
+            "dmr:0013:session:2",
+            "dmr:0005:session:2",
+            "dmr:0017:session:3",
+            "dmr:0013:session:1"
+          ],
+          "native_ids": [
+            "dmr:0005:session:4",
+            "dmr:0007:session:3",
+            "dmr:0000:session:1",
+            "dmr:0013:session:1",
+            "dmr:0017:session:4"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 1.327,
+          "native_ms": 105.985
+        },
+        {
+          "example_id": "dmr:0008:qa",
+          "ground_truth_ids": [
+            "dmr:0008:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0010:session:0",
+            "dmr:0010:session:3",
+            "dmr:0008:session:0",
+            "dmr:0008:session:1",
+            "dmr:0018:session:1"
+          ],
+          "native_ids": [
+            "dmr:0010:session:4",
+            "dmr:0008:session:4",
+            "dmr:0008:session:0",
+            "dmr:0010:session:1",
+            "dmr:0008:session:2"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 0.5
+          },
+          "lexical_ms": 1.969,
+          "native_ms": 107.861
+        },
+        {
+          "example_id": "dmr:0009:qa",
+          "ground_truth_ids": [
+            "dmr:0009:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0014:session:4",
+            "dmr:0008:session:3",
+            "dmr:0014:session:3",
+            "dmr:0009:session:0",
+            "dmr:0005:session:2"
+          ],
+          "native_ids": [
+            "dmr:0001:session:4",
+            "dmr:0003:session:1",
+            "dmr:0019:session:4",
+            "dmr:0010:session:4",
+            "dmr:0015:session:1"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 2.537,
+          "native_ms": 113.706
+        },
+        {
+          "example_id": "dmr:0010:qa",
+          "ground_truth_ids": [
+            "dmr:0010:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0005:session:2",
+            "dmr:0018:session:1",
+            "dmr:0017:session:3",
+            "dmr:0003:session:1",
+            "dmr:0002:session:3"
+          ],
+          "native_ids": [
+            "dmr:0019:session:4",
+            "dmr:0001:session:4",
+            "dmr:0004:session:3",
+            "dmr:0012:session:3",
+            "dmr:0010:session:4"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 0.2
+          },
+          "lexical_ms": 2.193,
+          "native_ms": 107.78
+        },
+        {
+          "example_id": "dmr:0011:qa",
+          "ground_truth_ids": [
+            "dmr:0011:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0011:session:0",
+            "dmr:0017:session:3",
+            "dmr:0005:session:4",
+            "dmr:0018:session:3",
+            "dmr:0013:session:2"
+          ],
+          "native_ids": [
+            "dmr:0011:session:0",
+            "dmr:0002:session:1",
+            "dmr:0012:session:3",
+            "dmr:0010:session:1",
+            "dmr:0005:session:3"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 1.795,
+          "native_ms": 105.589
+        },
+        {
+          "example_id": "dmr:0012:qa",
+          "ground_truth_ids": [
+            "dmr:0012:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0012:session:0",
+            "dmr:0015:session:0",
+            "dmr:0013:session:2",
+            "dmr:0002:session:2",
+            "dmr:0001:session:2"
+          ],
+          "native_ids": [
+            "dmr:0010:session:4",
+            "dmr:0004:session:3",
+            "dmr:0010:session:1",
+            "dmr:0008:session:4",
+            "dmr:0005:session:3"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 2.268,
+          "native_ms": 114.473
+        },
+        {
+          "example_id": "dmr:0013:qa",
+          "ground_truth_ids": [
+            "dmr:0013:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0011:session:0",
+            "dmr:0018:session:1",
+            "dmr:0012:session:0",
+            "dmr:0013:session:2",
+            "dmr:0007:session:1"
+          ],
+          "native_ids": [
+            "dmr:0018:session:1",
+            "dmr:0003:session:1",
+            "dmr:0014:session:0",
+            "dmr:0010:session:4",
+            "dmr:0012:session:3"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 1.627,
+          "native_ms": 96.482
+        },
+        {
+          "example_id": "dmr:0014:qa",
+          "ground_truth_ids": [
+            "dmr:0014:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0014:session:1",
+            "dmr:0005:session:2",
+            "dmr:0014:session:0",
+            "dmr:0004:session:1",
+            "dmr:0013:session:2"
+          ],
+          "native_ids": [
+            "dmr:0014:session:0",
+            "dmr:0005:session:2",
+            "dmr:0012:session:3",
+            "dmr:0001:session:4",
+            "dmr:0019:session:4"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 1.528,
+          "native_ms": 106.328
+        },
+        {
+          "example_id": "dmr:0015:qa",
+          "ground_truth_ids": [
+            "dmr:0015:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0015:session:0",
+            "dmr:0014:session:1",
+            "dmr:0018:session:1",
+            "dmr:0017:session:3",
+            "dmr:0003:session:1"
+          ],
+          "native_ids": [
+            "dmr:0015:session:0",
+            "dmr:0002:session:1",
+            "dmr:0005:session:3",
+            "dmr:0015:session:3",
+            "dmr:0019:session:4"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 2.015,
+          "native_ms": 102.549
+        },
+        {
+          "example_id": "dmr:0016:qa",
+          "ground_truth_ids": [
+            "dmr:0016:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0016:session:0",
+            "dmr:0018:session:1",
+            "dmr:0005:session:2",
+            "dmr:0005:session:3",
+            "dmr:0014:session:2"
+          ],
+          "native_ids": [
+            "dmr:0010:session:1",
+            "dmr:0010:session:4",
+            "dmr:0012:session:3",
+            "dmr:0018:session:4",
+            "dmr:0002:session:1"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 1.999,
+          "native_ms": 123.217
+        },
+        {
+          "example_id": "dmr:0017:qa",
+          "ground_truth_ids": [
+            "dmr:0017:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0018:session:2",
+            "dmr:0017:session:1",
+            "dmr:0005:session:4",
+            "dmr:0018:session:0",
+            "dmr:0017:session:3"
+          ],
+          "native_ids": [
+            "dmr:0005:session:4",
+            "dmr:0000:session:1",
+            "dmr:0013:session:1",
+            "dmr:0018:session:0",
+            "dmr:0017:session:0"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 1.89,
+          "native_ms": 113.76
+        },
+        {
+          "example_id": "dmr:0018:qa",
+          "ground_truth_ids": [
+            "dmr:0018:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0018:session:0",
+            "dmr:0001:session:2",
+            "dmr:0009:session:2",
+            "dmr:0018:session:2",
+            "dmr:0005:session:2"
+          ],
+          "native_ids": [
+            "dmr:0018:session:4",
+            "dmr:0002:session:1",
+            "dmr:0012:session:3",
+            "dmr:0017:session:4",
+            "dmr:0001:session:2"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "lexical_ms": 2.926,
+          "native_ms": 125.091
+        },
+        {
+          "example_id": "dmr:0019:qa",
+          "ground_truth_ids": [
+            "dmr:0019:session:4"
+          ],
+          "lexical_ids": [
+            "dmr:0019:session:0",
+            "dmr:0003:session:3",
+            "dmr:0011:session:0",
+            "dmr:0013:session:2",
+            "dmr:0005:session:2"
+          ],
+          "native_ids": [
+            "dmr:0012:session:3",
+            "dmr:0010:session:1",
+            "dmr:0005:session:3",
+            "dmr:0010:session:0",
+            "dmr:0002:session:1"
+          ],
+          "lexical": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 2.89,
+          "native_ms": 114.11
+        }
+      ],
+      "lexical": {
+        "recall_at_5": 0.0,
+        "hit_at_5": 0.0,
+        "mrr": 0.0,
+        "median_ms": 2.007
+      },
+      "native": {
+        "recall_at_5": 0.3,
+        "hit_at_5": 0.3,
+        "mrr": 0.185,
+        "median_ms": 112.08699999999999
+      }
+    },
+    {
+      "benchmark": "longmemeval",
+      "questions": 5,
+      "documents": 253,
+      "input_sha256": "c9736452816510162cabcb63f811dfda97124d3d6ff8152f18e6a20eb1c8f308",
+      "ingestion_ms": 304338.05,
+      "rows": [
+        {
+          "example_id": "e47becba",
+          "ground_truth_ids": [
+            "longmemeval:answer_280352e9"
+          ],
+          "lexical_ids": [
+            "longmemeval:02bd2b90_3",
+            "longmemeval:answer_280352e9",
+            "longmemeval:f6859b48_2",
+            "longmemeval:sharegpt_Cr2tc1f_0",
+            "longmemeval:ultrachat_214101"
+          ],
+          "native_ids": [],
+          "lexical": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 0.5
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 0.43,
+          "native_ms": 100.468
+        },
+        {
+          "example_id": "118b2229",
+          "ground_truth_ids": [
+            "longmemeval:answer_40a90d51"
+          ],
+          "lexical_ids": [
+            "longmemeval:answer_40a90d51",
+            "longmemeval:db73b7e4_4",
+            "longmemeval:afe04238_1",
+            "longmemeval:ultrachat_392094",
+            "longmemeval:5dce60dd"
+          ],
+          "native_ids": [
+            "longmemeval:0afa904a"
+          ],
+          "lexical": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "native": {
+            "recall_at_5": 0.0,
+            "hit_at_5": 0.0,
+            "mrr": 0.0
+          },
+          "lexical_ms": 0.513,
+          "native_ms": 104.041
+        },
+        {
+          "example_id": "51a45a95",
+          "ground_truth_ids": [
+            "longmemeval:answer_d61669c7"
+          ],
+          "lexical_ids": [
+            "longmemeval:answer_d61669c7",
+            "longmemeval:98c198fb",
+            "longmemeval:217debf7",
+            "longmemeval:5c44d9fe_1",
+            "longmemeval:07ba9acd_2"
+          ],
+          "native_ids": [
+            "longmemeval:answer_d61669c7"
+          ],
+          "lexical": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "native": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "lexical_ms": 0.572,
+          "native_ms": 97.651
+        },
+        {
+          "example_id": "58bf7951",
+          "ground_truth_ids": [
+            "longmemeval:answer_355c48bb"
+          ],
+          "lexical_ids": [
+            "longmemeval:answer_355c48bb",
+            "longmemeval:ultrachat_268434",
+            "longmemeval:sharegpt_M84blrA_53",
+            "longmemeval:ultrachat_304942",
+            "longmemeval:ultrachat_365156"
+          ],
+          "native_ids": [
+            "longmemeval:answer_355c48bb"
+          ],
+          "lexical": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "native": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "lexical_ms": 0.687,
+          "native_ms": 92.174
+        },
+        {
+          "example_id": "1e043500",
+          "ground_truth_ids": [
+            "longmemeval:answer_3e012175"
+          ],
+          "lexical_ids": [
+            "longmemeval:answer_3e012175",
+            "longmemeval:01bd9def",
+            "longmemeval:7b1d1f43_1",
+            "longmemeval:ultrachat_266656",
+            "longmemeval:8020d945_2"
+          ],
+          "native_ids": [
+            "longmemeval:answer_3e012175"
+          ],
+          "lexical": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "native": {
+            "recall_at_5": 1.0,
+            "hit_at_5": 1.0,
+            "mrr": 1.0
+          },
+          "lexical_ms": 0.874,
+          "native_ms": 103.022
+        }
+      ],
+      "lexical": {
+        "recall_at_5": 1.0,
+        "hit_at_5": 1.0,
+        "mrr": 0.9,
+        "median_ms": 0.572
+      },
+      "native": {
+        "recall_at_5": 0.6,
+        "hit_at_5": 0.6,
+        "mrr": 0.6,
+        "median_ms": 100.468
+      }
+    }
+  ],
+  "reproduction": ".venv/Scripts/python.exe scripts/measure_memory_presentation.py",
+  "status": "passed"
+}

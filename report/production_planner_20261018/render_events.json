@@ -1,0 +1,22 @@
+[
+  {
+    "id": "evt-dbagiltckfvc73e8v7a0",
+    "timestamp": "2026-10-18T18:00:55.480078Z",
+    "type": "server_available",
+    "details": {}
+  },
+  {
+    "id": "evt-dbagicp7lnhs738hj080",
+    "timestamp": "2026-10-18T18:00:19.719694Z",
+    "type": "server_failed",
+    "details": {
+      "instanceID": "srv-dbaann2jnfac73f0qchg-fgrbf",
+      "reason": {
+        "evicted": false,
+        "oomKilled": {
+          "memoryLimit": "512Mi"
+        }
+      }
+    }
+  }
+]

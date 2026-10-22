@@ -201,13 +201,22 @@ for (const name of ["system-explained.html", "memory-system-explained.html"]) {
     const section = page.locator("#results");
     await expect(
       section.getByRole("heading", {
-        name: "What we tested. What improved.",
+        name: "Can memory find the evidence?",
       }),
     ).toBeVisible();
-    await expect(section.locator(".metric")).toHaveCount(6);
-    await expect(section.locator(".metric strong").nth(2)).toHaveText("90%");
-    await expect(section.getByText("Controlled ablation", {exact:true})).toBeVisible();
-    await expect(section.getByText("Live provider check", {exact:true})).toBeVisible();
+    await expect(section.locator(".bench-row")).toHaveCount(3);
+    const measurements = JSON.parse(await readFile(resolve(root, "report/tinyfish_memory/memory-benchmarks.json"), "utf8"));
+    for (const [index, dataset] of measurements.datasets.entries()) {
+      await expect(section.locator(".bench-row").nth(index).locator(".bench-value").first())
+        .toContainText(`${(100 * dataset.native.recall_at_5).toFixed(1)}%`);
+    }
+    await expect(section.getByText(/No TinyFish calls in this test/)).toBeVisible();
+    await page.getByLabel("Go to slide").selectOption("tinyfish");
+    await expect(page.locator("#tinyfish .big")).toHaveText("90%");
+    await expect(page.locator("#tinyfish .metric")).toHaveCount(4);
+    await expect(page.locator("#tinyfish").getByText("Controlled test · mock transport", {exact:true})).toBeVisible();
+    await expect(page.locator("#tinyfish").getByText("Real TinyFish call", {exact:true})).toBeVisible();
+    await page.getByLabel("Go to slide").selectOption("results");
     await expect(page.locator("#counter")).toHaveText("5 / 6");
     await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "5");
     await page.screenshot({path: resolve(root, `report/tinyfish_memory/${name.replace(".html", "")}-desktop.png`)});

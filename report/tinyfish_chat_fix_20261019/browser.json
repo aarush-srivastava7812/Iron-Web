@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "Exact Agra message returns missing-detail questions and clears loading",
+    "Follow-up saves exact dates, duration, party and budget for review",
+    "Stalled request times out, preserves input and restores controls"
+  ],
+  "page_errors": [],
+  "response_seconds": 0.266,
+  "reply": "Let's build your Agra trip. What is your departure date (YYYY-MM-DD), and how many days would you like to stay? Please also give the number of travelers and your total group budget in INR. This destination uses web research; I won't substitute another city's demo listings.",
+  "status": "passed"
+}
