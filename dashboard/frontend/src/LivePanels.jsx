@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import {
@@ -13,9 +13,16 @@ import {
   eventLabel,
 } from "./liveData.js";
 import { TierMeter } from "./ResourceCharts.jsx";
+import MemoryArchitectureVisuals from "./MemoryArchitectureVisuals.jsx";
 export { Resources, Dock } from "./LiveResources.jsx";
-export function Badge({ children = "Measured", kind = "measured" }) {
-  return <span className={`source-badge ${kind}`}>{children}</span>;
+export const DataOriginContext = createContext("live");
+export function Badge({ children, kind = "measured" }) {
+  const recorded = useContext(DataOriginContext) === "history";
+  return (
+    <span className={`source-badge ${recorded ? "recorded" : kind}`}>
+      {children ?? (recorded ? "Example" : "Measured")}
+    </span>
+  );
 }
 export function ViewHeader({ kicker, title, subtitle, children }) {
   return (
@@ -220,9 +227,9 @@ export function Inspector({
                   </details>
                 ))}
                 <p className="truth-note">
-                  The graph and stored value are the latest live snapshot. Event
-                  replay uses captured contexts; missing historical before
-                  values are never reconstructed.
+                  {data.replay
+                    ? "The graph and stored values belong to the saved project example. Replayed reads use reconstructed example contexts."
+                    : "The graph and stored value are the latest live snapshot. Event replay uses captured contexts; missing historical before values are never reconstructed."}
                 </p>
               </>
             )}
@@ -537,6 +544,7 @@ export function Architecture({ data, graph, onTier, selectedTier }) {
           retention scores and external-fact freshness remain separate.
         </p>
       </section>
+      <MemoryArchitectureVisuals />
       {Object.entries(COLORS).map(([t, color], i) => {
         const contexts = graph.contexts,
           policy = data.tiers.policy;
@@ -619,6 +627,11 @@ export function Dialog({ name, data, onClose }) {
   async function loadVector() {
     setVectorLoading(true);
     setVectorError("");
+    if (data.replay) {
+      setVector(data.vectors);
+      setVectorLoading(false);
+      return;
+    }
     try {
       const base = (import.meta.env.VITE_DASHBOARD_API_URL || "").replace(
         /\/$/,
@@ -650,7 +663,11 @@ export function Dialog({ name, data, onClose }) {
     >
       <header>
         <h2>
-          {name === "help" ? "Dashboard shortcuts" : "Live memory connection"}
+          {name === "help"
+            ? "Dashboard shortcuts"
+            : data.replay
+              ? "Saved replay source"
+              : "Live memory connection"}
         </h2>
         <button aria-label="Close dialog" onClick={onClose}>
           <Cross2Icon />
@@ -673,8 +690,9 @@ export function Dialog({ name, data, onClose }) {
       ) : (
         <div>
           <p>
-            Read-only relay → website memory owner → Iron Web 2 in FalkorDB and
-            SQLite journal.
+            {data.replay
+              ? data.replay.description
+              : "Read-only relay → website memory owner → Iron Web 2 in FalkorDB and SQLite journal."}
           </p>
           <p className="mono full-id">
             Scope: {data.scope} · trip:{" "}

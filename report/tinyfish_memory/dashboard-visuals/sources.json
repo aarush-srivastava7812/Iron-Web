@@ -1,0 +1,11 @@
+{
+  "source": "http://127.0.0.1:5174/architecture?mode=history",
+  "mode": "saved project replay",
+  "kind": "Architecture illustrations, not measured embeddings or live records",
+  "captures": [
+    "vector.jpg",
+    "graph.jpg",
+    "hybrid.jpg"
+  ],
+  "browser_errors": []
+}

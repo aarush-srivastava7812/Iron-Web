@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "trip_id": "2d091755-5a9e-4808-a88e-89b27d11a301",
+  "turns": [
+    {
+      "message": "I want to go ot the place where I can feel relax, for a solo trip with 50k",
+      "reply": "A solo trip to unwind is a wonderful idea. With your ₹50,000 budget, all three options can work — the final cost will depend on your travel dates and departure city, but each destination has sample‑guide prices on the cards to give you a sense of what to expect.\n\n**Munnar** feels like a quiet tea‑garden retreat. Misty trails, small farms and unhurried mornings make it ideal if you want to slow down surrounded by hills and greenery. The best season is September to March.\n\n**Rishikesh** offers river paths, forest air and quiet mornings beside the Ganga. It’s a soft landing for yoga, day hikes and simply time outdoors. Best visited September through November.\n\n**Goa** brings salt air, later mornings and old Portuguese lanes. You can find a quiet cove, a family‑run kitchen or a village that still moves at its own pace. The peak season is November to February.\n\nWhich of these feels like the kind of escape you’re after?",
+      "seconds": 3.61,
+      "conversation": {
+        "agent_id": "conversation_agent",
+        "mode": "nvidia",
+        "model_calls": 1,
+        "model": "nvidia/nemotron-3.5-lightning-30b-a3b"
+      }
+    },
+    {
+      "message": "suggest some places",
+      "reply": "Munnar feels like a quiet tea‑garden retreat — misty trails, small farms and unhurried mornings make it ideal if you want to slow down surrounded by hills and greenery. The best season is September to March, and the card notes tea gardens folding into the hills as the core experience. Rishikesh offers river paths, forest air and quiet mornings beside the Ganga, great for yoga, day hikes and simply time outdoors (best visited September through November). Goa brings salt air, later mornings and old Portuguese lanes; you can find a quiet cove, a family‑run kitchen or a village that still moves at its own pace (peak season November to February). All three stay within the spirit of your ₹50,000 solo budget, but the final cost will depend on your dates and departure city. My first pick would be Munnar — does that sound like the kind of escape you're after?",
+      "seconds": 2.431,
+      "conversation": {
+        "agent_id": "conversation_agent",
+        "mode": "nvidia",
+        "model_calls": 1,
+        "model": "nvidia/nemotron-3.5-lightning-30b-a3b"
+      }
+    },
+    {
+      "message": "why Munnar",
+      "reply": "Munnar’s tea gardens folding into the hills, misty trails and unhurried mornings make it a perfect spot to slow down and feel relaxed — exactly what you’re after for a solo break. Your ₹50,000 is the spending limit; I’d still need your dates and starting city to work out the full cost, but the card notes tea‑garden walks and quiet farm stays as the core experience there. Would you like to explore Munnar further, or shall we compare it with Rishikesh or Goa?",
+      "seconds": 1.191,
+      "conversation": {
+        "agent_id": "conversation_agent",
+        "mode": "nvidia",
+        "model_calls": 1,
+        "model": "nvidia/nemotron-3.5-lightning-30b-a3b"
+      }
+    },
+    {
+      "message": "the second one",
+      "reply": "Rishikesh it is.\n\nWhat is your departure date? You can say '1 December 2026' or 'tomorrow'.",
+      "seconds": 0.088,
+      "conversation": {
+        "agent_id": "conversation_agent",
+        "mode": "local",
+        "model_calls": 0
+      }
+    }
+  ],
+  "errors": []
+}

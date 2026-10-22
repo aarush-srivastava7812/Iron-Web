@@ -13,6 +13,10 @@ def main():
     parser.add_argument("--device", choices=["cuda", "cpu"], default="cuda")
     parser.add_argument("--agent-mode", choices=["tinyfish", "nvidia", "offline", "auto"],
                         help="Select a provider for this local process only")
+    parser.add_argument("--query-agent-mode", choices=["auto", "local", "nvidia"],
+                        help="Use local constraint extraction or the NVIDIA semantic agent independently of research")
+    parser.add_argument("--dialogue-mode", choices=["auto", "local"],
+                        help="Use a single bounded AI call for conversational replies or local replies only")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     backend = root / "stitch_ai_travel_booking_platform" / "backend"
@@ -26,6 +30,10 @@ def main():
     os.environ.setdefault("CONTEXT_USE_GPU", os.environ["USE_GPU"])
     if args.agent_mode:
         os.environ["VOYARA_AGENT_MODE"] = args.agent_mode
+    if args.query_agent_mode:
+        os.environ["VOYARA_QUERY_AGENT_MODE"] = args.query_agent_mode
+    if args.dialogue_mode:
+        os.environ["VOYARA_DIALOGUE_MODE"] = args.dialogue_mode
     os.environ.setdefault("TINYFISH_CACHE_PATH", str(root / ".scratch" / "tinyfish-public-research"))
     os.environ.setdefault("DEV_LOGIN_ENABLED", "true")
     os.environ.setdefault("COOKIE_SECURE", "false")

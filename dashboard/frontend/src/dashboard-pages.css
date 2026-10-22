@@ -1,4 +1,41 @@
 /* A shared page shell, with inspection tools local to the task that needs them. */
+body:has(.dashboard-shell) { min-width: 320px; }
+.dashboard-shell .history-button {
+  min-height: 38px;
+  padding: 6px 12px;
+  border: 1px solid var(--ui-border);
+  border-radius: 6px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.dashboard-shell .history-button.active {
+  background: #e5f0ec;
+  color: #006c58;
+}
+.dashboard-shell .live-breadcrumb { min-width: 0; overflow: hidden; text-overflow: ellipsis; max-width: 180px; }
+.history-notice {
+  display: grid;
+  gap: 4px;
+  padding: 14px 18px;
+  margin: 0 0 20px;
+  border: 1px solid #b9d0c3;
+  border-left: 4px solid #36745b;
+  background: #edf4ed;
+  color: #24463e;
+  font-size: 12px;
+}
+.history-notice strong { font-size: 14px; }
+.history-notice small { font-size: 11px; }
+.connection-state.history i { background: #7b9056; }
+.source-badge.recorded { background: #e8efe4; color: #466138; }
+@media(max-width:600px) {
+  .dashboard-shell .live-topbar { padding-inline: 12px; gap: 6px; }
+  .dashboard-shell .live-topbar .brand { font-size: 19px; }
+  .dashboard-shell .live-topbar .live-agent-control { display: none; }
+  .dashboard-shell .history-button,
+  .dashboard-shell .live-topbar .follow-button { font-size: 11px; padding-inline: 6px; white-space: nowrap; }
+}
 .dashboard-shell,
 .live-dialog,
 .live-loading {

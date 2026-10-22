@@ -10,7 +10,7 @@ from tests.test_tinyfish_chat import configure, send
 
 
 def ready(client, headers, path):
-    return send(client, headers, path, "Jaipur, 1 December 2026 for three days, two adults, INR 90000 total")["workspace"]
+    return send(client, headers, path, "Jaipur from Mumbai, 1 December 2026 for three days, two adults, INR 90000 total")["workspace"]
 
 
 def test_contextual_answers_corrections_and_reload_preserve_scope(connected_app, monkeypatch):
@@ -18,7 +18,7 @@ def test_contextual_answers_corrections_and_reload_preserve_scope(connected_app,
     client, _ = connected_app
     headers = user(client, "dialogue_context")
     path = trip(client, headers)
-    for text, awaiting in [("Plan a trip to Agra", "start_date"), ("1 December 2026", "duration_days"),
+    for text, awaiting in [("Plan a trip to Agra from Mumbai", "start_date"), ("1 December 2026", "duration_days"),
                            ("three", "traveller_count"), ("two", "budget"), ("15k per person", None)]:
         answer = send(client, headers, path, text)
         assert answer["status"] == "ok", answer

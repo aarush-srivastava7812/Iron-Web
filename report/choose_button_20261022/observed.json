@@ -1,0 +1,31 @@
+{
+  "draft": {
+    "destination": "Munnar",
+    "traveller_count": 1,
+    "budget": 50000,
+    "pace": "relaxed",
+    "interests": [],
+    "hard_requirements": [],
+    "soft_preferences": []
+  },
+  "button": "Selected",
+  "requests": [
+    {
+      "method": "POST",
+      "url": "http://127.0.0.1:8000/api/assistant/conversations"
+    },
+    {
+      "method": "POST",
+      "url": "http://127.0.0.1:8000/api/assistant/conversations"
+    },
+    {
+      "method": "POST",
+      "url": "http://127.0.0.1:8000/api/assistant/conversations/273ed308-e2e5-47b1-89eb-de21e6752177/chat"
+    },
+    {
+      "method": "POST",
+      "url": "http://127.0.0.1:8000/api/assistant/conversations/273ed308-e2e5-47b1-89eb-de21e6752177/chat"
+    }
+  ],
+  "errors": []
+}

@@ -128,6 +128,7 @@ class TripRequirementsIn(BaseModel):
     pace: Literal["relaxed", "moderate", "packed"] | None = None
     interests: list[str] | None = Field(default=None, max_length=256)
     hard_requirements: list[str] | None = Field(default=None, max_length=256)
+    soft_preferences: list[str] | None = Field(default=None, max_length=256)
 
     @model_validator(mode="after")
     def coherent(self):

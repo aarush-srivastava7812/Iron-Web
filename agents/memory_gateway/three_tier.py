@@ -162,6 +162,7 @@ class ThreeTierGateway:
             "dietary",
             "pace",
             "hard_requirements",
+            "soft_preferences",
         }
         for field in context.packet["fields"]:
             if field["required"] and field["predicate"] not in supported_rules:
@@ -212,6 +213,7 @@ class ThreeTierGateway:
             interests=fields.get("interests", []),
             pace=fields.get("pace"),
             hard_constraints=fields.get("hard_requirements", []),
+            preferences=fields.get("soft_preferences", []),
         )
         return brief
 

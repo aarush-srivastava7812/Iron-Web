@@ -71,6 +71,9 @@ class NimClient:
         max_tokens: int = 900,
         json_mode: bool = False,
         model: str | None = None,
+        timeout_s: float | None = None,
+        queue_timeout_s: float = 30,
+        retry_truncated: bool = True,
     ) -> str | None:
         """Return the assistant message content, or None on any failure.
 
@@ -91,17 +94,22 @@ class NimClient:
             payload["response_format"] = {"type": "json_object"}
         if "gpt-oss" in payload["model"]:
             payload["reasoning_effort"] = "low"
+        if "nemotron-3" in payload["model"] or "nemotron-nano-3" in payload["model"]:
+            payload["chat_template_kwargs"] = {"enable_thinking": False}
         try:
-            with inference_semaphore():
+            with inference_semaphore(timeout_s=queue_timeout_s):
                 with _usage_lock:
                     _usage["requests"] += 1
-                response = observed_request(self._get_client(), "post", "/chat/completions", provider="NVIDIA NIM", json=payload)
+                request_options = {"timeout": timeout_s} if timeout_s is not None else {}
+                response = observed_request(self._get_client(), "post", "/chat/completions", provider="NVIDIA NIM", json=payload, **request_options)
                 response.raise_for_status()
                 data = response.json()
                 record_usage(data)
                 content = data["choices"][0]["message"].get("content")
                 if content:
                     return content
+                if not retry_truncated:
+                    return None
                 # Reasoning consumed the budget: retry once with a larger cap.
                 payload["max_tokens"] = min(max_tokens * 3, 4000)
                 with _usage_lock:
@@ -111,7 +119,7 @@ class NimClient:
                 data = response.json()
                 record_usage(data)
                 return data["choices"][0]["message"].get("content") or None
-        except (httpx.HTTPError, KeyError, IndexError, TypeError, ValueError) as error:
+        except (httpx.HTTPError, KeyError, IndexError, TypeError, ValueError, TimeoutError) as error:
             logger.warning("NIM chat failed (%s); caller should use its fallback.", error)
             return None
 

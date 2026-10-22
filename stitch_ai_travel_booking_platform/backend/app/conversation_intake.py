@@ -50,12 +50,16 @@ class Turn:
 def classify(text):
     if re.search(r"\b(?:do not change|don't change|keep (?:my |the )?trip unchanged)\b", text):
         return "summary"
+    if re.search(r"\b(?:see more|show more|more destinations|more options|none of these|don't like (?:any|these)|not these|start destination list again)\b", text):
+        return "discover"
     if re.search(r"\b(?:status|progress|stuck|timed? out|fail(?:ed)?|failure|taking so long|still working|retry research)\b", text):
         return "status"
     if re.search(r"\b(?:what can you do|how do you work|capabilities|what details)\b", text) or re.fullmatch(r"help[!. ]*", text):
         return "help"
     if re.search(r"\b(?:privacy|api key|who can see|share my|send my|remember me|is (?:this|my trip|my data) private)\b", text):
         return "privacy"
+    if re.search(r"^(?:why\b|what about\b|tell me more\b|which (?:one|of these)\b|is .+ (?:good|relaxing|expensive|better)\b)", text):
+        return "information"
     if re.search(r"\b(?:book|reserve|pay)\b", text) and not re.search(r"\b(?:travel book|budget|plan|want|trip)\b", text):
         return "booking"
     if re.search(r"\b(?:tell me about|compare|known for|what can i see|what should i visit|how long should i)\b", text) and not re.search(r"\b(?:my trip|my budget|my draft|budget|cost|price|hotel|flight|stay)\b", text):
@@ -167,6 +171,9 @@ def _dates(text, current, turn, at):
 
 
 def _money(text, current, dialogue, turn):
+    if re.search(r"\bbudget\s+between\s+\d[\d,]*\s+and\s+\d", text):
+        turn.issue, turn.awaiting = "What single maximum total INR budget should I use?", "budget"
+        return
     if re.search(r"\b(?:usd|eur|gbp|dollars?|euros?|pounds?)\b|[$€£]", text):
         turn.issue, turn.awaiting = "I calculate this draft in INR. What total INR budget should I use? I haven't converted that currency.", "budget"
         return
@@ -175,6 +182,8 @@ def _money(text, current, dialogue, turn):
         match = re.search(AMOUNT + r"\s*(?:inr|rupees)\b", text)
     if not match:
         match = re.search(r"\b(?:make it|spend|increase by|reduce by|lower by|raise by)\s*" + AMOUNT, text)
+    if not match:
+        match = re.search(r"\b(?:under|at most|up to|less than)\s*" + AMOUNT, text)
     if not match and dialogue.get("awaiting") == "budget":
         # Answering another detail while a budget question is pending must not
         # turn an age, day count, or year into the spending limit.
@@ -260,7 +269,20 @@ def understand(text, current, destinations, dialogue=None, *, at=None):
     names.update(PUBLIC_PLACES)
     names.update(ALIASES)
     _places(text, names, turn)
-    if dialogue.get("awaiting") == "origin" and turn.updates.get("destination") and not re.search(r"\b(?:destination|instead|visit|trip to)\b", text):
+    explicit_origin = re.search(r"\b(?:starting from|leaving from|departing from|based in|i am(?: currently)? in|i'm(?: currently)? in|currently in|my (?:current )?location is|from)\s+([a-z][a-z .'-]{1,65}?)(?=\s+(?:to|for|on|with|and)\b|[,;!?]|$)", text)
+    if explicit_origin and not turn.updates.get("origin"):
+        value = explicit_origin[1].strip(" .")
+        if len(value.split()) <= 4:
+            turn.updates["origin"] = names.get(value, value.title())
+            if turn.updates.get("destination", "").casefold() == value:
+                turn.updates.pop("destination", None)
+    if dialogue.get("awaiting") == "origin" and not turn.updates.get("origin") and not turn.issue:
+        origin_text = re.sub(r"^(?:i(?:'m| am) (?:in|from|based in)|starting from|leaving from|from)\s+", "", text).strip(" .!?")
+        if re.fullmatch(r"[a-z][a-z .'-]{1,65}", origin_text) and len(origin_text.split()) <= 5 and not re.search(
+                r"\b(?:suggest|recommend|more|these|places|options|prefer|trip|budget|days|solo|choose|what|why|show|help|go|let's|set|destination|change|instead|actually|tomorrow|today|next|week|not|sure|yes|no|ready|continue|start)\b", origin_text):
+            turn.updates["origin"] = names.get(origin_text, origin_text.title())
+            turn.updates.pop("destination", None)
+    if dialogue.get("awaiting") == "origin" and turn.updates.get("destination") and not re.search(r"\b(?:destination|instead|visit|trip to|go to|choose)\b", text):
         turn.updates["origin"] = turn.updates.pop("destination")
     if turn.intent == "discover" and not turn.updates.get("destination"):
         turn.updates.clear()
@@ -303,7 +325,9 @@ def understand(text, current, destinations, dialogue=None, *, at=None):
         total = pending*turn.updates["traveller_count"]
         turn.updates["budget"] = total
         turn.notes.append(f"INR {pending:,} per person × {turn.updates['traveller_count']} travelers = INR {total:,} total.")
-    for word, pace in (("relaxed", "relaxed"), ("slow", "relaxed"), ("moderate", "moderate"), ("packed", "packed"), ("busy", "packed")):
+    for word, pace in (("relax", "relaxed"), ("relaxing", "relaxed"), ("relaxed", "relaxed"), ("unwind", "relaxed"),
+                       ("peaceful", "relaxed"), ("chill", "relaxed"), ("slow", "relaxed"),
+                       ("moderate", "moderate"), ("packed", "packed"), ("busy", "packed")):
         if re.search(r"\b" + word + r"\b", text) and not re.search(r"\bnot\s+" + word, text):
             turn.updates["pace"] = pace
     if re.search(r"\b(?:no dietary (?:restrictions|requirements)|remove (?:my )?(?:dietary|vegetarian) (?:preference|requirement))\b", text):
@@ -313,7 +337,7 @@ def understand(text, current, destinations, dialogue=None, *, at=None):
     elif re.search(r"\b(?:vegetarian|veg)\b", text):
         turn.updates["dietary"] = "vegetarian"
     interests = list(current.get("interests", []))
-    for interest in ("nature", "food", "culture", "adventure", "wellness", "shopping", "photography", "spiritual"):
+    for interest in ("nature", "food", "culture", "adventure", "wellness", "shopping", "photography", "spiritual", "beach", "mountain"):
         if re.search(r"\b" + interest + r"\b", text):
             if re.search(r"\b(?:not|no|remove|avoid)\s+" + interest + r"\b", text):
                 interests = [i for i in interests if i.casefold() != interest]
@@ -329,7 +353,7 @@ def understand(text, current, destinations, dialogue=None, *, at=None):
                 turn.updates[field_name] = value
     if re.search(r"\b(?:allerg\w*|wheelchair|step-free|must|avoid|vegan|jain|gluten-free|halal)\b", text):
         turn.updates["hard_requirements"] = list(dict.fromkeys([*current.get("hard_requirements", []), text[:160]]))
-    if re.search(r"\b(?:maybe|might|perhaps)\b", text) or re.search(r"\b(?:if|unless)\b.*\b(?:budget|dates?|travelers?|travellers?|destination)\b", text):
+    if re.search(r"\b(?:maybe|might|perhaps)\b", text) or re.search(r"\b(?:if|unless)\b.*\b(?:budget|dates?|travelers?|travellers?|destination|adults?|children|joins?)\b", text):
         turn.updates = {}
         turn.pending_per_person = None
         turn.per_person_amount = None

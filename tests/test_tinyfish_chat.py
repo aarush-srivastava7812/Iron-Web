@@ -57,7 +57,7 @@ def test_exact_agra_message_returns_questions_without_hosted_inference(
         client,
         headers,
         path,
-        "2026-12-01 for three days, two adults, INR 30,000 total, relaxed, vegetarian, culture",
+        "2026-12-01 for three days, two adults, INR 30,000 total, relaxed, vegetarian, culture, from Mumbai",
     )
     draft = details["workspace"]["draft"]
     assert draft["end_date"] == "2026-12-03" and draft["traveller_count"] == 2

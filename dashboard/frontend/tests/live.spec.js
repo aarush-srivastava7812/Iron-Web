@@ -23,7 +23,7 @@ test("real live feed synchronizes graph, inspector, replay, resources and layout
     requests = [];
   page.on("pageerror", (e) => errors.push(e.message));
   page.on("request", (r) => requests.push(r.url()));
-  await page.goto("/");
+  await page.goto("/?mode=live");
   await expect(page.getByTestId("live-dashboard")).toBeVisible({
     timeout: 60000,
   });
@@ -209,7 +209,7 @@ test("drawers and reduced motion work with the actual feed", async ({
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setViewportSize({ width: 1100, height: 760 });
-  await page.goto("/memory");
+  await page.goto("/memory?mode=live");
   await expect(page.getByTestId("live-dashboard")).toBeVisible({
     timeout: 60000,
   });
@@ -244,7 +244,7 @@ test("a stalled SSE transport marks the real snapshot stale and reconnects", asy
   // Only the stream transport is held. Initial HTTP and recovered snapshots
   // still come from the actual memory owner; no mock memory is introduced.
   await page.route("**/api/dashboard/stream", stall);
-  await page.goto("/");
+  await page.goto("/?mode=live");
   // Loading the real snapshot can exceed the default five-second assertion
   // under concurrent test load. Keep the heartbeat deadlines below unchanged.
   await expect(page.getByTestId("live-dashboard")).toBeVisible({

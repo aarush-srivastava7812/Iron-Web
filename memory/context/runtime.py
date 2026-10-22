@@ -44,7 +44,8 @@ def task_fields(task):
         raise ValueError("Unknown task type; configure an explicit field contract.")
     return (
         essential
-        + (FieldRule(predicate="hard_requirements", hot=False),)
+        + (FieldRule(predicate="hard_requirements", hot=False),
+           FieldRule(predicate="soft_preferences", hot=False))
         + options[task]
         + (FieldRule(predicate="mood", location="session", hot=False),)
     )

@@ -5,6 +5,9 @@ from html import escape
 import json
 from pathlib import Path
 from guide_slides import render_slides
+from memory_architecture_slides import hybrid_memory_slide, tinyfish_agents_slide
+from benchmark_slides import benchmark_slides
+from presentation_sections import explanatory_sections
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "report/tinyfish_memory"
@@ -79,40 +82,10 @@ def main():
             ],
             hero=True,
         )
-        + '<p class="note">One shared memory. Nine coordinated roles. Sources that can be refreshed.</p>'
+        + '<p class="slide-lead">Voyara combines persistent traveler context with current destination research. The goal is to preserve what the traveler has told us while keeping changing web information traceable and refreshable.</p><div class="presentation-agenda"><span>01 System overview</span><span>02 Hybrid memory</span><span>03 TinyFish + agents</span><span>04 Product workflow</span><span>05 Evaluation</span><span>06 Next steps</span></div>'
     )
-    roles = [
-        ("Atlas", "Destinations"),
-        ("Haven", "Stays"),
-        ("Saffron", "Food"),
-        ("Roam", "Attractions"),
-    ]
-    contents.append(
-        '<p class="eyebrow">01 / Where TinyFish is used</p><h2>Four research roles.<br>One shared evidence layer.</h2><div class="role-grid">'
-        + "".join(
-            f'<div class="role"><strong>{a}</strong><small>{b}</small></div>'
-            for a, b in roles
-        )
-        + '</div><div class="bus" aria-hidden="true"></div>'
-        + flow(
-            [
-                ("TinyFish", "Public Search → Fetch", "accent"),
-                ("Evidence memory", "Quotes · URLs · versions", "soft"),
-                ("Planning team", "Itinerary · budget · support", ""),
-            ]
-        )
-        + '<div class="agent-output"><strong>Orchestrator + consultant</strong><span>coordinate →</span><strong>saved trip + dashboard</strong></div><p class="note">SQL: trips + evidence versions · FalkorDB: graph + vectors</p>'
-    )
-    contents.append(
-        '<p class="eyebrow">02 / How TinyFish works with memory</p><h2>Reuse what is fresh.<br>Refresh what has changed.</h2>'
-        + flow(
-            [
-                ("Traveler request", "Recall scoped evidence", ""),
-                ("Freshness gate", "Missing? Stale? Conflicting?", "soft"),
-            ]
-        )
-        + '<div class="decision"><div class="lane"><div class="lane-label">FRESH <span>Reuse path</span></div><div class="steps"><span>Recall</span><span class="arrow">→</span><span>Agent context</span></div><p class="note">Skip repeat web requests.</p></div><div class="lane stale"><div class="lane-label">MISSING / STALE <span>Research path</span></div><div class="steps"><span>TinyFish<br>Search</span><span class="arrow">→</span><span>Fetch</span><span class="arrow">→</span><span>Quote gate</span></div><p class="note">Save a version → flag affected plans for review.</p></div></div><div class="guard-row"><span>Exact quotes + source URLs</span><span>Expiry + conflict checks</span><span>Traveler-scoped recall</span></div><p class="safety">Public web evidence never overwrites confirmed traveler preferences.</p>'
-    )
+    contents.append(tinyfish_agents_slide())
+    contents.append(hybrid_memory_slide())
     guards = [
         (ablation["stale_exclusion"], "Stale cases excluded"),
         (ablation["unsupported_quote_rejection"], "Unsupported quotes rejected"),
@@ -122,7 +95,7 @@ def main():
         f"{repeat['memory_reuses']}/10", "Lookups reused saved evidence"
     ) + "".join(metric(f"{g['passed']}/{g['cases']}", label) for g, label in guards)
     contents.append(
-        '<p class="eyebrow">03 / TinyFish + memory: measured effect</p><h2>Research once. Reuse safely.</h2><span class="tag">Controlled test · mock transport</span><div class="improvement"><div class="chart-card"><div class="chart-top"><strong class="big">'
+        '<p class="eyebrow">05 / Evaluation · TinyFish + memory</p><h2>Research once. Reuse safely.</h2><p class="slide-lead">Ten identical controlled lookups compare repeated Search/Fetch requests with reuse of eligible saved evidence. The safety cases independently exercise stale data, unsupported quotes and plan-change detection.</p><span class="tag">Controlled test · mock transport</span><div class="improvement"><div class="chart-card"><div class="chart-top"><strong class="big">'
         + str(repeat["reduction_percent"])
         + '%</strong><small>fewer repeated HTTP requests</small></div><div class="request-row"><span>Uncached</span><div class="track"><div class="fill" style="width:100%"></div></div><b>'
         + str(repeat["baseline_http_requests"])
@@ -140,6 +113,8 @@ def main():
         + escape(live["fetched_at"][:10])
         + " · extraction disabled; connectivity only. Controlled results are not production savings or answer accuracy.</p>"
     )
+    # Present measured motivation, then hybrid memory, then its agent consumers.
+    contents[1], contents[3] = contents[3], contents[1]
     rows = []
     for d in memory["datasets"]:
         lexical, native = d["lexical"], d["native"]
@@ -162,7 +137,7 @@ def main():
             f'<div class="bench-row"><div class="bench-name"><strong>{label}</strong><small>{d["questions"]} queries · {d["documents"]} sessions</small></div>{pair}<div class="bench-value">{100*native["recall_at_5"]:.1f}%<small>memory recall</small></div><div class="delta {"negative" if change<0 else ""}">{change:+.1f} pp</div><div class="bench-value">{native["median_ms"]:.0f}<small>median ms</small></div></div>'
         )
     contents.append(
-        '<p class="eyebrow">Test 01 / Memory retrieval</p><h2>Can memory find the evidence?</h2><div class="legend"><span>BM25 lexical baseline</span><span class="native">Iron Web memory</span><b>Recall@5</b></div><div class="bench-head"><span>DATASET / SAMPLE</span><span>RELEVANT SESSIONS FOUND</span><span>RECALL</span><span>CHANGE</span><span>LATENCY</span></div>'
+        '<p class="eyebrow">05 / Evaluation · memory retrieval</p><h2>Can memory find the evidence?</h2><p class="slide-lead">BM25 and the current memory engine receive the same documents and questions. Recall@5 measures the fraction of annotated evidence sessions found among the first five results.</p><div class="legend"><span>BM25 lexical baseline</span><span class="native">Iron Web memory</span><b>Recall@5</b></div><div class="bench-head"><span>DATASET / SAMPLE</span><span>RELEVANT SESSIONS FOUND</span><span>RECALL</span><span>CHANGE</span><span>LATENCY</span></div>'
         + "".join(rows)
         + '<div class="results-note"><span><b>Same histories, same questions.</b> CPU · no reranker · release-order samples.</span><span><b>Mixed results are retained.</b> Full dataset answer accuracy remains unmeasured.</span></div><p class="note">Complete selected histories. DMR is the project’s MSC conversion. Source retrieval only; no historical-time or generated-answer scoring. No TinyFish calls in this test.</p>'
     )
@@ -208,7 +183,7 @@ def main():
         cards[4][2],
     )
     contents.append(
-        '<p class="eyebrow">Test 02 / Voyara travels</p><h2>Does it work in the product?</h2><p class="subtitle">Chat → dated plan → save → reload → live dashboard</p><div class="travel-metrics">'
+        '<p class="eyebrow">05 / Evaluation · Voyara travels</p><h2>Does it work in the product?</h2><p class="subtitle">Chat → dated plan → save → reload → live dashboard</p><p class="slide-lead">A synthetic traveler exercises the running product. Checks cover persisted conversation, a dated plan, budget reconciliation, trip duplication and owner-scoped dashboard views.</p><div class="travel-metrics">'
         + "".join(metric(*c) for c in cards)
         + '</div><p class="note">'
         + checked
@@ -230,15 +205,35 @@ def main():
         )
         + '</div><p class="sources"><a href="http://127.0.0.1:8094/">Open Voyara</a><a href="http://127.0.0.1:5174/tinyfish">Open dashboard</a><a href="docs/tinyfish_memory_refresh.md">Implementation</a></p>'
     )
+    sections = explanatory_sections()
+    original = contents
+    contents = [
+        original[0], sections["system"], original[2], original[3],
+        sections["vector-memory"], sections["graph-memory"], sections["evidence"],
+        sections["tools"], sections["workflow"], original[1], original[4], original[5],
+        *benchmark_slides(memory), sections["conclusion"],
+    ]
     html = render_slides(
         contents,
         [
             "Overview",
-            "Research agents",
-            "Memory + TinyFish",
-            "Measured effect",
+            "System overview",
+            "Hybrid memory + TinyFish",
+            "Agents + three tools",
+            "Vector memory explained",
+            "Knowledge graph explained",
+            "Evidence memory lifecycle",
+            "Search, Fetch and Agent",
+            "Voyara workflow",
+            "Measured evidence reuse",
             "Memory benchmarks",
             "Voyara tests",
+            "LoCoMo results",
+            "DMR / MSC results",
+            "LongMemEval results",
+            "Retrieval latency",
+            "Benchmark method",
+            "Conclusions + next steps",
         ],
         details,
     )

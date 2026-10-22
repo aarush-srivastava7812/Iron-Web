@@ -1,16 +1,19 @@
 import { icon } from "./reference-design.js";
 import { agentWork, mountPlanEditor } from "./plan-editor.js";
 import { mountTravelWorkbench } from "./travel-workbench.js";
+import { constraintReview } from "./constraint-review.js";
+import { destinationDetails } from "./destination-card.js";
 import "./journey.css";
 
 const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
 const money=n=>"₹"+Number(n||0).toLocaleString("en-IN");
 const labels={destination:"Destination",start_date:"Departure",end_date:"Return",duration_days:"Days",traveller_count:"Travellers",budget:"Total budget",pace:"Travel pace",dietary:"Dietary preference",origin:"Starting city",hotel_style:"Stay style",seat_preference:"Seat preference",transport_mode:"Travel by",interests:"Interests"};
-const facts=d=>Object.entries(labels).filter(([k])=>d[k]).map(([k,label])=>`<div><dt>${label}</dt><dd>${esc(k==="budget"?money(d[k]):Array.isArray(d[k])?d[k].join(", "):d[k])}</dd></div>`).join("");
+const facts=d=>Object.entries(labels).filter(([k])=>Array.isArray(d[k])?d[k].length:d[k]).map(([k,label])=>`<div><dt>${label}</dt><dd>${esc(k==="budget"?money(d[k]):Array.isArray(d[k])?d[k].join(", "):d[k])}</dd></div>`).join("");
 const routeSketch=()=>`<svg class="journey-route" viewBox="0 0 280 350" role="img" aria-label="Illustrative Kerala discovery sequence: Kochi, Munnar and Alleppey"><path d="M70 25C150 10 200 55 174 108S210 155 176 208 190 278 222 320L152 327C142 278 95 236 111 187S55 105 70 25Z" fill="#cde4cf"/><path d="M109 138Q195 70 172 94L125 255" fill="none" stroke="#197d84" stroke-width="3" stroke-dasharray="6 6"/><g fill="#ed9d35" stroke="#fff" stroke-width="3"><circle cx="109" cy="138" r="9"/><circle cx="172" cy="94" r="9"/><circle cx="125" cy="255" r="9"/></g><g fill="#123a54" font-family="Arial" font-size="15" font-weight="600"><text x="25" y="143">Kochi</text><text x="185" y="98">Munnar</text><text x="139" y="262">Alleppey</text><text x="142" y="196" font-size="12" letter-spacing="3">KERALA</text></g><text x="18" y="313" fill="#628784" font-family="Arial" font-size="12">Arabian Sea</text></svg>`;
 
 export function createJourneyUI({api,getUser,requireAuth,ensureConversation,activateTrip}) {
   let activeTrip=null, owner=null, work=null, busy=false, loadedTrip=null, generation=0;
+  let renderedCards=[];
   const books=new Map(), deliveredJobs=new Set(), messageDrafts=new Map();
   let progressStamp=0, progressState="";
   const launcher=document.createElement("button");
@@ -50,7 +53,7 @@ export function createJourneyUI({api,getUser,requireAuth,ensureConversation,acti
     if(!event.repeat&&!busy&&!sendButton.disabled)compose.requestSubmit();
   });
   messages.setAttribute("aria-relevant","additions text");
-  const emphasis=text=>esc(text).replace(/(IMPORTANT[^\n]*|INCOMPLETE COSTS[^\n]*|Added requests:[^\n]*|Total budget:[^;\n]*|Departure:[^;\n]*|Return:[^;\n]*)/g,'<strong>$1</strong>');
+  const emphasis=text=>esc(text).replace(/\*\*([^*\n]+)\*\*/g,'<strong>$1</strong>').replace(/(IMPORTANT[^\n]*|INCOMPLETE COSTS[^\n]*|Added requests:[^\n]*|Total budget:[^;\n]*|Departure:[^;\n]*|Return:[^;\n]*)/g,'<strong>$1</strong>');
   const bubble=(role,text)=>`<article class="journey-message ${role==="user"?"from-you":"from-team"}"><span>${role==="user"?"You":"Voyara travel team"}</span><p>${role==="user"?esc(text):emphasis(text)}</p>${role==="user"?"":'<button type="button" class="journey-copy" data-chat="copy" aria-label="Copy travel team reply">Copy reply</button>'}</article>`;
   const stageNames={trip_memory:"Read your saved trip and preferences",trip_consultant:"Understand your requirements",explore_agent:"Find destination sources",stay_agent:"Find hotel leads",food_guide_agent:"Find restaurant leads",tour_guide_agent:"Find things to do",itinerary_planner:"Build your daily outline",budget_booking_agent:"Check costs and missing quotes"};
   const stageHTML=research=>`<ol class="journey-progress" aria-label="Travel team progress">${Object.entries(stageNames).map(([id,label])=>{const stage=(research?.progress||[]).find(s=>s.agent_id===id);const value=stage?.status||"pending";return `<li data-stage="${id}" data-status="${value}"><span>${esc(label)}</span><b>${value==="completed"?"Done":value==="running"?"Working…":value==="needs_verification"?"Needs confirmation":"Waiting"}</b></li>`;}).join("")}</ol>`;
@@ -69,6 +72,9 @@ export function createJourneyUI({api,getUser,requireAuth,ensureConversation,acti
     const suggestions=work.dialogue?.suggestions||["Help me choose a destination","Show my trip summary","What can you do?"];
     dialog.querySelector(".journey-chat-actions").innerHTML=suggestions.slice(0,3).map(text=>`<button type="button" data-prompt="${esc(text)}">${esc(text)}</button>`).join("");
     const research=work.research;
+    let constraintPanel=dialog.querySelector(".journey-constraint-panel");
+    if(!constraintPanel){constraintPanel=document.createElement("div");constraintPanel.className="journey-constraint-panel";dialog.querySelector(".journey-chat-review").before(constraintPanel);}
+    constraintPanel.innerHTML=constraintReview(work.constraint_analysis);
     dialog.querySelector(".journey-chat-research").innerHTML=research&&["queued","running","failed"].includes(research.status)?`<section class="journey-research-notice"><strong>${research.status==="failed"?"Research needs another check":research.status==="queued"?"Trip queued":"Research in progress"}</strong><p>${research.status==="failed"?esc("We could not finish checking all the details needed for your trip.")+" Your trip details are saved. Review them before retrying; a retry may use provider credit.":"You can minimize this panel while the team works. Reopening this trip shows its saved result; no need to start another run."}</p><button type="button" class="mini-btn" data-chat="status">Check progress</button>${stageHTML(research)}</section>`:"";
     dialog.querySelector(".journey-chat-review").innerHTML=`<details class="journey-draft-review"><summary>Your trip draft <span>${work.missing_fields.length?work.missing_fields.length+" details to add":work.plan_ready?"Outline saved":"Ready to review"}</span></summary><dl>${facts(work.draft)||"<p>Your confirmed choices will appear here.</p>"}</dl>${work.draft.hard_requirements?.length?`<p class="journey-warning">Needs verification: ${esc(work.draft.hard_requirements.join(", "))}</p>`:""}<a href="#travel-book/${work.conversation_id}" data-close-chat>Review details & selections</a></details>${!work.missing_fields.length?`<label class="journey-remember"><input type="checkbox" id="chatRemember"> Remember these explicit preferences for future trips</label><button type="button" class="journey-primary" data-chat="confirm">${work.plan_ready?"Refresh with my travel team":work.research?.status==="failed"?"Retry research":"Confirm details & start research"}</button>`:""}${work.plan_ready?`<a class="journey-book-link" href="#travel-book/${work.conversation_id}" data-close-chat>${icon("bag")} Open my personal Travel Book ${icon("arrow")}</a>`:""}`;
   }
@@ -94,7 +100,18 @@ export function createJourneyUI({api,getUser,requireAuth,ensureConversation,acti
     }
   });
   function cardHTML(item,selected=false) {
-    return `<article class="journey-choice">${item.image?`<img src="${esc(item.image)}" alt="Kerala backwaters" loading="lazy">`:icon(item.kind==="stay"?"bed":item.kind==="flight"?"plane":"compass")}<div><small>${esc(item.location||item.kind)} · demo catalog</small><b>${esc(item.name)}</b>${item.price_inr?`<span>${money(item.price_inr)} ${item.kind==="stay"?"/ room / night":item.kind==="flight"?"/ guest · outbound":item.kind==="destination"?"indicative catalog guide":"/ guest"}</span>`:""}</div>${item.preview_only?'<small>Preview · change destination to choose</small>':`<button type="button" data-choice-kind="${item.kind}" data-choice-id="${item.id}">${selected?"Selected":"Choose"}</button>`}</article>`;
+    if(item.kind==="destination")return `<article class="journey-choice journey-destination-choice">${icon("compass")}<div><small>Destination · sample catalog</small><b>${esc(item.name)}</b><span>${money(item.price_inr)} destination guide · excludes travel fares</span>${destinationDetails(item)}</div><button type="button" data-choice-kind="destination" data-choice-id="${item.id}" aria-pressed="${selected}">${selected?"Selected":"Choose"}</button></article>`;
+    return `<article class="journey-choice">${item.image?`<img src="${esc(item.image)}" alt="Kerala backwaters" loading="lazy">`:icon(item.kind==="stay"?"bed":item.kind==="flight"?"plane":"compass")}<div><small>${esc(item.location||item.kind)} · demo catalog</small><b>${esc(item.name)}</b>${item.price_inr?`<span>${money(item.price_inr)} ${item.kind==="stay"?"/ room / night":item.kind==="flight"?"/ guest · outbound":item.kind==="destination"?"indicative catalog guide":"/ guest"}</span>`:""}</div>${item.preview_only?'<small>Preview · change destination to choose</small>':`<button type="button" data-choice-kind="${item.kind}" data-choice-id="${item.id}" aria-pressed="${selected}">${selected?"Selected":"Choose"}</button>`}</article>`;
+  }
+  function destinationCards(){
+    return (work?.dialogue?.destination_choices||[]).map(name=>work.options.destinations.find(item=>item.name===name)).filter(Boolean);
+  }
+  function renderChatCards(items=renderedCards){
+    renderedCards=items;
+    dialog.querySelector(".journey-chat-cards").innerHTML=items.map(item=>{
+      const selected=item.kind==="destination"?work?.draft.destination===item.name:item.kind==="experience"?(work?.selections.experience||[]).includes(item.id):work?.selections[item.kind]===item.id;
+      return cardHTML(item,selected);
+    }).join("")+(items.some(item=>item.kind==="destination")?`<div class="journey-more-destinations"><p>Not feeling these? Explore another set, or tell me what you would change.</p>${work?.dialogue?.has_more_destinations!==false?'<button type="button" class="mini-btn" data-chat="more-destinations">See more destinations</button>':'<p>You have reached the end of this sample catalog.</p>'}</div>`:"");
   }
   async function open({tripId,prompt,section}={}) {
     if (!requireAuth()) return;
@@ -114,8 +131,9 @@ export function createJourneyUI({api,getUser,requireAuth,ensureConversation,acti
       if(current.research?.reply_id&&conversation.messages.some(message=>message.id===current.research.reply_id))deliveredJobs.add(current.research.job_id);
       messages.innerHTML=conversation.messages.map(m=>bubble(m.role,m.content)).join("");
       if (loadedTrip!==activeTrip) {
-        dialog.querySelector(".journey-chat-cards").replaceChildren(); loadedTrip=activeTrip;
+        renderedCards=[]; loadedTrip=activeTrip;
       }
+      renderChatCards(destinationCards().length?destinationCards():renderedCards);
       updateReview(); status.textContent=section?`Editing ${section} for this saved trip.`:"";
     } catch(e) {if(ticket===generation)status.textContent=e.message;}
     finally {if(ticket===generation){setBusy(false,status.textContent);focusComposer(true);}}
@@ -136,7 +154,7 @@ export function createJourneyUI({api,getUser,requireAuth,ensureConversation,acti
       if(ticket!==generation)return;
       work=result.workspace; if(result.suggestions)work.dialogue={...work.dialogue,suggestions:result.suggestions}; messages.insertAdjacentHTML("beforeend",bubble("assistant",result.reply));
       window.dispatchEvent(new CustomEvent("voyara-trip-updated",{detail:{tripId:activeTrip}}));
-      dialog.querySelector(".journey-chat-cards").innerHTML=result.cards.map(item=>cardHTML(item)).join("");
+      renderChatCards(result.cards.length?result.cards:destinationCards());
       updateReview(); status.textContent=""; if(result.status!=="unavailable"&&fromComposer){input.value="";rememberDraft();}
       if(result.status==="needs_clarification")status.textContent="Answer the question above, or use Trip details to edit your draft.";
       else if(result.status==="unavailable"){status.textContent="Your message is saved. Check the saved chat before retrying, or edit Trip details.";recover.hidden=false;}
@@ -148,10 +166,13 @@ export function createJourneyUI({api,getUser,requireAuth,ensureConversation,acti
     let updated;
     if(kind==="destination") {
       const item=work.options.destinations.find(i=>i.id===id);
-      updated=await api(`/assistant/conversations/${activeTrip}/workspace`,{method:"PUT",body:{expected_revision:work.revision,draft:{...work.draft,destination:item.name}}});
+      if(!item)throw new Error("That destination is no longer available. Reopen the chat to refresh your options.");
+      await send(`Let's go to ${item.name}`);
+      return;
     } else updated=await api(`/assistant/conversations/${activeTrip}/selections`,{method:"POST",body:{expected_revision:work.revision,kind,item_id:id}});
     if(ticket!==generation)return;
     work=updated;
+    renderChatCards();
     window.dispatchEvent(new CustomEvent("voyara-trip-updated",{detail:{tripId:activeTrip}}));
     updateReview();status.textContent="Selected for your draft. Confirm to update the itinerary and estimate.";
   }
@@ -159,6 +180,7 @@ export function createJourneyUI({api,getUser,requireAuth,ensureConversation,acti
   compose.onsubmit=e=>{e.preventDefault();if(!composing)send(input.value.trim());};
   dialog.onclick=async e=>{
     const b=e.target.closest("button,a"); if(!b||b.disabled)return;
+    if(b.dataset.chat==="more-destinations"){await send("Show more destinations");return;}
     if(b.dataset.chat==="latest"){scroll(true);return;}
     if(b.dataset.chat==="recover"){await open({tripId:activeTrip});return;}
     if(b.dataset.chat==="copy"){
@@ -185,7 +207,15 @@ export function createJourneyUI({api,getUser,requireAuth,ensureConversation,acti
       setBusy(true,"Starting a new private trip…");
       try{rememberDraft();const trip=await api("/assistant/conversations",{method:"POST",body:{title:"New travel chat"}});loadedTrip=null;setBusy(false);await open({tripId:trip.id});}catch(error){setBusy(false,error.message);}return;
     }
-    if(b.dataset.choiceKind){setBusy(true);try{await selectChoice(b.dataset.choiceKind,Number(b.dataset.choiceId));}catch(error){status.textContent=error.message;}finally{setBusy(false,status.textContent);}return;}
+    if(b.dataset.choiceKind){
+      if(busy)return;
+      if(b.dataset.choiceKind==="destination"){
+        if(b.getAttribute("aria-pressed")==="true"){status.textContent="This destination is already selected.";return;}
+        try{await selectChoice(b.dataset.choiceKind,Number(b.dataset.choiceId));}catch(error){status.textContent=error.message;}
+        return;
+      }
+      setBusy(true);try{await selectChoice(b.dataset.choiceKind,Number(b.dataset.choiceId));}catch(error){status.textContent=error.message;}finally{setBusy(false,status.textContent);}return;
+    }
     if(b.dataset.chat==="confirm") {
       const ticket=generation;
       const remember=!!dialog.querySelector("#chatRemember")?.checked;
@@ -223,9 +253,11 @@ export function createJourneyUI({api,getUser,requireAuth,ensureConversation,acti
     editor.before(travelDesk);
     await mountTravelWorkbench(travelDesk,id,api);
     const saveStatus=host.querySelector("#journeyDraftStatus");
+    host.querySelector("#journeyDraftForm .journey-form-grid").insertAdjacentHTML("beforeend",`<label>Optional preferences<textarea name="soft_preferences" rows="3" placeholder="One preference per line">${esc((record.work.draft.soft_preferences||[]).join("\n"))}</textarea><small>Used to rank options. These do not block planning.</small></label>`);
     host.querySelector("#journeyDraftForm").onsubmit=async event=>{
       event.preventDefault();const form=event.currentTarget,button=form.querySelector("button");button.disabled=true;
       const f=Object.fromEntries(new FormData(form));const draft={...record.work.draft,...f,traveller_count:Number(f.traveller_count),budget:Number(f.budget),interests:f.interests.split(",").map(x=>x.trim()).filter(Boolean),hard_requirements:f.hard_requirements.split(";").map(x=>x.trim()).filter(Boolean)};
+      draft.soft_preferences=f.soft_preferences.split("\n").map(x=>x.trim()).filter(Boolean);
       if(!draft.dietary)delete draft.dietary;if(!draft.origin)delete draft.origin;
       delete draft.duration_days;
       try{await api(`/assistant/conversations/${id}/workspace`,{method:"PUT",body:{expected_revision:record.work.revision,draft}});await rerender();}catch(e){saveStatus.textContent=e.message;button.disabled=false;}

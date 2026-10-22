@@ -106,7 +106,7 @@ test("TinyFish evidence, measured counters, navigation and mobile layout", async
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await feed(page, snapshot());
-  await page.goto("/tinyfish");
+  await page.goto("/tinyfish?mode=live");
   await expect(
     page.getByRole("heading", { name: "TinyFish intelligence", exact: true }),
   ).toBeVisible();
@@ -160,7 +160,7 @@ test("Missing evidence feed never substitutes demonstration metrics", async ({
   const data = snapshot();
   delete data.tinyfish;
   await feed(page, data);
-  await page.goto("/tinyfish");
+  await page.goto("/tinyfish?mode=live");
   await expect(
     page.getByText("Evidence feed unavailable", { exact: true }),
   ).toBeVisible();
@@ -176,7 +176,7 @@ test("Missing evidence feed never substitutes demonstration metrics", async ({
 });
 
 for (const name of ["system-explained.html", "memory-system-explained.html"]) {
-  test(`${name} presents six accessible slides without page scrolling`, async ({
+  test(`${name} presents eighteen accessible slides without page scrolling`, async ({
     page,
   }) => {
     const errors = [];
@@ -184,8 +184,12 @@ for (const name of ["system-explained.html", "memory-system-explained.html"]) {
     const content = await readFile(resolve(root, name), "utf8");
     await page.goto("about:blank");
     await page.setContent(content, { waitUntil: "domcontentloaded" });
-    expect(Buffer.byteLength(content, "utf8")).toBeLessThan(30000);
-    await expect(page.locator(".slide")).toHaveCount(6);
+    // The deck remains self-contained: budget markup separately from embedded screenshots.
+    expect(Buffer.byteLength(content.replace(/data:image\/jpeg;base64,[A-Za-z0-9+/=]+/g, "embedded-dashboard-image"), "utf8")).toBeLessThan(85000);
+    expect(Buffer.byteLength(content, "utf8")).toBeLessThan(500000);
+    await expect(page.locator(".slide")).toHaveCount(18);
+    await expect(page.locator("#evidence .explanation-grid article")).toHaveCount(3);
+    await expect(page.locator("#tools")).toContainText("no automatic Search → Fetch → Agent escalation");
     await expect(page.locator(".slide:visible")).toHaveCount(1);
     await expect(page.locator("#intro")).toBeVisible();
     await expect(page.getByRole("button", {name:"Previous slide"})).toBeDisabled();
@@ -193,6 +197,41 @@ for (const name of ["system-explained.html", "memory-system-explained.html"]) {
     await expect(page.locator("#system")).toBeVisible();
     await page.keyboard.press("ArrowRight");
     await expect(page.locator("#memory")).toBeVisible();
+    await expect(page.locator("#memory h3")).toHaveText(["Vector alone", "Graph alone"]);
+    await expect(page.locator("#memory .dashboard-capture img")).toHaveCount(3);
+    await expect.poll(() => page.locator("#memory .dashboard-capture img").evaluateAll(images => images.every(image => image.complete && image.naturalWidth > 0))).toBeTruthy();
+    for (const kind of ["vector", "graph", "hybrid"]) {
+      await expect(page.locator(`#memory .${kind}-capture img`)).toHaveAttribute("src", /^data:image\/jpeg;base64,/);
+      await expect(page.locator(`#memory .${kind}-capture figcaption`)).toContainText("schematic");
+      const trigger = page.getByRole("button", {name:`Expand ${kind} diagram`});
+      const thumbnail = page.locator(`#memory .${kind}-capture img`);
+      await trigger.click();
+      const viewer = page.getByRole("dialog", {name:new RegExp(`${kind} memory diagram`, "i")});
+      await expect(viewer).toBeVisible();
+      await expect(viewer.locator("img")).toHaveAttribute("src", await thumbnail.getAttribute("src"));
+      await page.keyboard.press("ArrowRight");
+      await expect(page.locator("#memory")).toBeVisible();
+      if (kind === "graph") await page.getByRole("button", {name:"Close expanded image"}).click();
+      else await page.keyboard.press("Escape");
+      await expect(viewer).toBeHidden();
+      await expect(trigger).toBeFocused();
+    }
+    await page.getByRole("button", {name:"Expand vector diagram"}).press("Enter");
+    await expect(page.locator("#image-viewer")).toBeVisible();
+    await page.keyboard.press("Escape");
+    const integration = page.getByRole("button", {name:"TinyFish integration"});
+    await expect(integration).toHaveAttribute("aria-pressed", "false");
+    await expect(page.locator("#tinyfish-memory-overlay")).toBeHidden();
+    await integration.click();
+    await expect(integration).toHaveAttribute("aria-pressed", "true");
+    await expect(page.locator("#tinyfish-memory-overlay")).toContainText("SQL evidence versions");
+    await expect(page.locator("#tinyfish-memory-overlay")).toBeVisible();
+    await integration.press("Space");
+    await expect(integration).toHaveAttribute("aria-pressed", "false");
+    await expect(page.locator("#memory")).toBeVisible();
+    await integration.press("Enter");
+    await expect(integration).toHaveAttribute("aria-pressed", "true");
+    await page.locator("#memory h2").click();
     await page.keyboard.press("Space");
     await expect(page.locator("#tinyfish")).toBeVisible();
     await page.keyboard.press("Home");
@@ -211,31 +250,48 @@ for (const name of ["system-explained.html", "memory-system-explained.html"]) {
         .toContainText(`${(100 * dataset.native.recall_at_5).toFixed(1)}%`);
     }
     await expect(section.getByText(/No TinyFish calls in this test/)).toBeVisible();
+    await page.getByLabel("Go to slide").selectOption("impact");
+    await expect(page.locator("#impact .big")).toHaveText("90%");
+    await expect(page.locator("#impact .metric")).toHaveCount(4);
+    await expect(page.locator("#impact").getByText("Controlled test · mock transport", {exact:true})).toBeVisible();
+    await expect(page.locator("#impact").getByText("Real TinyFish call", {exact:true})).toBeVisible();
     await page.getByLabel("Go to slide").selectOption("tinyfish");
-    await expect(page.locator("#tinyfish .big")).toHaveText("90%");
-    await expect(page.locator("#tinyfish .metric")).toHaveCount(4);
-    await expect(page.locator("#tinyfish").getByText("Controlled test · mock transport", {exact:true})).toBeVisible();
-    await expect(page.locator("#tinyfish").getByText("Real TinyFish call", {exact:true})).toBeVisible();
+    await expect(page.locator("#tinyfish .research-role")).toHaveCount(4);
+    await expect(page.locator("#tinyfish .planning-roles span")).toHaveCount(4);
+    await expect(page.locator("#tinyfish .tool-belt h3")).toHaveText(["Search", "Fetch", "Agent"]);
+    await expect(page.locator("#tinyfish .optional-tool")).toContainText("OPTIONAL ADAPTER");
     await page.getByLabel("Go to slide").selectOption("results");
-    await expect(page.locator("#counter")).toHaveText("5 / 6");
-    await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "5");
+    await expect(page.locator("#counter")).toHaveText("11 / 18");
+    await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuemax", "18");
+    await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "11");
     await page.screenshot({path: resolve(root, `report/tinyfish_memory/${name.replace(".html", "")}-desktop.png`)});
     await page.keyboard.press("End");
-    await expect(page.locator("#verification")).toBeVisible();
+    await expect(page.locator("#conclusion")).toBeVisible();
     await expect(page.getByRole("button", {name:"Next slide"})).toBeDisabled();
+    await page.getByLabel("Go to slide").selectOption("verification");
     await page.getByRole("button", {name:"Measurement details & reports ↗"}).click();
     await expect(page.getByRole("dialog")).toBeVisible();
     await expect(page.getByRole("dialog").getByRole("link", {name:"Live site measurements"})).toHaveAttribute("href", "report/tinyfish_memory/site-smoke.json");
     await page.keyboard.press("Escape");
     await expect(page.getByRole("dialog")).not.toBeVisible();
+    for (const dataset of measurements.datasets) {
+      await page.getByLabel("Go to slide").selectOption(dataset.benchmark);
+      const result = page.locator(`#${dataset.benchmark}`);
+      await expect(result.locator(".dataset-bar strong")).toHaveText([
+        `${(100 * dataset.lexical.recall_at_5).toFixed(1)}%`,
+        `${(100 * dataset.native.recall_at_5).toFixed(1)}%`,
+      ]);
+      await expect(result.locator(".dataset-metrics strong").nth(1)).toHaveText(`${dataset.native.median_ms.toFixed(1)} ms`);
+      await expect(result).toContainText("No TinyFish calls.");
+    }
     await page.evaluate(() => { location.hash = "#results"; });
     await expect(section).toBeVisible();
     await page.getByRole("button", {name:"Enter fullscreen",exact:true}).click();
     await expect.poll(() => page.evaluate(() => Boolean(document.fullscreenElement))).toBeTruthy();
     await page.evaluate(() => document.exitFullscreen());
-    for (const viewport of [{width:1440,height:900},{width:652,height:860},{width:390,height:844},{width:320,height:568},{width:844,height:390}]) {
+    for (const viewport of [{width:1850,height:900},{width:1440,height:900},{width:652,height:860},{width:390,height:844},{width:320,height:568},{width:844,height:390}]) {
       await page.setViewportSize(viewport);
-      for (const slide of ["intro","system","memory","tinyfish","results","verification"]) {
+      for (const slide of ["intro","system","memory","tinyfish","vector-memory","graph-memory","evidence","tools","workflow","impact","results","verification","locomo","dmr","longmemeval","latency","protocol","conclusion"]) {
         await page.getByLabel("Go to slide").selectOption(slide);
         await expect.poll(async () => page.evaluate(() => {
           const frame = document.querySelector('.slide:not([hidden])').getBoundingClientRect();
@@ -244,6 +300,28 @@ for (const name of ["system-explained.html", "memory-system-explained.html"]) {
         })).toBeTruthy();
         expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth+1 && document.documentElement.scrollHeight <= innerHeight+1)).toBeTruthy();
         await expect(page.locator(".slide:visible")).toHaveCount(1);
+        if (viewport.width === 1850) {
+          expect(await page.locator(`#${slide} .slide-content`).evaluate(el => el.getBoundingClientRect().width / innerWidth)).toBeGreaterThan(0.8);
+        }
+        if (slide === "memory") {
+          await page.getByRole("button", {name:"Expand hybrid diagram"}).click();
+          await expect(page.locator("#image-viewer")).toBeVisible();
+          expect(await page.locator("#image-viewer").evaluate(el => {
+            const box=el.getBoundingClientRect();
+            return box.left >= 0 && box.right <= innerWidth && box.top >= 0 && box.bottom <= innerHeight;
+          })).toBeTruthy();
+          await page.keyboard.press("Escape");
+          // Both overlay states must fit, including narrow and landscape screens.
+          for (const enabled of [false, true]) {
+            if ((await integration.getAttribute("aria-pressed")) !== String(enabled)) await integration.click();
+            await expect.poll(async () => page.evaluate(() => {
+              const frame = document.querySelector('#memory').getBoundingClientRect();
+              const body = document.querySelector('#memory .slide-content').getBoundingClientRect();
+              return body.top >= frame.top-1 && body.bottom <= frame.bottom+1 && body.left >= frame.left-1 && body.right <= frame.right+1;
+            })).toBeTruthy();
+            await expect(page.locator("#tinyfish-memory-overlay")).toBeVisible({visible:enabled});
+          }
+        }
       }
     }
     await page.setViewportSize({width:390,height:844});

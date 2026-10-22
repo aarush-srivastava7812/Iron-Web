@@ -314,7 +314,7 @@ def main():
 
                     def navigate(path=path, name=name):
                         start = time.perf_counter()
-                        page.goto(DASHBOARD + "/" + path, wait_until="domcontentloaded")
+                        page.goto(DASHBOARD + "/" + path + "?mode=live", wait_until="domcontentloaded")
                         page.get_by_role(
                             "heading", name=name, exact=True, level=1
                         ).wait_for()
@@ -339,7 +339,7 @@ def main():
                     expect(
                         page.get_by_role("button", name="Follow live", exact=True)
                     ).to_have_attribute("aria-pressed", "true")
-                    page.goto(DASHBOARD + "/tinyfish", wait_until="domcontentloaded")
+                    page.goto(DASHBOARD + "/tinyfish?mode=live", wait_until="domcontentloaded")
                     page.get_by_role(
                         "heading", name="TinyFish intelligence", exact=True, level=1
                     ).wait_for()
@@ -373,7 +373,7 @@ def main():
                 )
 
                 def outage():
-                    page.goto(DASHBOARD + "/tinyfish", wait_until="domcontentloaded")
+                    page.goto(DASHBOARD + "/tinyfish?mode=live", wait_until="domcontentloaded")
                     page.get_by_role(
                         "heading", name="Memory feed unavailable", exact=True
                     ).wait_for()

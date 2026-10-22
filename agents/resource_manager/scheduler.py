@@ -11,9 +11,9 @@ _load_lock = threading.Lock()
 
 
 @contextmanager
-def inference_semaphore():
+def inference_semaphore(timeout_s=30):
     """Admission control for any model call (NIM chat, embedding loads)."""
-    acquired = _semaphore.acquire(timeout=30)
+    acquired = _semaphore.acquire(timeout=timeout_s)
     if not acquired:
         raise TimeoutError("inference queue timed out")
     try:

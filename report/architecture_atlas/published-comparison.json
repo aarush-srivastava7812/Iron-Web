@@ -1,0 +1,35 @@
+{
+  "schema": "published-provider-comparison-v1",
+  "retrieved_at": "2026-10-22",
+  "publisher": "OpenBenchmarks Labs",
+  "source_url": "https://openbenchmarks.com/web-search-for-coding-agents",
+  "harness_url": "https://github.com/openbenchmarks-labs/web-search-for-coding-agents",
+  "source_updated_at": "2026-09-26",
+  "board": "Search & fetch coding-agent board; selected providers",
+  "method": "100 held-out coding tickets, 3 repeats; same model, tasks and runner. Published table values; task times rounded to seconds.",
+  "model": "gpt-5.6-sol",
+  "tokens_definition": "Median LLM prompt plus completion tokens per ticket, pooled across repeats; not provider-internal token consumption.",
+  "latency_definition": "Median end-to-end coding-task wall time; avg_search_s is a separate mean tool-call latency.",
+  "scope": "Imported published results, not Voyara measurements or a travel benchmark. No claim of universal superiority.",
+  "rows": [
+    {"provider": "TinyFish", "configuration": "Search + Fetch, markdown", "task_s": 24, "avg_search_s": 1.32, "tokens": 12844, "completion": 79.0, "completion_sd": 2.0},
+    {"provider": "Exa auto", "configuration": "auto + contents", "task_s": 23, "avg_search_s": 1.19, "tokens": 27433, "completion": 81.7, "completion_sd": 1.1},
+    {"provider": "Firecrawl", "configuration": "v2 search + scrape", "task_s": 34, "avg_search_s": 2.81, "tokens": 17379, "completion": 76.0, "completion_sd": 1.0},
+    {"provider": "Tavily basic", "configuration": "basic search + extract", "task_s": 32, "avg_search_s": 1.50, "tokens": 27405, "completion": 59.0, "completion_sd": 1.7},
+    {"provider": "Parallel basic", "configuration": "basic search + extract", "task_s": 30, "avg_search_s": 1.59, "tokens": 32809, "completion": 76.0, "completion_sd": 0.0},
+    {"provider": "Perplexity", "configuration": "high search context", "task_s": 22, "avg_search_s": 0.991, "tokens": 20062, "completion": 77.7, "completion_sd": 1.5}
+  ],
+  "vendor_search_latency": {
+    "source_url": "https://tinyfish.chat/benchmarks",
+    "publisher": "TinyFish (vendor-reported)",
+    "source_updated_at": "2026-07",
+    "metric": "p50 Search API latency, a separate vendor evaluation",
+    "rows": [
+      {"provider": "TinyFish", "ms": 556},
+      {"provider": "Exa", "ms": 811},
+      {"provider": "Firecrawl", "ms": 869},
+      {"provider": "Tavily", "ms": 1109},
+      {"provider": "Parallel", "ms": 1709}
+    ]
+  }
+}

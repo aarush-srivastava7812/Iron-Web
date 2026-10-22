@@ -9,11 +9,15 @@ import re
 from fastapi import HTTPException
 from pydantic import ValidationError
 
-from .conversation_intake import ALIASES, PUBLIC_PLACES, understand
+from .conversation_intake import ALIASES, PUBLIC_PLACES
+from .query_intake import interpret
+from agents.config import settings
+from agents.destination_advisor import DestinationAdvisor, more_requested, recommendation_intent
 
 _UNSET = object()
 
 QUESTIONS = {
+    "origin": "Which city will you be starting from? I'll use it to check travel fares.",
     "destination": "Where would you like to go?",
     "start_date": "What is your departure date? You can say '1 December 2026' or 'tomorrow'.",
     "duration_days": "How many days would you like to stay? You can also give a return date.",
@@ -30,14 +34,17 @@ SUGGESTIONS = {
 LABELS = {"destination": "Destination", "origin": "Starting city", "start_date": "Departure", "end_date": "Return",
           "duration_days": "Days", "traveller_count": "Travelers", "budget": "Total budget", "pace": "Pace",
           "dietary": "Dietary preference", "interests": "Interests", "hotel_style": "Stay style",
-          "transport_mode": "Travel by", "seat_preference": "Seat preference", "hard_requirements": "Your requests"}
+          "transport_mode": "Travel by", "seat_preference": "Seat preference", "hard_requirements": "Your requests",
+          "soft_preferences": "Preferences"}
 
 
-def next_field(draft):
+def next_field(draft, *, require_origin=False):
+    if require_origin and not draft.get("origin"):
+        return "origin"
     for name in ("destination", "start_date", "end_date", "traveller_count", "budget"):
         if not draft.get(name):
             return "duration_days" if name == "end_date" else name
-    return None
+    return "origin" if not draft.get("origin") else None
 
 
 def summary(work):
@@ -73,15 +80,26 @@ def status_reply(work):
 
 
 def _reply(row, text, awaiting=None, suggestions=None, status="ok", cards=None, estimate=None,
-           per_person=_UNSET, unknown=0, choices=None, clear_hard=False):
+           per_person=_UNSET, unknown=0, choices=None, clear_hard=False,
+           seen_destinations=None, has_more_destinations=None):
     if per_person is _UNSET:
         per_person = row.data.get("dialogue", {}).get("per_person_budget")
     state = {"awaiting": awaiting, "suggestions": (suggestions or SUGGESTIONS.get(awaiting) or
              ["Show my trip summary", "What can you do?"])[:3], "unknown_turns": unknown}
     if per_person:
         state["per_person_budget"] = per_person
+    if choices is None:
+        choices = row.data.get("dialogue", {}).get("destination_choices")
     if choices:
         state["destination_choices"] = choices
+    previous = row.data.get("dialogue", {})
+    if awaiting == "origin" or previous.get("origin_requested"):
+        state["origin_requested"] = True
+    for key, value in (("seen_destinations", seen_destinations), ("has_more_destinations", has_more_destinations)):
+        if value is not None:
+            state[key] = value
+        elif key in previous:
+            state[key] = previous[key]
     if clear_hard:
         state["clear_hard"] = True
         state["clear_hard_conditions"] = list(row.data.get("draft", {}).get("hard_requirements", []))
@@ -118,10 +136,48 @@ def chat_turn(db, row, user, text):
     current = work["draft"]
     state = deepcopy(row.data.get("dialogue", {}))
     lower = text.casefold().replace("’", "'").strip()
-    slot = next_field(current)
+    slot = next_field(current, require_origin=bool(state.get("origin_requested")))
 
     def finish(message, **kw):
-        return _reply(row, message, **kw)
+        answer = _reply(row, message, **kw)
+        answer["conversation"] = dict(agent_id="conversation_agent", mode="local", model_calls=0)
+        # The conversation agent speaks over validated state. Never rewrite
+        # protected edits, exact saved estimates or operational status messages.
+        from .conversation_intake import classify
+        intent = classify(lower)
+        resolved_choice = row.data.get("draft", {}).get("destination") != current.get("destination")
+        if (settings.dialogue_mode != "local" and answer["status"] == "ok"
+                and intent not in {"summary", "status", "privacy", "booking"} and not resolved_choice
+                and not row.data.get("draft", {}).get("hard_requirements")
+                and not re.search(r"\b(?:remove|clear|forget|allerg\w*|wheelchair)\b", lower)):
+            from sqlalchemy import select
+            from .models import AIMessage
+            from agents.conversation_agent import conversation_agent
+            recent = list(db.scalars(select(AIMessage).where(AIMessage.conversation_id == row.conversation_id)
+                          .order_by(AIMessage.id.desc()).limit(7)))
+            history = [dict(role=m.role, content=m.content[:1000]) for m in reversed(recent)
+                       if not (m.role == "user" and m.content == text)]
+            evidence = answer.get("cards") or [item for item in work["options"]["destinations"]
+                        if item["name"] in state.get("destination_choices", [])]
+            answer = conversation_agent.respond(text, row.data.get("draft", {}), answer, history=history, catalog=evidence)
+        return answer
+
+    def suggest(draft, *, followup=False):
+        advisor = DestinationAdvisor()
+        more = more_requested(text)
+        seen = state.get("seen_destinations", state.get("destination_choices", [])) if more else []
+        ranked = advisor.suggest(work["options"]["destinations"], draft, text,
+                                 previous=seen)
+        if not ranked:
+            return finish("You've seen all the destinations in this sample catalog. We can narrow things down by beach, hills, or culture, or start the list again. What would you like to change?",
+                          awaiting="destination", suggestions=["Suggest beach destinations", "Suggest mountain destinations", "Start destination list again"],
+                          seen_destinations=seen, has_more_destinations=False)
+        seen = list(dict.fromkeys([*seen, *(item["name"] for item in ranked)]))
+        return finish(advisor.reply(ranked, draft, followup=followup), cards=ranked,
+                      awaiting="origin" if not draft.get("origin") else "destination",
+                      choices=[item["name"] for item in ranked],
+                      seen_destinations=seen, has_more_destinations=len(seen) < len(work["options"]["destinations"]),
+                      suggestions=["Show more destinations", "Suggest beach destinations", "Suggest mountain destinations"])
 
     if state.get("clear_hard") and re.fullmatch(r"(?:yes|yes,? remove (?:them|it)|confirm removal)[.! ]*", lower):
         if state.get("clear_hard_conditions") != current.get("hard_requirements", []):
@@ -135,14 +191,15 @@ def chat_turn(db, row, user, text):
                       awaiting="clear_hard", suggestions=["Yes, remove them", "No, keep them"], clear_hard=True)
     if re.search(r"\b(?:no longer|don't|do not)\b.*\b(?:allerg\w*|wheelchair|step-free|gluten-free|halal)\b", lower):
         return finish("I kept your existing mandatory conditions because that correction could change an important requirement. To clear them, say 'Remove my mandatory conditions', or edit them in Trip details.", awaiting=slot)
-    turn = understand(text, current, work["options"]["destinations"], state)
+    turn, decision = interpret(text, current, work["options"]["destinations"], state)
+    turn.updates = decision.updates
     if turn.intent == "status":
         return finish(status_reply(work), awaiting=slot, suggestions=["Show my trip summary", "What can you do?"])
     if turn.intent in {"greeting", "help", "privacy", "booking", "acknowledge", "summary"}:
         lead = {
             "greeting": "Hi! I can help you shape a trip, compare sample options, and prepare a Travel Book.",
             "help": "I can collect or correct trip details, show catalog options, explain a saved budget, and track research. Try 'Jaipur instead of Agra', 'two adults and one child', or 'increase my budget by 5k'. Research starts only after you review and confirm; this chat doesn't book or pay.",
-            "privacy": "This draft and conversation stay with your signed-in account. In TinyFish mode, research receives a generic destination task; your dates, budget, party, preferences and chat history stay on this application's backend. 'Remember preferences' is optional. Closing this panel doesn't delete a saved trip.",
+            "privacy": "This draft and conversation are saved in your signed-in account. If AI conversation is enabled, NVIDIA receives your message, recent chat and trip details to phrase replies. TinyFish destination research receives generic destination tasks. Your starting city is entered by you; I don't access device location. 'Remember preferences' is optional. Closing this panel doesn't delete a saved trip.",
             "booking": "I can prepare an indicative itinerary and Travel Book, but I can't reserve a hotel, verify availability, or make a payment in this chat. Check the source and confirm directly with the supplier before booking.",
             "acknowledge": "Your draft is saved for review; I haven't confirmed it or started another research run.",
             "summary": summary(work),
@@ -173,8 +230,17 @@ def chat_turn(db, row, user, text):
         mentioned = list(dict.fromkeys(name for alias, name in names.items() if re.search(r"\b"+re.escape(alias)+r"\b", lower)))
         if not mentioned and current.get("destination"):
             mentioned = [current["destination"]]
+        if not mentioned and state.get("destination_choices"):
+            mentioned = state["destination_choices"][:2]
         if not mentioned:
             return finish("Which destination would you like to learn about? You can ask about one place or compare two.", awaiting="destination")
+        if lower.startswith("why") and len(mentioned) == 1 and mentioned[0].casefold() in catalog:
+            item = catalog[mentioned[0].casefold()]
+            lead = f"{item['name']} stood out for your " + ("relaxed " if current.get("pace") == "relaxed" else "") + ("solo break" if current.get("traveller_count") == 1 else "trip") + ": " + item["description"]
+            if current.get("budget"):
+                lead += f" Your ₹{current['budget']:,} is the spending limit; I'd still need your dates and starting city to work out the full cost."
+            return finish(lead + "\n\nWould you like to explore it or compare another place?", awaiting=slot,
+                          suggestions=["Set destination to " + item["name"], "Suggest other places"])
         descriptions = []
         for name in mentioned[:2]:
             item = catalog.get(name.casefold())
@@ -186,25 +252,13 @@ def chat_turn(db, row, user, text):
                 descriptions.append(name+" has no description in this sample guide. I can use it as a draft destination, but I won't invent current prices, opening hours or local recommendations.")
         return finish("\n\n".join(descriptions)+"\n\nThis information hasn't changed your trip.",
                       suggestions=["Set destination to "+name for name in mentioned[:2]]+["Show my trip summary"])
-    if turn.intent == "discover":
-        words = re.findall(r"\b(?:relax\w*|nature|culture|food|adventure|beach\w*|mountain\w*)\b", lower)
-        ranked = sorted(work["options"]["destinations"], key=lambda d: -sum(word[:5] in d.get("description", "").casefold() for word in words))[:3]
-        message = "Here are a few ideas from our sample destination catalog:\n" + "\n".join(f"{d['name']}: {d.get('description', '')[:150]}" for d in ranked)
-        return finish(message+"\n\nWhich destination would you like to use?", cards=ranked, awaiting="destination",
-                      suggestions=["Set destination to "+d["name"] for d in ranked])
+    if turn.intent == "discover" and not turn.updates and not turn.issue:
+        return suggest(current, followup=True)
     if re.search(r"\buse my saved (?:preferences|details)\b", lower):
         turn.updates = {k: v for k, v in work["saved_preferences"].items() if k in LABELS and v is not None}
         if not turn.updates:
             return finish("I don't have saved preferences to apply. We can build this trip from what you tell me.", awaiting=slot)
         turn.notes.append("Applied the saved preferences you asked to use to this draft only.")
-    # Preserve open-ended requests verbatim. The typed interpreter handles core
-    # facts; requests are not restricted to a catalog of supported preference tags.
-    # This is draft evidence only, never an assertion that suppliers can meet it.
-    if not turn.issue and (turn.updates or turn.intent == "update"):
-        requests = list(current.get("hard_requirements", []))
-        if not turn.updates or "hard_requirements" in turn.updates or re.search(r"\b(?:want|need|prefer|with|without|avoid|must|please|if|also|keep|leave|include|no|not|chahiye|chaiye|nahi)\b|चाहिए|नहीं|साथ|बिना", text, re.I):
-            requests.extend(text[i:i+500] for i in range(0, len(text), 500))
-            turn.updates["hard_requirements"] = list(dict.fromkeys(requests))
     merged = dict(current, **turn.updates)
     if ("duration_days" in turn.updates or "start_date" in turn.updates) and "end_date" not in turn.updates:
         merged.pop("end_date", None)
@@ -224,13 +278,20 @@ def chat_turn(db, row, user, text):
             elif turn.updates[name]:
                 removed.discard(name)
     row.data = dict(row.data, pending_forget=sorted(removed))
+    row.data = dict(row.data, constraint_analysis=decision.public())
     work = journey.present(db, row, user.id)
-    slot = next_field(work["draft"])
+    slot = next_field(work["draft"], require_origin=bool(row.data.get("dialogue", {}).get("origin_requested")))
     pending = turn.per_person_amount or turn.pending_per_person or (state.get("per_person_budget") if "budget" not in turn.updates else None)
     if turn.issue:
         return finish(" ".join(turn.notes+[turn.issue]), status="needs_clarification", awaiting=turn.awaiting or slot,
                       suggestions=["Set destination to "+name for name in turn.choices] or None,
                       choices=turn.choices, per_person=pending)
+    if turn.intent == "discover":
+        return suggest(work["draft"], followup=True)
+    if (not work["draft"].get("destination") and not work["draft"].get("hard_requirements")
+            and (work["draft"].get("pace") or work["draft"].get("interests")
+                 or recommendation_intent(text))):
+        return suggest(work["draft"])
     changed = [name for name in LABELS if (current.get(name) or None) != (work["draft"].get(name) or None)]
     if turn.updates:
         acknowledgments = []
@@ -241,9 +302,28 @@ def chat_turn(db, row, user, text):
                 concise = "; ".join(added)
                 acknowledgments.append("Added requests: " + (concise if len(concise) <= 300 else f"{len(added)} saved; the full list is in your trip draft"))
                 continue
+            if name == "soft_preferences":
+                acknowledgments.append("I'll keep those preferences in mind")
+                continue
+            if name == "destination":
+                acknowledgments.append(f"{value} it is")
+                continue
+            if name == "budget":
+                acknowledgments.append(f"I'll keep your total budget at ₹{value:,}")
+                continue
+            if name == "origin":
+                acknowledgments.append(f"I'll plan your travel from {value}")
+                continue
+            if name == "traveller_count":
+                acknowledgments.append("we'll plan this as a solo trip" if value == 1 else f"we'll plan for {value} travelers")
+                continue
+            if name == "pace":
+                acknowledgments.append(f"I'll keep the pace {value}")
+                continue
             value = f"INR {value:,} total" if name == "budget" and value else ", ".join(value) if isinstance(value, list) else value
             acknowledgments.append(f"{LABELS[name]}: {value or 'no preference'}")
-        lead = "Got it — " + "; ".join(acknowledgments) + "." if changed else "I've kept those details in your draft."
+        lead = ". ".join(acknowledgments) + "." if changed else "Your trip details are saved. We can keep shaping the trip from here."
+        lead = lead[:1].upper() + lead[1:]
         if work["draft"].get("hard_requirements"):
             lead += " Your mandatory conditions need verification before a complete plan can be confirmed."
         lead += ("\n" + " ".join(turn.notes)) if turn.notes else ""

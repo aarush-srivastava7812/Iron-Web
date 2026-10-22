@@ -23,12 +23,14 @@ import {
   Dock,
   Dialog,
   Badge,
+  DataOriginContext,
   ViewHeader,
 } from "./LivePanels.jsx";
 import "./live.css";
 import "./resource-charts.css";
 import "./dashboard-pages.css";
 import { PAGES, readPage, pageUrl } from "./dashboardRoutes.js";
+import { sourceMode as readSourceMode, matchesSource } from "./feedMode.js";
 import {
   PageLink,
   PageNavigation,
@@ -40,7 +42,7 @@ import {
 } from "./DashboardPages.jsx";
 const API = (import.meta.env.VITE_DASHBOARD_API_URL || "").replace(/\/$/, "");
 const initial = new URLSearchParams(location.search);
-function useFeed() {
+function useFeed(sourceMode) {
   const [data, setData] = useState(null),
     [status, setStatus] = useState("connecting"),
     [error, setError] = useState(""),
@@ -53,6 +55,45 @@ function useFeed() {
     setRevision((n) => n + 1);
   }, []);
   useEffect(() => {
+    if (sourceMode === "history") {
+      let alive = true;
+      const controller = new AbortController();
+      setData(null);
+      setStatus("loading-history");
+      setError("");
+      fetch("/history-snapshot.json", {
+        signal: controller.signal,
+        cache: "no-store",
+      })
+        .then(async (response) => {
+          if (!response.ok)
+            throw new Error("Saved project replay is unavailable.");
+          const payload = await response.json();
+          if (
+            payload.schema !== "iron_web_dashboard_v1" ||
+            !matchesSource(payload, "history")
+          )
+            throw new Error("Invalid saved replay source.");
+          if (alive) {
+            setData(payload);
+            setStatus("history");
+            setWebsite("");
+          }
+        })
+        .catch((failure) => {
+          if (alive && failure.name !== "AbortError") {
+            setError(failure.message);
+            setStatus("error");
+          }
+        });
+      return () => {
+        alive = false;
+        controller.abort();
+      };
+    }
+    setData(null);
+    setStatus("connecting");
+    setError("");
     let alive = true,
       stream,
       lastMessageAt = null,
@@ -74,6 +115,10 @@ function useFeed() {
     const receive = (payload) => {
       if (payload.schema !== "iron_web_dashboard_v1")
         throw new Error("Unsupported memory feed schema");
+      if (!matchesSource(payload, "live"))
+        throw new Error(
+          "A recorded replay cannot be shown as live account data",
+        );
       if (mode === "website" && payload.connection?.mode !== "website")
         throw new Error("The feed is not connected to a website account");
       if (!alive) return;
@@ -178,11 +223,20 @@ function useFeed() {
       clearInterval(watchdog);
       stream?.close();
     };
-  }, [revision, reconnect]);
-  return { data, status, error, website, reconnect };
+  }, [sourceMode, revision, reconnect]);
+  return {
+    data: matchesSource(data, sourceMode) ? data : null,
+    status,
+    error,
+    website,
+    reconnect,
+  };
 }
 export default function LiveApp() {
-  const { data, status, error, website, reconnect } = useFeed();
+  const [feedSource, setFeedSource] = useState(() =>
+    readSourceMode(location.search),
+  );
+  const { data, status, error, website, reconnect } = useFeed(feedSource);
   const searchRequested = useRef(false);
   const [focusRequest, requestSearch] = useState(0);
   const [viewerError, setViewerError] = useState("");
@@ -213,7 +267,9 @@ export default function LiveApp() {
     [cursor, setCursor] = useState(Number(initial.get("event")) || null),
     [selected, setSelected] = useState(initial.get("mem") || null),
     [follow, setFollow] = useState(
-      !initial.has("event") && !initial.has("mem"),
+      readSourceMode(location.search) === "live" &&
+        !initial.has("event") &&
+        !initial.has("mem"),
     ),
     [agent, setAgent] = useState(initial.get("agent") || null),
     [query, setQuery] = useState(""),
@@ -224,6 +280,7 @@ export default function LiveApp() {
     [agentMenu, setAgentMenu] = useState(false),
     [tier, setTier] = useState(null);
   const followLive = useCallback(() => {
+    setFeedSource("live");
     setFollow(true);
     setCursor(null);
     setSelected(null);
@@ -236,12 +293,25 @@ export default function LiveApp() {
     setDialog(null);
     reconnect();
   }, [reconnect]);
+  const showHistory = useCallback(() => {
+    setFeedSource("history");
+    setFollow(false);
+    setCursor(null);
+    setSelected(null);
+    setTier(null);
+    setAgent(null);
+    setQuery("");
+    setPlaying(false);
+    setDrawer(null);
+    setDialog(null);
+    reconnect();
+  }, [reconnect]);
   const ownerRef = useRef(null);
   useEffect(() => {
     const owner = data?.connection?.user_id;
     if (owner && ownerRef.current !== owner) {
       if (ownerRef.current) {
-        setFollow(true);
+        setFollow(feedSource === "live");
         setCursor(null);
         setSelected(null);
         setAgent(null);
@@ -251,7 +321,7 @@ export default function LiveApp() {
       }
       ownerRef.current = owner;
     }
-  }, [data?.connection?.user_id]);
+  }, [data?.connection?.user_id, feedSource]);
   const events = data?.observations?.events || [],
     latest = events.at(-1),
     event = events.find((e) => e.id === cursor) || latest,
@@ -313,8 +383,15 @@ export default function LiveApp() {
     }
   }, [data, follow]);
   const hrefFor = useCallback(
-    (page) => pageUrl(page, { cursor, selected, follow, agent }),
-    [cursor, selected, follow, agent],
+    (page) =>
+      pageUrl(page, {
+        cursor,
+        selected,
+        follow,
+        agent,
+        sourceMode: feedSource,
+      }),
+    [cursor, selected, follow, agent, feedSource],
   );
   const navigate = useCallback(
     (page) => {
@@ -336,7 +413,9 @@ export default function LiveApp() {
       const q = new URLSearchParams(location.search);
       setView(readPage(location.pathname, location.search));
       setCursor(Number(q.get("event")) || null);
-      setFollow(!q.has("event") && !q.has("mem"));
+      const source = readSourceMode(location.search);
+      setFeedSource(source);
+      setFollow(source === "live" && !q.has("event") && !q.has("mem"));
       setSelected(q.get("mem"));
       setAgent(q.get("agent"));
       setDrawer(null);
@@ -479,11 +558,15 @@ export default function LiveApp() {
             ? "Connect your travel account"
             : error
               ? "Memory feed unavailable"
-              : "Connecting to your travel website"}
+              : feedSource === "history"
+                ? "Loading saved project replay"
+                : "Connecting to your travel website"}
         </h1>
         <p>
           {error ||
-            "Sign in to Voyara in this browser to view your real travel activity."}
+            (feedSource === "history"
+              ? "Loading the labeled project example and recorded test values."
+              : "Sign in to Voyara in this browser to view your real travel activity.")}
         </p>
         {error === "Viewer sign-in required." ? (
           <form onSubmit={unlock} className="viewer-login">
@@ -502,6 +585,11 @@ export default function LiveApp() {
         ) : (
           <div className="website-connect">
             <button onClick={followLive}>Follow live</button>
+            <button onClick={showHistory}>
+              {feedSource === "history"
+                ? "Retry saved history"
+                : "Show saved history"}
+            </button>
             {website && (
               <a href={website} target="_blank" rel="noopener noreferrer">
                 Open travel website to sign in
@@ -509,416 +597,444 @@ export default function LiveApp() {
             )}
           </div>
         )}
-        <span>No sample data is substituted.</span>
+        <span>
+          {feedSource === "live"
+            ? "Live mode never substitutes saved replay data."
+            : "Saved project replay is separate from your live account."}
+        </span>
       </div>
     );
   return (
-    <div
-      className="live-app dashboard-shell"
-      data-page={view}
-      data-testid="live-dashboard"
-    >
-      <a className="dashboard-skip" href="#page-title">
-        Skip to main content
-      </a>
-      <header className="live-topbar">
-        <PageLink
-          page="overview"
-          hrefFor={hrefFor}
-          navigate={navigate}
-          className="brand"
-          aria-label="Dashboard home"
-        >
-          <span className="brand-mark">
-            <i />
-            <i />
-            <i />
-            <i />
-          </span>
-          ironweb <small>× TINYFISH</small>
-        </PageLink>
-        <span className="live-breadcrumb mono">
-          workspace /{" "}
-          <b>
-            {data.connection?.username ||
-              (data.trip_id ? data.trip_id.slice(0, 8) : "shared memory")}
-          </b>
-        </span>
-        <div
-          className="top-context"
-          title={`Measured context packet, not hosted model tokens. ${data.tiers.tokenizer}`}
-        >
-          <span>
-            Context{" "}
-            {context?.tokens
-              ? Math.round(
-                  (context.tokens.prompt / data.tiers.policy.context_limit) *
-                    100,
-                ) + "%"
-              : "N/A"}
-          </span>
-          <span>
-            Cache{" "}
-            {reads.length
-              ? Math.round((hits / reads.length) * 100) + "%"
-              : "N/A"}
-          </span>
-          <Badge />
-        </div>
-        <div className="live-agent-control">
-          <button
-            aria-label="Filter agents"
-            aria-expanded={agentMenu}
-            onClick={() => setAgentMenu((v) => !v)}
-          >
-            Agents{" "}
-            <b>
-              {data.agents.observed}/{data.agents.registered}
-            </b>{" "}
-            ▾
-          </button>
-          {agentMenu && (
-            <div className="agent-menu">
-              {agents.map((a) => (
-                <button
-                  key={a.agent_id}
-                  className={`live-agent-chip ${!agent || agent === a.agent_id ? "active" : ""} ${a.agent_id === event?.agent_id ? "acting" : ""}`}
-                  style={{ "--agent-color": agentColor(a.agent_id) }}
-                  aria-pressed={agent === a.agent_id}
-                  onClick={() => activateAgent(a.agent_id)}
-                >
-                  {a.agent_id === event?.agent_id ? "●" : "○"}{" "}
-                  {agentName(a.agent_id)}
-                  <span>{a.reads_in_window} reads</span>
-                </button>
-              ))}
-              <button
-                onClick={() => {
-                  setAgent(null);
-                  setAgentMenu(false);
-                }}
-              >
-                Show all agents
-              </button>
-            </div>
-          )}
-        </div>
-        <button
-          className={`connection-state ${status}`}
-          onClick={() => setDialog("connection")}
-        >
-          <i />
-          {status.toUpperCase()}
-        </button>
-        <button
-          className={`follow-button ${follow ? "active" : ""}`}
-          aria-pressed={follow}
-          onClick={followLive}
-        >
-          Follow live
-        </button>
-        <button
-          className="icon-button source-tools"
-          aria-label="Inspect data source"
-          title="Source & credentials"
-          onClick={() => setDialog("connection")}
-        >
-          <ReaderIcon />
-        </button>
-        <button
-          className="icon-button"
-          aria-label="Open help"
-          onClick={() => setDialog("help")}
-        >
-          <QuestionMarkCircledIcon />
-        </button>
-      </header>
-      <PageNavigation current={view} hrefFor={hrefFor} navigate={navigate} />
-      <main className="dashboard-main" id="dashboard-content">
-        {status !== "live" && (
-          <div className="feed-warning" role="status">
-            {error || "Connection interrupted. Reconnecting…"} · Last snapshot{" "}
-            {time(data.timestamp)} · displayed data is stale
-          </div>
-        )}
-        <ViewHeader
-          kicker={
-            historical
-              ? "Pinned observation · graph shows latest storage"
-              : "Memory workspace"
-          }
-          title={PAGES[view]?.name || "Page not found"}
-          subtitle={
-            PAGES[view]?.description ||
-            "This dashboard page does not exist. Use the navigation to continue."
-          }
-        >
-          {agent && (
-            <button
-              className="active-agent-filter"
-              onClick={() => setAgent(null)}
-              aria-label={`Clear ${agentName(agent)} filter`}
-            >
-              <Cross2Icon /> {agentName(agent)}
-            </button>
-          )}
-          {view === "graph" && (
-            <span className="page-heading-note">
-              Select a node to inspect its source
-            </span>
-          )}
-        </ViewHeader>
-        {view === "overview" && (
-          <Overview
-            data={data}
-            graph={graph}
-            events={events}
-            status={status}
+    <DataOriginContext.Provider value={feedSource}>
+      <div
+        className="live-app dashboard-shell"
+        data-page={view}
+        data-testid="live-dashboard"
+        data-source-mode={feedSource}
+      >
+        <a className="dashboard-skip" href="#page-title">
+          Skip to main content
+        </a>
+        <header className="live-topbar">
+          <PageLink
+            page="overview"
             hrefFor={hrefFor}
             navigate={navigate}
-            onEvent={moveTo}
-          />
-        )}
-        {view === "tinyfish" && <TinyFishIntelligence data={data} />}
-        {view === "not-found" && (
-          <div className="page-empty">
-            <PageLink page="overview" hrefFor={hrefFor} navigate={navigate}>
-              Go to overview
-            </PageLink>
-          </div>
-        )}
-        {view === "activity" && (
-          <Dock
-            events={events}
-            event={event}
-            onEvent={moveTo}
-            playing={playing}
-            setPlaying={(value) => {
-              setFollow(false);
-              if (value && event?.id === latest?.id) setCursor(events[0]?.id);
-              setPlaying(value);
-            }}
-            speed={speed}
-            setSpeed={setSpeed}
-            agent={agent}
-            data={data}
-          />
-        )}
-        {view === "history" && (
-          <RunHistoryPage data={data} agent={agent} api={API} />
-        )}
-        {Object.hasOwn(VIEW_NAMES, view) && (
-          <div
-            className={`live-columns ${view !== "graph" ? "single-page" : "graph-page"}`}
-            data-drawer={drawer || "none"}
+            className="brand"
+            aria-label="Dashboard home"
           >
-            {drawer && (
+            <span className="brand-mark">
+              <i />
+              <i />
+              <i />
+              <i />
+            </span>
+            ironweb <small>× TINYFISH</small>
+          </PageLink>
+          <span className="live-breadcrumb mono">
+            workspace /{" "}
+            <b>
+              {data.connection?.username ||
+                (data.trip_id ? data.trip_id.slice(0, 8) : "shared memory")}
+            </b>
+          </span>
+          <div
+            className="top-context"
+            title={`Measured context packet, not hosted model tokens. ${data.tiers.tokenizer}`}
+          >
+            <span>
+              Context{" "}
+              {context?.tokens
+                ? Math.round(
+                    (context.tokens.prompt / data.tiers.policy.context_limit) *
+                      100,
+                  ) + "%"
+                : "N/A"}
+            </span>
+            <span>
+              Cache{" "}
+              {reads.length
+                ? Math.round((hits / reads.length) * 100) + "%"
+                : "N/A"}
+            </span>
+            <Badge>{feedSource === "history" ? "Replay" : "Measured"}</Badge>
+          </div>
+          <div className="live-agent-control">
+            <button
+              aria-label="Filter agents"
+              aria-expanded={agentMenu}
+              onClick={() => setAgentMenu((v) => !v)}
+            >
+              Agents{" "}
+              <b>
+                {data.agents.observed}/{data.agents.registered}
+              </b>{" "}
+              ▾
+            </button>
+            {agentMenu && (
+              <div className="agent-menu">
+                {agents.map((a) => (
+                  <button
+                    key={a.agent_id}
+                    className={`live-agent-chip ${!agent || agent === a.agent_id ? "active" : ""} ${a.agent_id === event?.agent_id ? "acting" : ""}`}
+                    style={{ "--agent-color": agentColor(a.agent_id) }}
+                    aria-pressed={agent === a.agent_id}
+                    onClick={() => activateAgent(a.agent_id)}
+                  >
+                    {a.agent_id === event?.agent_id ? "●" : "○"}{" "}
+                    {agentName(a.agent_id)}
+                    <span>{a.reads_in_window} reads</span>
+                  </button>
+                ))}
+                <button
+                  onClick={() => {
+                    setAgent(null);
+                    setAgentMenu(false);
+                  }}
+                >
+                  Show all agents
+                </button>
+              </div>
+            )}
+          </div>
+          <button
+            className={`connection-state ${status}`}
+            onClick={() => setDialog("connection")}
+          >
+            <i />
+            {status.toUpperCase()}
+          </button>
+          <button
+            className={`history-button ${feedSource === "history" ? "active" : ""}`}
+            aria-pressed={feedSource === "history"}
+            onClick={showHistory}
+          >
+            Saved history
+          </button>
+          <button
+            className={`follow-button ${follow ? "active" : ""}`}
+            aria-pressed={follow}
+            onClick={followLive}
+          >
+            Follow live
+          </button>
+          <button
+            className="icon-button source-tools"
+            aria-label="Inspect data source"
+            title="Source & credentials"
+            onClick={() => setDialog("connection")}
+          >
+            <ReaderIcon />
+          </button>
+          <button
+            className="icon-button"
+            aria-label="Open help"
+            onClick={() => setDialog("help")}
+          >
+            <QuestionMarkCircledIcon />
+          </button>
+        </header>
+        <PageNavigation current={view} hrefFor={hrefFor} navigate={navigate} />
+        <main className="dashboard-main" id="dashboard-content">
+          {data.replay && (
+            <div className="history-notice" role="status">
+              <strong>Saved project replay · not live</strong>
+              <span>{data.replay.description}</span>
+              <small>
+                Recorded {new Date(data.replay.captured_at).toLocaleString()} ·
+                Follow live replaces this dataset with your signed-in account.
+              </small>
+            </div>
+          )}
+          {feedSource === "live" && status !== "live" && (
+            <div className="feed-warning" role="status">
+              {error || "Connection interrupted. Reconnecting…"} · Last snapshot{" "}
+              {time(data.timestamp)} · displayed data is stale
+            </div>
+          )}
+          <ViewHeader
+            kicker={
+              feedSource === "history"
+                ? "Saved project replay · example values"
+                : historical
+                  ? "Pinned observation · graph shows latest storage"
+                  : "Memory workspace"
+            }
+            title={PAGES[view]?.name || "Page not found"}
+            subtitle={
+              PAGES[view]?.description ||
+              "This dashboard page does not exist. Use the navigation to continue."
+            }
+          >
+            {agent && (
               <button
-                className="drawer-backdrop"
-                aria-label="Close side panel"
-                onClick={() => setDrawer(null)}
-              />
+                className="active-agent-filter"
+                onClick={() => setAgent(null)}
+                aria-label={`Clear ${agentName(agent)} filter`}
+              >
+                <Cross2Icon /> {agentName(agent)}
+              </button>
             )}
             {view === "graph" && (
-              <aside className="live-explorer">
-                <header>
-                  <span className="kicker">Memory explorer</span>
-                  <span>{graph.nodes.length}</span>
+              <span className="page-heading-note">
+                Select a node to inspect its source
+              </span>
+            )}
+          </ViewHeader>
+          {view === "overview" && (
+            <Overview
+              data={data}
+              graph={graph}
+              events={events}
+              status={status}
+              hrefFor={hrefFor}
+              navigate={navigate}
+              onEvent={moveTo}
+            />
+          )}
+          {view === "tinyfish" && <TinyFishIntelligence data={data} />}
+          {view === "not-found" && (
+            <div className="page-empty">
+              <PageLink page="overview" hrefFor={hrefFor} navigate={navigate}>
+                Go to overview
+              </PageLink>
+            </div>
+          )}
+          {view === "activity" && (
+            <Dock
+              events={events}
+              event={event}
+              onEvent={moveTo}
+              playing={playing}
+              setPlaying={(value) => {
+                setFollow(false);
+                if (value && event?.id === latest?.id) setCursor(events[0]?.id);
+                setPlaying(value);
+              }}
+              speed={speed}
+              setSpeed={setSpeed}
+              agent={agent}
+              data={data}
+            />
+          )}
+          {view === "history" && (
+            <RunHistoryPage data={data} agent={agent} api={API} />
+          )}
+          {Object.hasOwn(VIEW_NAMES, view) && (
+            <div
+              className={`live-columns ${view !== "graph" ? "single-page" : "graph-page"}`}
+              data-drawer={drawer || "none"}
+            >
+              {drawer && (
+                <button
+                  className="drawer-backdrop"
+                  aria-label="Close side panel"
+                  onClick={() => setDrawer(null)}
+                />
+              )}
+              {view === "graph" && (
+                <aside className="live-explorer">
+                  <header>
+                    <span className="kicker">Memory explorer</span>
+                    <span>{graph.nodes.length}</span>
+                    <button
+                      className="live-drawer-close"
+                      aria-label="Close explorer"
+                      onClick={() => setDrawer(null)}
+                    >
+                      <Cross2Icon />
+                    </button>
+                  </header>
+                  <label className="live-search">
+                    <input
+                      aria-label="Find a memory"
+                      placeholder="Find memory or claim…"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                    />
+                    <span>/</span>
+                  </label>
+                  <div className="live-tree">
+                    {Object.entries(COLORS).map(([t, color]) => (
+                      <details
+                        key={t}
+                        open={
+                          !!query ||
+                          selectedNode?.tier === t ||
+                          (!selectedNode && t === "durable")
+                        }
+                      >
+                        <summary style={{ "--tier-color": color }}>
+                          <i />
+                          {t === "hot"
+                            ? "Hot context"
+                            : t === "context"
+                              ? "Context cards"
+                              : "Durable evidence"}
+                          <small>
+                            {graph.nodes.filter((n) => n.tier === t).length}
+                          </small>
+                        </summary>
+                        {graph.nodes
+                          .filter(
+                            (n) =>
+                              n.tier === t &&
+                              (!agent || !n.agent_id || n.agent_id === agent) &&
+                              `${n.label} ${n.id}`
+                                .toLowerCase()
+                                .includes(query.toLowerCase()),
+                          )
+                          .map((n) => (
+                            <button
+                              className={selected === n.id ? "selected" : ""}
+                              key={n.id}
+                              onClick={() => select(n.id)}
+                              title={n.id}
+                            >
+                              <span>
+                                {n.context ? "○" : n.card ? "▤" : "◇"}
+                              </span>
+                              <span>{n.label}</span>
+                              <small>{n.access || ""}</small>
+                            </button>
+                          ))}
+                      </details>
+                    ))}
+                  </div>
+                  <footer>
+                    <span>{data.scope.replaceAll("_", " ")}</span>
+                    <button onClick={() => setDialog("connection")}>
+                      Source & credentials
+                    </button>
+                  </footer>
+                </aside>
+              )}
+              <section
+                className="live-stage"
+                aria-label={`${PAGES[view]?.name} workspace`}
+              >
+                {view === "graph" && (
+                  <div className="live-mobile-tools">
+                    <button onClick={() => setDrawer("explorer")}>
+                      <HamburgerMenuIcon /> Explorer
+                    </button>
+                    <button onClick={() => setDrawer("inspector")}>
+                      <ReaderIcon /> Inspector
+                    </button>
+                  </div>
+                )}
+                {view === "graph" && (
+                  <LiveGraph
+                    graph={graph}
+                    selected={selected}
+                    onSelect={select}
+                    event={event}
+                    agent={agent}
+                  />
+                )}
+                {view === "agents" && (
+                  <>
+                    <Wiring
+                      agents={agents}
+                      event={event}
+                      agent={agent}
+                      storeLabel={
+                        data.storage.backend === "iron_web_2"
+                          ? "FALKORDB + SQLITE"
+                          : "SHARED MEMORY SERVICE"
+                      }
+                      onAgent={activateAgent}
+                      onStore={() => {
+                        navigate("graph");
+                        setTier("durable");
+                      }}
+                    />
+                    <AgentDirectory
+                      agents={agents}
+                      agent={agent}
+                      onAgent={activateAgent}
+                    />
+                  </>
+                )}
+                {view === "activity" && (
+                  <>
+                    <Activity
+                      agents={agents}
+                      events={events}
+                      event={event}
+                      agent={agent}
+                      onEvent={(id) => {
+                        moveTo(id);
+                        setDrawer("inspector");
+                      }}
+                    />
+                    <EventJournal
+                      events={events}
+                      event={event}
+                      agent={agent}
+                      onEvent={(id) => {
+                        moveTo(id);
+                        setDrawer("inspector");
+                      }}
+                    />
+                  </>
+                )}
+                {view === "architecture" && (
+                  <Architecture
+                    data={data}
+                    graph={graph}
+                    onTier={(t) => {
+                      setTier(t);
+                      setFollow(false);
+                      setDrawer("inspector");
+                    }}
+                    selectedTier={tier}
+                  />
+                )}
+                {view === "resources" && (
+                  <Resources
+                    data={data}
+                    graph={graph}
+                    event={event}
+                    onSelect={(id) => {
+                      select(id);
+                      navigate("graph");
+                      if (innerWidth < 1280) setDrawer("inspector");
+                    }}
+                    events={events}
+                  />
+                )}
+              </section>
+              {(view === "graph" || drawer === "inspector") && (
+                <aside className="live-inspector" aria-label="Memory inspector">
                   <button
                     className="live-drawer-close"
-                    aria-label="Close explorer"
+                    aria-label="Close inspector"
                     onClick={() => setDrawer(null)}
                   >
                     <Cross2Icon />
                   </button>
-                </header>
-                <label className="live-search">
-                  <input
-                    aria-label="Find a memory"
-                    placeholder="Find memory or claim…"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                  />
-                  <span>/</span>
-                </label>
-                <div className="live-tree">
-                  {Object.entries(COLORS).map(([t, color]) => (
-                    <details
-                      key={t}
-                      open={
-                        !!query ||
-                        selectedNode?.tier === t ||
-                        (!selectedNode && t === "durable")
-                      }
-                    >
-                      <summary style={{ "--tier-color": color }}>
-                        <i />
-                        {t === "hot"
-                          ? "Hot context"
-                          : t === "context"
-                            ? "Context cards"
-                            : "Durable evidence"}
-                        <small>
-                          {graph.nodes.filter((n) => n.tier === t).length}
-                        </small>
-                      </summary>
-                      {graph.nodes
-                        .filter(
-                          (n) =>
-                            n.tier === t &&
-                            (!agent || !n.agent_id || n.agent_id === agent) &&
-                            `${n.label} ${n.id}`
-                              .toLowerCase()
-                              .includes(query.toLowerCase()),
-                        )
-                        .map((n) => (
-                          <button
-                            className={selected === n.id ? "selected" : ""}
-                            key={n.id}
-                            onClick={() => select(n.id)}
-                            title={n.id}
-                          >
-                            <span>{n.context ? "○" : n.card ? "▤" : "◇"}</span>
-                            <span>{n.label}</span>
-                            <small>{n.access || ""}</small>
-                          </button>
-                        ))}
-                    </details>
-                  ))}
-                </div>
-                <footer>
-                  <span>{data.scope.replaceAll("_", " ")}</span>
-                  <button onClick={() => setDialog("connection")}>
-                    Source & credentials
-                  </button>
-                </footer>
-              </aside>
-            )}
-            <section
-              className="live-stage"
-              aria-label={`${PAGES[view]?.name} workspace`}
-            >
-              {view === "graph" && (
-                <div className="live-mobile-tools">
-                  <button onClick={() => setDrawer("explorer")}>
-                    <HamburgerMenuIcon /> Explorer
-                  </button>
-                  <button onClick={() => setDrawer("inspector")}>
-                    <ReaderIcon /> Inspector
-                  </button>
-                </div>
-              )}
-              {view === "graph" && (
-                <LiveGraph
-                  graph={graph}
-                  selected={selected}
-                  onSelect={select}
-                  event={event}
-                  agent={agent}
-                />
-              )}
-              {view === "agents" && (
-                <>
-                  <Wiring
-                    agents={agents}
+                  <Inspector
+                    key={selected || tier || "event"}
+                    data={data}
+                    node={selectedNode}
+                    graph={graph}
+                    tier={tier}
+                    follow={follow}
                     event={event}
-                    agent={agent}
-                    storeLabel={
-                      data.storage.backend === "iron_web_2"
-                        ? "FALKORDB + SQLITE"
-                        : "SHARED MEMORY SERVICE"
-                    }
-                    onAgent={activateAgent}
-                    onStore={() => {
-                      navigate("graph");
-                      setTier("durable");
-                    }}
+                    onEvent={moveTo}
+                    onSelect={select}
+                    onFollow={followLive}
                   />
-                  <AgentDirectory
-                    agents={agents}
-                    agent={agent}
-                    onAgent={activateAgent}
-                  />
-                </>
+                </aside>
               )}
-              {view === "activity" && (
-                <>
-                  <Activity
-                    agents={agents}
-                    events={events}
-                    event={event}
-                    agent={agent}
-                    onEvent={(id) => {
-                      moveTo(id);
-                      setDrawer("inspector");
-                    }}
-                  />
-                  <EventJournal
-                    events={events}
-                    event={event}
-                    agent={agent}
-                    onEvent={(id) => {
-                      moveTo(id);
-                      setDrawer("inspector");
-                    }}
-                  />
-                </>
-              )}
-              {view === "architecture" && (
-                <Architecture
-                  data={data}
-                  graph={graph}
-                  onTier={(t) => {
-                    setTier(t);
-                    setFollow(false);
-                    setDrawer("inspector");
-                  }}
-                  selectedTier={tier}
-                />
-              )}
-              {view === "resources" && (
-                <Resources
-                  data={data}
-                  graph={graph}
-                  event={event}
-                  onSelect={(id) => {
-                    select(id);
-                    navigate("graph");
-                    if (innerWidth < 1280) setDrawer("inspector");
-                  }}
-                  events={events}
-                />
-              )}
-            </section>
-            {(view === "graph" || drawer === "inspector") && (
-              <aside className="live-inspector" aria-label="Memory inspector">
-                <button
-                  className="live-drawer-close"
-                  aria-label="Close inspector"
-                  onClick={() => setDrawer(null)}
-                >
-                  <Cross2Icon />
-                </button>
-                <Inspector
-                  key={selected || tier || "event"}
-                  data={data}
-                  node={selectedNode}
-                  graph={graph}
-                  tier={tier}
-                  follow={follow}
-                  event={event}
-                  onEvent={moveTo}
-                  onSelect={select}
-                  onFollow={followLive}
-                />
-              </aside>
-            )}
-          </div>
+            </div>
+          )}
+        </main>
+        {dialog && (
+          <Dialog name={dialog} data={data} onClose={() => setDialog(null)} />
         )}
-      </main>
-      {dialog && (
-        <Dialog name={dialog} data={data} onClose={() => setDialog(null)} />
-      )}
-    </div>
+      </div>
+    </DataOriginContext.Provider>
   );
 }

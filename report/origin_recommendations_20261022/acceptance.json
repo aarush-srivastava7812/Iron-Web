@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "trip_id": "9ac4d3c2-8011-4d42-81ce-acd469b09ed9",
+  "checks": [
+    "Asks for the starting city; every initial card explains its preference fit and excludes unknown fares",
+    "See more loads distinct batches without changing the traveler count, budget or chosen destination",
+    "Changing the starting city changes actual sample round-trip fares and preserves the selected destination",
+    "Explanations, origin-specific fare notices and the more-options control persist after reload and fit mobile"
+  ],
+  "fares": {
+    "Mumbai": {
+      "status": "sample",
+      "origin": "Mumbai",
+      "destination": "Goa",
+      "gateway": "Goa",
+      "travelers": 1,
+      "legs": [
+        {
+          "direction": "outbound",
+          "origin": "Mumbai",
+          "destination": "Goa",
+          "fare_inr": 1000,
+          "mode": "bus",
+          "route_id": 51,
+          "duration_minutes": 530
+        },
+        {
+          "direction": "return",
+          "origin": "Goa",
+          "destination": "Mumbai",
+          "fare_inr": 1000,
+          "mode": "bus",
+          "route_id": 54,
+          "duration_minutes": 530
+        }
+      ],
+      "costs_complete": true,
+      "round_trip_inr": 2000,
+      "notice": "Sample round-trip travel from Mumbai for 1 traveler(s); dates and live fares still need checking.",
+      "sample": true
+    },
+    "NewDelhi": {
+      "status": "sample",
+      "origin": "New Delhi",
+      "destination": "Goa",
+      "gateway": "Goa",
+      "travelers": 1,
+      "legs": [
+        {
+          "direction": "outbound",
+          "origin": "New Delhi",
+          "destination": "Goa",
+          "fare_inr": 910,
+          "mode": "bus",
+          "route_id": 9,
+          "duration_minutes": 530
+        },
+        {
+          "direction": "return",
+          "origin": "Goa",
+          "destination": "New Delhi",
+          "fare_inr": 910,
+          "mode": "bus",
+          "route_id": 12,
+          "duration_minutes": 530
+        }
+      ],
+      "costs_complete": true,
+      "round_trip_inr": 1820,
+      "notice": "Sample round-trip travel from New Delhi for 1 traveler(s); dates and live fares still need checking.",
+      "sample": true
+    }
+  },
+  "errors": []
+}

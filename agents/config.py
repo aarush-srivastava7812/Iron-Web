@@ -40,6 +40,12 @@ class AgentSettings:
     nim_timeout_s: float = float(_get("NIM_TIMEOUT_S", "45"))
     # auto uses NIM when a credential exists; offline is an explicitly labelled demo.
     agent_mode: str = _get("VOYARA_AGENT_MODE", "auto")
+    # auto follows existing intake behavior; nvidia enables semantic extraction
+    # independently of the provider used later for destination research.
+    query_agent_mode: str = _get("VOYARA_QUERY_AGENT_MODE", "auto")
+    dialogue_mode: str = _get("VOYARA_DIALOGUE_MODE", "local")
+    dialogue_timeout_s: float = float(_get("VOYARA_DIALOGUE_TIMEOUT_S", "8"))
+    nim_dialogue_model: str = _get("NIM_DIALOGUE_MODEL", "nvidia/nemotron-3.5-lightning-30b-a3b")
     agent_max_turns: int = int(_get("VOYARA_AGENT_MAX_TURNS", "5"))
     tinyfish_api_key: str = _get("TINYFISH_API_KEY", _root_values.get("TINYFISH_API_KEY", "")).strip("\"'")
     tinyfish_timeout_s: float = float(_get("TINYFISH_TIMEOUT_S", "480"))

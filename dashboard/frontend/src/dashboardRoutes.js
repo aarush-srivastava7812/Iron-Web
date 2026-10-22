@@ -60,8 +60,12 @@ export function readPage(pathname, search = "") {
   return "not-found";
 }
 
-export function pageUrl(page, { cursor, selected, follow = true, agent } = {}) {
+export function pageUrl(
+  page,
+  { cursor, selected, follow = true, agent, sourceMode } = {},
+) {
   const params = new URLSearchParams();
+  if (sourceMode) params.set("mode", sourceMode);
   if (cursor && !follow) params.set("event", cursor);
   // Following is explicit; auto-selected live memories must not pin a reload.
   if (selected && !follow) params.set("mem", selected);

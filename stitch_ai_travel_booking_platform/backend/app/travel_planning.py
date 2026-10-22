@@ -30,6 +30,7 @@ class Constraints(BaseModel):
     interests: list[str] = Field(default_factory=list, max_length=256)
     hard_tags: list[str] = Field(default_factory=list, max_length=16)
     hard_requirements: list[str] = Field(default_factory=list, max_length=256)
+    soft_preferences: list[str] = Field(default_factory=list, max_length=256)
     dietary: str | None = Field(default=None, max_length=80)
     transport_mode: Literal["flight", "train", "bus", "car"] | None = None
     hotel_style: Literal["budget", "mid-range", "luxury"] = "budget"
@@ -122,34 +123,14 @@ def quote(db, constraints, destination, *, activity_cost=None, stay_id=None):
         assumptions.append(
             "No eligible catalog stay; illustrative room allowance only. Accommodation suitability is unverified."
         )
-    origin = city(db, c.origin)
-    routes = []
-    for start, end in ((origin, destination), (destination, origin)):
-        route = None
-        if start and end:
-            query = select(TransportRoute).where(
-                TransportRoute.origin_id == start.id,
-                TransportRoute.destination_id == end.id,
-            )
-            if c.transport_mode:
-                query = query.where(
-                    TransportRoute.mode
-                    == ("cab" if c.transport_mode == "car" else c.transport_mode)
-                )
-            route = next(
-                (
-                    r
-                    for r in db.scalars(query.order_by(TransportRoute.price_inr))
-                    if r.duration_min <= c.max_transport_minutes
-                    and r.seats_available >= c.traveller_count
-                ),
-                None,
-            )
-        routes.append(route)
-    route_unknown = any(r is None for r in routes)
+    from .fare_estimates import route_preview
+    transport = route_preview(db, c.origin, destination, travelers=c.traveller_count,
+                              mode=c.transport_mode, max_minutes=c.max_transport_minutes)
+    routes = [db.get(TransportRoute, leg["route_id"]) if leg["route_id"] else None for leg in transport["legs"]]
+    route_unknown = not transport["costs_complete"]
     if route_unknown:
         assumptions.append(
-            "One or both intercity routes are unknown; ₹2500/person/leg allowance is an estimate only, not route validation."
+            transport["notice"] + " Unknown fares are excluded from the known subtotal; no generic fare allowance is added."
         )
     guests, nights, rooms = (
         c.traveller_count,
@@ -157,8 +138,8 @@ def quote(db, constraints, destination, *, activity_cost=None, stay_id=None):
         math.ceil(c.traveller_count / 2),
     )
     categories = dict(
-        inbound=(routes[0].price_inr if routes[0] else 2500) * guests,
-        outbound=(routes[1].price_inr if routes[1] else 2500) * guests,
+        inbound=transport["legs"][0]["fare_inr"] or 0,
+        outbound=transport["legs"][1]["fare_inr"] or 0,
         local_transport=500 * c.days,
         terminal_transfers=1200,
         accommodation=room_rate * rooms * nights,
@@ -197,10 +178,15 @@ def quote(db, constraints, destination, *, activity_cost=None, stay_id=None):
         currency="INR",
         categories=categories,
         total_inr=total,
+        known_subtotal_inr=total,
+        trip_total_inr=None if route_unknown else total,
+        costs_complete=not route_unknown,
+        unknown_categories=[key for key, leg in zip(("inbound", "outbound"), transport["legs"]) if leg["fare_inr"] is None],
+        transport=transport,
         per_person_inr=math.ceil(total / guests),
         per_day_inr=math.ceil(total / c.days),
-        remaining_inr=c.budget - total,
-        within_budget=total <= c.budget,
+        remaining_inr=None if route_unknown else c.budget - total,
+        within_budget=None if route_unknown else total <= c.budget,
         estimate=True,
         basis="seed catalog + explicit sample allowances",
         estimated_on=dt.date.today().isoformat(),
@@ -251,9 +237,9 @@ def discover(db, c):
             )
         if c.stay_amenities and estimate["stay_id"] is None:
             reasons.append("No catalog stay verifies all required amenities")
-        if c.origin and not estimate["transport_verified"]:
+        if not estimate["transport_verified"]:
             reasons.append(
-                "No feasible sample outbound and return route verifies the transport constraints"
+                estimate["transport"]["notice"]
             )
         matched = sorted(
             set(x.casefold() for x in c.interests) & set(x.casefold() for x in d.tags)
@@ -277,7 +263,7 @@ def discover(db, c):
     rejected.sort(
         key=lambda r: (
             len(r["reasons"]),
-            max(0, -r["budget"]["remaining_inr"]),
+            max(0, r["budget"]["total_inr"] - c.budget),
             r["id"],
         )
     )
@@ -598,8 +584,8 @@ def build(db, c, selections=None):
     )
     validation = conflicts(c, schedule)
     unknowns = list(c.hard_requirements)
-    if c.origin and not budget["transport_verified"]:
-        unknowns.append("Outbound/return route feasibility is unverified")
+    if not budget["transport_verified"]:
+        unknowns.append(budget["transport"]["notice"])
     return dict(
         constraints=c.model_dump(mode="json"),
         destination_id=destination.id,
@@ -607,7 +593,7 @@ def build(db, c, selections=None):
         budget=budget,
         conflicts=validation,
         unverified_requirements=unknowns,
-        ready=not validation and budget["within_budget"] and not unknowns,
+        ready=not validation and budget["within_budget"] is True and not unknowns,
         summary=dict(
             duration_days=c.days,
             activity_count=sum(
@@ -656,20 +642,21 @@ def compare(plans):
             100
             - 25 * len(plan["conflicts"])
             - 15 * len(plan["unverified_requirements"])
-            - (25 if not budget["within_budget"] else 0),
+            - (25 if budget["within_budget"] is False else 0),
         )
         rows.append(
             dict(
                 id=identifier,
                 **summary,
                 total_cost_inr=budget["total_inr"],
+                costs_complete=budget.get("costs_complete", True),
                 score=round(
                     0.5 * score + 0.5 * summary.get("preference_fit_score", 100)
                 ),
                 score_basis="Equal weights for requested-interest fit and readiness. Readiness starts at 100, minus 25 per conflict, 15 per unverified requirement and 25 when over budget. Unknown transport time remains unknown.",
                 tradeoffs=plan["unverified_requirements"]
                 + [v["message"] for v in plan["conflicts"]]
-                + (["Over budget"] if not budget["within_budget"] else []),
+                + (["Over budget"] if budget["within_budget"] is False else []),
             )
         )
     return sorted(rows, key=lambda p: (-p["score"], p["total_cost_inr"]))

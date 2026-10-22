@@ -1,0 +1,3533 @@
+{
+  "schema": "iron_web_dashboard_v1",
+  "status": "recorded",
+  "timestamp": 1792641596.347,
+  "trip_id": "saved-example-trip",
+  "scope": "saved_project_replay",
+  "replay": {
+    "kind": "project_demo",
+    "title": "Saved project replay",
+    "captured_at": "2026-10-22T03:59:56.347266+00:00",
+    "description": "Saved project replay: seeded 17 Oct trip graph + recorded 22 Oct controlled TinyFish results. Not a signed-in account or live provider activity.",
+    "source": "Existing events.json example and report/tinyfish_memory receipts",
+    "illustrative": true
+  },
+  "connection": {
+    "mode": "recorded",
+    "user_id": "public-project-replay",
+    "username": "Saved project replay"
+  },
+  "observations": {
+    "boot": "saved-project-replay-20261017",
+    "sequence": 40,
+    "retained_from": 1,
+    "events": [
+      {
+        "id": 1,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230060,
+        "trip_id": "saved-example-trip",
+        "agent_id": "budget_booking_agent",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-1/agent-policy.md",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 2,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230077,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-1/traveler.md",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 3,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230094,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-1/trip-brief.md",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 4,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230111,
+        "trip_id": "saved-example-trip",
+        "agent_id": "budget_booking_agent",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-1/requirements.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 5,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230128,
+        "trip_id": "saved-example-trip",
+        "agent_id": "explore_agent",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-3/trip/destination.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 6,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230145,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-3/trip/dates.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 7,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230162,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-3/trip/budget.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 8,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230179,
+        "trip_id": "saved-example-trip",
+        "agent_id": "budget_booking_agent",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-3/profile/dietary.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 9,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230196,
+        "trip_id": "saved-example-trip",
+        "agent_id": "explore_agent",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-3/profile/interests.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 10,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230213,
+        "trip_id": "saved-example-trip",
+        "agent_id": "explore_agent",
+        "kind": "context_assembled",
+        "detail": {
+          "memory_id": "shared/tier-1/traveler.md",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "read"
+        },
+        "context": {
+          "agent_id": "explore_agent",
+          "event_id": 10,
+          "captured_at": 1792230213,
+          "status": "ready",
+          "claim_ids": [
+            "shared/tier-1/traveler.md"
+          ],
+          "source_ids": [
+            "shared/tier-1/traveler.md"
+          ],
+          "cards": [
+            {
+              "card_id": "shared/tier-1/traveler.md",
+              "version": "saved-10",
+              "claim_ids": [
+                "shared/tier-1/traveler.md"
+              ],
+              "content": "# Traveler\nTwo adults traveling together. Vegetarian meals. Slow travel, mountain landscapes, local stays."
+            }
+          ],
+          "tokens": {
+            "agent": 36,
+            "traveller": 106,
+            "prompt": 364
+          },
+          "fields": [
+            {
+              "predicate": "traveler.md",
+              "values": [
+                "# Traveler\nTwo adults traveling together. Vegetarian meals. Slow travel, mountain landscapes, local stays."
+              ],
+              "status": "supported",
+              "claim_ids": [
+                "shared/tier-1/traveler.md"
+              ]
+            }
+          ],
+          "required_issues": {},
+          "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+        }
+      },
+      {
+        "id": 11,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230230,
+        "trip_id": "saved-example-trip",
+        "agent_id": "explore_agent",
+        "kind": "context_assembled",
+        "detail": {
+          "memory_id": "shared/tier-1/trip-brief.md",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "read"
+        },
+        "context": {
+          "agent_id": "explore_agent",
+          "event_id": 11,
+          "captured_at": 1792230230,
+          "status": "ready",
+          "claim_ids": [
+            "shared/tier-1/trip-brief.md"
+          ],
+          "source_ids": [
+            "shared/tier-1/trip-brief.md"
+          ],
+          "cards": [
+            {
+              "card_id": "shared/tier-1/trip-brief.md",
+              "version": "saved-11",
+              "claim_ids": [
+                "shared/tier-1/trip-brief.md"
+              ],
+              "content": "# Spiti Valley\n6 days / 2 travelers\nTotal budget: INR 48,000\nA relaxed journey from Shimla to Kaza."
+            }
+          ],
+          "tokens": {
+            "agent": 36,
+            "traveller": 99,
+            "prompt": 356
+          },
+          "fields": [
+            {
+              "predicate": "trip-brief.md",
+              "values": [
+                "# Spiti Valley\n6 days / 2 travelers\nTotal budget: INR 48,000\nA relaxed journey from Shimla to Kaza."
+              ],
+              "status": "supported",
+              "claim_ids": [
+                "shared/tier-1/trip-brief.md"
+              ]
+            }
+          ],
+          "required_issues": {},
+          "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+        }
+      },
+      {
+        "id": 12,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230247,
+        "trip_id": "saved-example-trip",
+        "agent_id": "explore_agent",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-2/destination.card",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 13,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230264,
+        "trip_id": "saved-example-trip",
+        "agent_id": "explore_agent",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-3/evidence/route-options.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 14,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230281,
+        "trip_id": "saved-example-trip",
+        "agent_id": "explore_agent",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-2/route.card",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 15,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230298,
+        "trip_id": "saved-example-trip",
+        "agent_id": "explore_agent",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-2/accommodation.card",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 16,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230315,
+        "trip_id": "saved-example-trip",
+        "agent_id": "explore_agent",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-3/evidence/stay-options.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 17,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230332,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "kind": "context_assembled",
+        "detail": {
+          "memory_id": "shared/tier-3/profile/dietary.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "read"
+        },
+        "context": {
+          "agent_id": "itinerary_planner",
+          "event_id": 17,
+          "captured_at": 1792230332,
+          "status": "ready",
+          "claim_ids": [
+            "shared/tier-3/profile/dietary.json"
+          ],
+          "source_ids": [
+            "shared/tier-3/profile/dietary.json"
+          ],
+          "cards": [
+            {
+              "card_id": "shared/tier-3/profile/dietary.json",
+              "version": "saved-17",
+              "claim_ids": [
+                "shared/tier-3/profile/dietary.json"
+              ],
+              "content": {
+                "diet": "vegetarian",
+                "confirmed": true,
+                "source": "traveler"
+              }
+            }
+          ],
+          "tokens": {
+            "agent": 40,
+            "traveller": 58,
+            "prompt": 287
+          },
+          "fields": [
+            {
+              "predicate": "dietary.json",
+              "values": [
+                {
+                  "diet": "vegetarian",
+                  "confirmed": true,
+                  "source": "traveler"
+                }
+              ],
+              "status": "supported",
+              "claim_ids": [
+                "shared/tier-3/profile/dietary.json"
+              ]
+            }
+          ],
+          "required_issues": {},
+          "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+        }
+      },
+      {
+        "id": 18,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230349,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-2/food.card",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 19,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230366,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-2/pace.card",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 20,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230383,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-2/budget.card",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 21,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230400,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-1/active-context.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 22,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230417,
+        "trip_id": "saved-example-trip",
+        "agent_id": "budget_booking_agent",
+        "kind": "context_assembled",
+        "detail": {
+          "memory_id": "shared/tier-3/trip/budget.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "read"
+        },
+        "context": {
+          "agent_id": "budget_booking_agent",
+          "event_id": 22,
+          "captured_at": 1792230417,
+          "status": "ready",
+          "claim_ids": [
+            "shared/tier-3/trip/budget.json"
+          ],
+          "source_ids": [
+            "shared/tier-3/trip/budget.json"
+          ],
+          "cards": [
+            {
+              "card_id": "shared/tier-3/trip/budget.json",
+              "version": "saved-22",
+              "claim_ids": [
+                "shared/tier-3/trip/budget.json"
+              ],
+              "content": {
+                "amount": 48000,
+                "currency": "INR",
+                "scope": "whole trip"
+              }
+            }
+          ],
+          "tokens": {
+            "agent": 43,
+            "traveller": 54,
+            "prompt": 274
+          },
+          "fields": [
+            {
+              "predicate": "budget.json",
+              "values": [
+                {
+                  "amount": 48000,
+                  "currency": "INR",
+                  "scope": "whole trip"
+                }
+              ],
+              "status": "supported",
+              "claim_ids": [
+                "shared/tier-3/trip/budget.json"
+              ]
+            }
+          ],
+          "required_issues": {},
+          "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+        }
+      },
+      {
+        "id": 23,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230434,
+        "trip_id": "saved-example-trip",
+        "agent_id": "explore_agent",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-3/scratch/weather-cache.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 24,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230451,
+        "trip_id": "saved-example-trip",
+        "agent_id": "explore_agent",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-2/weather.card",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 25,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230468,
+        "trip_id": "saved-example-trip",
+        "agent_id": "explore_agent",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-3/trip/budget.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "update"
+        }
+      },
+      {
+        "id": 26,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230485,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "kind": "context_assembled",
+        "detail": {
+          "memory_id": "shared/tier-3/trip/destination.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "read"
+        },
+        "context": {
+          "agent_id": "itinerary_planner",
+          "event_id": 26,
+          "captured_at": 1792230485,
+          "status": "ready",
+          "claim_ids": [
+            "shared/tier-3/trip/destination.json"
+          ],
+          "source_ids": [
+            "shared/tier-3/trip/destination.json"
+          ],
+          "cards": [
+            {
+              "card_id": "shared/tier-3/trip/destination.json",
+              "version": "saved-26",
+              "claim_ids": [
+                "shared/tier-3/trip/destination.json"
+              ],
+              "content": {
+                "name": "Spiti Valley",
+                "region": "Himachal Pradesh",
+                "base": "Kaza"
+              }
+            }
+          ],
+          "tokens": {
+            "agent": 40,
+            "traveller": 65,
+            "prompt": 303
+          },
+          "fields": [
+            {
+              "predicate": "destination.json",
+              "values": [
+                {
+                  "name": "Spiti Valley",
+                  "region": "Himachal Pradesh",
+                  "base": "Kaza"
+                }
+              ],
+              "status": "supported",
+              "claim_ids": [
+                "shared/tier-3/trip/destination.json"
+              ]
+            }
+          ],
+          "required_issues": {},
+          "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+        }
+      },
+      {
+        "id": 27,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230502,
+        "trip_id": "saved-example-trip",
+        "agent_id": "budget_booking_agent",
+        "kind": "context_failed",
+        "detail": {
+          "memory_id": "shared/tier-3/trip/budget.json",
+          "replay": true,
+          "status": "failed",
+          "cache_hit": false,
+          "action": "update"
+        }
+      },
+      {
+        "id": 28,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230519,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "kind": "context_assembled",
+        "detail": {
+          "memory_id": "shared/tier-3/trip/budget.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "read"
+        },
+        "context": {
+          "agent_id": "itinerary_planner",
+          "event_id": 28,
+          "captured_at": 1792230519,
+          "status": "ready",
+          "claim_ids": [
+            "shared/tier-3/trip/budget.json"
+          ],
+          "source_ids": [
+            "shared/tier-3/trip/budget.json"
+          ],
+          "cards": [
+            {
+              "card_id": "shared/tier-3/trip/budget.json",
+              "version": "saved-28",
+              "claim_ids": [
+                "shared/tier-3/trip/budget.json"
+              ],
+              "content": {
+                "amount": 42000,
+                "currency": "INR",
+                "scope": "whole trip"
+              }
+            }
+          ],
+          "tokens": {
+            "agent": 40,
+            "traveller": 54,
+            "prompt": 271
+          },
+          "fields": [
+            {
+              "predicate": "budget.json",
+              "values": [
+                {
+                  "amount": 42000,
+                  "currency": "INR",
+                  "scope": "whole trip"
+                }
+              ],
+              "status": "supported",
+              "claim_ids": [
+                "shared/tier-3/trip/budget.json"
+              ]
+            }
+          ],
+          "required_issues": {},
+          "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+        }
+      },
+      {
+        "id": 29,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230536,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-2/budget.card",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "update"
+        }
+      },
+      {
+        "id": 30,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230553,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "kind": "context_assembled",
+        "detail": {
+          "memory_id": "shared/tier-2/route.card",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "read"
+        },
+        "context": {
+          "agent_id": "itinerary_planner",
+          "event_id": 30,
+          "captured_at": 1792230553,
+          "status": "ready",
+          "claim_ids": [
+            "shared/tier-2/route.card"
+          ],
+          "source_ids": [
+            "shared/tier-2/route.card"
+          ],
+          "cards": [
+            {
+              "card_id": "shared/tier-2/route.card",
+              "version": "saved-30",
+              "claim_ids": [
+                "shared/tier-2/route.card"
+              ],
+              "content": {
+                "title": "A slower route into Spiti",
+                "source": "shared/tier-3/evidence/route-options.json",
+                "guidance": "Break the ascent with overnight stops."
+              }
+            }
+          ],
+          "tokens": {
+            "agent": 40,
+            "traveller": 142,
+            "prompt": 435
+          },
+          "fields": [
+            {
+              "predicate": "route.card",
+              "values": [
+                {
+                  "title": "A slower route into Spiti",
+                  "source": "shared/tier-3/evidence/route-options.json",
+                  "guidance": "Break the ascent with overnight stops."
+                }
+              ],
+              "status": "supported",
+              "claim_ids": [
+                "shared/tier-2/route.card"
+              ]
+            }
+          ],
+          "required_issues": {},
+          "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+        }
+      },
+      {
+        "id": 31,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230570,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-3/decisions/itinerary.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "write"
+        }
+      },
+      {
+        "id": 32,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230587,
+        "trip_id": "saved-example-trip",
+        "agent_id": "budget_booking_agent",
+        "kind": "context_assembled",
+        "detail": {
+          "memory_id": "shared/tier-3/decisions/itinerary.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "read"
+        },
+        "context": {
+          "agent_id": "budget_booking_agent",
+          "event_id": 32,
+          "captured_at": 1792230587,
+          "status": "ready",
+          "claim_ids": [
+            "shared/tier-3/decisions/itinerary.json"
+          ],
+          "source_ids": [
+            "shared/tier-3/decisions/itinerary.json"
+          ],
+          "cards": [
+            {
+              "card_id": "shared/tier-3/decisions/itinerary.json",
+              "version": "saved-32",
+              "claim_ids": [
+                "shared/tier-3/decisions/itinerary.json"
+              ],
+              "content": {
+                "days": 6,
+                "route": [
+                  "Shimla",
+                  "Kalpa",
+                  "Tabo",
+                  "Kaza"
+                ],
+                "budget": 42000,
+                "status": "draft",
+                "source": "shared/tier-2/route.card"
+              }
+            }
+          ],
+          "tokens": {
+            "agent": 43,
+            "traveller": 119,
+            "prompt": 420
+          },
+          "fields": [
+            {
+              "predicate": "itinerary.json",
+              "values": [
+                {
+                  "days": 6,
+                  "route": [
+                    "Shimla",
+                    "Kalpa",
+                    "Tabo",
+                    "Kaza"
+                  ],
+                  "budget": 42000,
+                  "status": "draft",
+                  "source": "shared/tier-2/route.card"
+                }
+              ],
+              "status": "supported",
+              "claim_ids": [
+                "shared/tier-3/decisions/itinerary.json"
+              ]
+            }
+          ],
+          "required_issues": {},
+          "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+        }
+      },
+      {
+        "id": 33,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230604,
+        "trip_id": "saved-example-trip",
+        "agent_id": "budget_booking_agent",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-2/pace.card",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "update"
+        }
+      },
+      {
+        "id": 34,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230621,
+        "trip_id": "saved-example-trip",
+        "agent_id": "budget_booking_agent",
+        "kind": "context_assembled",
+        "detail": {
+          "memory_id": "shared/tier-1/requirements.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "read"
+        },
+        "context": {
+          "agent_id": "budget_booking_agent",
+          "event_id": 34,
+          "captured_at": 1792230621,
+          "status": "ready",
+          "claim_ids": [
+            "shared/tier-1/requirements.json"
+          ],
+          "source_ids": [
+            "shared/tier-1/requirements.json"
+          ],
+          "cards": [
+            {
+              "card_id": "shared/tier-1/requirements.json",
+              "version": "saved-34",
+              "claim_ids": [
+                "shared/tier-1/requirements.json"
+              ],
+              "content": {
+                "dietary": "vegetarian",
+                "pace": "relaxed",
+                "partySize": 2,
+                "bookingAllowed": false
+              }
+            }
+          ],
+          "tokens": {
+            "agent": 43,
+            "traveller": 78,
+            "prompt": 324
+          },
+          "fields": [
+            {
+              "predicate": "requirements.json",
+              "values": [
+                {
+                  "dietary": "vegetarian",
+                  "pace": "relaxed",
+                  "partySize": 2,
+                  "bookingAllowed": false
+                }
+              ],
+              "status": "supported",
+              "claim_ids": [
+                "shared/tier-1/requirements.json"
+              ]
+            }
+          ],
+          "required_issues": {},
+          "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+        }
+      },
+      {
+        "id": 35,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230638,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-1/active-context.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "update"
+        }
+      },
+      {
+        "id": 36,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230655,
+        "trip_id": "saved-example-trip",
+        "agent_id": "explore_agent",
+        "kind": "memory_forget_requested",
+        "detail": {
+          "memory_id": "shared/tier-3/scratch/weather-cache.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "forget"
+        }
+      },
+      {
+        "id": 37,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230672,
+        "trip_id": "saved-example-trip",
+        "agent_id": "budget_booking_agent",
+        "kind": "context_assembled",
+        "detail": {
+          "memory_id": "shared/tier-2/food.card",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "read"
+        },
+        "context": {
+          "agent_id": "budget_booking_agent",
+          "event_id": 37,
+          "captured_at": 1792230672,
+          "status": "ready",
+          "claim_ids": [
+            "shared/tier-2/food.card"
+          ],
+          "source_ids": [
+            "shared/tier-2/food.card"
+          ],
+          "cards": [
+            {
+              "card_id": "shared/tier-2/food.card",
+              "version": "saved-37",
+              "claim_ids": [
+                "shared/tier-2/food.card"
+              ],
+              "content": {
+                "title": "Vegetarian meals",
+                "source": "shared/tier-3/profile/dietary.json",
+                "guidance": "Check menu suitability with each host."
+              }
+            }
+          ],
+          "tokens": {
+            "agent": 43,
+            "traveller": 126,
+            "prompt": 404
+          },
+          "fields": [
+            {
+              "predicate": "food.card",
+              "values": [
+                {
+                  "title": "Vegetarian meals",
+                  "source": "shared/tier-3/profile/dietary.json",
+                  "guidance": "Check menu suitability with each host."
+                }
+              ],
+              "status": "supported",
+              "claim_ids": [
+                "shared/tier-2/food.card"
+              ]
+            }
+          ],
+          "required_issues": {},
+          "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+        }
+      },
+      {
+        "id": 38,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230689,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-3/decisions/itinerary.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "update"
+        }
+      },
+      {
+        "id": 39,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230706,
+        "trip_id": "saved-example-trip",
+        "agent_id": "budget_booking_agent",
+        "kind": "context_assembled",
+        "detail": {
+          "memory_id": "shared/tier-3/decisions/itinerary.json",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "read"
+        },
+        "context": {
+          "agent_id": "budget_booking_agent",
+          "event_id": 39,
+          "captured_at": 1792230706,
+          "status": "ready",
+          "claim_ids": [
+            "shared/tier-3/decisions/itinerary.json"
+          ],
+          "source_ids": [
+            "shared/tier-3/decisions/itinerary.json"
+          ],
+          "cards": [
+            {
+              "card_id": "shared/tier-3/decisions/itinerary.json",
+              "version": "saved-39",
+              "claim_ids": [
+                "shared/tier-3/decisions/itinerary.json"
+              ],
+              "content": {
+                "days": 6,
+                "route": [
+                  "Shimla",
+                  "Kalpa",
+                  "Tabo",
+                  "Kaza"
+                ],
+                "budget": 42000,
+                "dietary": "vegetarian",
+                "status": "reviewed draft",
+                "source": "shared/tier-2/route.card"
+              }
+            }
+          ],
+          "tokens": {
+            "agent": 43,
+            "traveller": 151,
+            "prompt": 484
+          },
+          "fields": [
+            {
+              "predicate": "itinerary.json",
+              "values": [
+                {
+                  "days": 6,
+                  "route": [
+                    "Shimla",
+                    "Kalpa",
+                    "Tabo",
+                    "Kaza"
+                  ],
+                  "budget": 42000,
+                  "dietary": "vegetarian",
+                  "status": "reviewed draft",
+                  "source": "shared/tier-2/route.card"
+                }
+              ],
+              "status": "supported",
+              "claim_ids": [
+                "shared/tier-3/decisions/itinerary.json"
+              ]
+            }
+          ],
+          "required_issues": {},
+          "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+        }
+      },
+      {
+        "id": 40,
+        "boot": "saved-project-replay-20261017",
+        "timestamp": 1792230723,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "kind": "memory_processed",
+        "detail": {
+          "memory_id": "shared/tier-1/trip-brief.md",
+          "replay": true,
+          "status": "ready",
+          "cache_hit": false,
+          "action": "update"
+        }
+      }
+    ],
+    "contexts": [
+      {
+        "agent_id": "explore_agent",
+        "event_id": 11,
+        "captured_at": 1792230230,
+        "status": "ready",
+        "claim_ids": [
+          "shared/tier-1/trip-brief.md"
+        ],
+        "source_ids": [
+          "shared/tier-1/trip-brief.md"
+        ],
+        "cards": [
+          {
+            "card_id": "shared/tier-1/trip-brief.md",
+            "version": "saved-11",
+            "claim_ids": [
+              "shared/tier-1/trip-brief.md"
+            ],
+            "content": "# Spiti Valley\n6 days / 2 travelers\nTotal budget: INR 48,000\nA relaxed journey from Shimla to Kaza."
+          }
+        ],
+        "tokens": {
+          "agent": 36,
+          "traveller": 99,
+          "prompt": 356
+        },
+        "fields": [
+          {
+            "predicate": "trip-brief.md",
+            "values": [
+              "# Spiti Valley\n6 days / 2 travelers\nTotal budget: INR 48,000\nA relaxed journey from Shimla to Kaza."
+            ],
+            "status": "supported",
+            "claim_ids": [
+              "shared/tier-1/trip-brief.md"
+            ]
+          }
+        ],
+        "required_issues": {},
+        "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+      },
+      {
+        "agent_id": "itinerary_planner",
+        "event_id": 30,
+        "captured_at": 1792230553,
+        "status": "ready",
+        "claim_ids": [
+          "shared/tier-2/route.card"
+        ],
+        "source_ids": [
+          "shared/tier-2/route.card"
+        ],
+        "cards": [
+          {
+            "card_id": "shared/tier-2/route.card",
+            "version": "saved-30",
+            "claim_ids": [
+              "shared/tier-2/route.card"
+            ],
+            "content": {
+              "title": "A slower route into Spiti",
+              "source": "shared/tier-3/evidence/route-options.json",
+              "guidance": "Break the ascent with overnight stops."
+            }
+          }
+        ],
+        "tokens": {
+          "agent": 40,
+          "traveller": 142,
+          "prompt": 435
+        },
+        "fields": [
+          {
+            "predicate": "route.card",
+            "values": [
+              {
+                "title": "A slower route into Spiti",
+                "source": "shared/tier-3/evidence/route-options.json",
+                "guidance": "Break the ascent with overnight stops."
+              }
+            ],
+            "status": "supported",
+            "claim_ids": [
+              "shared/tier-2/route.card"
+            ]
+          }
+        ],
+        "required_issues": {},
+        "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+      },
+      {
+        "agent_id": "budget_booking_agent",
+        "event_id": 39,
+        "captured_at": 1792230706,
+        "status": "ready",
+        "claim_ids": [
+          "shared/tier-3/decisions/itinerary.json"
+        ],
+        "source_ids": [
+          "shared/tier-3/decisions/itinerary.json"
+        ],
+        "cards": [
+          {
+            "card_id": "shared/tier-3/decisions/itinerary.json",
+            "version": "saved-39",
+            "claim_ids": [
+              "shared/tier-3/decisions/itinerary.json"
+            ],
+            "content": {
+              "days": 6,
+              "route": [
+                "Shimla",
+                "Kalpa",
+                "Tabo",
+                "Kaza"
+              ],
+              "budget": 42000,
+              "dietary": "vegetarian",
+              "status": "reviewed draft",
+              "source": "shared/tier-2/route.card"
+            }
+          }
+        ],
+        "tokens": {
+          "agent": 43,
+          "traveller": 151,
+          "prompt": 484
+        },
+        "fields": [
+          {
+            "predicate": "itinerary.json",
+            "values": [
+              {
+                "days": 6,
+                "route": [
+                  "Shimla",
+                  "Kalpa",
+                  "Tabo",
+                  "Kaza"
+                ],
+                "budget": 42000,
+                "dietary": "vegetarian",
+                "status": "reviewed draft",
+                "source": "shared/tier-2/route.card"
+              }
+            ],
+            "status": "supported",
+            "claim_ids": [
+              "shared/tier-3/decisions/itinerary.json"
+            ]
+          }
+        ],
+        "required_issues": {},
+        "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+      }
+    ]
+  },
+  "history": {
+    "rows": [
+      {
+        "run_id": "recorded-read-39",
+        "sequence": 39,
+        "trip_id": "saved-example-trip",
+        "agent_id": "budget_booking_agent",
+        "status": "recorded",
+        "summary": "Seeded replay: read shared/tier-3/decisions/itinerary.json",
+        "started_at": 1792230706,
+        "finished_at": 1792230706,
+        "elapsed_ms": null,
+        "payload": {
+          "observation_boot": "saved-project-replay-20261017",
+          "memory": {
+            "claims": 1,
+            "cards": 1,
+            "cache_hit": null
+          },
+          "provider": {},
+          "recorded_result": {
+            "agent_id": "budget_booking_agent",
+            "event_id": 39,
+            "captured_at": 1792230706,
+            "status": "ready",
+            "claim_ids": [
+              "shared/tier-3/decisions/itinerary.json"
+            ],
+            "source_ids": [
+              "shared/tier-3/decisions/itinerary.json"
+            ],
+            "cards": [
+              {
+                "card_id": "shared/tier-3/decisions/itinerary.json",
+                "version": "saved-39",
+                "claim_ids": [
+                  "shared/tier-3/decisions/itinerary.json"
+                ],
+                "content": {
+                  "days": 6,
+                  "route": [
+                    "Shimla",
+                    "Kalpa",
+                    "Tabo",
+                    "Kaza"
+                  ],
+                  "budget": 42000,
+                  "dietary": "vegetarian",
+                  "status": "reviewed draft",
+                  "source": "shared/tier-2/route.card"
+                }
+              }
+            ],
+            "tokens": {
+              "agent": 43,
+              "traveller": 151,
+              "prompt": 484
+            },
+            "fields": [
+              {
+                "predicate": "itinerary.json",
+                "values": [
+                  {
+                    "days": 6,
+                    "route": [
+                      "Shimla",
+                      "Kalpa",
+                      "Tabo",
+                      "Kaza"
+                    ],
+                    "budget": 42000,
+                    "dietary": "vegetarian",
+                    "status": "reviewed draft",
+                    "source": "shared/tier-2/route.card"
+                  }
+                ],
+                "status": "supported",
+                "claim_ids": [
+                  "shared/tier-3/decisions/itinerary.json"
+                ]
+              }
+            ],
+            "required_issues": {},
+            "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+          },
+          "source": "Seeded 17 Oct project example; not a measured agent execution"
+        }
+      },
+      {
+        "run_id": "recorded-read-37",
+        "sequence": 37,
+        "trip_id": "saved-example-trip",
+        "agent_id": "budget_booking_agent",
+        "status": "recorded",
+        "summary": "Seeded replay: read shared/tier-2/food.card",
+        "started_at": 1792230672,
+        "finished_at": 1792230672,
+        "elapsed_ms": null,
+        "payload": {
+          "observation_boot": "saved-project-replay-20261017",
+          "memory": {
+            "claims": 1,
+            "cards": 1,
+            "cache_hit": null
+          },
+          "provider": {},
+          "recorded_result": {
+            "agent_id": "budget_booking_agent",
+            "event_id": 37,
+            "captured_at": 1792230672,
+            "status": "ready",
+            "claim_ids": [
+              "shared/tier-2/food.card"
+            ],
+            "source_ids": [
+              "shared/tier-2/food.card"
+            ],
+            "cards": [
+              {
+                "card_id": "shared/tier-2/food.card",
+                "version": "saved-37",
+                "claim_ids": [
+                  "shared/tier-2/food.card"
+                ],
+                "content": {
+                  "title": "Vegetarian meals",
+                  "source": "shared/tier-3/profile/dietary.json",
+                  "guidance": "Check menu suitability with each host."
+                }
+              }
+            ],
+            "tokens": {
+              "agent": 43,
+              "traveller": 126,
+              "prompt": 404
+            },
+            "fields": [
+              {
+                "predicate": "food.card",
+                "values": [
+                  {
+                    "title": "Vegetarian meals",
+                    "source": "shared/tier-3/profile/dietary.json",
+                    "guidance": "Check menu suitability with each host."
+                  }
+                ],
+                "status": "supported",
+                "claim_ids": [
+                  "shared/tier-2/food.card"
+                ]
+              }
+            ],
+            "required_issues": {},
+            "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+          },
+          "source": "Seeded 17 Oct project example; not a measured agent execution"
+        }
+      },
+      {
+        "run_id": "recorded-read-34",
+        "sequence": 34,
+        "trip_id": "saved-example-trip",
+        "agent_id": "budget_booking_agent",
+        "status": "recorded",
+        "summary": "Seeded replay: read shared/tier-1/requirements.json",
+        "started_at": 1792230621,
+        "finished_at": 1792230621,
+        "elapsed_ms": null,
+        "payload": {
+          "observation_boot": "saved-project-replay-20261017",
+          "memory": {
+            "claims": 1,
+            "cards": 1,
+            "cache_hit": null
+          },
+          "provider": {},
+          "recorded_result": {
+            "agent_id": "budget_booking_agent",
+            "event_id": 34,
+            "captured_at": 1792230621,
+            "status": "ready",
+            "claim_ids": [
+              "shared/tier-1/requirements.json"
+            ],
+            "source_ids": [
+              "shared/tier-1/requirements.json"
+            ],
+            "cards": [
+              {
+                "card_id": "shared/tier-1/requirements.json",
+                "version": "saved-34",
+                "claim_ids": [
+                  "shared/tier-1/requirements.json"
+                ],
+                "content": {
+                  "dietary": "vegetarian",
+                  "pace": "relaxed",
+                  "partySize": 2,
+                  "bookingAllowed": false
+                }
+              }
+            ],
+            "tokens": {
+              "agent": 43,
+              "traveller": 78,
+              "prompt": 324
+            },
+            "fields": [
+              {
+                "predicate": "requirements.json",
+                "values": [
+                  {
+                    "dietary": "vegetarian",
+                    "pace": "relaxed",
+                    "partySize": 2,
+                    "bookingAllowed": false
+                  }
+                ],
+                "status": "supported",
+                "claim_ids": [
+                  "shared/tier-1/requirements.json"
+                ]
+              }
+            ],
+            "required_issues": {},
+            "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+          },
+          "source": "Seeded 17 Oct project example; not a measured agent execution"
+        }
+      },
+      {
+        "run_id": "recorded-read-32",
+        "sequence": 32,
+        "trip_id": "saved-example-trip",
+        "agent_id": "budget_booking_agent",
+        "status": "recorded",
+        "summary": "Seeded replay: read shared/tier-3/decisions/itinerary.json",
+        "started_at": 1792230587,
+        "finished_at": 1792230587,
+        "elapsed_ms": null,
+        "payload": {
+          "observation_boot": "saved-project-replay-20261017",
+          "memory": {
+            "claims": 1,
+            "cards": 1,
+            "cache_hit": null
+          },
+          "provider": {},
+          "recorded_result": {
+            "agent_id": "budget_booking_agent",
+            "event_id": 32,
+            "captured_at": 1792230587,
+            "status": "ready",
+            "claim_ids": [
+              "shared/tier-3/decisions/itinerary.json"
+            ],
+            "source_ids": [
+              "shared/tier-3/decisions/itinerary.json"
+            ],
+            "cards": [
+              {
+                "card_id": "shared/tier-3/decisions/itinerary.json",
+                "version": "saved-32",
+                "claim_ids": [
+                  "shared/tier-3/decisions/itinerary.json"
+                ],
+                "content": {
+                  "days": 6,
+                  "route": [
+                    "Shimla",
+                    "Kalpa",
+                    "Tabo",
+                    "Kaza"
+                  ],
+                  "budget": 42000,
+                  "status": "draft",
+                  "source": "shared/tier-2/route.card"
+                }
+              }
+            ],
+            "tokens": {
+              "agent": 43,
+              "traveller": 119,
+              "prompt": 420
+            },
+            "fields": [
+              {
+                "predicate": "itinerary.json",
+                "values": [
+                  {
+                    "days": 6,
+                    "route": [
+                      "Shimla",
+                      "Kalpa",
+                      "Tabo",
+                      "Kaza"
+                    ],
+                    "budget": 42000,
+                    "status": "draft",
+                    "source": "shared/tier-2/route.card"
+                  }
+                ],
+                "status": "supported",
+                "claim_ids": [
+                  "shared/tier-3/decisions/itinerary.json"
+                ]
+              }
+            ],
+            "required_issues": {},
+            "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+          },
+          "source": "Seeded 17 Oct project example; not a measured agent execution"
+        }
+      },
+      {
+        "run_id": "recorded-read-30",
+        "sequence": 30,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "status": "recorded",
+        "summary": "Seeded replay: read shared/tier-2/route.card",
+        "started_at": 1792230553,
+        "finished_at": 1792230553,
+        "elapsed_ms": null,
+        "payload": {
+          "observation_boot": "saved-project-replay-20261017",
+          "memory": {
+            "claims": 1,
+            "cards": 1,
+            "cache_hit": null
+          },
+          "provider": {},
+          "recorded_result": {
+            "agent_id": "itinerary_planner",
+            "event_id": 30,
+            "captured_at": 1792230553,
+            "status": "ready",
+            "claim_ids": [
+              "shared/tier-2/route.card"
+            ],
+            "source_ids": [
+              "shared/tier-2/route.card"
+            ],
+            "cards": [
+              {
+                "card_id": "shared/tier-2/route.card",
+                "version": "saved-30",
+                "claim_ids": [
+                  "shared/tier-2/route.card"
+                ],
+                "content": {
+                  "title": "A slower route into Spiti",
+                  "source": "shared/tier-3/evidence/route-options.json",
+                  "guidance": "Break the ascent with overnight stops."
+                }
+              }
+            ],
+            "tokens": {
+              "agent": 40,
+              "traveller": 142,
+              "prompt": 435
+            },
+            "fields": [
+              {
+                "predicate": "route.card",
+                "values": [
+                  {
+                    "title": "A slower route into Spiti",
+                    "source": "shared/tier-3/evidence/route-options.json",
+                    "guidance": "Break the ascent with overnight stops."
+                  }
+                ],
+                "status": "supported",
+                "claim_ids": [
+                  "shared/tier-2/route.card"
+                ]
+              }
+            ],
+            "required_issues": {},
+            "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+          },
+          "source": "Seeded 17 Oct project example; not a measured agent execution"
+        }
+      },
+      {
+        "run_id": "recorded-read-28",
+        "sequence": 28,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "status": "recorded",
+        "summary": "Seeded replay: read shared/tier-3/trip/budget.json",
+        "started_at": 1792230519,
+        "finished_at": 1792230519,
+        "elapsed_ms": null,
+        "payload": {
+          "observation_boot": "saved-project-replay-20261017",
+          "memory": {
+            "claims": 1,
+            "cards": 1,
+            "cache_hit": null
+          },
+          "provider": {},
+          "recorded_result": {
+            "agent_id": "itinerary_planner",
+            "event_id": 28,
+            "captured_at": 1792230519,
+            "status": "ready",
+            "claim_ids": [
+              "shared/tier-3/trip/budget.json"
+            ],
+            "source_ids": [
+              "shared/tier-3/trip/budget.json"
+            ],
+            "cards": [
+              {
+                "card_id": "shared/tier-3/trip/budget.json",
+                "version": "saved-28",
+                "claim_ids": [
+                  "shared/tier-3/trip/budget.json"
+                ],
+                "content": {
+                  "amount": 42000,
+                  "currency": "INR",
+                  "scope": "whole trip"
+                }
+              }
+            ],
+            "tokens": {
+              "agent": 40,
+              "traveller": 54,
+              "prompt": 271
+            },
+            "fields": [
+              {
+                "predicate": "budget.json",
+                "values": [
+                  {
+                    "amount": 42000,
+                    "currency": "INR",
+                    "scope": "whole trip"
+                  }
+                ],
+                "status": "supported",
+                "claim_ids": [
+                  "shared/tier-3/trip/budget.json"
+                ]
+              }
+            ],
+            "required_issues": {},
+            "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+          },
+          "source": "Seeded 17 Oct project example; not a measured agent execution"
+        }
+      },
+      {
+        "run_id": "recorded-read-26",
+        "sequence": 26,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "status": "recorded",
+        "summary": "Seeded replay: read shared/tier-3/trip/destination.json",
+        "started_at": 1792230485,
+        "finished_at": 1792230485,
+        "elapsed_ms": null,
+        "payload": {
+          "observation_boot": "saved-project-replay-20261017",
+          "memory": {
+            "claims": 1,
+            "cards": 1,
+            "cache_hit": null
+          },
+          "provider": {},
+          "recorded_result": {
+            "agent_id": "itinerary_planner",
+            "event_id": 26,
+            "captured_at": 1792230485,
+            "status": "ready",
+            "claim_ids": [
+              "shared/tier-3/trip/destination.json"
+            ],
+            "source_ids": [
+              "shared/tier-3/trip/destination.json"
+            ],
+            "cards": [
+              {
+                "card_id": "shared/tier-3/trip/destination.json",
+                "version": "saved-26",
+                "claim_ids": [
+                  "shared/tier-3/trip/destination.json"
+                ],
+                "content": {
+                  "name": "Spiti Valley",
+                  "region": "Himachal Pradesh",
+                  "base": "Kaza"
+                }
+              }
+            ],
+            "tokens": {
+              "agent": 40,
+              "traveller": 65,
+              "prompt": 303
+            },
+            "fields": [
+              {
+                "predicate": "destination.json",
+                "values": [
+                  {
+                    "name": "Spiti Valley",
+                    "region": "Himachal Pradesh",
+                    "base": "Kaza"
+                  }
+                ],
+                "status": "supported",
+                "claim_ids": [
+                  "shared/tier-3/trip/destination.json"
+                ]
+              }
+            ],
+            "required_issues": {},
+            "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+          },
+          "source": "Seeded 17 Oct project example; not a measured agent execution"
+        }
+      },
+      {
+        "run_id": "recorded-read-22",
+        "sequence": 22,
+        "trip_id": "saved-example-trip",
+        "agent_id": "budget_booking_agent",
+        "status": "recorded",
+        "summary": "Seeded replay: read shared/tier-3/trip/budget.json",
+        "started_at": 1792230417,
+        "finished_at": 1792230417,
+        "elapsed_ms": null,
+        "payload": {
+          "observation_boot": "saved-project-replay-20261017",
+          "memory": {
+            "claims": 1,
+            "cards": 1,
+            "cache_hit": null
+          },
+          "provider": {},
+          "recorded_result": {
+            "agent_id": "budget_booking_agent",
+            "event_id": 22,
+            "captured_at": 1792230417,
+            "status": "ready",
+            "claim_ids": [
+              "shared/tier-3/trip/budget.json"
+            ],
+            "source_ids": [
+              "shared/tier-3/trip/budget.json"
+            ],
+            "cards": [
+              {
+                "card_id": "shared/tier-3/trip/budget.json",
+                "version": "saved-22",
+                "claim_ids": [
+                  "shared/tier-3/trip/budget.json"
+                ],
+                "content": {
+                  "amount": 48000,
+                  "currency": "INR",
+                  "scope": "whole trip"
+                }
+              }
+            ],
+            "tokens": {
+              "agent": 43,
+              "traveller": 54,
+              "prompt": 274
+            },
+            "fields": [
+              {
+                "predicate": "budget.json",
+                "values": [
+                  {
+                    "amount": 48000,
+                    "currency": "INR",
+                    "scope": "whole trip"
+                  }
+                ],
+                "status": "supported",
+                "claim_ids": [
+                  "shared/tier-3/trip/budget.json"
+                ]
+              }
+            ],
+            "required_issues": {},
+            "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+          },
+          "source": "Seeded 17 Oct project example; not a measured agent execution"
+        }
+      },
+      {
+        "run_id": "recorded-read-17",
+        "sequence": 17,
+        "trip_id": "saved-example-trip",
+        "agent_id": "itinerary_planner",
+        "status": "recorded",
+        "summary": "Seeded replay: read shared/tier-3/profile/dietary.json",
+        "started_at": 1792230332,
+        "finished_at": 1792230332,
+        "elapsed_ms": null,
+        "payload": {
+          "observation_boot": "saved-project-replay-20261017",
+          "memory": {
+            "claims": 1,
+            "cards": 1,
+            "cache_hit": null
+          },
+          "provider": {},
+          "recorded_result": {
+            "agent_id": "itinerary_planner",
+            "event_id": 17,
+            "captured_at": 1792230332,
+            "status": "ready",
+            "claim_ids": [
+              "shared/tier-3/profile/dietary.json"
+            ],
+            "source_ids": [
+              "shared/tier-3/profile/dietary.json"
+            ],
+            "cards": [
+              {
+                "card_id": "shared/tier-3/profile/dietary.json",
+                "version": "saved-17",
+                "claim_ids": [
+                  "shared/tier-3/profile/dietary.json"
+                ],
+                "content": {
+                  "diet": "vegetarian",
+                  "confirmed": true,
+                  "source": "traveler"
+                }
+              }
+            ],
+            "tokens": {
+              "agent": 40,
+              "traveller": 58,
+              "prompt": 287
+            },
+            "fields": [
+              {
+                "predicate": "dietary.json",
+                "values": [
+                  {
+                    "diet": "vegetarian",
+                    "confirmed": true,
+                    "source": "traveler"
+                  }
+                ],
+                "status": "supported",
+                "claim_ids": [
+                  "shared/tier-3/profile/dietary.json"
+                ]
+              }
+            ],
+            "required_issues": {},
+            "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+          },
+          "source": "Seeded 17 Oct project example; not a measured agent execution"
+        }
+      },
+      {
+        "run_id": "recorded-read-11",
+        "sequence": 11,
+        "trip_id": "saved-example-trip",
+        "agent_id": "explore_agent",
+        "status": "recorded",
+        "summary": "Seeded replay: read shared/tier-1/trip-brief.md",
+        "started_at": 1792230230,
+        "finished_at": 1792230230,
+        "elapsed_ms": null,
+        "payload": {
+          "observation_boot": "saved-project-replay-20261017",
+          "memory": {
+            "claims": 1,
+            "cards": 1,
+            "cache_hit": null
+          },
+          "provider": {},
+          "recorded_result": {
+            "agent_id": "explore_agent",
+            "event_id": 11,
+            "captured_at": 1792230230,
+            "status": "ready",
+            "claim_ids": [
+              "shared/tier-1/trip-brief.md"
+            ],
+            "source_ids": [
+              "shared/tier-1/trip-brief.md"
+            ],
+            "cards": [
+              {
+                "card_id": "shared/tier-1/trip-brief.md",
+                "version": "saved-11",
+                "claim_ids": [
+                  "shared/tier-1/trip-brief.md"
+                ],
+                "content": "# Spiti Valley\n6 days / 2 travelers\nTotal budget: INR 48,000\nA relaxed journey from Shimla to Kaza."
+              }
+            ],
+            "tokens": {
+              "agent": 36,
+              "traveller": 99,
+              "prompt": 356
+            },
+            "fields": [
+              {
+                "predicate": "trip-brief.md",
+                "values": [
+                  "# Spiti Valley\n6 days / 2 travelers\nTotal budget: INR 48,000\nA relaxed journey from Shimla to Kaza."
+                ],
+                "status": "supported",
+                "claim_ids": [
+                  "shared/tier-1/trip-brief.md"
+                ]
+              }
+            ],
+            "required_issues": {},
+            "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+          },
+          "source": "Seeded 17 Oct project example; not a measured agent execution"
+        }
+      },
+      {
+        "run_id": "recorded-read-10",
+        "sequence": 10,
+        "trip_id": "saved-example-trip",
+        "agent_id": "explore_agent",
+        "status": "recorded",
+        "summary": "Seeded replay: read shared/tier-1/traveler.md",
+        "started_at": 1792230213,
+        "finished_at": 1792230213,
+        "elapsed_ms": null,
+        "payload": {
+          "observation_boot": "saved-project-replay-20261017",
+          "memory": {
+            "claims": 1,
+            "cards": 1,
+            "cache_hit": null
+          },
+          "provider": {},
+          "recorded_result": {
+            "agent_id": "explore_agent",
+            "event_id": 10,
+            "captured_at": 1792230213,
+            "status": "ready",
+            "claim_ids": [
+              "shared/tier-1/traveler.md"
+            ],
+            "source_ids": [
+              "shared/tier-1/traveler.md"
+            ],
+            "cards": [
+              {
+                "card_id": "shared/tier-1/traveler.md",
+                "version": "saved-10",
+                "claim_ids": [
+                  "shared/tier-1/traveler.md"
+                ],
+                "content": "# Traveler\nTwo adults traveling together. Vegetarian meals. Slow travel, mountain landscapes, local stays."
+              }
+            ],
+            "tokens": {
+              "agent": 36,
+              "traveller": 106,
+              "prompt": 364
+            },
+            "fields": [
+              {
+                "predicate": "traveler.md",
+                "values": [
+                  "# Traveler\nTwo adults traveling together. Vegetarian meals. Slow travel, mountain landscapes, local stays."
+                ],
+                "status": "supported",
+                "claim_ids": [
+                  "shared/tier-1/traveler.md"
+                ]
+              }
+            ],
+            "required_issues": {},
+            "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+          },
+          "source": "Seeded 17 Oct project example; not a measured agent execution"
+        }
+      }
+    ],
+    "total": 11,
+    "next_before": null
+  },
+  "history_error": null,
+  "graph": {
+    "nodes": [
+      {
+        "id": "shared",
+        "labels": [
+          "ReplayFolder"
+        ],
+        "properties": {
+          "id": "shared",
+          "name": "shared"
+        }
+      },
+      {
+        "id": "shared/tier-1",
+        "labels": [
+          "ReplayFolder"
+        ],
+        "properties": {
+          "id": "shared/tier-1",
+          "name": "tier-1"
+        }
+      },
+      {
+        "id": "shared/tier-1/agent-policy.md",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-1/agent-policy.md",
+          "memory_id": "shared/tier-1/agent-policy.md",
+          "subject_name": "Example traveler",
+          "predicate": "agent-policy.md",
+          "value_json": "\"# Agent policy\\nUse confirmed traveler requirements. Cite source memory. Do not book or pay.\\nResolve conflicting writes before planning.\"",
+          "content": "# Agent policy\nUse confirmed traveler requirements. Cite source memory. Do not book or pay.\nResolve conflicting writes before planning.",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230060,
+          "status": "recorded",
+          "version": 1
+        }
+      },
+      {
+        "id": "shared/tier-1/traveler.md",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-1/traveler.md",
+          "memory_id": "shared/tier-1/traveler.md",
+          "subject_name": "Example traveler",
+          "predicate": "traveler.md",
+          "value_json": "\"# Traveler\\nTwo adults traveling together. Vegetarian meals. Slow travel, mountain landscapes, local stays.\"",
+          "content": "# Traveler\nTwo adults traveling together. Vegetarian meals. Slow travel, mountain landscapes, local stays.",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230077,
+          "status": "recorded",
+          "version": 1
+        }
+      },
+      {
+        "id": "shared/tier-1/trip-brief.md",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-1/trip-brief.md",
+          "memory_id": "shared/tier-1/trip-brief.md",
+          "subject_name": "Example traveler",
+          "predicate": "trip-brief.md",
+          "value_json": "\"# Spiti Valley\\n6 days / 2 travelers\\nTotal budget: INR 42,000\\nA relaxed, vegetarian journey from Shimla to Kaza.\"",
+          "content": "# Spiti Valley\n6 days / 2 travelers\nTotal budget: INR 42,000\nA relaxed, vegetarian journey from Shimla to Kaza.",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230723,
+          "status": "recorded",
+          "version": 2
+        }
+      },
+      {
+        "id": "shared/tier-1/requirements.json",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-1/requirements.json",
+          "memory_id": "shared/tier-1/requirements.json",
+          "subject_name": "Example traveler",
+          "predicate": "requirements.json",
+          "value_json": "{\"dietary\":\"vegetarian\",\"pace\":\"relaxed\",\"partySize\":2,\"bookingAllowed\":false}",
+          "content": "{\"dietary\":\"vegetarian\",\"pace\":\"relaxed\",\"partySize\":2,\"bookingAllowed\":false}",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230111,
+          "status": "recorded",
+          "version": 1
+        }
+      },
+      {
+        "id": "shared/tier-3",
+        "labels": [
+          "ReplayFolder"
+        ],
+        "properties": {
+          "id": "shared/tier-3",
+          "name": "tier-3"
+        }
+      },
+      {
+        "id": "shared/tier-3/trip",
+        "labels": [
+          "ReplayFolder"
+        ],
+        "properties": {
+          "id": "shared/tier-3/trip",
+          "name": "trip"
+        }
+      },
+      {
+        "id": "shared/tier-3/trip/destination.json",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-3/trip/destination.json",
+          "memory_id": "shared/tier-3/trip/destination.json",
+          "subject_name": "Example traveler",
+          "predicate": "destination.json",
+          "value_json": "{\"name\":\"Spiti Valley\",\"region\":\"Himachal Pradesh\",\"base\":\"Kaza\"}",
+          "content": "{\"name\":\"Spiti Valley\",\"region\":\"Himachal Pradesh\",\"base\":\"Kaza\"}",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230128,
+          "status": "recorded",
+          "version": 1
+        }
+      },
+      {
+        "id": "shared/tier-3/trip/dates.json",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-3/trip/dates.json",
+          "memory_id": "shared/tier-3/trip/dates.json",
+          "subject_name": "Example traveler",
+          "predicate": "dates.json",
+          "value_json": "{\"start\":\"2026-11-03\",\"end\":\"2026-11-08\",\"days\":6}",
+          "content": "{\"start\":\"2026-11-03\",\"end\":\"2026-11-08\",\"days\":6}",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230145,
+          "status": "recorded",
+          "version": 1
+        }
+      },
+      {
+        "id": "shared/tier-3/trip/budget.json",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-3/trip/budget.json",
+          "memory_id": "shared/tier-3/trip/budget.json",
+          "subject_name": "Example traveler",
+          "predicate": "budget.json",
+          "value_json": "{\"amount\":42000,\"currency\":\"INR\",\"scope\":\"whole trip\"}",
+          "content": "{\"amount\":42000,\"currency\":\"INR\",\"scope\":\"whole trip\"}",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230468,
+          "status": "recorded",
+          "version": 2
+        }
+      },
+      {
+        "id": "shared/tier-3/profile",
+        "labels": [
+          "ReplayFolder"
+        ],
+        "properties": {
+          "id": "shared/tier-3/profile",
+          "name": "profile"
+        }
+      },
+      {
+        "id": "shared/tier-3/profile/dietary.json",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-3/profile/dietary.json",
+          "memory_id": "shared/tier-3/profile/dietary.json",
+          "subject_name": "Example traveler",
+          "predicate": "dietary.json",
+          "value_json": "{\"diet\":\"vegetarian\",\"confirmed\":true,\"source\":\"traveler\"}",
+          "content": "{\"diet\":\"vegetarian\",\"confirmed\":true,\"source\":\"traveler\"}",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230179,
+          "status": "recorded",
+          "version": 1
+        }
+      },
+      {
+        "id": "shared/tier-3/profile/interests.json",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-3/profile/interests.json",
+          "memory_id": "shared/tier-3/profile/interests.json",
+          "subject_name": "Example traveler",
+          "predicate": "interests.json",
+          "value_json": "{\"interests\":[\"mountains\",\"monasteries\",\"local culture\"]}",
+          "content": "{\"interests\":[\"mountains\",\"monasteries\",\"local culture\"]}",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230196,
+          "status": "recorded",
+          "version": 1
+        }
+      },
+      {
+        "id": "shared/tier-2",
+        "labels": [
+          "ReplayFolder"
+        ],
+        "properties": {
+          "id": "shared/tier-2",
+          "name": "tier-2"
+        }
+      },
+      {
+        "id": "shared/tier-2/destination.card",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-2/destination.card",
+          "memory_id": "shared/tier-2/destination.card",
+          "subject_name": "Example traveler",
+          "predicate": "destination.card",
+          "value_json": "{\"title\":\"High-altitude landscapes\",\"source\":\"shared/tier-3/trip/destination.json\",\"guidance\":\"Allow time to acclimatize in Kaza.\"}",
+          "content": "{\"title\":\"High-altitude landscapes\",\"source\":\"shared/tier-3/trip/destination.json\",\"guidance\":\"Allow time to acclimatize in Kaza.\"}",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230247,
+          "status": "recorded",
+          "version": 1
+        }
+      },
+      {
+        "id": "shared/tier-3/evidence",
+        "labels": [
+          "ReplayFolder"
+        ],
+        "properties": {
+          "id": "shared/tier-3/evidence",
+          "name": "evidence"
+        }
+      },
+      {
+        "id": "shared/tier-3/evidence/route-options.json",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-3/evidence/route-options.json",
+          "memory_id": "shared/tier-3/evidence/route-options.json",
+          "subject_name": "Example traveler",
+          "predicate": "route-options.json",
+          "value_json": "{\"route\":[\"Shimla\",\"Kalpa\",\"Tabo\",\"Kaza\"],\"source\":\"mock research notes\",\"verified\":false}",
+          "content": "{\"route\":[\"Shimla\",\"Kalpa\",\"Tabo\",\"Kaza\"],\"source\":\"mock research notes\",\"verified\":false}",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230264,
+          "status": "recorded",
+          "version": 1
+        }
+      },
+      {
+        "id": "shared/tier-2/route.card",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-2/route.card",
+          "memory_id": "shared/tier-2/route.card",
+          "subject_name": "Example traveler",
+          "predicate": "route.card",
+          "value_json": "{\"title\":\"A slower route into Spiti\",\"source\":\"shared/tier-3/evidence/route-options.json\",\"guidance\":\"Break the ascent with overnight stops.\"}",
+          "content": "{\"title\":\"A slower route into Spiti\",\"source\":\"shared/tier-3/evidence/route-options.json\",\"guidance\":\"Break the ascent with overnight stops.\"}",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230281,
+          "status": "recorded",
+          "version": 1
+        }
+      },
+      {
+        "id": "shared/tier-2/accommodation.card",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-2/accommodation.card",
+          "memory_id": "shared/tier-2/accommodation.card",
+          "subject_name": "Example traveler",
+          "predicate": "accommodation.card",
+          "value_json": "{\"title\":\"Local stays\",\"source\":\"shared/tier-3/profile/interests.json\",\"guidance\":\"Prefer small locally run guesthouses.\"}",
+          "content": "{\"title\":\"Local stays\",\"source\":\"shared/tier-3/profile/interests.json\",\"guidance\":\"Prefer small locally run guesthouses.\"}",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230298,
+          "status": "recorded",
+          "version": 1
+        }
+      },
+      {
+        "id": "shared/tier-3/evidence/stay-options.json",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-3/evidence/stay-options.json",
+          "memory_id": "shared/tier-3/evidence/stay-options.json",
+          "subject_name": "Example traveler",
+          "predicate": "stay-options.json",
+          "value_json": "{\"options\":[\"Kaza homestay\",\"Tabo guesthouse\"],\"availability\":\"unverified\",\"source\":\"mock catalog\"}",
+          "content": "{\"options\":[\"Kaza homestay\",\"Tabo guesthouse\"],\"availability\":\"unverified\",\"source\":\"mock catalog\"}",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230315,
+          "status": "recorded",
+          "version": 1
+        }
+      },
+      {
+        "id": "shared/tier-2/food.card",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-2/food.card",
+          "memory_id": "shared/tier-2/food.card",
+          "subject_name": "Example traveler",
+          "predicate": "food.card",
+          "value_json": "{\"title\":\"Vegetarian meals\",\"source\":\"shared/tier-3/profile/dietary.json\",\"guidance\":\"Check menu suitability with each host.\"}",
+          "content": "{\"title\":\"Vegetarian meals\",\"source\":\"shared/tier-3/profile/dietary.json\",\"guidance\":\"Check menu suitability with each host.\"}",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230349,
+          "status": "recorded",
+          "version": 1
+        }
+      },
+      {
+        "id": "shared/tier-2/pace.card",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-2/pace.card",
+          "memory_id": "shared/tier-2/pace.card",
+          "subject_name": "Example traveler",
+          "predicate": "pace.card",
+          "value_json": "{\"title\":\"Room to breathe\",\"pace\":\"relaxed\",\"dailyActivities\":2,\"restDay\":true,\"source\":\"shared/tier-1/requirements.json\"}",
+          "content": "{\"title\":\"Room to breathe\",\"pace\":\"relaxed\",\"dailyActivities\":2,\"restDay\":true,\"source\":\"shared/tier-1/requirements.json\"}",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230604,
+          "status": "recorded",
+          "version": 2
+        }
+      },
+      {
+        "id": "shared/tier-2/budget.card",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-2/budget.card",
+          "memory_id": "shared/tier-2/budget.card",
+          "subject_name": "Example traveler",
+          "predicate": "budget.card",
+          "value_json": "{\"title\":\"Budget guardrail\",\"ceiling\":42000,\"currency\":\"INR\",\"source\":\"shared/tier-3/trip/budget.json\"}",
+          "content": "{\"title\":\"Budget guardrail\",\"ceiling\":42000,\"currency\":\"INR\",\"source\":\"shared/tier-3/trip/budget.json\"}",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230536,
+          "status": "recorded",
+          "version": 2
+        }
+      },
+      {
+        "id": "shared/tier-1/active-context.json",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-1/active-context.json",
+          "memory_id": "shared/tier-1/active-context.json",
+          "subject_name": "Example traveler",
+          "predicate": "active-context.json",
+          "value_json": "{\"task\":\"Review the Spiti itinerary\",\"selectedCards\":[\"budget\",\"food\",\"pace\"],\"status\":\"review\"}",
+          "content": "{\"task\":\"Review the Spiti itinerary\",\"selectedCards\":[\"budget\",\"food\",\"pace\"],\"status\":\"review\"}",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230638,
+          "status": "recorded",
+          "version": 2
+        }
+      },
+      {
+        "id": "shared/tier-2/weather.card",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-2/weather.card",
+          "memory_id": "shared/tier-2/weather.card",
+          "subject_name": "Example traveler",
+          "predicate": "weather.card",
+          "value_json": "{\"title\":\"Mountain conditions\",\"source\":\"shared/tier-3/scratch/weather-cache.json\",\"guidance\":\"Recheck road and weather conditions before departure.\"}",
+          "content": "{\"title\":\"Mountain conditions\",\"source\":\"shared/tier-3/scratch/weather-cache.json\",\"guidance\":\"Recheck road and weather conditions before departure.\"}",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230451,
+          "status": "recorded",
+          "version": 1
+        }
+      },
+      {
+        "id": "shared/tier-3/decisions",
+        "labels": [
+          "ReplayFolder"
+        ],
+        "properties": {
+          "id": "shared/tier-3/decisions",
+          "name": "decisions"
+        }
+      },
+      {
+        "id": "shared/tier-3/decisions/itinerary.json",
+        "labels": [
+          "MemoryClaim"
+        ],
+        "properties": {
+          "id": "shared/tier-3/decisions/itinerary.json",
+          "memory_id": "shared/tier-3/decisions/itinerary.json",
+          "subject_name": "Example traveler",
+          "predicate": "itinerary.json",
+          "value_json": "{\"days\":6,\"route\":[\"Shimla\",\"Kalpa\",\"Tabo\",\"Kaza\"],\"budget\":42000,\"dietary\":\"vegetarian\",\"status\":\"reviewed draft\",\"source\":\"shared/tier-2/route.card\"}",
+          "content": "{\"days\":6,\"route\":[\"Shimla\",\"Kalpa\",\"Tabo\",\"Kaza\"],\"budget\":42000,\"dietary\":\"vegetarian\",\"status\":\"reviewed draft\",\"source\":\"shared/tier-2/route.card\"}",
+          "accepted": true,
+          "protected": false,
+          "origin": "seeded_replay",
+          "valid_from": 0,
+          "valid_until": 253402300799,
+          "recorded_at": 1792230689,
+          "status": "recorded",
+          "version": 2
+        }
+      }
+    ],
+    "edges": [
+      {
+        "source": "shared",
+        "target": "shared/tier-1",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-1",
+        "target": "shared/tier-1/agent-policy.md",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-1",
+        "target": "shared/tier-1/traveler.md",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-1",
+        "target": "shared/tier-1/trip-brief.md",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-1",
+        "target": "shared/tier-1/requirements.json",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared",
+        "target": "shared/tier-3",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-3",
+        "target": "shared/tier-3/trip",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-3/trip",
+        "target": "shared/tier-3/trip/destination.json",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-3/trip",
+        "target": "shared/tier-3/trip/dates.json",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-3/trip",
+        "target": "shared/tier-3/trip/budget.json",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-3",
+        "target": "shared/tier-3/profile",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-3/profile",
+        "target": "shared/tier-3/profile/dietary.json",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-3/profile",
+        "target": "shared/tier-3/profile/interests.json",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared",
+        "target": "shared/tier-2",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-2",
+        "target": "shared/tier-2/destination.card",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-2/destination.card",
+        "target": "shared/tier-3/trip/destination.json",
+        "relation": "SOURCE"
+      },
+      {
+        "source": "shared/tier-3",
+        "target": "shared/tier-3/evidence",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-3/evidence",
+        "target": "shared/tier-3/evidence/route-options.json",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-2",
+        "target": "shared/tier-2/route.card",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-2/route.card",
+        "target": "shared/tier-3/evidence/route-options.json",
+        "relation": "SOURCE"
+      },
+      {
+        "source": "shared/tier-2",
+        "target": "shared/tier-2/accommodation.card",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-2/accommodation.card",
+        "target": "shared/tier-3/profile/interests.json",
+        "relation": "SOURCE"
+      },
+      {
+        "source": "shared/tier-3/evidence",
+        "target": "shared/tier-3/evidence/stay-options.json",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-2",
+        "target": "shared/tier-2/food.card",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-2/food.card",
+        "target": "shared/tier-3/profile/dietary.json",
+        "relation": "SOURCE"
+      },
+      {
+        "source": "shared/tier-2",
+        "target": "shared/tier-2/pace.card",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-2/pace.card",
+        "target": "shared/tier-1/requirements.json",
+        "relation": "SOURCE"
+      },
+      {
+        "source": "shared/tier-2",
+        "target": "shared/tier-2/budget.card",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-2/budget.card",
+        "target": "shared/tier-3/trip/budget.json",
+        "relation": "SOURCE"
+      },
+      {
+        "source": "shared/tier-1",
+        "target": "shared/tier-1/active-context.json",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-2",
+        "target": "shared/tier-2/weather.card",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-3",
+        "target": "shared/tier-3/decisions",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-3/decisions",
+        "target": "shared/tier-3/decisions/itinerary.json",
+        "relation": "CONTAINS"
+      },
+      {
+        "source": "shared/tier-3/decisions/itinerary.json",
+        "target": "shared/tier-2/route.card",
+        "relation": "SOURCE"
+      }
+    ],
+    "truncated": false,
+    "edges_truncated": false,
+    "next_offset": null
+  },
+  "shared_memory": {
+    "claims": [
+      {
+        "id": "shared/tier-1/agent-policy.md",
+        "memory_id": "shared/tier-1/agent-policy.md",
+        "subject_name": "Example traveler",
+        "predicate": "agent-policy.md",
+        "value_json": "\"# Agent policy\\nUse confirmed traveler requirements. Cite source memory. Do not book or pay.\\nResolve conflicting writes before planning.\"",
+        "content": "# Agent policy\nUse confirmed traveler requirements. Cite source memory. Do not book or pay.\nResolve conflicting writes before planning.",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230060,
+        "status": "recorded",
+        "version": 1
+      },
+      {
+        "id": "shared/tier-1/traveler.md",
+        "memory_id": "shared/tier-1/traveler.md",
+        "subject_name": "Example traveler",
+        "predicate": "traveler.md",
+        "value_json": "\"# Traveler\\nTwo adults traveling together. Vegetarian meals. Slow travel, mountain landscapes, local stays.\"",
+        "content": "# Traveler\nTwo adults traveling together. Vegetarian meals. Slow travel, mountain landscapes, local stays.",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230077,
+        "status": "recorded",
+        "version": 1
+      },
+      {
+        "id": "shared/tier-1/trip-brief.md",
+        "memory_id": "shared/tier-1/trip-brief.md",
+        "subject_name": "Example traveler",
+        "predicate": "trip-brief.md",
+        "value_json": "\"# Spiti Valley\\n6 days / 2 travelers\\nTotal budget: INR 42,000\\nA relaxed, vegetarian journey from Shimla to Kaza.\"",
+        "content": "# Spiti Valley\n6 days / 2 travelers\nTotal budget: INR 42,000\nA relaxed, vegetarian journey from Shimla to Kaza.",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230723,
+        "status": "recorded",
+        "version": 2
+      },
+      {
+        "id": "shared/tier-1/requirements.json",
+        "memory_id": "shared/tier-1/requirements.json",
+        "subject_name": "Example traveler",
+        "predicate": "requirements.json",
+        "value_json": "{\"dietary\":\"vegetarian\",\"pace\":\"relaxed\",\"partySize\":2,\"bookingAllowed\":false}",
+        "content": "{\"dietary\":\"vegetarian\",\"pace\":\"relaxed\",\"partySize\":2,\"bookingAllowed\":false}",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230111,
+        "status": "recorded",
+        "version": 1
+      },
+      {
+        "id": "shared/tier-3/trip/destination.json",
+        "memory_id": "shared/tier-3/trip/destination.json",
+        "subject_name": "Example traveler",
+        "predicate": "destination.json",
+        "value_json": "{\"name\":\"Spiti Valley\",\"region\":\"Himachal Pradesh\",\"base\":\"Kaza\"}",
+        "content": "{\"name\":\"Spiti Valley\",\"region\":\"Himachal Pradesh\",\"base\":\"Kaza\"}",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230128,
+        "status": "recorded",
+        "version": 1
+      },
+      {
+        "id": "shared/tier-3/trip/dates.json",
+        "memory_id": "shared/tier-3/trip/dates.json",
+        "subject_name": "Example traveler",
+        "predicate": "dates.json",
+        "value_json": "{\"start\":\"2026-11-03\",\"end\":\"2026-11-08\",\"days\":6}",
+        "content": "{\"start\":\"2026-11-03\",\"end\":\"2026-11-08\",\"days\":6}",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230145,
+        "status": "recorded",
+        "version": 1
+      },
+      {
+        "id": "shared/tier-3/trip/budget.json",
+        "memory_id": "shared/tier-3/trip/budget.json",
+        "subject_name": "Example traveler",
+        "predicate": "budget.json",
+        "value_json": "{\"amount\":42000,\"currency\":\"INR\",\"scope\":\"whole trip\"}",
+        "content": "{\"amount\":42000,\"currency\":\"INR\",\"scope\":\"whole trip\"}",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230468,
+        "status": "recorded",
+        "version": 2
+      },
+      {
+        "id": "shared/tier-3/profile/dietary.json",
+        "memory_id": "shared/tier-3/profile/dietary.json",
+        "subject_name": "Example traveler",
+        "predicate": "dietary.json",
+        "value_json": "{\"diet\":\"vegetarian\",\"confirmed\":true,\"source\":\"traveler\"}",
+        "content": "{\"diet\":\"vegetarian\",\"confirmed\":true,\"source\":\"traveler\"}",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230179,
+        "status": "recorded",
+        "version": 1
+      },
+      {
+        "id": "shared/tier-3/profile/interests.json",
+        "memory_id": "shared/tier-3/profile/interests.json",
+        "subject_name": "Example traveler",
+        "predicate": "interests.json",
+        "value_json": "{\"interests\":[\"mountains\",\"monasteries\",\"local culture\"]}",
+        "content": "{\"interests\":[\"mountains\",\"monasteries\",\"local culture\"]}",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230196,
+        "status": "recorded",
+        "version": 1
+      },
+      {
+        "id": "shared/tier-2/destination.card",
+        "memory_id": "shared/tier-2/destination.card",
+        "subject_name": "Example traveler",
+        "predicate": "destination.card",
+        "value_json": "{\"title\":\"High-altitude landscapes\",\"source\":\"shared/tier-3/trip/destination.json\",\"guidance\":\"Allow time to acclimatize in Kaza.\"}",
+        "content": "{\"title\":\"High-altitude landscapes\",\"source\":\"shared/tier-3/trip/destination.json\",\"guidance\":\"Allow time to acclimatize in Kaza.\"}",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230247,
+        "status": "recorded",
+        "version": 1
+      },
+      {
+        "id": "shared/tier-3/evidence/route-options.json",
+        "memory_id": "shared/tier-3/evidence/route-options.json",
+        "subject_name": "Example traveler",
+        "predicate": "route-options.json",
+        "value_json": "{\"route\":[\"Shimla\",\"Kalpa\",\"Tabo\",\"Kaza\"],\"source\":\"mock research notes\",\"verified\":false}",
+        "content": "{\"route\":[\"Shimla\",\"Kalpa\",\"Tabo\",\"Kaza\"],\"source\":\"mock research notes\",\"verified\":false}",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230264,
+        "status": "recorded",
+        "version": 1
+      },
+      {
+        "id": "shared/tier-2/route.card",
+        "memory_id": "shared/tier-2/route.card",
+        "subject_name": "Example traveler",
+        "predicate": "route.card",
+        "value_json": "{\"title\":\"A slower route into Spiti\",\"source\":\"shared/tier-3/evidence/route-options.json\",\"guidance\":\"Break the ascent with overnight stops.\"}",
+        "content": "{\"title\":\"A slower route into Spiti\",\"source\":\"shared/tier-3/evidence/route-options.json\",\"guidance\":\"Break the ascent with overnight stops.\"}",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230281,
+        "status": "recorded",
+        "version": 1
+      },
+      {
+        "id": "shared/tier-2/accommodation.card",
+        "memory_id": "shared/tier-2/accommodation.card",
+        "subject_name": "Example traveler",
+        "predicate": "accommodation.card",
+        "value_json": "{\"title\":\"Local stays\",\"source\":\"shared/tier-3/profile/interests.json\",\"guidance\":\"Prefer small locally run guesthouses.\"}",
+        "content": "{\"title\":\"Local stays\",\"source\":\"shared/tier-3/profile/interests.json\",\"guidance\":\"Prefer small locally run guesthouses.\"}",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230298,
+        "status": "recorded",
+        "version": 1
+      },
+      {
+        "id": "shared/tier-3/evidence/stay-options.json",
+        "memory_id": "shared/tier-3/evidence/stay-options.json",
+        "subject_name": "Example traveler",
+        "predicate": "stay-options.json",
+        "value_json": "{\"options\":[\"Kaza homestay\",\"Tabo guesthouse\"],\"availability\":\"unverified\",\"source\":\"mock catalog\"}",
+        "content": "{\"options\":[\"Kaza homestay\",\"Tabo guesthouse\"],\"availability\":\"unverified\",\"source\":\"mock catalog\"}",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230315,
+        "status": "recorded",
+        "version": 1
+      },
+      {
+        "id": "shared/tier-2/food.card",
+        "memory_id": "shared/tier-2/food.card",
+        "subject_name": "Example traveler",
+        "predicate": "food.card",
+        "value_json": "{\"title\":\"Vegetarian meals\",\"source\":\"shared/tier-3/profile/dietary.json\",\"guidance\":\"Check menu suitability with each host.\"}",
+        "content": "{\"title\":\"Vegetarian meals\",\"source\":\"shared/tier-3/profile/dietary.json\",\"guidance\":\"Check menu suitability with each host.\"}",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230349,
+        "status": "recorded",
+        "version": 1
+      },
+      {
+        "id": "shared/tier-2/pace.card",
+        "memory_id": "shared/tier-2/pace.card",
+        "subject_name": "Example traveler",
+        "predicate": "pace.card",
+        "value_json": "{\"title\":\"Room to breathe\",\"pace\":\"relaxed\",\"dailyActivities\":2,\"restDay\":true,\"source\":\"shared/tier-1/requirements.json\"}",
+        "content": "{\"title\":\"Room to breathe\",\"pace\":\"relaxed\",\"dailyActivities\":2,\"restDay\":true,\"source\":\"shared/tier-1/requirements.json\"}",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230604,
+        "status": "recorded",
+        "version": 2
+      },
+      {
+        "id": "shared/tier-2/budget.card",
+        "memory_id": "shared/tier-2/budget.card",
+        "subject_name": "Example traveler",
+        "predicate": "budget.card",
+        "value_json": "{\"title\":\"Budget guardrail\",\"ceiling\":42000,\"currency\":\"INR\",\"source\":\"shared/tier-3/trip/budget.json\"}",
+        "content": "{\"title\":\"Budget guardrail\",\"ceiling\":42000,\"currency\":\"INR\",\"source\":\"shared/tier-3/trip/budget.json\"}",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230536,
+        "status": "recorded",
+        "version": 2
+      },
+      {
+        "id": "shared/tier-1/active-context.json",
+        "memory_id": "shared/tier-1/active-context.json",
+        "subject_name": "Example traveler",
+        "predicate": "active-context.json",
+        "value_json": "{\"task\":\"Review the Spiti itinerary\",\"selectedCards\":[\"budget\",\"food\",\"pace\"],\"status\":\"review\"}",
+        "content": "{\"task\":\"Review the Spiti itinerary\",\"selectedCards\":[\"budget\",\"food\",\"pace\"],\"status\":\"review\"}",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230638,
+        "status": "recorded",
+        "version": 2
+      },
+      {
+        "id": "shared/tier-2/weather.card",
+        "memory_id": "shared/tier-2/weather.card",
+        "subject_name": "Example traveler",
+        "predicate": "weather.card",
+        "value_json": "{\"title\":\"Mountain conditions\",\"source\":\"shared/tier-3/scratch/weather-cache.json\",\"guidance\":\"Recheck road and weather conditions before departure.\"}",
+        "content": "{\"title\":\"Mountain conditions\",\"source\":\"shared/tier-3/scratch/weather-cache.json\",\"guidance\":\"Recheck road and weather conditions before departure.\"}",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230451,
+        "status": "recorded",
+        "version": 1
+      },
+      {
+        "id": "shared/tier-3/decisions/itinerary.json",
+        "memory_id": "shared/tier-3/decisions/itinerary.json",
+        "subject_name": "Example traveler",
+        "predicate": "itinerary.json",
+        "value_json": "{\"days\":6,\"route\":[\"Shimla\",\"Kalpa\",\"Tabo\",\"Kaza\"],\"budget\":42000,\"dietary\":\"vegetarian\",\"status\":\"reviewed draft\",\"source\":\"shared/tier-2/route.card\"}",
+        "content": "{\"days\":6,\"route\":[\"Shimla\",\"Kalpa\",\"Tabo\",\"Kaza\"],\"budget\":42000,\"dietary\":\"vegetarian\",\"status\":\"reviewed draft\",\"source\":\"shared/tier-2/route.card\"}",
+        "accepted": true,
+        "protected": false,
+        "origin": "seeded_replay",
+        "valid_from": 0,
+        "valid_until": 253402300799,
+        "recorded_at": 1792230689,
+        "status": "recorded",
+        "version": 2
+      }
+    ],
+    "total": 20,
+    "truncated": false
+  },
+  "vectors": {
+    "points": [],
+    "count": 0,
+    "dimensions": 384,
+    "note": "Numeric vectors were not captured for this seeded example."
+  },
+  "receipts": [],
+  "storage": {
+    "backend": "iron_web_2",
+    "graph_live": false,
+    "memories": 20,
+    "sources": 20,
+    "vector_backend": "Recorded example",
+    "scope": "Seeded replay, not current database contents"
+  },
+  "databases": {
+    "falkordb": {
+      "status": "recorded example",
+      "role": "No database connection in history mode"
+    },
+    "journal": {
+      "status": "bundled snapshot",
+      "type": "JSON replay"
+    }
+  },
+  "models": {
+    "embedding": "Not measured in this seeded replay",
+    "reranker": "Not measured",
+    "reranker_enabled": false,
+    "extraction_policy": "recorded example"
+  },
+  "cache": {
+    "entries": null,
+    "max_entries": 256,
+    "payload_bytes": null,
+    "max_payload_bytes": 8388608
+  },
+  "tiers": {
+    "tokenizer": "voyara-deterministic-utf8-v1",
+    "accounting": "Computed UTF-8 bytes of seeded replay text; not hosted tokens",
+    "policy": {
+      "context_limit": 24000,
+      "half_tokens": 2000,
+      "card_tokens": 2000,
+      "max_cards": 8
+    },
+    "captured_contexts": [
+      {
+        "agent_id": "explore_agent",
+        "event_id": 11,
+        "captured_at": 1792230230,
+        "status": "ready",
+        "claim_ids": [
+          "shared/tier-1/trip-brief.md"
+        ],
+        "source_ids": [
+          "shared/tier-1/trip-brief.md"
+        ],
+        "cards": [
+          {
+            "card_id": "shared/tier-1/trip-brief.md",
+            "version": "saved-11",
+            "claim_ids": [
+              "shared/tier-1/trip-brief.md"
+            ],
+            "content": "# Spiti Valley\n6 days / 2 travelers\nTotal budget: INR 48,000\nA relaxed journey from Shimla to Kaza."
+          }
+        ],
+        "tokens": {
+          "agent": 36,
+          "traveller": 99,
+          "prompt": 356
+        },
+        "fields": [
+          {
+            "predicate": "trip-brief.md",
+            "values": [
+              "# Spiti Valley\n6 days / 2 travelers\nTotal budget: INR 48,000\nA relaxed journey from Shimla to Kaza."
+            ],
+            "status": "supported",
+            "claim_ids": [
+              "shared/tier-1/trip-brief.md"
+            ]
+          }
+        ],
+        "required_issues": {},
+        "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+      },
+      {
+        "agent_id": "itinerary_planner",
+        "event_id": 30,
+        "captured_at": 1792230553,
+        "status": "ready",
+        "claim_ids": [
+          "shared/tier-2/route.card"
+        ],
+        "source_ids": [
+          "shared/tier-2/route.card"
+        ],
+        "cards": [
+          {
+            "card_id": "shared/tier-2/route.card",
+            "version": "saved-30",
+            "claim_ids": [
+              "shared/tier-2/route.card"
+            ],
+            "content": {
+              "title": "A slower route into Spiti",
+              "source": "shared/tier-3/evidence/route-options.json",
+              "guidance": "Break the ascent with overnight stops."
+            }
+          }
+        ],
+        "tokens": {
+          "agent": 40,
+          "traveller": 142,
+          "prompt": 435
+        },
+        "fields": [
+          {
+            "predicate": "route.card",
+            "values": [
+              {
+                "title": "A slower route into Spiti",
+                "source": "shared/tier-3/evidence/route-options.json",
+                "guidance": "Break the ascent with overnight stops."
+              }
+            ],
+            "status": "supported",
+            "claim_ids": [
+              "shared/tier-2/route.card"
+            ]
+          }
+        ],
+        "required_issues": {},
+        "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+      },
+      {
+        "agent_id": "budget_booking_agent",
+        "event_id": 39,
+        "captured_at": 1792230706,
+        "status": "ready",
+        "claim_ids": [
+          "shared/tier-3/decisions/itinerary.json"
+        ],
+        "source_ids": [
+          "shared/tier-3/decisions/itinerary.json"
+        ],
+        "cards": [
+          {
+            "card_id": "shared/tier-3/decisions/itinerary.json",
+            "version": "saved-39",
+            "claim_ids": [
+              "shared/tier-3/decisions/itinerary.json"
+            ],
+            "content": {
+              "days": 6,
+              "route": [
+                "Shimla",
+                "Kalpa",
+                "Tabo",
+                "Kaza"
+              ],
+              "budget": 42000,
+              "dietary": "vegetarian",
+              "status": "reviewed draft",
+              "source": "shared/tier-2/route.card"
+            }
+          }
+        ],
+        "tokens": {
+          "agent": 43,
+          "traveller": 151,
+          "prompt": 484
+        },
+        "fields": [
+          {
+            "predicate": "itinerary.json",
+            "values": [
+              {
+                "days": 6,
+                "route": [
+                  "Shimla",
+                  "Kalpa",
+                  "Tabo",
+                  "Kaza"
+                ],
+                "budget": 42000,
+                "dietary": "vegetarian",
+                "status": "reviewed draft",
+                "source": "shared/tier-2/route.card"
+              }
+            ],
+            "status": "supported",
+            "claim_ids": [
+              "shared/tier-3/decisions/itinerary.json"
+            ]
+          }
+        ],
+        "required_issues": {},
+        "note": "Reconstructed from the existing seeded replay. Byte counts are computed from these strings; no hosted-model token usage was measured."
+      }
+    ],
+    "templates": [],
+    "layers": [
+      {
+        "tier": 1,
+        "name": "Hot context",
+        "storage": "Recorded example",
+        "description": "Role and traveler context reconstructed from saved example events."
+      },
+      {
+        "tier": 2,
+        "name": "Context cards",
+        "storage": "Recorded example",
+        "description": "Example source-derived cards; no captured GPU allocation."
+      },
+      {
+        "tier": 3,
+        "name": "Durable shared memory",
+        "storage": "Saved example graph",
+        "description": "Graph reconstructed from the existing seeded event sequence."
+      }
+    ]
+  },
+  "credentials": {
+    "runtime": "recorded_project_demo",
+    "provider": "Not measured for the seeded replay",
+    "hosted_calls": 0,
+    "configured": [],
+    "explanation": "Saved project replay: seeded 17 Oct trip graph + recorded 22 Oct controlled TinyFish results. Not a signed-in account or live provider activity.",
+    "usage": {
+      "requests": 0,
+      "usage_responses": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "scope": "No hosted provider usage captured for this example"
+    }
+  },
+  "agents": {
+    "registered": 9,
+    "observed": 3,
+    "rows": [
+      {
+        "agent_id": "travel_orchestrator",
+        "reads_in_window": 0,
+        "events_in_window": 0,
+        "last_seen": null
+      },
+      {
+        "agent_id": "trip_consultant",
+        "reads_in_window": 0,
+        "events_in_window": 0,
+        "last_seen": null
+      },
+      {
+        "agent_id": "explore_agent",
+        "reads_in_window": 2,
+        "events_in_window": 13,
+        "last_seen": 1792230655
+      },
+      {
+        "agent_id": "stay_agent",
+        "reads_in_window": 0,
+        "events_in_window": 0,
+        "last_seen": null
+      },
+      {
+        "agent_id": "food_guide_agent",
+        "reads_in_window": 0,
+        "events_in_window": 0,
+        "last_seen": null
+      },
+      {
+        "agent_id": "tour_guide_agent",
+        "reads_in_window": 0,
+        "events_in_window": 0,
+        "last_seen": null
+      },
+      {
+        "agent_id": "itinerary_planner",
+        "reads_in_window": 4,
+        "events_in_window": 17,
+        "last_seen": 1792230723
+      },
+      {
+        "agent_id": "budget_booking_agent",
+        "reads_in_window": 5,
+        "events_in_window": 10,
+        "last_seen": 1792230706
+      },
+      {
+        "agent_id": "travel_support_agent",
+        "reads_in_window": 0,
+        "events_in_window": 0,
+        "last_seen": null
+      }
+    ]
+  },
+  "resources": {
+    "source": "unavailable in saved example",
+    "ram_bytes": null,
+    "vram_bytes": null,
+    "gpu_util": null
+  },
+  "notes": [
+    "Saved project replay: seeded 17 Oct trip graph + recorded 22 Oct controlled TinyFish results. Not a signed-in account or live provider activity.",
+    "A seeded example is not historical account telemetry. Follow live replaces the entire dataset with the authenticated feed.",
+    "Missing timings, billing and hosted token counts remain unavailable."
+  ],
+  "tinyfish": {
+    "configured": false,
+    "scope": "Controlled lifecycle run, 22 Oct: one seeded quotation; 9 reuse calls; 10 independent changed-plan cases. Mock HTTP, not live account totals.",
+    "metrics": {
+      "source_quotes": 1,
+      "reuse_events": 9,
+      "fresh": 1,
+      "plans_flagged": 10,
+      "stale": 20,
+      "conflicts": 0,
+      "graph_indexed": 0,
+      "refresh_requests": 1
+    },
+    "evidence": [
+      {
+        "id": "saved-fixture-v2",
+        "previous_id": "saved-fixture-v1",
+        "topic": "hours",
+        "freshness": "fresh at controlled run",
+        "verification": "seeded source statement",
+        "changed": true,
+        "graph_synced": false,
+        "retrieved_at": "2026-10-22T03:59:56.347266+00:00",
+        "expires_at": "Not applicable: saved controlled example",
+        "statements": [
+          {
+            "quote": "Museum opens at 09:00 every day.",
+            "source_url": "https://tourism.example.org/jaipur"
+          }
+        ]
+      }
+    ],
+    "jobs": [
+      {
+        "id": "recorded-public-connectivity-check",
+        "status": "recorded connectivity check",
+        "topics": [
+          "Jaipur public research; extraction disabled"
+        ],
+        "metrics": {
+          "elapsed_ms": 18546.89,
+          "sources": 10,
+          "fetched_pages": 3,
+          "source_quotes": 0
+        }
+      }
+    ],
+    "events": [
+      {
+        "id": 1,
+        "kind": "evidence_reused",
+        "timestamp": 1792641596.347,
+        "detail": {
+          "count": 9
+        }
+      },
+      {
+        "id": 2,
+        "kind": "plan_flagged",
+        "timestamp": 1792641596.347,
+        "detail": {
+          "reason": "10/10 independent seeded changed-plan challenge cases passed"
+        }
+      }
+    ]
+  }
+}

@@ -119,35 +119,54 @@ export function Overview({
           aria-label="Connected travel website"
         >
           <div>
-            <span className="kicker">Connected travel website</span>
+            <span className="kicker">
+              {data.replay
+                ? "Saved project example"
+                : "Connected travel website"}
+            </span>
             <h2>{data.connection.username}</h2>
-            <p>Live data from your signed-in Voyara account.</p>
+            <p>
+              {data.replay
+                ? "Historical project replay. These are not your account totals."
+                : "Live data from your signed-in Voyara account."}
+            </p>
           </div>
-          <dl>
-            <div>
-              <dt>Trips</dt>
-              <dd>{data.travel?.conversations ?? 0}</dd>
-            </div>
-            <div>
-              <dt>Messages</dt>
-              <dd>{data.travel?.messages ?? 0}</dd>
-            </div>
-            <div>
-              <dt>Bookings</dt>
-              <dd>{data.travel?.bookings ?? 0}</dd>
-            </div>
-            <div>
-              <dt>Saved itineraries</dt>
-              <dd>{data.travel?.itineraries ?? 0}</dd>
-            </div>
-          </dl>
-          <a href={data.website_url} target="_blank" rel="noopener noreferrer">
-            Open travel website <ArrowRightIcon />
-          </a>
+          {!data.replay && (
+            <dl>
+              <div>
+                <dt>Trips</dt>
+                <dd>{data.travel?.conversations ?? 0}</dd>
+              </div>
+              <div>
+                <dt>Messages</dt>
+                <dd>{data.travel?.messages ?? 0}</dd>
+              </div>
+              <div>
+                <dt>Bookings</dt>
+                <dd>{data.travel?.bookings ?? 0}</dd>
+              </div>
+              <div>
+                <dt>Saved itineraries</dt>
+                <dd>{data.travel?.itineraries ?? 0}</dd>
+              </div>
+            </dl>
+          )}
+          {data.website_url && (
+            <a
+              href={data.website_url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open travel website <ArrowRightIcon />
+            </a>
+          )}
         </section>
       )}
       {data.history_error && <p role="alert">{data.history_error}</p>}
-      <div className="overview-metrics" aria-label="Live memory totals">
+      <div
+        className="overview-metrics"
+        aria-label={data.replay ? "Saved replay totals" : "Live memory totals"}
+      >
         {metrics.map(([value, label, note, page]) => (
           <PageLink
             key={label}
@@ -265,7 +284,9 @@ export function Overview({
           <i className={status === "live" ? "live-dot" : "stale-dot"} />{" "}
           {status === "live"
             ? "Receiving live snapshots"
-            : "Showing the last received snapshot"}
+            : status === "history"
+              ? "Showing saved project replay"
+              : "Showing the last received snapshot"}
         </span>
         <span>
           Scope: {data.scope.replaceAll("_", " ")} · Updated{" "}
@@ -350,11 +371,13 @@ export function TinyFishIntelligence({
           </p>
         </div>
         <span className="tf-connection">
-          {research
-            ? research.configured
-              ? "Provider configured"
-              : "Provider not configured"
-            : "Evidence feed unavailable"}
+          {data.replay
+            ? "Saved controlled test"
+            : research
+              ? research.configured
+                ? "Provider configured"
+                : "Provider not configured"
+              : "Evidence feed unavailable"}
         </span>
       </header>
       <ol className="tf-flow" aria-label="External memory lifecycle">
@@ -381,6 +404,7 @@ export function TinyFishIntelligence({
           </div>
         ))}
       </div>
+      {data.replay && <p className="tf-scope">{research?.scope}</p>}
       {compact ? (
         <PageLink page="tinyfish" hrefFor={hrefFor} navigate={navigate}>
           Inspect TinyFish evidence and refresh activity <ArrowRightIcon />
@@ -584,11 +608,15 @@ export function EventJournal({ events, event, agent, onEvent }) {
   );
 }
 
-function SavedRunResult({ run, api }) {
-  const [saved, setSaved] = useState(null),
+function SavedRunResult({ run, api, recorded = false }) {
+  const [saved, setSaved] = useState(recorded ? run.payload : null),
     [error, setError] = useState(""),
     [loading, setLoading] = useState(false);
   async function load() {
+    if (recorded) {
+      setSaved(run.payload);
+      return;
+    }
     setLoading(true);
     try {
       const r = await fetch(
@@ -635,6 +663,15 @@ export function RunHistoryPage({ data, agent, api }) {
   }, [identity, agent]);
   useEffect(() => {
     const abort = new AbortController();
+    if (data.replay) {
+      const rows = (data.history?.rows || []).filter(
+        (row) => !agent || row.agent_id === agent,
+      );
+      setPage({ rows, total: rows.length, next_before: null });
+      setError("");
+      setLoading(false);
+      return () => abort.abort();
+    }
     const params = new URLSearchParams({ limit: "30" });
     if (agent) params.set("agent_id", agent);
     setLoading(true);
@@ -670,7 +707,7 @@ export function RunHistoryPage({ data, agent, api }) {
         if (!abort.signal.aborted) setLoading(false);
       });
     return () => abort.abort();
-  }, [api, identity, agent, data.observations.sequence]);
+  }, [api, identity, agent, data.observations.sequence, data.replay]);
   async function more() {
     setLoading(true);
     try {
@@ -707,8 +744,9 @@ export function RunHistoryPage({ data, agent, api }) {
           {page.total} recorded agent {page.total === 1 ? "run" : "runs"}
         </h2>
         <p>
-          Stored on disk across restarts. Each retry is a separate run. Provider
-          billing and unreported token usage are marked as unavailable.
+          {data.replay
+            ? "Saved reads reconstructed from the seeded project replay; not measured agent executions. Provider billing, timings and hosted tokens remain unavailable."
+            : "Stored on disk across restarts. Each retry is a separate run. Provider billing and unreported token usage are marked as unavailable."}
         </p>
       </div>
       {error && <p role="alert">{error}</p>}
@@ -815,6 +853,7 @@ export function RunHistoryPage({ data, agent, api }) {
                 key={run.run_id + run.summary + run.status}
                 run={run}
                 api={api}
+                recorded={Boolean(data.replay)}
               />
             </details>
           </div>

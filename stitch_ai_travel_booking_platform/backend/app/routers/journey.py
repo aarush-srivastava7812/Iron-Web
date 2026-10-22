@@ -74,7 +74,9 @@ def chat(conversation_id:str,body:MessageIn,user:User=Depends(current_user),db:S
         if conversation.title=="New travel chat" and row.data.get("draft",{}).get("destination"):
             conversation.title=row.data["draft"]["destination"]+" · your journey"
         db.commit()
-        return dict(**answer,message=original,assistant_message=reply,workspace=journey.present(db,row,user.id),mode="local" if mode=="tinyfish" or not acquired else "nvidia")
+        from agents.config import settings as agent_settings
+        local = agent_settings.query_agent_mode == "local" or (agent_settings.query_agent_mode == "auto" and mode in {"tinyfish", "offline"})
+        return dict(**answer,message=original,assistant_message=reply,workspace=journey.present(db,row,user.id),mode="local" if local or not acquired else "nvidia")
     finally:
         if acquired:
             lock.release()

@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-10-22T05:36:34.532815+00:00",
+  "mode": "Actual offline HTML in Edge; no mocked provider calls or remote resources",
+  "checks": [
+    "Four direct research connections match implemented RESEARCH_ROLES",
+    "Offline page initializes and shows a single view",
+    "All nine agent nodes reveal correct implementation and recommendation details",
+    "Direct/shared filters and keyboard agent navigation work",
+    "Search, Fetch and optional Agent show distinct wiring, inputs, outputs and actual client status",
+    "Full nine-role matrix opens",
+    "TinyFish-to-SQL-to-FalkorDB-to-gateway memory handoffs and Agent ingestion gap are explicit",
+    "Fresh, stale, changed and graph-outage walkthroughs expose the implemented lifecycle rules",
+    "Published numbers match the snapshot; comparator shows token and latency trade-offs",
+    "Download exports the exact attributed data snapshot",
+    "Local benchmarks are distinct from published comparisons and missing metrics are labeled",
+    "Seven views fit five desktop/tablet/mobile viewports without page horizontal overflow",
+    "Agent deep links survive reload and proposed support integration stays labeled",
+    "Memory scenario deep links survive reload",
+    "Local source/report/presentation links resolve",
+    "No runtime errors or remote requests"
+  ],
+  "runtime_errors": [],
+  "network_requests": [],
+  "status": "passed",
+  "passed": 16
+}

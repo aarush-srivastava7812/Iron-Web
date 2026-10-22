@@ -1,0 +1,633 @@
+{
+  "origin": "http://127.0.0.1:8000",
+  "trip_id": "bc766239-7b0d-4c1c-a731-6d1f25899a66",
+  "checks": [
+    "Natural-language query updates exact dates, party size and total budget while preserving preferences separately",
+    "Budget correction uses deterministic arithmetic; read-only queries preserve the revision",
+    "Facts and preferences render without horizontal overflow on a 390px screen",
+    "Constraint review survives reloading and reopening the trip",
+    "Manual preference editing replaces optional wishes without creating mandatory requirements"
+  ],
+  "errors": [],
+  "workspace": {
+    "conversation_id": "bc766239-7b0d-4c1c-a731-6d1f25899a66",
+    "revision": 4,
+    "draft": {
+      "destination": "Kerala",
+      "start_date": "2026-12-01",
+      "end_date": "2026-12-03",
+      "traveller_count": 2,
+      "budget": 190000,
+      "pace": "relaxed",
+      "interests": [
+        "nature"
+      ],
+      "seat_preference": "window",
+      "hard_requirements": [],
+      "soft_preferences": [
+        "I prefer a pool"
+      ],
+      "duration_days": 3
+    },
+    "constraint_analysis": {
+      "agent_id": "query_constraint_agent",
+      "mode": "deterministic",
+      "facts": {
+        "destination": "Kerala",
+        "start_date": "2026-12-01",
+        "end_date": "2026-12-03",
+        "traveller_count": 2,
+        "budget": 190000,
+        "duration_days": 3
+      },
+      "preferences": {
+        "pace": "relaxed",
+        "interests": [
+          "nature"
+        ],
+        "seat_preference": "window"
+      },
+      "hard_constraints": [],
+      "soft_preferences": [
+        "I prefer a pool"
+      ],
+      "constraints": [
+        {
+          "field": "destination",
+          "operator": "eq",
+          "value": "Kerala",
+          "enforcement": "hard",
+          "unit": null
+        },
+        {
+          "field": "start_date",
+          "operator": "eq",
+          "value": "2026-12-01",
+          "enforcement": "hard",
+          "unit": null
+        },
+        {
+          "field": "end_date",
+          "operator": "eq",
+          "value": "2026-12-03",
+          "enforcement": "hard",
+          "unit": null
+        },
+        {
+          "field": "traveller_count",
+          "operator": "eq",
+          "value": 2,
+          "enforcement": "hard",
+          "unit": null
+        },
+        {
+          "field": "budget",
+          "operator": "lte",
+          "value": 190000,
+          "enforcement": "hard",
+          "unit": "INR_total"
+        },
+        {
+          "field": "duration_days",
+          "operator": "eq",
+          "value": 3,
+          "enforcement": "hard",
+          "unit": null
+        }
+      ]
+    },
+    "memory_backend": "iron_web_2",
+    "travel": {},
+    "selections": {},
+    "missing_fields": [],
+    "dialogue": {
+      "awaiting": null,
+      "suggestions": [
+        "Show my trip summary",
+        "What can you do?"
+      ]
+    },
+    "research": null,
+    "confirmed": false,
+    "plan_ready": false,
+    "saved_preferences": {},
+    "options": {
+      "destinations": [
+        {
+          "id": 1,
+          "name": "Goa",
+          "kind": "destination",
+          "description": "Salt air, later mornings and old Portuguese lanes. Find a quiet cove, a family-run kitchen or a village that still moves at its own pace.",
+          "price_inr": 28000,
+          "tags": [
+            "beach",
+            "nightlife",
+            "slow travel"
+          ],
+          "best_season": "Nov-Feb"
+        },
+        {
+          "id": 2,
+          "name": "Jaipur",
+          "kind": "destination",
+          "description": "Pink sandstone, courtyard cafes and lively bazaars. Jaipur brings royal architecture and everyday craft into the same afternoon.",
+          "price_inr": 22000,
+          "tags": [
+            "heritage",
+            "culture",
+            "food"
+          ],
+          "best_season": "Oct-Mar"
+        },
+        {
+          "id": 3,
+          "name": "Manali",
+          "kind": "destination",
+          "description": "Pine-scented walks, mountain mornings and winding roads into the valley. Come for the views; stay for the slower rhythm.",
+          "price_inr": 24000,
+          "tags": [
+            "mountain",
+            "adventure",
+            "nature"
+          ],
+          "best_season": "Mar-Jun"
+        },
+        {
+          "id": 4,
+          "name": "Munnar",
+          "kind": "destination",
+          "description": "Tea gardens fold into the hills around Munnar. Misty trails, small farms and unhurried mornings make this a place to take your time.",
+          "price_inr": 19000,
+          "tags": [
+            "nature",
+            "relax",
+            "mountain"
+          ],
+          "best_season": "Sep-Mar"
+        },
+        {
+          "id": 5,
+          "name": "Varanasi",
+          "kind": "destination",
+          "description": "A city of morning boat rides, temple bells and lanes with stories in every turn. Best explored slowly, with a local guide.",
+          "price_inr": 16000,
+          "tags": [
+            "spiritual",
+            "culture",
+            "heritage"
+          ],
+          "best_season": "Oct-Mar"
+        },
+        {
+          "id": 6,
+          "name": "Udaipur",
+          "kind": "destination",
+          "description": "Lakeside courtyards, hilltop palaces and dinner as the light leaves the water. A gentle, storybook escape in Rajasthan.",
+          "price_inr": 26000,
+          "tags": [
+            "heritage",
+            "slow travel",
+            "romance"
+          ],
+          "best_season": "Oct-Mar"
+        },
+        {
+          "id": 7,
+          "name": "Rishikesh",
+          "kind": "destination",
+          "description": "River paths, forest air and quiet mornings beside the Ganga. A soft landing for yoga, day hikes and time outdoors.",
+          "price_inr": 18000,
+          "tags": [
+            "river",
+            "wellness",
+            "adventure"
+          ],
+          "best_season": "Sep-Nov"
+        },
+        {
+          "id": 8,
+          "name": "Kochi",
+          "kind": "destination",
+          "description": "A harbor city layered with spice markets, art spaces and backwater day trips. Let the ferry set the pace.",
+          "price_inr": 21000,
+          "tags": [
+            "coastal",
+            "culture",
+            "food"
+          ],
+          "best_season": "Oct-Mar"
+        },
+        {
+          "id": 9,
+          "name": "Andaman Islands",
+          "kind": "destination",
+          "description": "Clear water, forest trails and long stretches of island quiet. Leave space for the sea to make the itinerary.",
+          "price_inr": 34000,
+          "tags": [
+            "island",
+            "beach",
+            "nature"
+          ],
+          "best_season": "Nov-Apr"
+        },
+        {
+          "id": 10,
+          "name": "Leh Ladakh",
+          "kind": "destination",
+          "description": "High-altitude deserts, turquoise monasteries perched on cliffs and Pangong Lake's colour-shifting waters. Ladakh is otherworldly — and worth every bit of the journey.",
+          "price_inr": 35000,
+          "tags": [
+            "mountain",
+            "adventure",
+            "heritage",
+            "offbeat"
+          ],
+          "best_season": "Jun-Sep"
+        },
+        {
+          "id": 11,
+          "name": "Hampi",
+          "kind": "destination",
+          "description": "Boulders, banana groves and the ruins of a once-great empire spread across an ancient landscape. Hampi rewards those who wander without a fixed plan.",
+          "price_inr": 12000,
+          "tags": [
+            "heritage",
+            "culture",
+            "offbeat",
+            "adventure"
+          ],
+          "best_season": "Oct-Feb"
+        },
+        {
+          "id": 12,
+          "name": "Kashmir",
+          "kind": "destination",
+          "description": "Explore Kashmir at your own pace.",
+          "price_inr": 25000,
+          "tags": [
+            "travel"
+          ],
+          "best_season": null
+        },
+        {
+          "id": 13,
+          "name": "Kerala",
+          "kind": "destination",
+          "description": "Explore Kerala at your own pace.",
+          "price_inr": 25000,
+          "tags": [
+            "travel"
+          ],
+          "best_season": null
+        },
+        {
+          "id": 14,
+          "name": "Darjeeling",
+          "kind": "destination",
+          "description": "Explore Darjeeling at your own pace.",
+          "price_inr": 25000,
+          "tags": [
+            "travel"
+          ],
+          "best_season": null
+        },
+        {
+          "id": 15,
+          "name": "New Delhi",
+          "kind": "destination",
+          "description": "Explore New Delhi at your own pace.",
+          "price_inr": 25000,
+          "tags": [
+            "travel"
+          ],
+          "best_season": null
+        },
+        {
+          "id": 16,
+          "name": "Mumbai",
+          "kind": "destination",
+          "description": "Explore Mumbai at your own pace.",
+          "price_inr": 25000,
+          "tags": [
+            "travel"
+          ],
+          "best_season": null
+        },
+        {
+          "id": 17,
+          "name": "Bengaluru",
+          "kind": "destination",
+          "description": "Explore Bengaluru at your own pace.",
+          "price_inr": 25000,
+          "tags": [
+            "travel"
+          ],
+          "best_season": null
+        },
+        {
+          "id": 18,
+          "name": "Hyderabad",
+          "kind": "destination",
+          "description": "Explore Hyderabad at your own pace.",
+          "price_inr": 25000,
+          "tags": [
+            "travel"
+          ],
+          "best_season": null
+        },
+        {
+          "id": 19,
+          "name": "Chennai",
+          "kind": "destination",
+          "description": "Explore Chennai at your own pace.",
+          "price_inr": 25000,
+          "tags": [
+            "travel"
+          ],
+          "best_season": null
+        },
+        {
+          "id": 20,
+          "name": "Alleppey",
+          "kind": "destination",
+          "description": "Palm-lined waterways, village life and quiet stretches beside the backwaters.",
+          "price_inr": 21000,
+          "tags": [
+            "backwaters",
+            "nature",
+            "culture"
+          ],
+          "best_season": "Oct-Mar"
+        }
+      ],
+      "stays": [
+        {
+          "id": 25,
+          "kind": "stay",
+          "name": "Munnar Backpackers' Nook",
+          "price_inr": 915,
+          "location": "Munnar",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 33,
+          "kind": "stay",
+          "name": "Kochi Backpackers' Nook",
+          "price_inr": 1135,
+          "location": "Kochi",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 43,
+          "kind": "stay",
+          "name": "Kerala Backpackers' Nook",
+          "price_inr": 1410,
+          "location": "Kerala",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 62,
+          "kind": "stay",
+          "name": "Alleppey Backpackers' Nook",
+          "price_inr": 1795,
+          "location": "Alleppey",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 26,
+          "kind": "stay",
+          "name": "Munnar Slow Living Homestay",
+          "price_inr": 2225,
+          "location": "Munnar",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 13,
+          "kind": "stay",
+          "name": "Voyara Demo Kochi Courtyard Stay",
+          "price_inr": 2400,
+          "location": "Kochi",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 34,
+          "kind": "stay",
+          "name": "Kochi Slow Living Homestay",
+          "price_inr": 2725,
+          "location": "Kochi",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 15,
+          "kind": "stay",
+          "name": "Voyara Demo Munnar Courtyard Stay",
+          "price_inr": 2750,
+          "location": "Munnar",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 17,
+          "kind": "stay",
+          "name": "Voyara Demo Alleppey Courtyard Stay",
+          "price_inr": 3100,
+          "location": "Alleppey",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 44,
+          "kind": "stay",
+          "name": "Kerala Slow Living Homestay",
+          "price_inr": 3350,
+          "location": "Kerala",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 14,
+          "kind": "stay",
+          "name": "Voyara Demo Kochi Garden Retreat",
+          "price_inr": 3900,
+          "location": "Kochi",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 63,
+          "kind": "stay",
+          "name": "Alleppey Slow Living Homestay",
+          "price_inr": 4225,
+          "location": "Alleppey",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 16,
+          "kind": "stay",
+          "name": "Voyara Demo Munnar Garden Retreat",
+          "price_inr": 4350,
+          "location": "Munnar",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 18,
+          "kind": "stay",
+          "name": "Voyara Demo Alleppey Garden Retreat",
+          "price_inr": 4800,
+          "location": "Alleppey",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        }
+      ],
+      "experiences": [
+        {
+          "id": 3,
+          "kind": "experience",
+          "name": "Kerala backwater cruise",
+          "price_inr": 3499,
+          "location": "Alleppey",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 10,
+          "kind": "experience",
+          "name": "Ayurveda wellness day",
+          "price_inr": 4499,
+          "location": "Kerala",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 11,
+          "kind": "experience",
+          "name": "Kathakali cultural evening",
+          "price_inr": 899,
+          "location": "Kerala",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 25,
+          "kind": "experience",
+          "name": "Demo Fort Kochi heritage walk",
+          "price_inr": 900,
+          "location": "Kochi",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 26,
+          "kind": "experience",
+          "name": "Demo Harbour sunset",
+          "price_inr": 600,
+          "location": "Kochi",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 27,
+          "kind": "experience",
+          "name": "Demo Tea garden walk",
+          "price_inr": 1500,
+          "location": "Munnar",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 28,
+          "kind": "experience",
+          "name": "Demo Scenic viewpoints",
+          "price_inr": 950,
+          "location": "Munnar",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 29,
+          "kind": "experience",
+          "name": "Demo Backwater cruise",
+          "price_inr": 2100,
+          "location": "Alleppey",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        },
+        {
+          "id": 30,
+          "kind": "experience",
+          "name": "Demo Village canoe trail",
+          "price_inr": 1300,
+          "location": "Alleppey",
+          "preference_score": 0,
+          "image": "/travel/kerala.jpg"
+        }
+      ],
+      "flights": []
+    },
+    "guide": {
+      "slug": "kerala",
+      "name": "Kerala",
+      "eyebrow": "Backwaters, hills & living traditions",
+      "description": "Trace a gentler route from Kochi's harbour lanes to Munnar's tea-covered hills and the palm-lined backwaters of Alleppey.",
+      "photo": "/travel/kerala.jpg",
+      "themes": [
+        "Nature & relaxation",
+        "Backwater experiences",
+        "Local cuisine",
+        "Culture & heritage"
+      ],
+      "season_note": "The demo guide suggests October–March. Check conditions and opening times close to departure.",
+      "packing": "Light layers, comfortable shoes, a rain shell and sun protection; adjust to your dates and activities.",
+      "cuisine": "Appam, vegetable stew, Kerala sadya and regional seafood. Ask each venue about dietary suitability.",
+      "route_notice": "Illustrative route diagram; travel times and road conditions are not verified.",
+      "cities": [
+        {
+          "slug": "kochi",
+          "name": "Kochi",
+          "lat": 9.93,
+          "lng": 76.26,
+          "description": "Harbour-side lanes, trading stories, galleries and local kitchens.",
+          "experiences": [
+            "Fort Kochi heritage walk",
+            "Harbour sunset",
+            "Local food discovery"
+          ]
+        },
+        {
+          "slug": "munnar",
+          "name": "Munnar",
+          "lat": 10.09,
+          "lng": 77.06,
+          "description": "Tea gardens, misty hills and time to slow down in the highlands.",
+          "experiences": [
+            "Tea garden walk",
+            "Scenic viewpoints",
+            "Village trail"
+          ]
+        },
+        {
+          "slug": "alleppey",
+          "name": "Alleppey",
+          "lat": 9.5,
+          "lng": 76.34,
+          "description": "Palm-lined waterways, village life and quiet stretches beside the backwaters.",
+          "experiences": [
+            "Backwater cruise",
+            "Village canoe trail",
+            "Waterside sunset"
+          ]
+        }
+      ]
+    },
+    "notice": "Synthetic hackathon inventory. Selections are drafts; no seats, rooms or activities are reserved."
+  }
+}
