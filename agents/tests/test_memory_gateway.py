@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import time
+import pytest
 
 from agents.schemas import MemoryWriteProposal
 
@@ -63,28 +64,31 @@ def test_policy_rejects_noise_and_secrets(gateway):
 
 
 def test_temporal_retrieval_expires_memories(gateway):
-    future = int(time.time()) + 60
     past = int(time.time()) - 60
     proposal = _proposal(user_id="user-temporal",
                          content="Currently prefers budget hostels for short trips")
     stored = gateway.propose_write(proposal)
     assert stored.status == "stored"
-    # Re-write the same record with a validity window that already ended, using
-    # the engine update path the gateway leaves intact.
-    gateway.engine.update(stored.memory_id, valid_from=past - 10, valid_until=past)
+    # Native sources are immutable. A distinct source can carry an expired
+    # validity window without changing the already recorded observation.
+    with pytest.raises(ValueError, match="immutable"):
+        gateway.engine.update(stored.memory_id, valid_from=past - 10, valid_until=past)
+    expired = gateway.engine.add("Expired budget hostels note", valid_from=past - 10,
+        valid_until=past, metadata={"user_id": "user-temporal", "agent_id": "stay_agent"})
 
     now_context = gateway.retrieve(query="budget hostels short trips",
                                    user_id="user-temporal", agent_id="stay_agent",
                                    temporal_mode="now", use_cache=False, limit=20)
     assert all("budget hostels" not in i.content.lower() or i.provenance.valid_until
                for i in now_context.items)
-    assert not any(item.provenance.memory_id == stored.memory_id
+    assert not any(item.provenance.memory_id == expired
                    for item in now_context.items)
-
-    historical = gateway.retrieve(query="budget hostels short trips",
-                                  user_id="user-temporal", agent_id="stay_agent",
-                                  temporal_mode="historical", use_cache=False, limit=20)
-    assert any(item.provenance.memory_id == stored.memory_id for item in historical.items)
+    assert gateway.engine.get(stored.memory_id) is not None
+    with pytest.raises(ValueError, match="Historical questions require exact recall"):
+        gateway.engine.search("budget hostels short trips", temporal_mode="historical")
+    historical = gateway.retrieve(query="budget hostels short trips", user_id="user-temporal",
+        agent_id="stay_agent", temporal_mode="historical", use_cache=False, limit=20)
+    assert historical.items == []  # Safe gateway fallback cannot invent past truth.
 
 
 def test_retrieval_cache_avoids_repeat_queries(gateway):

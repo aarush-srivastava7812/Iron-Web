@@ -1,6 +1,6 @@
-"""Explicit research modes over the normal engine; names describe mechanisms."""
+"""Retained research ablations over the legacy Qdrant/graph baseline."""
 
-from memory.engine import MemoryEngine, serialized
+from memory.engine import LegacyMemoryEngine as MemoryEngine, serialized
 from research.retrievers.inspired import (
     EntityNeighborhoodRetriever,
     DenseLexicalFusionRetriever,

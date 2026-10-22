@@ -22,7 +22,9 @@ export function ViewHeader({ kicker, title, subtitle, children }) {
     <header className="live-view-header">
       <div>
         <span className="kicker">{kicker}</span>
-        <h1>{title}</h1>
+        <h1 id="page-title" tabIndex={-1}>
+          {title}
+        </h1>
         <span className="view-subtitle">{subtitle}</span>
       </div>
       {children}
@@ -285,7 +287,14 @@ export function Inspector({
     </>
   );
 }
-export function Wiring({ agents, event, agent, onAgent, onStore }) {
+export function Wiring({
+  agents,
+  event,
+  agent,
+  onAgent,
+  onStore,
+  storeLabel = "SHARED MEMORY SERVICE",
+}) {
   const reduced = useReducedMotion(),
     height = Math.max(420, agents.length * 44 + 70),
     active = event?.agent_id;
@@ -389,7 +398,7 @@ export function Wiring({ agents, event, agent, onAgent, onStore }) {
             textAnchor="middle"
             className="svg-kicker"
           >
-            FALKORDB + QDRANT
+            {storeLabel}
           </text>
         </g>
         {["Read context", "Commit intake", "Forget source"].map((label, i) => {
@@ -514,6 +523,20 @@ export function Activity({ agents, events, event, agent, onEvent }) {
 export function Architecture({ data, graph, onTier, selectedTier }) {
   return (
     <div className="live-architecture">
+      <section className="tf-architecture">
+        <h2>TinyFish grounds the multi-agent team</h2>
+        <p>
+          Recall checks saved external evidence. Missing, stale or disputed
+          topics queue public Search + Fetch research. Exact quotations become
+          versioned observations in SQL and source vectors in FalkorDB, linked
+          to destinations, topics and URLs. Agents reuse eligible evidence;
+          changed high-impact topics flag dependent plans.
+        </p>
+        <p>
+          Personal preferences retain their own confirmation rules. Memory
+          retention scores and external-fact freshness remain separate.
+        </p>
+      </section>
       {Object.entries(COLORS).map(([t, color], i) => {
         const contexts = graph.contexts,
           policy = data.tiers.policy;
@@ -636,18 +659,22 @@ export function Dialog({ name, data, onClose }) {
       {name === "help" ? (
         <div>
           <p>Space · play/pause · arrows · previous/next event</p>
-          <p>1–5 · switch views · F · toggle follow-live</p>
-          <p>/ · find memory · Esc · close panels/clear selection</p>
           <p>
-            Click a memory, activity cell, history row or timeline marker to
-            inspect its actual source.
+            1–5 · graph, agents, activity, architecture, resources · F · toggle
+            follow-live
+          </p>
+          <p>/ · find memory · Esc · close panels</p>
+          <p>
+            Use the navigation links to move between pages. Click a memory,
+            activity cell, history row or timeline marker to inspect its actual
+            source.
           </p>
         </div>
       ) : (
         <div>
           <p>
-            Read-only relay → website memory owner → FalkorDB, embedded Qdrant
-            and SQLite journal.
+            Read-only relay → website memory owner → Iron Web 2 in FalkorDB and
+            SQLite journal.
           </p>
           <p className="mono full-id">
             Scope: {data.scope} · trip:{" "}
@@ -670,7 +697,7 @@ export function Dialog({ name, data, onClose }) {
           </details>
           <details>
             <summary>
-              Qdrant point payloads · {data.vectors.points.length} on this page
+              Memory vector payloads · {data.vectors.points.length} on this page
             </summary>
             <Json value={data.vectors} />
             <button onClick={loadVector} disabled={vectorLoading}>

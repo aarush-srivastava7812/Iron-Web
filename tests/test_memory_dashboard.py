@@ -83,6 +83,16 @@ def test_dashboard_inspects_actual_memory_without_warming_context(
     assert data["agents"]["reading_memory"] == 0
     assert data["tiers"]["captured_contexts"]
     assert any(e["kind"] == "context_validated" for e in data["observations"]["events"])
+    assert data["history"]["total"] >= 4
+    assert all(row["elapsed_ms"] is not None for row in data["history"]["rows"] if row["status"] != "running")
+    owner_live = client.get("/api/dashboard/live/snapshot", headers=headers).json()
+    assert owner_live["connection"]["mode"] == "website"
+    assert owner_live["travel"]["conversations"] == 1
+    assert owner_live["history"]["total"] == data["history"]["total"]
+    saved=client.get("/api/dashboard/live/history",headers=headers).json()["rows"][0]
+    assert "result" not in saved["payload"]
+    full=client.get("/api/dashboard/live/history",params={"run_id":saved["run_id"]},headers=headers).json()
+    assert full["run_id"] == saved["run_id"] and "result" in full["payload"]
     assert "context_token" not in json.dumps(data)
     assert "lease_token" not in json.dumps(data)
     assert data["credentials"]["active_credential"] is None
@@ -141,12 +151,9 @@ def test_dashboard_full_shared_store_and_invalidation(connected_app, monkeypatch
     grant = publish(monkeypatch, client, headers, path, narrow=False)
     data = client.get("/api/dashboard/snapshot", headers=grant).json()
     assert data["trip_id"] is None and data["scope"] == "traveler_shared_memory"
-    assert {label for n in data["graph"]["nodes"] for label in n["labels"]} >= {
-        "MemoryClaim",
-        "MemorySource",
-        "MemoryField",
-        "Entity",
-    }
+    # Inspect actual native labels; the retired graph also materialized fields.
+    assert data["storage"]["backend"] == "iron_web_2"
+    assert {label for n in data["graph"]["nodes"] for label in n["labels"]} >= {"Claim", "Source", "Entity"}
     assert data["graph"]["edges"]
     requirements(client, headers, path, budget=80000)
     data = client.get("/api/dashboard/snapshot", headers=grant).json()
@@ -302,6 +309,7 @@ def test_independent_backend_reads_real_website_memory(connected_app, monkeypatc
             async with httpx.AsyncClient(
                 transport=httpx.ASGITransport(app=module.app),
                 base_url="http://localhost",
+                headers={"Cookie": "voyara_session=" + headers["Authorization"][7:]},
             ) as dashboard:
                 for resource in [
                     "snapshot",

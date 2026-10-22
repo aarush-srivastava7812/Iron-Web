@@ -228,14 +228,14 @@ def test_mid_generation_change_discards_old_draft(connected_app, monkeypatch):
     original = ThreeTierGateway.validate_current
     changed = []
 
-    def validate(gateway):
+    def validate(gateway, **options):
         if not changed:
             changed.append(True)
             traveler = runtime.for_user(gateway.user_id)
             traveler.save_requirements(
                 gateway.trip_id, TripRequirementsIn(budget=80000)
             )
-        return original(gateway)
+        return original(gateway, **options)
 
     monkeypatch.setattr(ThreeTierGateway, "validate_current", validate)
     result = plan(client, headers, path)["orchestration"]
@@ -366,7 +366,7 @@ def test_repeated_stale_contexts_stop_after_two_rebuilds(connected_app, monkeypa
     requirements(client, headers, path)
     attempts = []
 
-    def stale(_):
+    def stale(_, **options):
         attempts.append(True)
         return False
 

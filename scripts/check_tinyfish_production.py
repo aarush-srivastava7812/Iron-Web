@@ -47,7 +47,7 @@ def main():
                 return answer
 
             answer = send("i want to go for a trip to agra can you plan it")
-            assert "budget" in answer["reply"] and not answer["workspace"]["confirmed"]
+            assert answer["awaiting"] == "start_date" and not answer["workspace"]["confirmed"]
             report["checks"].append("Exact Agra message responds locally and asks for missing details")
             answer = send("2026-12-01 for three days, two adults, INR 90000 total, relaxed, culture")
             assert not answer["workspace"]["missing_fields"]

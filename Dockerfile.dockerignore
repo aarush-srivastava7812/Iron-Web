@@ -6,6 +6,9 @@
 !config.yaml
 !memory/
 !memory/**
+!Iron_Web_2/
+!Iron_Web_2/memory/
+!Iron_Web_2/memory/**
 !agents/
 !agents/**
 !stitch_ai_travel_booking_platform/

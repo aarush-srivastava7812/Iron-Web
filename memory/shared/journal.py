@@ -36,6 +36,10 @@ class EventJournal:
           PRIMARY KEY(tenant,id,actor));
         CREATE TABLE IF NOT EXISTS space_state (
           tenant TEXT PRIMARY KEY, generation INTEGER NOT NULL);
+        CREATE TABLE IF NOT EXISTS memory_barriers (
+          tenant TEXT NOT NULL, change_id TEXT NOT NULL, target_id TEXT NOT NULL,
+          relation TEXT NOT NULL, recorded_at INTEGER NOT NULL, effective_at INTEGER NOT NULL,
+          PRIMARY KEY(tenant,change_id,target_id,relation));
         INSERT OR IGNORE INTO space_state SELECT DISTINCT tenant,1 FROM events;
         CREATE TRIGGER IF NOT EXISTS events_generation_insert AFTER INSERT ON events
         BEGIN

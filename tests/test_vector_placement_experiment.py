@@ -84,7 +84,7 @@ def test_guard_rejects_production_graph():
 
 
 def test_engine_coordinated_write_and_failed_write_restore(pair, monkeypatch):
-    from memory.engine import MemoryEngine
+    from memory.engine import LegacyMemoryEngine as MemoryEngine
     from memory.models import EngineStorageError
 
     class Embedding:

@@ -56,8 +56,12 @@ class ItineraryPlanner:
 
             days: list[ItineraryDay] = []
             assumptions: list[str] = []
+            if brief and brief.hard_constraints:
+                assumptions.append("IMPORTANT: These requests require confirmation before treating this draft as feasible: " + "; ".join(brief.hard_constraints))
             attraction_cycle = list(attractions) or []
             lunch_cycle = list(food_options) or []
+            if brief and brief.dietary_requirements:
+                lunch_cycle = [food for food in lunch_cycle if set(brief.dietary_requirements) <= {"veg", "vegetarian"} and food.diet == "veg"]
             attraction_index = lunch_index = 0
 
             for day_number in range(1, duration + 1):
@@ -95,6 +99,10 @@ class ItineraryPlanner:
                         notes=lunch.dietary_fit,
                         evidence=lunch.evidence,
                     ))
+                else:
+                    stops.append(ItineraryStop(day=day_number, start_time=_LUNCH[0], end_time=_LUNCH[1],
+                        title="Lunch break — choose a suitable venue", kind="buffer", location=destination_name,
+                        est_cost_inr=0, notes="Venue, meal price and all dietary/allergy needs require confirmation; no meal cost is included."))
 
                 if day_number < duration:
                     start, end = _AFTERNOON[pace]
@@ -124,7 +132,8 @@ class ItineraryPlanner:
             stay = stay_options[0] if stay_options else None
             if stay:
                 assumptions.append(f"Assumes a room at {stay.name} for all nights (per-night "
-                                   f"₹{stay.price_per_night_inr:,}, availability unverified).")
+                                   + (f"₹{stay.price_per_night_inr:,}" if stay.price_per_night_inr is not None else "rate unknown")
+                                   + ", availability unverified).")
             if not food_options:
                 assumptions.append("Meal costs use a placeholder allowance; no venue data was available.")
             if not attraction_cycle:
@@ -138,7 +147,7 @@ class ItineraryPlanner:
                 assumptions=assumptions,
                 alternatives=(["Swap the afternoon activity for a food walk if the weather turns."]
                               if attraction_cycle else []),
-                unresolved_conflicts=[],
+                unresolved_conflicts=list(brief.hard_constraints) if brief else [],
             )
             return AgentResult(
                 agent_id=self.agent_id,

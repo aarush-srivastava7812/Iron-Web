@@ -1,9 +1,7 @@
-"""Build the shared MemoryEngine without duplicating Iron Web.
+"""Build Iron Web 2 for every agent; unavailable storage fails visibly.
 
-The real MemoryEngine requires both Qdrant (local path) and FalkorDB. When
-FalkorDB is unreachable we fall back to a vector-primary engine using a
-minimal in-process graph stub so the coordinated-write path still runs; such
-an engine is clearly labeled ``graph_live=False`` by the gateway.
+StubGraphStore remains an explicit legacy test fixture and is never selected
+by the application factory.
 """
 from __future__ import annotations
 
@@ -110,11 +108,8 @@ def build_engine(
     the shared ``iron_web`` graph.
     """
     if vector_only:
-        return MemoryEngine(config=config, graph_store=StubGraphStore()), False
-    try:
-        return MemoryEngine(config=config, graph_name=graph_name), True
-    except Exception:
-        return MemoryEngine(config=config, graph_store=StubGraphStore()), False
+        raise ValueError("Iron Web 2 stores vectors and claims together; vector-only fallback is unavailable.")
+    return MemoryEngine(config=config, graph_name=graph_name), True
 
 
 def get_shared_engine(

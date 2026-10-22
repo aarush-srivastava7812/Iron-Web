@@ -11,6 +11,7 @@ import sys
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("service", choices=["website", "dashboard", "frontend"])
+    parser.add_argument("--website-port", type=int, default=8000)
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     if args.service == "frontend":
@@ -30,6 +31,10 @@ def main():
     from dotenv import load_dotenv, dotenv_values
 
     load_dotenv(backend / ".env")
+    os.environ.setdefault("FALKORDB_PORT", "6380")
+    os.environ.setdefault("LEGACY_FALKORDB_PORT", "6379")
+    os.environ.setdefault("USE_GPU", "true")
+    os.environ.setdefault("TINYFISH_CACHE_PATH", str(root / ".scratch" / "tinyfish-public-research"))
     private = root / ".scratch" / "ironweb-live"
     private.mkdir(parents=True, exist_ok=True)
     grant_file = private / ".env"
@@ -41,7 +46,7 @@ def main():
     os.environ["DASHBOARD_PUBLISH_TOKEN"] = grant
     os.environ.setdefault("DASHBOARD_USER_USERNAME", "voyara_local_developer")
     os.environ["DASHBOARD_SOURCE_TOKEN"] = grant
-    os.environ["DASHBOARD_SOURCE_URL"] = "http://127.0.0.1:8000"
+    os.environ["DASHBOARD_SOURCE_URL"] = f"http://127.0.0.1:{args.website_port}"
     os.environ["DASHBOARD_CORS_ORIGINS"] = "http://127.0.0.1:5174,http://localhost:5174"
     import uvicorn
 
@@ -57,7 +62,7 @@ def main():
         os.environ.setdefault("DATABASE_URL", "sqlite:///" + (data / "travel.db").as_posix())
         from seed import run
         run()
-        uvicorn.run("app.main:app", host="127.0.0.1", port=8000, workers=1)
+        uvicorn.run("app.main:app", host="127.0.0.1", port=args.website_port, workers=1)
 
 
 if __name__ == "__main__":

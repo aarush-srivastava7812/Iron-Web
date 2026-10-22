@@ -15,7 +15,7 @@ import uuid
 from langgraph.graph import END, StateGraph
 
 from agents.config import settings
-from agents.agentic import AgenticWorkflowMixin, enabled as agentic_enabled
+from agents.agentic import AgenticWorkflowMixin, enabled as agentic_enabled, provider
 from agents.explore_agent import ExploreAgent
 from agents.food_guide_agent import FoodGuideAgent
 from agents.itinerary_planner import ItineraryPlanner
@@ -344,6 +344,7 @@ class TravelWorkflow(AgenticWorkflowMixin):
                 nights=state.get("nights", 2),
                 party_size=party,
                 per_person=False,
+                unpriced_research=self.agentic and provider() == "tinyfish",
             ), state, memory=memory)
         return {"agent_results": [result], "budget": result.budget}
 
@@ -408,38 +409,12 @@ class TravelWorkflow(AgenticWorkflowMixin):
         return updates
 
     def _synthesize(self, state: AgentState) -> AgentState:
+        from agents.presentation import travel_response
+
         results = state.get("agent_results", [])
-        parts: list[str] = []
         if state.get("clarification_question"):
             return {"response": state["clarification_question"], "status": "needs_clarification"}
-        for result in results:
-            if result.summary and result.status != "failed":
-                parts.append(f"{result.agent_id.replace('_', ' ').title()}: {result.summary}")
-                options = result.stay_options or result.food_options or result.attractions or result.destination_ideas
-                if options:
-                    parts.append("Suggestions: " + "; ".join(option.name for option in options[:4]))
-                if result.guidance:
-                    parts.append(result.guidance.guidance)
-        itinerary = state.get("itinerary")
-        if itinerary:
-            day_lines = []
-            for day in itinerary.days:
-                stops = " → ".join(stop.title for stop in day.stops) or "free day"
-                day_lines.append(f"Day {day.day}: {stops}")
-            parts.append("Schedule:\n" + "\n".join(day_lines))
-        budget = state.get("budget")
-        if budget:
-            parts.append(f"Estimated cost: ₹{budget.total_inr:,} "
-                         + ("per person" if budget.per_person else "total")
-                         + " (estimates, not confirmed prices)")
-            parts.extend(budget.warnings[:2])
-        warnings = [i.message for i in state.get("validation_issues", []) if i.severity == "warning"]
-        if warnings:
-            parts.append("Caveats: " + "; ".join(sorted(set(warnings))[:3]))
-        if any(r.status == "failed" for r in results):
-            failed = [r.agent_id for r in results if r.status == "failed"]
-            parts.append(f"Some parts could not be completed: {', '.join(failed)}.")
-        response = "\n".join(parts) or "I could not put together a plan for that request yet."
+        response = travel_response(state)
         failed = any(r.status == "failed" for r in results)
         return {"response": response, "status": "failed" if failed else "ok"}
 
@@ -533,13 +508,31 @@ class TravelWorkflow(AgenticWorkflowMixin):
     # ------------------------------------------------------------------
     def run(self, request: OrchestrationRequest) -> dict:
         started = time.perf_counter()
+        started_at, workflow_id = time.time(), uuid.uuid4().hex
+        observer = getattr(self.gateway, "observer", None)
+        common = dict(run_id=workflow_id, workflow_id=workflow_id, started_at=started_at)
+        if observer:
+            observer.emit(request.session_id, "agent_started", agent_id="travel_orchestrator", **common)
         config = {"configurable": {"thread_id": request.user_id + ":" + request.session_id}}
-        final = self.graph.invoke(
-            {"_request": request, "request": request.request,  # type: ignore[dict-item]
-             "user_id": request.user_id, "session_id": request.session_id,
-             "page": request.page, "confirmed_booking": request.confirmed_booking,
-             "answers": request.answers},
-            config=config,
-        )
+        try:
+            final = self.graph.invoke(
+                {"_request": request, "request": request.request, "request_id": workflow_id,
+                 "user_id": request.user_id, "session_id": request.session_id,
+                 "page": request.page, "confirmed_booking": request.confirmed_booking,
+                 "answers": request.answers}, config=config)
+        except BaseException as error:
+            elapsed=round((time.perf_counter()-started)*1000,2)
+            if observer:
+                observer.emit(request.session_id, "agent_completed", agent_id="travel_orchestrator", **common,
+                    status="failed", summary="Workflow failed: " + type(error).__name__, errors=[str(error)],
+                    elapsed_ms=elapsed, latency_ms=elapsed)
+            raise
+        elapsed=round((time.perf_counter()-started)*1000,2)
+        if observer:
+            observer.emit(request.session_id, "agent_completed", agent_id="travel_orchestrator", **common,
+                status=final.get("status", "failed"), summary=final.get("response", "Workflow completed"),
+                elapsed_ms=elapsed, latency_ms=elapsed, errors=final.get("errors", []),
+                result=dict(agent_runs=len(final.get("agent_results", [])), revisions=final.get("revision_count", 0),
+                            validation_issues=[i.model_dump(mode="json") for i in final.get("validation_issues", [])]))
         final["_elapsed_ms"] = int((time.perf_counter() - started) * 1000)  # type: ignore[assignment]
         return final

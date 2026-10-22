@@ -32,7 +32,8 @@ import time
 import numpy as np
 import pytest
 
-from memory.engine import MemoryEngine
+# Retained pre-migration engine contracts; native application checks live in main.py.
+from memory.engine import LegacyMemoryEngine as MemoryEngine
 
 
 def test_memory_decay_real_calculation_and_cross_store_sync(tmp_path):

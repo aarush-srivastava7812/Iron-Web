@@ -66,7 +66,7 @@ class BenchmarkRunner:
         if adapter.benchmark_name != key:
             raise ValueError("Adapter and benchmark name differ.")
         extractor = (
-            None if retrieval_mode in {"none", "no_memory"} else engine.extractor
+            None if retrieval_mode in {"none", "no_memory"} else getattr(engine, "extractor", None)
         )
         if not is_smoke_test and getattr(extractor, "is_mock", False):
             raise ValueError(

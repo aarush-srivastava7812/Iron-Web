@@ -43,6 +43,7 @@ def save_generated(db, conversation_id, result):
         return None
     rows = versions(db, conversation_id)
     source = {k: deepcopy(result[k]) for k in ("trip_brief", "itinerary", "budget", "agent_results")}
+    source["external_memory"] = deepcopy(result.get("external_memory"))
     stay = next((r.get("stay_options", [])[0] for r in result["agent_results"]
                  if r["agent_id"] == "itinerary_planner" and r.get("stay_options")), None)
     source["selected_stay_id"] = stay.get("stay_id") if stay else None
@@ -64,7 +65,18 @@ def save_generated(db, conversation_id, result):
 
 
 def view(row, rows):
-    return dict(version=row.version, stale=row.stale, plan=row.payload,
+    from agents.presentation import present_agent
+    from agents.schemas import BudgetEstimate
+
+    payload = deepcopy(row.payload)
+    for item in payload.get("agent_results", []):
+        result = AgentResult.model_validate(item)
+        if result.agent_id == "itinerary_planner":
+            result.itinerary = DraftItinerary.model_validate(payload["itinerary"])
+        elif result.agent_id == "budget_booking_agent":
+            result.budget = BudgetEstimate.model_validate(payload["budget"])
+        item["presentation"] = present_agent(result).model_dump(mode="json")
+    return dict(version=row.version, stale=row.stale, plan=payload,
                 history=[dict(version=r.version, total_inr=r.payload["budget"]["total_inr"],
                               change=r.payload.get("change", "Saved draft")) for r in rows])
 

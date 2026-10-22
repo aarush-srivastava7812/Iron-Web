@@ -124,9 +124,10 @@ class TripRequirementsIn(BaseModel):
     budget: int | None = Field(default=None, gt=0, le=10**9, strict=True)
     currency: Literal["INR"] | None = None
     traveller_count: int | None = Field(default=None, ge=1, le=30, strict=True)
-    dietary: Literal["vegetarian"] | None = None
+    dietary: str | None = Field(default=None, max_length=500)
     pace: Literal["relaxed", "moderate", "packed"] | None = None
-    interests: list[str] | None = Field(default=None, max_length=16)
+    interests: list[str] | None = Field(default=None, max_length=256)
+    hard_requirements: list[str] | None = Field(default=None, max_length=256)
 
     @model_validator(mode="after")
     def coherent(self):

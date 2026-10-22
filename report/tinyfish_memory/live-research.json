@@ -1,0 +1,17 @@
+{
+  "provider": "TinyFish Search + Fetch",
+  "mode": "live public Search + Fetch; extraction disabled",
+  "destination": "Jaipur",
+  "fetched_at": "2026-10-22T00:54:42.409111+00:00",
+  "elapsed_ms": 18546.89,
+  "search_requests": 1,
+  "fetch_requests": 1,
+  "sources": 10,
+  "fetched_pages": 3,
+  "source_urls": [
+    "https://www.tourism.rajasthan.gov.in/",
+    "https://www.makemytrip.com/holidays-india/jaipur-tourism.html",
+    "https://www.incredibleindia.gov.in/en/rajasthan/jaipur"
+  ],
+  "scope": "Single live provider connectivity check. No memory quality, latency improvement, verified opening hours or reservation claim."
+}

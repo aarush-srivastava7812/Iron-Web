@@ -12,7 +12,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def check(mode="running", offline=False):
+def check(mode="running", offline=False, *, website_port=8000):
     rows = []
     def record(name, ok, detail):
         rows.append(dict(check=name, ok=bool(ok), detail=detail))
@@ -30,13 +30,15 @@ def check(mode="running", offline=False):
     for frontend in [ROOT / "dashboard/frontend", ROOT / "stitch_ai_travel_booking_platform/frontend"]:
         record(str(frontend.relative_to(ROOT)), (frontend / "node_modules/vite/bin/vite.js").is_file(), "Run npm ci in this frontend")
     record("website build", (ROOT / "stitch_ai_travel_booking_platform/frontend/dist/index.html").is_file(), "Run npm --prefix stitch_ai_travel_booking_platform/frontend run build")
-    for port in [8000, 5174, 8200, 6379]:
+    graph_port = int(os.getenv("FALKORDB_PORT", "6380"))
+    graph_host = os.getenv("FALKORDB_HOST", "127.0.0.1")
+    for port in [website_port, 5174, 8200, graph_port]:
         try:
-            with socket.create_connection(("127.0.0.1", port), timeout=2):
+            with socket.create_connection((graph_host if port == graph_port else "127.0.0.1", port), timeout=2):
                 listening = True
         except OSError:
             listening = False
-        required = port == 6379 or mode == "running"
+        required = port == graph_port or mode == "running"
         record("port:" + str(port), listening == required,
                "must be listening" if required else "must be free before starting this service")
     # Authentication/TLS environment overrides are honored without exposing them.
@@ -48,7 +50,7 @@ def check(mode="running", offline=False):
             import yaml
             config = EngineSettings.model_validate(yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))).falkordb
             client = FalkorDB(host=os.getenv("FALKORDB_HOST", config.host),
-                             port=int(os.getenv("FALKORDB_PORT", config.port)),
+                             port=graph_port,
                              username=os.getenv("FALKORDB_USERNAME") or None,
                              password=os.getenv("FALKORDB_PASSWORD") or None,
                              ssl=os.getenv("FALKORDB_TLS", str(config.tls)).lower() in {"true", "1"}, socket_timeout=3)
@@ -64,7 +66,14 @@ def check(mode="running", offline=False):
             load_dotenv(ROOT / "stitch_ai_travel_booking_platform/backend/.env")
         sys.path.insert(0, str(ROOT))
         from agents.config import settings
-        record("hosted credential configured", bool(settings.nvidia_api_key), "NVIDIA_API_KEY must be supplied privately; this does not verify validity")
+        from agents.agentic import provider
+        selected = provider()
+        if selected == "tinyfish":
+            record("hosted credential configured", bool(settings.tinyfish_api_key), "TinyFish research requires a private TINYFISH_API_KEY; presence does not verify validity")
+        elif selected == "offline":
+            record("hosted credential configured", True, "Explicit offline mode does not require provider credentials")
+        else:
+            record("hosted credential configured", bool(settings.nvidia_api_key), "NVIDIA_API_KEY must be supplied privately; presence does not verify validity")
     grant = ROOT / ".scratch/ironweb-live/.env"
     valid_grant = False
     if grant.is_file() and importlib.util.find_spec("dotenv"):
@@ -85,8 +94,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--mode", choices=["start", "running"], default="running")
     parser.add_argument("--offline", action="store_true", help="Skip hosted credential presence check; does not change application provider mode")
+    parser.add_argument("--website-port", type=int, default=8000)
     args = parser.parse_args()
-    rows = check(args.mode, args.offline)
+    rows = check(args.mode, args.offline, website_port=args.website_port)
     print(json.dumps(rows, indent=2))
     raise SystemExit(0 if all(row["ok"] for row in rows) else 1)
 

@@ -27,6 +27,7 @@ from agents.orchestrator import TravelOrchestrator
 from agents.schemas import OrchestrationRequest
 from agents.travel_tools.base import ToolResponse, TravelApiBackend, using_backend
 from memory.observability import ObservationLog
+from memory.run_history import RunHistory
 from memory.shared.interpreter import TravelInterpreter
 from memory.shared.service import PendingMemory, SharedMemoryService
 
@@ -43,7 +44,7 @@ from .models import (
 
 logger = logging.getLogger(__name__)
 QUERY = re.compile(
-    r"(?:please )?(?:plan my trip|plan an itinerary|show (?:my )?(?:itinerary|stays|food|budget|destinations|guides)|recommend (?:stays|food|destinations|guides)|what is my budget\??)",
+    r"(?:please )?(?:plan my trip|plan an itinerary|show (?:my )?(?:itinerary|stays|food|budget|destinations|guides)|recommend (?:stays|food|destinations|guides)|(?:what|how|where|which|can you|could you|help me)\b)",
     re.I,
 )
 
@@ -52,6 +53,7 @@ class CatalogSnapshot(TravelApiBackend):
     """Public database rows copied before LangGraph starts worker threads."""
 
     def __init__(self, db):
+        self.db = db
         self.rows = {
             kind: [
                 {c.name: getattr(obj, c.name) for c in model.__table__.columns}
@@ -129,13 +131,18 @@ class CatalogSnapshot(TravelApiBackend):
             evidence_kind="live",
         )
 
+    def external_context(self, traveler, trip_id):
+        from .external_memory import for_trip
+        return for_trip(self.db, traveler, trip_id)
+
 
 class TravelerMemory:
     def __init__(
         self, user_id, root, context_runtime, *, engine_factory=None, namespace="voyara"
     ):
         self.lock = RLock()
-        self.observations = ObservationLog()
+        self.run_history = RunHistory(Path(root) / "agent_history.sqlite3")
+        self.observations = ObservationLog(sink=self.run_history)
         records, tokens = [], {}
         for actor in ["app_user", *PROFILES]:
             token = secrets.token_urlsafe(32)
@@ -228,10 +235,13 @@ class TravelerMemory:
             claims=claims,
         )
 
-    def sync_profile(self, db):
+    def sync_profile(self, db, *, source_text=None, event_id=None):
         profile = db.get(UserProfile, self.user_id)
         values = {}
         if profile:
+            values.update(budget_tier=profile.budget_range, dietary_choices=profile.dietary_restrictions+profile.food_preferences,
+                          preferred_transport=profile.preferred_transport, travel_style=profile.travel_style,
+                          favorite_environments=profile.favorite_destinations)
             if profile.dietary_restrictions:
                 values["dietary"] = (
                     profile.dietary_restrictions[0]
@@ -252,14 +262,15 @@ class TravelerMemory:
             .where(AIMemory.user_id == self.user_id)
             .order_by(AIMemory.updated_at, AIMemory.id)
         ):
-            for key in ("dietary", "pace", "interests"):
+            for key in ("dietary", "pace", "interests", "budget_tier", "dietary_choices", "preferred_transport", "travel_style", "favorite_environments", "hotel_style", "origin", "seat_preference", "transport_mode"):
                 if key in snapshot.value:
                     values[key] = snapshot.value[key]
+        values = {key: value for key, value in values.items() if value is not None}
         if self.profile == values:
             return
         # Re-read after a restart so removed preferences are retracted too.
         claims = []
-        for key in ("dietary", "pace", "interests", "accessibility"):
+        for key in ("dietary", "pace", "interests", "accessibility", "budget_tier", "dietary_choices", "preferred_transport", "travel_style", "favorite_environments", "hotel_style", "origin", "seat_preference", "transport_mode"):
             current = self.service.recall(
                 self.principals["app_user"],
                 query="Current " + key,
@@ -302,7 +313,7 @@ class TravelerMemory:
                 )
         if claims:
             self.submit(
-                text="Saved traveler profile preferences.", trip_id="", claims=claims
+                text=source_text or "Saved traveler profile preferences.", trip_id="", claims=claims, event_id=event_id
             )
         self.profile = values
 
@@ -399,14 +410,18 @@ class TravelerMemory:
                 agent_results=[],
                 memory=[],
             )
+        external = None
+        if hasattr(catalog, "external_context"):
+            external = catalog.external_context(self, trip_id)
         for _ in range(3):
             gateway = ThreeTierGateway(
                 self.service, self.principals, self.user_id, trip_id,
-                observer=self.observations
+                observer=self.observations, external_evidence=external
             )
-            orchestrator = TravelOrchestrator(
-                workflow=TravelWorkflow(gateway=gateway, checkpoint=False, agentic=agentic)
-            )
+            workflow = TravelWorkflow(gateway=gateway, checkpoint=False, agentic=agentic)
+            workflow.on_progress = getattr(self, "on_progress", None)
+            workflow.research_deadline = getattr(self, "research_deadline", None)
+            orchestrator = TravelOrchestrator(workflow=workflow)
             with using_backend(catalog):
                 result = orchestrator.handle(
                     OrchestrationRequest(
@@ -425,19 +440,25 @@ class TravelerMemory:
                     agent_results=[],
                     memory=[],
                 )
-            if not gateway.validate_current():
+            if not gateway.validate_current(renew_expired=True):
                 if result.status == "failed" or any(item.status == "failed" for item in result.agent_results):
                     return dict(
-                        status="failed", itinerary=None, budget=None, memory=[],
-                        response="A research task did not complete before the trip context expired. No complete plan was saved. Check the team's execution details, confirm current trip details, then retry.",
+                        status="failed", itinerary=None, budget=None, memory=gateway.diagnostics(),
+                        response="Research could not finish using your current trip details. Your preferences are saved, but a complete plan is not ready. Review the details and try again.",
                         agent_results=[item.model_dump(mode="json") for item in result.agent_results],
                     )
+                from agents.agentic import provider
+                if provider() == "tinyfish":
+                    return dict(status="context_changed", itinerary=None, budget=None,
+                        response="Your requirements changed while research was running. Review the latest trip details before starting another run.",
+                        agent_results=[item.model_dump(mode="json") for item in result.agent_results],
+                        memory=gateway.diagnostics())
                 continue
-            for item in result.agent_results:
-                execution = item.execution.model_dump(mode="json") if item.execution else None
-                self.observations.emit(trip_id, "agent_completed", agent_id=item.agent_id,
-                    status=item.status, latency_ms=item.latency_ms, execution=execution)
             output = result.model_dump(mode="json")
+            output["external_memory"] = external
+            if external and external["status"] != "ready" and output.get("itinerary"):
+                output["itinerary"].setdefault("unresolved_conflicts", []).append(
+                    "External evidence is missing, stale or disputed. Review TinyFish research before relying on opening hours, permits or accessibility.")
             output.pop("memory_write_proposals", None)
             output["memory"] = gateway.diagnostics()
             budget = result.budget
@@ -460,7 +481,7 @@ class TravelerMemory:
                 or any(r.status == "failed" for r in result.agent_results)
             ):
                 output["status"] = "failed" if any(r.status == "failed" for r in result.agent_results) else "needs_clarification"
-                output["response"] = " ".join(errors) or "A travel agent could not complete its work. Check the team’s execution details and research service configuration, then retry."
+                output["response"] = " ".join(errors) or "We could not finish checking all parts of your trip. Your details are saved. Review them and retry the research before using this as a complete plan."
                 output["itinerary"], output["budget"] = None, None
                 return output
             return output

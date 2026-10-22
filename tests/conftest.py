@@ -17,7 +17,7 @@ def isolated_graphs(monkeypatch, tmp_path):
 
     def init(store, *args, **kwargs):
         original(store, *args, **kwargs)
-        if not store.graph_name.startswith("test_"):
+        if not store.graph_name.startswith(("test_", "iron_web_2_test_")):
             store.close()
             raise ValueError("Tests must use an isolated test_ graph.")
         stores.append(store)
@@ -95,17 +95,18 @@ def offline_models(monkeypatch, request):
     )
     monkeypatch.setattr(store_module, "Embedder", FixtureEmbedder)
     # Test fixtures must be explicit; never set an application's fallback policy.
-    original_init = engine_module.MemoryEngine.__init__
+    for engine_type in (engine_module.MemoryEngine, engine_module.LegacyMemoryEngine):
+        original_init = engine_type.__init__
 
-    def init(self, *args, **kwargs):
-        kwargs.setdefault(
-            "graph_name",
-            graph_name_for(
-                request.node.nodeid + str(request.getfixturevalue("tmp_path"))
-            ),
-        )
-        if not request.node.get_closest_marker("real_extraction_policy"):
-            kwargs.setdefault("extractor", MockNIMExtractor())
-        original_init(self, *args, **kwargs)
+        def init(self, *args, _original_init=original_init, **kwargs):
+            kwargs.setdefault(
+                "graph_name",
+                graph_name_for(
+                    request.node.nodeid + str(request.getfixturevalue("tmp_path"))
+                ),
+            )
+            if not request.node.get_closest_marker("real_extraction_policy"):
+                kwargs.setdefault("extractor", MockNIMExtractor())
+            _original_init(self, *args, **kwargs)
 
-    monkeypatch.setattr(engine_module.MemoryEngine, "__init__", init)
+        monkeypatch.setattr(engine_type, "__init__", init)

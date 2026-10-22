@@ -4,7 +4,8 @@ from tests.fixtures.graph import graph_name_for
 
 import pytest
 import json
-from memory.engine import MemoryEngine
+# Retained pre-migration engine contracts; native application checks live in main.py.
+from memory.engine import LegacyMemoryEngine as MemoryEngine
 from memory.evaluation.harness.base import (
     BenchmarkAdapter,
     BenchmarkDocument,

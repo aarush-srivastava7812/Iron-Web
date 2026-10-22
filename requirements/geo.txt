@@ -1,0 +1,2 @@
+# Optional country-sized PBF import; application reads imported SQL places.
+osmium==4.3.2

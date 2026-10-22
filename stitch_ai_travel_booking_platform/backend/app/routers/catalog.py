@@ -11,6 +11,7 @@ from ..deps import optional_current_user
 from ..models import AIMemory, Destination, FoodPlace, Guide, Stay, TransportRoute, UserProfile
 from ..models import User
 from memory_adapter import CustomMemoryBridge, MemoryServiceError
+from ..agent_runtime import get_agent_runtime
 
 router = APIRouter(tags=["catalog"])
 
@@ -50,6 +51,7 @@ async def list_items(
     offset: int = Query(default=0, ge=0),
     db: Session = Depends(get_db),
     user: User | None = Depends(optional_current_user),
+    runtime=Depends(get_agent_runtime),
 ):
     model = KINDS.get(kind)
     if not model:
@@ -126,8 +128,13 @@ async def list_items(
             if isinstance(memory.value, dict):
                 preferences.update(memory.value)
         try:
+            try:
+                runtime.for_user(user.id).sync_profile(db)
+            except Exception as error:
+                raise MemoryServiceError("Iron Web 2 profile synchronization is pending") from error
             external_preferences = await memory_bridge.get_user_long_term_preferences(user.id)
             preferences.update(external_preferences)
+            response.headers["X-Memory-Engine"] = "iron_web_2"
         except MemoryServiceError as exc:
             logger.warning("Memory preference lookup failed: %s", exc)
             response.headers["X-Memory-Status"] = "unavailable"

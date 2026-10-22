@@ -1,0 +1,112 @@
+{
+  "generated_at": "2026-10-22T01:31:09.867347+00:00",
+  "mode": "actual local HTTP and browser sessions; seeded catalog prices; no mocked dashboard feeds",
+  "checks": [
+    {
+      "name": "Travel API health",
+      "area": "travel",
+      "status": "passed",
+      "elapsed_ms": 31.66,
+      "detail": null
+    },
+    {
+      "name": "Authenticated session",
+      "area": "travel",
+      "status": "passed",
+      "elapsed_ms": 14.26,
+      "detail": null
+    },
+    {
+      "name": "Travel homepage and assistant launcher",
+      "area": "travel",
+      "status": "passed",
+      "elapsed_ms": 1729.91,
+      "detail": null
+    },
+    {
+      "name": "Five-turn travel chat, Enter key and reload persistence",
+      "area": "travel",
+      "status": "passed",
+      "elapsed_ms": 1082.77,
+      "detail": {
+        "turns": 5,
+        "saved_after_reload": true
+      }
+    },
+    {
+      "name": "Dated itinerary and reconciled estimated budget",
+      "area": "travel",
+      "status": "passed",
+      "elapsed_ms": 20.86,
+      "detail": {
+        "days": 3,
+        "budget_reconciles": true,
+        "prices": "seeded estimates"
+      }
+    },
+    {
+      "name": "Saved trip retrieved from database",
+      "area": "travel",
+      "status": "passed",
+      "elapsed_ms": 11.94,
+      "detail": null
+    },
+    {
+      "name": "Trip duplication",
+      "area": "travel",
+      "status": "passed",
+      "elapsed_ms": 16.01,
+      "detail": null
+    },
+    {
+      "name": "Travel mobile layout",
+      "area": "travel",
+      "status": "passed",
+      "elapsed_ms": 274.71,
+      "detail": null
+    },
+    {
+      "name": "Actual authenticated dashboard feed",
+      "area": "dashboard",
+      "status": "blocked",
+      "elapsed_ms": 2071.69,
+      "error": "AssertionError: Live dashboard snapshot returned HTTP 503"
+    },
+    {
+      "name": "Dashboard outage messaging, retry and mobile layout",
+      "area": "dashboard",
+      "status": "passed",
+      "elapsed_ms": 5237.42,
+      "detail": null
+    },
+    {
+      "name": "Browser runtime errors",
+      "area": "shared",
+      "status": "passed",
+      "elapsed_ms": 0.0,
+      "detail": null
+    }
+  ],
+  "timings": {
+    "travel_home_ready_ms": 1116.57,
+    "chat_turn_ms": [
+      150.12,
+      61.84,
+      52.31,
+      54.93,
+      51.61
+    ],
+    "chat_median_ms": 54.93,
+    "chat_max_ms": 150.12,
+    "trip_create_ms": 20.84
+  },
+  "browser_errors": [],
+  "paid_research_started": false,
+  "environment_limit": "Live dashboard data requires FalkorDB on port 6380. Docker Desktop failed to start because its local dockerInference socket could not be accessed. No volumes were reset or replaced.",
+  "test_account_removed": true,
+  "elapsed_seconds": 13.12,
+  "passed": 10,
+  "failed": 0,
+  "blocked": 1,
+  "status": "partial"
+}

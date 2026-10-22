@@ -1,9 +1,11 @@
 """Receipt-first ingestion, token-bound tenancy and safe graph task ownership."""
 
 from dataclasses import dataclass
+from copy import deepcopy
 import hashlib
 import hmac
 import json
+import os
 from pathlib import Path
 import re
 import secrets
@@ -93,6 +95,7 @@ class SharedMemoryService:
         fault_hook=None,
         worker_count=2,
         context_runtime=None,
+        replay=True,
     ):
         if not re.fullmatch(r"[A-Za-z0-9_]{1,40}", namespace):
             raise ValueError("Invalid deployment namespace.")
@@ -114,6 +117,7 @@ class SharedMemoryService:
             if not self.credentials:
                 raise ValueError("At least one configured principal is required.")
             self.namespace = namespace
+            self.replay = replay
             self.engine_factory = engine_factory or (
                 lambda path, name: MemoryEngine(
                     config={"extraction_policy": "none"},
@@ -177,10 +181,157 @@ class SharedMemoryService:
                 ).hexdigest()[:24]
                 directory = self.root / "tenants" / key
                 directory.mkdir(parents=True, exist_ok=True)
-                self.engines[tenant] = self.engine_factory(
+                engine = self.engine_factory(
                     directory / "vectors", self.namespace + "_" + key
                 )
+                try:
+                    if self.replay and getattr(engine, "backend", None) == "iron_web_2":
+                        self._replay_native(engine, tenant)
+                except Exception:
+                    engine.close()
+                    raise
+                self.engines[tenant] = engine
             return self.engines[tenant]
+
+    def _replay_native(self, engine, tenant):
+        """Replay durable prepared receipts into the new namespace, in order.
+
+        Original stores and journal entries remain untouched for rollback. An
+        unconvertible receipt fails visibly rather than silently losing memory.
+        """
+        from memory.lifecycle.service import identifier
+        with self.journal.lock:
+            rows = self.journal.db.execute(
+                "SELECT * FROM events WHERE tenant=? AND status IN ('ready','needs_review') "
+                "AND prepared IS NOT NULL ORDER BY sequence", (tenant,)).fetchall()
+            redacted = self.journal.db.execute("SELECT id,actor FROM events WHERE tenant=? AND status='redacted'", (tenant,)).fetchall()
+        complete = engine.graph_store.execute("MATCH(m:MemoryMigration {id:'receipts_v1'}) RETURN m.id").rows
+        timelines = engine.graph_store.execute("MATCH(m:MemoryMigration {id:'timelines_v2'}) RETURN m.id").rows
+        for item in redacted:
+            engine.graph_store.execute("MERGE(e:RedactedEvent {id:$id})",
+                {"id":"source_"+hashlib.sha256(item["id"].encode()).hexdigest()})
+        mapping = {}
+        for row in rows:
+            payload, prepared = json.loads(row["payload"]), json.loads(row["prepared"])
+            principal = payload["principal"]
+            sid = identifier("source_", [principal["role"], principal["actor"], payload["event_id"]])
+            target = "source_" + hashlib.sha256(payload["event_id"].encode()).hexdigest()
+            mapping.update({identifier("claim_", [sid, i]):target+"_"+str(i) for i in range(len(prepared.get("claims", [])))})
+        if not complete and rows and redacted:
+            self._import_legacy_barriers(engine, tenant, redacted, mapping)
+        def barriers():
+            with self.journal.lock:
+                markers = [dict(item) for item in self.journal.db.execute(
+                    "SELECT * FROM memory_barriers WHERE tenant=?", (tenant,)).fetchall()]
+            for marker in markers:
+                if marker["relation"] not in {"SUPERSEDES", "RETRACTS"}:
+                    raise ValueError("Invalid durable deletion barrier.")
+                engine.graph_store.execute(
+                    "MATCH(old:Claim {id:$target}) MERGE(c:RedactedChange {id:$id}) "
+                    "SET c.recorded_at=$recorded MERGE(c)-[r:"+marker["relation"]+"]->(old) SET r.effective_at=$effective",
+                    dict(target=marker["target_id"], id=marker["change_id"], recorded=marker["recorded_at"], effective=marker["effective_at"]))
+        for row in rows:
+            payload, prepared = json.loads(row["payload"]), json.loads(row["prepared"])
+            if prepared.get("operation") == "redact":
+                continue
+            principal = payload["principal"]
+            old_source = identifier("source_", [principal["role"], principal["actor"], payload["event_id"]])
+            new_source = "source_" + hashlib.sha256(payload["event_id"].encode()).hexdigest()
+            claims = deepcopy(prepared["claims"])
+            for index, claim in enumerate(claims):
+                mapping[identifier("claim_", [old_source, index])] = new_source + "_" + str(index)
+                if claim.get("targets"):
+                    claim["targets"] = [mapping.get(target, target) for target in claim["targets"]]
+            if engine.get(row["memory_id"]) is None:
+                engine.add(payload["text"], memory_id=row["memory_id"], timestamp=prepared["recorded_at"], _migration=True,
+                    claims=claims, source_info=dict(origin=principal["role"], actor_id=principal["actor"],
+                        user_confirmed=payload["confirmed"], event_id=payload["event_id"],
+                        quality=.5 if principal["role"] == "agent" else .9, recorded_at=prepared["recorded_at"]),
+                    metadata=dict(service_receipt=row["id"], interpretation=prepared["mode"], session_id=payload["session_id"]))
+            barriers()
+        barriers()
+        if rows and not timelines:
+            self._import_legacy_timelines(engine, mapping)
+        if not complete and rows:
+            self._import_legacy_work(engine, mapping)
+        engine.graph_store.execute("MERGE(m:MemoryMigration {id:'receipts_v1'}) SET m.status='complete'")
+        engine.graph_store.execute("MERGE(m:MemoryMigration {id:'timelines_v2'}) SET m.status='complete'")
+
+    @staticmethod
+    def _legacy_rows(engine, query):
+        from falkordb import FalkorDB
+        from memory.graph.connection import GraphLease
+        graph = engine.native.vectors.client
+        owned = False
+        name = engine.legacy_graph_name
+        if not graph.connection.exists(name):
+            if not os.getenv("LEGACY_FALKORDB_PORT"):
+                return None
+            graph = FalkorDB(host=os.getenv("LEGACY_FALKORDB_HOST", engine.graph_store.host),
+                port=int(os.environ["LEGACY_FALKORDB_PORT"]), socket_connect_timeout=2, socket_timeout=10)
+            owned = True
+        try:
+            if not graph.connection.exists(name):
+                return None
+            with GraphLease(graph.connection, "{"+name+"}:lock"):
+                return graph.select_graph(name).query(query).result_set
+        finally:
+            if owned:
+                graph.close()
+
+    def _import_legacy_work(self, engine, mapping):
+        rows = self._legacy_rows(engine, "MATCH(w:MemoryWork) RETURN properties(w)")
+        if not rows:
+            return
+        from memory.storage import coordinated_write
+        with coordinated_write(engine.vector_store, engine.graph_store, []):
+            engine.lifecycle.ensure_schema()
+            for raw, in rows:
+                work = dict(raw)
+                if engine.lifecycle.work(work["id"]):
+                    continue
+                ids = [mapping.get(cid, cid) for cid in json.loads(work["used_claim_ids"])]
+                work.update(used_claim_ids=canonical_json(ids), lease_token="", lease_until=0)
+                if work.get("status") != "completed":
+                    work["agent_id"] = ""
+                engine.graph_store.execute("CREATE(w:MemoryWork {id:$props.id}) SET w += $props", {"props":work})
+            for raw, in rows:
+                work = dict(raw)
+                ids = [mapping.get(cid, cid) for cid in json.loads(work["used_claim_ids"])]
+                engine.graph_store.execute("MATCH(w:MemoryWork {id:$id}) UNWIND $claims AS cid MATCH(c:Claim {id:cid}) MERGE(w)-[:USES]->(c)", {"id":work["id"], "claims":ids})
+                engine.graph_store.execute("MATCH(w:MemoryWork {id:$id}) UNWIND $deps AS did MATCH(d:MemoryWork {id:did}) MERGE(w)-[:DEPENDS_ON]->(d)", {"id":work["id"], "deps":json.loads(work["dependency_ids"])})
+
+    def _import_legacy_timelines(self, engine, mapping):
+        rows = self._legacy_rows(engine, "MATCH(c:MemoryClaim) RETURN c.id,c.valid_from,c.valid_until,c.accepted_at,c.recorded_at,c.accepted,c.protected")
+        if not rows:
+            return
+        items = [dict(id=mapping[cid], valid_from=start, valid_until=end, accepted_at=accepted_at,
+                      recorded_at=recorded_at, accepted=accepted, protected=protected)
+                 for cid, start, end, accepted_at, recorded_at, accepted, protected in rows if cid in mapping]
+        if items:
+            engine.graph_store.execute(
+                "UNWIND $items AS item MATCH(c:Claim {id:item.id}) "
+                "SET c.valid_from=item.valid_from,c.valid_until=item.valid_until,c.accepted_at=item.accepted_at,"
+                "c.recorded_at=item.recorded_at,c.accepted=item.accepted,c.protected=item.protected,c.pinned=item.protected "
+                "WITH c,item OPTIONAL MATCH(c)-[r:SUPERSEDES|RETRACTS]->(old) WITH c,item,collect(r) AS changes "
+                "FOREACH(r IN changes | SET r.effective_at=item.accepted_at)", {"items":items})
+
+    def _import_legacy_barriers(self, engine, tenant, redacted, mapping):
+        """Carry content-free deletion effects over from the preserved old graph."""
+        from memory.lifecycle.service import identifier
+        rows = self._legacy_rows(engine, "MATCH(c:MemoryClaim) WHERE c.ended_by IS NOT NULL RETURN c.id,c.ended_by,c.ended_at,coalesce(c.ended_known_at,c.ended_at),c.end_reason")
+        if rows is None:
+            raise RuntimeError("Legacy receipts include deletions but their old graph is unavailable. Restore its private snapshot before migration; deleted changes must not resurrect older facts.")
+        deleted = {}
+        for row in redacted:
+            for role in ("user", "agent", "tool", "import"):
+                sid = identifier("source_", [role, row["actor"], row["id"]])
+                for i in range(32):
+                    deleted[identifier("claim_", [sid, i])] = "source_"+hashlib.sha256(row["id"].encode()).hexdigest()+"_"+str(i)
+        markers = [(tenant, deleted[change], mapping[cid], "RETRACTS" if reason == "retracted" else "SUPERSEDES", known, effective)
+                   for cid, change, effective, known, reason in rows if change in deleted and cid in mapping]
+        with self.journal.lock, self.journal.db:
+            self.journal.db.executemany("INSERT OR IGNORE INTO memory_barriers VALUES(?,?,?,?,?,?)", markers)
 
     def submit(self, principal, body):
         checked = EventInput.model_validate(body)
@@ -312,6 +463,11 @@ class SharedMemoryService:
             raise ValueError("Context is not configured.")
         return self.context_access.validate(principal, context_token)
 
+    def renew_context(self, principal, context_token):
+        if not self.context_access:
+            raise ValueError("Context is not configured.")
+        return self.context_access.renew(principal, context_token)
+
     def _loop(self):
         while not self.stop.is_set():
             if not self.process_one():
@@ -329,6 +485,14 @@ class SharedMemoryService:
             ):
                 prepared = json.loads(row["prepared"])
                 self.engine(row["tenant"]).delete(row["memory_id"], user_confirmed=True)
+                engine = self.engine(row["tenant"])
+                if getattr(engine, "backend", None) == "iron_web_2":
+                    barriers = engine.graph_store.execute(
+                        "MATCH(c:RedactedChange)-[r:SUPERSEDES|RETRACTS]->(old) "
+                        "RETURN c.id,old.id,type(r),c.recorded_at,r.effective_at").rows
+                    with self.journal.lock, self.journal.db:
+                        self.journal.db.executemany("INSERT OR IGNORE INTO memory_barriers VALUES(?,?,?,?,?,?)",
+                            [(row["tenant"], *marker) for marker in barriers])
                 self.journal.redact(row, prepared["by"])
                 self._invalidate_context(row["tenant"], json.loads(row["payload"]))
                 return True
@@ -437,6 +601,9 @@ class SharedMemoryService:
 
     def _repair_orphan(self, engine, row, payload, prepared):
         """Replay only service-owned partial writes, never unrelated memory data."""
+        if getattr(engine, "backend", None) == "iron_web_2":
+            # Native events publish their source, vector and claims atomically.
+            return
         with engine.graph_store.write_lock, engine._operation_lock:
             sources = engine.graph_store.execute(
                 "MATCH(s:MemorySource {memory_id:$mid}) RETURN properties(s)",

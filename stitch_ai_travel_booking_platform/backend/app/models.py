@@ -274,6 +274,55 @@ class Experience(Base):
     display: Mapped[dict] = mapped_column(JSON, default=dict)
 
 
+class MapPlace(Base):
+    __tablename__ = "map_places"
+    osm_id: Mapped[str] = mapped_column(String(40), primary_key=True)
+    name: Mapped[str] = mapped_column(String(250))
+    destination_id: Mapped[int | None] = mapped_column(ForeignKey("destinations.id"), index=True)
+    category: Mapped[str] = mapped_column(String(80), index=True)
+    lat: Mapped[float] = mapped_column(Float)
+    lng: Mapped[float] = mapped_column(Float)
+    tags: Mapped[dict] = mapped_column(JSON, default=dict)
+    provenance: Mapped[dict] = mapped_column(JSON, default=dict)
+
+
+class DestinationResearch(Base):
+    __tablename__ = "destination_research"
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    destination_id: Mapped[int] = mapped_column(ForeignKey("destinations.id"), index=True)
+    requested_by: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    status: Mapped[str] = mapped_column(String(20), default="queued")
+    topics: Mapped[list] = mapped_column(JSON, default=list)
+    payload: Mapped[dict] = mapped_column(JSON, default=dict)
+    created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
+class ExternalKnowledgeVersion(Base):
+    """Owner-scoped external evidence; never a traveler preference or rule."""
+    __tablename__ = "external_knowledge_versions"
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    user_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    destination_id: Mapped[int] = mapped_column(ForeignKey("destinations.id"), index=True)
+    research_id: Mapped[str] = mapped_column(ForeignKey("destination_research.id", ondelete="CASCADE"), index=True)
+    topic: Mapped[str] = mapped_column(String(40))
+    previous_id: Mapped[str | None] = mapped_column(String(36), nullable=True)
+    payload: Mapped[dict] = mapped_column(JSON, default=dict)
+    graph_synced: Mapped[bool] = mapped_column(default=False)
+    created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
+    __table_args__ = (UniqueConstraint("user_id", "research_id", "topic"),)
+
+
+class ExternalMemoryEvent(Base):
+    __tablename__ = "external_memory_events"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    trip_id: Mapped[str | None] = mapped_column(ForeignKey("ai_conversations.id", ondelete="CASCADE"), nullable=True, index=True)
+    destination_id: Mapped[int] = mapped_column(ForeignKey("destinations.id"), index=True)
+    kind: Mapped[str] = mapped_column(String(40), index=True)
+    detail: Mapped[dict] = mapped_column(JSON, default=dict)
+    created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
 class WebsiteStay(Base):
     __tablename__ = "website_stays"
     stay_id: Mapped[int] = mapped_column(ForeignKey("stays.id"), primary_key=True)

@@ -10,6 +10,7 @@ from .config import settings
 from .db import create_schema, SessionLocal
 from .routers import dashboard
 from .routers import journey
+from .routers import trips
 from .routers import assistant, auth, bookings, catalog, favorites, itineraries, leads, offers, profile, google_auth, website
 
 
@@ -19,6 +20,8 @@ async def lifespan(_):
     from .planning_jobs import recover
     with SessionLocal() as db:
         recover(db)
+        from .destination_research import recover as recover_research
+        recover_research(db)
     yield
     from .agent_runtime import runtime
     runtime.close()
@@ -49,6 +52,7 @@ app.include_router(profile.router, prefix="/api")
 app.include_router(itineraries.router, prefix="/api")
 app.include_router(assistant.router, prefix="/api")
 app.include_router(journey.router, prefix="/api")
+app.include_router(trips.router, prefix="/api")
 app.include_router(offers.router, prefix="/api")
 app.include_router(favorites.router, prefix="/api")
 app.include_router(leads.router, prefix="/api")

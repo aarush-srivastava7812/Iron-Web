@@ -1,15 +1,15 @@
 /* All UI color values live here. Semantic aliases keep existing utilities stable. */
 :root {
   /* Primary palette supplied in the reference. */
-  --palette-navy: #2f4156;
-  --palette-teal: #567c8d;
-  --palette-sky: #c8d9e6;
-  --palette-beige: #f5efeb;
+  --palette-navy: #142c46;
+  --palette-teal: #087568;
+  --palette-sky: #bed9ee;
+  --palette-beige: #f8f6f2;
   /* Stronger data accents distinguish categories without coloring the surfaces. */
-  --accent-jade: #287b76;
-  --accent-amber: #9c651e;
-  --accent-plum: #855d85;
-  --accent-blue: #3d709a;
+  --accent-jade: #006c58;
+  --accent-amber: #995000;
+  --accent-plum: #74359b;
+  --accent-blue: #1555a5;
   --agent-planner-on-dark: #a4c5e1;
   --agent-researcher-on-dark: #a1cec4;
   --agent-reviewer-on-dark: #d2b3ce;
@@ -20,11 +20,11 @@
   --ui-accent: var(--palette-teal);
   --graph-edge: var(--palette-teal);
   --ui-bg: var(--palette-beige);
-  --ui-panel: color-mix(in srgb, var(--palette-beige) 85%, var(--palette-sky));
-  --ui-raised: color-mix(in srgb, var(--palette-sky) 32%, var(--palette-beige));
-  --ui-border: color-mix(in srgb, var(--palette-teal) 28%, var(--palette-beige));
+  --ui-panel: #ffffff;
+  --ui-raised: #e5edf5;
+  --ui-border: #a5b4c4;
   --ui-text: var(--palette-navy);
-  --ui-secondary: color-mix(in srgb, var(--palette-navy) 20%, var(--palette-teal));
+  --ui-secondary: #2c4359;
   --agent-planner: var(--accent-blue);
   --agent-researcher: var(--accent-jade);
   --agent-reviewer: var(--accent-plum);
@@ -32,7 +32,7 @@
   --tier-context: var(--accent-jade);
   --tier-evidence: var(--accent-blue);
   --state-current: var(--accent-amber);
-  --state-conflict: #ae4a4c;
+  --state-conflict: #b42336;
   --state-dormant-opacity: 0.35;
   --state-selection-dim-opacity: 0.2;
   --diff-added: var(--accent-jade);

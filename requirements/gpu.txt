@@ -1,4 +1,4 @@
 # Use a separate environment from the CPU profile.
 -r storage.txt
 fastembed-gpu==0.8.0
-onnxruntime-gpu==1.31.0
+onnxruntime-gpu[cuda,cudnn]==1.23.2

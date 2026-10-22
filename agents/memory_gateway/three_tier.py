@@ -84,10 +84,11 @@ class ThreeTierGateway:
 
     graph_live = True
 
-    def __init__(self, service, principals, user_id, trip_id, observer=None):
+    def __init__(self, service, principals, user_id, trip_id, observer=None, external_evidence=None):
         self.service, self.principals = service, principals
         self.user_id, self.trip_id = user_id, trip_id
         self.observer = observer
+        self.external_evidence = external_evidence
         self.packets = []
         self._lock = Lock()
 
@@ -146,6 +147,7 @@ class ThreeTierGateway:
             retrieval_mode="three_tier",
             items=items,
             packet=packet,
+            external_evidence=(self.external_evidence or {}).get("evidence", []),
         )
 
     def trip_brief(self, context):
@@ -159,6 +161,7 @@ class ThreeTierGateway:
             "traveller_count",
             "dietary",
             "pace",
+            "hard_requirements",
         }
         for field in context.packet["fields"]:
             if field["required"] and field["predicate"] not in supported_rules:
@@ -192,10 +195,8 @@ class ThreeTierGateway:
             issues["dates"] = "confirm start and end dates, up to 60 days"
         diet = fields.get("dietary", [])
         diet = [diet] if isinstance(diet, str) else diet
-        if not isinstance(diet, list) or any(
-            v not in {"vegetarian", "veg"} for v in diet
-        ):
-            issues["dietary"] = "catalog dietary evidence supports vegetarian only"
+        if not isinstance(diet, list) or any(not isinstance(v, str) for v in diet):
+            issues["dietary"] = "confirm your dietary requirements"
         if fields.get("pace") not in {None, "relaxed", "moderate", "packed"}:
             issues["pace"] = "unsupported pace"
         if issues:
@@ -210,10 +211,22 @@ class ThreeTierGateway:
             dietary_requirements=diet,
             interests=fields.get("interests", []),
             pace=fields.get("pace"),
+            hard_constraints=fields.get("hard_requirements", []),
         )
         return brief
 
-    def validate_current(self):
+    def validate_current(self, *, renew_expired=False):
+        if renew_expired:
+            renewed = []
+            for actor, packet in self.packets:
+                principal = self.principals[actor]
+                if not self.service.validate_context(principal, packet["context_token"])["valid"]:
+                    fresh = self.service.renew_context(principal, packet["context_token"])
+                    if fresh is None:
+                        return False
+                    packet = dict(fresh, proof_renewed=True)
+                renewed.append((actor, packet))
+            self.packets = renewed
         valid = bool(self.packets) and all(
             self.service.validate_context(
                 self.principals[actor], packet["context_token"]
@@ -229,6 +242,7 @@ class ThreeTierGateway:
         return [
             dict(
                 agent_id=actor,
+                proof_renewed=packet.get("proof_renewed", False),
                 cache_hit=packet["cache_hit"],
                 tokens=packet["tokens"],
                 residency=packet["residency"],

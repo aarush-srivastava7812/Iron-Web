@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-10-22T01:30:29.376490+00:00",
+  "checks": [
+    {
+      "label": "Memory and presentation tests",
+      "passed": 28,
+      "total": 28,
+      "status": "passed",
+      "scope": "Isolated SQL / gateway contracts; real FalkorDB round trip excluded",
+      "elapsed_seconds": 19.07,
+      "command": "D:\\Opencode_\\reserchpaper\\.venv\\Scripts\\python.exe -m pytest tests/test_external_memory.py tests/test_agent_presentation.py -q --tb=short --show-capture=no"
+    },
+    {
+      "label": "Dashboard unit tests",
+      "passed": 13,
+      "total": 13,
+      "status": "passed",
+      "scope": "JavaScript unit checks",
+      "elapsed_seconds": 1.87,
+      "command": "\"C:\\Program Files\\nodejs\\npm.cmd\" test"
+    },
+    {
+      "label": "Dashboard production build",
+      "passed": 1,
+      "total": 1,
+      "status": "passed",
+      "scope": "Production bundle",
+      "elapsed_seconds": 6.71,
+      "command": "\"C:\\Program Files\\nodejs\\npm.cmd\" run build"
+    },
+    {
+      "label": "Travel site production build",
+      "passed": 1,
+      "total": 1,
+      "status": "passed",
+      "scope": "Production bundle",
+      "elapsed_seconds": 2.44,
+      "command": "\"C:\\Program Files\\nodejs\\npm.cmd\" run build"
+    },
+    {
+      "label": "Dashboard and guide browser checks",
+      "passed": 4,
+      "total": 4,
+      "status": "passed",
+      "scope": "Labelled dashboard fixtures + six-slide HTML; keyboard, fullscreen and five viewport sizes",
+      "elapsed_seconds": 12.96,
+      "command": "\"C:\\Program Files\\nodejs\\npx.cmd\" playwright test tests/tinyfish-memory.spec.js --reporter=json"
+    }
+  ],
+  "status": "passed",
+  "last_browser_retest_at": "2026-10-22T01:40:05.611757+00:00"
+}

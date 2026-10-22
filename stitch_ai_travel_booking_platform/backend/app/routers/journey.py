@@ -43,10 +43,27 @@ def chat(conversation_id:str,body:MessageIn,user:User=Depends(current_user),db:S
     if not original.content:
         raise HTTPException(422,"Message must not be blank.")
     db.add(original); db.commit()
-    with runtime.for_user(user.id).lock:
+    from agents.agentic import provider
+    mode=provider()
+    lock=runtime.for_user(user.id).lock
+    active=planning_jobs.latest(db,user.id,conversation_id)
+    acquired=lock.acquire(blocking=False) if not (active and active["status"] in {"queued","running"}) else False
+    try:
         row=journey.workspace(db,conversation_id)
         try:
-            answer=journey.chat_turn(db,row,user,original.content)
+            if not acquired:
+                from ..local_chat import status_reply, summary
+                from ..conversation_intake import classify
+                work=journey.present(db,row,user.id)
+                intent=classify(original.content.casefold())
+                message=status_reply(work) if active else "Your trip is being updated. Please try again shortly; your message is saved and the draft is unchanged."
+                if intent=="summary":
+                    message=summary(work)+"\n\n"+message
+                elif intent=="update":
+                    message+=" I haven't applied any trip changes while research is using the confirmed details."
+                answer=dict(status="research_running",reply=message,cards=[],suggestions=["Show my trip summary","Check research status"])
+            else:
+                answer=journey.chat_turn(db,row,user,original.content)
         except Exception:
             db.rollback()
             row=journey.workspace(db,conversation_id)
@@ -57,8 +74,11 @@ def chat(conversation_id:str,body:MessageIn,user:User=Depends(current_user),db:S
         if conversation.title=="New travel chat" and row.data.get("draft",{}).get("destination"):
             conversation.title=row.data["draft"]["destination"]+" · your journey"
         db.commit()
-        from agents.agentic import provider
-        return dict(**answer,message=original,assistant_message=reply,workspace=journey.present(db,row,user.id),mode="local" if provider()=="tinyfish" else "nvidia")
+        return dict(**answer,message=original,assistant_message=reply,workspace=journey.present(db,row,user.id),mode="local" if mode=="tinyfish" or not acquired else "nvidia")
+    finally:
+        if acquired:
+            lock.release()
+
 
 
 @router.post("/{conversation_id}/selections")
@@ -81,10 +101,10 @@ def confirm_trip(conversation_id:str,body:journey.ConfirmIn,user:User=Depends(cu
         raise
     except Exception as error:
         db.rollback()
-        raise HTTPException(503,"Trip details could not be confirmed through memory. Your draft is saved; retry when the memory service is ready.") from error
+        raise HTTPException(503,"The trip could not be assembled. Your draft is saved; review its details before retrying.") from error
     reply=AIMessage(conversation_id=conversation_id,role="assistant",content=result["response"])
     db.add(reply); db.commit()
-    return dict(orchestration=result,reply=result["response"],workspace=journey.present(db,row,user.id))
+    return dict(orchestration=result,reply=result["response"],assistant_message_id=reply.id,workspace=journey.present(db,row,user.id))
 
 
 @router.post("/{conversation_id}/confirm-jobs", status_code=202)

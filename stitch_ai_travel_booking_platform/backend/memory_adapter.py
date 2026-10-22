@@ -24,7 +24,20 @@ class CustomMemoryBridge:
 
     async def get_user_long_term_preferences(self, user_id: str) -> dict[str, Any]:
         if not self.service_url:
-            return {}
+            from app.agent_runtime import get_agent_runtime
+            try:
+                traveler = get_agent_runtime().for_user(user_id)
+                engine = traveler.service.engine(user_id)
+                preferences = {}
+                for field in ("budget_tier", "dietary_choices", "preferred_transport", "travel_style", "favorite_environments", "pace", "dietary", "interests"):
+                    answer = engine.recall(field, subject="Traveller", predicate=field, scope={})
+                    if answer["answer_status"] == "supported":
+                        values = [item["value"] for item in answer["evidence"] if item["accepted_for_current_use"]]
+                        if values:
+                            preferences[field] = values[0] if len(values) == 1 else values
+                return preferences
+            except Exception as error:
+                raise MemoryServiceError("Iron Web 2 preference memory is unavailable") from error
 
         headers = {"Accept": "application/json"}
         if self.service_token:

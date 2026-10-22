@@ -61,7 +61,7 @@ def serialized(method):
     return call
 
 
-class MemoryEngine:
+class LegacyMemoryEngine:
     """
     Unified public interface for the Hybrid Long-Term AI Memory Engine.
 
@@ -1190,3 +1190,8 @@ class MemoryEngine:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.close()
+
+
+# All production callers retain their public import while using Iron Web 2.
+# LegacyMemoryEngine is explicit for read-only migration and baseline evaluation.
+from memory.application import ApplicationMemoryEngine as MemoryEngine

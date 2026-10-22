@@ -45,6 +45,26 @@ def _minute(item: BookingItemIn) -> int:
     return item.start_time.hour * 60 + item.start_time.minute
 
 
+def validate_existing(items, user_id, db):
+    """Check existing active requests across the traveler's other trips."""
+    existing = list(db.scalars(select(BookingItem).join(Booking).where(Booking.user_id == user_id, Booking.status != "cancelled")))
+    for proposed in items:
+        for old in existing:
+            if not proposed.start_date or not old.start_date:
+                continue
+            if proposed.item_type == old.item_type == "stay" and proposed.end_date and old.end_date:
+                if proposed.start_date < old.end_date and old.start_date < proposed.end_date:
+                    raise HTTPException(422, "This stay overlaps an existing booking request in another trip.")
+            elif proposed.item_type != "stay" and old.item_type != "stay" and proposed.start_date == old.start_date and proposed.start_time and old.start_time:
+                a, b = _minute(proposed), old.start_time.hour*60+old.start_time.minute
+                if a < b+(old.duration_min or 90) and b < a+(proposed.duration_min or 90):
+                    raise HTTPException(422, "This activity overlaps an existing booking request.")
+            if proposed.item_type in {"experience", "food", "guide"} and old.item_type == "stay" and old.end_date and old.start_date <= proposed.start_date <= old.end_date:
+                activity, stay = db.get(MODELS[proposed.item_type], proposed.item_id), db.get(Stay, old.item_id)
+                if activity and stay and activity.destination_id != stay.destination_id:
+                    raise HTTPException(422, "This activity is in a different city from the existing stay; plan a transfer first.")
+
+
 def _validate_conflicts(items: list[BookingItemIn], db: Session | None = None) -> None:
     """Validate booking constraints:
     1. Stays must have valid date windows and not overlap with other stays.
@@ -178,6 +198,7 @@ def create(body: BookingIn, user: User = Depends(current_user), db: Session = De
 
 def build_booking(body: BookingIn, user: User, db: Session, *, commit=True):
     _validate_conflicts(body.items, db=db)
+    validate_existing(body.items, user.id, db)
     booking, total, item_types = Booking(user_id=user.id, total_inr=0, status="requested"), 0, set()
     for it in body.items:
         item_types.add(it.item_type)

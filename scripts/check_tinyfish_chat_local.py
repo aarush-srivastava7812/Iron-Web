@@ -44,7 +44,7 @@ def main():
             elapsed = time.monotonic() - started
             assert response.status == 200 and data["status"] == "ok", data
             assert data["workspace"]["draft"]["destination"] == "Agra"
-            assert "departure date" in data["reply"] and "budget" in data["reply"]
+            assert "departure date" in data["reply"] and data["awaiting"] == "start_date"
             assert elapsed < 10, elapsed
             page.wait_for_function("!document.querySelector('.journey-chat textarea').disabled")
             assert dialog.locator(".journey-chat-loading").is_hidden()

@@ -58,6 +58,12 @@ class ContextAccess:
 
     def _stamp(self, principal, engine, request, now):
         subjects, rows = self.source_rows(engine, request, now)
+        if getattr(engine, "backend", None) == "iron_web_2":
+            volatile = {"embedding", "last_visited_at", "last_accessed_at", "last_accessed", "access_count",
+                        "last_decay_at", "retention_base", "usage_version", "recent_uses_json",
+                        "last_request_id", "visit_count", "reinforcement", "utility", "fuzzy_score"}
+            rows = [[{k: v for k, v in part.items() if k not in volatile and not k.startswith("usage_")}
+                     for part in row] for row in rows]
         aliases = engine.lifecycle._bounded(
             engine.lifecycle._rows(
                 "MATCH(a:Entity)-[r:CANONICAL_ALIAS]->(b:Entity) WHERE a.id IN $subjects OR b.id IN $subjects "
@@ -275,6 +281,7 @@ class ContextAccess:
                                 scope=request.scope,
                                 task_type=request.task_type,
                                 session_id=request.session_id,
+                                query=request.query,
                             ),
                         )
                     ),
@@ -288,7 +295,41 @@ class ContextAccess:
                         expires_at=expires,
                         token_count=runtime.tokens.count(card["text"]),
                     )
+                if getattr(engine, "backend", None) == "iron_web_2":
+                    claims = [engine.lifecycle.claim(cid) for cid in result["claim_ids"]]
+                    claims = [claim for claim in claims if claim is not None]
+                    if result["status"] == "ready" and claims:
+                        ids = [item for claim in claims for item in (claim["id"], claim["source_id"])]
+                        engine.native._usage(ids, request_id=secrets.token_hex(16), expected_revision=engine.native.revision())
+                    views = engine.lifecycle.views(claims, int(now))
+                    result["memory"] = dict(
+                        fixed_cache=[dict(predicate=field["predicate"], text=field["text"], claim_ids=field["claim_ids"])
+                                     for field in result["fields"] if field["status"] == "supported" and field["required"]],
+                        hot_cache=[view for view in views if result["status"] == "ready" and view["accepted_for_current_use"] and view["fuzzy_score"] == 1],
+                        persona=result["agent_text"],
+                        similar_memory=[dict(view, score=view["fuzzy_score"], score_type="retention") for view in views
+                                        if result["status"] == "ready" and view["accepted_for_current_use"] and view["fuzzy_score"] < 1],
+                        backend="iron_web_2",
+                    )
                 return result
+
+    def renew(self, principal, context_token):
+        """Recompile an expired proof only for the identical evidence snapshot.
+
+        TTL expiry is not a requirement change. Recompilation still checks
+        current validity boundaries, pending events, policy and claim selection;
+        changed evidence must cause the caller to discard its generated work.
+        """
+        self._allowed(principal)
+        payload = self._decode(context_token, principal)
+        if self.clock() < payload["expires"]:
+            return None
+        fresh = self.context(principal, **payload["request"])
+        renewed = self._decode(fresh["context_token"], principal)
+        if (fresh["status"] != "ready" or renewed["stamp"] != payload["stamp"]
+                or sorted(fresh["claim_ids"]) != sorted(payload["claim_ids"])):
+            return None
+        return fresh
 
     def validate(self, principal, context_token):
         self._allowed(principal)

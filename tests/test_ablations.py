@@ -13,7 +13,8 @@ from tests.fixtures.graph import graph_name_for
 
 import pytest
 
-from memory.engine import MemoryEngine
+# Retained pre-migration engine contracts; native application checks live in main.py.
+from memory.engine import LegacyMemoryEngine as MemoryEngine
 
 
 def test_baseline_a_no_memory(tmp_path):

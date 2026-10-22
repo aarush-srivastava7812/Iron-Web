@@ -287,9 +287,12 @@ def test_offers_and_coupon_booking():
     plain = c.post("/api/bookings", json=body, headers=h).json()
     stay_price = c.get("/api/stays/1").json()["price_inr"]
     assert plain["total_inr"] == stay_price * 2
+    assert c.post("/api/bookings", json=body, headers=h).status_code == 422
+    assert c.post(f"/api/bookings/{plain['id']}/cancel", headers=h).status_code == 200
     coupon_body = dict(body, coupon_code="SLOWTRAVEL15")
     couponed = c.post("/api/bookings", json=coupon_body, headers=h).json()
     assert couponed["total_inr"] == round(stay_price * 2 * 0.85)
+    assert c.post(f"/api/bookings/{couponed['id']}/cancel", headers=h).status_code == 200
     wrong_module = c.post("/api/bookings", json=dict(body, coupon_code="FIRSTBITE"), headers=h)
     assert wrong_module.status_code == 422
 

@@ -95,7 +95,14 @@ def save_message(
     if not body.content.strip():
         raise HTTPException(422, "Message must not be blank")
     # Persist the user's original message even if a model/store is unavailable.
-    plan_drafts.invalidate(db, conversation_id)
+    from agents.orchestration.routing import plan_tasks
+    from agents.schemas import OrchestrationRequest
+    from memory.shared.interpreter import TravelInterpreter
+    tasks = plan_tasks(OrchestrationRequest(request=body.content.strip(), user_id=user.id,
+                       session_id=conversation_id, page=body.page))
+    changes = TravelInterpreter()(body.content.strip(), dict(subject="Traveller", scope={"trip_id": conversation_id}))
+    if "itinerary_planner" in tasks or changes:
+        plan_drafts.invalidate(db, conversation_id)
     db.commit()
     try:
         traveler = runtime.for_user(user.id)

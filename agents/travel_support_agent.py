@@ -65,7 +65,7 @@ class TravelSupportAgent:
             weather = None
             if destination_id is not None and destination_name:
                 weather = weather_tool.weather_note(destination_id, destination_name)
-                source_freshness = "current"
+                source_freshness = "general"  # Metadata climatology is not a live forecast.
 
             if topic == "packing":
                 items = list(_PACKING_BASE)

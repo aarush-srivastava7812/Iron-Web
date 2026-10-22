@@ -57,6 +57,7 @@ def cold_backup(runtime, credentials, namespace, destination, engine_factory=Non
                         directory=tenant_key(root, namespace, tenant),
                         records=records,
                         sha256=hashlib.sha256(data).hexdigest(),
+                        backend=getattr(engine, "backend", "legacy"),
                     )
                 )
         # Embedded vectors must be closed before their SQLite/memmap files are
@@ -70,7 +71,7 @@ def cold_backup(runtime, credentials, namespace, destination, engine_factory=Non
         (output / "snapshot.json").write_text(
             json.dumps(
                 dict(
-                    format="shared_memory_snapshot_v2",
+                    format="shared_memory_snapshot_v3",
                     namespace=namespace,
                     credentials=credentials,
                     graphs=graphs,
@@ -94,7 +95,7 @@ def restore_fresh(snapshot, runtime, engine_factory=None):
     if target.exists() or target.is_relative_to(source):
         raise ValueError("Restore requires a fresh destination outside the snapshot.")
     manifest = json.loads((source / "snapshot.json").read_text(encoding="utf-8"))
-    if manifest["format"] != "shared_memory_snapshot_v2":
+    if manifest["format"] not in {"shared_memory_snapshot_v2", "shared_memory_snapshot_v3"}:
         raise ValueError("Unsupported snapshot format.")
     payloads = []
     for item in manifest["graphs"]:
@@ -142,6 +143,8 @@ def restore_fresh(snapshot, runtime, engine_factory=None):
             + tenant_key(target, manifest["namespace"], item["tenant"])
             for item in payloads
         ]
+        names = [("iron_web_2_test" if name.startswith("test_") else "iron_web_2_app") + "_" + hashlib.sha256(name.encode()).hexdigest()[:24]
+                 if item.get("backend") == "iron_web_2" else name for name, item in zip(names, payloads)]
         if any(client.connection.exists(name) for name in names):
             raise ValueError(
                 "A target graph already exists; existing graph data is preserved."
@@ -170,6 +173,7 @@ def restore_fresh(snapshot, runtime, engine_factory=None):
         namespace=manifest["namespace"],
         engine_factory=engine_factory,
         autostart=False,
+        replay=False,
     )
     try:
         for item in payloads:
@@ -179,11 +183,14 @@ def restore_fresh(snapshot, runtime, engine_factory=None):
                 engine.vector_store, engine.graph_store, []
             ):
                 for labels, props in item["records"]["nodes"]:
+                    properties = dict(props)
+                    embedding = properties.pop("embedding", None)
                     engine.graph_store.execute(
-                        "CREATE(n:"
+                        "MERGE(n:"
                         + ":".join(labels)
-                        + " {id:$props.id}) SET n += $props",
-                        {"props": props},
+                        + " {id:$props.id}) SET n += $props"
+                        + (" SET n.embedding=vecf32($embedding)" if embedding is not None else ""),
+                        {"props": properties, **({"embedding": embedding} if embedding is not None else {})},
                     )
                 for (
                     source_labels,

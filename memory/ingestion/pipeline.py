@@ -12,7 +12,9 @@ class IngestionPipeline:
         extractor=None,
         contradiction_detector=None,
     ):
-        from memory.engine import MemoryEngine
+        # This adapter coordinates explicitly injected legacy stores. Native
+        # application ingestion uses ApplicationMemoryEngine.add directly.
+        from memory.engine import LegacyMemoryEngine as MemoryEngine
 
         self.engine = MemoryEngine(
             config={"extraction_policy": "none"},

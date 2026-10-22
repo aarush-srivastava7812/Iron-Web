@@ -78,13 +78,13 @@ class BenchmarkEvaluator:
             items = []
             for doc in batch:
                 existing = self.engine.get(doc.doc_id)
-                selected = self.engine.extractor
+                selected = getattr(self.engine, "extractor", None)
                 expected_mock = bool(getattr(selected, "is_mock", False))
                 expected_status = "disabled" if selected is None else "completed"
                 provenance_matches = (
                     existing
-                    and existing.metadata.get("extraction_is_mock") is expected_mock
-                    and existing.metadata.get("extraction_status") == expected_status
+                    and existing.metadata.get("extraction_is_mock", False if getattr(self.engine, "backend", None) == "iron_web_2" else None) is expected_mock
+                    and existing.metadata.get("extraction_status", "disabled" if getattr(self.engine, "backend", None) == "iron_web_2" else None) == expected_status
                 )
                 if (
                     provenance_matches

@@ -1,6 +1,7 @@
 """Read-only views over the live owner's stores and disposable agent observations."""
 
 import hashlib
+import json
 import os
 import time
 
@@ -55,11 +56,12 @@ def credential_status():
     key = agent_settings.nvidia_api_key
     usage = inference_usage()
     configured_mode = agent_settings.agent_mode
+    tinyfish_enabled = configured_mode == "tinyfish"
     enabled = configured_mode == "nvidia" or (configured_mode == "auto" and bool(key))
     active = usage["requests"] > 0
     return dict(
-        runtime="nvidia_tool_agents" if enabled else "offline_python",
-        provider="NVIDIA NIM" if enabled else "local Python agents",
+        runtime="tinyfish_research_agents" if tinyfish_enabled else "nvidia_tool_agents" if enabled else "offline_python",
+        provider="TinyFish Search + Fetch / local planning" if tinyfish_enabled else "NVIDIA NIM" if enabled else "local Python agents",
         active_credential="NVIDIA_API_KEY" if active else None,
         hosted_calls=usage["requests"], hosted_calls_scope=usage["scope"], usage=usage,
         explanation="Provider calls are observed process-wide; configuration alone does not prove a call. Context packet accounting is separate from hosted token usage.",
@@ -67,7 +69,10 @@ def credential_status():
             masked=("nvapi-****" + key[-4:]) if len(key) >= 12 else ("configured (hidden)" if key else None),
             fingerprint=hashlib.sha256(key.encode()).hexdigest()[:12] if key else None,
             model=agent_settings.nim_agent_model, active=active, enabled=enabled,
-            source="process environment" if os.environ.get("NVIDIA_API_KEY") else "agents/.env or root .env" if key else "not configured")],
+            source="process environment" if os.environ.get("NVIDIA_API_KEY") else "agents/.env or root .env" if key else "not configured"),
+            dict(provider="TinyFish", variable="TINYFISH_API_KEY", configured=bool(agent_settings.tinyfish_api_key), enabled=tinyfish_enabled,
+                active=None, masked="configured (hidden)" if agent_settings.tinyfish_api_key else None,
+                explanation="Configuration is not proof of execution. Saved destination jobs and agent history report actual calls.")],
     )
 
 
@@ -93,6 +98,27 @@ def claim_status(claim, now):
     return "eligible_candidate"
 
 
+def native_claim_history(engine, claims, now):
+    """Project immutable change edges into the dashboard's lifecycle fields."""
+    if getattr(engine, "backend", None) != "iron_web_2" or not claims:
+        return
+    ids = [claim["id"] for claim in claims]
+    rows = engine.graph_store.execute(
+        "MATCH(n)-[r:SUPERSEDES|RETRACTS]->(c:MemoryClaim) WHERE c.id IN $ids "
+        "AND n.recorded_at <= $now AND r.effective_at <= $now "
+        "RETURN c.id,n.id,type(r),r.effective_at ORDER BY r.effective_at,n.recorded_at",
+        {"ids": ids, "now": now},
+    ).rows
+    first = {}
+    for identifier, changed_by, relation, effective_at in rows:
+        first.setdefault(identifier, (changed_by, relation, effective_at))
+    for claim in claims:
+        if claim["id"] in first:
+            changed_by, relation, effective_at = first[claim["id"]]
+            claim.update(ended_at=effective_at, ended_by=changed_by,
+                         end_reason="superseded" if relation == "SUPERSEDES" else "retracted")
+
+
 def graph_snapshot(engine, trip_id=None, *, offset=0, limit=120, claims_only=False):
     graph = engine.graph_store
     if trip_id is None and not claims_only:
@@ -101,14 +127,15 @@ def graph_snapshot(engine, trip_id=None, *, offset=0, limit=120, claims_only=Fal
             dict(offset=offset, limit=limit + 1),
         ).rows
         nodes = []
-        for labels, properties in rows[:limit]:
-            props = dict(properties)
+        entries = [(labels, dict(properties)) for labels, properties in rows[:limit]]
+        native_claim_history(engine, [props for labels, props in entries if "Claim" in labels or "MemoryClaim" in labels], int(time.time()))
+        for labels, props in entries:
             node = dict(
                 id=props["id"],
                 labels=labels,
                 properties={k: v for k, v in props.items() if k in GRAPH_FIELDS},
             )
-            if "MemoryClaim" in labels:
+            if "MemoryClaim" in labels or "Claim" in labels:
                 node["lifecycle_status"] = claim_status(props, int(time.time()))
             nodes.append(node)
         ids = [n["id"] for n in nodes]
@@ -147,6 +174,7 @@ def graph_snapshot(engine, trip_id=None, *, offset=0, limit=120, claims_only=Fal
     ]
     truncated, claims = len(claims) > limit, claims[:limit]
     ids, now = [c["id"] for c in claims], int(time.time())
+    native_claim_history(engine, claims, now)
     nodes = {
         c["id"]: dict(
             id=c["id"],
@@ -202,7 +230,7 @@ def shared_memory_snapshot(engine, trip_id=None, *, offset=0, limit=120):
     return dict(
         scope=graph["scope"],
         note=graph["eligibility_note"],
-        claims=[n for n in graph["nodes"] if "MemoryClaim" in n["labels"]],
+        claims=[n for n in graph["nodes"] if "MemoryClaim" in n["labels"] or "Claim" in n["labels"]],
         offset=offset,
         next_offset=graph["next_offset"],
         limit=limit,
@@ -213,6 +241,24 @@ def vector_snapshot(
     engine, trip_id=None, *, after=None, limit=25, include_values=False
 ):
     store = engine.vector_store
+    if getattr(engine, "backend", None) == "iron_web_2":
+        rows = engine.graph_store.execute(
+            "MATCH(s:Source) WHERE ($after IS NULL OR s.id > $after) "
+            "AND ($trip=false OR any(scope IN coalesce(s.scope_keys,[s.scope_json]) WHERE scope IN $scopes)) "
+            "RETURN s.id,s.text,s.metadata_json,s.recorded_at" + (",s.embedding" if include_values else "") +
+            " ORDER BY s.id LIMIT $limit",
+            dict(after=after, trip=bool(trip_id), scopes=scopes_for(trip_id), limit=limit + 1)).rows
+        points = []
+        for row in rows[:limit]:
+            payload = json.loads(row[2])
+            payload.pop("_application", None)
+            point = dict(id=row[0], payload=dict(payload, text=row[1], timestamp=row[3]))
+            if include_values:
+                point["vector"] = row[4]
+            points.append(point)
+        return dict(collection=store.collection_name, mode="FalkorDB native", dimensions=384,
+                    distance="Cosine", points=points, next_cursor=rows[limit - 1][0] if len(rows) > limit else None,
+                    values_included=include_values, limit=limit, scope="trip and inherited profile" if trip_id else "traveler")
     conditions = None
     if trip_id:
         # Profile sources have an empty session ID; no other trip's text is exposed.
@@ -316,9 +362,9 @@ def tier_snapshot(context_runtime, observations):
             dict(
                 tier=3,
                 name="Durable shared memory",
-                storage="FalkorDB + embedded Qdrant + receipt journal",
+                storage="FalkorDB native vectors and claims + receipt journal",
                 authority=True,
-                description="FalkorDB decides claim eligibility and lifecycle. Qdrant supports discovery; SQLite tracks receipts.",
+                description="Iron Web 2 resolves evidence and vector discovery in FalkorDB; SQLite tracks durable receipts.",
             ),
         ],
         captured_contexts=contexts,
@@ -373,6 +419,8 @@ def build_snapshot(traveler, trip_id=None):
             trip_id=trip_id,
             scope="trip_and_profile" if trip_id else "traveler_shared_memory",
             observations=observations,
+            history=traveler.run_history.page(trip_id=trip_id, limit=20, include_details=False) if hasattr(traveler, "run_history") else None,
+            history_error=traveler.observations.persistence_error,
             graph=graph,
             shared_memory=claims_page,
             vectors=vectors,
@@ -386,8 +434,8 @@ def build_snapshot(traveler, trip_id=None):
                     tls=config["falkordb"]["tls"],
                 ),
                 qdrant=dict(
-                    status="online",
-                    mode="embedded",
+                    status="replaced" if getattr(engine, "backend", None) == "iron_web_2" else "online",
+                    mode="FalkorDB native" if getattr(engine, "backend", None) == "iron_web_2" else "embedded",
                     collection=engine.vector_store.collection_name,
                     dimensions=engine.vector_store.dimension,
                     role="vector discovery",
@@ -410,7 +458,7 @@ def build_snapshot(traveler, trip_id=None):
             resources=resource_snapshot(engine),
             inspection_ms=round((time.perf_counter() - started) * 1000, 2),
             notes=[
-                "Observations are bounded to 500 events and contexts to 256 entries; both reset on process restart.",
+                "Live observations are bounded and reset on restart; agent run summaries and metrics are stored durably in tenant-local SQLite history.",
                 "Database counts cover the selected traveler's store; graph/vector pages may have a narrower trip scope.",
                 "Lifecycle graph contents are candidates, including history. Agent field support determines current usability.",
             ],

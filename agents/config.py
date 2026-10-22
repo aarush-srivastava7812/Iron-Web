@@ -35,6 +35,7 @@ class AgentSettings:
     nim_base_url: str = _get("NIM_BASE_URL", "https://integrate.api.nvidia.com/v1")
     nim_model: str = _get("NIM_MODEL", "openai/gpt-oss-20b")
     nim_agent_model: str = _get("NIM_AGENT_MODEL", "openai/gpt-oss-20b")
+    nim_extraction_model: str = _get("NIM_EXTRACTION_MODEL", nim_agent_model)
     nim_agent_protocol: str = _get("NIM_AGENT_PROTOCOL", "json")
     nim_timeout_s: float = float(_get("NIM_TIMEOUT_S", "45"))
     # auto uses NIM when a credential exists; offline is an explicitly labelled demo.

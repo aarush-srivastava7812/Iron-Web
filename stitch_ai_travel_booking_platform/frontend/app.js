@@ -80,11 +80,15 @@ async function api(path, { method = "GET", body, ...options } = {}) {
     throw error;
   }
   if (data.job_id && data.status_url && method === "POST") {
-    const deadline = Date.now() + 20 * 60 * 1000;
+    const started = Date.now();
+    const deadline = started + 70 * 1000;
+    const progress=job=>window.dispatchEvent(new CustomEvent("voyara-planning-progress",{detail:{tripId:path.split("/")[3],jobId:job.job_id,statusUrl:data.status_url,status:job.status,progress:job.progress||[],elapsedSeconds:(Date.now()-started)/1000}}));
+    progress(data);
     while (Date.now() < deadline) {
       await new Promise(resolve => setTimeout(resolve, 2000));
       const job = await api(data.status_url, {signal: options.signal});
-      if (job.status === "completed") return job.result;
+      progress(job);
+      if (job.status === "completed") return {...job.result,planning_job_id:job.job_id};
       if (job.status === "failed") throw new Error(job.error || "Planning could not finish. Review your saved trip before retrying.");
     }
     throw new Error("Your travel team is still working. Reopen this trip to check its saved plan before starting another run.");
@@ -121,7 +125,7 @@ function updateAccount() {
   if (state.user) {
     const name = state.user.full_name?.split(" ")[0] || state.user.username || "My Account";
     link.textContent = name;
-    link.href = "#login";
+    link.href = "#dashboard";
     link.title = "View account details";
     if (!logoutBtn && actions) {
       logoutBtn = document.createElement("button");
@@ -177,9 +181,18 @@ async function render() {
       login: loginPage,
     };
     let html;
-    if (route === "dashboard") {
-      location.hash = "home";
-      return;
+    if (route === "dashboard" || route === "account") {
+      if (state.user) {
+        const owner = state.user.id;
+        const [favorites, bookings, itineraries, conversations, profile] = await Promise.all([
+          api("/favorites"), api("/bookings"), api("/itineraries"),
+          api("/assistant/conversations"), api("/profile"),
+        ]);
+        if (version !== renderVersion || state.user?.id !== owner) return;
+        Object.assign(state, {favorites, bookings, itineraries, conversations, profile});
+        views.setSaved(favorites.map(f => f.item_type + ":" + f.item_id));
+      }
+      html = dashboardPage();
     } else if (route === "travel-book") html = await journeyUI.bookPage(param);
     else if (route === "chat") html = `<section class="section"><div class="container"><div class="journey-planner-entry"><div><h1>Your Voyara travel team</h1><p>Talk through your trip, compare catalog choices and create your personal Travel Book.</p></div><button class="journey-primary" data-action="open-travel-chat">Start a conversation</button></div></div></section>`;
     else if (route === "booking") html = bookingPage(query);
@@ -211,7 +224,7 @@ async function render() {
       mountPlanEditor(editor, param, api);
       const bookLink=document.createElement("a");bookLink.className="mini-btn";bookLink.href="#travel-book/"+param;bookLink.textContent="Open my personal Travel Book";editor.before(bookLink);
     }
-    if (!["home", "destinations", "login", "privacy", "trip", "travel-book", "chat"].includes(route)) {
+    if (!["home", "destinations", "login", "privacy", "trip", "travel-book", "chat", "dashboard", "account"].includes(route)) {
       const hero = app.querySelector(".page-hero");
       if (hero)
         hero.insertAdjacentHTML(
@@ -520,6 +533,13 @@ function dashboardPage() {
     "Saved places, booking requests, trip plans and your private travel memory.",
   );
   if (!state.user) return hero + loginPrompt();
+  const memoryDashboard = new URL(location.href);
+  memoryDashboard.port = "5174";
+  memoryDashboard.pathname = "/overview";
+  memoryDashboard.search = "";
+  memoryDashboard.hash = "";
+  const memoryLink = ["127.0.0.1", "localhost"].includes(location.hostname)
+    ? `<a class="mini-btn" href="${escapeHTML(memoryDashboard.href)}" target="_blank" rel="noopener noreferrer">Open agent dashboard</a>` : "";
   const saved = state.favorites
     .map((f) => {
       const item = (
@@ -534,7 +554,7 @@ function dashboardPage() {
     .join("");
   return (
     hero +
-    `<section class="section"><div class="container"><div class="account-bar"><div><h2>${escapeHTML(state.user.full_name || "Your journeys")}</h2><p>${escapeHTML(state.user.email)}</p></div><button class="mini-btn" data-action="logout">Sign out</button></div><div class="stat-grid"><div class="stat-card"><span>Saved places & stays</span><strong>${state.favorites.length}</strong></div><div class="stat-card"><span>Booking requests</span><strong>${state.bookings.filter((x) => x.status !== "cancelled").length}</strong></div><div class="stat-card"><span>Trip conversations</span><strong>${state.conversations.length}</strong></div></div><h2>Saved for later</h2><div class="grid grid-3">${saved || "<p>Your shortlist starts here. Save a package or stay with its heart button.</p>"}</div><h2>Booking requests</h2><div id="bookingList">${state.bookings.map((b) => `<article class="detail-block"><span class="tag">${escapeHTML(b.status)}</span><h3>Request #${b.id} · ${money(b.total_inr)}</h3><p>${b.items.map((i) => escapeHTML(itemName(i)) + ` · ${i.quantity} · ${escapeHTML(i.start_date || "")}`).join("<br>")}</p>${b.status === "requested" ? `<button class="mini-btn" data-action="cancel" data-id="${b.id}">Cancel request</button>` : ""}</article>`).join("") || "<p>No requests yet. Explore a package, stay or experience.</p>"}</div><h2>Saved itineraries</h2>${state.itineraries.map((i) => `<article class="detail-block"><h3>${escapeHTML(i.title)}</h3><p>${escapeHTML(i.start_date)} → ${escapeHTML(i.end_date)}</p><pre class="plan-text">${escapeHTML(i.notes)}</pre><button class="mini-btn" data-action="delete-itinerary" data-id="${i.id}">Delete itinerary</button></article>`).join("") || "<p>Create an itinerary with the AI trip planner.</p>"}<h2>Trip memory & conversations</h2>${state.conversations.map((c) => `<article class="detail-block"><h3>${escapeHTML(c.title)}</h3><a class="mini-btn" href="#travel-book/${encodeURIComponent(c.id)}">Open Travel Book</a> <a class="mini-btn" href="#trip/${encodeURIComponent(c.id)}">Open conversation & memory</a> <button class="mini-btn danger" data-action="forget-trip" data-id="${escapeHTML(c.id)}">Delete conversation & forget trip</button></article>`).join("") || "<p>Your conversations will appear here.</p>"}<h2>Travel preferences</h2><form id="profileForm" class="form-card"><p>Confirm preferences you want the travel agents to remember across trips.</p><div class="form-grid"><div class="field"><label>Travel style</label><select name="travel_style"><option value="">No preference</option>${["slow travel", "adventure", "culture", "family"].map((v) => `<option ${state.profile.travel_style === v ? "selected" : ""}>${v}</option>`).join("")}</select></div><div class="field"><label>Dietary preference</label><select name="diet"><option value="">No preference</option><option value="vegetarian" ${state.profile.dietary_restrictions?.includes("vegetarian") ? "selected" : ""}>Vegetarian</option></select></div></div><button type="submit" class="btn">Save preferences</button><div class="form-status" role="status"></div></form></div></section>`
+    `<section class="section"><div class="container"><div class="account-bar"><div><h2>${escapeHTML(state.user.full_name || "Your journeys")}</h2><p>${escapeHTML(state.user.email)}</p></div>${memoryLink}<button class="mini-btn" data-action="logout">Sign out</button></div><div class="stat-grid"><div class="stat-card"><span>Saved places & stays</span><strong>${state.favorites.length}</strong></div><div class="stat-card"><span>Booking requests</span><strong>${state.bookings.filter((x) => x.status !== "cancelled").length}</strong></div><div class="stat-card"><span>Trip conversations</span><strong>${state.conversations.length}</strong></div></div><h2>Saved for later</h2><div class="grid grid-3">${saved || "<p>Your shortlist starts here. Save a package or stay with its heart button.</p>"}</div><h2>Booking requests</h2><div id="bookingList">${state.bookings.map((b) => `<article class="detail-block"><span class="tag">${escapeHTML(b.status)}</span><h3>Request #${b.id} · ${money(b.total_inr)}</h3><p>${b.items.map((i) => escapeHTML(itemName(i)) + ` · ${i.quantity} · ${escapeHTML(i.start_date || "")}`).join("<br>")}</p>${b.status === "requested" ? `<button class="mini-btn" data-action="cancel" data-id="${b.id}">Cancel request</button>` : ""}</article>`).join("") || "<p>No requests yet. Explore a package, stay or experience.</p>"}</div><h2>Saved itineraries</h2>${state.itineraries.map((i) => `<article class="detail-block"><h3>${escapeHTML(i.title)}</h3><p>${escapeHTML(i.start_date)} → ${escapeHTML(i.end_date)}</p><pre class="plan-text">${escapeHTML(i.notes)}</pre><button class="mini-btn" data-action="delete-itinerary" data-id="${i.id}">Delete itinerary</button></article>`).join("") || "<p>Create an itinerary with the AI trip planner.</p>"}<h2>Trip memory & conversations</h2>${state.conversations.map((c) => `<article class="detail-block"><h3>${escapeHTML(c.title)}</h3><a class="mini-btn" href="#travel-book/${encodeURIComponent(c.id)}">Open Travel Book</a> <a class="mini-btn" href="#trip/${encodeURIComponent(c.id)}">Open conversation & memory</a> <button class="mini-btn danger" data-action="forget-trip" data-id="${escapeHTML(c.id)}">Delete conversation & forget trip</button></article>`).join("") || "<p>Your conversations will appear here.</p>"}<h2>Travel preferences</h2><form id="profileForm" class="form-card"><p>Confirm preferences you want the travel agents to remember across trips.</p><div class="form-grid"><div class="field"><label>Travel style</label><select name="travel_style"><option value="">No preference</option>${["slow travel", "adventure", "culture", "family"].map((v) => `<option ${state.profile.travel_style === v ? "selected" : ""}>${v}</option>`).join("")}</select></div><div class="field"><label>Dietary preference</label><select name="diet"><option value="">No preference</option><option value="vegetarian" ${state.profile.dietary_restrictions?.includes("vegetarian") ? "selected" : ""}>Vegetarian</option></select></div></div><button type="submit" class="btn">Save preferences</button><div class="form-status" role="status"></div></form></div></section>`
   );
 }
 function itemName(item) {
@@ -914,14 +934,13 @@ function bindForms(route, query) {
                   : {}),
             },
           ];
-    status.innerHTML = `<span style="color:var(--orange)">✦ Loading an optional hosted review of the synthetic catalog...</span>`;
+    status.textContent = "Loading your server quote…";
     const targetPlace = query.get("place") || (item ? item.place || item.name : "");
-    const [quote, agentData] = await Promise.all([
-      api("/website/quote", {
+    const quote = await api("/website/quote", {
         method: "POST",
         body: { items },
-      }),
-      api("/website/agent-review", {
+      });
+    const reviewPromise = api("/website/agent-review", {
         method: "POST",
         body: {
           destination_name: targetPlace,
@@ -933,8 +952,7 @@ function bindForms(route, query) {
       }).catch((err) => {
         console.warn("Agent review notice:", err);
         return null;
-      }),
-    ]);
+      });
     status.textContent = "";
     const traveler = Object.fromEntries(
       ["first", "last", "email", "phone", "notes"].map((k) => [k, f.get(k)]),
@@ -947,13 +965,14 @@ function bindForms(route, query) {
       expected_total_inr: quote.total_inr,
     };
     const review = document.getElementById("bookingReview");
+    review.dataset.requestKey = request.request_key;
     const itemImg = item?.img ? views.photo(item.img) : "https://images.unsplash.com/photo-1709338573277-c161cbf8702c?auto=format&fit=crop&w=900&q=82";
     const itemTag = item?.tag || item?.type || (kind === "stay" ? "Hotel & Stay" : kind === "package" ? "Holiday Package" : "Travel Route");
-    const itemRating = item?.rating ? `★ ${escapeHTML(item.rating)} <small>(${escapeHTML(item.reviews || "demo catalog")})</small>` : "★ 4.8 <small>(curated)</small>";
+    const itemRating = item?.rating ? `★ ${escapeHTML(item.rating)} <small>Catalog rating</small>` : "No catalog rating";
     const itemDuration = item?.nights ? `${item.nights} Nights / ${item.nights + 1} Days` : (kind === "stay" ? `${start} to ${f.get("end_date") || "check-out"}` : "Full Day Activity");
-    const destName = agentData?.destination?.name || targetPlace || (item?.name || "India");
+    const destName = targetPlace || (item?.name || "India");
 
-    const agentsHtml = agentData?.agents ? `
+    const renderAgents = agentData => agentData?.agents ? `
       <div class="review-agent-council">
         <div class="council-heading">
           <h3><span>✦</span> Hosted Catalog Review</h3>
@@ -982,7 +1001,7 @@ function bindForms(route, query) {
       </div>
     ` : `<p class="detail-block" role="status">Hosted booking review unavailable. The server quote remains available. No agent assessment was completed.</p>`;
 
-    const curatedHtml = agentData ? `
+    const renderCurated = agentData => agentData ? `
       <div class="review-curated-section">
         <div class="curated-heading">
           <span>⌖</span> Curated ${escapeHTML(destName)} Catalog Pairings
@@ -990,9 +1009,9 @@ function bindForms(route, query) {
         <div class="curated-mini-grid">
           ${(agentData.curated_stays || []).slice(0, 2).map((s) => `
             <div class="curated-mini-item">
-              <small>Verified Stay</small>
+              <small>Catalog stay</small>
               <strong>${escapeHTML(s.name)}</strong>
-              <span>★ ${escapeHTML(String(s.rating || 4.8))} · ${money(s.price_inr)} / night</span>
+              <span>${s.rating == null ? "No catalog rating" : "★ " + escapeHTML(String(s.rating))} · ${money(s.price_inr)} / night</span>
             </div>
           `).join("")}
           ${(agentData.curated_experiences || []).slice(0, 2).map((e) => `
@@ -1006,7 +1025,7 @@ function bindForms(route, query) {
             <div class="curated-mini-item">
               <small>Authentic Dining</small>
               <strong>${escapeHTML(fd.name)}</strong>
-              <span>${escapeHTML(fd.cuisine)} · ${money(fd.price_inr)} for two</span>
+              <span>${escapeHTML(fd.cuisine)} · ${money(fd.price_inr)} / person · indicative</span>
             </div>
           `).join("")}
         </div>
@@ -1023,7 +1042,7 @@ function bindForms(route, query) {
           <div class="review-catalog-main">
             <div class="eyebrow" style="color:var(--orange);letter-spacing:1px;font-weight:700">REVIEW YOUR TRIP REQUEST</div>
             <h2>${escapeHTML(item?.name || name)} ${kind === "package" ? "Holiday" : ""}</h2>
-            <p style="color:var(--muted);font-size:13px;line-height:1.5;margin-bottom:8px">${escapeHTML(agentData?.destination?.description || item?.desc || "Illustrative catalog request; supplier details require confirmation.")}</p>
+            <p style="color:var(--muted);font-size:13px;line-height:1.5;margin-bottom:8px">${escapeHTML(item?.desc || "Illustrative catalog request; supplier details require confirmation.")}</p>
             <div class="review-details-grid">
               <div class="review-detail-cell">
                 <small>Travel Date / Duration</small>
@@ -1044,8 +1063,8 @@ function bindForms(route, query) {
             </div>
           </div>
         </div>
-        ${agentsHtml}
-        ${curatedHtml}
+        <div id="bookingAgentReview"><p role="status">Optional hosted catalog review is loading. You can review or save your request using the server quote below.</p></div>
+        <div id="bookingCurated"></div>
         <div class="review-catalog-breakdown">
           <div class="eyebrow">ESTIMATED PRICE BREAKDOWN</div>
           <div class="review-line-items">
@@ -1053,7 +1072,7 @@ function bindForms(route, query) {
             <div class="review-total-row">
               <div>
                 <strong>Total Estimated Cost</strong>
-                <small style="display:block;color:var(--muted);font-weight:400;font-size:11px">All taxes included · No immediate payment required</small>
+                <small style="display:block;color:var(--muted);font-weight:400;font-size:11px">Indicative total · No payment collected</small>
               </div>
               <div class="review-total-price">${money(quote.total_inr)}</div>
             </div>
@@ -1063,7 +1082,7 @@ function bindForms(route, query) {
           <div class="review-guarantee">
             <span style="font-size:20px">🛡️</span>
             <div>
-              <strong style="font-size:13px;color:var(--navy);display:block">Zero-risk booking request</strong>
+              <strong style="font-size:13px;color:var(--navy);display:block">Booking request for supplier review</strong>
               <p style="margin:0;font-size:12px;color:var(--muted)">${escapeHTML(quote.notice)}</p>
             </div>
           </div>
@@ -1080,6 +1099,7 @@ function bindForms(route, query) {
       .querySelectorAll("input,select,textarea,button")
       .forEach((el) => (el.disabled = true));
     document.getElementById("editRequest").onclick = () => {
+      delete review.dataset.requestKey;
       delete form.dataset.locked;
       review.replaceChildren();
       form
@@ -1112,6 +1132,13 @@ function bindForms(route, query) {
         edit.disabled = false;
       }
     };
+    reviewPromise.then(agentData => {
+      if (!review.isConnected || review.dataset.requestKey !== request.request_key) return;
+      const agents = review.querySelector("#bookingAgentReview");
+      const curated = review.querySelector("#bookingCurated");
+      if (agents) agents.innerHTML = renderAgents(agentData);
+      if (curated) curated.innerHTML = renderCurated(agentData);
+    });
     review.scrollIntoView({ behavior: "smooth" });
   });
   const bf = document.getElementById("bookingForm");

@@ -1,7 +1,8 @@
 from tests.fixtures.graph import graph_name_for
 import pytest
 from concurrent.futures import ThreadPoolExecutor
-from memory.engine import MemoryEngine
+# Retained pre-migration engine contracts; native application checks live in main.py.
+from memory.engine import LegacyMemoryEngine as MemoryEngine
 from memory.models import EngineStorageError
 from memory.ingestion.pipeline import IngestionPipeline
 from memory.graph import FalkorDBGraphStore

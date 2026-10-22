@@ -10,6 +10,7 @@ import sys
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--port", type=int, default=8000)
+    parser.add_argument("--device", choices=["cuda", "cpu"], default="cuda")
     parser.add_argument("--agent-mode", choices=["tinyfish", "nvidia", "offline", "auto"],
                         help="Select a provider for this local process only")
     args = parser.parse_args()
@@ -19,6 +20,10 @@ def main():
     from dotenv import load_dotenv
 
     load_dotenv(backend / ".env")
+    os.environ.setdefault("FALKORDB_PORT", "6380")
+    os.environ.setdefault("LEGACY_FALKORDB_PORT", "6379")
+    os.environ["USE_GPU"] = "true" if args.device == "cuda" else "false"
+    os.environ.setdefault("CONTEXT_USE_GPU", os.environ["USE_GPU"])
     if args.agent_mode:
         os.environ["VOYARA_AGENT_MODE"] = args.agent_mode
     os.environ.setdefault("TINYFISH_CACHE_PATH", str(root / ".scratch" / "tinyfish-public-research"))
@@ -40,7 +45,7 @@ def main():
     import uvicorn
 
     run()
-    # One web process owns the embedded journals/Qdrant stores. The shared
+    # One web process owns the receipt journals. The shared
     # memory RuntimeLock rejects competing owners rather than corrupting them.
     uvicorn.run("app.main:app", host="127.0.0.1", port=args.port, workers=1)
 

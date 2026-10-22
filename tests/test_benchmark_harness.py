@@ -15,7 +15,8 @@ import json
 from pathlib import Path
 import pytest
 
-from memory.engine import MemoryEngine
+# Retained pre-migration engine contracts; native application checks live in main.py.
+from memory.engine import LegacyMemoryEngine as MemoryEngine
 from memory.evaluation.harness import (
     BenchmarkDocument,
     BenchmarkExample,

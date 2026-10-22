@@ -22,8 +22,6 @@ def snapshot(db, conversation_id, user):
     draft = work.data.get("draft",{})
     if work.data.get("confirmed") != journey.fingerprint(draft):
         raise HTTPException(409,"Review and confirm the changed trip details before exporting.")
-    if draft.get("hard_requirements"):
-        raise HTTPException(409,"Mandatory conditions need verification before this draft can be exported.")
     rows = plan["agent_results"]
     stay_id = plan.get("selected_stay_id")
     stay = db.get(Stay,stay_id) if stay_id else None
@@ -101,7 +99,7 @@ def render_pdf(data, base_url):
                                ('TOPPADDING',(0,0),(-1,-1),10),('BOTTOMPADDING',(0,0),(-1,-1),10),
                                ('LINEBELOW',(0,0),(-1,-2),.5,colors.white)]))
         story.extend([t,Spacer(1,6*mm)])
-    money=lambda amount:"INR "+f"{amount:,}"
+    money=lambda amount:"Price unknown" if amount is None else "INR "+f"{amount:,}"
     brief=data["brief"]
     photo=Path(__file__).resolve().parents[2]/"frontend/public/travel/kerala.jpg"
     chapter("Your personal travel book",f"Your {brief['destination']} Escape")
@@ -112,8 +110,8 @@ def render_pdf(data, base_url):
     table([["Travel dates",brief["start_date"]+" to "+brief["end_date"]],
            ["Duration & travellers",f"{brief['duration_days']} days / {brief['duration_days']-1} nights · {brief['party_size']} travellers"],
            ["Travel style",brief.get("pace") or "Your own pace"],["Status",data["status"]]])
-    story.append(p(money(data["budget"]["total_inr"]),"BookPrice"))
-    story.append(p(f"Indicative total for all {brief['party_size']} travellers · listed selections only","BookSmall"))
+    story.append(p("Awaiting supplier quotes" if not data["budget"].get("costs_complete", True) and not data["budget"]["total_inr"] else money(data["budget"]["total_inr"]),"BookPrice"))
+    story.append(p(f"Indicative total for all {brief['party_size']} travellers · listed selections only" if data["budget"].get("costs_complete", True) else "Known-cost subtotal only — trip total unknown; supplier quotes required", "BookSmall"))
     story.append(p("One assumed room; listed meals/activities only. Unselected flights, extra meals, transfers, taxes and supplier availability remain unverified.","BookSmall"))
     story.append(edit_link("Open your saved trip & edit with Voyara AI","travel-book/"+data["trip_id"]))
     story.append(PageBreak())
@@ -191,9 +189,9 @@ def render_pdf(data, base_url):
 
     chapter("Know what is included","Your indicative trip budget")
     table([[line["category"].title(),money(line["amount_inr"])] for line in data["budget"]["lines"]])
-    story.append(p(money(data["budget"]["total_inr"])+" total","BookPrice"))
+    story.append(p(money(data["budget"]["total_inr"])+(" total" if data["budget"].get("costs_complete", True) else " known subtotal; total unknown"),"BookPrice"))
     story.append(p("Confirmed budget limit: "+money(brief["budget_total_inr"])))
-    story.append(p("Remaining against your budget: "+money(brief["budget_total_inr"]-data["budget"]["total_inr"])))
+    story.append(p("Remaining against your budget: "+money(brief["budget_total_inr"]-data["budget"]["total_inr"]) if data["budget"].get("costs_complete", True) else "Budget fit cannot be assessed until missing supplier quotes are supplied."))
     for warning in data["budget"]["warnings"] + data["itinerary"]["assumptions"]:
         story.append(p(warning,"BookSmall"))
     story.append(p("All figures describe an indicative demo draft, not a supplier quotation or confirmed holiday price. Changing choices online creates a new plan/version; this downloaded document remains unchanged."))

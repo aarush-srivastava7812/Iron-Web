@@ -1,17 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import {
-  PlayIcon,
-  PauseIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ResetIcon,
   Cross2Icon,
-  Share1Icon,
-  Component1Icon,
-  ActivityLogIcon,
-  StackIcon,
-  BarChartIcon,
   HamburgerMenuIcon,
   ReaderIcon,
   QuestionMarkCircledIcon,
@@ -22,14 +11,8 @@ import {
   COLORS,
   agentColor,
   agentName,
-  glyph,
   time,
-  bytes,
-  pretty,
-  isConflict,
-  contextUnit,
   projection,
-  eventLabel,
 } from "./liveData.js";
 import {
   Inspector,
@@ -44,94 +27,164 @@ import {
 } from "./LivePanels.jsx";
 import "./live.css";
 import "./resource-charts.css";
+import "./dashboard-pages.css";
+import { PAGES, readPage, pageUrl } from "./dashboardRoutes.js";
+import {
+  PageLink,
+  PageNavigation,
+  Overview,
+  AgentDirectory,
+  EventJournal,
+  RunHistoryPage,
+  TinyFishIntelligence,
+} from "./DashboardPages.jsx";
 const API = (import.meta.env.VITE_DASHBOARD_API_URL || "").replace(/\/$/, "");
-const icons = [
-  Share1Icon,
-  Component1Icon,
-  ActivityLogIcon,
-  StackIcon,
-  BarChartIcon,
-];
 const initial = new URLSearchParams(location.search);
 function useFeed() {
   const [data, setData] = useState(null),
     [status, setStatus] = useState("connecting"),
-    [error, setError] = useState("");
+    [error, setError] = useState(""),
+    [website, setWebsite] = useState(""),
+    [revision, setRevision] = useState(0);
+  const reconnect = useCallback(() => {
+    setData(null);
+    setError("");
+    setStatus("connecting");
+    setRevision((n) => n + 1);
+  }, []);
   useEffect(() => {
-    let alive = true, stream, lastMessageAt = null;
+    let alive = true,
+      stream,
+      lastMessageAt = null,
+      owner = null,
+      checking = false,
+      mode = "website";
+    const controller = new AbortController();
+    const fail = (message, auth = false) => {
+      if (!alive) return;
+      setError(message);
+      setStatus(auth ? "disconnected" : "stale");
+      if (auth) {
+        setData(null);
+        stream?.close();
+        lastMessageAt = null;
+        owner = null;
+      }
+    };
     const receive = (payload) => {
       if (payload.schema !== "iron_web_dashboard_v1")
         throw new Error("Unsupported memory feed schema");
-      if (alive) {
-        lastMessageAt = performance.now();
-        setData(payload);
-        setStatus("live");
-        setError("");
-      }
+      if (mode === "website" && payload.connection?.mode !== "website")
+        throw new Error("The feed is not connected to a website account");
+      if (!alive) return;
+      owner = payload.connection?.user_id || null;
+      lastMessageAt = performance.now();
+      setData(payload);
+      setStatus("live");
+      setError("");
     };
-    const controller = new AbortController();
-    fetch(API + "/api/dashboard/snapshot", {
-      credentials: "include",
-      cache: "no-store",
-      signal: controller.signal,
-    })
-      .then(async (r) => {
-        if (!r.ok)
-          throw new Error((await r.json()).detail || "Memory feed unavailable");
-        return r.json();
-      })
-      .then(receive)
-      .catch((e) => {
-        if (e.name !== "AbortError" && alive) {
-          setError(e.message);
-          setStatus("disconnected");
-        }
-      });
     const connect = () => {
       stream?.close();
-      const source = new EventSource(API + "/api/dashboard/stream", { withCredentials: true });
+      const source = new EventSource(API + "/api/dashboard/stream", {
+        withCredentials: true,
+      });
       stream = source;
       source.addEventListener("snapshot", (e) => {
         if (!alive || stream !== source) return;
         try {
           receive(JSON.parse(e.data));
-        } catch (err) {
-          setError(err.message);
-          setStatus("disconnected");
+        } catch (e) {
+          fail(e.message, true);
         }
       });
       source.addEventListener("feed_error", (e) => {
         if (!alive || stream !== source) return;
-        lastMessageAt = performance.now();
-        setError(JSON.parse(e.data).message);
-        setStatus("stale");
+        const detail = JSON.parse(e.data);
+        fail(detail.message, detail.status === 401);
       });
       source.onerror = () => {
         if (alive && stream === source)
-          setStatus((s) => (s === "connecting" ? "connecting" : "reconnecting"));
+          setStatus((s) => (s === "disconnected" ? s : "reconnecting"));
       };
     };
-    connect();
-    // The relay emits every two seconds. A proxy can leave a dead SSE socket
-    // open without onerror; elapsed local time must still invalidate "live".
+    async function start() {
+      try {
+        const config = await fetch(API + "/api/dashboard/connection", {
+          credentials: "include",
+          signal: controller.signal,
+          cache: "no-store",
+        });
+        if (config.ok) {
+          const info = await config.json();
+          mode = info.mode;
+          if (alive) setWebsite(info.website_url || "");
+        }
+        const r = await fetch(API + "/api/dashboard/snapshot?fresh=true", {
+          credentials: "include",
+          signal: controller.signal,
+          cache: "no-store",
+        });
+        const payload = await r.json();
+        if (!r.ok) {
+          fail(payload.detail || "Memory feed unavailable", r.status === 401);
+          return;
+        }
+        receive(payload);
+        if (alive) connect();
+      } catch (e) {
+        if (e.name !== "AbortError") fail(e.message);
+      }
+    }
+    start();
+    // Fresh cookie probes stop an old stream after website logout/account switch.
+    const probe = setInterval(async () => {
+      if (!alive || checking || mode !== "website") return;
+      checking = true;
+      try {
+        const r = await fetch(API + "/api/dashboard/session", {
+          credentials: "include",
+          cache: "no-store",
+          signal: controller.signal,
+        });
+        if (r.status === 401) {
+          fail(
+            "Sign in to the travel website in this browser, then click Follow live.",
+            true,
+          );
+          return;
+        }
+        if (r.ok) {
+          const session = await r.json();
+          if (session.connection.user_id !== owner && alive) reconnect();
+        }
+      } catch (e) {
+        if (e.name !== "AbortError")
+          fail("The travel website is unreachable. Reconnecting…");
+      } finally {
+        checking = false;
+      }
+    }, 3000);
     const watchdog = setInterval(() => {
-      if (lastMessageAt === null || performance.now() - lastMessageAt < 10000) return;
+      if (lastMessageAt === null || performance.now() - lastMessageAt < 10000)
+        return;
       lastMessageAt = performance.now();
-      setError("No fresh memory snapshot for 10 seconds. Reconnecting…");
-      setStatus("stale");
+      fail("No fresh memory snapshot for 10 seconds. Reconnecting…");
       connect();
     }, 2000);
     return () => {
       alive = false;
       controller.abort();
+      clearInterval(probe);
       clearInterval(watchdog);
       stream?.close();
     };
-  }, []);
-  return { data, status, error };
+  }, [revision, reconnect]);
+  return { data, status, error, website, reconnect };
 }
 export default function LiveApp() {
-  const { data, status, error } = useFeed();
+  const { data, status, error, website, reconnect } = useFeed();
+  const searchRequested = useRef(false);
+  const [focusRequest, requestSearch] = useState(0);
   const [viewerError, setViewerError] = useState("");
   async function unlock(event) {
     event.preventDefault();
@@ -140,22 +193,29 @@ export default function LiveApp() {
     form.reset();
     try {
       const response = await fetch(API + "/viewer/session", {
-        method: "POST", credentials: "include",
-        headers: { "Content-Type": "application/json" }, body: JSON.stringify({ secret }),
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ secret }),
       });
-      if (!response.ok) throw new Error((await response.json()).detail || "Viewer sign-in failed");
+      if (!response.ok)
+        throw new Error(
+          (await response.json()).detail || "Viewer sign-in failed",
+        );
       location.reload();
-    } catch (failure) { setViewerError(failure.message); }
+    } catch (failure) {
+      setViewerError(failure.message);
+    }
   }
   const [view, setView] = useState(
-      VIEW_NAMES[initial.get("view")] ? initial.get("view") : "graph",
+      readPage(location.pathname, location.search),
     ),
     [cursor, setCursor] = useState(Number(initial.get("event")) || null),
     [selected, setSelected] = useState(initial.get("mem") || null),
     [follow, setFollow] = useState(
       !initial.has("event") && !initial.has("mem"),
     ),
-    [agent, setAgent] = useState(null),
+    [agent, setAgent] = useState(initial.get("agent") || null),
     [query, setQuery] = useState(""),
     [playing, setPlaying] = useState(false),
     [speed, setSpeed] = useState(1),
@@ -163,6 +223,35 @@ export default function LiveApp() {
     [dialog, setDialog] = useState(null),
     [agentMenu, setAgentMenu] = useState(false),
     [tier, setTier] = useState(null);
+  const followLive = useCallback(() => {
+    setFollow(true);
+    setCursor(null);
+    setSelected(null);
+    setTier(null);
+    setAgent(null);
+    setAgentMenu(false);
+    setQuery("");
+    setPlaying(false);
+    setDrawer(null);
+    setDialog(null);
+    reconnect();
+  }, [reconnect]);
+  const ownerRef = useRef(null);
+  useEffect(() => {
+    const owner = data?.connection?.user_id;
+    if (owner && ownerRef.current !== owner) {
+      if (ownerRef.current) {
+        setFollow(true);
+        setCursor(null);
+        setSelected(null);
+        setAgent(null);
+        setQuery("");
+        setTier(null);
+        setDrawer(null);
+      }
+      ownerRef.current = owner;
+    }
+  }, [data?.connection?.user_id]);
   const events = data?.observations?.events || [],
     latest = events.at(-1),
     event = events.find((e) => e.id === cursor) || latest,
@@ -223,24 +312,52 @@ export default function LiveApp() {
       setCursor(events[0]?.id || null);
     }
   }, [data, follow]);
+  const hrefFor = useCallback(
+    (page) => pageUrl(page, { cursor, selected, follow, agent }),
+    [cursor, selected, follow, agent],
+  );
+  const navigate = useCallback(
+    (page) => {
+      if (!Object.hasOwn(PAGES, page)) return;
+      if (readPage(location.pathname, location.search) !== page)
+        history.pushState(null, "", hrefFor(page));
+      setView(page);
+      setDrawer(null);
+      setPlaying(false);
+    },
+    [hrefFor],
+  );
   useEffect(() => {
-    const params = new URLSearchParams();
-    params.set("view", view);
-    if (cursor && !follow) params.set("event", cursor);
-    if (selected) params.set("mem", selected);
-    history.replaceState(null, "", `${location.pathname}?${params}`);
-  }, [view, cursor, selected, follow]);
+    if (view === "not-found") return;
+    history.replaceState(null, "", hrefFor(view));
+  }, [view, hrefFor]);
   useEffect(() => {
     const pop = () => {
       const q = new URLSearchParams(location.search);
-      setView(VIEW_NAMES[q.get("view")] ? q.get("view") : "graph");
+      setView(readPage(location.pathname, location.search));
       setCursor(Number(q.get("event")) || null);
-      setFollow(!q.has("event"));
+      setFollow(!q.has("event") && !q.has("mem"));
       setSelected(q.get("mem"));
+      setAgent(q.get("agent"));
+      setDrawer(null);
+      setPlaying(false);
     };
     window.addEventListener("popstate", pop);
     return () => window.removeEventListener("popstate", pop);
   }, []);
+  useEffect(() => {
+    document.title = `${PAGES[view]?.name || "Page not found"} · TinyFish × Iron Web`;
+    const frame = requestAnimationFrame(() => {
+      const target = searchRequested.current
+        ? '[aria-label="Find a memory"]'
+        : "#page-title";
+      document.querySelector(target)?.focus({ preventScroll: true });
+      searchRequested.current = false;
+      const main = document.querySelector(".dashboard-main");
+      if (main) main.scrollTop = 0;
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [view, !!data, focusRequest]);
   useEffect(() => {
     if (!playing) return;
     const index = events.findIndex((e) => e.id === event?.id);
@@ -258,6 +375,7 @@ export default function LiveApp() {
     setSelected(id);
     setFollow(false);
     setTier(null);
+    if (innerWidth < 1280) setDrawer("inspector");
   };
   useEffect(() => {
     const key = (e) => {
@@ -265,34 +383,35 @@ export default function LiveApp() {
         setDrawer(null);
         setDialog(null);
         setAgentMenu(false);
-        setSelected(null);
         return;
       }
       if (
         e.ctrlKey ||
         e.metaKey ||
         e.altKey ||
-        e.target.closest("input,textarea,select,button,[role=button]")
+        e.target.closest(
+          "input,textarea,select,button,a,[role=button],[contenteditable=true]",
+        )
       )
         return;
       if (e.key === "/") {
         e.preventDefault();
+        searchRequested.current = true;
+        requestSearch((n) => n + 1);
+        navigate("graph");
         if (innerWidth < 1280) setDrawer("explorer");
-        setTimeout(
-          () => document.querySelector("[aria-label='Find a memory']")?.focus(),
-          0,
-        );
       }
-      if (e.code === "Space") {
+      if (e.code === "Space" && view === "activity") {
         e.preventDefault();
         setFollow(false);
         setPlaying((v) => !v);
       }
       if (/^[1-5]$/.test(e.key))
-        setView(Object.keys(VIEW_NAMES)[Number(e.key) - 1]);
+        navigate(Object.keys(VIEW_NAMES)[Number(e.key) - 1]);
       if (e.key.toLowerCase() === "f") {
         e.preventDefault();
-        setFollow((v) => !v);
+        if (follow) setFollow(false);
+        else followLive();
       }
       const index = events.findIndex((x) => x.id === event?.id);
       if (e.key === "ArrowRight" && events[index + 1])
@@ -302,7 +421,48 @@ export default function LiveApp() {
     };
     window.addEventListener("keydown", key);
     return () => window.removeEventListener("keydown", key);
-  }, [event?.id, events, moveTo]);
+  }, [event?.id, events, moveTo, navigate, view, follow, followLive]);
+  useEffect(() => {
+    if (!drawer || (view === "graph" && innerWidth >= 1280)) return;
+    const panel = document.querySelector(
+      drawer === "explorer" ? ".live-explorer" : ".live-inspector",
+    );
+    const previous = document.activeElement;
+    const focusable = () =>
+      [
+        ...(panel?.querySelectorAll(
+          "button, input, select, summary, a[href], [tabindex='0']",
+        ) || []),
+      ].filter((el) => !el.disabled && el.getClientRects().length);
+    focusable()[0]?.focus({ preventScroll: true });
+    const trap = (e) => {
+      if (e.key !== "Tab") return;
+      const items = focusable(),
+        first = items[0],
+        last = items.at(-1);
+      if (!first) return;
+      if (
+        e.shiftKey &&
+        (document.activeElement === first ||
+          !panel.contains(document.activeElement))
+      ) {
+        e.preventDefault();
+        last.focus();
+      } else if (
+        !e.shiftKey &&
+        (document.activeElement === last ||
+          !panel.contains(document.activeElement))
+      ) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    window.addEventListener("keydown", trap);
+    return () => {
+      window.removeEventListener("keydown", trap);
+      if (previous?.isConnected) previous.focus({ preventScroll: true });
+    };
+  }, [drawer, view]);
   const activateAgent = (id) => {
     setAgent((a) => (a === id ? null : id));
     setAgentMenu(false);
@@ -312,37 +472,61 @@ export default function LiveApp() {
     return (
       <div className="live-loading">
         <span className="brand">
-          ironweb <small>MEMORY</small>
+          ironweb <small>× TINYFISH</small>
         </span>
         <h1>
-          {error
-            ? "Memory feed unavailable"
-            : "Connecting to application memory"}
+          {error.startsWith("Sign in to the travel website")
+            ? "Connect your travel account"
+            : error
+              ? "Memory feed unavailable"
+              : "Connecting to your travel website"}
         </h1>
         <p>
           {error ||
-            "Waiting for the website memory owner and read-only dashboard relay."}
+            "Sign in to Voyara in this browser to view your real travel activity."}
         </p>
         {error === "Viewer sign-in required." ? (
           <form onSubmit={unlock} className="viewer-login">
             <label htmlFor="viewer-secret">Dashboard viewer secret</label>
-            <input id="viewer-secret" name="secret" type="password" autoComplete="off" required maxLength={512} />
+            <input
+              id="viewer-secret"
+              name="secret"
+              type="password"
+              autoComplete="off"
+              required
+              maxLength={512}
+            />
             <button type="submit">Unlock dashboard</button>
             {viewerError && <p role="alert">{viewerError}</p>}
           </form>
-        ) : <button onClick={() => location.reload()}>Reconnect</button>}
+        ) : (
+          <div className="website-connect">
+            <button onClick={followLive}>Follow live</button>
+            {website && (
+              <a href={website} target="_blank" rel="noopener noreferrer">
+                Open travel website to sign in
+              </a>
+            )}
+          </div>
+        )}
         <span>No sample data is substituted.</span>
       </div>
     );
   return (
-    <div className="live-app" data-testid="live-dashboard">
+    <div
+      className="live-app dashboard-shell"
+      data-page={view}
+      data-testid="live-dashboard"
+    >
+      <a className="dashboard-skip" href="#page-title">
+        Skip to main content
+      </a>
       <header className="live-topbar">
-        <button
+        <PageLink
+          page="overview"
+          hrefFor={hrefFor}
+          navigate={navigate}
           className="brand"
-          onClick={() => {
-            setView("graph");
-            setFollow(true);
-          }}
           aria-label="Dashboard home"
         >
           <span className="brand-mark">
@@ -351,11 +535,14 @@ export default function LiveApp() {
             <i />
             <i />
           </span>
-          ironweb <small>MEMORY</small>
-        </button>
+          ironweb <small>× TINYFISH</small>
+        </PageLink>
         <span className="live-breadcrumb mono">
           workspace /{" "}
-          <b>{data.trip_id ? data.trip_id.slice(0, 8) : "shared memory"}</b>
+          <b>
+            {data.connection?.username ||
+              (data.trip_id ? data.trip_id.slice(0, 8) : "shared memory")}
+          </b>
         </span>
         <div
           className="top-context"
@@ -426,12 +613,17 @@ export default function LiveApp() {
         <button
           className={`follow-button ${follow ? "active" : ""}`}
           aria-pressed={follow}
-          onClick={() => {
-            setFollow((v) => !v);
-            setPlaying(false);
-          }}
+          onClick={followLive}
         >
           Follow live
+        </button>
+        <button
+          className="icon-button source-tools"
+          aria-label="Inspect data source"
+          title="Source & credentials"
+          onClick={() => setDialog("connection")}
+        >
+          <ReaderIcon />
         </button>
         <button
           className="icon-button"
@@ -441,227 +633,289 @@ export default function LiveApp() {
           <QuestionMarkCircledIcon />
         </button>
       </header>
-      {status !== "live" && (
-        <div className="feed-warning" role="status">
-          {error || "Connection interrupted. Reconnecting…"} · Last snapshot{" "}
-          {time(data.timestamp)} · displayed data is stale
-        </div>
-      )}
-      <main className="live-columns" data-drawer={drawer || "none"}>
-        {drawer && (
-          <button
-            className="drawer-backdrop"
-            aria-label="Close side panel"
-            onClick={() => setDrawer(null)}
+      <PageNavigation current={view} hrefFor={hrefFor} navigate={navigate} />
+      <main className="dashboard-main" id="dashboard-content">
+        {status !== "live" && (
+          <div className="feed-warning" role="status">
+            {error || "Connection interrupted. Reconnecting…"} · Last snapshot{" "}
+            {time(data.timestamp)} · displayed data is stale
+          </div>
+        )}
+        <ViewHeader
+          kicker={
+            historical
+              ? "Pinned observation · graph shows latest storage"
+              : "Memory workspace"
+          }
+          title={PAGES[view]?.name || "Page not found"}
+          subtitle={
+            PAGES[view]?.description ||
+            "This dashboard page does not exist. Use the navigation to continue."
+          }
+        >
+          {agent && (
+            <button
+              className="active-agent-filter"
+              onClick={() => setAgent(null)}
+              aria-label={`Clear ${agentName(agent)} filter`}
+            >
+              <Cross2Icon /> {agentName(agent)}
+            </button>
+          )}
+          {view === "graph" && (
+            <span className="page-heading-note">
+              Select a node to inspect its source
+            </span>
+          )}
+        </ViewHeader>
+        {view === "overview" && (
+          <Overview
+            data={data}
+            graph={graph}
+            events={events}
+            status={status}
+            hrefFor={hrefFor}
+            navigate={navigate}
+            onEvent={moveTo}
           />
         )}
-        <aside className="live-explorer">
-          <header>
-            <span className="kicker">Memory explorer</span>
-            <span>{graph.nodes.length}</span>
-            <button
-              className="live-drawer-close"
-              aria-label="Close explorer"
-              onClick={() => setDrawer(null)}
-            >
-              <Cross2Icon />
-            </button>
-          </header>
-          <label className="live-search">
-            <input
-              aria-label="Find a memory"
-              placeholder="Find memory or claim…"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            <span>/</span>
-          </label>
-          <div className="live-tree">
-            {Object.entries(COLORS).map(([t, color]) => (
-              <details
-                key={t}
-                open={
-                  !!query ||
-                  selectedNode?.tier === t ||
-                  (!selectedNode && t === "durable")
-                }
-              >
-                <summary style={{ "--tier-color": color }}>
-                  <i />
-                  {t === "hot"
-                    ? "Hot context"
-                    : t === "context"
-                      ? "Context cards"
-                      : "Durable evidence"}
-                  <small>
-                    {graph.nodes.filter((n) => n.tier === t).length}
-                  </small>
-                </summary>
-                {graph.nodes
-                  .filter(
-                    (n) =>
-                      n.tier === t &&
-                      (!agent || !n.agent_id || n.agent_id === agent) &&
-                      `${n.label} ${n.id}`
-                        .toLowerCase()
-                        .includes(query.toLowerCase()),
-                  )
-                  .map((n) => (
-                    <button
-                      className={selected === n.id ? "selected" : ""}
-                      key={n.id}
-                      onClick={() => select(n.id)}
-                      title={n.id}
-                    >
-                      <span>{n.context ? "○" : n.card ? "▤" : "◇"}</span>
-                      <span>{n.label}</span>
-                      <small>{n.access || ""}</small>
-                    </button>
-                  ))}
-              </details>
-            ))}
+        {view === "tinyfish" && <TinyFishIntelligence data={data} />}
+        {view === "not-found" && (
+          <div className="page-empty">
+            <PageLink page="overview" hrefFor={hrefFor} navigate={navigate}>
+              Go to overview
+            </PageLink>
           </div>
-          <footer>
-            <span>{data.scope.replaceAll("_", " ")}</span>
-            <button onClick={() => setDialog("connection")}>
-              Source & credentials
-            </button>
-          </footer>
-        </aside>
-        <section className="live-stage" aria-label="Memory visualization stage">
-          <div className="live-mobile-tools">
-            <button onClick={() => setDrawer("explorer")}>
-              <HamburgerMenuIcon /> Explorer
-            </button>
-            <button onClick={() => setDrawer("inspector")}>
-              <ReaderIcon /> Inspector
-            </button>
-          </div>
-          <nav role="tablist" aria-label="Visualization views">
-            {Object.entries(VIEW_NAMES).map(([id, name], i) => {
-              const Icon = icons[i];
-              return (
-                <button
-                  key={id}
-                  role="tab"
-                  aria-selected={view === id}
-                  onClick={() => setView(id)}
-                >
-                  <Icon />
-                  {name}
-                </button>
-              );
-            })}
-          </nav>
-          <ViewHeader
-            kicker={
-              historical
-                ? "Historical context · KG latest"
-                : "Application memory"
-            }
-            title={VIEW_NAMES[view]}
-            subtitle={
-              view === "graph"
-                ? "Actual graph relationships and observed context"
-                : view === "resources"
-                  ? "Recorded usage with explicit units and sources"
-                  : `${events.length} retained observations · ${data.agents.observed} agents observed`
-            }
-          >
-            {agent && (
-              <button onClick={() => setAgent(null)}>
-                × {agentName(agent)}
-              </button>
-            )}
-          </ViewHeader>
-          {view === "graph" && (
-            <LiveGraph
-              graph={graph}
-              selected={selected}
-              onSelect={select}
-              event={event}
-              agent={agent}
-            />
-          )}
-          {view === "agents" && (
-            <Wiring
-              agents={agents}
-              event={event}
-              agent={agent}
-              onAgent={activateAgent}
-              onStore={() => {
-                setView("graph");
-                setTier("durable");
-              }}
-            />
-          )}
-          {view === "activity" && (
-            <Activity
-              agents={agents}
-              events={events}
-              event={event}
-              agent={agent}
-              onEvent={moveTo}
-            />
-          )}
-          {view === "architecture" && (
-            <Architecture
-              data={data}
-              graph={graph}
-              onTier={(t) => {
-                setTier(t);
-                setFollow(false);
-              }}
-              selectedTier={tier}
-            />
-          )}
-          {view === "resources" && (
-            <Resources
-              data={data}
-              graph={graph}
-              event={event}
-              onSelect={select}
-              events={events}
-            />
-          )}
-        </section>
-        <aside className="live-inspector">
-          <button
-            className="live-drawer-close"
-            aria-label="Close inspector"
-            onClick={() => setDrawer(null)}
-          >
-            <Cross2Icon />
-          </button>
-          <Inspector
-            key={selected || tier || "event"}
-            data={data}
-            node={selectedNode}
-            graph={graph}
-            tier={tier}
-            follow={follow}
+        )}
+        {view === "activity" && (
+          <Dock
+            events={events}
             event={event}
             onEvent={moveTo}
-            onSelect={select}
-            onFollow={() => setFollow(true)}
+            playing={playing}
+            setPlaying={(value) => {
+              setFollow(false);
+              if (value && event?.id === latest?.id) setCursor(events[0]?.id);
+              setPlaying(value);
+            }}
+            speed={speed}
+            setSpeed={setSpeed}
+            agent={agent}
+            data={data}
           />
-        </aside>
+        )}
+        {view === "history" && (
+          <RunHistoryPage data={data} agent={agent} api={API} />
+        )}
+        {Object.hasOwn(VIEW_NAMES, view) && (
+          <div
+            className={`live-columns ${view !== "graph" ? "single-page" : "graph-page"}`}
+            data-drawer={drawer || "none"}
+          >
+            {drawer && (
+              <button
+                className="drawer-backdrop"
+                aria-label="Close side panel"
+                onClick={() => setDrawer(null)}
+              />
+            )}
+            {view === "graph" && (
+              <aside className="live-explorer">
+                <header>
+                  <span className="kicker">Memory explorer</span>
+                  <span>{graph.nodes.length}</span>
+                  <button
+                    className="live-drawer-close"
+                    aria-label="Close explorer"
+                    onClick={() => setDrawer(null)}
+                  >
+                    <Cross2Icon />
+                  </button>
+                </header>
+                <label className="live-search">
+                  <input
+                    aria-label="Find a memory"
+                    placeholder="Find memory or claim…"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                  />
+                  <span>/</span>
+                </label>
+                <div className="live-tree">
+                  {Object.entries(COLORS).map(([t, color]) => (
+                    <details
+                      key={t}
+                      open={
+                        !!query ||
+                        selectedNode?.tier === t ||
+                        (!selectedNode && t === "durable")
+                      }
+                    >
+                      <summary style={{ "--tier-color": color }}>
+                        <i />
+                        {t === "hot"
+                          ? "Hot context"
+                          : t === "context"
+                            ? "Context cards"
+                            : "Durable evidence"}
+                        <small>
+                          {graph.nodes.filter((n) => n.tier === t).length}
+                        </small>
+                      </summary>
+                      {graph.nodes
+                        .filter(
+                          (n) =>
+                            n.tier === t &&
+                            (!agent || !n.agent_id || n.agent_id === agent) &&
+                            `${n.label} ${n.id}`
+                              .toLowerCase()
+                              .includes(query.toLowerCase()),
+                        )
+                        .map((n) => (
+                          <button
+                            className={selected === n.id ? "selected" : ""}
+                            key={n.id}
+                            onClick={() => select(n.id)}
+                            title={n.id}
+                          >
+                            <span>{n.context ? "○" : n.card ? "▤" : "◇"}</span>
+                            <span>{n.label}</span>
+                            <small>{n.access || ""}</small>
+                          </button>
+                        ))}
+                    </details>
+                  ))}
+                </div>
+                <footer>
+                  <span>{data.scope.replaceAll("_", " ")}</span>
+                  <button onClick={() => setDialog("connection")}>
+                    Source & credentials
+                  </button>
+                </footer>
+              </aside>
+            )}
+            <section
+              className="live-stage"
+              aria-label={`${PAGES[view]?.name} workspace`}
+            >
+              {view === "graph" && (
+                <div className="live-mobile-tools">
+                  <button onClick={() => setDrawer("explorer")}>
+                    <HamburgerMenuIcon /> Explorer
+                  </button>
+                  <button onClick={() => setDrawer("inspector")}>
+                    <ReaderIcon /> Inspector
+                  </button>
+                </div>
+              )}
+              {view === "graph" && (
+                <LiveGraph
+                  graph={graph}
+                  selected={selected}
+                  onSelect={select}
+                  event={event}
+                  agent={agent}
+                />
+              )}
+              {view === "agents" && (
+                <>
+                  <Wiring
+                    agents={agents}
+                    event={event}
+                    agent={agent}
+                    storeLabel={
+                      data.storage.backend === "iron_web_2"
+                        ? "FALKORDB + SQLITE"
+                        : "SHARED MEMORY SERVICE"
+                    }
+                    onAgent={activateAgent}
+                    onStore={() => {
+                      navigate("graph");
+                      setTier("durable");
+                    }}
+                  />
+                  <AgentDirectory
+                    agents={agents}
+                    agent={agent}
+                    onAgent={activateAgent}
+                  />
+                </>
+              )}
+              {view === "activity" && (
+                <>
+                  <Activity
+                    agents={agents}
+                    events={events}
+                    event={event}
+                    agent={agent}
+                    onEvent={(id) => {
+                      moveTo(id);
+                      setDrawer("inspector");
+                    }}
+                  />
+                  <EventJournal
+                    events={events}
+                    event={event}
+                    agent={agent}
+                    onEvent={(id) => {
+                      moveTo(id);
+                      setDrawer("inspector");
+                    }}
+                  />
+                </>
+              )}
+              {view === "architecture" && (
+                <Architecture
+                  data={data}
+                  graph={graph}
+                  onTier={(t) => {
+                    setTier(t);
+                    setFollow(false);
+                    setDrawer("inspector");
+                  }}
+                  selectedTier={tier}
+                />
+              )}
+              {view === "resources" && (
+                <Resources
+                  data={data}
+                  graph={graph}
+                  event={event}
+                  onSelect={(id) => {
+                    select(id);
+                    navigate("graph");
+                    if (innerWidth < 1280) setDrawer("inspector");
+                  }}
+                  events={events}
+                />
+              )}
+            </section>
+            {(view === "graph" || drawer === "inspector") && (
+              <aside className="live-inspector" aria-label="Memory inspector">
+                <button
+                  className="live-drawer-close"
+                  aria-label="Close inspector"
+                  onClick={() => setDrawer(null)}
+                >
+                  <Cross2Icon />
+                </button>
+                <Inspector
+                  key={selected || tier || "event"}
+                  data={data}
+                  node={selectedNode}
+                  graph={graph}
+                  tier={tier}
+                  follow={follow}
+                  event={event}
+                  onEvent={moveTo}
+                  onSelect={select}
+                  onFollow={followLive}
+                />
+              </aside>
+            )}
+          </div>
+        )}
       </main>
-      <Dock
-        events={events}
-        event={event}
-        onEvent={moveTo}
-        playing={playing}
-        setPlaying={(value) => {
-          setFollow(false);
-          if (value && event?.id === latest?.id) setCursor(events[0]?.id);
-          setPlaying(value);
-        }}
-        speed={speed}
-        setSpeed={setSpeed}
-        agent={agent}
-        data={data}
-      />
       {dialog && (
         <Dialog name={dialog} data={data} onClose={() => setDialog(null)} />
       )}

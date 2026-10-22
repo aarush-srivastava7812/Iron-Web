@@ -31,11 +31,24 @@ def factory(path, name):
         lease_seconds=2,
         wait_seconds=10,
     )
+    if getattr(engine, "backend", None) == "iron_web_2":
+        engine.native.lock = engine.native.vectors.lock = engine.graph_store.write_lock
     return engine
 
 
 def fault(stage, row, engine):
     if stage != "prepared":
+        return
+    if getattr(engine, "backend", None) == "iron_web_2":
+        original = engine.native.graph.query
+        def atomic_publish(query, *args, **kwargs):
+            if "CREATE (s:Source:VectorMemory" in query and boundary == "vector":
+                os._exit(72)  # Before the single source/vector/claim statement.
+            result = original(query, *args, **kwargs)
+            if "CREATE (s:Source:VectorMemory" in query and boundary in {"graph", "vector_loss"}:
+                os._exit(72)  # After atomic publication; no vector-only state exists.
+            return result
+        engine.native.graph.query = atomic_publish
         return
     if boundary == "vector":
         original = engine.vector_store.upsert_memory

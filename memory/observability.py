@@ -61,7 +61,9 @@ def public_value(value):
 
 
 class ObservationLog:
-    def __init__(self, limit=500):
+    def __init__(self, limit=500, sink=None):
+        self.sink = sink
+        self.persistence_error = None
         self.lock, self.events, self.contexts = (
             RLock(),
             deque(maxlen=limit),
@@ -76,6 +78,7 @@ class ObservationLog:
                 self.sequence += 1
                 event = dict(
                     id=self.sequence,
+                    boot=self.boot,
                     timestamp=time.time(),
                     trip_id=trip_id,
                     kind=kind,
@@ -97,12 +100,18 @@ class ObservationLog:
                         event_id=self.sequence,
                         **captured,
                     )
+                if self.sink:
+                    self.sink.append(deepcopy(event))
+                    self.persistence_error = None
         except Exception:
+            self.persistence_error = "Agent history could not be written to disk"
             logger.warning("Could not record a dashboard event", exc_info=False)
 
     def invalidate(self, trip_id=None, *, purge_history=False):
         with self.lock:
             if purge_history:
+                if self.sink:
+                    self.sink.redact(trip_id)
                 for event in self.events:
                     if trip_id is None or event["trip_id"] == trip_id:
                         event.pop("context", None)

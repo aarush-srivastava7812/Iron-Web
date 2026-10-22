@@ -17,6 +17,7 @@ import httpx
 
 from agents.config import settings
 from .scheduler import inference_semaphore
+from .run_metrics import observed_request
 
 logger = logging.getLogger(__name__)
 
@@ -94,7 +95,7 @@ class NimClient:
             with inference_semaphore():
                 with _usage_lock:
                     _usage["requests"] += 1
-                response = self._get_client().post("/chat/completions", json=payload)
+                response = observed_request(self._get_client(), "post", "/chat/completions", provider="NVIDIA NIM", json=payload)
                 response.raise_for_status()
                 data = response.json()
                 record_usage(data)
@@ -105,7 +106,7 @@ class NimClient:
                 payload["max_tokens"] = min(max_tokens * 3, 4000)
                 with _usage_lock:
                     _usage["requests"] += 1
-                response = self._get_client().post("/chat/completions", json=payload)
+                response = observed_request(self._get_client(), "post", "/chat/completions", provider="NVIDIA NIM", json=payload)
                 response.raise_for_status()
                 data = response.json()
                 record_usage(data)
@@ -179,7 +180,7 @@ class NimClient:
         with inference_semaphore():
             with _usage_lock:
                 _usage["requests"] += 1
-            response = self._get_client().post("/chat/completions", json=payload)
+            response = observed_request(self._get_client(), "post", "/chat/completions", provider="NVIDIA NIM", json=payload)
             response.raise_for_status()
             data = response.json()
             record_usage(data)

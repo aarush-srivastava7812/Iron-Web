@@ -45,6 +45,7 @@ class BudgetBookingAgent:
         nights: int = 2,
         party_size: int = 1,
         per_person: bool = True,
+        unpriced_research: bool = False,
     ) -> AgentResult:
         started = time.perf_counter()
         try:
@@ -52,6 +53,16 @@ class BudgetBookingAgent:
             transport_options = transport_options or []
             food_options = food_options or []
             attractions = attractions or []
+            web_research = unpriced_research or any(o.evidence.source == "tinyfish.web" for o in stay_options + food_options + attractions)
+            unknown_costs = []
+            if not stay_options or stay_options[0].price_per_night_inr is None:
+                unknown_costs.append("accommodation")
+            if not food_options or any(f.approx_price_per_guest_inr is None for f in food_options):
+                unknown_costs.append("meals")
+            if not attractions or any(a.price_per_person_inr is None for a in attractions):
+                unknown_costs.append("activities")
+            if not transport_options:
+                unknown_costs.append("transport")
 
             lines: list[BudgetLine] = []
 
@@ -69,13 +80,14 @@ class BudgetBookingAgent:
                                         basis="estimate",
                                         note=f"{transport.mode} sample fare; seats not held"))
 
-            food_per_day = max((f.approx_price_per_guest_inr or 0) for f in food_options) if food_options else 400
+            food_per_day = max((f.approx_price_per_guest_inr or 0) for f in food_options) if food_options else (0 if web_research else 400)
             food_total = food_per_day * party_size * max(nights + 1, 1)
             if itinerary:
                 food_total = sum(stop.est_cost_inr for day in itinerary.days for stop in day.stops
                                  if stop.kind == "food") * party_size
-            lines.append(BudgetLine(category="food", amount_inr=food_total,
-                                    basis="estimate", note="scheduled meals only" if itinerary else "one sit-down meal per day"))
+            if not web_research or "meals" not in unknown_costs:
+                lines.append(BudgetLine(category="food", amount_inr=food_total,
+                                        basis="estimate", note="scheduled meals only" if itinerary else "one sit-down meal per day"))
 
             activity_per_person = sum(a.price_per_person_inr or 0 for a in attractions[:4])
             activity_total = activity_per_person * party_size
@@ -96,6 +108,8 @@ class BudgetBookingAgent:
             price_warning = ("Figures use source-reported indicative web rates, not date-specific quotes; confirm prices and availability."
                              if web_research else "All figures are estimates from catalog data, not live prices.")
             estimate = BudgetEstimate(
+                costs_complete=not unknown_costs,
+                unknown_categories=unknown_costs,
                 per_person=per_person,
                 lines=lines,
                 total_inr=total,
@@ -104,13 +118,16 @@ class BudgetBookingAgent:
                 warnings=[price_warning,
                           "Includes the listed activities and meals; unverified transport and extra meals are excluded."],
             )
+            if unknown_costs:
+                estimate.warnings.insert(0, "INCOMPLETE COSTS: " + ", ".join(unknown_costs)
+                    + " have no verified quotes. The shown amount is a known-cost subtotal, NOT the trip total or proof the trip fits your budget. Unknown costs are not free.")
             if brief is not None:
                 validation = validate_budget(estimate, brief)
                 estimate.warnings.extend(w.message for w in validation.warnings)
             return AgentResult(
                 agent_id=self.agent_id,
                 status="ok",
-                summary=f"Estimated ₹{total:,} "
+                summary=("Trip total awaiting supplier quotes " if unknown_costs and total == 0 else f"Known-cost subtotal ₹{total:,}; trip total unknown " if unknown_costs else f"Estimated ₹{total:,} ")
                         + ("per person" if per_person else f"for {party_size} travellers"),
                 budget=estimate,
                 evidence=[Evidence(source="budget_calculator", kind="estimate",

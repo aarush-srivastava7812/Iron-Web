@@ -2,7 +2,7 @@
 
 from concurrent.futures import ThreadPoolExecutor
 import pytest
-from memory.engine import MemoryEngine
+from memory.engine import LegacyMemoryEngine as MemoryEngine
 from memory.graph import FalkorDBGraphStore
 from memory.models import EngineStorageError
 from tests.fixtures.graph import graph_name_for

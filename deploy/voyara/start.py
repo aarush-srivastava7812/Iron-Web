@@ -68,7 +68,7 @@ def main():
         import uvicorn
 
         run()
-        # Embedded Qdrant and journals require one owner and one service replica.
+        # Receipt journals require one owner and one service replica.
         uvicorn.run("app.main:app", host="0.0.0.0", port=int(os.environ.get("PORT", "8080")), workers=1)
     finally:
         if graph and graph.poll() is None:

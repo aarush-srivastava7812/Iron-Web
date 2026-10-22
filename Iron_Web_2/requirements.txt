@@ -1,0 +1,10 @@
+falkordb==1.7.1
+fastembed-gpu==0.8.0
+onnxruntime-gpu[cuda,cudnn]==1.23.2
+langgraph==0.6.11
+langchain-core==1.6.11
+tokenizers>=0.15,<1
+pydantic>=2.11,<3
+cachetools==7.2.4
+openai==2.54.0
+python-dotenv==1.2.4

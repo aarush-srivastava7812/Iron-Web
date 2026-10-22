@@ -1,6 +1,14 @@
 import hashlib
+import pytest
 
 from tests.test_application_integration import connected_app, user, trip  # noqa: F401
+
+
+@pytest.fixture(autouse=True)
+def model_chat_mode(monkeypatch):
+    """These model-contract cases must not depend on the developer's .env mode."""
+    from agents.config import settings
+    monkeypatch.setattr(settings, "agent_mode", "nvidia")
 
 
 class ChatModel:

@@ -9,6 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     COOKIE_SECURE=true \
     DEV_LOGIN_ENABLED=false \
     CONTEXT_USE_GPU=false
+ENV USE_GPU=false FALKORDB_PORT=6379
 
 WORKDIR /app
 RUN apt-get update \
@@ -25,6 +26,7 @@ RUN pip install -r requirements.txt -r requirements/application.txt -r requireme
 
 COPY config.yaml ./
 COPY memory/ ./memory/
+COPY Iron_Web_2/memory/ ./Iron_Web_2/memory/
 COPY agents/ ./agents/
 COPY stitch_ai_travel_booking_platform/backend/ ./stitch_ai_travel_booking_platform/backend/
 COPY stitch_ai_travel_booking_platform/transitions/ ./stitch_ai_travel_booking_platform/transitions/
